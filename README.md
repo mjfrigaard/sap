@@ -390,9 +390,9 @@ tests
 5 directories, 7 files
 ```
 
-### 10e_tests-modules
+### `12e_tests-modules`
 
-[`10e_tests-modules`](https://github.com/mjfrigaard/moviesApp/tree/10e_tests-modules) gives examples of Shiny's `testServer()` function.
+[`12e_tests-modules`](https://github.com/mjfrigaard/moviesApp/tree/12e_tests-modules) gives examples of Shiny's `testServer()` function.
 
 ```
 tests
@@ -412,3 +412,4 @@ tests
 
 5 directories, 9 files
 ```
+

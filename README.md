@@ -234,10 +234,46 @@ inst
 
 [`11a_inst-www`](https://github.com/mjfrigaard/moviesApp/tree/11a_inst-www) shows how to add external resources in your app-package (i.e., the files previously stored in `www/`).
 
+```
+inst
+├── extdata
+│   └── movies.fst
+└── www
+    └── shiny.png
+
+3 directories, 2 files
+```
+
 ### `11b_inst-bslib`
 
 [`11b_inst-bslib`](https://github.com/mjfrigaard/moviesApp/tree/11b_inst-bslib) covers how to store external files use the application UI function to display alternative versions of your app.
 
+```
+inst
+├── extdata
+│   └── movies.fst
+└── www
+    ├── bootstrap.png
+    └── shiny.png
+
+3 directories, 3 files
+```
+
 ### `11c_inst-dev`
 
 [`11c_inst-dev`](https://github.com/mjfrigaard/moviesApp/tree/11c_inst-dev) stores a development version of the primary application in `inst/dev/`.
+
+```
+inst
+├── dev
+│   ├── app.R
+│   ├── imdb.png
+│   └── tidy_movies.fst
+├── extdata
+│   └── movies.fst
+└── www
+    ├── bootstrap.png
+    └── shiny.png
+
+4 directories, 6 files
+```

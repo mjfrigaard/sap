@@ -1,8 +1,32 @@
-# pkgs <- c("shiny", "shinythemes", "stringr", "ggplot2", "rlang")
-# install.packages(pkgs, quiet = TRUE)
+# reset loadSupport() ----
+options(shiny.autoload.r = NULL)
 
-# packages ------------------------------------
-library(moviesApp)
-
-# movies_app ------------------------------------
-movies_app()
+# set option to turn off loadSupport() ----
+withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
+  if (!interactive()) {
+    sink(stderr(), type = "output")
+    tryCatch(
+      expr = {
+        # load package ----
+        library(shinyAppPkg)
+      },
+      error = function(e) {
+        # load R/ folder ----
+        pkgload::load_all()
+      }
+    )
+    # create shiny object ----
+    shinyApp(
+      ui = movies_ui,
+      server = movies_server
+    )
+  } else {
+    # load R/ folder ----
+    pkgload::load_all()
+    # create shiny object ----
+    shinyApp(
+      ui = movies_ui,
+      server = movies_server
+    )
+  }
+})

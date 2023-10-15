@@ -1,13 +1,12 @@
 #' Movies app standalone function
 #'
-#' Wrapper function for `runApp()`
+#' Wrapper function for `shinyApp()`
 #' 
 #' @param test logical, run in `test.mode`?
 #' @param run where to launch app: 
 #'  * `p` = launch in viewer pane
 #'  * `b` = launch in external browser  
 #'  * `w` = launch in window
-#'  * `NULL` = `getOption(x = 'shiny.launch.browser')`
 #' 
 #' @return shiny app
 #' 
@@ -20,19 +19,30 @@
 #' 
 movies_app <- function(test = FALSE, run = "w") {
   
-  display_type(run = run)
+  if (interactive()) {
+      
+      # App launched from interactive session
+      display_type(run = run)
+      
+      if (isTRUE(test)) {
+        shinyApp(
+          ui = movies_ui,
+          server = movies_server,
+          options = list(test.mode = TRUE)
+        )
+      } else {
+        shinyApp(
+          ui = movies_ui,
+          server = movies_server, 
+          options = list(test.mode = FALSE)
+        )
+      }
     
-    if (test) {
-      shinyApp(
-        ui = movies_ui,
-        server = movies_server,
-        options = list(test.mode = TRUE)
-      )
-    } else {
-      shinyApp(
-        ui = movies_ui,
-        server = movies_server, 
-        options = list(test.mode = FALSE)
-      )
-    }
+  } else {
+    
+    # App deployed 
+    shinyApp(ui = movies_ui(),
+             server = movies_server)
+    
+  }
 }

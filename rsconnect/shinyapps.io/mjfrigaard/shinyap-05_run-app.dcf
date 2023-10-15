@@ -1,0 +1,10 @@
+name: shinyap-05_run-app
+title: shinyap-05_run-app
+username: mjfrigaard
+account: mjfrigaard
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10026740
+bundleId: 7746144
+url: https://mjfrigaard.shinyapps.io/shinyap-05_run-app/
+version: 1

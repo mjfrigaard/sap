@@ -339,7 +339,7 @@ vignettes/
 
 ### `12b_tests-fixtures`
 
-[`12b_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/12b_tests-helpers) explores adding `tests/testthat/fixtures/` for static data: 
+[`12b_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/12b_tests-fixtures) explores adding `tests/testthat/fixtures/` for static data: 
 
 ```
 tests

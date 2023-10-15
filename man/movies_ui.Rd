@@ -4,13 +4,13 @@
 \alias{movies_ui}
 \title{Movies UI function}
 \value{
-\code{ui} argument in \code{shiny::shinyApp()}
+\code{ui} argument in \code{shinyApp()}
 }
 \description{
 UI function for standalone app function
 }
 \details{
-The \code{\link[=movies_app]{movies_app()}} function is as a wrapper for \code{shiny::shinyApp()}:
+The \code{\link[=movies_app]{movies_app()}} function is as a wrapper for \code{shinyApp()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{shinyApp(ui = movies_ui, server = movies_server)
 }\if{html}{\out{</div>}}

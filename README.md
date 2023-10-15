@@ -32,6 +32,10 @@ Read the documentation chapter [here.](https://mjfrigaard.github.io/shinyap/docu
 
 Read the dependencies chapter [here.](https://mjfrigaard.github.io/shinyap/dependencies.html)
 
-### 06a_pkg-exports
+### 06b_pkg-imports
 
-[`06a_pkg-exports`](https://github.com/mjfrigaard/shinyAppPkg/tree/06a_pkg-exports) covers exporting functions from the `shinyAppPkg` `NAMESPACE` with `roxygen2` 
+[`06a_pkg-imports`](https://github.com/mjfrigaard/shinyAppPkg/tree/06a_pkg-imports) discusses managing imported functions from add-on packages in the `DESCRIPTION`, `NAMESPACE`, and files below `R/`.
+
+### 06b_pkg-imports
+
+[`06b_pkg-imports`](https://github.com/mjfrigaard/shinyAppPkg/tree/06b_pkg-imports) discusses managing imported functions from add-on packages in the `DESCRIPTION`, `NAMESPACE`, and files below `R/`.

@@ -23,6 +23,8 @@
 #'     
 #' @seealso [mod_scatter_display_server()]
 #' 
+#' @importFrom rlang .data
+#' 
 #' @export
 #' 
 scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {

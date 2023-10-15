@@ -2,3 +2,5 @@
 
 export(movies_app)
 export(scatter_plot)
+import(shiny)
+importFrom(rlang,.data)

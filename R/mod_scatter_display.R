@@ -8,17 +8,17 @@
 #' @family {"scatter plot module functions"}
 #' 
 mod_scatter_display_ui <- function(id) {
-  ns <- shiny::NS(id)
-  shiny::tagList(
-    shiny::tags$br(),
-    shiny::tags$blockquote(
-      shiny::tags$em(
-        shiny::tags$h6("The data for this application comes from the ",
-        shiny::tags$a("Building web applications with Shiny",
+  ns <- NS(id)
+  tagList(
+    tags$br(),
+    tags$blockquote(
+      tags$em(
+        tags$h6("The data for this application comes from the ",
+        tags$a("Building web applications with Shiny",
           href = "https://rstudio-education.github.io/shiny-course/"),
                       "tutorial"))
       ),
-    shiny::plotOutput(outputId = ns("scatterplot"))
+    plotOutput(outputId = ns("scatterplot"))
   )
 }
 
@@ -41,14 +41,14 @@ mod_scatter_display_ui <- function(id) {
 #' @return rendered plot and title output from [scatter_plot()]
 #' 
 #' @family {"scatter plot module functions"}
-#'  
+#' 
 mod_scatter_display_server <- function(id, var_inputs) {
-  shiny::moduleServer(id, function(input, output, session) {
+  moduleServer(id, function(input, output, session) {
     
     # data --------------------------------------------------------------------
     load("movies.RData")
 
-    inputs <- shiny::reactive({
+    inputs <- reactive({
       plot_title <- tools::toTitleCase(var_inputs()$plot_title)
       list(
         x = var_inputs()$x,
@@ -59,7 +59,7 @@ mod_scatter_display_server <- function(id, var_inputs) {
         plot_title = plot_title
       )
     })
-    output$scatterplot <- shiny::renderPlot({
+    output$scatterplot <- renderPlot({
       plot <- scatter_plot(
         df = movies,
         x_var = inputs()$x,

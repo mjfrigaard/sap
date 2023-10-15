@@ -1,6 +1,6 @@
-# shinyAppPkg 
+# moviesApp 
 
-`shinyAppPkg` provides the code examples in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
+`moviesApp` provides the code examples in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
 
 ## Code for book 
 
@@ -14,11 +14,11 @@ I've converted it have [shiny modules](https://shiny.posit.co/r/articles/improve
 
 # Branches 
 
-View the various versions of application in the [`shinyAppPkg` branches](https://github.com/mjfrigaard/shinyAppPkg/branches/all).
+View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
 ## `main`
 
-The [`main`](https://github.com/mjfrigaard/shinyAppPkg/tree/main) branch of `shinyAppPkg` is identical to the [`06_create-package`](https://github.com/mjfrigaard/shinyAppProj/tree/06_create-package) branch from the [`shinyAppProj` repository.](https://github.com/mjfrigaard/shinyAppProj/)
+The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `moviesApp` is identical to the [`06_create-package`](https://github.com/mjfrigaard/shinyAppProj/tree/06_create-package) branch from the [`shinyAppProj` repository.](https://github.com/mjfrigaard/shinyAppProj/)
 
 ## Documentation 
 
@@ -26,7 +26,7 @@ Read the documentation chapter [here.](https://mjfrigaard.github.io/shinyap/docu
 
 ### 05_roxygen2
 
-[`05_roxygen2`](https://github.com/mjfrigaard/shinyAppPkg/tree/05_roxygen2) contains the application with the `roxygen2` documentation.
+[`05_roxygen2`](https://github.com/mjfrigaard/moviesApp/tree/05_roxygen2) contains the application with the `roxygen2` documentation.
 
 ## Dependencies 
 
@@ -34,11 +34,11 @@ Read the dependencies chapter [here.](https://mjfrigaard.github.io/shinyap/depen
 
 ### 06b_pkg-imports
 
-[`06a_pkg-imports`](https://github.com/mjfrigaard/shinyAppPkg/tree/06a_pkg-imports) discusses managing imported functions from add-on packages in the `DESCRIPTION`, `NAMESPACE`, and files below `R/`.
+[`06a_pkg-imports`](https://github.com/mjfrigaard/moviesApp/tree/06a_pkg-imports) discusses managing imported functions from add-on packages in the `DESCRIPTION`, `NAMESPACE`, and files below `R/`.
 
 ### 06b_pkg-imports
 
-[`06b_pkg-imports`](https://github.com/mjfrigaard/shinyAppPkg/tree/06b_pkg-imports) discusses managing imported functions from add-on packages in the `DESCRIPTION`, `NAMESPACE`, and files below `R/`.
+[`06b_pkg-imports`](https://github.com/mjfrigaard/moviesApp/tree/06b_pkg-imports) discusses managing imported functions from add-on packages in the `DESCRIPTION`, `NAMESPACE`, and files below `R/`.
 
 ## Data 
 
@@ -46,7 +46,7 @@ Read the data chapter [here.](https://mjfrigaard.github.io/shinyap/data.html)
 
 ### 07_data
 
-[`07_data`](https://github.com/mjfrigaard/shinyAppPkg/tree/07_data) covers the various ways to store data in your app-package.
+[`07_data`](https://github.com/mjfrigaard/moviesApp/tree/07_data) covers the various ways to store data in your app-package.
 
 ## Launch 
 
@@ -54,4 +54,4 @@ Read the launch chapter [here.](https://mjfrigaard.github.io/shinyap/launch.html
 
 ### 08_launch-app
 
-[`08_launch-app`](https://github.com/mjfrigaard/shinyAppPkg/tree/08_launch-app) gives advice on what to put in your `app`.R file, and which function to use for launching vs. deploying your application.
+[`08_launch-app`](https://github.com/mjfrigaard/moviesApp/tree/08_launch-app) gives advice on what to put in your `app`.R file, and which function to use for launching vs. deploying your application.

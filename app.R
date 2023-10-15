@@ -8,7 +8,7 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     tryCatch(
       expr = {
         # load package ----
-        library(shinyAppPkg)
+        library(moviesApp)
       },
       error = function(e) {
         # load R/ folder ----

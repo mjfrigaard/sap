@@ -242,7 +242,7 @@ inst
 
 [`11c_inst-dev`](https://github.com/mjfrigaard/moviesApp/tree/11c_inst-dev) stores a development version of the primary application in `inst/dev/`.
 
-### 09d_inst-prod
+### `11d_inst-prod`
 
 [`11d_inst-prod`](https://github.com/mjfrigaard/moviesApp/tree/11d_inst-prod) gives an example of storing a 'production' version of your application in the `inst/prod/` folder.
 

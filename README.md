@@ -39,3 +39,11 @@ Read the dependencies chapter [here.](https://mjfrigaard.github.io/shinyap/depen
 ### 06b_pkg-imports
 
 [`06b_pkg-imports`](https://github.com/mjfrigaard/shinyAppPkg/tree/06b_pkg-imports) discusses managing imported functions from add-on packages in the `DESCRIPTION`, `NAMESPACE`, and files below `R/`.
+
+## Data 
+
+Read the data chapter [here.](https://mjfrigaard.github.io/shinyap/data.html)
+
+### 07_data
+
+[`07_data`](https://github.com/mjfrigaard/shinyAppPkg/tree/07_data) covers the various ways to store data in your app-package.

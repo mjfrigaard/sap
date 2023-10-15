@@ -37,6 +37,8 @@
 #
 #' @return `server` argument in `shinyApp()`
 #' 
+#' @export
+#' 
 movies_server <- function(input, output, session) {
 
       selected_vars <- mod_var_input_server("vars")

@@ -34,6 +34,8 @@
 #'
 #' @return `ui` argument in `shinyApp()` 
 #' 
+#' @export
+#' 
 movies_ui <- function() {
   tagList(
     fluidPage(

@@ -355,7 +355,7 @@ tests
 
 ### `12c_tests-helpers`
 
-[`12c_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/12c_tests-helpers) explores using test helpers with unit tests.
+[`12c_tests-helpers`](https://github.com/mjfrigaard/moviesApp/tree/12c_tests-helpers) explores using test helpers with unit tests.
 
 ```
 tests

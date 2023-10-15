@@ -1,6 +1,6 @@
-# shinyAppPkg 
+# moviesApp 
 
-`shinyAppPkg` provides the code examples in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
+`moviesApp` provides the code examples in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
 
 ## Code for book 
 
@@ -14,11 +14,11 @@ I've converted it have [shiny modules](https://shiny.posit.co/r/articles/improve
 
 # Branches 
 
-View the various versions of application in the [`shinyAppPkg` branches](https://github.com/mjfrigaard/shinyAppPkg/branches/all).
+View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
 ## `main`
 
-The [`main`](https://github.com/mjfrigaard/shinyAppPkg/tree/main) branch of `shinyAppPkg` is identical to the [`06_create-package`](https://github.com/mjfrigaard/shinyAppProj/tree/06_create-package) branch from the [`shinyAppProj` repository.](https://github.com/mjfrigaard/shinyAppProj/)
+The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `moviesApp` is identical to the [`06_create-package`](https://github.com/mjfrigaard/shinyAppProj/tree/06_create-package) branch from the [`shinyAppProj` repository.](https://github.com/mjfrigaard/shinyAppProj/)
 
 ## Documentation 
 
@@ -26,7 +26,7 @@ Read the documentation chapter [here.](https://mjfrigaard.github.io/shinyap/docu
 
 ### 05_roxygen2
 
-[`05_roxygen2`](https://github.com/mjfrigaard/shinyAppPkg/tree/05_roxygen2) contains the application with the `roxygen2` documentation.
+[`05_roxygen2`](https://github.com/mjfrigaard/moviesApp/tree/05_roxygen2) contains the application with the `roxygen2` documentation.
 
 ## Dependencies 
 
@@ -34,4 +34,4 @@ Read the dependencies chapter [here.](https://mjfrigaard.github.io/shinyap/depen
 
 ### 06a_pkg-exports
 
-[`06a_pkg-exports`](https://github.com/mjfrigaard/shinyAppPkg/tree/06a_pkg-exports) covers exporting functions from the `shinyAppPkg` `NAMESPACE` with `roxygen2` 
+[`06a_pkg-exports`](https://github.com/mjfrigaard/moviesApp/tree/06a_pkg-exports) covers exporting functions from the `moviesApp` `NAMESPACE` with `roxygen2` 

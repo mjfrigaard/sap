@@ -1,6 +1,6 @@
 #' Create scatter plot 
 #'
-#' Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building scatter plots in `shinyAppPkg()`.
+#' Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building scatter plots in `moviesApp()`.
 #' 
 #' 
 #' @param df `data.frame` or `tibble`

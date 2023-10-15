@@ -14,13 +14,14 @@ movies_app(test = FALSE, run = "w")
 \item \code{p} = launch in viewer pane
 \item \code{b} = launch in external browser
 \item \code{w} = launch in window
+\item \code{NULL} = \code{getOption(x = 'shiny.launch.browser')}
 }}
 }
 \value{
 shiny app
 }
 \description{
-Wrapper function for \code{shinyApp()}
+Wrapper function for \code{runApp()}
 }
 \seealso{
 \code{\link[=mod_var_input_ui]{mod_var_input_ui()}}, \code{\link[=mod_var_input_server]{mod_var_input_server()}}, \code{\link[=mod_scatter_display_ui]{mod_scatter_display_ui()}}, \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}

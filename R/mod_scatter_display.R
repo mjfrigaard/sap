@@ -44,6 +44,8 @@ mod_scatter_display_ui <- function(id) {
 #' 
 mod_scatter_display_server <- function(id, var_inputs) {
   moduleServer(id, function(input, output, session) {
+    
+    
 
     inputs <- reactive({
       plot_title <- tools::toTitleCase(var_inputs()$plot_title)
@@ -58,6 +60,7 @@ mod_scatter_display_server <- function(id, var_inputs) {
     })
     output$scatterplot <- renderPlot({
       plot <- scatter_plot(
+        # data --------------------
         df = movies,
         x_var = inputs()$x,
         y_var = inputs()$y,

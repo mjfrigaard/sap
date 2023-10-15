@@ -37,13 +37,16 @@
 #' @export
 #' 
 movies_ui <- function() {
+  addResourcePath(
+    prefix = 'www', 
+    directoryPath = system.file('www', package = 'moviesApp'))
   tagList(
     fluidPage(
       theme = shinythemes::shinytheme("spacelab"),
       titlePanel(
         div(
           img(
-            src = "shiny.png",
+            src = "www/shiny.png",
             height = 60,
             width = 55,
             style = "margin:10px 10px"

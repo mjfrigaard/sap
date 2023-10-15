@@ -55,3 +55,11 @@ Read the launch chapter [here.](https://mjfrigaard.github.io/shinyap/launch.html
 ### 08_launch-app
 
 [`08_launch-app`](https://github.com/mjfrigaard/moviesApp/tree/08_launch-app) gives advice on what to put in your `app`.R file, and which function to use for launching vs. deploying your application.
+
+## External files 
+
+Read the external files chapter [here.](https://mjfrigaard.github.io/shinyap/external.html)
+
+### 09a_inst-www
+
+[`09a_inst-www`](https://github.com/mjfrigaard/moviesApp/tree/09a_inst-www) shows how to add external resources in your app-package (i.e., the files previously stored in `www/`)

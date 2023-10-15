@@ -18,27 +18,26 @@
 #'
 #' @export
 #' 
-movies_app <- function(test = FALSE, run = "w") {
+movies_app <- function(test = FALSE, run = "w", ...) {
   
   if (interactive()) {
       
-      # App launched from interactive session
-      display_type(run = run)
-      
-      if (isTRUE(test)) { 
-        shinyApp(
-          ui = movies_ui,
-          server = movies_server,
-          options = list(test.mode = TRUE)
-        )
-      } else {  
-        shinyApp(
-          ui = movies_ui,
-          server = movies_server,
-          options = list(test.mode = FALSE)
-        )
-      }
+    # App launched from interactive session
+    display_type(run = run)
     
+    if (test) {
+      shinyApp(
+        ui = movies_ui(...),
+        server = movies_server,
+        options = list(test.mode = TRUE)
+      )
+    } else {
+      shinyApp(
+        ui = movies_ui(...),
+        server = movies_server, 
+        options = list(test.mode = FALSE)
+      )
+    }
   } else {
     
     # App deployed 

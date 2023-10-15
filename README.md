@@ -63,3 +63,7 @@ Read the external files chapter [here.](https://mjfrigaard.github.io/shinyap/ext
 ### 09a_inst-www
 
 [`09a_inst-www`](https://github.com/mjfrigaard/moviesApp/tree/09a_inst-www) shows how to add external resources in your app-package (i.e., the files previously stored in `www/`)
+
+### 09b_inst-bslib
+
+[`09b_inst-bslib`](https://github.com/mjfrigaard/moviesApp/tree/09b_inst-bslib) covers how to store external files use the application UI function to display alternative versions of your app.

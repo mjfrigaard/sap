@@ -4,7 +4,7 @@
 \alias{movies_app}
 \title{Movies app standalone function}
 \usage{
-movies_app(test = FALSE, run = "w")
+movies_app(test = FALSE, run = "w", ...)
 }
 \arguments{
 \item{test}{logical, run in \code{test.mode}?}

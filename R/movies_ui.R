@@ -4,6 +4,8 @@
 #' 
 #' @usage NULL
 #' 
+#' @param bslib use bslib layout?
+#' 
 #' @details
 #' The [movies_app()] function is as a wrapper for `shinyApp()`: 
 #'  
@@ -36,10 +38,11 @@
 #' 
 #' @export
 #' 
-movies_ui <- function() {
+movies_ui <- function(bslib = FALSE) {
   addResourcePath(
     prefix = 'www', 
     directoryPath = system.file('www', package = 'moviesApp'))
+  if (isFALSE(bslib)) {
   tagList(
     fluidPage(
       theme = shinythemes::shinytheme("spacelab"),
@@ -64,4 +67,39 @@ movies_ui <- function() {
       )
     )
   )
+  } else {
+    tagList(
+      bslib::page_fillable(
+        title = "Movie Reviews (bslib)",
+        theme = bslib::bs_theme(
+          bg = "#101010",
+          fg = "#F6F5F5",
+          primary = "#EE6F57",
+          secondary = "#32E0C4",
+          success = "#FF4B5C",
+          base_font = sass::font_google("Ubuntu"),
+          heading_font = sass::font_google("Ubuntu")
+        ),
+        bslib::layout_sidebar(
+          sidebar = bslib::sidebar(
+            mod_var_input_ui("vars")
+          ),
+          bslib::card(
+            full_screen = TRUE,
+                bslib::card_header(
+                  tags$img(
+                  src = "www/bootstrap.png",
+                  height = 80,
+                  width = 100,
+                  style = "margin:10px 10px"
+                )
+              ),
+             bslib::card_body(
+              mod_scatter_display_ui("plot")
+            )
+          )
+        )
+      )
+    )
+  }
 } 

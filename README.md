@@ -32,9 +32,13 @@ Read the documentation chapter [here.](https://mjfrigaard.github.io/shinyap/docu
 
 Read the dependencies chapter [here.](https://mjfrigaard.github.io/shinyap/dependencies.html)
 
-### 06b_pkg-imports
+## Dependencies 
 
-[`06a_pkg-imports`](https://github.com/mjfrigaard/moviesApp/tree/06a_pkg-imports) discusses managing imported functions from add-on packages in the `DESCRIPTION`, `NAMESPACE`, and files below `R/`.
+Read the dependencies chapter [here.](https://mjfrigaard.github.io/shinyap/dependencies.html)
+
+### 06a_pkg-exports
+
+[`06a_pkg-exports`](https://github.com/mjfrigaard/moviesApp/tree/06a_pkg-exports) covers exporting functions from the `moviesApp` `NAMESPACE` with `roxygen2`  
 
 ### 06b_pkg-imports
 
@@ -75,3 +79,11 @@ Read the external files chapter [here.](https://mjfrigaard.github.io/shinyap/ext
 ### 09d_inst-prod
 
 [`09d_inst-prod`](https://github.com/mjfrigaard/moviesApp/tree/09d_inst-prod) gives an example of storing a 'production' version of your application in the `inst/prod/` folder.
+
+## Tests 
+
+Read the tests chapter [here](https://mjfrigaard.github.io/shinyap/tests.html).
+
+### 10a_tests-specs
+
+[`10a_tests-specs`](https://github.com/mjfrigaard/moviesApp/tree/10a_tests-specs) covers working through a set of app specifications and building a traceability matrix. 

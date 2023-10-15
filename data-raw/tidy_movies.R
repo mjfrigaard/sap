@@ -15,18 +15,10 @@ tidy_movies <- ggplot2movies::movies |>
     values_to = "genre_value"
   ) |>
   dplyr::mutate(genre_value = as.logical(genre_value)) |>
-  dplyr::select(
-    title, genre_key, genre_value, length,
-    year, budget, avg_rating = rating, votes, mpaa
-  ) |>
   dplyr::filter(genre_value == TRUE) |>
   dplyr::group_by(title) |>
   dplyr:::mutate(
     genres = paste0(genre_key, collapse = ", ")
-  ) |>
-  dplyr::select(
-    title, genres, length, year,
-    budget, avg_rating, votes, mpaa
   ) |>
   dplyr::ungroup() |>
   dplyr::distinct(.keep_all = TRUE) |>
@@ -40,7 +32,10 @@ tidy_movies <- ggplot2movies::movies |>
     mpaa = factor(mpaa,
       levels = c("G", "PG", "PG-13", "R", "NC-17"),
       labels = c("G", "PG", "PG-13", "R", "NC-17"))
-    ) |> 
-  dplyr::select(-genres)
+    ) |>
+  dplyr::select(
+    title, -genre, length, year,
+    budget, rating, votes, mpaa
+  )
 # save to inst/dev/
 fst::write_fst(x = tidy_movies, path = "inst/dev/tidy_movies.fst")

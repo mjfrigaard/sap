@@ -12,6 +12,7 @@ LazyData: true
 Imports: 
     bslib,
     ggplot2,
+    logger,
     rlang,
     sass,
     shiny,

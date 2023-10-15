@@ -32,10 +32,6 @@ Read the documentation chapter [here.](https://mjfrigaard.github.io/shinyap/docu
 
 Read the dependencies chapter [here.](https://mjfrigaard.github.io/shinyap/dependencies.html)
 
-## Dependencies 
-
-Read the dependencies chapter [here.](https://mjfrigaard.github.io/shinyap/dependencies.html)
-
 ### 06a_pkg-exports
 
 [`06a_pkg-exports`](https://github.com/mjfrigaard/moviesApp/tree/06a_pkg-exports) covers exporting functions from the `moviesApp` `NAMESPACE` with `roxygen2`  
@@ -87,3 +83,12 @@ Read the tests chapter [here](https://mjfrigaard.github.io/shinyap/tests.html).
 ### 10a_tests-specs
 
 [`10a_tests-specs`](https://github.com/mjfrigaard/moviesApp/tree/10a_tests-specs) covers working through a set of app specifications and building a traceability matrix. 
+
+### 10b_tests-fixtures
+
+[`10b_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/10b_tests-fixtures) explores using test fixtures for unit tests.
+
+### 10c_tests-helpers
+
+[`10c_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/10c_tests-helpers) explores using test helpers with unit tests.
+

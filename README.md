@@ -57,7 +57,7 @@ DisplayMode: Showcase
 
 ## `04_description`
 
-The [`04_description`](https://github.com/mjfrigaard/moviesApp/tree/04_description) branch of `moviesApp` has an updated DESCRIPTION file:
+The [`04_description`](https://github.com/mjfrigaard/moviesApp/tree/04_description) branch of `moviesApp` has an updated `DESCRIPTION` file:
 
 ```
 Package: moviesApp

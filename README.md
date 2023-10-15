@@ -92,3 +92,11 @@ Read the tests chapter [here](https://mjfrigaard.github.io/shinyap/tests.html).
 
 [`10c_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/10c_tests-helpers) explores using test helpers with unit tests.
 
+### 10d_tests-mocks
+
+[`10d_tests-mocks`](https://github.com/mjfrigaard/moviesApp/tree/10d_tests-mocks) explores using `testthat`s mocking methods with unit tests.
+
+### 10e_tests-modules
+
+[`10e_tests-modules`](https://github.com/mjfrigaard/moviesApp/tree/10e_tests-modules) gives examples of Shiny's `testServer()` function.
+

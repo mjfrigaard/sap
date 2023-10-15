@@ -15,7 +15,7 @@ dev_mod_vars_ui <- function(id) {
         "Year" = "year",
         "Length" = "length",
         "Budget" = "budget",
-        "Rating" = "rating",
+        "Rating" = "avg_rating",
         "Votes" = "votes"
       ),
       selected = "budget"
@@ -27,7 +27,7 @@ dev_mod_vars_ui <- function(id) {
         "Year" = "year",
         "Length" = "length",
         "Budget" = "budget",
-        "Rating" = "rating",
+        "Rating" = "avg_rating",
         "Votes" = "votes"
       ),
       selected = "year"

@@ -67,3 +67,7 @@ Read the external files chapter [here.](https://mjfrigaard.github.io/shinyap/ext
 ### 09b_inst-bslib
 
 [`09b_inst-bslib`](https://github.com/mjfrigaard/moviesApp/tree/09b_inst-bslib) covers how to store external files use the application UI function to display alternative versions of your app.
+
+### 09c_inst-dev
+
+[`09c_inst-dev`](https://github.com/mjfrigaard/moviesApp/tree/09c_inst-dev) stores a development version of the primary application in `inst/dev/`.

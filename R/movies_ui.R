@@ -40,7 +40,7 @@
 #' 
 movies_ui <- function(bslib = FALSE) {
   addResourcePath(
-    prefix = 'www', 
+    prefix = 'www',
     directoryPath = system.file('www', package = 'moviesApp'))
   if (isFALSE(bslib)) {
   tagList(
@@ -53,7 +53,7 @@ movies_ui <- function(bslib = FALSE) {
             height = 60,
             width = 55,
             style = "margin:10px 10px"
-            ), 
+            ),
          "Movie Reviews"
         )
       ),

@@ -20,7 +20,7 @@ movies_app <- function() {
             height = 60,
             width = 55,
             style = "margin:10px 10px"
-            ),
+            ), 
          "Movie Reviews"
         )
       ),

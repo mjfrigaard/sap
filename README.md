@@ -339,7 +339,7 @@ vignettes/
 
 ### `12b_tests-fixtures`
 
-[`12b_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/12b_tests-helpers) explores adding `tests/testthat/fixtures/` for static data: 
+[`12b_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/12b_tests-fixtures) explores adding `tests/testthat/fixtures/` for static data: 
 
 ```
 tests
@@ -355,7 +355,7 @@ tests
 
 ### `12c_tests-helpers`
 
-[`12c_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/12c_tests-helpers) explores using test helpers with unit tests.
+[`12c_tests-helpers`](https://github.com/mjfrigaard/moviesApp/tree/12c_tests-helpers) explores using test helpers with unit tests.
 
 ```
 tests
@@ -371,7 +371,7 @@ tests
 
 ### `12d_tests-mocks`
 
-[`12d_tests-fixtures`](https://github.com/mjfrigaard/moviesApp/tree/12d_tests-mocks) demonstrates simulating behaviors with test 'mocks.'
+[`12d_tests-mocks`](https://github.com/mjfrigaard/moviesApp/tree/12d_tests-mocks) demonstrates simulating behaviors with test 'mocks.'
 
 ```
 tests

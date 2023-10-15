@@ -22,9 +22,37 @@ The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `movie
 
 ## `02_movies-app`
 
-The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course).
+The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course) in `app.R`.
 
 ## `03_proj-app`
 
-The [`03_proj-app`](https://github.com/mjfrigaard/moviesApp/tree/03_proj-app) branch of `moviesApp` includes and `R/` folder and external resources have been included in `www`. A `DESCRIPTION` file has also been added.
+The [`03_proj-app`](https://github.com/mjfrigaard/moviesApp/tree/03_proj-app) branch of `moviesApp` includes and `R/` folder and external resources have been included in `www`. 
+
+```
+R/
+├── mod_scatter_display.R
+├── mod_var_input.R
+└── utils.R
+
+1 directory, 3 files
+```
+
+```
+www/
+└── shiny.png
+
+1 directory, 1 file
+```
+
+
+A `DESCRIPTION` file has also been added.
+
+```
+Type: shiny
+Title: movies app
+Author: John Smith
+DisplayMode: Showcase
+```
+
+
 

@@ -41,7 +41,7 @@ mod_scatter_display_ui <- function(id) {
 #' @return rendered plot and title output from [scatter_plot()]
 #' 
 #' @family {"scatter plot module functions"}
-#' 
+#'  
 mod_scatter_display_server <- function(id, var_inputs) {
   shiny::moduleServer(id, function(input, output, session) {
     
@@ -61,7 +61,6 @@ mod_scatter_display_server <- function(id, var_inputs) {
     })
     output$scatterplot <- shiny::renderPlot({
       plot <- scatter_plot(
-        # data ----------------------------------------------------
         df = movies,
         x_var = inputs()$x,
         y_var = inputs()$y,

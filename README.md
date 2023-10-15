@@ -27,3 +27,11 @@ Read the documentation chapter [here.](https://mjfrigaard.github.io/shinyap/docu
 ### 05_roxygen2
 
 [`05_roxygen2`](https://github.com/mjfrigaard/shinyAppPkg/tree/05_roxygen2) contains the application with the `roxygen2` documentation.
+
+## Dependencies 
+
+Read the dependencies chapter [here.](https://mjfrigaard.github.io/shinyap/dependencies.html)
+
+### 06a_pkg-exports
+
+[`06a_pkg-exports`](https://github.com/mjfrigaard/shinyAppPkg/tree/06a_pkg-exports) covers exporting functions from the `shinyAppPkg` `NAMESPACE` with `roxygen2` 

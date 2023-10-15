@@ -16,9 +16,9 @@
 #' @seealso [mod_var_input_server()]
 #' 
 mod_var_input_ui <- function(id) {
-  ns <- NS(id)
-  tagList(
-    selectInput(
+  ns <- shiny::NS(id)
+  shiny::tagList(
+    shiny::selectInput(
       inputId = ns("y"),
       label = "Y-axis:",
       choices = c(
@@ -30,7 +30,7 @@ mod_var_input_ui <- function(id) {
       ),
       selected = "audience_score"
     ),
-    selectInput(
+    shiny::selectInput(
       inputId = ns("x"),
       label = "X-axis:",
       choices = c(
@@ -42,7 +42,7 @@ mod_var_input_ui <- function(id) {
       ),
       selected = "imdb_rating"
     ),
-    selectInput(
+    shiny::selectInput(
       inputId = ns("z"),
       label = "Color by:",
       choices = c(
@@ -54,19 +54,19 @@ mod_var_input_ui <- function(id) {
       ),
       selected = "mpaa_rating"
     ),
-    sliderInput(
+    shiny::sliderInput(
       inputId = ns("alpha"),
       label = "Alpha:",
       min = 0, max = 1, step = 0.1,
       value = 0.5
     ),
-    sliderInput(
+    shiny::sliderInput(
       inputId = ns("size"),
       label = "Size:",
       min = 0, max = 5,
       value = 2
     ),
-    textInput(
+    shiny::textInput(
       inputId = ns("plot_title"),
       label = "Plot title",
       placeholder = "Enter plot title"

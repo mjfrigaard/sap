@@ -5,7 +5,7 @@
 #' @usage NULL
 #' 
 #' @details
-#' The [movies_app()] function is as a wrapper for `shiny::shinyApp()`: 
+#' The [movies_app()] function is as a wrapper for `shinyApp()`: 
 #' 
 #' ```
 #' shinyApp(movies_ui, movies_server)
@@ -35,7 +35,7 @@
 #' The output from [mod_var_input_server()] should be supplied to the 
 #' `var_inputs` argument of [mod_scatter_display_server()].
 #
-#' @return `server` argument in `shiny::shinyApp()`
+#' @return `server` argument in `shinyApp()`
 #' 
 movies_server <- function(input, output, session) {
 

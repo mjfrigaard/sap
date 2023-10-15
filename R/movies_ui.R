@@ -5,7 +5,7 @@
 #' @usage NULL
 #' 
 #' @details
-#' The [movies_app()] function is as a wrapper for `shinyApp()`: 
+#' The [movies_app()] function is as a wrapper for `shiny::shinyApp()`: 
 #'  
 #' ```
 #' shinyApp(ui = movies_ui, server = movies_server)
@@ -32,15 +32,15 @@
 #' 
 #' @seealso [mod_scatter_display_server()]
 #'
-#' @return `ui` argument in `shinyApp()` 
+#' @return `ui` argument in `shiny::shinyApp()` 
 #' 
 movies_ui <- function() {
-  tagList(
-    fluidPage(
+  shiny::tagList(
+    shiny::fluidPage(
       theme = shinythemes::shinytheme("spacelab"),
-      titlePanel(
-        div(
-          img(
+      shiny::titlePanel(
+        shiny::div(
+          shiny::img(
             src = "shiny.png",
             height = 60,
             width = 55,
@@ -49,11 +49,11 @@ movies_ui <- function() {
          "Movie Reviews"
         )
       ),
-      sidebarLayout(
-        sidebarPanel(
+      shiny::sidebarLayout(
+        shiny::sidebarPanel(
           mod_var_input_ui("vars")
         ),
-        mainPanel(
+        shiny::mainPanel(
           mod_scatter_display_ui("plot")
         )
       )

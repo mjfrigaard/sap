@@ -2,7 +2,7 @@
 # install.packages(pkgs, quiet = TRUE)
 
 # packages ------------------------------------
-library(shinyAppPkg)
+library(moviesApp)
 
 # movies_app ------------------------------------
 movies_app()

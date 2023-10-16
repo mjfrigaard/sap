@@ -1,10 +1,10 @@
 # moviesApp
 
-`moviesApp` provides the code examples in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
+`moviesApp` provides the code examples for [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
 
 ## Code for book
 
-The GitHub repository for the book is [here](https://github.com/mjfrigaard/shinyap).
+You can view the GitHub repository for the book [here](https://github.com/mjfrigaard/shinyap).
 
 ## `movies` app
 
@@ -16,151 +16,55 @@ I've converted it have [shiny modules](https://shiny.posit.co/r/articles/improve
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## `main`
+## External resources 
 
-The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `moviesApp` is identical to the files that are created with a new Shiny App from the Posit Workbench New Project Wizard.
+### `11a_inst-www`
 
-## `02_movies-app`
-
-The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course) in `app.R`.
-
-## `03_proj-app`
-
-The [`03_proj-app`](https://github.com/mjfrigaard/moviesApp/tree/03_proj-app) branch of `moviesApp` includes and `R/` folder and external resources have been included in `www`. 
+[`11a_inst-www`](https://github.com/mjfrigaard/moviesApp/tree/11a_inst-www) shows how to add external resources in your app-package (i.e., the files previously stored in `www/`).
 
 ```
-R/
-├── mod_scatter_display.R
-├── mod_var_input.R
-└── utils.R
+inst
+├── extdata
+│   └── movies.fst
+└── www
+    └── shiny.png
 
-1 directory, 3 files
+3 directories, 2 files
 ```
 
-```
-www/
-└── shiny.png
+## `10_launch-app`
 
-1 directory, 1 file
-```
+[`10_launch-app`](https://github.com/mjfrigaard/moviesApp/tree/10_launch-app) gives advice on what to put in the `app.R` file, and which function to use for launching vs. deploying the application.
 
+## `09_data`
 
-A `DESCRIPTION` file has also been added.
+[`09_data`](https://github.com/mjfrigaard/moviesApp/tree/09_data) covers the various ways to store data in your app-package.
 
-```
-Type: shiny
-Title: movies app
-Author: John Smith
-DisplayMode: Showcase
-```
-
-
-## `04_description`
-
-The [`04_description`](https://github.com/mjfrigaard/moviesApp/tree/04_description) branch of `moviesApp` has an updated DESCRIPTION file:
+Data for the package (internal, becomes part of the namespace)
 
 ```
-Package: moviesApp
-Title: movies app
-Version: 0.0.0.9000
-Author: John Smith [aut, cre]
-Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review shiny application.
-License: GPL-3
+data
+├── movies.RData
+└── movies.rda
+
+1 directory, 2 files
 ```
 
-## `05_rproj`
-
-The `moviesApp.Rproj` file now contains the following fields: 
+External data files
 
 ```
-Version: 1.0
+inst
+└── extdata
+    └── movies.fst
 
-RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
-
-EnableCodeIndexing: Yes
-UseSpacesForTab: Yes
-NumSpacesForTab: 2
-Encoding: UTF-8
-
-RnwWeave: Sweave
-LaTeX: XeLaTeX
-
-BuildType: Package
-PackageUseDevtools: Yes
-PackageInstallArgs: --no-multiarch --with-keep.source
-PackageRoxygenize: rd,collate,namespace
+2 directories, 1 file
 ```
 
-## Creating packages
-
-
-
-### `06a_create-package`
-
-After running `usethis::create_package()`, the `DESCRIPTION` file is updated with the following fields:
-
-```
-Package: moviesApp
-Title: movies app
-Version: 0.0.0.9000
-Author: John Smith [aut, cre]
-Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review shiny application.
-License: GPL-3
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-```
-
-### `06b_devtools`
-
-Manually converting the package with the `DESCRIPTION` doesn't include `Roxygen: list(markdown = TRUE)` (but it's covered in the following branch)
-
-```
-Package: moviesApp
-Title: movies app
-Version: 0.0.0.9000
-Author: John Smith [aut, cre]
-Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review shiny application.
-License: GPL-3
-RoxygenNote: 7.2.3
-Encoding: UTF-8
-```
-
-## `07_roxygen2`
-
-The [`07_roxygen2`](https://github.com/mjfrigaard/moviesApp/tree/07_roxygen2) branch of `moviesApp` has documentation for all files in `R/`, and creates the help files in the `man/` folder:
-
-```
-man
-├── mod_scatter_display_server.Rd
-├── mod_scatter_display_ui.Rd
-├── mod_var_input_server.Rd
-├── mod_var_input_ui.Rd
-├── movies_app.Rd
-├── movies_server.Rd
-├── movies_ui.Rd
-└── scatter_plot.Rd
-
-1 directory, 8 files
-```
 
 ## Dependencies
 
-### `08a_pkg-exports`
+The following branches (`08a_pkg-exports` and `08b_pkg-imports`) cover imports and exports:
 
-The [`08a_pkg-exports`](https://github.com/mjfrigaard/moviesApp/tree/08a_pkg-exports) branch of `moviesApp` covers how to export functions from our package for users in the `NAMESPACE`
-
-```
-# Generated by roxygen2: do not edit by hand
-
-export(movies_app)
-export(scatter_plot)
-```
 
 ### `08b_pkg-imports`
 
@@ -198,48 +102,149 @@ import(shiny)
 importFrom(rlang,.data)
 ```
 
-## `09_data`
 
-[`09_data`](https://github.com/mjfrigaard/moviesApp/tree/09_data) covers the various ways to store data in your app-package.
 
-Data for the package (internal, becomes part of the namespace)
+### `08a_pkg-exports`
 
-```
-data
-├── movies.RData
-└── movies.rda
-
-1 directory, 2 files
-```
-
-External data files
+The [`08a_pkg-exports`](https://github.com/mjfrigaard/moviesApp/tree/08a_pkg-exports) branch of `moviesApp` covers how to export functions from our package for users in the `NAMESPACE`
 
 ```
-inst
-└── extdata
-    └── movies.fst
+# Generated by roxygen2: do not edit by hand
 
-2 directories, 1 file
+export(movies_app)
+export(scatter_plot)
 ```
 
 
-## `10_launch-app`
+## `07_roxygen2`
 
-[`10_launch-app`](https://github.com/mjfrigaard/moviesApp/tree/10_launch-app) gives advice on what to put in the `app.R` file, and which function to use for launching vs. deploying the application.
-
-
-## External resources 
-
-### `11a_inst-www`
-
-[`11a_inst-www`](https://github.com/mjfrigaard/moviesApp/tree/11a_inst-www) shows how to add external resources in your app-package (i.e., the files previously stored in `www/`).
+The [`07_roxygen2`](https://github.com/mjfrigaard/moviesApp/tree/07_roxygen2) branch of `moviesApp` has documentation for all files in `R/`, and creates the help files in the `man/` folder:
 
 ```
-inst
-├── extdata
-│   └── movies.fst
-└── www
-    └── shiny.png
+man
+├── mod_scatter_display_server.Rd
+├── mod_scatter_display_ui.Rd
+├── mod_var_input_server.Rd
+├── mod_var_input_ui.Rd
+├── movies_app.Rd
+├── movies_server.Rd
+├── movies_ui.Rd
+└── scatter_plot.Rd
 
-3 directories, 2 files
+1 directory, 8 files
 ```
+
+## Creating packages
+
+The next two branches cover creating packages with `usethis::create_package()` and by manually editing the `DESCRIPTION` file.
+
+### `06b_devtools`
+
+Manually converting the package with the `DESCRIPTION` doesn't include `Roxygen: list(markdown = TRUE)` (but it's covered in the following branches)
+
+```
+Package: moviesApp
+Title: movies app
+Version: 0.0.0.9000
+Author: John Smith [aut, cre]
+Maintainer: John Smith <John.Smith@email.io>
+Description: A movie-review shiny application.
+License: GPL-3
+RoxygenNote: 7.2.3
+Encoding: UTF-8
+```
+
+### `06a_create-package`
+
+After running `usethis::create_package()`, the `DESCRIPTION` file is updated with the following fields:
+
+```
+Package: moviesApp
+Title: movies app
+Version: 0.0.0.9000
+Author: John Smith [aut, cre]
+Maintainer: John Smith <John.Smith@email.io>
+Description: A movie-review shiny application.
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+```
+
+
+## `05_rproj`
+
+The `moviesApp.Rproj` file now contains the following fields: 
+
+```
+Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: XeLaTeX
+
+BuildType: Package
+PackageUseDevtools: Yes
+PackageInstallArgs: --no-multiarch --with-keep.source
+PackageRoxygenize: rd,collate,namespace
+```
+
+## `04_description`
+
+The [`04_description`](https://github.com/mjfrigaard/moviesApp/tree/04_description) branch of `moviesApp` has an updated `DESCRIPTION` file:
+
+```
+Package: moviesApp
+Title: movies app
+Version: 0.0.0.9000
+Author: John Smith [aut, cre]
+Maintainer: John Smith <John.Smith@email.io>
+Description: A movie-review shiny application.
+License: GPL-3
+```
+
+## `03_proj-app`
+
+The [`03_proj-app`](https://github.com/mjfrigaard/moviesApp/tree/03_proj-app) branch of `moviesApp` includes and `R/` folder and external resources have been included in `www`. 
+
+```
+R/
+├── mod_scatter_display.R
+├── mod_var_input.R
+└── utils.R
+
+1 directory, 3 files
+```
+
+```
+www/
+└── shiny.png
+
+1 directory, 1 file
+```
+
+
+A `DESCRIPTION` file has also been added.
+
+```
+Type: shiny
+Title: movies app
+Author: John Smith
+DisplayMode: Showcase
+```
+
+## `02_movies-app`
+
+The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course) in `app.R`.
+
+## `main`
+
+The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `moviesApp` is identical to the files that are created with a new Shiny App from the Posit Workbench New Project Wizard.

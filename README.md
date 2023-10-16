@@ -1,10 +1,10 @@
 # moviesApp
 
-`moviesApp` provides the code examples in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
+`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book.
 
 ## Code for book
 
-The GitHub repository for the book is [here](https://github.com/mjfrigaard/shinyap).
+You can view the  GitHub repository for the book [here](https://github.com/mjfrigaard/shinyap).
 
 ## `movies` app
 

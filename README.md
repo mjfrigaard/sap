@@ -1,10 +1,10 @@
 # moviesApp
 
-`moviesApp` provides the code examples in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
+`moviesApp` provides the code examples for [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
 
 ## Code for book
 
-The GitHub repository for the book is [here](https://github.com/mjfrigaard/shinyap).
+You can view the GitHub repository for the book [here](https://github.com/mjfrigaard/shinyap).
 
 ## `movies` app
 
@@ -16,13 +16,101 @@ I've converted it have [shiny modules](https://shiny.posit.co/r/articles/improve
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## `main`
 
-The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `moviesApp` is identical to the files that are created with a new Shiny App from the Posit Workbench New Project Wizard.
+## `07_roxygen2`
 
-## `02_movies-app`
+The [`07_roxygen2`](https://github.com/mjfrigaard/moviesApp/tree/07_roxygen2) branch of `moviesApp` has documentation for all files in `R/`, and creates the help files in the `man/` folder:
 
-The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course) in `app.R`.
+```
+man
+├── mod_scatter_display_server.Rd
+├── mod_scatter_display_ui.Rd
+├── mod_var_input_server.Rd
+├── mod_var_input_ui.Rd
+├── movies_app.Rd
+├── movies_server.Rd
+├── movies_ui.Rd
+└── scatter_plot.Rd
+
+1 directory, 8 files
+```
+
+## Creating packages
+
+The next two branches cover creating packages with `usethis::create_package()` and by manually editing the `DESCRIPTION` file.
+
+### `06b_devtools`
+
+Manually converting the package with the `DESCRIPTION` doesn't include `Roxygen: list(markdown = TRUE)` (but it's covered in the following branches)
+
+```
+Package: moviesApp
+Title: movies app
+Version: 0.0.0.9000
+Author: John Smith [aut, cre]
+Maintainer: John Smith <John.Smith@email.io>
+Description: A movie-review shiny application.
+License: GPL-3
+RoxygenNote: 7.2.3
+Encoding: UTF-8
+```
+
+### `06a_create-package`
+
+After running `usethis::create_package()`, the `DESCRIPTION` file is updated with the following fields:
+
+```
+Package: moviesApp
+Title: movies app
+Version: 0.0.0.9000
+Author: John Smith [aut, cre]
+Maintainer: John Smith <John.Smith@email.io>
+Description: A movie-review shiny application.
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+```
+
+
+## `05_rproj`
+
+The `moviesApp.Rproj` file now contains the following fields: 
+
+```
+Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: XeLaTeX
+
+BuildType: Package
+PackageUseDevtools: Yes
+PackageInstallArgs: --no-multiarch --with-keep.source
+PackageRoxygenize: rd,collate,namespace
+```
+
+## `04_description`
+
+The [`04_description`](https://github.com/mjfrigaard/moviesApp/tree/04_description) branch of `moviesApp` has an updated `DESCRIPTION` file:
+
+```
+Package: moviesApp
+Title: movies app
+Version: 0.0.0.9000
+Author: John Smith [aut, cre]
+Maintainer: John Smith <John.Smith@email.io>
+Description: A movie-review shiny application.
+License: GPL-3
+```
 
 ## `03_proj-app`
 
@@ -54,97 +142,11 @@ Author: John Smith
 DisplayMode: Showcase
 ```
 
+## `02_movies-app`
 
-## `04_description`
+The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course) in `app.R`.
 
-The [`04_description`](https://github.com/mjfrigaard/moviesApp/tree/04_description) branch of `moviesApp` has an updated DESCRIPTION file:
+## `main`
 
-```
-Package: moviesApp
-Title: movies app
-Version: 0.0.0.9000
-Author: John Smith [aut, cre]
-Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review shiny application.
-License: GPL-3
-```
+The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `moviesApp` is identical to the files that are created with a new Shiny App from the Posit Workbench New Project Wizard.
 
-## `05_rproj`
-
-The `moviesApp.Rproj` file now contains the following fields: 
-
-```
-Version: 1.0
-
-RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
-
-EnableCodeIndexing: Yes
-UseSpacesForTab: Yes
-NumSpacesForTab: 2
-Encoding: UTF-8
-
-RnwWeave: Sweave
-LaTeX: XeLaTeX
-
-BuildType: Package
-PackageUseDevtools: Yes
-PackageInstallArgs: --no-multiarch --with-keep.source
-PackageRoxygenize: rd,collate,namespace
-```
-
-## Creating packages
-
-
-
-### `06a_create-package`
-
-After running `usethis::create_package()`, the `DESCRIPTION` file is updated with the following fields:
-
-```
-Package: moviesApp
-Title: movies app
-Version: 0.0.0.9000
-Author: John Smith [aut, cre]
-Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review shiny application.
-License: GPL-3
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-```
-
-### `06b_devtools`
-
-Manually converting the package with the `DESCRIPTION` doesn't include `Roxygen: list(markdown = TRUE)` (but it's covered in the following branch)
-
-```
-Package: moviesApp
-Title: movies app
-Version: 0.0.0.9000
-Author: John Smith [aut, cre]
-Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review shiny application.
-License: GPL-3
-RoxygenNote: 7.2.3
-Encoding: UTF-8
-```
-
-## `07_roxygen2`
-
-The [`07_roxygen2`](https://github.com/mjfrigaard/moviesApp/tree/07_roxygen2) branch of `moviesApp` has documentation for all files in `R/`, and creates the help files in the `man/` folder:
-
-```
-man
-├── mod_scatter_display_server.Rd
-├── mod_scatter_display_ui.Rd
-├── mod_var_input_server.Rd
-├── mod_var_input_ui.Rd
-├── movies_app.Rd
-├── movies_server.Rd
-├── movies_ui.Rd
-└── scatter_plot.Rd
-
-1 directory, 8 files
-```

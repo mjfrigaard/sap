@@ -1,10 +1,10 @@
 # moviesApp
 
-`moviesApp` provides the code examples in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
+`moviesApp` provides the code examples for [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/).
 
 ## Code for book
 
-The GitHub repository for the book is [here](https://github.com/mjfrigaard/shinyap).
+You can view the GitHub repository for the book [here](https://github.com/mjfrigaard/shinyap).
 
 ## `movies` app
 
@@ -16,13 +16,6 @@ I've converted it have [shiny modules](https://shiny.posit.co/r/articles/improve
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## `main`
-
-The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `moviesApp` is identical to the files that are created with a new Shiny App from the Posit Workbench New Project Wizard.
-
-## `02_movies-app`
-
-The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course) in `app.R`.
 
 ## `03_proj-app`
 
@@ -54,5 +47,10 @@ Author: John Smith
 DisplayMode: Showcase
 ```
 
+## `02_movies-app`
 
+The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course) in `app.R`.
 
+## `main`
+
+The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `moviesApp` is identical to the files that are created with a new Shiny App from the Posit Workbench New Project Wizard.

@@ -87,12 +87,10 @@ movies_ui <- function(bslib = FALSE) {
           bslib::card(
             full_screen = TRUE,
                 bslib::card_header(
-                  tags$img(
-                  src = "www/bootstrap.png",
+                  img(src = "www/bootstrap.png",
                   height = 80,
                   width = 100,
-                  style = "margin:10px 10px"
-                )
+                  style = "margin:10px 10px")
               ),
              bslib::card_body(
               mod_scatter_display_ui("plot")

@@ -3,8 +3,7 @@ testthat::describe(
   code = { 
     
 testthat::it(
-  "
-  Scenario: Scatter plot initial x, y, color values 
+  "Scenario: Scatter plot initial x, y, color values 
     When I launched the Scatter Plot Data Visualization
     And I have a dataset of movie reviews from IMDB and Rotten Tomatoes
     Then the scatter plot should show 'IMDB Rating' on the x-axis
@@ -12,7 +11,7 @@ testthat::it(
     And the points on the scatter plot should be colored by 'MPAA Rating' 
   ", code = {
 
-    test_logger(start = "T2", msg = "Tests initial x/y/z variables")
+    test_logger(start = "T2", msg = "Tests F1.2 initial x/y/z variables")
                   
     scatter_inputs <- list(
                        x = 'imdb_rating',
@@ -45,13 +44,12 @@ testthat::it(
         ggplot2::theme(legend.position = "bottom") 
     )
     
-    test_logger(end = "T2", msg = "Tests initial x/y/z variables")
+    test_logger(end = "T2", msg = "Tests F1.2 initial x/y/z variables")
     
   })
   
   testthat::it(
-    " 
-  Scenario: Select x, y, color values for plotting
+  "Scenario: Select x, y, color values for plotting
     When I launched the Scatter Plot Data Visualization
     And I select the variable 'Audience Score' for the x-axis
     And I select the variable 'IMDB Rating' for the y-axis

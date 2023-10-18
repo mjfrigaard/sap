@@ -1,6 +1,3 @@
-# load packages --------------------
-library(fst)
-
 # tidy_movies
 make_tidy_ggp2_movies <- function(movies_data_url) {
   movies_data <- read.csv(file = movies_data_url)
@@ -47,5 +44,12 @@ make_tidy_ggp2_movies <- function(movies_data_url) {
 }
 
 tidy_movies <- make_tidy_ggp2_movies("https://raw.githubusercontent.com/hadley/ggplot2movies/master/data-raw/movies.csv")
-# save to inst/dev/
-fst::write_fst(x = tidy_movies, path = "inst/dev/tidy_movies.fst")
+
+# save to tests/testthat/fixtures/
+saveRDS(object = tidy_ggp2_movies, 
+  file = "tests/testthat/fixtures/tidy_ggp2_movies.rds")
+
+dist_titles <- unique(ggplot2movies::movies$title)
+dist_tidy_titles <- unique(tidy_ggp2_movies$title)
+waldo::compare(dist_titles, dist_tidy_titles)
+identical(dist_titles, dist_tidy_titles)

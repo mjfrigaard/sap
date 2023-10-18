@@ -1,41 +1,51 @@
-## code to prepare `ggp2movies` dataset goes here
-# pkgs <- c('ggplot2movies', 'tidyr', 'dplyr', 'stringr', 'fst')
-# install.packages(pkgs, quiet = TRUE)
-
 # load packages --------------------
-library(tidyr)
-library(dplyr)
-library(stringr)
 library(fst)
 
-# tidy_movies
-tidy_movies <- ggplot2movies::movies |>
-  tidyr::pivot_longer(c(Action:Short),
-    names_to = "genre_key",
-    values_to = "genre_value"
-  ) |>
-  dplyr::mutate(genre_value = as.logical(genre_value)) |>
-  dplyr::filter(genre_value == TRUE) |>
-  dplyr::group_by(title) |>
-  dplyr:::mutate(
-    genres = paste0(genre_key, collapse = ", ")
-  ) |>
-  dplyr::ungroup() |>
-  dplyr::distinct(.keep_all = TRUE) |>
-  dplyr::mutate(
-    genres = dplyr::na_if(x = genres, ""),
-    genre = dplyr::case_when(
-                stringr::str_detect(genres, ",") ~ 'Multiple genres',
-                TRUE ~ genres),
-    genre = factor(genre),
-    mpaa = dplyr::na_if(x = mpaa, y = ""),
-    mpaa = factor(mpaa,
-      levels = c("G", "PG", "PG-13", "R", "NC-17"),
-      labels = c("G", "PG", "PG-13", "R", "NC-17"))
-    ) |>
-  dplyr::select(
-    title, -genre, length, year,
-    budget, rating, votes, mpaa
+make_tidy_ggp2_movies <- function(movies_data_url) {
+  movies_data <- read.csv(file = movies_data_url)
+  # specify genre columns
+  genre_cols <- c(
+    "Action", "Animation",
+    "Comedy", "Drama",
+    "Documentary", "Romance",
+    "Short"
   )
+  # calculate row sum for genres
+  movies_data$genre_count <- rowSums(movies_data[, genre_cols])
+  # create aggregate 'genres' for multiple categories
+  movies_data$genres <- apply(
+    X = movies_data[, genre_cols],
+    MARGIN = 1,
+    FUN = function(row) {
+      genres <- names(row[row == 1])
+      if (length(genres) > 0) {
+        return(paste(genres, collapse = ", "))
+      } else {
+        return(NA)
+      }
+    }
+  )
+  # format variables
+  movies_data$genre_count <- as.integer(movies_data$genre_count)
+  movies_data$genre <- ifelse(test = movies_data$genre_count > 1,
+    yes = "Multiple genres",
+    no = movies_data$genres
+  )
+  movies_data$genre <- as.factor(movies_data$genre)
+  movies_data$mpaa <- factor(movies_data$mpaa,
+    levels = c("G", "PG", "PG-13", "R", "NC-17"),
+    labels = c("G", "PG", "PG-13", "R", "NC-17")
+  )
+
+  # reduce columns to only those in graph
+  movies_data[, c(
+    "title", "year", "length", "budget",
+    "rating", "votes", "mpaa", "genre_count",
+    "genres", "genre"
+  )]
+}
+
+tidy_movies <- make_tidy_ggp2_movies("https://raw.githubusercontent.com/hadley/ggplot2movies/master/data-raw/movies.csv")
+
 # save to inst/dev/
 fst::write_fst(x = tidy_movies, path = "inst/dev/tidy_movies.fst")

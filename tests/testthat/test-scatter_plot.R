@@ -13,14 +13,12 @@ testthat::it(
 
     test_logger(start = "T2", msg = "Tests F1.2 initial x/y/z variables")
                   
-    scatter_inputs <- list(
-                       x = 'imdb_rating',
+    scatter_inputs <- list(x = 'imdb_rating',
                        y = 'audience_score',
                        z = 'mpaa_rating',
                        alpha = 0.5,
                        size = 2,
-                       plot_title = 'Enter plot title'
-                      )
+                       plot_title = 'Enter plot title')
     
     vdiffr::expect_doppelganger(
       title = "FR12-FR14: initial x y z axes", 
@@ -29,8 +27,7 @@ testthat::it(
         y_var = scatter_inputs$y, 
         col_var = scatter_inputs$z, 
         alpha_var = scatter_inputs$alpha, 
-        size_var = scatter_inputs$size 
-      ) + 
+        size_var = scatter_inputs$size) + 
         ggplot2::labs( 
           title = scatter_inputs$plot_title, 
           x = stringr::str_replace_all( 
@@ -41,8 +38,7 @@ testthat::it(
                   scatter_inputs$y), "_", " ") 
         ) + 
         ggplot2::theme_minimal() + 
-        ggplot2::theme(legend.position = "bottom") 
-    )
+        ggplot2::theme(legend.position = "bottom"))
     
     test_logger(end = "T2", msg = "Tests F1.2 initial x/y/z variables")
     
@@ -61,14 +57,12 @@ testthat::it(
 
     test_logger(start = "T3", msg = "Tests FR1.4 & FR1.5 update x/y/z")
     
-    scatter_inputs <- list(
-                       x = 'audience_score',
+    scatter_inputs <- list(x = 'audience_score',
                        y = 'imdb_rating', 
                        z = 'critics_rating',
                        alpha = 0.5,
                        size = 2,
-                       plot_title = 'Enter plot title'
-                      )
+                       plot_title = 'Enter plot title')
     
     vdiffr::expect_doppelganger(
       title = "FR14-FR15: update x, y, color", 
@@ -77,8 +71,7 @@ testthat::it(
         y_var = scatter_inputs$y, 
         col_var = scatter_inputs$z, 
         alpha_var = scatter_inputs$alpha, 
-        size_var = scatter_inputs$size 
-      ) + 
+        size_var = scatter_inputs$size) + 
         ggplot2::labs( 
           title = scatter_inputs$plot_title, 
           x = stringr::str_replace_all( 
@@ -86,11 +79,9 @@ testthat::it(
                   scatter_inputs$x), "_", " "), 
           y = stringr::str_replace_all( 
                 tools::toTitleCase( 
-                  scatter_inputs$y), "_", " ") 
-        ) + 
+                  scatter_inputs$y), "_", " ")) + 
         ggplot2::theme_minimal() + 
-        ggplot2::theme(legend.position = "bottom")
-    )
+        ggplot2::theme(legend.position = "bottom"))
         
     test_logger(end = "T3", msg = "Tests FR1.4 & FR1.5 update x/y/z")
     

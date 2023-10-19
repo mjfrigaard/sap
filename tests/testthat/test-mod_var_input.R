@@ -1,22 +1,27 @@
-testthat::describe("FR2: user-input updating (inputs)", code = {
+testthat::describe("F1.2: Dropdown menus (continuous x & y axes, categorical point coloration)", code = {
   
-  testthat::it("T5: inputs change", code = {
+  testthat::it("Scenario: Scatter plot initial x, y, color values 
+    When I launched the Scatter Plot Data Visualization
+    And I have a dataset of movie reviews from IMDB and Rotten Tomatoes
+    Then the scatter plot should show 'IMDB Rating' on the x-axis
+    And the scatter plot should show 'Audience Score' on the y-axis
+    And the points on the scatter plot should be colored by 'MPAA Rating'", code = {
     shiny::testServer(app = mod_var_input_server, expr = {
       
-      test_logger(start = "T5", msg = "FR2: returned()")
+      test_logger(start = "T5", msg = "F1.2: returned()")
       
       # create list of output vals
-      test_vals <- list(y = "critics_score",
-                        x = "imdb_rating",
-                        z = "critics_rating",
+      test_vals <- list(y = "imdb_rating",
+                        x = "audience_score",
+                        z = "mpaa_rating",
                         alpha = 0.75,
                         size = 3,
                         plot_title = "Example title")
 
       # change inputs
-      session$setInputs(y = "critics_score",
-                        x = "imdb_rating",
-                        z = "critics_rating",
+      session$setInputs(y = "imdb_rating",
+                        x = "audience_score",
+                        z = "mpaa_rating",
                         alpha = 0.75,
                         size = 3,
                         plot_title = "Example title")
@@ -26,7 +31,7 @@ testthat::describe("FR2: user-input updating (inputs)", code = {
         expected = test_vals
       )
 
-      test_logger(end = "T5", msg = "FR2: returned()")
+      test_logger(end = "T5", msg = "F1.2: returned()")
       
     })
   })

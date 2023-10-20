@@ -10,7 +10,7 @@ testthat::describe("F1.2: Dropdown menus (continuous x & y axes, categorical poi
       
       test_logger(start = "T5", msg = "F1.2: returned()")
       
-      # create list of output vals
+      # create list of expected values 
       test_vals <- list(y = "imdb_rating",
                         x = "audience_score",
                         z = "mpaa_rating",
@@ -18,7 +18,7 @@ testthat::describe("F1.2: Dropdown menus (continuous x & y axes, categorical poi
                         size = 3,
                         plot_title = "Example title")
 
-      # change inputs
+      # set inputs
       session$setInputs(y = "imdb_rating",
                         x = "audience_score",
                         z = "mpaa_rating",

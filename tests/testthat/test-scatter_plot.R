@@ -10,7 +10,7 @@ testthat::describe(
        And the data contains continuous variables like 'rating'
        And the data contains categorical variables like 'mpaa'", 
        code = {
-testthat::it(
+testthat::test_that(
   "Scenario: Scatter plot initial x, y, color values 
     When I launched the Scatter Plot Data Visualization
     And I have a dataset of movie reviews from IMDB 
@@ -27,9 +27,10 @@ testthat::it(
           size = 3,
           plot_title = "Enter plot title"
         )
-        # data fixture
+    # data fixture
     ggp2_movies <- readRDS(test_path("fixtures",
                             "tidy_ggp2_movies.rds"))
+    
     app_graph <- scatter_plot(ggp2_movies,
       x_var = ggp2_scatter_inputs$x,
       y_var = ggp2_scatter_inputs$y,

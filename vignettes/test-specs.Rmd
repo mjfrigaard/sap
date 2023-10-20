@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(moviesApp)
+require(gt)
 ```
 
 # Scatter Plot Specifications
@@ -83,3 +84,25 @@ library(moviesApp)
 |                                                                              |                                                                                                                |                                                                                                                                                                     |      |
 |                                                                              |                                                                                                                | **FR 1.9**: Upon user entry or modification in the title input field, the app should update the scatter plot's title in real-time.                                  |      |
 +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+
+
+
+### Current test status
+
+```{r pkg_tests, echo=FALSE, message=FALSE, results='hide'}
+pkg_tests <- testthat::test_local("../", 
+  reporter = testthat::SilentReporter$new()) |> 
+  tibble::as_tibble() |> 
+  tidyr::pivot_longer(cols = c(passed, skipped, 
+                               warning, error, failed), 
+                    names_to = 'status', 
+                    values_to = "value") |> 
+  dplyr::filter(value > 0) |> 
+  dplyr::select(
+    `Test File` = file,
+    Test = test,
+    `Test Status` = status)
+```
+
+```{r current-test-status, echo=FALSE}
+gt::gt(pkg_tests)
+```

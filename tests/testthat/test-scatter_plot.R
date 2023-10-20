@@ -1,5 +1,5 @@
 testthat::describe(
-  "F1.2: Dropdown menus (continuous x & y axes, categorical point coloration)",
+  "F1.2-1.4: Dropdown menus (continuous x & y axes, categorical point coloration)",
   code = { 
     
 testthat::it(
@@ -11,7 +11,7 @@ testthat::it(
     And the points on the scatter plot should be colored by 'MPAA Rating' 
   ", code = {
 
-    test_logger(start = "T2", msg = "Tests F1.2 initial x/y/z variables")
+    test_logger(start = "T2", msg = "Tests FR1.3/1.5 initial x/y/z")
                   
     scatter_inputs <- list(x = 'imdb_rating',
                        y = 'audience_score',
@@ -40,7 +40,7 @@ testthat::it(
         ggplot2::theme_minimal() + 
         ggplot2::theme(legend.position = "bottom"))
     
-    test_logger(end = "T2", msg = "Tests F1.2 initial x/y/z variables")
+    test_logger(end = "T2", msg = "Tests FR1.3/1.5 initial x/y/z")
     
   })
   
@@ -55,7 +55,7 @@ testthat::it(
     And the points on the scatter plot should be colored by 'Critics Rating' 
   ", code = {
 
-    test_logger(start = "T3", msg = "Tests FR1.4 & FR1.5 update x/y/z")
+    test_logger(start = "T3", msg = "Tests FR1.3/1.5 update x/y/z")
     
     scatter_inputs <- list(x = 'audience_score',
                        y = 'imdb_rating', 
@@ -83,7 +83,7 @@ testthat::it(
         ggplot2::theme_minimal() + 
         ggplot2::theme(legend.position = "bottom"))
         
-    test_logger(end = "T3", msg = "Tests FR1.4 & FR1.5 update x/y/z")
+    test_logger(end = "T3", msg = "Tests FR1.3/1.5 update x/y/z")
     
   })
   

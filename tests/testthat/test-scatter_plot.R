@@ -45,11 +45,11 @@ testthat::it(
   })
   
   testthat::it(
-  "Scenario: Select x, y, color values for plotting
+  "Scenario: Change x, y, color values for plotting
     When I launched the Scatter Plot Data Visualization
-    And I select the variable 'Audience Score' for the x-axis
-    And I select the variable 'IMDB Rating' for the y-axis
-    And I select the variable 'Critics Rating' for the color 
+    And I choose the variable 'Audience Score' for the x-axis
+    And I choose the variable 'IMDB Rating' for the y-axis
+    And I choose the variable 'Critics Rating' for the color 
     Then the scatter plot should show 'Audience Score' on the x-axis
     And the scatter plot should show 'IMDB Rating' on the y-axis
     And the points on the scatter plot should be colored by 'Critics Rating' 

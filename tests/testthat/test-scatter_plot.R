@@ -1,5 +1,5 @@
 testthat::describe(
-  "F1.2-1.4: Dropdown menus (continuous x & y axes, categorical point coloration)",
+  "F1.2: Dropdown menus (continuous x & y axes, categorical point coloration)",
   code = { 
     
 testthat::it(

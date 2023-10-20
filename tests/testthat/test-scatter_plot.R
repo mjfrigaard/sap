@@ -1,5 +1,14 @@
 testthat::describe(
-    "F1.2-1.4: Dropdown menus (continuous x & y axes, categorical point coloration)", 
+    "F1.2-1.4: Dropdown menus (continuous x & y axes, categorical point coloration)
+
+       As a film data analyst
+       I want to explore movie review data from IMDB.com
+       So that I can analyze relationships between movie reivew metrics
+  
+     Background:
+       Given I have data with IMDB movie reviews
+       And the data contains continuous variables like 'rating'
+       And the data contains categorical variables like 'mpaa'", 
        code = {
 testthat::it(
   "Scenario: Scatter plot initial x, y, color values 

@@ -42,7 +42,7 @@ library(moviesApp)
 
 ### Scatter Plot: Functional Requirements
 
--   **FR 1.1**: The app data should be from IMDB and Rotten Tomatoes containing both continuous and categorical variables stored in a tabular format.\n
+-   **FR 1.1**: The app data should be from IMDB and Rotten Tomatoes containing both continuous and categorical variables stored in a tabular format.
 
 -   **FR 1.2**: The app should display dropdown menus listing available continuous variables for x-axis and y-axis selection.
 

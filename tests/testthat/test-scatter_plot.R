@@ -1,23 +1,13 @@
 testthat::describe(
-    "Feature: Movie Review Data Exploration App
-  
-       As a film data analyst
-       I want to explore movie review data from IMDB.com
-       So that I can analyze relationships between movie reivew metrics
-  
-     Background:
-       Given I have launched the Movie Reviews Data Visualization App
-       And I have data with IMDB and Rotten Tomatoes movie reviews
-       And the data contains continuous variables like 'rating' 
-       And the data contains categorical variables like 'mpaa'", 
+    "F1.2-1.4: Dropdown menus (continuous x & y axes, categorical point coloration)", 
        code = {
-      
-      testthat::it(
-        "Scenario: Initial App Launch
-           Given I have launched the movie review exploration app,
-           When I view the scatter plot,
-           Then I should see points representing values for a default
-                set of continuous and categorical columns.", 
+testthat::it(
+  "Scenario: Scatter plot initial x, y, color values 
+    When I launched the Scatter Plot Data Visualization
+    And I have a dataset of movie reviews from IMDB 
+    Then the scatter plot should show 'Rating' on the x-axis
+    And the scatter plot should show 'Length' on the y-axis
+    And the points on the scatter plot should be colored by 'MPAA' rating", 
           code = {
     # inputs
         ggp2_scatter_inputs <- list(

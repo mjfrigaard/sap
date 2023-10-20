@@ -3,11 +3,11 @@ testthat::describe(
   code = {
     testthat::it(
       "Scenario: Scatter plot initial x, y, color values
-            When I launched the Scatter Plot Data Visualization
-            And I have a dataset of movie reviews from IMDB and Rotten Tomatoes
-            Then the scatter plot should show 'IMDB Rating' on the x-axis
-            And the scatter plot should show 'Audience Score' on the y-axis
-            And the points on the scatter plot should be colored by 'MPAA Rating'",
+          When I launched the Scatter Plot Data Visualization
+          And I have a dataset of movie reviews from IMDB and Rotten Tomatoes
+          Then the scatter plot should show 'IMDB Rating' on the x-axis
+          And the scatter plot should show 'Audience Score' on the y-axis
+          And the points on the scatter plot should be colored by 'MPAA Rating'",
       code = {
         shiny::testServer(
           app = mod_scatter_display_server,
@@ -46,13 +46,13 @@ testthat::describe(
 )
 
 
-testthat::describe("F1.2: user-input updating", code = {
+testthat::describe("F1.3: output rendering", code = {
   testthat::it(
       "Scenario: Change x, y, color values for plotting
           When I launched the Scatter Plot Data Visualization
-          And I select the variable 'IMDB Rating' for the x-axis
-          And I select the variable 'Audience Score' for the y-axis
-          And I select the variable 'MPAA Raing' for the color
+          And I choose the variable 'IMDB Rating' for the x-axis
+          And I choose the variable 'Audience Score' for the y-axis
+          And I choose the variable 'MPAA Raing' for the color
           Then the scatter plot should show 'IMDB Rating' on the x-axis
           And the scatter plot should show 'Audience Score' on the y-axis
           And the points on the scatter plot should be colored by 'MPAA Raing'", 
@@ -69,10 +69,9 @@ testthat::describe("F1.2: user-input updating", code = {
                        plot_title = "Enter plot title"
                     )
             )
-        ),
-      expr = {
+        ), expr = {
         
-        test_logger(start = "T6", msg = "F1.2: user-input updating")
+        test_logger(start = "T6", msg = "F1.3: user-input updating")
         testthat::expect_equal(
           object = inputs(),
           expected = list(x = "imdb_rating",
@@ -82,26 +81,26 @@ testthat::describe("F1.2: user-input updating", code = {
                           size = 2,
                           plot_title = "Enter Plot Title")
           )
-        test_logger(end = "T6", msg = "F1.2: user-input updating")
+        test_logger(end = "T6", msg = "F1.3: user-input updating")
         
-        test_logger(start = "T6a", msg = "F1.2: is.list()")
+        test_logger(start = "T6a", msg = "F1.3: is.list()")
         testthat::expect_true(
           object = is.list(output$scatterplot))
-        test_logger(end = "T6a", msg = "F1.2: is.list()")
+        test_logger(end = "T6a", msg = "F1.3: is.list()")
 
-        test_logger(start = "T6b", msg = "F1.2: names()")
+        test_logger(start = "T6b", msg = "F1.3: names()")
         testthat::expect_equal(
           object = names(output$scatterplot),
           expected = c("src", "width", "height", "alt", "coordmap"))
-        test_logger(end = "T6b", msg = "F1.2: names()")
+        test_logger(end = "T6b", msg = "F1.3: names()")
 
-        test_logger(start = "T6c", msg = "F1.2: alt:'Plot object'")
+        test_logger(start = "T6c", msg = "F1.3: alt:'Plot object'")
         testthat::expect_equal(
           object = output$scatterplot[["alt"]],
           expected = "Plot object")
-        test_logger(end = "T6c", msg = "F1.2: alt:'Plot object'")
+        test_logger(end = "T6c", msg = "F1.3: alt:'Plot object'")
 
-        test_logger(start = "T6d", msg = "F1.2: is.ggplot()")
+        test_logger(start = "T6d", msg = "F1.3: is.ggplot()")
         plot <- scatter_plot(movies,
           x_var = inputs()$x,
           y_var = inputs()$y,
@@ -118,9 +117,9 @@ testthat::describe("F1.2: user-input updating", code = {
         ggplot2::theme(legend.position = "bottom")
 
         testthat::expect_true(ggplot2::is.ggplot(plot))
-        test_logger(end = "T6d", msg = "F1.2: is.ggplot()")
+        test_logger(end = "T6d", msg = "F1.3: is.ggplot()")
 
-        print(plot)
+        # print(plot)
         
       })
   })

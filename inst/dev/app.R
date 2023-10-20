@@ -1,4 +1,6 @@
 options(scipen = 100000000)
+library(tidyr)
+library(fst)
 
 dev_mod_vars_ui <- function(id) {
   ns <- NS(id)

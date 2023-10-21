@@ -2,13 +2,12 @@
 #'
 #' Wrapper function for `shinyApp()`
 #'
-#' @param ... arguments to pass to `options()`
+#' @param options arguments to pass to `options()`
 #' @param run where to launch app:
 #'  * `p` = launch in viewer pane
 #'  * `b` = launch in external browser
 #'  * `w` = launch in window
 #'
-#' @inheritParams shiny::shinyApp
 #'
 #' @return shiny app
 #'
@@ -31,7 +30,8 @@ movies_app <- function(options = list(), run = "w") {
     # App deployed
     shinyApp(
       ui = movies_ui(),
-      server = movies_server
+      server = movies_server,
+      options = options
     )
   }
 }

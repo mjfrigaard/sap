@@ -20,5 +20,5 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     pkgload::load_all()
   }
   # create shiny object ----
-  moviesApp::movies_app(test = TRUE, run = 'p', bslib = TRUE)
+  moviesApp::movies_app(run = 'p', bslib = TRUE)
 })

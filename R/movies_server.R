@@ -37,7 +37,6 @@
 #
 #' @return `server` argument in `shinyApp()`
 #' 
-#' @export
 #' 
 movies_server <- function(input, output, session) {
 

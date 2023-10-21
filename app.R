@@ -14,14 +14,11 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     )
     # create shiny object from prod/app ----
     shinyAppDir(appDir = 
-        system.file("prod/app", package = "moviesApp"))
+                system.file("prod/app", package = "moviesApp"))
   } else {
     # load R/ folder ----
     pkgload::load_all()
     # create shiny object ----
-    shiny::shinyApp(
-      ui = movies_ui,
-      server = movies_server
-    )
+    movies_app(options = list(test.mode = TRUE), run = 'p')
   }
 })

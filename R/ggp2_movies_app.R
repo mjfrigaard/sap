@@ -1,38 +1,32 @@
 #' Development `ggplot2movies` app standalone function
 #'
 #' Wrapper function for `shinyAppDir()`
-#' 
-#' @param test logical, run in `test.mode`? Defaults to `FALSE`.
-#' @param run where to launch app: 
+#'
+#' @param options arguments to pass to `options()`
+#' @param run where to launch app:
 #'  * `p` = launch in viewer pane
-#'  * `b` = launch in external browser  
+#'  * `b` = launch in external browser
 #'  * `w` = launch in window
 #'  * `NULL` = `getOption(x = 'shiny.launch.browser')`
-#' 
+#'
 #' @return shiny app
-#' 
+#'
 #'
 #' @export
-ggp2_movies_app <- function(test = FALSE, run = "w") {
-  
+ggp2_movies_app <- function(options = list(), run = "w", ...) {
   if (interactive()) {
-      display_type(run = run)
-      if (test) {
-        shinyAppDir(
-          appDir = system.file("dev", 
-                               package = "moviesApp"),
-          options(test.mode = TRUE)
-        )
-      } else {
-        shinyAppDir(
-          appDir = system.file("dev", 
-                               package = "moviesApp")
-        )
-      }
+    display_type(run = run)
+    shinyAppDir(
+      appDir = system.file("dev",
+        package = "moviesApp"
+      ),
+      options = options
+    )
   } else {
-      shinyAppDir(
-        appDir = system.file("dev", 
-                             package = "moviesApp"))
+    shinyAppDir(
+      appDir = system.file("dev",
+        package = "moviesApp"
+      )
+    )
   }
-  
 }

@@ -4,10 +4,10 @@
 \alias{ggp2_movies_app}
 \title{Development \code{ggplot2movies} app standalone function}
 \usage{
-ggp2_movies_app(test = FALSE, run = "w")
+ggp2_movies_app(options = list(), run = "w", ...)
 }
 \arguments{
-\item{test}{logical, run in \code{test.mode}? Defaults to \code{FALSE}.}
+\item{options}{arguments to pass to \code{options()}}
 
 \item{run}{where to launch app:
 \itemize{

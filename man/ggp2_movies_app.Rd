@@ -4,10 +4,18 @@
 \alias{ggp2_movies_app}
 \title{Development \code{ggplot2movies} app standalone function}
 \usage{
-ggp2_movies_app(test = TRUE, run = "w")
+ggp2_movies_app(test = FALSE, run = "w")
 }
 \arguments{
-\item{test}{logical, run in \code{test.mode}? Defaults to \code{TRUE}.}
+\item{test}{logical, run in \code{test.mode}? Defaults to \code{FALSE}.}
+
+\item{run}{where to launch app:
+\itemize{
+\item \code{p} = launch in viewer pane
+\item \code{b} = launch in external browser
+\item \code{w} = launch in window
+\item \code{NULL} = \code{getOption(x = 'shiny.launch.browser')}
+}}
 }
 \value{
 shiny app

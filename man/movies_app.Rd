@@ -4,7 +4,7 @@
 \alias{movies_app}
 \title{Movies app standalone function}
 \usage{
-movies_app(options = list(), run = "w")
+movies_app(options = list(), run = "w", ...)
 }
 \arguments{
 \item{options}{arguments to pass to \code{options()}}
@@ -15,6 +15,8 @@ movies_app(options = list(), run = "w")
 \item \code{b} = launch in external browser
 \item \code{w} = launch in window
 }}
+
+\item{...}{arguments passed to UI}
 }
 \value{
 shiny app

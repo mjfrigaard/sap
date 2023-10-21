@@ -13,7 +13,7 @@ testthat::describe(
       
       test_logger(start = "T5", msg = "F1.2: returned()")
       
-      # create list of expected values 
+      # create list of expected test values 
       test_vals <- list(y = "imdb_rating",
                         x = "audience_score",
                         z = "mpaa_rating",

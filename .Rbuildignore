@@ -1,2 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^moviesApp\.Rcheck$
+^moviesApp.*\.tar\.gz$
+^moviesApp.*\.tgz$

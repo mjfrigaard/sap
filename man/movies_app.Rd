@@ -7,11 +7,7 @@
 movies_app(options = list(), run = "w")
 }
 \arguments{
-\item{options}{Named options that should be passed to the \code{runApp} call
-(these can be any of the following: "port", "launch.browser", "host", "quiet",
-"display.mode" and "test.mode"). You can also specify \code{width} and
-\code{height} parameters which provide a hint to the embedding environment
-about the ideal height/width for the app.}
+\item{options}{arguments to pass to \code{options()}}
 
 \item{run}{where to launch app:
 \itemize{
@@ -19,8 +15,6 @@ about the ideal height/width for the app.}
 \item \code{b} = launch in external browser
 \item \code{w} = launch in window
 }}
-
-\item{...}{arguments to pass to \code{options()}}
 }
 \value{
 shiny app

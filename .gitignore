@@ -3,4 +3,6 @@
 .RData
 .Ruserdata
 .DS_Store
-_stash.R
+moviesApp.Rcheck/
+moviesApp*.tar.gz
+moviesApp*.tgz

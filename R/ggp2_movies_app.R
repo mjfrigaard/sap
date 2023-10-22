@@ -16,17 +16,11 @@
 ggp2_movies_app <- function(options = list(), run = "w", ...) {
   if (interactive()) {
     display_type(run = run)
+  } 
     shinyAppDir(
-      appDir = system.file("dev",
-        package = "moviesApp"
-      ),
-      options = options
-    )
-  } else {
-    shinyAppDir(
-      appDir = system.file("dev",
-        package = "moviesApp"
-      )
-    )
-  }
+    appDir = system.file("dev",
+      package = "moviesApp"
+    ),
+    options = options
+  )
 }

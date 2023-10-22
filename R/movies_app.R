@@ -19,20 +19,13 @@
 #'
 #' @export
 #'
-movies_app <- function(options = list(), run = "w", ...) {
+movies_app <- function(options = list(), run = "p") {
   if (interactive()) {
     display_type(run = run)
-    shinyApp(
-      ui = movies_ui(...),
-      server = movies_server,
-      options = options
-    )
-  } else {
-    # App deployed
-    shinyApp(
-      ui = movies_ui(...),
-      server = movies_server,
-      options = options
-    )
   }
+    shinyApp(
+      ui = movies_ui(),
+      server = movies_server,
+      options = options
+    )
 }

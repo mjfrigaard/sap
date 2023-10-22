@@ -16,7 +16,9 @@ testthat::describe(
               When the scatter plot renders,
               Then the points on the x axis should represent 'Ratings'
               And the points on the y axis should represent 'Length'
-              And the points should be colored by 'MPAA' rating",
+              And the points should be colored by 'MPAA' rating
+              And the size of the points should be set to '2'
+              And the opacity of the points should be set to '0.5'",
           code = {
             # inputs
             ggp2_scatter_inputs <- list(

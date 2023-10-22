@@ -11,8 +11,8 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
       }
     )
     # create shiny object from prod/app ----
-    shinyAppDir(appDir = 
-                system.file("prod/app", package = "moviesApp"))
+    rsconnect::deployApp(appDir = system.file("prod/app", 
+                                              package = "moviesApp"))
   } else {
     pkgload::load_all()
   }

@@ -4,7 +4,7 @@
 \alias{movies_app}
 \title{Movies app standalone function}
 \usage{
-movies_app(options = list(), run = "p")
+movies_app(options = list(), run = "p", ...)
 }
 \arguments{
 \item{options}{arguments to pass to \code{options()}}

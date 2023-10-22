@@ -4,14 +4,14 @@
 \alias{test_logger}
 \title{Test logger (test utility)}
 \usage{
-test_logger(start = NULL, end = NULL, msg)
+test_logger(msg, start = NULL, end = NULL)
 }
 \arguments{
+\item{msg}{test message}
+
 \item{start}{test start message}
 
 \item{end}{test end message}
-
-\item{msg}{test message}
 }
 \value{
 message to test output

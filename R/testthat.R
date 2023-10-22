@@ -1,12 +1,12 @@
 #' Test logger (test utility)
-#'
+#' 
+#' @param msg test message 
 #' @param start test start message 
 #' @param end test end message 
-#' @param msg test message 
 #'
 #' @return message to test output
 #'
-test_logger <- function(start = NULL, end = NULL, msg) {
+test_logger <- function(msg, start = NULL, end = NULL) {
   if (is.null(start) & is.null(end)) {
     cat("\n")
     logger::log_info("{msg}")

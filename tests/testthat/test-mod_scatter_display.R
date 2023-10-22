@@ -119,7 +119,7 @@ testthat::describe("F1.3: output rendering", code = {
         testthat::expect_true(ggplot2::is.ggplot(plot))
         test_logger(end = "T6d", msg = "F1.3: is.ggplot()")
 
-        # print(plot)
+        print(plot)
         
       })
   })

@@ -3,7 +3,7 @@
 #' Wrapper function for `shinyApp()`
 #'
 #' @param options arguments to pass to `options()`
-#' @param ... additional arguments passed to UI
+#' @param ... arguments passed to UI
 #' @param run where to launch app:
 #'  * `p` = launch in viewer pane
 #'  * `b` = launch in external browser
@@ -19,21 +19,13 @@
 #'
 #' @export
 #'
-movies_app <- function(options = list(), run = "w", ...) {
+movies_app <- function(options = list(), run = "p") {
   if (interactive()) {
-    # App launched from interactive session
     display_type(run = run)
-    shinyApp(
-      ui = movies_ui(...),
-      server = movies_server,
-      options = options
-    )
-  } else {
-    # App deployed
-    shinyApp(
-      ui = movies_ui(...),
-      server = movies_server,
-      options = options
-    )
   }
+    shinyApp(
+      ui = movies_ui(),
+      server = movies_server,
+      options = options
+    )
 }

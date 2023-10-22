@@ -4,7 +4,7 @@
 \alias{ggp2_movies_app}
 \title{Development \code{ggplot2movies} app standalone function}
 \usage{
-ggp2_movies_app(options = list(), run = "w", ...)
+ggp2_movies_app(options = list(), run = "w")
 }
 \arguments{
 \item{options}{arguments to pass to \code{options()}}

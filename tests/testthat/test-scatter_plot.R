@@ -12,11 +12,11 @@ testthat::describe(
       code = {
         testthat::it(
           "Scenario: Create scatter plot
-     Given I have launched the movie review exploration app,
-     When the scatter plot renders,
-     Then the points on the x axis should represent 'Ratings'
-     And the points on the y axis should represent 'Length'
-     And the points should be colored by 'MPAA' rating",
+             Given I have launched the movie review exploration app,
+             When the scatter plot renders,
+             Then the points on the x axis should represent 'Ratings'
+             And the points on the y axis should represent 'Length'
+             And the points should be colored by 'MPAA' rating",
           code = {
             
         })

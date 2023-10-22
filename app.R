@@ -4,11 +4,9 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     sink(stderr(), type = "output")
     tryCatch(
       expr = {
-        # load package ----
         library(moviesApp)
       },
       error = function(e) {
-        # load R/ folder ----
         pkgload::load_all()
       }
     )
@@ -16,9 +14,7 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     shinyAppDir(appDir = 
                 system.file("prod/app", package = "moviesApp"))
   } else {
-    # load R/ folder ----
     pkgload::load_all()
-    # create shiny object ----
-    movies_app(options = list(test.mode = TRUE), run = 'p')
   }
+  movies_app(options = list(test.mode = TRUE), run = 'p')
 })

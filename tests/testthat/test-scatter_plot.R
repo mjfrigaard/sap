@@ -1,17 +1,21 @@
 testthat::describe(
-  "F1.2: Dropdown menus (continuous x & y axes, categorical point coloration)",
+  "Feature 1.2: Initial Scatter Plot Configuration in Movie Review Application
+    As a user who accesses the movie review application,
+    I want the initial scatter plot pre-configured with variables and aesthetics,
+    So that I can immediately see a meaningful visualization.",
   code = { 
     
-testthat::it(
-  "Scenario: Scatter plot initial x, y, color values 
-    When I launched the Scatter Plot Data Visualization
-    And I have a dataset of movie reviews from IMDB and Rotten Tomatoes
-    Then the scatter plot should show 'IMDB Rating' on the x-axis
-    And the scatter plot should show 'Audience Score' on the y-axis
-    And the points on the scatter plot should be colored by 'MPAA Rating' 
-  ", code = {
+  testthat::it(
+    "Scenario: Displaying the Pre-configured Initial Scatter Plot
+      Given the movie review application is loaded
+      When I view the initial scatter plot
+      Then the x-axis should display the 'IMDB Rating'
+      And the y-axis should display the 'Audience Score'
+      And the points should be colored by 'MPAA Rating'
+      And the size of the points should be set to '2'
+      And the opacity of the points should be set to '0.5'", code = {
 
-    test_logger(start = "T2", msg = "Tests FR1.3/1.5 initial x/y/z")
+    test_logger(start = "T2", msg = "Tests FR1.2 initial x/y/z")
                   
     scatter_inputs <- list(x = 'imdb_rating',
                        y = 'audience_score',
@@ -40,12 +44,12 @@ testthat::it(
         ggplot2::theme_minimal() + 
         ggplot2::theme(legend.position = "bottom"))
     
-    test_logger(end = "T2", msg = "Tests FR1.3/1.5 initial x/y/z")
+    test_logger(end = "T2", msg = "Tests FR1.2 initial x/y/z")
     
   })
   
   testthat::it(
-  "Scenario: Select x, y, color values for plotting
+  "Scenario: Change x, y, color values for plotting
     When I launched the Scatter Plot Data Visualization
     And I select the variable 'Audience Score' for the x-axis
     And I select the variable 'IMDB Rating' for the y-axis
@@ -55,7 +59,7 @@ testthat::it(
     And the points on the scatter plot should be colored by 'Critics Rating' 
   ", code = {
 
-    test_logger(start = "T3", msg = "Tests FR1.3/1.5 update x/y/z")
+    test_logger(start = "T3", msg = "Tests FR1.3 update x/y/z")
     
     scatter_inputs <- list(x = 'audience_score',
                        y = 'imdb_rating', 
@@ -83,7 +87,7 @@ testthat::it(
         ggplot2::theme_minimal() + 
         ggplot2::theme(legend.position = "bottom"))
         
-    test_logger(end = "T3", msg = "Tests FR1.3/1.5 update x/y/z")
+    test_logger(end = "T3", msg = "Tests FR1.3 update x/y/z")
     
   })
   

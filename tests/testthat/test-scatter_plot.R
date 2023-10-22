@@ -1,23 +1,23 @@
-testthat::describe( 
-  "US1: Shiny App Scatter Plot Data Visualization for
-   Movie Review Explorer", code = { 
-  
+testthat::describe(
+    "Feature: Scatter plot data visualization
+       As a film data analyst
+       I want to explore movie review data from IMDB.com
+       So that I can analyze relationships between movie reivew metrics",
+  code = {
   testthat::describe(
-    "F1.1: IMDB and Rotten Tomatoes data with continuous
-    (i.e., scores) and categorical (i.e., mpaa) variables", 
-    code = { 
-      
-    testthat::it( 
-    "Test 1
-      
-     Scenario: IMDB/Rotten Tomatoes data source
-        When I launched the scatter plot data visualization app
-        Then a column with links to the original source URLs for
-          both IMDB and Rotten Tomatoes should be verified.", 
-        code = { 
-          
-        }) 
-      
-    }) 
-  
-}) 
+    "Background:
+       Given I have data with IMDB movie reviews
+       And the data contains continuous variables like 'rating'
+       And the data contains categorical variables like 'mpaa'",
+    code = {
+      testthat::it(
+        "Scenario: Create scatter plot
+           Given I have launched the movie review exploration app,
+           When I view the scatter plot,
+           Then I should see points representing values for a default
+                set of continuous and categorical columns.", 
+          code = {
+            
+        })
+      })
+    })

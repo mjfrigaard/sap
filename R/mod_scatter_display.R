@@ -50,7 +50,7 @@ mod_scatter_display_server <- function(id, var_inputs) {
         list(
           x = var_inputs()$x,
           y = var_inputs()$y,
-          z = var_inputs()$z,
+          col = var_inputs()$z,
           alpha = var_inputs()$alpha,
           size = var_inputs()$size,
           plot_title = plot_title
@@ -62,7 +62,7 @@ mod_scatter_display_server <- function(id, var_inputs) {
         df = movies,
         x_var = inputs()$x,
         y_var = inputs()$y,
-        col_var = inputs()$col,
+        col_var = inputs()$z,
         alpha_var = inputs()$alpha,
         size_var = inputs()$size
       )
@@ -75,6 +75,5 @@ mod_scatter_display_server <- function(id, var_inputs) {
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "bottom")
     })
-    
-    })
+  })
 }

@@ -21,14 +21,12 @@ testthat::describe(
               And the opacity of the points should be set to '0.5'",
           code = {
             # inputs
-            ggp2_scatter_inputs <- list(
-              x = "rating",
+            ggp2_scatter_inputs <- list(x = "rating",
               y = "length",
               z = "mpaa",
               alpha = 0.75,
               size = 3,
-              plot_title = "Enter plot title"
-            )
+              plot_title = "Enter plot title")
             # data fixture
             ggp2_movies <- readRDS(test_path(
               "fixtures",

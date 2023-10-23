@@ -52,7 +52,7 @@ testthat::describe(
 
 
 testthat::describe(
-  "Feature F1.3: Scatter plot data visualization (outputs rendering)
+  "Feature 1: Scatter plot data visualization (outputs rendering)
      As a film data analyst
      I want to explore continuous and categorical variables in the movie review data
      So that I can analyze relationships between movie reivew metrics

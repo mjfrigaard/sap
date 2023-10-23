@@ -20,13 +20,12 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course) in `app.R`.
 
-## `main`
+```
+├── README.md
+├── app.R
+├── movies.RData
+├── moviesApp.Rproj
+└── utils.R
 
-The [`main`](https://github.com/mjfrigaard/moviesApp/tree/main) branch of `moviesApp` is identical to the files that are created with a new Shiny App from the Posit Workbench New Project Wizard.
-
-
-
-
-
-
-
+1 directory, 5 files
+```

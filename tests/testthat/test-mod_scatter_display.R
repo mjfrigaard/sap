@@ -62,9 +62,15 @@ testthat::describe(
           When I choose the variable 'IMDB number of votes' for the x-axis
           And I choose the variable 'Critics Score' for the y-axis
           And I choose the variable 'Genre' for the color
+          And I choose the size of the points to be 3
+          And I choose the opacity of the points to be 0.7
+          And I choose the title of the plot to be 'New plot title'
           Then the scatter plot should show 'IMDB number of votes' on the x-axis
           And the scatter plot should show 'Critics Score' on the y-axis
-          And the points on the scatter plot should be colored by 'Genre'", code = {
+          And the points on the scatter plot should be colored by 'Genre'
+          And the size of the points on the scatter plot should be 3
+          And the opacity of the points on the scatter plot should be 0.7
+          And the title of the plot should be 'New Plot Title'", code = {
     shiny::testServer(
       app = mod_scatter_display_server,
       args = list(var_inputs =

@@ -17,5 +17,5 @@ test_logger(msg, start = NULL, end = NULL)
 message to test output
 }
 \description{
-Test logger (test utility)
+Verbose test output
 }

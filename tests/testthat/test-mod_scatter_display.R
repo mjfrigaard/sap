@@ -78,17 +78,6 @@ testthat::describe(
                     )
             )), expr = {
 
-        # test_logger(start = "T6a", msg = "F1.3: is.list()")
-        # testthat::expect_true(
-        #   object = is.list(output$scatterplot))
-        # test_logger(end = "T6a", msg = "F1.3: is.list()")
-
-        # test_logger(start = "T6b", msg = "F1.3: names()")
-        # testthat::expect_equal(
-        #   object = names(output$scatterplot),
-        #   expected = c("src", "width", "height", "alt", "coordmap"))
-        # test_logger(end = "T6b", msg = "F1.3: names()")
-
         test_logger(
           start = "mod_scatter_display", 
           msg = "output$scatterplot[['alt']] = 'Plot object'")
@@ -121,7 +110,20 @@ testthat::describe(
         
         test_logger(end = "mod_scatter_display", 
           msg = "inputs() creates ggplot2 object")
+        
+        # test_logger(start = "mod_scatter_display", 
+        #             msg = "output$scatterplot is a list")
+        # testthat::expect_true(
+        #   object = is.list(output$scatterplot))
+        # test_logger(end = "mod_scatter_display", 
+        #             msg = "output$scatterplot is a list")
 
+        # test_logger(start = "mod_scatter_display", 
+        #             msg = "names in output$scatterplot")
+        # testthat::expect_equal(
+        #   object = names(output$scatterplot),
+        #   expected = c("src", "width", "height", "alt", "coordmap"))
+        # test_logger(end = "names in output$scatterplot")
         # print(plot)
 
       })

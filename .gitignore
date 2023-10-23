@@ -7,3 +7,5 @@ moviesApp.Rcheck/
 moviesApp*.tar.gz
 moviesApp*.tgz
 _stash*.R
+# {shinytest2}: Ignore new debug snapshots for `$expect_values()`
+*_.new.png

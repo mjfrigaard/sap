@@ -64,7 +64,7 @@ mod_scatter_display_server <- function(id, var_inputs) {
         df = movies,
         x_var = inputs()$x,
         y_var = inputs()$y,
-        col_var = inputs()$z,
+        col_var = inputs()$col,
         alpha_var = inputs()$alpha,
         size_var = inputs()$size
       )

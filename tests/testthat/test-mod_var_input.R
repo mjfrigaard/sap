@@ -1,17 +1,22 @@
 testthat::describe(
-  "F1.2: Dropdown menus (continuous x & y axes, categorical point coloration)", 
+  "Feature 1.2: Scatter Plot Configuration in Movie Review Application
+    As a user who accesses the movie review application,
+    I want the initial scatter plot pre-configured with variables and aesthetics,
+    So that I can immediately see a meaningful visualization.", 
   code = {
   
   testthat::it(
     "Scenario: Scatter plot initial x, y, color values 
-      When I launched the Scatter Plot Data Visualization
-      And I have a dataset of movie reviews from IMDB and Rotten Tomatoes
-      Then the scatter plot should show 'IMDB Rating' on the x-axis
-      And the scatter plot should show 'Audience Score' on the y-axis
-      And the points on the scatter plot should be colored by 'MPAA Rating'", code = {
+         Given the movie review application is loaded
+         When I view the initial scatter plot
+         Then the scatter plot should show 'IMDB Rating' on the x-axis
+         And the scatter plot should show 'Audience Score' on the y-axis
+         And the points on the scatter plot should be colored by 'MPAA Rating'
+         And the size of the points should be set to '2'
+         And the opacity of the points should be set to '0.5'", code = {
     shiny::testServer(app = mod_var_input_server, expr = {
       
-      test_logger(start = "T4", msg = "initial returned()")
+      test_logger(start = "mod_var_input", msg = "initial inputs returned()")
 
       # set inputs
       session$setInputs(y = "imdb_rating",
@@ -31,7 +36,7 @@ testthat::describe(
                         plot_title = "Enter plot title")
       )
 
-      test_logger(end = "T4", msg = "initial returned()")
+      test_logger(end = "mod_var_input", msg = "initial inputs returned()")
       
     })
   })

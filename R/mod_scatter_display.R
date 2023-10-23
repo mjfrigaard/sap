@@ -44,9 +44,6 @@ mod_scatter_display_ui <- function(id) {
 #' 
 mod_scatter_display_server <- function(id, var_inputs) {
   moduleServer(id, function(input, output, session) {
-    
-    observe({
-      browser()
 
     inputs <- reactive({
       plot_title <- tools::toTitleCase(var_inputs()$plot_title)
@@ -80,6 +77,4 @@ mod_scatter_display_server <- function(id, var_inputs) {
     })
     
     })
-    
-  })
 }

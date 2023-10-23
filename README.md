@@ -18,9 +18,9 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 ## Tests 
 
-### `12e_tests-modules`
+### `12d_tests-modules`
 
-[`12e_tests-modules`](https://github.com/mjfrigaard/moviesApp/tree/12e_tests-modules) gives examples of Shiny's `testServer()` function.
+[`12d_tests-modules`](https://github.com/mjfrigaard/moviesApp/tree/12d_tests-modules) gives examples of Shiny's `testServer()` function.
 
 ```
 tests

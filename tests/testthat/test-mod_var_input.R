@@ -11,30 +11,27 @@ testthat::describe(
       And the points on the scatter plot should be colored by 'MPAA Rating'", code = {
     shiny::testServer(app = mod_var_input_server, expr = {
       
-      test_logger(start = "T5", msg = "F1.2: returned()")
-      
-      # create list of expected test values 
-      test_vals <- list(y = "imdb_rating",
-                        x = "audience_score",
-                        z = "mpaa_rating",
-                        alpha = 0.75,
-                        size = 3,
-                        plot_title = "Example title")
+      test_logger(start = "T4", msg = "initial returned()")
 
       # set inputs
       session$setInputs(y = "imdb_rating",
                         x = "audience_score",
                         z = "mpaa_rating",
-                        alpha = 0.75,
-                        size = 3,
-                        plot_title = "Example title")
+                        alpha = 0.5,
+                        size = 2,
+                        plot_title = "Enter plot title")
 
       testthat::expect_equal(
         object = session$returned(),
-        expected = test_vals
+        expected = list(y = "imdb_rating",
+                        x = "audience_score",
+                        z = "mpaa_rating",
+                        alpha = 0.5,
+                        size = 2,
+                        plot_title = "Enter plot title")
       )
 
-      test_logger(end = "T5", msg = "F1.2: returned()")
+      test_logger(end = "T4", msg = "initial returned()")
       
     })
   })

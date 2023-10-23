@@ -20,7 +20,7 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 ### `12e_tests-system`
 
-[`12e_tests-system`](https://github.com/mjfrigaard/moviesApp/tree/12e_tests-system) gives examples of `shinytest2` tests.
+[`12e_tests-system`](https://github.com/mjfrigaard/moviesApp/tree/12e_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html)
 
 ```
 tests

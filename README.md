@@ -18,27 +18,25 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 ## Tests 
 
-### `12e_tests-modules`
+### `12g_tests-snapshots`
 
-[`12e_tests-modules`](https://github.com/mjfrigaard/moviesApp/tree/12e_tests-modules) gives examples of Shiny's `testServer()` function.
+[`12g_tests-snapshots`](https://github.com/mjfrigaard/moviesApp/tree/12g_tests-snapshots) gives examples snapshot tests with [`vdiffr`](https://vdiffr.r-lib.org/)
 
 ```
 tests
 ├── testthat
 │   ├── _snaps
 │   │   └── scatter_plot
-│   │       ├── fr3-color-coded-data-points.svg
-│   │       └── fr4-plot-axis-legend-title.svg
+│   │       ├── initial-x-y-z-axes.svg
+│   │       └── updated-x-y-color.svg
 │   ├── fixtures
-│   │   ├── make_tidy_ggp2_movies.R
+│   │   ├── make-tidy_ggp2_movies.R
 │   │   └── tidy_ggp2_movies.rds
 │   ├── helper.R
-│   ├── test-mod_scatter_display.R
-│   ├── test-mod_var_input.R
 │   └── test-scatter_plot.R
 └── testthat.R
 
-5 directories, 9 files
+5 directories, 7 files
 ```
 
 

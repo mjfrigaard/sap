@@ -14,7 +14,10 @@ testthat::describe(
           And the size of the points should be set to '2'
           And the opacity of the points should be set to '0.5'",
       code = {
-        test_logger(start = "T2", msg = "Tests initial x/y/z")
+        
+        test_logger(
+          start = "scatter_plot(movies)", 
+          msg = "snap initial x,y,z,size,alpha")
 
         scatter_inputs <- list(
           x = "imdb_rating",
@@ -51,7 +54,10 @@ testthat::describe(
             ggplot2::theme(legend.position = "bottom")
         )
 
-        test_logger(end = "T2", msg = "Tests initial x/y/z")
+        test_logger(
+          end = "scatter_plot(movies)", 
+          msg = "snap initial x,y,z,size,alpha")
+        
       }
     )
   }
@@ -76,7 +82,9 @@ testthat::describe("
         And the points on the scatter plot should be colored by 'Critics Rating'
   ",
     code = {
-      test_logger(start = "T3", msg = "Tests updated x/y/z")
+      
+      test_logger(start = "scatter_plot(movies)", msg = "snap updated x,y,z")
+      
 
       scatter_inputs <- list(
         x = "audience_score",
@@ -113,7 +121,7 @@ testthat::describe("
           ggplot2::theme(legend.position = "bottom")
       )
 
-      test_logger(end = "T3", msg = "Tests updated x/y/z")
+      test_logger(end = "scatter_plot(movies)", msg = "snap updated x,y,z")
     }
   )
 })

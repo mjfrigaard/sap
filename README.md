@@ -25,7 +25,7 @@ View the various versions of application in the [`moviesApp` branches](https://g
 ```
 tests
 ├── testthat
-│   ├── _snaps
+│   ├── _snaps # these are created after running test-scatter_plot.R!
 │   │   └── scatter_plot
 │   │       ├── initial-x-y-z-axes.svg
 │   │       └── updated-x-y-color.svg

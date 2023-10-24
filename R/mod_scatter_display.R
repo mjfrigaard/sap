@@ -87,3 +87,4 @@ mod_scatter_display_server <- function(id, var_inputs) {
     
   })
 }
+

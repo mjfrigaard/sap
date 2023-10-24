@@ -63,7 +63,15 @@ movies_ui <- function(bslib = FALSE) {
             mod_var_input_ui("vars")
           ),
           mainPanel(
-            mod_scatter_display_ui("plot")
+            mod_scatter_display_ui("plot"),
+            div(
+              strong(
+                "Reactive values in",
+                code("movies_ui()"), "/",
+                code("movies_server()")
+              ), hr(),
+              verbatimTextOutput(outputId = "vals")
+            )
           )
         )
       )
@@ -85,26 +93,30 @@ movies_ui <- function(bslib = FALSE) {
           sidebar = bslib::sidebar(
             mod_var_input_ui("vars"),
           ),
+          div(
+            img(
+              src = "www/bootstrap.png",
+              height = 80, width = 100
+            )
+          ),
+          bslib::card(
+            full_screen = TRUE,
+            bslib::card_body(
+              mod_scatter_display_ui("plot")
+            )
+          ),
           bslib::card(
             full_screen = TRUE,
             bslib::card_header(
-              tags$img(
-                src = "www/bootstrap.png",
-                height = 80,
-                width = 100,
-                style = "margin:10px 10px"
+              strong(
+                "Reactive values in",
+                code("movies_ui()"), "/",
+                code("movies_server()")
               )
             ),
             bslib::card_body(
-              min_height = 400,
-              bslib::layout_column_wrap(
-                width = 1 / 2,
-                div(mod_scatter_display_ui("plot")),
-                div(strong("Reactive values in", 
-                    code("movies_ui()"), "/", 
-                    code("movies_server()")), hr(),
-                verbatimTextOutput(outputId = "vals"))
-              )
+              fill = TRUE,
+              verbatimTextOutput(outputId = "vals")
             )
           )
         )

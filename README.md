@@ -16,27 +16,59 @@ I've converted it have [shiny modules](https://shiny.posit.co/r/articles/improve
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## External resources 
+## Special topic: Debugging 
 
-### `11d_inst-prod`
+The `spec_topic-debugging-02` branch is the second step of 4 on debugging. This branch should also be loaded, documented, installed and the application should be launched: 
 
-[`11d_inst-prod`](https://github.com/mjfrigaard/moviesApp/tree/11d_inst-prod) gives an example of storing a 'production' version of your application in the `inst/prod/` folder.
+```r
+devtools::load_all()
+```
 
 ```
-inst
-├── dev
-│   ├── app.R
-│   ├── imdb.png
-│   └── tidy_movies.fst
-├── extdata
-│   └── movies.fst
-├── prod
-│   └── app
-│       └── app.R
-└── www
-    ├── bootstrap.png
-    └── shiny.png
-
-6 directories, 7 files
+ℹ Loading moviesApp
 ```
+
+```r
+devtools::document()
+```
+
+```
+ℹ Updating moviesApp documentation
+ℹ Loading moviesApp
+Documentation completed
+```
+
+```r
+devtools::install()
+```
+
+```
+==> R CMD INSTALL --preclean --no-multiarch --with-keep.source moviesApp
+
+* installing to library ‘/Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/library’
+* installing *source* package ‘moviesApp’ ...
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (moviesApp)
+```
+
+```
+Restarting R session...
+```
+
+```r
+library(moviesApp)
+movies_app(run = 'p')
+```
+
 

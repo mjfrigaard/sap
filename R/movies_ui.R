@@ -82,7 +82,7 @@ movies_ui <- function(bslib = FALSE) {
         ),
         bslib::layout_sidebar(
           sidebar = bslib::sidebar(
-            mod_var_input_ui("vars")
+            mod_var_input_ui("vars"),
           ),
           bslib::card(
             full_screen = TRUE,
@@ -95,11 +95,17 @@ movies_ui <- function(bslib = FALSE) {
                 )
               ),
              bslib::card_body(
+              min_height = 400,
+              fill = TRUE,
+              class = "lead container",
               mod_scatter_display_ui("plot")
+             ),
+            bslib::card_body(
+              min_height = 240,
+              verbatimTextOutput(outputId = "vals")
             )
           )
         )
       )
-    )
-  }
+    )}
 } 

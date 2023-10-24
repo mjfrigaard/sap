@@ -44,5 +44,10 @@ movies_server <- function(input, output, session) {
       selected_vars <- mod_var_input_server("vars")
 
       mod_scatter_display_server("plot", var_inputs = selected_vars)
+      
+      output$vals <- renderPrint({
+        all_vals <- reactiveValuesToList(x = input, all.names = TRUE)
+        print(all_vals)
+      })
 
 }

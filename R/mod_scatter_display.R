@@ -47,23 +47,22 @@ mod_scatter_display_ui <- function(id) {
 #' @family {"scatter plot module functions"}
 #'
 mod_scatter_display_server <- function(id, var_inputs) {
+  
   moduleServer(id, function(input, output, session) {
-    
-    observe({
-      browser()
       
       inputs <- reactive({
         plot_title <- tools::toTitleCase(var_inputs()$plot_title)
         list(
           x = var_inputs()$x,
           y = var_inputs()$y,
-          col = var_inputs()$z,
+          z = var_inputs()$z,
           alpha = var_inputs()$alpha,
           size = var_inputs()$size,
           plot_title = plot_title
         )
       })
       output$scatterplot <- renderPlot({
+          
         plot <- scatter_plot(
           # data --------------------
           df = movies,
@@ -76,14 +75,15 @@ mod_scatter_display_server <- function(id, var_inputs) {
         plot +
           ggplot2::labs(
             title = inputs()$plot_title,
-            x = stringr::str_replace_all(tools::toTitleCase(inputs()$x), "_", " "),
-            y = stringr::str_replace_all(tools::toTitleCase(inputs()$y), "_", " ")
+            x = stringr::str_replace_all(tools::toTitleCase(
+              inputs()$x), "_", " "),
+            y = stringr::str_replace_all(tools::toTitleCase(
+              inputs()$y), "_", " ")
           ) +
           ggplot2::theme_minimal() +
           ggplot2::theme(legend.position = "bottom")
+        
       })
-      
-    })
     
   })
 }

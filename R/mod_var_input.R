@@ -70,7 +70,8 @@ mod_var_input_ui <- function(id) {
       inputId = ns("plot_title"),
       label = "Plot title",
       placeholder = "Enter plot title"
-    )
+    ),
+    verbatimTextOutput(outputId = ns("vals"))
   )
 }
 
@@ -94,6 +95,12 @@ mod_var_input_ui <- function(id) {
 mod_var_input_server <- function(id) {
 
   moduleServer(id, function(input, output, session) {
+    
+      output$vals <- renderPrint({
+        all_vals <- reactiveValuesToList(x = input, all.names = TRUE)
+        print(all_vals)
+      })
+      
     return(
       reactive({
         list(

@@ -16,27 +16,30 @@ I've converted it have [shiny modules](https://shiny.posit.co/r/articles/improve
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## External resources 
+## Special topic: Debugging 
 
-### `11d_inst-prod`
+### `spec_topic-debugging-01`
 
-[`11d_inst-prod`](https://github.com/mjfrigaard/moviesApp/tree/11d_inst-prod) gives an example of storing a 'production' version of your application in the `inst/prod/` folder.
+The [`spec_topic-debugging-01`](https://github.com/mjfrigaard/moviesApp/tree/spec_topic-debugging-01) branch is the first step of 4 that demonstrate debugging an error in `movies_app()`. 
 
-```
-inst
-├── dev
-│   ├── app.R
-│   ├── imdb.png
-│   └── tidy_movies.fst
-├── extdata
-│   └── movies.fst
-├── prod
-│   └── app
-│       └── app.R
-└── www
-    ├── bootstrap.png
-    └── shiny.png
+This branch should be loaded, documented, and installed, then the application should be launched: 
 
-6 directories, 7 files
+```r
+library(moviesApp)
+movies_app(run = 'p')
 ```
 
+Error in the app: 
+
+```
+Error: [object Object]
+```
+
+Error in the Console: 
+
+```
+Warning: Error in ggplot2::geom_point: Problem while computing aesthetics.
+ℹ Error occurred in the 1st layer.
+Caused by error in `.data[[NULL]]`:
+! Must subset the data pronoun with a string, not `NULL`.
+```

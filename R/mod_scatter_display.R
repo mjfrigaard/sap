@@ -57,7 +57,7 @@ mod_scatter_display_server <- function(id, var_inputs) {
         list(
           x = var_inputs()$x,
           y = var_inputs()$y,
-          z = var_inputs()$z,
+          col = var_inputs()$z,
           alpha = var_inputs()$alpha,
           size = var_inputs()$size,
           plot_title = plot_title

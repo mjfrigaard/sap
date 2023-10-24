@@ -17,7 +17,9 @@
 #' 
 mod_var_input_ui <- function(id) {
   ns <- NS(id)
-  tagList(
+  tagList(strong("Reactive values in", 
+      code("mod_var_input()")), hr(),
+    verbatimTextOutput(outputId = ns("vals")),
     selectInput(
       inputId = ns("y"),
       label = "Y-axis:",
@@ -70,8 +72,7 @@ mod_var_input_ui <- function(id) {
       inputId = ns("plot_title"),
       label = "Plot title",
       placeholder = "Enter plot title"
-    ),
-    verbatimTextOutput(outputId = ns("vals"))
+    )
   )
 }
 
@@ -98,7 +99,7 @@ mod_var_input_server <- function(id) {
     
       output$vals <- renderPrint({
         all_vals <- reactiveValuesToList(x = input, all.names = TRUE)
-        print(all_vals)
+        lobstr::tree(all_vals)
       })
       
     return(

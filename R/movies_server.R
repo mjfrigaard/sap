@@ -47,7 +47,7 @@ movies_server <- function(input, output, session) {
       
       output$vals <- renderPrint({
         all_vals <- reactiveValuesToList(x = input, all.names = TRUE)
-        print(all_vals)
+          lobstr::tree(all_vals)
       })
 
 }

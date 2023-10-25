@@ -30,7 +30,7 @@ If you're following along in the [Shiny App-Packages](https://mjfrigaard.github.
 
 <p href="Git branch icon">
 
-<img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" width="25%" align="middle"/>
+<img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" align="middle" width="25%"/>
 
 </p>
 

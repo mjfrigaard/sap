@@ -1,20 +1,64 @@
 # moviesApp
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book.
+`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
-## Code for book
+**Code for book**
 
-You can view the  GitHub repository for the book [here](https://github.com/mjfrigaard/shinyap).
+You can view the GitHub repository for the book [here](https://github.com/mjfrigaard/shinyap).
 
-## `movies` app
+**`movies` data application**
 
 The original code and data for this shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
 
-I've converted it have [shiny modules](https://shiny.posit.co/r/articles/improve/modules/) and a [standalone app function](https://mastering-shiny.org/scaling-packaging.html#converting-an-existing-app) (which can be run from `app.R`).
+## Using code examples
+
+The branches in this repo contain a Shiny application in the various stages of development. If you're following along in the workshop slides, the branch name is in the slide footer:
+
+<div>
+
+<p href="Workshop slide">
+
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" width="80%" align="middle"/>
+
+</p>
+
+</div>
+
+If you're following along in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book, look for the Git Branch icon in the margin:
+
+<div>
+
+<p href="Git branch icon">
+
+<img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" width="25%" align="middle"/>
+
+</p>
+
+</div>
+
+You can change the branch in the IDE in the **Git** pane.
+
+<div>
+
+<p href="Follow along in the branches">
+
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" width="100%" align="middle"/>
+
+</p>
+
+</div>
+
+Or use the terminal
+
+``` bash
+git checkout <branch_name>
+```
+
+------------------------------------------------------------------------
 
 # Branches
 
-View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the branches/versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
 ## `02_movies-app`
 

@@ -42,7 +42,7 @@ You can change the branch in the IDE in the **Git** pane.
 
 <p href="Follow along in the branches">
 
-<img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" width="500" align="middle" />
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" width="80%" align="middle" />
 
 </p>
 

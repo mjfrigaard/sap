@@ -57,10 +57,6 @@ git checkout <branch_name>
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## Special topic: Debugging 
-
-The `spec_topic-debugging-03` branch is the second step of 4 on debugging. This branch should also be loaded, documented, installed and the application should be launched:
-
 ### `spec_topic-debugging-03`
 
 [`spec_topic-debugging-03`](https://github.com/mjfrigaard/moviesApp/tree/spec_topic-debugging-03) contains step 3 of 4 on debugging shiny apps. This branch focuses on debugging modules server functions. 

@@ -16,27 +16,13 @@ I've converted it have [shiny modules](https://shiny.posit.co/r/articles/improve
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## External resources 
+## Special topic: Debugging 
 
-### `11d_inst-prod`
+The `spec_topic-debugging-03` branch is the second step of 4 on debugging. This branch should also be loaded, documented, installed and the application should be launched:
 
-[`11d_inst-prod`](https://github.com/mjfrigaard/moviesApp/tree/11d_inst-prod) gives an example of storing a 'production' version of your application in the `inst/prod/` folder.
+### `spec_topic-debugging-03`
 
-```
-inst
-├── dev
-│   ├── app.R
-│   ├── imdb.png
-│   └── tidy_movies.fst
-├── extdata
-│   └── movies.fst
-├── prod
-│   └── app
-│       └── app.R
-└── www
-    ├── bootstrap.png
-    └── shiny.png
+[`spec_topic-debugging-03`](https://github.com/mjfrigaard/moviesApp/tree/spec_topic-debugging-03) contains step 3 of 4 on debugging shiny apps. This branch focuses on debugging modules server functions. 
 
-6 directories, 7 files
-```
+
 

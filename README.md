@@ -1,9 +1,8 @@
-<p align="center"> 
-  <img src="gif/Pacman Logo2.jpg" alt="Pacman Logo" width="80px" height="80px">
-</p>
 <h1 align="center"> <code>moviesApp</code> </h1>
 <h3 align="center"> A Shiny App-package </h3>
-<h5 align="center"> Code examples for Shiny App-Packages <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a></h5>
+<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a></h5>
+
+<hr>
 
 # moviesApp
 
@@ -34,7 +33,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 <div>
 
 <p align="right"> 
-  <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" alt="Git branch icon" height="282px" width="637">
+  <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" alt="Git branch icon" width="33%">
 
 </div>
 

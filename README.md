@@ -18,31 +18,31 @@ The branches in this repo contain a Shiny application in the various stages of d
 
 <p href="Workshop slide">
 
-<img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" width=80% align="middle"/>
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" width="80%" align="middle"/>
 
 </p>
 
 </div>
 
-If you're following along in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book, look for the Git Branch icon in the margin:
+<p>If you're following along in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book, look for the Git Branch icon in the margin:</p>
 
 <div>
 
 <p href="Git branch icon">
 
-<img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" align="right" width=33%/>
+<img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" align="right" width="33%/"/>
 
 </p>
 
 </div>
 
-You can change the branch in the IDE in the **Git** pane.
+<p>You can change the branch in the IDE in the **Git** pane.</p>
 
 <div>
 
 <p href="Follow along in the branches">
 
-<img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" width=80% align="middle" />
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" width="80%" align="middle"/>
 
 </p>
 
@@ -64,7 +64,7 @@ View all the branches/versions of application in the [`moviesApp` branches](http
 
 The [`02_movies-app`](https://github.com/mjfrigaard/moviesApp/tree/02_movies-app) branch of `moviesApp` includes the code for the movie review data (from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course) in `app.R`.
 
-```
+```         
 ├── README.md
 ├── app.R
 ├── movies.RData

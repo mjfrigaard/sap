@@ -42,7 +42,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 
 <p href="Follow along in the branches">
 
-<img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" width="80%" align="middle"/>
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" width="100%" align="middle"/>
 
 </p>
 

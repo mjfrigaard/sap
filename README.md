@@ -18,7 +18,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 
 <p href="Workshop slide">
 
-<img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" width="80%" align="middle"/>
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" width="80%" align="center"/>
 
 </p>
 

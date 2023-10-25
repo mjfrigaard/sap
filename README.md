@@ -14,7 +14,7 @@ The original code and data for the Shiny app comes from the [Building Web Applic
 
 ## Using code examples
 
-The branches in this repo contain a Shiny application in the various stages of development. If you're following along in the <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/title-slide"> workshop slides </a>, the branch name is in the slide footer:
+The branches in this repo contain a Shiny application in the various stages of development. If you're following along in the <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/title-slide">workshop slides</a>, the branch name is in the slide footer:
 
 <div>
 <p align="center"> 
@@ -23,7 +23,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 </div>
 
 <p align="left">
-  If you're following along in the <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> book, look for the Git Branch icon in the margin:
+  If you're following along in the <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a> book, look for the Git Branch icon in the margin:
   </p>
 
 <div>

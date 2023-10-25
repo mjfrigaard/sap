@@ -18,7 +18,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 
 <p href="Workshop slide">
 
-<img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" width="80%" align="middle"/>
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" width=80% align="middle"/>
 
 </p>
 
@@ -30,7 +30,7 @@ If you're following along in the [Shiny App-Packages](https://mjfrigaard.github.
 
 <p href="Git branch icon">
 
-<img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" align="middle" width="25%"/>
+<img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" align="middle" width=33%/>
 
 </p>
 
@@ -42,7 +42,7 @@ You can change the branch in the IDE in the **Git** pane.
 
 <p href="Follow along in the branches">
 
-<img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" width="80%" align="middle" />
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" width=80% align="middle" />
 
 </p>
 

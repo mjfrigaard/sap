@@ -15,19 +15,19 @@ The original code and data for this shiny app comes from the [Building Web Appli
 The branches in this repo contain a Shiny application in the various stages of development. If you're following along in the workshop slides, the branch name is in the slide footer:
 
 <br>
-<a href="Workshop slide"><img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" align="left" width=80% height=80% ></a>
+<div href="Workshop slide"><img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" align="left" width=80% height=80% ></div>
 <br>
 
 If you're following along in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book, look for the Git Branch icon in the margin: 
 
 <br>
-<a href="Git branch icon"><img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" align="left" width=80% height=80% ></a>
+<div href="Git branch icon"><img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" align="left" width=80% height=80% ></div>
 <br>
 
 You can change the branch in the IDE in the **Git** pane. 
 
 <br>
-<a href="Follow along in the branches"><img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" align="left" width=80% height=80% ></a>
+<div href="Follow along in the branches"><img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" align="left" width=80% height=80% ></div>
 <br>
 
 Or use the terminal 

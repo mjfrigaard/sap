@@ -1,6 +1,6 @@
 <h1 align="center"> <code>moviesApp</code> </h1>
 <h3 align="center"> A Shiny App-package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a></h5>
+<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
 
 <hr>
 
@@ -23,7 +23,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 </div>
 
 <p align="left">
-  If you're following along in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book, look for the Git Branch icon in the margin:
+  If you're following along in the <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> book, look for the Git Branch icon in the margin:
   </p>
 
 <div>
@@ -34,7 +34,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 </div>
 
 <p align="left">
-You can change the branch in the IDE in the **Git** pane.
+You can change the branch in the IDE in the <strong>Git</strong> pane.
 </p>
 
 

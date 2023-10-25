@@ -18,7 +18,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 
 <p href="Workshop slide">
 
-<img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" width="80%" align="center"/>
+<img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" width="80%"/>
 
 </p>
 
@@ -30,7 +30,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 
 <p href="Git branch icon">
 
-<img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" align="right" width="33%/"/>
+<img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" width="33%/"/>
 
 </p>
 

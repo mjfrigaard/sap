@@ -21,7 +21,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 If you're following along in the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book, look for the Git Branch icon in the margin: 
 
 <div>
-  <p href="Git branch icon"><img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" width=45%></p>
+  <p href="Git branch icon"><img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" width=45% align="right"></p>
 </div>
 
 You can change the branch in the IDE in the **Git** pane. 

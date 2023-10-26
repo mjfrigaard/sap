@@ -75,5 +75,15 @@ mod_scatter_display_server <- function(id, var_inputs) {
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "bottom")
     })
+    
+    exportTestValues(
+             x = { inputs()$x },
+             y = { inputs()$y },
+             z = { inputs()$z },
+             alpha = { inputs()$alpha },
+             size = { inputs()$size },
+             title = { inputs()$plot_title }
+    )
+    
   })
 }

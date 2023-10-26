@@ -16,7 +16,7 @@ testthat::describe(
          And the opacity of the points should be set to '0.5'", code = {
     shiny::testServer(app = mod_var_input_server, expr = {
       
-      test_logger(start = "mod_var_input", msg = "initial inputs returned()")
+      test_logger(start = "input", msg = "initial inputs returned()")
 
       # set inputs
       session$setInputs(y = "imdb_rating",
@@ -36,7 +36,7 @@ testthat::describe(
                         plot_title = "Enter plot title")
       )
 
-      test_logger(end = "mod_var_input", msg = "initial inputs returned()")
+      test_logger(end = "input", msg = "initial inputs returned()")
       
     })
   })

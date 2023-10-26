@@ -17,7 +17,7 @@ tidy_movies <- ggplot2movies::movies |>
   dplyr::mutate(genre_value = as.logical(genre_value)) |>
   dplyr::select(
     title, genre_key, genre_value, length,
-    year, budget, avg_rating = rating, votes, mpaa
+    year, budget, rating, votes, mpaa
   ) |>
   dplyr::filter(genre_value == TRUE) |>
   dplyr::group_by(title) |>
@@ -26,7 +26,7 @@ tidy_movies <- ggplot2movies::movies |>
   ) |>
   dplyr::select(
     title, genres, length, year,
-    budget, avg_rating, votes, mpaa
+    budget, rating, votes, mpaa
   ) |>
   dplyr::ungroup() |>
   dplyr::distinct(.keep_all = TRUE) |>

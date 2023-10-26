@@ -30,7 +30,7 @@ testthat::describe(
           expr = {
             
             test_logger(
-              start = "mod_scatter_display", 
+              start = "display", 
               msg = "selected_vars initial values")
             
             testthat::expect_equal(
@@ -44,7 +44,7 @@ testthat::describe(
                     plot_title = "Enter Plot Title"
                 )
             )
-            test_logger(end = "mod_scatter_display", 
+            test_logger(end = "display", 
               msg = "selected_vars initial values")
           })
       })
@@ -85,17 +85,17 @@ testthat::describe(
             )), expr = {
 
         test_logger(
-          start = "mod_scatter_display", 
-          msg = "output$scatterplot[['alt']] = 'Plot object'")
+          start = "display", 
+          msg = "scatterplot[['alt']] = 'Plot object'")
               
         testthat::expect_equal(
           object = output$scatterplot[["alt"]],
           expected = "Plot object")
         
-        test_logger(end = "mod_scatter_display", 
-          msg = "output$scatterplot[['alt']] = 'Plot object'")
+        test_logger(end = "display", 
+          msg = "scatterplot[['alt']] = 'Plot object'")
 
-        test_logger(start = "mod_scatter_display", 
+        test_logger(start = "display", 
           msg = "inputs() creates ggplot2 object")
         
         plot <- scatter_plot(movies,
@@ -114,7 +114,7 @@ testthat::describe(
         ggplot2::theme(legend.position = "bottom")
         testthat::expect_true(ggplot2::is.ggplot(plot))
         
-        test_logger(end = "mod_scatter_display", 
+        test_logger(end = "display", 
           msg = "inputs() creates ggplot2 object")
         
         # test_logger(start = "mod_scatter_display", 

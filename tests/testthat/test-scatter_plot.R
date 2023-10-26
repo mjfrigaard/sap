@@ -20,7 +20,7 @@ testthat::describe(
               And the size of the points should be set to '2'
               And the opacity of the points should be set to '0.5'",
           code = {
-            test_logger(start = "Test 1", msg = "fixtures/tidy_ggp2_movies.rds")
+            test_logger(start = "data 2", msg = "fixtures/tidy_ggp2_movies.rds")
             # inputs
             ggp2_scatter_inputs <- list(
               x = "rating",
@@ -44,7 +44,7 @@ testthat::describe(
               size_var = ggp2_scatter_inputs$size
             )
             expect_true(ggplot2::is.ggplot(app_graph))
-            test_logger(start = "Test 1", msg = "fixtures/tidy_ggp2_movies.rds")
+            test_logger(end = "data 2", msg = "fixtures/tidy_ggp2_movies.rds")
         })
     })
 })
@@ -69,7 +69,7 @@ testthat::describe(
               And the size of the points should be set to '2'
               And the opacity of the points should be set to '0.5'",
           code = {
-            test_logger(start = "Test 2", msg = "data/movies.rda")
+            test_logger(start = "data 1", msg = "data/movies.rda")
             # inputs
             scatter_inputs <- list(y = 'audience_score', 
                                    x = 'imdb_rating',
@@ -87,6 +87,6 @@ testthat::describe(
             )
             expect_true(ggplot2::is.ggplot(app_graph))
 
-            test_logger(end = "Test 2", msg = "data/movies.rda")
+            test_logger(end = "data 1", msg = "data/movies.rda")
         })
 })

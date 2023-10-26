@@ -1,16 +1,17 @@
 {
   "input": {
-    "vars-alpha": 0.7,
-    "vars-plot_title": "New plot title",
-    "vars-size": 3,
-    "vars-x": "critics_score",
-    "vars-y": "imdb_num_votes",
+    "plot-missing": true,
+    "vars-alpha": 0.4,
+    "vars-plot_title": "",
+    "vars-size": 2.5,
+    "vars-x": "rating",
+    "vars-y": "length",
     "vars-z": "genre"
   },
   "output": {
     "plot-scatterplot": {
-      "src": "[image data hash: 8c3f5d87eff4271e5ab2953c274f92e0]",
-      "width": 752,
+      "src": "[image data hash: c1135f0b078ab9cc39b22aa4b4763282]",
+      "width": 807,
       "height": 400,
       "alt": "Plot object",
       "coordmap": {
@@ -27,26 +28,26 @@
               "y": null
             },
             "domain": {
-              "left": -3.95,
-              "right": 104.95,
-              "bottom": -44461.4,
-              "top": 937649.4
+              "left": 1.33,
+              "right": 9.469999999999999,
+              "bottom": -5.200000000000001,
+              "top": 263.2
             },
             "mapping": {
-              "x": ".data[[\"critics_score\"]]",
-              "y": ".data[[\"imdb_num_votes\"]]",
+              "x": ".data[[\"rating\"]]",
+              "y": ".data[[\"length\"]]",
               "colour": ".data[[\"genre\"]]"
             },
             "range": {
-              "left": 105.9888698630137,
-              "right": 1493.041095890411,
-              "bottom": 589.1773298620404,
+              "left": 76.6451198630137,
+              "right": 1603.041095890411,
+              "bottom": 623.7373298620405,
               "top": 45.92633397406263
             }
           }
         ],
         "dims": {
-          "width": 1504,
+          "width": 1614,
           "height": 800
         }
       }

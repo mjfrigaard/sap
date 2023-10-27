@@ -1,8 +1,8 @@
 testthat::describe(
-  "Feature 1.2: Scatter Plot Configuration in Movie Review Application
-    As a user who accesses the movie review application,
-    I want the initial scatter plot pre-configured with variables and aesthetics,
-    So that I can immediately see a meaningful visualization.", 
+  "Feature: Scatter Plot Configuration in Movie Review Application
+      As a user 
+      I want the initial graph pre-configured with variables and aesthetics,
+      So that I can immediately see a meaningful visualization.", 
   code = {
   
   testthat::it(
@@ -12,11 +12,12 @@ testthat::describe(
          Then the scatter plot should show 'IMDB Rating' on the x-axis
          And the scatter plot should show 'Audience Score' on the y-axis
          And the points on the scatter plot should be colored by 'MPAA Rating'
+         And the opacity of the points should be set to '0.5'
          And the size of the points should be set to '2'
-         And the opacity of the points should be set to '0.5'", code = {
+         And the plot title should be 'Enter plot title'", code = {
     shiny::testServer(app = mod_var_input_server, expr = {
       
-      test_logger(start = "input", msg = "initial inputs returned()")
+      test_logger(start = "var_inputs", msg = "returned()")
 
       # set inputs
       session$setInputs(y = "imdb_rating",
@@ -36,7 +37,7 @@ testthat::describe(
                         plot_title = "Enter plot title")
       )
 
-      test_logger(end = "input", msg = "initial inputs returned()")
+      test_logger(end = "var_inputs", msg = "returned()")
       
     })
   })

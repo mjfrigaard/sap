@@ -45,6 +45,8 @@ mod_scatter_display_ui <- function(id) {
 #' @return rendered plot and title output from [scatter_plot()]
 #'
 #' @family {"scatter plot module functions"}
+#' 
+#' @export
 #'
 mod_scatter_display_server <- function(id, var_inputs) {
   moduleServer(id, function(input, output, session) {

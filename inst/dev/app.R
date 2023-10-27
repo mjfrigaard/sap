@@ -84,6 +84,11 @@ dev_mod_scatter_ui <- function(id) {
 
 dev_mod_scatter_server <- function(id, var_inputs) {
   moduleServer(id, function(input, output, session) {
+    
+  observe({
+     browser()
+    
+
     # load alternate data
     all_data <- fst::read_fst("tidy_movies.fst")
 
@@ -134,6 +139,8 @@ dev_mod_scatter_server <- function(id, var_inputs) {
     }) |>
       # bind this to variable inputs and missing checkbox output
       bindEvent(graph_data(), inputs())
+    
+    })
   })
 }
 

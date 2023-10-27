@@ -1,62 +1,44 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
-<h3 align="center"> A Shiny App-Package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
 
-<hr>
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# moviesApp
+# gap
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+## *(**`g`** olem **`a`** pp- **`p`** ackage)*
 
-**Movie review data application**
+<!-- badges: start -->
 
-The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
+[![Codecov test
+coverage](https://codecov.io/gh/mjfrigaard/gap/branch/main/graph/badge.svg)](https://app.codecov.io/gh/mjfrigaard/gap?branch=main)
 
-## Using code examples
+<!-- badges: end -->
 
-The branches in this repo contain a Shiny application in the various stages of development. If you're following along in the <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/title-slide">workshop slides</a>, the branch name is in the slide footer:
+The goal of `gap` is to demonstrate the `golem` framework.
 
-<div>
-<p align="center"> 
-  <img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" alt="Workshop slide" width="80%">
-</p>
-</div>
+## Installation
 
-<p align="left">
-  If you're following along in the <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a> book, look for the Git Branch icon in the margin:
-  </p>
+You can install the development version of `gap` from
+[GitHub](https://github.com/) with:
 
-<div>
-
-<p align="right"> 
-  <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" alt="Git branch icon" width="33%">
-
-</div>
-
-<p align="left">
-You can change the branch in the IDE in the <strong>Git</strong> pane.
-</p>
-
-
-<div>
-<p align="center"> 
-  <img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" alt="Animated git branches" width="100%">
-</p>
-
-</div>
-
-Or use the terminal
-
-``` bash
-git checkout <branch_name>
+``` r
+install.packages("devtools")
+#> 
+#> The downloaded binary packages are in
+#>  /var/folders/0x/x5wkbhmx0k74tncn9swz7xpr0000gn/T//Rtmpp0JHZI/downloaded_packages
+devtools::install_github("mjfrigaard/gap")
 ```
 
-------------------------------------------------------------------------
+## Run
 
-# Branches
+You can run the application with the following:
 
-View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+``` r
+library(gap)
+gap::run_app()
+```
 
-## `spec_topic-debugging-05`
+## Code of Conduct
 
-`spec_topic-debugging-05` shows how to add 'print' statements in the application UI. 
+Please note that the `gap` project is released with a [Contributor Code
+of
+Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

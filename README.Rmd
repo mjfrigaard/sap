@@ -1,0 +1,50 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(repos = 'http://cran.us.r-project.org')
+```
+
+# gap 
+
+## *(**`g`** olem **`a`** pp- **`p`** ackage)*
+
+<!-- badges: start -->
+
+[![Codecov test coverage](https://codecov.io/gh/mjfrigaard/gap/branch/main/graph/badge.svg)](https://app.codecov.io/gh/mjfrigaard/gap?branch=main)
+
+<!-- badges: end -->
+
+The goal of `gap` is to demonstrate the `golem` framework.
+
+## Installation
+
+You can install the development version of `gap` from [GitHub](https://github.com/) with:
+
+```{r inst_pkg, eval=TRUE, message=FALSE, warning=FALSE}
+install.packages("devtools")
+devtools::install_github("mjfrigaard/gap")
+```
+
+
+## Run 
+
+You can run the application with the following: 
+
+```{r example, eval=FALSE}
+library(gap)
+gap::run_app()
+```
+
+## Code of Conduct
+
+Please note that the `gap` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

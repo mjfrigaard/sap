@@ -8,16 +8,21 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Imports: 
-    bslib,
-    htmltools,
-    shiny
-Suggests: 
-    packer,
-    pkgload,
-    sass
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5.0)
+Imports: 
+    config (>= 0.3.1),
+    ggplot2,
+    golem (>= 0.3.5),
+    rlang,
+    shiny (>= 1.7.4),
+    stringr,
+    tools
+Suggests: 
+    knitr,
+    rmarkdown,
+    spelling,
+    testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3

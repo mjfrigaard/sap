@@ -5,26 +5,21 @@ Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
 Description: A movie-review leprechaun shiny application.
 License: MIT + file LICENSE
-Depends: 
-    R (>= 3.5.0)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
 Imports: 
-    config (>= 0.3.1),
-    ggplot2,
-    golem (>= 0.3.5),
-    rlang,
-    shiny (>= 1.7.4),
-    stringr,
-    tools
+    bslib,
+    htmltools,
+    shiny
 Suggests: 
-    knitr,
-    rmarkdown,
-    spelling,
-    testthat (>= 3.0.0)
+    packer,
+    pkgload,
+    sass
+Depends: 
+    R (>= 2.10)
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
-Encoding: UTF-8
 Language: en-US
 LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3

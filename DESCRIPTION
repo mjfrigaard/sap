@@ -1,9 +1,9 @@
-Package: gap
-Title: An example goelm app
+Package: lap
+Title: leprechaun app-package 
 Version: 0.0.0.9000
-Author: person("Martin", "Frigaard", , "mjfrigaard@pm.me", role = c("cre",
-    "aut"))
-Description: A working example of the golem package.
+Author: John Smith <John.Smith@email.io> [aut, cre]
+Maintainer: John Smith <John.Smith@email.io>
+Description: A movie-review leprechaun shiny application.
 License: MIT + file LICENSE
 Depends: 
     R (>= 3.5.0)

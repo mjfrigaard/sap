@@ -1,9 +1,9 @@
-Package: lap
-Title: leprechaun app-package 
+Package: gap
+Title: golem app-package 
 Version: 0.0.0.9000
 Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review leprechaun shiny application.
+Description: A movie-review golem shiny application.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

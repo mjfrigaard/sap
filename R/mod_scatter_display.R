@@ -6,6 +6,7 @@
 #' @return module UI (HTML)
 #'
 #' @family {"scatter plot module functions"}
+#' 
 #'
 mod_scatter_display_ui <- function(id) {
   ns <- NS(id)
@@ -44,13 +45,12 @@ mod_scatter_display_ui <- function(id) {
 #'
 #' @return rendered plot and title output from [scatter_plot()]
 #'
-#' @family {"scatter plot module functions"}
+#' @family {"scatter plot module functions"} 
+#'
+#' @export
 #'
 mod_scatter_display_server <- function(id, var_inputs) {
   moduleServer(id, function(input, output, session) {
-    
-    observe({
-      browser()
       
       inputs <- reactive({
         plot_title <- tools::toTitleCase(var_inputs()$plot_title)
@@ -64,6 +64,10 @@ mod_scatter_display_server <- function(id, var_inputs) {
         )
       })
       output$scatterplot <- renderPlot({
+            
+        observe({
+          browser()
+      
         plot <- scatter_plot(
           # data --------------------
           df = movies,

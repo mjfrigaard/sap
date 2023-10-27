@@ -17,10 +17,11 @@ testthat::describe(
               Then the points on the x axis should represent 'Ratings'
               And the points on the y axis should represent 'Length'
               And the points should be colored by 'MPAA' rating
-              And the size of the points should be set to '2'
-              And the opacity of the points should be set to '0.5'",
+              And the opacity of the points should be set to '0.75'
+              And the size of the points should be set to '3'
+              And the plot title should be set to 'Enter plot title'",
           code = {
-            test_logger(start = "data 2", msg = "fixtures/tidy_ggp2_movies.rds")
+            test_logger(start = "fixture", msg = "tidy_ggp2_movies.rds")
             # inputs
             ggp2_scatter_inputs <- list(
               x = "rating",
@@ -44,7 +45,7 @@ testthat::describe(
               size_var = ggp2_scatter_inputs$size
             )
             expect_true(ggplot2::is.ggplot(app_graph))
-            test_logger(end = "data 2", msg = "fixtures/tidy_ggp2_movies.rds")
+            test_logger(start = "fixture", msg = "tidy_ggp2_movies.rds")
         })
     })
 })
@@ -53,7 +54,8 @@ testthat::describe(
   "Feature: Scatter plot data visualization
        As a film data analyst
        I want to explore movie review data from IMDB & Rotten Tomatoes
-       So that I can analyze relationships between movie reivew metrics
+       So that I can analyze relationships between movie reivew variables
+  
     Background:
           Given I have data with IMDB & Rotten Tomatoes movie reviews
           And the data contains continuous variables like 'Audience Score'
@@ -66,10 +68,11 @@ testthat::describe(
               Then the points on the x axis should represent 'IMDB Rating'
               And the points on the y axis should represent 'Audience Score'
               And the points should be colored by 'MPAA' rating
+              And the opacity of the points should be set to '0.5'
               And the size of the points should be set to '2'
-              And the opacity of the points should be set to '0.5'",
+              And the plot title should be set to 'Enter plot title'",
           code = {
-            test_logger(start = "data 1", msg = "data/movies.rda")
+            test_logger(start = "data", msg = "movies.rda")
             # inputs
             scatter_inputs <- list(y = 'audience_score', 
                                    x = 'imdb_rating',
@@ -87,12 +90,12 @@ testthat::describe(
             )
             expect_true(ggplot2::is.ggplot(app_graph))
 
-            test_logger(end = "data 1", msg = "data/movies.rda")
+            test_logger(end = "data", msg = "movies.rda")
         })
 })
 
 testthat::describe(
-  "Feature 1.2: Scatter Plot Configuration in Movie Review Application
+  "Feature: Scatter Plot Configuration in Movie Review Application
     As a user who accesses the movie review application,
     I want the initial scatter plot pre-configured with variables and aesthetics,
     So that I can immediately see a meaningful visualization.",

@@ -108,7 +108,8 @@ testthat::describe(
           And the points on the y axis should represent 'Length'
           And the points should be colored by 'MPAA' rating
           And the size of the points should be set to '2'
-          And the opacity of the points should be set to '0.5'",
+          And the opacity of the points should be set to '0.5'
+          And the plot title should be set to 'Enter plot title'",
       code = {
         
         test_logger(

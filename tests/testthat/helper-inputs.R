@@ -7,7 +7,6 @@ make_var_inputs <- function() {
      plot_title = 'Enter plot title'
     )")
 }
-
 make_ggp2_inputs <- function() {
 glue::glue_collapse("list(x = 'avg_rating',
      y = 'length',

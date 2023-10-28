@@ -10,6 +10,7 @@ testthat::describe(
           And the data contains continuous variables like 'rating'
           And the data contains categorical variables like 'mpaa'",
       code = {
+        test_logger(start = "fixture", msg = "tidy_ggp2_movies.rds")
         testthat::it(
           "Scenario: Create scatter plot
               Given I have launched the movie review exploration app,
@@ -21,7 +22,6 @@ testthat::describe(
               And the size of the points should be set to '3'
               And the plot title should be set to 'Enter plot title'",
           code = {
-            test_logger(start = "fixture", msg = "tidy_ggp2_movies.rds")
             # inputs
             ggp2_scatter_inputs <- list(
               x = "rating",
@@ -45,8 +45,8 @@ testthat::describe(
               size_var = ggp2_scatter_inputs$size
             )
             expect_true(ggplot2::is.ggplot(app_graph))
-            test_logger(end = "fixture", msg = "tidy_ggp2_movies.rds")
         })
+        test_logger(end = "fixture", msg = "tidy_ggp2_movies.rds")
     })
 })
 
@@ -61,7 +61,7 @@ testthat::describe(
           And the data contains continuous variables like 'Audience Score'
           And the data contains categorical variables like 'MPAA Rating'",
   code = {
-        testthat::it(
+        testthat::test_that(
           "Scenario: Create scatter plot
               Given I have launched the movie review exploration app,
               When the scatter plot renders,
@@ -89,7 +89,6 @@ testthat::describe(
               size_var = scatter_inputs$size
             )
             expect_true(ggplot2::is.ggplot(app_graph))
-
             test_logger(end = "data", msg = "movies.rda")
         })
 })

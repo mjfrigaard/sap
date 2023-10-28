@@ -45,7 +45,7 @@ testthat::describe(
               size_var = ggp2_scatter_inputs$size
             )
             expect_true(ggplot2::is.ggplot(app_graph))
-            test_logger(start = "fixture", msg = "tidy_ggp2_movies.rds")
+            test_logger(end = "fixture", msg = "tidy_ggp2_movies.rds")
         })
     })
 })

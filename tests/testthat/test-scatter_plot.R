@@ -2,14 +2,12 @@ testthat::describe(
   "Feature: Scatter plot data visualization
        As a film data analyst
        I want to explore movie review data from IMDB.com
-       So that I can analyze relationships between movie reivew metrics",
-  code = {
+       So that I can analyze relationships between movie reivew metrics", code = {
     testthat::describe(
       "Background:
           Given I have data with IMDB movie reviews
           And the data contains continuous variables like 'rating'
-          And the data contains categorical variables like 'mpaa'",
-      code = {
+          And the data contains categorical variables like 'mpaa'", code = {
         testthat::it(
           "Scenario: Create scatter plot
               Given I have launched the movie review exploration app,
@@ -19,8 +17,7 @@ testthat::describe(
               And the points should be colored by 'MPAA' rating
               And the opacity of the points should be set to '0.75'
               And the size of the points should be set to '3'
-              And the plot title should be set to 'Enter plot title'",
-          code = {
+              And the plot title should be set to 'Enter plot title'", code = {
             test_logger(start = "fixture", msg = "tidy_ggp2_movies.rds")
             # inputs
             ggp2_scatter_inputs <- list(
@@ -32,11 +29,7 @@ testthat::describe(
               plot_title = "Enter plot title"
             )
             # data fixture
-            ggp2_movies <- readRDS(test_path(
-              "fixtures",
-              "tidy_ggp2_movies.rds"
-            ))
-
+            ggp2_movies <- readRDS(test_path("fixtures", "tidy_ggp2_movies.rds"))
             app_graph <- scatter_plot(ggp2_movies,
               x_var = ggp2_scatter_inputs$x,
               y_var = ggp2_scatter_inputs$y,
@@ -55,12 +48,11 @@ testthat::describe(
        As a film data analyst
        I want to explore movie review data from IMDB & Rotten Tomatoes
        So that I can analyze relationships between movie reivew variables
-  
+
     Background:
           Given I have data with IMDB & Rotten Tomatoes movie reviews
           And the data contains continuous variables like 'Audience Score'
-          And the data contains categorical variables like 'MPAA Rating'",
-  code = {
+          And the data contains categorical variables like 'MPAA Rating'", code = {
         testthat::it(
           "Scenario: Create scatter plot
               Given I have launched the movie review exploration app,
@@ -70,11 +62,10 @@ testthat::describe(
               And the points should be colored by 'MPAA' rating
               And the opacity of the points should be set to '0.5'
               And the size of the points should be set to '2'
-              And the plot title should be set to 'Enter plot title'",
-          code = {
-            test_logger(start = "data", msg = "movies.rda")
+              And the plot title should be set to 'Enter plot title'", code = {
+            test_logger(start = "data", msg = "moviesApp::movies")
             # inputs
-            scatter_inputs <- list(y = 'audience_score', 
+            scatter_inputs <- list(y = 'audience_score',
                                    x = 'imdb_rating',
                                    z = 'mpaa_rating',
                                    alpha = 0.5,
@@ -90,6 +81,6 @@ testthat::describe(
             )
             expect_true(ggplot2::is.ggplot(app_graph))
 
-            test_logger(end = "data", msg = "movies.rda")
+            test_logger(end = "data", msg = "moviesApp::movies")
         })
 })

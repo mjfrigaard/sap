@@ -19,10 +19,12 @@ test_that("Test list_to_li works", {
 })
 
 test_that("Test list_to_p works", {
-  expect_s3_class(object = list_to_p(c(
+  expect_s3_class(
+    list_to_p(c(
       "This is the first paragraph",
       "this is the second paragraph"
-    )), class = "shiny.tag.list"
+    )),
+    "shiny.tag.list"
   )
   expect_equal(
     as.character(
@@ -60,7 +62,7 @@ test_that("Test named_to_li works", {
 })
 
 test_that("Test tagRemoveAttributes works", {
-  a_with_tag <- tags$p(src = "plop", "pouet")
+  a_with_tag <- shiny::tags$p(src = "plop", "pouet")
   expect_s3_class(a_with_tag, "shiny.tag")
   expect_equal(
     as.character(a_with_tag),
@@ -76,7 +78,7 @@ test_that("Test tagRemoveAttributes works", {
 })
 
 test_that("Test undisplay works", {
-  a <- tags$p(src = "plop", "pouet")
+  a <- shiny::tags$p(src = "plop", "pouet")
   expect_s3_class(a, "shiny.tag")
   expect_equal(
     as.character(a),
@@ -89,7 +91,7 @@ test_that("Test undisplay works", {
     '<p src="plop" style="display: none;">pouet</p>'
   )
 
-  b <- actionButton("go_filter", "go")
+  b <- shiny::actionButton("go_filter", "go")
   expect_s3_class(b, "shiny.tag")
   expect_equal(
     as.character(b),
@@ -104,7 +106,7 @@ test_that("Test undisplay works", {
 })
 
 test_that("Test display works", {
-  a_undisplay <- tags$p(src = "plop", "pouet", style = "display: none;")
+  a_undisplay <- shiny::tags$p(src = "plop", "pouet", style = "display: none;")
   expect_s3_class(a_undisplay, "shiny.tag")
   expect_equal(
     as.character(a_undisplay),

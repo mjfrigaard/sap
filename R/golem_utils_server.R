@@ -1,43 +1,21 @@
 #' Inverted versions of in, is.null and is.na
 #'
-#'
-#' @rdname not_in
-#'
-#' @param x object 1
-#' @param y object 2
+#' @noRd
 #'
 #' @examples
 #' 1 %not_in% 1:10
-#'
-'%not_in%' <- function(x, y) {
-  return( !(x %in% y) )
-}
+#' not_null(NULL)
+`%not_in%` <- Negate(`%in%`)
 
-#' Inverted versions of is.null
-#'
-#' @rdname not_null
-#'
-#' @param x object
-#'
-not_null <- function(x) {
-  !is.null(x)
-}
+not_null <- Negate(is.null)
 
-#' Inverted versions of in is.na
-#'
-#' @rdname not_na
-#'
-#' @param x object
-#'
-not_na <- function(x) {
-  !is.na(x)
-}
+not_na <- Negate(is.na)
+
 #' Removes the null from a vector
 #'
+#' @noRd
 #'
-#' @param x object
-#'
-#' @examples
+#' @example
 #' drop_nulls(list(1, NULL, 2))
 drop_nulls <- function(x) {
   x[!sapply(x, is.null)]
@@ -47,8 +25,7 @@ drop_nulls <- function(x) {
 #'
 #' @param x,y Two elements to test, one potentially `NULL`
 #'
-#'
-#' @name if_not_NULL
+#' @noRd
 #'
 #' @examples
 #' NULL %||% 1
@@ -64,8 +41,7 @@ drop_nulls <- function(x) {
 #'
 #' @param x,y Two elements to test, one potentially `NA`
 #'
-#'
-#' @name if_not_NA
+#' @noRd
 #'
 #' @examples
 #' NA %|NA|% 1
@@ -79,20 +55,9 @@ drop_nulls <- function(x) {
 
 #' Typing reactiveValues is too long
 #'
-#' @param ... arguments from `shiny::reactiveValues()`
+#' @inheritParams reactiveValues
+#' @inheritParams reactiveValuesToList
 #'
-#'
-#'
-rv <- function(...) {
-  reactiveValues(...)
-}
-
-#' Typing reactiveValuesToList is too long
-#'
-#' @param ... arguments from `shiny::reactiveValuesToList()`
-#'
-#'
-#'
-rvtl <- function(...) {
-  reactiveValuesToList(...)
-}
+#' @noRd
+rv <- function(...) shiny::reactiveValues(...)
+rvtl <- function(...) shiny::reactiveValuesToList(...)

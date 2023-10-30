@@ -4,10 +4,11 @@
 #' @param class a class for the list
 #'
 #' @return an HTML list
-#'
+#' @noRd
 #'
 #' @examples
 #' list_to_li(c("a", "b"))
+#' @importFrom shiny tags tagAppendAttributes tagList
 list_to_li <- function(list, class = NULL) {
   if (is.null(class)) {
     tagList(
@@ -39,10 +40,11 @@ list_to_li <- function(list, class = NULL) {
 #' @param class a class for the paragraph tags
 #'
 #' @return An HTML tag
-#'
+#' @noRd
 #'
 #' @examples
 #' list_to_p(c("This is the first paragraph", "this is the second paragraph"))
+#' @importFrom shiny tags tagAppendAttributes tagList
 #'
 list_to_p <- function(list, class = NULL) {
   if (is.null(class)) {
@@ -69,12 +71,8 @@ list_to_p <- function(list, class = NULL) {
     tagList(res)
   }
 }
-#' Names list
-#'
-#'
-#' @param list a list
-#' @param class class of object
-#'
+
+#' @importFrom shiny tags tagAppendAttributes tagList
 named_to_li <- function(list, class = NULL) {
   if (is.null(class)) {
     res <- mapply(
@@ -122,7 +120,7 @@ named_to_li <- function(list, class = NULL) {
 #' @param ... the attributes to remove
 #'
 #' @return a new tag
-#'
+#' @noRd
 #'
 #' @examples
 #' a <- shiny::tags$p(src = "plop", "pouet")
@@ -140,14 +138,15 @@ tagRemoveAttributes <- function(tag, ...) {
 #' @param tag the tag
 #'
 #' @return a tag
-#'
+#' @noRd
 #'
 #' @examples
 #' ## Hide
-#' a <- tags$p(src = "plop", "pouet")
+#' a <- shiny::tags$p(src = "plop", "pouet")
 #' undisplay(a)
-#' b <- actionButton("go_filter", "go")
+#' b <- shiny::actionButton("go_filter", "go")
 #' undisplay(b)
+#' @importFrom shiny tagList
 undisplay <- function(tag) {
   # if not already hidden
   if (
@@ -164,11 +163,7 @@ undisplay <- function(tag) {
   tag
 }
 
-#' Display
-#'
-#'
-#' @param tag html tag
-#'
+#' @importFrom shiny tagList
 display <- function(tag) {
   if (
     !is.null(tag$attribs$style) &&
@@ -187,7 +182,9 @@ display <- function(tag) {
 #'
 #' @param id the id of the element to hide
 #'
+#' @noRd
 #'
+#' @importFrom shiny tags
 jq_hide <- function(id) {
   tags$script(sprintf("$('#%s').hide()", id))
 }
@@ -200,16 +197,17 @@ jq_hide <- function(id) {
 #' @param text the HTLM text to put before the red star
 #'
 #' @return an html element
-#'
+#' @noRd
 #'
 #' @examples
 #' with_red_star("Enter your name here")
+#' @importFrom shiny tags HTML
 with_red_star <- function(text) {
-  tags$span(
+  shiny::tags$span(
     HTML(
       paste0(
         text,
-        tags$span(
+        shiny::tags$span(
           style = "color:red",
           "*"
         )
@@ -225,8 +223,11 @@ with_red_star <- function(text) {
 #' @param times the number of br to return
 #'
 #' @return the number of br specified in times
+#' @noRd
 #'
-#'
+#' @examples
+#' rep_br(5)
+#' @importFrom shiny HTML
 rep_br <- function(times = 1) {
   HTML(rep("<br/>", times = times))
 }
@@ -237,93 +238,62 @@ rep_br <- function(times = 1) {
 #' @param text the text to display
 #'
 #' @return an a tag
-#'
+#' @noRd
 #'
 #' @examples
 #' enurl("https://www.thinkr.fr", "ThinkR")
+#' @importFrom shiny tags
 enurl <- function(url, text) {
   tags$a(href = url, text)
 }
 
-#' Column wrapper
+#' Columns wrappers
 #'
 #' These are convenient wrappers around
-#' `column(12, ...)`
+#' `column(12, ...)`, `column(6, ...)`, `column(4, ...)`...
 #'
-#' @param ... arguments from `shiny::column()`
+#' @noRd
 #'
-#'
-#'
+#' @importFrom shiny column
 col_12 <- function(...) {
   column(12, ...)
 }
 
-#' Column wrapper (10)
-#'
-#' @param ... arguments from `shiny::column()`
-#'
-#'
-#'
+#' @importFrom shiny column
 col_10 <- function(...) {
   column(10, ...)
 }
 
-#' Column wrapper (8)
-#'
-#' @param ... arguments from `shiny::column()`
-#'
-#'
-#'
+#' @importFrom shiny column
 col_8 <- function(...) {
   column(8, ...)
 }
 
-#' Column wrapper (6)
-#'
-#' @param ... arguments from `shiny::column()`
-#'
-#'
-#'
+#' @importFrom shiny column
 col_6 <- function(...) {
   column(6, ...)
 }
 
-#' Column wrapper (4)
-#'
-#' @param ... arguments from `shiny::column()`
-#'
-#'
-#'
+
+#' @importFrom shiny column
 col_4 <- function(...) {
   column(4, ...)
 }
 
-#' Column wrapper (3)
-#'
-#' @param ... arguments from `shiny::column()`
-#'
-#'
-#'
+
+#' @importFrom shiny column
 col_3 <- function(...) {
   column(3, ...)
 }
 
-#' Column wrapper (2)
-#'
-#' @param ... arguments from `shiny::column()`
-#'
-#'
-#'
+
+#' @importFrom shiny column
 col_2 <- function(...) {
   column(2, ...)
 }
 
-#' Column wrapper (1)
-#'
-#' @param ... arguments from `shiny::column()`
-#'
-#'
-#'
+
+#' @importFrom shiny column
 col_1 <- function(...) {
   column(1, ...)
 }
@@ -339,8 +309,7 @@ col_1 <- function(...) {
 #' on the server side.
 #'
 #' @return The modified tag with an extra id and the action button class.
-#'
-#'
+#' @noRd
 #'
 #' @examples
 #' if (interactive()) {
@@ -410,10 +379,11 @@ make_action_button <- function(tag, inputId = NULL) {
 #' #' Load rendered RMarkdown from a file and turn into HTML.
 #' #'
 #' #' @rdname includeRMarkdown
+#' #' @export
 #' #'
-#' #'
-#' #'
-#' #'
+#' #' @importFrom rmarkdown render
+#' #' @importFrom markdown markdownToHTML
+#' #' @importFrom shiny HTML
 #' includeRMarkdown <- function(path){
 #'
 #'   md <- tempfile(fileext = '.md')

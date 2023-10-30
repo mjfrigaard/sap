@@ -1,8 +1,7 @@
 testServer(
   mod_var_server,
   # Add here your module params
-  args = list()
-  , {
+  args = list(), {
     ns <- session$ns
     expect_true(
       inherits(ns, "function")

@@ -2,13 +2,9 @@
 library(rhino)
 library(ggplot2)
 library(shiny)
-library(extrafont)
-library(showtext)
-library(ragg)
-library(curl)
+library(rlang)
+library(shinythemes)
+library(bslib)
 
-# load fonts
-extrafont::loadfonts()
-sysfonts::font_add("Arial", "/Library/Fonts/Arial.ttf")
-showtext::showtext_auto()
+
 

@@ -34,7 +34,7 @@ The branches in this repo contain a Shiny application in the various stages of d
 </div>
 
 <p align="left">
-You can change the branch in the IDE in the <strong>Git</strong> pane.
+You can change the branch in the Posit Workbench IDE's <strong>Git</strong> pane.
 </p>
 
 

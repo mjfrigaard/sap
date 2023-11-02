@@ -76,10 +76,23 @@ You can install the development version of `gap` from
 
 ``` r
 install.packages("devtools")
-#> 
-#> The downloaded binary packages are in
-#>  /var/folders/0x/x5wkbhmx0k74tncn9swz7xpr0000gn/T//Rtmpp0JHZI/downloaded_packages
-devtools::install_github("mjfrigaard/gap")
+devtools::install_github("mjfrigaard/moviesApp")
+```
+
+Checkout the `gap` branch
+
+```bash
+git checkout fw_gap
+```
+
+Load, document, and install the package:
+
+```r
+devtools::load_all()
+
+devtools::document()
+
+devtools::install()
 ```
 
 ## Run

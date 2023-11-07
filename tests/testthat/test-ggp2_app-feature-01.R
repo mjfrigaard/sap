@@ -7,13 +7,13 @@ describe(
   describe(
     "Scenario: Change dropdown values for plotting
         Given the movie review application is loaded
-        When I choose the variable 'Length' for the x-axis
-        And I choose the variable 'Rating' for the y-axis
-        And I choose the variable 'Genre' for the color
-        And I click the 'Remove missing' checkbox", code = {
-    it("Then the scatter plot should show 'Length' on the x-axis
-        And the scatter plot should show 'Rating' on the y-axis
-        And the points on the scatter plot should be colored by 'Genre'
+        When I choose the variable ['Length'] for the x-axis
+        And I choose the variable ['Rating'] for the y-axis
+        And I choose the variable ['Genre'] for the color
+        And I click the ['Remove missing'] checkbox", code = {
+    it("Then the scatter plot should show ['Length'] on the x-axis
+        And the scatter plot should show ['Rating'] on the y-axis
+        And the points on the scatter plot should be colored by ['Genre']
         And the missing values should be removed from the plot", {
             
     test_logger(start = 'ggp2movies-feat-01', msg = "update x, y, z, missing")

@@ -1,12 +1,22 @@
-#' var_input UI Function
+#' Variable input module (UI)
+#' 
+#' @description
+#' `var_input` collects the following graph inputs:
+#'  * `input$x`
+#'  * `input$y`
+#'  * `input$z`
+#'  * `input$alpha`
+#'  * `input$size`
+#'  * `input$plot_title`
 #'
-#' @description A shiny Module.
+#' @param id UI module id
 #'
-#' @param id module namespace id
-#'
-#' @return shiny UI module
-#'
-mod_var_ui <- function(id) {
+#' @return module UI (HTML)
+#' 
+#' @seealso [mod_var_input_server()]
+#' 
+#' @keywords internal
+mod_var_input_ui <- function(id) {
   ns <- NS(id)
   tagList(
     selectInput(
@@ -65,13 +75,24 @@ mod_var_ui <- function(id) {
   )
 }
 
-#' var_input Server Functions
+#' Variable input module (server)
 #'
-#' @param id module namespace id
+#' @param id server module id
+#' 
+#' @seealso [mod_var_input_ui()]
 #'
-#' @return shiny server module
-#'
-mod_var_server <- function(id) {
+#' @return reactive inputs are returned in a `list()`: 
+#'  * `"y" = input$y`
+#'  * `"x" = input$x`
+#'  * `"z" = input$z`
+#'  * `"alpha" = input$alpha`
+#'  * `"size" = input$size`
+#'  * `"plot_title" = input$plot_title`
+#'  
+#' These become in the `var_inputs` argument in [mod_scatter_display_server()]
+#' 
+#' @keywords internal
+mod_var_input_server <- function(id) {
 
   moduleServer(id, function(input, output, session) {
     return(
@@ -88,9 +109,3 @@ mod_var_server <- function(id) {
     )
   })
 }
-
-## To be copied in the UI
-# mod_var_ui("var_input_1")
-
-## To be copied in the server
-# mod_var_server("var_input_1")

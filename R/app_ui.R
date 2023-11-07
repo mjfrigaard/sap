@@ -12,7 +12,7 @@ app_ui <- function(request) {
     fluidPage(
       sidebarLayout(
         sidebarPanel(
-          mod_var_ui("vars"),
+          mod_var_input_ui("vars"),
           h6(
             img(src = "www/shiny.png", width = "15%"),
             em(
@@ -32,7 +32,7 @@ app_ui <- function(request) {
               img(src = "www/golem-hex.png", width = "5%")
             )
           ),
-          mod_plot_ui("plot")
+          mod_scatter_display_ui("plot")
         )
       )
     )

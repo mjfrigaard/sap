@@ -18,18 +18,13 @@ test_that("app server", {
   }
 })
 
-test_that(
-  "app_sys works",
-  {
+test_that("app_sys works", {
     expect_true(
       app_sys("golem-config.yml") != ""
     )
-  }
-)
+})
 
-test_that(
-  "golem-config works",
-  {
+test_that("golem-config works",{
     config_file <- app_sys("golem-config.yml")
     skip_if(config_file == "")
 
@@ -47,8 +42,7 @@ test_that(
         file = config_file
       )
     )
-  }
-)
+})
 
 # Configure this test to fit your need.
 # testServer() function makes it possible to test code in server functions and modules, without needing to run the full Shiny application

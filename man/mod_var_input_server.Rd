@@ -4,10 +4,12 @@
 \alias{mod_var_input_server}
 \title{Variable input module (server)}
 \usage{
-mod_var_input_server(id)
+mod_var_input_server(id, .dev = TRUE)
 }
 \arguments{
 \item{id}{server module id}
+
+\item{.dev}{view dev output}
 }
 \value{
 reactive inputs are returned in a \code{list()}:

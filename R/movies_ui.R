@@ -36,7 +36,6 @@
 #'
 #' @return `ui` argument in `shinyApp()`
 #'
-#' @export
 #'
 movies_ui <- function(bslib = FALSE) {
   addResourcePath(
@@ -77,7 +76,7 @@ movies_ui <- function(bslib = FALSE) {
               fluidRow(
                 column(
                   width = 12,
-                  code('reactive values from app'),
+                  code('reactiveValues() from server'),
                   # output for reactive values
                   verbatimTextOutput("vals")
                 )
@@ -111,7 +110,7 @@ movies_ui <- function(bslib = FALSE) {
             fluidRow(
               column(
                 width = 12,
-                code('reactive values from app'),
+                code('reactiveValues() from server'),
                 # output for reactive values
                 verbatimTextOutput("vals")
               )

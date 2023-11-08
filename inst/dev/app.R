@@ -1,7 +1,7 @@
 options(scipen = 100000000)
 
-make_tidy_ggp2_movies <- function(movies_data_url) {
-  movies_data <- read.csv(file = movies_data_url)
+make_dev_ggp2_movies <- function(con) {
+  movies_data <- read.csv(file = con)
   # specify genre columns
   genre_cols <- c(
     "Action", "Animation",
@@ -97,7 +97,7 @@ dev_mod_vars_ui <- function(id) {
       min = 0, max = 5, step = 0.5,
       value = 2.5
     ),
-    verbatimTextOutput(ns("input_vals"))
+    verbatimTextOutput(ns("vals"))
   )
 }
 
@@ -132,18 +132,19 @@ dev_mod_scatter_ui <- function(id) {
   )
 }
 
-dev_mod_scatter_server <- function(id, userData, con, .dev = FALSE) {
+dev_mod_scatter_server <- function(id, rVals, data_fun, con, .dev = FALSE) {
   
   moduleServer(id, function(input, output, session) {
     
     if (.dev) {
       # view output in the UI
       output$data <- renderPrint({
-        userData$make_tidy_ggp2_movies
+        data_fun
       })
     }
 
-    all_data <- userData$make_tidy_ggp2_movies(con)
+    # use data_fun() function on con
+    all_data <- data_fun(con)
 
     # build reactive data based on missing checkbox input
     graph_data <- reactive({
@@ -157,13 +158,13 @@ dev_mod_scatter_server <- function(id, userData, con, .dev = FALSE) {
       bindEvent(input$missing)
 
     inputs <- reactive({
-      plot_title <- tools::toTitleCase(userData$selected_vars()[["plot_title"]])
+      plot_title <- tools::toTitleCase(rVals$inputs()[["plot_title"]])
       list(
-        x = userData$selected_vars()[["x"]],
-        y = userData$selected_vars()[["y"]],
-        z = userData$selected_vars()[["z"]],
-        alpha = userData$selected_vars()[["alpha"]],
-        size = userData$selected_vars()[["size"]],
+        x = rVals$inputs()[["x"]],
+        y = rVals$inputs()[["y"]],
+        z = rVals$inputs()[["z"]],
+        alpha = rVals$inputs()[["alpha"]],
+        size = rVals$inputs()[["size"]],
         plot_title = plot_title
       )
     })
@@ -218,6 +219,7 @@ devUI <- function() {
       ),
       bslib::layout_sidebar(
         sidebar = bslib::sidebar(
+          width = 300,
           dev_mod_vars_ui("vars")
         ),
         bslib::card(
@@ -235,6 +237,9 @@ devUI <- function() {
           bslib::card_body(
             fluidRow(
               dev_mod_scatter_ui("plot")
+            ),
+            fluidRow(
+              verbatimTextOutput("vals")
             )
           )
         )
@@ -244,18 +249,28 @@ devUI <- function() {
 }
 
 devServer <- function(input, output, session) {
-  # create user data
-  userData <- session$userData
+  
   # add function to userData
-  userData$make_tidy_ggp2_movies <- make_tidy_ggp2_movies
-  # add reactive variable inputs to userData
-  userData$selected_vars <- moviesApp::mod_var_input_server("vars")
+  session$userData$make_dev_ggp2_movies <- make_dev_ggp2_movies
+  
+  # create reactive values
+  rVals <- reactiveValues()
+  
+  # assign inputs to rVals
+  rVals$inputs <- moviesApp::mod_var_input_server("vars", .dev = TRUE)
+  
+  # view output in the UI
+  # output$vals <- renderPrint({
+  #   str(session)
+  # })
 
   dev_mod_scatter_server("plot",
-    userData = userData, # pass userData to module
-    con = "https://raw.githubusercontent.com/hadley/ggplot2movies/master/data-raw/movies.csv",
-    .dev = TRUE
+    rVals = rVals,
+    data_fun = session$userData$make_dev_ggp2_movies, 
+    con = "https://bit.ly/3FQYR8j",
+    .dev = FALSE
   )
+  
 }
 
 shinyApp(

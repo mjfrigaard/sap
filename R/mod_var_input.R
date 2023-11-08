@@ -70,13 +70,16 @@ mod_var_input_ui <- function(id) {
       inputId = ns("plot_title"),
       label = "Plot title",
       placeholder = "Enter plot title"
-    )
+    ),
+    code('reactiveValuesToList() from input module'),
+    verbatimTextOutput(ns('vals'))
   )
 }
 
 #' Variable input module (server)
 #'
 #' @param id server module id
+#' @param .dev view dev output
 #' 
 #' @seealso [mod_var_input_ui()]
 #'
@@ -91,18 +94,24 @@ mod_var_input_ui <- function(id) {
 #' These become in the `var_inputs` argument in [mod_scatter_display_server()]
 #' 
 #' @export
-mod_var_input_server <- function(id) {
+mod_var_input_server <- function(id, .dev = TRUE) {
 
   moduleServer(id, function(input, output, session) {
     
+    if (.dev) {
+      # view output in the UI
+      output$vals <- renderPrint({
+        x <- reactiveValuesToList(input, all.names = TRUE)
+        str(x)
+      })
+    }
+    
+    # return reactives
+    return(
       reactive({
-        list("y" = input$y,
-             "x" = input$x,
-             "z" = input$z,
-             "alpha" = input$alpha,
-             "size" = input$size,
-             "plot_title" = input$plot_title)
-              })
+        reactiveValuesToList(input, all.names = TRUE)
+      })
+    )
 
   })
 }

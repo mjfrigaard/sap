@@ -4,12 +4,14 @@
 \alias{mod_scatter_display_server}
 \title{Scatter plot display module (server)}
 \usage{
-mod_scatter_display_server(id, var_inputs)
+mod_scatter_display_server(id, rVals, .dev = FALSE)
 }
 \arguments{
 \item{id}{server module id}
 
-\item{var_inputs}{returned reactive list from \code{\link[=mod_var_input_server]{mod_var_input_server()}}.}
+\item{rVals}{app \code{reactiveValues()}}
+
+\item{.dev}{view dev output}
 }
 \value{
 rendered plot and title output from \code{\link[=scatter_plot]{scatter_plot()}}

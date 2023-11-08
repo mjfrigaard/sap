@@ -40,9 +40,18 @@
 #' @export
 #' 
 movies_server <- function(input, output, session) {
+  
+      # create reactive values
+      rVals <- reactiveValues()
+      # add data to rVals
+      rVals$movies_data <- moviesApp::movies
+      # view output in the UI
+      output$vals <- renderPrint({
+        str(rVals$movies_data)
+      })
 
-      selected_vars <- mod_var_input_server("vars")
+      rVals$selected_vars <- mod_var_input_server("vars")
 
-      mod_scatter_display_server("plot", var_inputs = selected_vars)
+      mod_scatter_display_server("plot", rVals = rVals, .dev = FALSE)
       
 }

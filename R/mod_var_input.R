@@ -94,17 +94,15 @@ mod_var_input_ui <- function(id) {
 mod_var_input_server <- function(id) {
 
   moduleServer(id, function(input, output, session) {
-    return(
+    
       reactive({
-        list(
-          "y" = input$y,
-          "x" = input$x,
-          "z" = input$z,
-          "alpha" = input$alpha,
-          "size" = input$size,
-          "plot_title" = input$plot_title
-        )
-      })
-    )
+        list("y" = input$y,
+             "x" = input$x,
+             "z" = input$z,
+             "alpha" = input$alpha,
+             "size" = input$size,
+             "plot_title" = input$plot_title)
+              })
+
   })
 }

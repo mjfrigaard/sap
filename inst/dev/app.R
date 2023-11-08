@@ -132,11 +132,16 @@ dev_mod_scatter_ui <- function(id) {
   )
 }
 
-dev_mod_scatter_server <- function(id, userData, con) {
+dev_mod_scatter_server <- function(id, userData, con, .dev = FALSE) {
+  
   moduleServer(id, function(input, output, session) {
-    output$data <- renderPrint({
-      userData$make_tidy_ggp2_movies
-    })
+    
+    if (.dev) {
+      # view output in the UI
+      output$data <- renderPrint({
+        userData$make_tidy_ggp2_movies
+      })
+    }
 
     all_data <- userData$make_tidy_ggp2_movies(con)
 
@@ -243,12 +248,13 @@ devServer <- function(input, output, session) {
   userData <- session$userData
   # add function to userData
   userData$make_tidy_ggp2_movies <- make_tidy_ggp2_movies
-
+  # add reactive variable inputs to userData
   userData$selected_vars <- moviesApp::mod_var_input_server("vars")
 
   dev_mod_scatter_server("plot",
-    userData = userData,
-    con = "https://raw.githubusercontent.com/hadley/ggplot2movies/master/data-raw/movies.csv"
+    userData = userData, # pass userData to module
+    con = "https://raw.githubusercontent.com/hadley/ggplot2movies/master/data-raw/movies.csv",
+    .dev = TRUE
   )
 }
 

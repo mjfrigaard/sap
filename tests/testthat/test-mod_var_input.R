@@ -26,47 +26,46 @@ describe(
        And the opacity of the points should be set to [0.5]
        And the size of the points should be set to [2]
        And the plot title should be [Enter plot title]", code = {
+         
+      shiny::testServer(app = mod_var_input_server, expr = {
+          test_logger(start = "var_inputs", msg = "initial returned()")
+          # set inputs
+          session$setInputs(y = "imdb_rating",
+                            x = "audience_score",
+                            z = "mpaa_rating",
+                            alpha = 0.5,
+                            size = 2,
+                            plot_title = "Enter plot title")
+          testthat::expect_equal(object = session$returned(),
+            expected = list(y = "imdb_rating",
+                            x = "audience_score",
+                            z = "mpaa_rating",
+                            alpha = 0.5,
+                            size = 2,
+                            plot_title = "Enter plot title"))
+          
+          test_logger(end = "var_inputs", msg = "initial returned()")
+          # flush reactives
+          session$flushReact()
+          test_logger(start = "var_inputs", msg = "updated returned()")
+          # set inputs
+          session$setInputs(y = "critics_score",
+                            x = "runtime",
+                            z = "title_type",
+                            alpha = 0.5,
+                            size = 2,
+                            plot_title = "Enter plot title")
     
-  })
-    shiny::testServer(app = mod_var_input_server, expr = {
-      test_logger(start = "var_inputs", msg = "returned()")
-      # set inputs
-      session$setInputs(y = "imdb_rating",
-                        x = "audience_score",
-                        z = "mpaa_rating",
-                        alpha = 0.5,
-                        size = 2,
-                        plot_title = "Enter plot title")
-      testthat::expect_equal(object = session$returned(),
-        expected = list(y = "imdb_rating",
-                        x = "audience_score",
-                        z = "mpaa_rating",
-                        alpha = 0.5,
-                        size = 2,
-                        plot_title = "Enter plot title"))
-      
-      test_logger(end = "var_inputs", msg = "returned()")
-      # flush reactives
-      session$flushReact()
-      
-      test_logger(start = "var_inputs", msg = "updated returned()")
-      # set inputs
-      session$setInputs(y = "critics_score",
-                        x = "runtime",
-                        z = "title_type",
-                        alpha = 0.5,
-                        size = 2,
-                        plot_title = "Enter plot title")
-
-      testthat::expect_equal(object = session$returned(),
-        expected = list(y = "critics_score",
-                        x = "runtime",
-                        z = "title_type",
-                        alpha = 0.5,
-                        size = 2,
-                        plot_title = "Enter plot title"))
-      
-      test_logger(end = "var_inputs", msg = "updated returned()")
-    })
+          testthat::expect_equal(object = session$returned(),
+            expected = list(y = "critics_score",
+                            x = "runtime",
+                            z = "title_type",
+                            alpha = 0.5,
+                            size = 2,
+                            plot_title = "Enter plot title"))
+          
+          test_logger(end = "var_inputs", msg = "updated returned()")
+        })
+     })
   })
 })

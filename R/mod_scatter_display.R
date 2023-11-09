@@ -18,10 +18,7 @@ mod_scatter_display_ui <- function(id) {
           href = "https://rstudio-education.github.io/shiny-course/"),
                       "tutorial"))
       ),
-    plotOutput(outputId = ns("scatterplot")),
-    # .dev output ----
-    code('inputs() from display module'),
-    verbatimTextOutput(ns("display_vals"))
+    plotOutput(outputId = ns("scatterplot"))
   )
 }
 
@@ -29,8 +26,7 @@ mod_scatter_display_ui <- function(id) {
 #' 
 #'
 #' @param id server module id 
-#' @param rVals app `reactiveValues()`
-#' @param .dev view dev output
+#' @param var_inputs returned reactive list from [mod_var_input_server()].
 #' 
 #' @section Referring to `var_inputs`: 
 #' Refer to the reactive returned values from `mod_var_input_server()` as:
@@ -46,26 +42,24 @@ mod_scatter_display_ui <- function(id) {
 #' 
 #' @family {"scatter plot module functions"}
 #' 
-mod_scatter_display_server <- function(id, rVals, .dev = FALSE) {
-  
+mod_scatter_display_server <- function(id, var_inputs) {
   moduleServer(id, function(input, output, session) {
 
     inputs <- reactive({
-      plot_title <- tools::toTitleCase(rVals$inputs()[['plot_title']])
+      plot_title <- tools::toTitleCase(var_inputs()$plot_title)
         list(
-          x = rVals$inputs()[['x']],
-          y = rVals$inputs()[['y']],
-          z = rVals$inputs()[['z']],
-          alpha = rVals$inputs()[['alpha']],
-          size = rVals$inputs()[['size']],
+          x = var_inputs()$x,
+          y = var_inputs()$y,
+          z = var_inputs()$z,
+          alpha = var_inputs()$alpha,
+          size = var_inputs()$size,
           plot_title = plot_title
         )
     })
-    
     output$scatterplot <- renderPlot({
       plot <- scatter_plot(
         # data --------------------
-        df = moviesApp::movies,
+        df = movies,
         x_var = inputs()$x,
         y_var = inputs()$y,
         col_var = inputs()$z,
@@ -81,15 +75,6 @@ mod_scatter_display_server <- function(id, rVals, .dev = FALSE) {
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "bottom")
     })
-    
-    if (.dev) {
-      # view output in the UI
-      output$display_vals <- renderPrint({
-        str(
-          rVals$inputs()
-          )
-      })
-    }
     
     exportTestValues(
              x = { inputs()$x },

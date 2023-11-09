@@ -1,8 +1,8 @@
 testthat::describe(
-  "Feature 1.2: Scatter Plot Configuration in Movie Review Application
-    As a user who accesses the movie review application,
-    I want the initial scatter plot pre-configured with variables and aesthetics,
-    So that I can immediately see a meaningful visualization.",
+  "Feature: Scatter Plot Configuration in Movie Review Application
+      As a user 
+      I want the initial graph pre-configured with variables and aesthetics,
+      So that I can immediately see a meaningful visualization.",
   code = {
     testthat::it(
       "Scenario: Scatter plot initial x, y, color values 
@@ -12,7 +12,8 @@ testthat::describe(
          And the scatter plot should show 'Audience Score' on the y-axis
          And the points on the scatter plot should be colored by 'MPAA Rating'
          And the size of the points should be set to '2'
-         And the opacity of the points should be set to '0.5'",
+         And the opacity of the points should be set to '0.5'
+         And the plot title should be 'Enter plot title'",
       code = {
         shiny::testServer(app = mod_scatter_display_server,
           args = list(var_inputs =
@@ -28,11 +29,7 @@ testthat::describe(
                 )
           ),
           expr = {
-            
-            test_logger(
-              start = "display", 
-              msg = "selected_vars initial values")
-            
+            test_logger(start = "display", msg = "selected_vars initial values")
             testthat::expect_equal(
               object = inputs(),
               expected = list(
@@ -44,16 +41,15 @@ testthat::describe(
                     plot_title = "Enter Plot Title"
                 )
             )
-            test_logger(end = "display", 
-              msg = "selected_vars initial values")
+            test_logger(end = "display", msg = "selected_vars initial values")
           })
       })
   })
 
 
 testthat::describe(
-  "Feature F1.3: Scatter plot data visualization (outputs rendering)
-     As a film data analyst
+  "Feature: Scatter plot data visualization outputs
+     As a user
      I want to explore continuous and categorical variables in the movie review data
      So that I can analyze relationships between movie reivew metrics
     
@@ -65,6 +61,7 @@ testthat::describe(
      And I choose the size of the points to be 3
      And I choose the opacity of the points to be 0.7
      And I choose the title of the plot to be 'New plot title'", code = {
+       
   testthat::it("Then the scatter plot should show 'IMDB number of votes' on the x-axis
                 And the scatter plot should show 'Critics Score' on the y-axis
                 And the points on the scatter plot should be colored by 'Genre'
@@ -84,9 +81,7 @@ testthat::describe(
                     )
             )), expr = {
 
-        test_logger(
-          start = "display", 
-          msg = "scatterplot[['alt']] = 'Plot object'")
+        test_logger(start = "display", msg = "scatterplot[['alt']] = 'Plot object'")
               
         testthat::expect_equal(
           object = output$scatterplot[["alt"]],
@@ -95,8 +90,7 @@ testthat::describe(
         test_logger(end = "display", 
           msg = "scatterplot[['alt']] = 'Plot object'")
 
-        test_logger(start = "display", 
-          msg = "inputs() creates ggplot2 object")
+        test_logger(start = "display", msg = "inputs() creates ggplot2 object")
         
         plot <- scatter_plot(movies,
           x_var = inputs()$x,
@@ -116,6 +110,21 @@ testthat::describe(
         
         test_logger(end = "display", 
           msg = "inputs() creates ggplot2 object")
+        
+        # test_logger(start = "mod_scatter_display", 
+        #             msg = "output$scatterplot is a list")
+        # testthat::expect_true(
+        #   object = is.list(output$scatterplot))
+        # test_logger(end = "mod_scatter_display", 
+        #             msg = "output$scatterplot is a list")
+
+        # test_logger(start = "mod_scatter_display", 
+        #             msg = "names in output$scatterplot")
+        # testthat::expect_equal(
+        #   object = names(output$scatterplot),
+        #   expected = c("src", "width", "height", "alt", "coordmap"))
+        # test_logger(end = "names in output$scatterplot")
+        # print(plot)
 
       })
   })

@@ -4,7 +4,7 @@
 \alias{mod_var_input_server}
 \title{Variable input module (server)}
 \usage{
-mod_var_input_server(id, .dev = TRUE)
+mod_var_input_server(id)
 }
 \arguments{
 \item{id}{server module id}

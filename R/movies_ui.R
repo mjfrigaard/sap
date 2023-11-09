@@ -73,14 +73,6 @@ movies_ui <- function(bslib = FALSE) {
             bslib::card_body(
               fluidRow(
                 mod_scatter_display_ui("plot")
-                ),
-              fluidRow(
-                column(
-                  width = 12,
-                  code('reactiveValues() from server'),
-                  # output for reactive values
-                  verbatimTextOutput("vals")
-                )
               )
             )
           )
@@ -107,15 +99,7 @@ movies_ui <- function(bslib = FALSE) {
             mod_var_input_ui("vars")
           ),
           mainPanel(
-            mod_scatter_display_ui("plot"),
-            fluidRow(
-              column(
-                width = 12,
-                code('reactiveValues() from server'),
-                # output for reactive values
-                verbatimTextOutput("vals")
-              )
-            )
+            mod_scatter_display_ui("plot")
           )
         )
       )

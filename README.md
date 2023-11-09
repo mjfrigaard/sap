@@ -60,24 +60,7 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 ## Tests 
 
-### `12e_tests-system`
+### `spec_topic-reactiveValues`
 
-[`12e_tests-system`](https://github.com/mjfrigaard/moviesApp/tree/12e_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html)
+[`spec_topic-reactiveValues`](https://github.com/mjfrigaard/moviesApp/tree/spec_topic-reactiveValues) gives examples of using `reactiveValues()` and `session$userData`
 
-```
-tests
-├── testthat
-│   ├── fixtures
-│   │   ├── make-tidy_ggp2_movies.R
-│   │   └── tidy_ggp2_movies.rds
-│   ├── helper.R
-│   ├── setup-shinytest2.R
-│   ├── test-feature-01.R
-│   ├── test-mod_scatter_display.R
-│   ├── test-mod_var_input.R
-│   ├── test-scatter_plot.R
-│   └── test-shinytest2.R
-└── testthat.R
-
-3 directories, 10 files
-```

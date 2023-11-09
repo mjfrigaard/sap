@@ -36,6 +36,7 @@
 #'
 #' @return `ui` argument in `shinyApp()`
 #'
+#' @export
 #'
 movies_ui <- function(bslib = FALSE) {
   addResourcePath(

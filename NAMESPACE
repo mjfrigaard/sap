@@ -2,8 +2,12 @@
 
 export(display_type)
 export(ggp2_movies_app)
+export(make_changed_rVals_inputs)
+export(make_initial_rVals_inputs)
 export(mod_var_input_server)
 export(movies_app)
+export(movies_server)
+export(movies_ui)
 export(scatter_plot)
 import(shiny)
 importFrom(rlang,.data)

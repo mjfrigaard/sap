@@ -11,8 +11,8 @@
 #'
 #' @return shiny app
 #'
-#'
 #' @export
+#'
 ggp2_movies_app <- function(options = list(), run = "w", ...) {
   if (interactive()) {
     display_type(run = run)

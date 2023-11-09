@@ -58,9 +58,9 @@ git checkout <branch_name>
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## Tests 
+## `sesssion$userData`
 
-### `spec_topic-reactiveValues-userData`
+### `spec_topic-userData`
 
-[`spec_topic-reactiveValues-userData`](https://github.com/mjfrigaard/moviesApp/tree/spec_topic-reactiveValues-userData) gives examples of using `reactiveValues()` and `session$userData`
+[`spec_topic-userData`](https://github.com/mjfrigaard/moviesApp/tree/spec_topic-userData) gives examples of using `session$userData` to store non-reactive values.
 

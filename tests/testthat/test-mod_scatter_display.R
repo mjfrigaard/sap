@@ -29,11 +29,7 @@ testthat::describe(
                 )
           ),
           expr = {
-            
-            test_logger(
-              start = "display", 
-              msg = "selected_vars initial values")
-            
+            test_logger(start = "display", msg = "selected_vars initial values")
             testthat::expect_equal(
               object = inputs(),
               expected = list(
@@ -45,8 +41,7 @@ testthat::describe(
                     plot_title = "Enter Plot Title"
                 )
             )
-            test_logger(end = "display", 
-              msg = "selected_vars initial values")
+            test_logger(end = "display", msg = "selected_vars initial values")
           })
       })
   })
@@ -86,9 +81,7 @@ testthat::describe(
                     )
             )), expr = {
 
-        test_logger(
-          start = "display", 
-          msg = "scatterplot[['alt']] = 'Plot object'")
+        test_logger(start = "display", msg = "scatterplot[['alt']] = 'Plot object'")
               
         testthat::expect_equal(
           object = output$scatterplot[["alt"]],
@@ -97,8 +90,7 @@ testthat::describe(
         test_logger(end = "display", 
           msg = "scatterplot[['alt']] = 'Plot object'")
 
-        test_logger(start = "display", 
-          msg = "inputs() creates ggplot2 object")
+        test_logger(start = "display", msg = "inputs() creates ggplot2 object")
         
         plot <- scatter_plot(movies,
           x_var = inputs()$x,

@@ -1,49 +1,5 @@
 options(scipen = 100000000)
 
-make_dev_ggp2_movies <- function(con) {
-  movies_data <- read.csv(file = con)
-  # specify genre columns
-  genre_cols <- c(
-    "Action", "Animation",
-    "Comedy", "Drama",
-    "Documentary", "Romance",
-    "Short"
-  )
-  # calculate row sum for genres
-  movies_data$genre_count <- rowSums(movies_data[, genre_cols])
-  # create aggregate 'genres' for multiple categories
-  movies_data$genres <- apply(
-    X = movies_data[, genre_cols],
-    MARGIN = 1,
-    FUN = function(row) {
-      genres <- names(row[row == 1])
-      if (length(genres) > 0) {
-        return(paste(genres, collapse = ", "))
-      } else {
-        return(NA)
-      }
-    }
-  )
-  # format variables
-  movies_data$genre_count <- as.integer(movies_data$genre_count)
-  movies_data$genre <- ifelse(test = movies_data$genre_count > 1,
-    yes = "Multiple genres",
-    no = movies_data$genres
-  )
-  movies_data$genre <- as.factor(movies_data$genre)
-  movies_data$mpaa <- factor(movies_data$mpaa,
-    levels = c("G", "PG", "PG-13", "R", "NC-17"),
-    labels = c("G", "PG", "PG-13", "R", "NC-17")
-  )
-
-  # reduce columns to only those in graph
-  movies_data[, c(
-    "title", "year", "length", "budget",
-    "rating", "votes", "mpaa", "genre_count",
-    "genres", "genre"
-  )]
-}
-
 dev_mod_vars_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -96,8 +52,7 @@ dev_mod_vars_ui <- function(id) {
       label = "Size:",
       min = 0, max = 5, step = 0.5,
       value = 2.5
-    ),
-    verbatimTextOutput(ns("vals"))
+    )
   )
 }
 
@@ -116,35 +71,21 @@ dev_mod_scatter_ui <- function(id) {
         )
       )
     ),
-    div(
+    tags$div(
       checkboxInput(
         inputId = ns("missing"),
         label = "Remove missing",
         value = FALSE
-      )
-    ),
-    div(
-      plotOutput(outputId = ns("scatterplot"))
       ),
-    div(
-      verbatimTextOutput(ns("data"))
+      plotOutput(outputId = ns("scatterplot"))
     )
   )
 }
 
-dev_mod_scatter_server <- function(id, rVals, data_fun, con, .dev = FALSE) {
-  
+dev_mod_scatter_server <- function(id, var_inputs) {
   moduleServer(id, function(input, output, session) {
-    
-    if (.dev) {
-      # view output in the UI
-      output$data <- renderPrint({
-        data_fun
-      })
-    }
-
-    # use data_fun() function on con
-    all_data <- data_fun(con)
+    # load alternate data
+    all_data <- fst::read_fst("tidy_movies.fst")
 
     # build reactive data based on missing checkbox input
     graph_data <- reactive({
@@ -158,40 +99,38 @@ dev_mod_scatter_server <- function(id, rVals, data_fun, con, .dev = FALSE) {
       bindEvent(input$missing)
 
     inputs <- reactive({
-      plot_title <- tools::toTitleCase(rVals$inputs()[["plot_title"]])
+      plot_title <- tools::toTitleCase(var_inputs()$plot_title)
       list(
-        x = rVals$inputs()[["x"]],
-        y = rVals$inputs()[["y"]],
-        z = rVals$inputs()[["z"]],
-        alpha = rVals$inputs()[["alpha"]],
-        size = rVals$inputs()[["size"]],
+        x = var_inputs()$x,
+        y = var_inputs()$y,
+        z = var_inputs()$z,
+        alpha = var_inputs()$alpha,
+        size = var_inputs()$size,
         plot_title = plot_title
       )
     })
 
     observe({
-      output$scatterplot <- renderPlot({
-        plot <- moviesApp::scatter_plot(
-          df = graph_data(),
-          x_var = inputs()$x,
-          y_var = inputs()$y,
-          col_var = inputs()$z,
-          alpha_var = inputs()$alpha,
-          size_var = inputs()$size
-        )
-        plot +
-          ggplot2::labs(
-            title = inputs()$plot_title,
-            x = stringr::str_replace_all(
-              tools::toTitleCase(inputs()$x), "_", " "
-            ),
-            y = stringr::str_replace_all(
-              tools::toTitleCase(inputs()$y), "_", " "
-            )
-          ) +
-          ggplot2::theme_minimal() +
-          ggplot2::theme(legend.position = "bottom")
-      })
+        output$scatterplot <- renderPlot({
+          plot <- moviesApp::scatter_plot(
+            df = graph_data(),
+            x_var = inputs()$x,
+            y_var = inputs()$y,
+            col_var = inputs()$z,
+            alpha_var = inputs()$alpha,
+            size_var = inputs()$size
+          )
+          plot +
+            ggplot2::labs(
+              title = inputs()$plot_title,
+              x = stringr::str_replace_all(
+                      tools::toTitleCase(inputs()$x), "_", " "),
+              y = stringr::str_replace_all(
+                      tools::toTitleCase(inputs()$y), "_", " ")
+            ) +
+            ggplot2::theme_minimal() +
+            ggplot2::theme(legend.position = "bottom")
+        })
     }) |>
       # bind this to variable inputs and missing checkbox output
       bindEvent(graph_data(), inputs())
@@ -199,12 +138,11 @@ dev_mod_scatter_server <- function(id, rVals, data_fun, con, .dev = FALSE) {
 }
 
 devUI <- function() {
-  addResourcePath(
-    prefix = "dev",
-    directoryPath = system.file("dev",
-      package = "moviesApp"
+    addResourcePath(
+      prefix = "dev",
+      directoryPath = system.file("dev", 
+                                  package = "moviesApp")
     )
-  )
   tagList(
     bslib::page_fillable(
       title = "Movie Reviews (ggplot2movies)",
@@ -219,28 +157,22 @@ devUI <- function() {
       ),
       bslib::layout_sidebar(
         sidebar = bslib::sidebar(
-          width = 300,
           dev_mod_vars_ui("vars")
         ),
         bslib::card(
           full_screen = TRUE,
           bslib::card_header(
-            div(
-              img(
-                src = "dev/imdb.png",
-                height = 40,
-                width = 70,
-                style = "margin:10px 10px"
+              tags$div(
+                tags$img(
+                  src = "dev/imdb.png",
+                  height = 80,
+                  width = 110,
+                  style = "margin:10px 10px"
+                )
               )
-            )
-          ),
-          bslib::card_body(
-            fluidRow(
-              dev_mod_scatter_ui("plot")
             ),
-            fluidRow(
-              verbatimTextOutput("vals")
-            )
+          bslib::card_body(
+            dev_mod_scatter_ui("plot")
           )
         )
       )
@@ -250,26 +182,9 @@ devUI <- function() {
 
 devServer <- function(input, output, session) {
   
-  # add function to userData
-  session$userData$make_dev_ggp2_movies <- make_dev_ggp2_movies
-  
-  # create reactive values
-  rVals <- reactiveValues()
-  
-  # assign inputs to rVals
-  rVals$inputs <- moviesApp::mod_var_input_server("vars", .dev = TRUE)
-  
-  # view output in the UI
-  # output$vals <- renderPrint({
-  #   str(session)
-  # })
+  selected_vars <- moviesApp::mod_var_input_server("vars")
 
-  dev_mod_scatter_server("plot",
-    rVals = rVals,
-    data_fun = session$userData$make_dev_ggp2_movies, 
-    con = "https://bit.ly/3FQYR8j",
-    .dev = FALSE
-  )
+  dev_mod_scatter_server("plot", var_inputs = selected_vars)
   
 }
 

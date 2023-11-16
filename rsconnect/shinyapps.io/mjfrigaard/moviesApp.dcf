@@ -1,0 +1,13 @@
+name: moviesApp
+title: moviesApp
+username: mjfrigaard
+account: mjfrigaard
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10539955
+bundleId: 7932548
+url: https://mjfrigaard.shinyapps.io/moviesApp/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: inst/extdata/movies.fst|man

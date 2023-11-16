@@ -10,6 +10,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 LazyData: true
 Imports: 
+    bslib,
     ggplot2,
     rlang,
     shiny,
@@ -17,4 +18,3 @@ Imports:
     stringr
 Depends: 
     R (>= 2.10)
-

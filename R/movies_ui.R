@@ -4,7 +4,7 @@
 #' 
 #' @usage NULL
 #' 
-#' @param bslib use bslib layout?
+#' @param bslib use `bslib` layout?
 #' 
 #' @details
 #' The [movies_app()] function is as a wrapper for `shinyApp()`: 
@@ -59,10 +59,12 @@ movies_ui <- function(bslib = FALSE) {
       ),
       sidebarLayout(
         sidebarPanel(
-          mod_var_input_ui("vars")
+          mod_var_input_ui("vars"),
         ),
         mainPanel(
-          mod_scatter_display_ui("plot")
+          text_logo(),
+          mod_scatter_display_ui("plot"),
+          super_text_logo()
         )
       )
     )
@@ -82,7 +84,8 @@ movies_ui <- function(bslib = FALSE) {
         ),
         bslib::layout_sidebar(
           sidebar = bslib::sidebar(
-            mod_var_input_ui("vars")
+            mod_var_input_ui("vars"),
+            text_logo(size = 'h5')
           ),
           bslib::card(
             full_screen = TRUE,
@@ -95,7 +98,9 @@ movies_ui <- function(bslib = FALSE) {
                 )
               ),
              bslib::card_body(
-              mod_scatter_display_ui("plot")
+               div(
+                 mod_scatter_display_ui("plot") 
+              )
             )
           )
         )

@@ -4,7 +4,7 @@
 \alias{movies_ui}
 \title{Movies UI function}
 \arguments{
-\item{bslib}{use bslib layout?}
+\item{bslib}{use \code{bslib} layout?}
 }
 \value{
 \code{ui} argument in \code{shinyApp()}

@@ -1,0 +1,39 @@
+#' Month birthstone (UI)
+#'
+#' @param id module ID
+#'
+#' @return birthstone UI module elements
+#' @export
+#'
+birthstoneUI <- function(id) {
+  p(
+    "The birthstone for ", 
+    textOutput(NS(id, "month"), inline = TRUE),
+    " is ", 
+    textOutput(NS(id, "stone"), inline = TRUE)
+  )
+}
+
+#' Month birthstone (server)
+#'
+#' @param id module ID
+#' @param month month input
+#'
+#' @return `month` and `stone` values from `stones` data.
+#' 
+#' @export
+#'
+birthstoneServer <- function(id, month) {
+  
+  stopifnot(is.reactive(month))
+
+  moduleServer(id, function(input, output, session) {
+    
+    stone <- reactive(stones$stone[stones$month == month()])
+    
+    output$month <- renderText(month())
+    
+    output$stone <- renderText(stone())
+    
+  })
+}

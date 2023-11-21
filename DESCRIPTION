@@ -1,21 +1,22 @@
-Package: moviesApp
-Title: movies app
+Package: monthAppPkg
+Title: An example app-pkg
 Version: 0.0.0.9000
-Author: John Smith <John.Smith@email.io> [aut, cre]
-Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review shiny application.
-License: GPL-3
+Author: Jane Doe [aut, cre]
+Maintainer: Jane Doe <Jane.Doeh@email.io>
+Description: A shiny application built inside an R package.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-LazyData: true
-Imports: 
-    bslib,
-    ggplot2,
-    rlang,
-    sass,
-    shiny,
-    shinythemes,
-    stringr
 Depends: 
     R (>= 2.10)
+LazyData: true
+Imports: 
+    pkgload,
+    shiny
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

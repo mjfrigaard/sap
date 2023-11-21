@@ -1,77 +1,23 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
-<h3 align="center"> A Shiny App-Package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
 
-<hr>
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# moviesApp
+# `monthAppPkg`
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+<!-- badges: start -->
+<!-- badges: end -->
 
-**Movie review data application**
+The goal of `monthAppPkg` is to provide an example app-package (i.e., a
+shiny application stored in an R package).
 
-The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
+Read more at [mastering-shiny.org](https://mastering-shiny.org/) and
+[r-pkgs.org](https://r-pkgs.org/)
 
-## Using code examples
+## Installation
 
-The branches in this repo contain a Shiny application in the various stages of development. If you're following along in the <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/title-slide">workshop slides</a>, the branch name is in the slide footer:
+You can install the development version of `monthAppPkg` from
+[GitHub](https://github.com/) with:
 
-<div>
-<p align="center"> 
-  <img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" alt="Workshop slide" width="80%">
-</p>
-</div>
-
-<p align="left">
-  If you're following along in the <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a> book, look for the Git Branch icon in the margin:
-  </p>
-
-<div>
-
-<p align="right"> 
-  <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" alt="Git branch icon" width="33%">
-
-</div>
-
-<p align="left">
-You can change the branch in the Posit Workbench IDE's <strong>Git</strong> pane.
-</p>
-
-
-
-<div>
-<p align="center"> 
-  <img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" alt="Animated git branches" width="100%">
-</p>
-
-</div>
-
-Or use the terminal
-
-``` bash
-git checkout <branch_name>
+``` r
+# install.packages("devtools")
+devtools::install_github("mjfrigaard/monthAppPkg")
 ```
-
-------------------------------------------------------------------------
-
-# Branches
-
-View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
-
-## External resources 
-
-### `11b_inst-bslib`
-
-[`11b_inst-bslib`](https://github.com/mjfrigaard/moviesApp/tree/11b_inst-bslib) covers how to store external files use the application UI function to display alternative versions of your app.
-
-```
-inst
-├── extdata
-│   └── movies.fst
-└── www
-    ├── bootstrap.png
-    └── shiny.png
-
-3 directories, 3 files
-```
-

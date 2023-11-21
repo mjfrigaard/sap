@@ -82,6 +82,7 @@ movies_ui <- function(bslib = FALSE) {
         ),
         bslib::layout_sidebar(
           sidebar = bslib::sidebar(
+            open = TRUE,
             mod_var_input_ui("vars")
           ),
           bslib::card(
@@ -93,7 +94,9 @@ movies_ui <- function(bslib = FALSE) {
                   style = "margin:10px 10px")
               ),
              bslib::card_body(
-              mod_scatter_display_ui("plot")
+               div(
+                 mod_scatter_display_ui("plot")
+               )
             )
           )
         )

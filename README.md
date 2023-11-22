@@ -115,7 +115,7 @@ list_apps()
 ### Get app
 
 <pre>
-get_app(app = "02b_proj-app")
+get_app(app = "14_test-system")
 </pre>
 
 <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/man/figures/get_app.gif" width="100%" style="display: block; margin: auto;" />
@@ -129,7 +129,7 @@ get_app(app = "02b_proj-app", open = TRUE)
 ### Launch app
 
 <pre>
-launch_app(app = "02b_proj-app")
+launch_app(app = "14_test-system")
 </pre>
 
 <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/man/figures/launch_app.gif" width="100%" style="display: block; margin: auto;" />

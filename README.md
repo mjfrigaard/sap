@@ -1,4 +1,5 @@
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 <h1 align="center">
 <code>moviesApp</code>
 </h1>
@@ -14,30 +15,40 @@ App-Packages </a>
 
 # moviesApp
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`moviesApp` provides the code examples in for the [Shiny
+App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the
+[Developing & Testing Your Shiny
+Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop
+provided at R in Pharma (2023).
 
 ## Movie review data
 
-`moviesApp` has been adapted from the the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
+`moviesApp` has been adapted from the the [Building Web Applications
+with Shiny](https://rstudio-education.github.io/shiny-course/) course.
 
 ## Application branches
 
-The [branches](https://github.com/mjfrigaard/moviesApp/branches/all) in the `moviesApp` repo contain Shiny applications in various stages of development. If you’re following along in the <a href="https://mjfrigaard.github.io/shiny-app-pkgs/">Shiny
+The [branches](https://github.com/mjfrigaard/moviesApp/branches/all) in
+the `moviesApp` repo contain Shiny applications in various stages of
+development. If you’re following along in the
+<a href="https://mjfrigaard.github.io/shiny-app-pkgs/">Shiny
 App-Packages</a> book, look for the Git Branch icon in the margin:
 
 <div>
 <p align="right">
 <img src="https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/new_branch_ico.png" alt="Git branch icon" width="33%">
 </div>
-
 <p align="left">
-You can change the branch in the Posit Workbench IDE’s <strong>Git</strong> pane.
+You can change the branch in the Posit Workbench IDE’s
+<strong>Git</strong> pane.
 </p>
 
 <div>
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/change_branches.gif" alt="Animated git branches" width="100%">
 </p>
+
 </div>
 
 In the Terminal, change branches with:
@@ -51,10 +62,10 @@ git checkout branch_name
 
 </div>
 
-
 ## Accessing apps
 
-The `shinyap` R package provides quick access to the branches in `moviesApp`:
+The `shinyap` R package provides quick access to the branches in
+`moviesApp`:
 
 ``` r
 # install.packages("pak")
@@ -111,7 +122,6 @@ list_apps()
 #> 39 origin                main 2023-10-25 08:12:48
 ```
 
-
 ### Get app
 
 ``` r
@@ -134,7 +144,6 @@ launch_app(app = "02b_proj-app")
 
 <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/man/figures/launch_app.gif" width="100%" style="display: block; margin: auto;" />
 
-
 ------------------------------------------------------------------------
 
 # Current branch `01_whole-app-game`
@@ -145,15 +154,15 @@ launch_app(app = "02b_proj-app")
 The goal of `monthAppPkg` is to provide an example app-package (i.e., a
 shiny application stored in an R package).
 
-Read more at [mastering-shiny.org](https://mastering-shiny.org/) and
-[r-pkgs.org](https://r-pkgs.org/)
+## Launch
 
-## Installation
-
-You can install the development version of `monthAppPkg` from
-[GitHub](https://github.com/) with:
+You can launch the application in `01_whole-app-game` by running the
+contents in the `app.R` file
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("mjfrigaard/monthAppPkg")
+pkgload::load_all(".")
+monthApp()
 ```
+
+Read more at [mastering-shiny.org](https://mastering-shiny.org/) and
+[r-pkgs.org](https://r-pkgs.org/)

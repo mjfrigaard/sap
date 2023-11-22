@@ -45,9 +45,9 @@ In the Terminal, change branches with:
 <div>
 <p align="right">
 
-<code>
+<pre>
 git checkout branch_name
-</code>
+</pre>
 
 </div>
 
@@ -56,18 +56,18 @@ git checkout branch_name
 
 The `shinyap` R package provides quick access to the branches in `moviesApp`:
 
-<code>
+<pre>
 # install.packages("pak")
 pak::pak("mjfrigaard/shinyap")
-</code>
+</pre>
 
-<code>
+<pre>
 library(shinyap)
-</code>
+</pre>
 
 ### List apps 
 
-<code>
+<pre>
 list_apps()
 #>    source         branch_name             updated
 #> 1    <NA>                main 2023-10-25 08:12:48
@@ -109,28 +109,28 @@ list_apps()
 #> 37 origin    22a_trace-matrix 2023-11-18 07:26:20
 #> 38 origin                HEAD 2023-10-25 08:12:48
 #> 39 origin                main 2023-10-25 08:12:48
-</code>
+</pre>
 
 
 ### Get app
 
-<code>
+<pre>
 get_app(app = "02b_proj-app")
-</code>
+</pre>
 
 <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/man/figures/get_app.gif" width="100%" style="display: block; margin: auto;" />
 
-<code>
+<pre>
 get_app(app = "02b_proj-app", open = TRUE)
-</code>
+</pre>
 
 <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/man/figures/get_app_open.gif" width="100%" style="display: block; margin: auto;" />
 
 ### Launch app
 
-<code>
+<pre>
 launch_app(app = "02b_proj-app")
-</code>
+</pre>
 
 <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/man/figures/launch_app.gif" width="100%" style="display: block; margin: auto;" />
 

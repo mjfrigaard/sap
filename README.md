@@ -137,9 +137,9 @@ launch_app(app = "02b_proj-app")
 
 ------------------------------------------------------------------------
 
-# Current branch `03_proj-app`
+# Current branch `02b_proj-app`
 
-The [`03_proj-app`](https://github.com/mjfrigaard/moviesApp/tree/03_proj-app) branch of `moviesApp` includes and `R/` folder and external resources have been included in `www`. 
+The [`02b_proj-app`](https://github.com/mjfrigaard/moviesApp/tree/02b_proj-app) branch of `moviesApp` includes and `R/` folder and external resources have been included in `www`. 
 
 ```
 R/

@@ -40,7 +40,7 @@ You can change the branch in the Posit Workbench IDE's <strong>Git</strong> pane
 
 <div>
 <p align="center"> 
-  <img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" alt="Animated git branches" width="100%">
+  <img src="https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/change_branches.gif" alt="Animated git branches" width="100%">
 </p>
 
 </div>

@@ -2,13 +2,13 @@
 
 #' @export
 box::use(
-  readr[get_csv = read_csv, cols]
+  vroom[vroom, cols]
 )
 
-#' import movies data from GitHub
+#' import movies data 
 #' @export
 movies_data <- function() {
-  raw_csv_url <- "https://bit.ly/3Jds4g1"
-  # use alias for read_csv()
-  get_csv(raw_csv_url, col_types = cols())
+  raw_csv_url <- "https://bit.ly/47FPO6t"
+  # from 07_data branch!
+  vroom(raw_csv_url, col_types = cols())
 }

@@ -1,4 +1,5 @@
 ## code to prepare `movies` dataset goes here
 load("data/movies.rda")
 # store as plain text file for easier sharing
-write.csv(x = movies, file = "inst/extdata/movies.csv")
+write.csv(x = as.data.frame(movies, row.names = NULL), 
+          file = "inst/extdata/movies.csv")

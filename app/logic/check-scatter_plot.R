@@ -2,11 +2,11 @@
 
 # load modules from logic folder
 box::use(
-  app/logic/data,
-  app/logic/plot
+  app / logic / data,
+  app / logic / plot
 )
 
-# import movies data
+# call function to import movies data
 movies <- data$movies_data()
 
 # check point plot

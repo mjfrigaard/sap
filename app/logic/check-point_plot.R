@@ -1,4 +1,4 @@
-# contents for app/logic/check-point_plot.R
+# contents for app/logic/check-scatter_plot.R
 
 # load modules from logic folder
 box::use(
@@ -10,7 +10,7 @@ box::use(
 movies <- data$movies_data()
 
 # check point plot
-plot$point_plot(
+plot$scatter_plot(
   df = movies,
   x_var = 'critics_score', # as string
   y_var = 'imdb_rating', # as string

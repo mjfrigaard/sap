@@ -5,13 +5,14 @@
 #' input values ui
 #' @export
 ui <- function(id) {
-
-box::use(
-  shiny[NS, tagList, selectInput, h3,
-        sliderInput, textInput],
-)
+  box::use(
+    shiny[
+      NS, tagList, selectInput, h3,
+      sliderInput, textInput
+    ],
+  )
   ns <- NS(id)
- tagList(
+  tagList(
     selectInput(
       inputId = ns("y"),
       label = "Y-axis:",
@@ -65,42 +66,28 @@ box::use(
       label = "Plot title",
       placeholder = "Enter plot title"
     )
-    )
+  )
 }
 
 #' input values server
 #' @export
 server <- function(id) {
-
-box::use(
-  shiny[moduleServer, reactive],
-)
+  box::use(
+    shiny[moduleServer, reactive],
+  )
 
   moduleServer(id, function(input, output, session) {
-
     return(
-      list(
-        "x" = reactive({
-          input$x
-        }),
-        "y" = reactive({
-          input$y
-        }),
-        "z" = reactive({
-          input$z
-        }),
-        "alpha" = reactive({
-          input$alpha
-        }),
-        "size" = reactive({
-          input$size
-        }),
-        "plot_title" = reactive({
-          input$plot_title
-        })
+      reactive({
+        list(
+          "x" = input$x,
+          "y" = input$y,
+          "z" = input$z,
+          "alpha" = input$alpha,
+          "size" = input$size,
+          "plot_title" = input$plot_title
         )
-      )
-
+      })
+    )
   })
-
 }

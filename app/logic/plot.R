@@ -1,13 +1,14 @@
 # contents of app/logic/plot.R
 
-#' point plot function
+#' scatter plot function
 #' @export
-point_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
+scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
 
 box::use(
-  ggplot2 = ggplot2[...]
+  ggplot2[ggplot, aes, geom_point],
+  rlang[.data]
 )
-
+  
   ggplot(
     data = df,
     aes(
@@ -17,4 +18,5 @@ box::use(
     )
   ) +
     geom_point(alpha = alpha_var, size = size_var)
+  
 }

@@ -2,16 +2,16 @@
 
 # import data and plot modules
 box::use(
-  app/logic/data,
-  app/logic/plot
+  app / logic / data,
+  app / logic / plot
 )
 
 #' display values ui
 #' @export
 ui <- function(id) {
-box::use(
-  shiny[NS, tagList, tags, plotOutput]
-)
+  box::use(
+    shiny[NS, tagList, tags, plotOutput]
+  )
   ns <- NS(id)
   tagList(
     tags$br(),
@@ -33,35 +33,33 @@ box::use(
 #' display values server
 #' @export
 server <- function(id, var_inputs) {
-
-# load plotting, shiny, tools, and stringr functions
-box::use(
-  ggplot2 = ggplot2[...],
-  shiny[NS, moduleServer, plotOutput, reactive, renderPlot],
-  tools[toTitleCase],
-  stringr[str_replace_all]
-)
+  # load plotting, shiny, tools, and stringr functions
+  box::use(
+    ggplot2[labs, theme_minimal, theme],
+    shiny[NS, moduleServer, plotOutput, reactive, renderPlot],
+    tools[toTitleCase],
+    stringr[str_replace_all]
+  )
 
   moduleServer(id, function(input, output, session) {
-
     # use data$movies_data() ----
     movies <- data$movies_data()
 
-      inputs <- reactive({
-        plot_title <- toTitleCase(var_inputs$plot_title())
-        list(
-          x = var_inputs$x(),
-          y = var_inputs$y(),
-          z = var_inputs$z(),
-          alpha = var_inputs$alpha(),
-          size = var_inputs$size(),
-          plot_title = plot_title
-        )
-      })
+    inputs <- reactive({
+      plot_title <- toTitleCase(var_inputs()$plot_title)
+      list(
+        x = var_inputs()$x,
+        y = var_inputs()$y,
+        z = var_inputs()$z,
+        alpha = var_inputs()$alpha,
+        size = var_inputs()$size,
+        plot_title = plot_title
+      )
+    })
 
     output$scatterplot <- renderPlot({
-      # use plot$point_plot() ----
-      plot <- plot$point_plot(
+      # use plot$scatter_plot() ----
+      plot <- plot$scatter_plot(
         df = movies,
         x_var = inputs()$x,
         y_var = inputs()$y,

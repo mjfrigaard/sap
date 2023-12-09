@@ -1,4 +1,4 @@
-# app/view/main.R
+# app/main.R
 
 # shiny functions
 box::use(
@@ -31,8 +31,8 @@ ui <- function(id) {
         fluidRow(
           column(
             width = 12,
-            tags$h3("rap")
-          )
+              tags$h3("rap")
+            )
         ),
         fluidRow(
           column(

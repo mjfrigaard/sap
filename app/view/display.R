@@ -6,7 +6,7 @@ box::use(
   app / logic / plot
 )
 
-#' display values ui
+#' display ui
 #' @export
 ui <- function(id) {
   box::use(
@@ -30,9 +30,10 @@ ui <- function(id) {
   )
 }
 
-#' display values server
+#' display server
 #' @export
 server <- function(id, var_inputs) {
+  
   # load plotting, shiny, tools, and stringr functions
   box::use(
     ggplot2[labs, theme_minimal, theme],
@@ -42,6 +43,7 @@ server <- function(id, var_inputs) {
   )
 
   moduleServer(id, function(input, output, session) {
+    
     # use data$movies_data() ----
     movies <- data$movies_data()
 
@@ -71,19 +73,9 @@ server <- function(id, var_inputs) {
         labs(
           title = inputs()$plot_title,
           x = str_replace_all(
-            toTitleCase(
-              inputs()$x
-            ),
-            "_",
-            " "
-          ),
+            toTitleCase(inputs()$x ), "_", " " ),
           y = str_replace_all(
-            toTitleCase(
-              inputs()$y
-            ),
-            "_",
-            " "
-          )
+            toTitleCase(inputs()$y), "_", " " )
         ) +
         theme_minimal() +
         theme(legend.position = "bottom")

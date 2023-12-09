@@ -4,4 +4,4 @@
 box::use(
   app / logic / data,
   app / logic / plot
-  )
+)

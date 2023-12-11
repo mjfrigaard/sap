@@ -13,8 +13,19 @@ ui <- function(id) {
     shiny[NS, tagList, tags, plotOutput]
   )
   ns <- NS(id)
+  # use data$movies_data() ----
   tagList(
     tags$br(),
+    tags$p(
+      "These data were obtained from",
+      tags$a("IMBD", href = "http://www.imbd.com/"), "and",
+      tags$a("Rotten Tomatoes", href = "https://www.rottentomatoes.com/"), 
+      ". The data represent 651 randomly sampled movies released between 
+      1972 to 2014 in the United States."
+    ),
+    tags$hr(),
+    plotOutput(outputId = ns("scatterplot")),
+    tags$hr(),
     tags$blockquote(
       tags$em(
         tags$h6(
@@ -25,8 +36,7 @@ ui <- function(id) {
           "tutorial"
         )
       )
-    ),
-    plotOutput(outputId = ns("scatterplot"))
+    )
   )
 }
 

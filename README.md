@@ -69,46 +69,50 @@ library(shinyap)
 
 ``` r
 list_apps()
-#>    source         branch_name             updated
-#> 1    <NA>                main 2023-10-25 08:12:48
-#> 2  origin   01_whole-app-game 2023-11-21 10:53:52
-#> 3  origin      02a_movies-app 2023-11-19 14:23:38
-#> 4  origin        02b_proj-app 2023-11-17 14:50:17
-#> 5  origin     03a_description 2023-11-02 13:35:02
-#> 6  origin           03b_rproj 2023-11-02 13:35:17
-#> 7  origin  03c_create-package 2023-11-02 13:35:34
-#> 8  origin         04_devtools 2023-11-02 13:35:52
-#> 9  origin         05_roxygen2 2023-11-17 14:53:36
-#> 10 origin     06a_pkg-exports 2023-11-17 14:54:17
-#> 11 origin     06b_pkg-imports 2023-11-17 14:54:52
-#> 12 origin             07_data 2023-11-17 14:55:45
-#> 13 origin       08_launch-app 2023-11-17 14:56:49
-#> 14 origin        09a_inst-www 2023-11-17 14:57:48
-#> 15 origin      09b_inst-bslib 2023-11-21 09:14:32
-#> 16 origin        09c_inst-dev 2023-11-17 14:59:04
-#> 17 origin       09d_inst-prod 2023-11-18 04:51:27
-#> 18 origin      11_tests-specs 2023-11-18 05:30:29
-#> 19 origin  12a_tests-fixtures 2023-11-18 05:31:06
-#> 20 origin   12b_tests-helpers 2023-11-18 05:31:53
-#> 21 origin     12f_tests-mocks 2023-11-18 05:34:25
-#> 22 origin 12g_tests-snapshots 2023-11-18 05:35:09
-#> 23 origin    13_tests-modules 2023-11-18 05:32:44
-#> 24 origin     14_tests-system 2023-11-21 09:08:21
-#> 25 origin            15_golem 2023-11-18 05:36:02
-#> 26 origin       16_leprechaun 2023-11-10 12:35:13
-#> 27 origin            17_rhino 2023-11-06 14:55:08
-#> 28 origin       18a_debugging 2023-11-18 05:39:47
-#> 29 origin       18b_debugging 2023-11-18 05:40:34
-#> 30 origin       18c_debugging 2023-11-18 05:41:07
-#> 31 origin       18d_debugging 2023-11-18 05:41:46
-#> 32 origin       18e_debugging 2023-11-18 05:42:23
-#> 33 origin 19a_reactive-values 2023-11-18 05:44:24
-#> 34 origin       19b_user-data 2023-11-18 07:06:19
-#> 35 origin  20_tests-snapshots 2023-11-18 05:35:09
-#> 36 origin      21_tests-mocks 2023-11-18 05:34:25
-#> 37 origin    22a_trace-matrix 2023-11-18 07:26:20
-#> 38 origin                HEAD 2023-10-25 08:12:48
-#> 39 origin                main 2023-10-25 08:12:48
+#>                  branch        last_updated
+#> 1        02.1_shiny-app 2023-11-22 00:17:49
+#> 2     01_whole-app-game 2023-11-22 00:23:27
+#> 3       02.1_movies-app 2023-11-22 00:24:21
+#> 4        02.1_shiny-app 2023-11-22 00:17:49
+#> 5       02.2_movies-app 2023-11-22 00:24:21
+#> 6         02.2_proj-app 2023-11-22 00:26:46
+#> 7         02.3_proj-app 2023-11-22 00:26:46
+#> 8      03.1_description 2023-12-06 14:28:52
+#> 9            03.2_rproj 2023-11-02 13:35:17
+#> 10  03.3_create-package 2023-11-02 13:35:34
+#> 11          04_devtools 2023-11-02 13:35:52
+#> 12          05_roxygen2 2023-11-17 15:53:36
+#> 13     06.1_pkg-exports 2023-11-17 15:54:17
+#> 14     06.2_pkg-imports 2023-11-17 15:54:52
+#> 15              07_data 2023-12-08 20:15:19
+#> 16        08_launch-app 2023-11-17 15:56:49
+#> 17        09.1_inst-www 2023-11-17 15:57:48
+#> 18      09.2_inst-bslib 2023-11-21 10:14:32
+#> 19        09.3_inst-dev 2023-11-17 15:59:04
+#> 20       09.4_inst-prod 2023-11-18 05:51:27
+#> 21       11_tests-specs 2023-11-18 06:30:29
+#> 22  12.1_tests-fixtures 2023-11-18 06:31:06
+#> 23   12.2_tests-helpers 2023-11-18 06:31:53
+#> 24     13_tests-modules 2023-11-18 06:32:44
+#> 25      14_tests-system 2023-11-21 10:08:21
+#> 26            15_docker 2023-11-21 10:08:21
+#> 27             18_golem 2023-11-18 06:36:02
+#> 28        19_leprechaun 2023-11-10 13:35:13
+#> 29             20_rhino 2023-12-30 21:49:09
+#> 30       21.1_debugging 2023-11-18 06:39:47
+#> 31       21.2_debugging 2023-11-18 06:40:34
+#> 32       21.3_debugging 2023-11-18 06:41:07
+#> 33       21.4_debugging 2023-11-18 06:41:46
+#> 34       21.5_debugging 2023-11-18 06:42:23
+#> 35 22.1_reactive-values 2023-11-18 06:44:24
+#> 36       22.2_user-data 2023-11-18 08:06:19
+#> 37   22_reactive-values 2023-11-18 06:44:24
+#> 38         22_user-data 2023-11-18 08:06:19
+#> 39   23_tests-snapshots 2023-11-18 06:35:09
+#> 40       24_tests-mocks 2023-11-18 06:34:25
+#> 41                 HEAD 2023-11-22 00:17:49
+#> 42                 main 2023-11-22 00:17:49
+#> 43      st_trace-matrix 2023-11-18 08:26:20
 ```
 
 
@@ -129,7 +133,7 @@ get_app(app = "14_test-system", open = TRUE)
 ### Launch app
 
 ``` r
-launch_app(app = "02b_proj-app")
+launch_app(app = "02.2_proj-app")
 ```
 
 <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/man/figures/launch_app.gif" width="100%" style="display: block; margin: auto;" />

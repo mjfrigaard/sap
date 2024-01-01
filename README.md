@@ -18,7 +18,8 @@ The original code and data for the Shiny app comes from the [Building Web Applic
 
 <br>
 
-![](https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/new_branch_ico.png){width="33%" align="right"}
+![](https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/new_branch_ico.png)
+
 </p>
 
 <br>

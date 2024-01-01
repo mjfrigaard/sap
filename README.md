@@ -14,28 +14,24 @@ The original code and data for the Shiny app comes from the [Building Web Applic
 
 ## Using code examples
 
-The branches in this repo contain a Shiny application in the various stages of development. If you're following along in the <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/title-slide">workshop slides</a>, the branch name is in the slide footer:
+<p align="left">The branches in this repo contain a Shiny application in the various stages of development. If you're following along in the <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a> book, look for the Git Branch icon in the margin:
+
+<br>
+
+![](https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/new_branch_ico.png){width="33%" align="right"}
+</p>
+
+<br>
+
+<!--
+
+If you're following along in the <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/title-slide">workshop slides</a>, the branch name is in the slide footer:
 
 <div>
 <p align="center"> 
-  <img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" alt="Workshop slide" width="80%">
+  <img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" alt="Workshop slide" width="60%">
 </p>
 </div>
-
-<p align="left">
-  If you're following along in the <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a> book, look for the Git Branch icon in the margin:
-  </p>
-
-<div>
-
-<p align="right"> 
-  <img src="https://raw.githubusercontent.com/mjfrigaard/shinyap/main/images/new_branch_ico.png" alt="Git branch icon" width="33%">
-
-</div>
-
-<p align="left">
-You can change the branch in the Posit Workbench IDE's <strong>Git</strong> pane.
-</p>
 
 
 
@@ -46,38 +42,28 @@ You can change the branch in the Posit Workbench IDE's <strong>Git</strong> pane
 
 </div>
 
-Or use the terminal
+-->
+
+
+<br><br>
+
+<hr>
+
+<br><br>
+
+## Branches
+
+<p align="left">
+
+View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all). You can change the branch in the Posit Workbench IDE's <strong>Git</strong> pane or using the terminal
+</p>
 
 ``` bash
 git checkout <branch_name>
 ```
 
-------------------------------------------------------------------------
 
-# Branches
+## `15_docker` 
 
-View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+[`15_docker`](https://github.com/mjfrigaard/moviesApp/tree/15_docker) gives examples of using [Docker](https://www.docker.com/).
 
-## Tests 
-
-### `12e_tests-system`
-
-[`12e_tests-system`](https://github.com/mjfrigaard/moviesApp/tree/12e_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html)
-
-```
-tests
-├── testthat
-│   ├── fixtures
-│   │   ├── make-tidy_ggp2_movies.R
-│   │   └── tidy_ggp2_movies.rds
-│   ├── helper.R
-│   ├── setup-shinytest2.R
-│   ├── test-feature-01.R
-│   ├── test-mod_scatter_display.R
-│   ├── test-mod_var_input.R
-│   ├── test-scatter_plot.R
-│   └── test-shinytest2.R
-└── testthat.R
-
-3 directories, 10 files
-```

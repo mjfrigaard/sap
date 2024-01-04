@@ -14,43 +14,32 @@ The original code and data for the Shiny app comes from the [Building Web Applic
 
 ## Using code examples
 
-<p align="left">The branches in this repo contain a Shiny application in the various stages of development. If you're following along in the <a href="https://mjfrigaard.github.io/shinyap/">Shiny App-Packages</a> book, look for the Git Branch icon in the margin:
+The branches in this repo contain a Shiny application in the various stages of development. 
 
-<br>
-
-![](https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/new_branch_ico.png)
+<p>
+  If you're following along in the <a href="https://mjfrigaard.github.io/shiny-app-pkgs/">Shiny App-Packages</a> book, look for the Git Branch icon in the margin:
+  <img src="https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/new_branch_ico.png" alt="Git branch icon" width="33%" fig-align="center">
 
 </p>
 
-<br>
+----
 
-<!--
+<p>
+You can change the branch in the Posit Workbench IDE's <strong>Git</strong> pane:
 
-If you're following along in the <a href="https://mjfrigaard.github.io/dev-test-shiny/slides/wrkshp.html#/title-slide">workshop slides</a>, the branch name is in the slide footer:
-
-<div>
-<p align="center"> 
-  <img src="https://mjfrigaard.github.io/dev-test-shiny/img/slide_03_proj-app.png" alt="Workshop slide" width="60%">
-</p>
-</div>
-
-
-
-<div>
-<p align="center"> 
-  <img src="https://mjfrigaard.github.io/dev-test-shiny/img/cloud_branches.gif" alt="Animated git branches" width="100%">
+  <img src="https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/git_branches.gif" alt="Animated git branches" width="80%" fig-align="center">
+  
 </p>
 
-</div>
-
--->
 
 
-<br><br>
+Or use the terminal
 
-<hr>
+``` bash
+git checkout <branch_name>
+```
 
-<br><br>
+----------------------------------------------------------------------------
 
 ## Branches
 

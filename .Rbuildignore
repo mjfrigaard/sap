@@ -4,3 +4,4 @@
 ^moviesApp.*\.tar\.gz$
 ^moviesApp.*\.tgz$
 _\.new\.png$
+^Dockerfile$

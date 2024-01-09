@@ -45,26 +45,22 @@ git checkout <branch_name>
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## Tests 
+## GitHub Actions
 
-### `14_tests-system`
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/mjfrigaard/moviesApp/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mjfrigaard/moviesApp/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
 
-[`14_tests-system`](https://github.com/mjfrigaard/moviesApp/tree/14_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html)
+### `16_cicd`
+
+[`16_cicd`](https://github.com/mjfrigaard/moviesApp/tree/16_cicd) gives examples [GitHub Actions](https://docs.github.com/en/actions.
+
+These are stored in the `.github` folder:
 
 ```
-tests
-├── testthat
-│   ├── fixtures
-│   │   ├── make-tidy_ggp2_movies.R
-│   │   └── tidy_ggp2_movies.rds
-│   ├── helper.R
-│   ├── setup-shinytest2.R
-│   ├── test-feature-01.R
-│   ├── test-mod_scatter_display.R
-│   ├── test-mod_var_input.R
-│   ├── test-scatter_plot.R
-│   └── test-shinytest2.R
-└── testthat.R
+.github/
+  └── workflows
+      └── R-CMD-check.yaml
 
-3 directories, 10 files
+2 directories, 1 file
 ```

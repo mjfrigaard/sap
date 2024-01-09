@@ -5,25 +5,34 @@ Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
 Description: A movie-review shiny application.
 License: GPL-3
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-LazyData: true
+Depends: 
+    R (>= 3.5.0)
 Imports: 
     bslib,
+    cli,
     ggplot2,
     logger,
     rlang,
     sass,
     shiny,
     shinythemes,
-    stringr
-Depends: 
-    R (>= 2.10)
+    stringr,
+    tools
 Suggests: 
+    dplyr,
+    ggplot2movies,
+    glue,
     knitr,
+    purrr,
     rmarkdown,
     shinytest2,
-    testthat (>= 3.0.0)
-VignetteBuilder: knitr
+    testthat (>= 3.0.0),
+    tibble,
+    tidyr
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3

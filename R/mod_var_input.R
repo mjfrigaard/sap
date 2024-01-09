@@ -1,5 +1,5 @@
 #' Variable input module (UI)
-#' 
+#'
 #' @description
 #' `var_input` collects the following graph inputs:
 #'  * `input$x`
@@ -12,9 +12,11 @@
 #' @param id UI module id
 #'
 #' @return module UI (HTML)
-#' 
+#'
 #' @seealso [mod_var_input_server()]
-#' 
+#'
+#' @export mod_var_input_ui
+#'
 mod_var_input_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -77,22 +79,22 @@ mod_var_input_ui <- function(id) {
 #' Variable input module (server)
 #'
 #' @param id server module id
-#' 
+#'
 #' @seealso [mod_var_input_ui()]
 #'
-#' @return reactive inputs are returned in a `list()`: 
+#' @return reactive inputs are returned in a `list()`:
 #'  * `"y" = input$y`
 #'  * `"x" = input$x`
 #'  * `"z" = input$z`
 #'  * `"alpha" = input$alpha`
 #'  * `"size" = input$size`
 #'  * `"plot_title" = input$plot_title`
-#'  
+#'
 #' These become in the `var_inputs` argument in [mod_scatter_display_server()]
-#' 
-#' @export
+#'
+#' @export mod_var_input_server
+#'
 mod_var_input_server <- function(id) {
-
   moduleServer(id, function(input, output, session) {
     return(
       reactive({

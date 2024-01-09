@@ -1,14 +1,13 @@
-# pkgs <- c('ggplot2movies', 'tidyr', 'dplyr', 'stringr', 'purrr')
-# install.packages(pkgs, quiet = TRUE)
-
+pkgs <- c("ggplot2movies", "tidyr", "dplyr", "stringr", "purrr")
+install.packages(pkgs, quiet = TRUE)
 library(tidyr)
 library(dplyr)
 library(stringr)
 library(purrr)
 
 tidy_ggp2_movies <- ggplot2movies::movies |>
-  tibble::add_column(row_id = 1:nrow(ggplot2movies::movies)) |> 
-  pivot_longer(c(Action:Short),
+  tibble::add_column(row_id = 1:nrow(ggplot2movies::movies)) |>
+  tidyr::pivot_longer(c(Action:Short),
     names_to = "genre_key",
     values_to = "genre_value"
   ) |>
@@ -28,12 +27,14 @@ tidy_ggp2_movies <- ggplot2movies::movies |>
       labels = c("G", "PG", "PG-13", "R", "NC-17")
     )
   ) |>
-  dplyr::select(title, genres, length, year,
-    budget, rating, votes, mpaa) 
+  dplyr::select(
+    title, genres, length, year,
+    budget, rating, votes, mpaa
+  )
 # save to tests/testthat/fixtures/
 saveRDS(object = tidy_ggp2_movies, file = "tests/testthat/fixtures/tidy_ggp2_movies.rds")
 
-dist_titles <- unique(ggplot2movies::movies$title)
-dist_tidy_titles <- unique(tidy_ggp2_movies$title)
-waldo::compare(dist_titles, dist_tidy_titles)
-identical(dist_titles, dist_tidy_titles)
+# dist_titles <- unique(ggplot2movies::movies$title)
+# dist_tidy_titles <- unique(tidy_ggp2_movies$title)
+# waldo::compare(dist_titles, dist_tidy_titles)
+# identical(dist_titles, dist_tidy_titles)

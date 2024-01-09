@@ -23,9 +23,9 @@ movies_app <- function(options = list(), run = "p", ...) {
   if (interactive()) {
     display_type(run = run)
   }
-    shinyApp(
-      ui = movies_ui(...),
-      server = movies_server,
-      options = options
-    )
+  shinyApp(
+    ui = movies_ui(...),
+    server = movies_server,
+    options = options
+  )
 }

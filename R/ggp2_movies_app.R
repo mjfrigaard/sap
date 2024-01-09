@@ -11,13 +11,13 @@
 #'
 #' @return shiny app
 #'
+#' @keywords internal
 #'
-#' @export
 ggp2_movies_app <- function(options = list(), run = "w", ...) {
   if (interactive()) {
     display_type(run = run)
-  } 
-    shinyAppDir(
+  }
+  shinyAppDir(
     appDir = system.file("dev",
       package = "moviesApp"
     ),

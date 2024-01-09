@@ -5,3 +5,6 @@
 ^moviesApp.*\.tgz$
 _\.new\.png$
 ^\.github$
+^\data\-raw$
+^data-raw$
+^app\.R$

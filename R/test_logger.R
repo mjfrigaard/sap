@@ -1,10 +1,12 @@
 #' Test logger (test utility)
 #'
-#' @param start test start message 
-#' @param end test end message 
-#' @param msg test message 
+#' @param start test start message
+#' @param end test end message
+#' @param msg test message
 #'
 #' @return message to test output
+#'
+#' @export test_logger
 #'
 test_logger <- function(start = NULL, end = NULL, msg) {
   if (is.null(start) & is.null(end)) {

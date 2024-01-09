@@ -23,3 +23,4 @@ shiny app
 \description{
 Wrapper function for \code{shinyAppDir()}
 }
+\keyword{internal}

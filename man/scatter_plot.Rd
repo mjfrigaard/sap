@@ -26,13 +26,14 @@ A \code{ggplot2} plot object
 Custom \href{https://ggplot2.tidyverse.org/}{\code{ggplot2}} function for building scatter plots in \code{moviesApp()}.
 }
 \examples{
-scatter_plot(mtcars, 
-    x_var = "mpg", 
-    y_var = "disp", 
-    col_var = "cyl", 
-    alpha_var = 0.5, 
-    size_var = 3)
-    
+scatter_plot(mtcars,
+  x_var = "mpg",
+  y_var = "disp",
+  col_var = "cyl",
+  alpha_var = 0.5,
+  size_var = 3
+)
+
 }
 \seealso{
 \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}

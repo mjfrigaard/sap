@@ -47,20 +47,18 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 ## GitHub Actions
 
-<!-- badges: start -->
-[![R-CMD-check](https://github.com/mjfrigaard/moviesApp/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mjfrigaard/moviesApp/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
+This chapter introduces GitHub Actions and CI/CD.
 
-### `16_cicd`
+### `16.1_cicd-style`
 
-[`16_cicd`](https://github.com/mjfrigaard/moviesApp/tree/16_cicd) gives examples [GitHub Actions](https://docs.github.com/en/actions.
+[`16.1_cicd-style`](https://github.com/mjfrigaard/moviesApp/tree/16.1_cicd-style) gives examples [GitHub Actions](https://docs.github.com/en/actions.
 
-These are stored in the `.github` folder:
+The style workflow is stored in the `.github` folder:
 
 ```
 .github/
   └── workflows
-      └── R-CMD-check.yaml
+      └── style.yaml
 
 2 directories, 1 file
 ```

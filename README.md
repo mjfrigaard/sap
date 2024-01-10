@@ -92,3 +92,5 @@ jobs:
         shell: Rscript {0}
 
 ```
+
+Be sure to configure the Github repository secrets for RSCONNECT_USER, RSCONNECT_TOKEN, and RSCONNECT_SECRET.

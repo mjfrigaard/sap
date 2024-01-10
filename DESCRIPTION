@@ -10,6 +10,7 @@ Depends:
 Imports: 
     bslib,
     cli,
+    fst,
     ggplot2,
     logger,
     rlang,

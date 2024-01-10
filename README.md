@@ -45,26 +45,50 @@ git checkout <branch_name>
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## Tests 
+## GitHub Actions 
 
-### `14_tests-system`
+### `16.2_cicd-shiny`
 
-[`14_tests-system`](https://github.com/mjfrigaard/moviesApp/tree/14_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html)
+[`16.2_cicd-shiny`](https://github.com/mjfrigaard/moviesApp/tree/16.2_cicd-shiny) gives an example of a [Shiny workflow](https://github.com/r-lib/actions/tree/v2/examples#shiny-app-deployment).
 
-```
-tests
-├── testthat
-│   ├── fixtures
-│   │   ├── make-tidy_ggp2_movies.R
-│   │   └── tidy_ggp2_movies.rds
-│   ├── helper.R
-│   ├── setup-shinytest2.R
-│   ├── test-feature-01.R
-│   ├── test-mod_scatter_display.R
-│   ├── test-mod_var_input.R
-│   ├── test-scatter_plot.R
-│   └── test-shinytest2.R
-└── testthat.R
+```yaml
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [16.2_cicd-shiny]
 
-3 directories, 10 files
+name: shiny
+
+jobs:
+  shiny:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-renv@v2
+
+      - name: Install rsconnect
+        run: install.packages("rsconnect")
+        shell: Rscript {0}
+
+      - name: Authorize and deploy app
+        env: 
+          # Provide your app name, account name, and server to be deployed below
+          APPNAME: moviesAppCICD
+          ACCOUNT: mjfrigaard
+          SERVER: shinyapps.io # server to deploy
+        run: |
+          rsconnect::setAccountInfo("${{ secrets.RSCONNECT_USER }}", "${{ secrets.RSCONNECT_TOKEN }}", "${{ secrets.RSCONNECT_SECRET }}")
+          rsconnect::deployApp(appName = "${{ env.APPNAME }}", account = "${{ env.ACCOUNT }}", server = "${{ env.SERVER }}")
+        shell: Rscript {0}
+
 ```

@@ -23,12 +23,12 @@ jobs:
       #- uses: r-lib/actions/setup-renv@v2
       - uses: r-lib/actions/setup-r-dependencies@v2
       
-      - name: Install devtools
-        run: install.packages("devtools", verbose = TRUE)
+      - name: Install remotes
+        run: install.packages("remotes", verbose = TRUE)
         shell: Rscript {0}
 
       - name: Install rsconnect
-        run: devtools::install_github("rstudio/rsconnect", upgrade = "always", force = TRUE)
+        run: remotes::install_github("rstudio/rsconnect", upgrade = "always", force = TRUE)
         shell: Rscript {0}
 
       - name: Authorize and deploy app

@@ -93,4 +93,4 @@ jobs:
 
 ```
 
-Be sure to configure the Github repository secrets for RSCONNECT_USER, RSCONNECT_TOKEN, and RSCONNECT_SECRET.
+Be sure to configure the Github repository secrets for RSCONNECT_USER, RSCONNECT_TOKEN, and RSCONNECT_SECRET and your shinyapps.io account allows for private repo access.

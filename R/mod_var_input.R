@@ -15,6 +15,8 @@
 #' 
 #' @seealso [mod_var_input_server()]
 #' 
+#' @export
+#' 
 mod_var_input_ui <- function(id) {
   ns <- NS(id)
   tagList(

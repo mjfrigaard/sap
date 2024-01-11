@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^moviesApp\.Rcheck$
@@ -5,3 +7,5 @@
 ^moviesApp.*\.tgz$
 _\.new\.png$
 ^\rsconnect$
+^\.github$
+

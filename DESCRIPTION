@@ -13,6 +13,7 @@ Imports:
     fst,
     ggplot2,
     logger,
+    pkgload,
     rlang,
     sass,
     shiny,

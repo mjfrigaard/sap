@@ -23,56 +23,37 @@ mod_var_input_ui <- function(id) {
     selectInput(
       inputId = ns("y"),
       label = "Y-axis:",
-      choices = c(
-        "IMDB rating" = "imdb_rating",
+      choices = c("IMDB rating" = "imdb_rating",
         "IMDB number of votes" = "imdb_num_votes",
         "Critics Score" = "critics_score",
         "Audience Score" = "audience_score",
-        "Runtime" = "runtime"
-      ),
-      selected = "audience_score"
+        "Runtime" = "runtime"), selected = "audience_score"
     ),
-    selectInput(
-      inputId = ns("x"),
+    selectInput(inputId = ns("x"),
       label = "X-axis:",
-      choices = c(
-        "IMDB rating" = "imdb_rating",
+      choices = c("IMDB rating" = "imdb_rating",
         "IMDB number of votes" = "imdb_num_votes",
         "Critics Score" = "critics_score",
         "Audience Score" = "audience_score",
-        "Runtime" = "runtime"
-      ),
-      selected = "imdb_rating"
+        "Runtime" = "runtime"), selected = "imdb_rating"
     ),
-    selectInput(
-      inputId = ns("z"),
+    selectInput(inputId = ns("z"),
       label = "Color by:",
-      choices = c(
-        "Title Type" = "title_type",
+      choices = c("Title Type" = "title_type",
         "Genre" = "genre",
         "MPAA Rating" = "mpaa_rating",
         "Critics Rating" = "critics_rating",
-        "Audience Rating" = "audience_rating"
-      ),
-      selected = "mpaa_rating"
+        "Audience Rating" = "audience_rating"), selected = "mpaa_rating"
     ),
-    sliderInput(
-      inputId = ns("alpha"),
+    sliderInput(inputId = ns("alpha"),
       label = "Alpha:",
-      min = 0,
-      max = 1,
-      step = 0.1,
-      value = 0.5
+      min = 0, max = 1, step = 0.1, value = 0.5
     ),
     sliderInput(
       inputId = ns("size"),
-      label = "Size:",
-      min = 0,
-      max = 5,
-      value = 2
+      label = "Size:", min = 0, max = 5, value = 2
     ),
-    textInput(
-      inputId = ns("plot_title"),
+    textInput(inputId = ns("plot_title"),
       label = "Plot title",
       placeholder = "Enter plot title"
     )

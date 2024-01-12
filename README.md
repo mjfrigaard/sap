@@ -60,19 +60,19 @@ The goal of `rap` is to demonstrate the `rhino` framework.
 
 ## Download
 
-You can download the development version of `rap` from
-[GitHub](https://github.com/) with:
+You can download the development version of `rap` with the 
+[`shinypak` package](https://mjfrigaard.github.io/shinypak/):
 
-```bash
-git clone https://github.com/mjfrigaard/moviesApp.git
-cd moviesApp
-open moviesApp.Rproj
+```r
+# install.packages("pak")
+pak::pak("mjfrigaard/shinypak")
+library(shinypak)
 ```
 
-Checkout the `20_rhino` branch
+Get and open the `20_rhino` branch:
 
-```bash
-git checkout 20_rhino
+```r
+shinypak::get("20_rhino", open = TRUE)
 ```
 
 ## Run

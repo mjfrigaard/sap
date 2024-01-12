@@ -14,24 +14,33 @@ The original code and data for the Shiny app comes from the [Building Web Applic
 
 ## Using code examples
 
-The branches in this repo contain a Shiny application in the various stages of development. 
+The branches in this repo contain a Shiny application in the various stages of development. The best way to access each branch/app is with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/). 
 
-<p>
-  If you're following along in the <a href="https://mjfrigaard.github.io/shiny-app-pkgs/">Shiny App-Packages</a> book, look for the Git Branch icon in the margin:
-  <img src="https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/new_branch_ico.png" alt="Git branch icon" width="33%" fig-align="center">
+```r
+# install.packages("pak")
+pak::pak("mjfrigaard/shinypak")
+library(shinypak)
+```
 
-</p>
-
-----
-
-<p>
-You can change the branch in the Posit Workbench IDE's <strong>Git</strong> pane:
-
-  <img src="https://raw.githubusercontent.com/mjfrigaard/shiny-app-pkgs/main/images/git_branches.gif" alt="Animated git branches" width="80%" fig-align="center">
-  
-</p>
+List all the apps with `list_apps()`
 
 
+```r
+head(list_apps())
+#>                  branch        last_updated
+#> 2     01_whole-app-game 2024-01-01 14:11:32
+#> 1        02.1_shiny-app 2024-01-04 13:05:58
+#> 4       02.2_movies-app 2024-01-04 13:07:59
+#> 5         02.3_proj-app 2024-01-04 13:08:58
+#> 6      03.1_description 2024-01-04 13:10:00
+#> 7            03.2_rproj 2024-01-04 13:25:06
+```
+
+Launch an app with `launch()`
+
+```r
+launch(app = "02.3_proj-app")
+```
 
 Or use the terminal
 
@@ -82,15 +91,14 @@ jobs:
 
       - name: Authorize and deploy app
         env: 
-          # Provide your app name, account name, and server to be deployed below
           APPNAME: moviesAppCICD
           ACCOUNT: mjfrigaard
-          SERVER: shinyapps.io # server to deploy
+          SERVER: shinyapps.io
         run: |
           rsconnect::setAccountInfo("${{ secrets.RSCONNECT_USER }}", "${{ secrets.RSCONNECT_TOKEN }}", "${{ secrets.RSCONNECT_SECRET }}")
-          rsconnect::deployApp(appName = "${{ env.APPNAME }}", account = "${{ env.ACCOUNT }}", server = "${{ env.SERVER }}")
+          rsconnect::deployApp(appName = "${{ env.APPNAME }}", account = "${{ env.ACCOUNT }}", server = "${{ env.SERVER }}", forceUpdate = TRUE)
         shell: Rscript {0}
 
 ```
 
-Be sure to configure the Github repository secrets for RSCONNECT_USER, RSCONNECT_TOKEN, and RSCONNECT_SECRET and your shinyapps.io account allows for private repo access.
+Be sure to configure the Github repository secrets for `RSCONNECT_USER`, `RSCONNECT_TOKEN`, and `RSCONNECT_SECRET` and your shinyapps.io account allows for private repo access.

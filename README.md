@@ -54,26 +54,10 @@ git checkout <branch_name>
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## Tests 
+## CI/CD (docker) 
 
-### `14_tests-system`
+### `16.3_cicd-docker`
 
-[`14_tests-system`](https://github.com/mjfrigaard/moviesApp/tree/14_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html)
+[`16.3_cicd-docker](https://github.com/mjfrigaard/moviesApp/tree/16.3_cicd-docker) gives examples of GitHub Actions workflows using Docker.
 
-```
-tests
-├── testthat
-│   ├── fixtures
-│   │   ├── make-tidy_ggp2_movies.R
-│   │   └── tidy_ggp2_movies.rds
-│   ├── helper.R
-│   ├── setup-shinytest2.R
-│   ├── test-feature-01.R
-│   ├── test-mod_scatter_display.R
-│   ├── test-mod_var_input.R
-│   ├── test-scatter_plot.R
-│   └── test-shinytest2.R
-└── testthat.R
 
-3 directories, 10 files
-```

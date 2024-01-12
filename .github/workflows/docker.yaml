@@ -1,0 +1,22 @@
+name: docker-shiny, moviesapp
+
+on:
+  push:
+    branches: [ 16.3_cicd-docker ]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build image
+        run: docker build -t moviesapp . 
+      - name: execute
+        run: >
+          docker run 
+          -e RSCONNECT_USER=${{ secrets.RSCONNECT_USER }} 
+          -e RSCONNECT_TOKEN=${{secrets.RSCONNECT_TOKEN}} 
+          -e RSCONNECT_SECRET=${{secrets.RSCONNECT_SECRET}} 
+          moviesapp  

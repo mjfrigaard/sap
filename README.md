@@ -60,4 +60,57 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 [`16.3_cicd-docker](https://github.com/mjfrigaard/moviesApp/tree/16.3_cicd-docker) gives examples of GitHub Actions workflows using Docker.
 
+### `.github/workflows/docker.yaml`
 
+```yaml
+name: docker-shiny, moviesapp
+
+on:
+  push:
+    branches: [ 16.3_cicd-docker ]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build image
+        run: docker build -t moviesapp . 
+      - name: execute
+        run: >
+          docker run 
+          -e RSCONNECT_USER=${{secrets.RSCONNECT_USER}} 
+          -e RSCONNECT_TOKEN=${{secrets.RSCONNECT_TOKEN}} 
+          -e RSCONNECT_SECRET=${{secrets.RSCONNECT_SECRET}} 
+          moviesapp  
+
+```
+
+### `Dockerfile`
+
+```bash
+FROM rocker/shiny
+RUN R -e 'install.packages(c("rlang", "stringr", "shiny", "ggplot2", "remotes", "rsconnect", "bslib"))'
+RUN mkdir /home/moviesAppDockerCiCd
+ADD . /home/moviesAppDockerCiCd
+WORKDIR /home/moviesAppDockerCiCd
+RUN R -e 'remotes::install_local(upgrade="never")'
+EXPOSE 8180
+CMD Rscript deploy.R
+```
+
+### `deploy`
+
+```r
+rsconnect::setAccountInfo(name = Sys.getenv("RSCONNECT_USER"),
+               token = Sys.getenv("RSCONNECT_TOKEN"),
+               secret = Sys.getenv("RSCONNECT_SECRET"))
+
+rsconnect::deployApp(appDir = ".", 
+  appName = "moviesAppDockerCiCd", 
+  account = "mjfrigaard", 
+	server = "shinyapps.io", 
+	forceUpdate = TRUE)
+```

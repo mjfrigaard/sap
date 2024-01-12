@@ -4,4 +4,4 @@
 box::use(
   app / view / inputs,
   app / view / display
-  )
+)

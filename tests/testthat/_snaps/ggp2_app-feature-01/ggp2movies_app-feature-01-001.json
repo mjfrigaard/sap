@@ -1,0 +1,59 @@
+{
+  "input": {
+    "plot-missing": true,
+    "vars-alpha": 0.4,
+    "vars-plot_title": "",
+    "vars-size": 2.5,
+    "vars-x": "year",
+    "vars-y": "length",
+    "vars-z": "genre"
+  },
+  "output": {
+    "plot-scatterplot": {
+      "src": "[image data hash: 66088236c07c48c8db4a6e64e805e4cf]",
+      "width": 807,
+      "height": 400,
+      "alt": "Plot object",
+      "coordmap": {
+        "panels": [
+          {
+            "panel": 1,
+            "row": 1,
+            "col": 1,
+            "panel_vars": {
+
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "domain": {
+              "left": 1934.65,
+              "right": 2008.35,
+              "bottom": -5.200000000000001,
+              "top": 263.2
+            },
+            "mapping": {
+              "x": ".data[[\"year\"]]",
+              "y": ".data[[\"length\"]]",
+              "colour": ".data[[\"genre\"]]"
+            },
+            "range": {
+              "left": 76.6451198630137,
+              "right": 1603.041095890411,
+              "bottom": 623.7373298620405,
+              "top": 45.92633397406263
+            }
+          }
+        ],
+        "dims": {
+          "width": 1614,
+          "height": 800
+        }
+      }
+    }
+  },
+  "export": {
+
+  }
+}

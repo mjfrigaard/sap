@@ -1,0 +1,28 @@
+{
+  "input": {
+    "vars-alpha": 0.7,
+    "vars-plot_title": "New plot title",
+    "vars-size": 3,
+    "vars-x": "critics_score",
+    "vars-y": "imdb_num_votes",
+    "vars-z": "genre"
+  },
+  "output": {
+    "plot-scatterplot": {
+      "message": {
+        "1": "Problem while computing aesthetics."
+      },
+      "call": [
+        "ggplot2::ggplot(data = df,",
+        "      ggplot2::aes(x = .data[[x_var]],",
+        "          y = .data[[y_var]],",
+        "          color = .data[[col_var]])) +",
+        "      ggplot2::geom_point(alpha = alpha_var, size = size_var)"
+      ],
+      "type": "rlang_error"
+    }
+  },
+  "export": {
+
+  }
+}

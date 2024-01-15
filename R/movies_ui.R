@@ -77,7 +77,7 @@ movies_ui <- function(bslib = FALSE) {
       )
     )
   } else {
-    tagList(
+tagList(
       bslib::page_fillable(
         title = "Movie Reviews (bslib)",
         theme = bslib::bs_theme(
@@ -91,32 +91,20 @@ movies_ui <- function(bslib = FALSE) {
         ),
         bslib::layout_sidebar(
           sidebar = bslib::sidebar(
-            mod_var_input_ui("vars"),
-          ),
-          div(
-            img(
-              src = "www/bootstrap.png",
-              height = 80, width = 100
-            )
+            mod_var_input_ui("vars")
           ),
           bslib::card(
             full_screen = TRUE,
-            bslib::card_body(
+                bslib::card_header(
+                  tags$img(
+                  src = "www/bootstrap.png",
+                  height = 80,
+                  width = 100,
+                  style = "margin:10px 10px"
+                )
+              ),
+             bslib::card_body(
               mod_scatter_display_ui("plot")
-            )
-          ),
-          bslib::card(
-            full_screen = TRUE,
-            bslib::card_header(
-              strong(
-                "Reactive values in",
-                code("movies_ui()"), "/",
-                code("movies_server()")
-              )
-            ),
-            bslib::card_body(
-              fill = TRUE,
-              verbatimTextOutput(outputId = "vals")
             )
           )
         )

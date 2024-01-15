@@ -56,4 +56,4 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 ## `21.5_debug-print`
 
-`21.5_debug-print` shows how to add 'print' statements in the application UI. 
+The [`21.5_debug-print`](https://github.com/mjfrigaard/moviesApp/tree/21.5_debug-print) shows how to add 'print' statements in the application UI. 

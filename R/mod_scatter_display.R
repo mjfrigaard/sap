@@ -6,6 +6,8 @@
 #' @return module UI (HTML)
 #'
 #' @family {"scatter plot module functions"}
+#' 
+#' @export
 #'
 mod_scatter_display_ui <- function(id) {
   ns <- NS(id)

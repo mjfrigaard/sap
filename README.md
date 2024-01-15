@@ -56,7 +56,7 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 ## Special topic: Debugging 
 
-The `21.2_debug-movies_server` branch is the second step of 4 on debugging. This branch should also be loaded, documented, installed and the application should be launched: 
+The `21.2_debug-selected_vars` branch is the second step of 4 on debugging. This branch should also be loaded, documented, installed and the application should be launched: 
 
 ```r
 devtools::load_all()

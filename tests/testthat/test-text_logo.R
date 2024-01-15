@@ -1,8 +1,8 @@
-# describe("
-#   Feature: Text-based Logo Generation
-#   As a user who calls the text_logo() function
-#   I want to generate a text-based logo in various predefined sizes
-#   In order to have a text representation of our logo in the UI", code = {
+describe("
+  Feature: Text-based Logo Generation
+  As a user who calls the text_logo() function
+  I want to generate a text-based logo in various predefined sizes
+  In order to have a text representation of our logo in the UI", code = {
   describe("
       Scenario: Generating a logo with default size
       Given the user did not specify a [size] in text_logo()
@@ -41,4 +41,4 @@ describe("Scenario: Attempting to generate a logo with an invalid size
     test_logger(end = "snap", msg = "text_logo('invalid')")
     })
   })
-# })
+})

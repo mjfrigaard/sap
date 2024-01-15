@@ -54,9 +54,9 @@ git checkout <branch_name>
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## Special topic: Debugging 
+### Debugging 
 
-The `21.2_debug-selected_vars` branch is the second step of 5 on debugging. This branch should also be loaded, documented, installed before the application is launched.
+The [`21.2_debug-selected_vars`](https://github.com/mjfrigaard/moviesApp/tree/21.2_debug-selected_vars) branch is the second step of 5 on debugging. This branch should also be loaded, documented, installed before the application is launched.
 
 ```r
 devtools::load_all()

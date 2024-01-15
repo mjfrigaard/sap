@@ -56,8 +56,82 @@ View the various versions of application in the [`moviesApp` branches](https://g
 
 ### `21.3_debug-var_inputs`
 
-[`21.3_debug-var_inputs`](https://github.com/mjfrigaard/moviesApp/tree/21.3_debug-var_inputs) contains step 3 of 4 on debugging shiny apps. This branch focuses on debugging communication between module server functions. 
+[`21.3_debug-var_inputs`](https://github.com/mjfrigaard/moviesApp/tree/21.3_debug-var_inputs) contains step 3 of 5 on debugging shiny apps. This branch focuses on debugging communication between module server functions. 
 
+### Structure
+
+<details>
+
+```
+├── DESCRIPTION
+├── NAMESPACE
+├── R
+│   ├── data.R
+│   ├── display_type.R
+│   ├── ggp2_movies_app.R
+│   ├── mod_scatter_display.R
+│   ├── mod_var_input.R
+│   ├── movies_app.R
+│   ├── movies_server.R
+│   ├── movies_ui.R
+│   ├── scatter_plot.R
+│   └── test_logger.R
+├── README.md
+├── app
+│   └── static
+├── app.R
+├── data
+│   ├── movies.RData
+│   └── movies.rda
+├── data-raw
+│   └── tidy_movies.R
+├── inst
+│   ├── dev
+│   │   ├── app.R
+│   │   ├── imdb.png
+│   │   └── tidy_movies.fst
+│   ├── extdata
+│   │   └── movies.fst
+│   ├── prod
+│   │   └── app
+│   │       └── app.R
+│   └── www
+│       ├── bootstrap.png
+│       └── shiny.png
+├── man
+│   ├── display_type.Rd
+│   ├── ggp2_movies_app.Rd
+│   ├── mod_scatter_display_server.Rd
+│   ├── mod_scatter_display_ui.Rd
+│   ├── mod_var_input_server.Rd
+│   ├── mod_var_input_ui.Rd
+│   ├── movies.Rd
+│   ├── movies_app.Rd
+│   ├── movies_server.Rd
+│   ├── movies_ui.Rd
+│   ├── scatter_plot.Rd
+│   └── test_logger.Rd
+├── moviesApp.Rproj
+└── tests
+    ├── testthat
+    │   ├── _snaps
+    │   ├── fixtures
+    │   │   ├── make-tidy_ggp2_movies.R
+    │   │   └── tidy_ggp2_movies.rds
+    │   ├── helper.R
+    │   ├── setup-shinytest2.R
+    │   ├── test-app-feature-01.R
+    │   ├── test-ggp2_app-feature-01.R
+    │   ├── test-mod_scatter_display.R
+    │   ├── test-mod_var_input.R
+    │   ├── test-scatter_plot.R
+    │   └── test-shinytest2.R
+    └── testthat.R
+
+17 directories, 48 files
+```
+
+</details>
 
 
 

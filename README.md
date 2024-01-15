@@ -54,9 +54,7 @@ git checkout <branch_name>
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## Special topic: Debugging 
-
-### `21.1_debugging`
+### Debugging
 
 The [`21.1_debugging`](https://github.com/mjfrigaard/moviesApp/tree/21.1_debugging) branch is the first step of 4 that demonstrate debugging an error in `movies_app()`. 
 
@@ -81,3 +79,92 @@ Warning: Error in ggplot2::geom_point: Problem while computing aesthetics.
 Caused by error in `.data[[NULL]]`:
 ! Must subset the data pronoun with a string, not `NULL`.
 ```
+
+### Structure 
+
+<details> 
+
+```
+.
+├── DESCRIPTION
+├── NAMESPACE
+├── R
+│   ├── data.R
+│   ├── display_type.R
+│   ├── ggp2_movies_app.R
+│   ├── mod_scatter_display.R
+│   ├── mod_var_input.R
+│   ├── movies_app.R
+│   ├── movies_server.R
+│   ├── movies_ui.R
+│   ├── scatter_plot.R
+│   └── test_logger.R
+├── README.md
+├── app
+│   └── static
+├── app.R
+├── data
+│   ├── movies.RData
+│   └── movies.rda
+├── data-raw
+│   └── tidy_movies.R
+├── inst
+│   ├── dev
+│   │   ├── app.R
+│   │   ├── imdb.png
+│   │   └── tidy_movies.fst
+│   ├── extdata
+│   │   └── movies.fst
+│   ├── prod
+│   │   └── app
+│   │       └── app.R
+│   └── www
+│       ├── bootstrap.png
+│       └── shiny.png
+├── man
+│   ├── display_type.Rd
+│   ├── ggp2_movies_app.Rd
+│   ├── mod_scatter_display_server.Rd
+│   ├── mod_scatter_display_ui.Rd
+│   ├── mod_var_input_server.Rd
+│   ├── mod_var_input_ui.Rd
+│   ├── movies.Rd
+│   ├── movies_app.Rd
+│   ├── movies_server.Rd
+│   ├── movies_ui.Rd
+│   ├── scatter_plot.Rd
+│   └── test_logger.Rd
+├── moviesApp.Rproj
+└── tests
+    ├── testthat
+    │   ├── _snaps
+    │   │   ├── app-feature-01
+    │   │   │   ├── feature-01-senario-a-001.json
+    │   │   │   ├── feature-01-senario-a-001_.png
+    │   │   │   ├── feature-01-senario-b-001.json
+    │   │   │   └── feature-01-senario-b-001_.png
+    │   │   ├── ggp2_app-feature-01
+    │   │   │   ├── ggp2movies_app-feature-01-001.json
+    │   │   │   ├── ggp2movies_app-feature-01-001_.new.png
+    │   │   │   └── ggp2movies_app-feature-01-001_.png
+    │   │   └── shinytest2
+    │   │       ├── feature-01-001.json
+    │   │       └── feature-01-001_.png
+    │   ├── fixtures
+    │   │   ├── make-tidy_ggp2_movies.R
+    │   │   └── tidy_ggp2_movies.rds
+    │   ├── helper.R
+    │   ├── setup-shinytest2.R
+    │   ├── test-app-feature-01.R
+    │   ├── test-ggp2_app-feature-01.R
+    │   ├── test-mod_scatter_display.R
+    │   ├── test-mod_var_input.R
+    │   ├── test-scatter_plot.R
+    │   └── test-shinytest2.R
+    └── testthat.R
+
+20 directories, 57 files
+```
+
+</details> 
+

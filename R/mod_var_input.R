@@ -15,6 +15,8 @@
 #' 
 #' @seealso [mod_var_input_server()]
 #' 
+#' @export
+#' 
 mod_var_input_ui <- function(id) {
   ns <- NS(id)
   tagList(strong("Reactive values in", 
@@ -93,6 +95,7 @@ mod_var_input_ui <- function(id) {
 #' These become in the `var_inputs` argument in [mod_scatter_display_server()]
 #' 
 #' @export
+#' 
 mod_var_input_server <- function(id) {
 
   moduleServer(id, function(input, output, session) {

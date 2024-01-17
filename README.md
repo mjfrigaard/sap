@@ -8,11 +8,11 @@
 
 `moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
-**Movie review data application**
+## Movie review data application
 
 The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
 
-## Using code examples
+# Using code examples
 
 The branches in this repo contain a Shiny application in the various stages of development. The best way to access each branch/app is with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/). 
 
@@ -45,14 +45,17 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
+git clone https://github.com/mjfrigaard/moviesApp.git
+cd moviesApp
 git checkout <branch_name>
+open moviesApp.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
 ## Tests 
 
@@ -63,17 +66,31 @@ View the various versions of application in the [`moviesApp` branches](https://g
 ```
 tests
 ├── testthat
+│   ├── _snaps
+│   │   ├── app-feature-01
+│   │   │   ├── feature-01-senario-a-001.json
+│   │   │   ├── feature-01-senario-a-001_.png
+│   │   │   ├── feature-01-senario-b-001.json
+│   │   │   └── feature-01-senario-b-001_.png
+│   │   ├── ggp2_app-feature-01
+│   │   │   ├── ggp2movies_app-feature-01-001.json
+│   │   │   ├── ggp2movies_app-feature-01-001_.new.png
+│   │   │   └── ggp2movies_app-feature-01-001_.png
+│   │   └── shinytest2
+│   │       ├── feature-01-001.json
+│   │       └── feature-01-001_.png
 │   ├── fixtures
 │   │   ├── make-tidy_ggp2_movies.R
 │   │   └── tidy_ggp2_movies.rds
 │   ├── helper.R
 │   ├── setup-shinytest2.R
-│   ├── test-feature-01.R
+│   ├── test-app-feature-01.R
+│   ├── test-ggp2_app-feature-01.R
 │   ├── test-mod_scatter_display.R
 │   ├── test-mod_var_input.R
 │   ├── test-scatter_plot.R
 │   └── test-shinytest2.R
 └── testthat.R
 
-3 directories, 10 files
+7 directories, 20 files
 ```

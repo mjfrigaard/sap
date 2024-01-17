@@ -8,11 +8,11 @@
 
 `moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
-**Movie review data application**
+## Movie review data application
 
 The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
 
-## Using code examples
+# Using code examples
 
 The branches in this repo contain a Shiny application in the various stages of development. The best way to access each branch/app is with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/). 
 
@@ -45,14 +45,37 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
+git clone https://github.com/mjfrigaard/moviesApp.git
+cd moviesApp
 git checkout <branch_name>
+open moviesApp.Rproj
 ```
 
 ------------------------------------------------------------------------
 
+# Branches
+
+View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+
 # Current branch `02.3_proj-app`
 
 The [`02.3_proj-app`](https://github.com/mjfrigaard/moviesApp/tree/02.3_proj-app) branch of `moviesApp` includes and `R/` folder and external resources have been included in `www`. 
+
+```
+├── DESCRIPTION
+├── R
+│   ├── mod_scatter_display.R
+│   ├── mod_var_input.R
+│   └── utils.R
+├── README.md
+├── app.R
+├── movies.RData
+├── moviesApp.Rproj
+└── www
+    └── shiny.png
+```
+
+The code files have been moved into `R/`:
 
 ```
 R/
@@ -62,6 +85,8 @@ R/
 
 1 directory, 3 files
 ```
+
+The image file have been moved into `www/`:
 
 ```
 www/

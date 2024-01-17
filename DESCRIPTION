@@ -19,16 +19,12 @@ Imports:
     stringr,
     tools
 Suggests: 
-    dplyr,
     ggplot2movies,
     glue,
     knitr,
-    purrr,
     rmarkdown,
     shinytest2,
-    testthat (>= 3.0.0),
-    tibble,
-    tidyr
+    testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3

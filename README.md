@@ -59,7 +59,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## `02.1_shiny-app`
 
-The [`02.1_shiny-app`](https://github.com/mjfrigaard/moviesApp/tree/02.1_shiny-app) branch of `moviesApp` has documentation for all files in `R/`, and creates the help files in the `man/` folder:
+The [`02.1_shiny-app`](https://github.com/mjfrigaard/moviesApp/tree/02.1_shiny-app) is a bare-minimum Shiny application project:
 
 ```
 ├── README.md

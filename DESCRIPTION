@@ -5,15 +5,17 @@ Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
 Description: A movie-review shiny application.
 License: GPL-3
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-LazyData: true
+Depends: 
+    R (>= 2.10)
 Imports: 
+    cli,
     ggplot2,
     rlang,
     shiny,
     shinythemes,
-    stringr
-Depends: 
-    R (>= 2.10)
+    stringr,
+    tools
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3

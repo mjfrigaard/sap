@@ -8,11 +8,11 @@
 
 `moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
-**Movie review data application**
+## Movie review data application
 
 The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
 
-## Using code examples
+# Using code examples
 
 The branches in this repo contain a Shiny application in the various stages of development. The best way to access each branch/app is with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/). 
 
@@ -45,14 +45,17 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
+git clone https://github.com/mjfrigaard/moviesApp.git
+cd moviesApp
 git checkout <branch_name>
+open moviesApp.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
 ### Debugging
 

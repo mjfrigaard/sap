@@ -104,7 +104,7 @@ EXPOSE 8180
 CMD Rscript deploy.R
 ```
 
-### `deploy`
+### `deploy.R`
 
 ```r
 rsconnect::setAccountInfo(name = Sys.getenv("RSCONNECT_USER"),

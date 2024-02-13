@@ -8,6 +8,7 @@
     "vars-z": "genre"
   },
   "output": {
+    "plot-display_vals": "List of 6\n $ y         : chr \"imdb_num_votes\"\n $ x         : chr \"critics_score\"\n $ z         : chr \"genre\"\n $ alpha     : num 0.5\n $ size      : int 2\n $ plot_title: chr \"\"",
     "plot-scatterplot": {
       "src": "[image data hash: 0ff43c79fde97c3ebe551478da7442b4]",
       "width": 752,
@@ -50,7 +51,9 @@
           "height": 800
         }
       }
-    }
+    },
+    "vals": "$y\n[1] \"imdb_num_votes\"\n\n$x\n[1] \"critics_score\"\n\n$z\n[1] \"genre\"\n\n$alpha\n[1] 0.5\n\n$size\n[1] 2\n\n$plot_title\n[1] \"\"",
+    "vars-vals": "List of 6\n $ y         : chr \"imdb_num_votes\"\n $ x         : chr \"critics_score\"\n $ z         : chr \"genre\"\n $ alpha     : num 0.5\n $ size      : int 2\n $ plot_title: chr \"\""
   },
   "export": {
     "plot-alpha": 0.5,

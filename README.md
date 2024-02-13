@@ -68,3 +68,7 @@ View reactive values in `bslib` app:
 ``` r
 movies_app(run = 'p', bslib = TRUE)
 ```
+
+### Tests 
+
+The test for `mod_scatter_display` contains methods for testing `reactiveValues()`.

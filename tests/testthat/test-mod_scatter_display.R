@@ -91,21 +91,6 @@ testthat::describe(
         test_logger(end = "display",
           msg = "inputs() creates ggplot2 object")
 
-        # test_logger(start = "mod_scatter_display",
-        #             msg = "output$scatterplot is a list")
-        # testthat::expect_true(
-        #   object = is.list(output$scatterplot))
-        # test_logger(end = "mod_scatter_display",
-        #             msg = "output$scatterplot is a list")
-
-        # test_logger(start = "mod_scatter_display",
-        #             msg = "names in output$scatterplot")
-        # testthat::expect_equal(
-        #   object = names(output$scatterplot),
-        #   expected = c("src", "width", "height", "alt", "coordmap"))
-        # test_logger(end = "names in output$scatterplot")
-        # print(plot)
-
       })
   })
 })

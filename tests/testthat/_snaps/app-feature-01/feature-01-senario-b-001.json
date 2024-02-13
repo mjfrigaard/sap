@@ -8,6 +8,7 @@
     "vars-z": "mpaa_rating"
   },
   "output": {
+    "plot-display_vals": "List of 6\n $ y         : chr \"audience_score\"\n $ x         : chr \"imdb_rating\"\n $ z         : chr \"mpaa_rating\"\n $ alpha     : num 0.7\n $ size      : int 3\n $ plot_title: chr \"New plot title\"",
     "plot-scatterplot": {
       "src": "[image data hash: d5360d665d033457b31b5922c0303a90]",
       "width": 752,
@@ -50,7 +51,9 @@
           "height": 800
         }
       }
-    }
+    },
+    "vals": "$y\n[1] \"audience_score\"\n\n$x\n[1] \"imdb_rating\"\n\n$z\n[1] \"mpaa_rating\"\n\n$alpha\n[1] 0.7\n\n$size\n[1] 3\n\n$plot_title\n[1] \"New plot title\"",
+    "vars-vals": "List of 6\n $ y         : chr \"audience_score\"\n $ x         : chr \"imdb_rating\"\n $ z         : chr \"mpaa_rating\"\n $ alpha     : num 0.7\n $ size      : int 3\n $ plot_title: chr \"New plot title\""
   },
   "export": {
     "plot-alpha": 0.7,

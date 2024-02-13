@@ -10,8 +10,8 @@
   },
   "output": {
     "plot-scatterplot": {
-      "src": "[image data hash: 7a4e90c585adc6a03f8bdcb7391119e1]",
-      "width": 757,
+      "src": "[image data hash: f4109e4bb9b916fd9ff8f40e683a14df]",
+      "width": 807,
       "height": 400,
       "alt": "Plot object",
       "coordmap": {
@@ -39,20 +39,19 @@
               "colour": ".data[[\"genre\"]]"
             },
             "range": {
-              "left": 76.64511986301372,
-              "right": 1503.041095890411,
+              "left": 76.6451198630137,
+              "right": 1603.041095890411,
               "bottom": 623.7373298620405,
               "top": 45.92633397406263
             }
           }
         ],
         "dims": {
-          "width": 1514,
+          "width": 1614,
           "height": 800
         }
       }
-    },
-    "vars-vals": "List of 6\n $ y         : chr \"length\"\n $ x         : chr \"rating\"\n $ z         : chr \"genre\"\n $ alpha     : num 0.4\n $ size      : num 2.5\n $ plot_title: chr \"\""
+    }
   },
   "export": {
 

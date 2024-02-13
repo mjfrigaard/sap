@@ -59,7 +59,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## reactiveValues()
 
-### `24.1.2_step_02`
+### `24.1.3_step_03`
 
-[`24.1.2_step_02`](https://github.com/mjfrigaard/moviesApp/tree/24.1.2_step_02) displays the `rVals` object in the `mainPanel()` (from `movies_server()`).
+[`24.1.3_step_03`](https://github.com/mjfrigaard/moviesApp/tree/24.1.3_step_03) displays the structure of `str(rVals$inputs())` object from `movies_server()`.
 

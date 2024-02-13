@@ -59,7 +59,12 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## reactiveValues()
 
-### `24.1.3_step_03`
+### `24.1.4_step_04`
 
-[`24.1.3_step_03`](https://github.com/mjfrigaard/moviesApp/tree/24.1.3_step_03) displays the structure of `str(rVals$inputs())` object from `movies_server()`.
+[`24.1.4_step_04`](https://github.com/mjfrigaard/moviesApp/tree/24.1.4_step_04) displays the structure of `rVals$inputs()` from `mod_scatter_display_server()`.
 
+View reactive values in `bslib` app:
+
+``` r
+movies_app(run = 'p', bslib = TRUE)
+```

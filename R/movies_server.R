@@ -50,10 +50,10 @@ movies_server <- function(input, output, session) {
       
       # view output in the UI
       output$vals <- renderPrint({
-        str(rVals$inputs())
+        rVals$inputs()
       })
       
       # pass reactive values to display
-      mod_scatter_display_server("plot", rVals = rVals, .dev = FALSE)
+      mod_scatter_display_server("plot", rVals = rVals, .dev = TRUE)
       
 }

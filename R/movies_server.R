@@ -46,7 +46,7 @@ movies_server <- function(input, output, session) {
       rVals <- reactiveValues()
 
       # assign inputs to rVals
-      rVals$inputs <- mod_var_input_server("vars", .dev = FALSE)
+      rVals$inputs <- mod_var_input_server("vars", .dev = TRUE)
       
       # view output in the UI
       # output$vals <- renderPrint({

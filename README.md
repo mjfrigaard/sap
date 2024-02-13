@@ -59,7 +59,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## sesssion$userData
 
-### `24.2.0_user-data`
+### `24.2.1_step_01`
 
-[`24.2.0_user-data`](https://github.com/mjfrigaard/moviesApp/tree/24.2.0_user-data) gives examples of using `session$userData` to store non-reactive values.
+[`24.2.1_step_01`](https://github.com/mjfrigaard/moviesApp/tree/24.2.1_step_01) uses the `renderPrint()` in `devServer()` to display `str(session)`. 
 

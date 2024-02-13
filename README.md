@@ -57,9 +57,9 @@ open moviesApp.Rproj
 
 View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## `sesssion$userData`
+## sesssion$userData
 
-### `24.2_user-data`
+### `24.2.0_user-data`
 
-[`24.2_user-data`](https://github.com/mjfrigaard/moviesApp/tree/24.2_user-data) gives examples of using `session$userData` to store non-reactive values.
+[`24.2.0_user-data`](https://github.com/mjfrigaard/moviesApp/tree/24.2.0_user-data) gives examples of using `session$userData` to store non-reactive values.
 

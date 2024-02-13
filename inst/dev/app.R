@@ -258,11 +258,6 @@ devServer <- function(input, output, session) {
   
   # assign inputs to rVals
   rVals$inputs <- moviesApp::mod_var_input_server("vars", .dev = TRUE)
-  
-  # view output in the UI
-  # output$vals <- renderPrint({
-  #   str(session)
-  # })
 
   dev_mod_scatter_server("plot",
     rVals = rVals,

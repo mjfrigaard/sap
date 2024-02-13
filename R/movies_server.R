@@ -49,10 +49,9 @@ movies_server <- function(input, output, session) {
       rVals$inputs <- mod_var_input_server("vars", .dev = FALSE)
       
       # view output in the UI
-      # output$vals <- renderPrint({
-        # str(rVals)
-        # str(rVals$inputs())
-      # })
+      output$vals <- renderPrint({ 
+
+      }) 
       
       # pass reactive values to display
       mod_scatter_display_server("plot", rVals = rVals, .dev = FALSE)

@@ -59,7 +59,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ### Debugging
 
-The [`21.1_debugging`](https://github.com/mjfrigaard/moviesApp/tree/21.1_debugging) branch is the first step of 4 that demonstrate debugging an error in `movies_app()`. 
+The [`23.1_debugging`](https://github.com/mjfrigaard/moviesApp/tree/23.1_debugging) branch is the first step of 4 that demonstrate debugging an error in `movies_app()`. 
 
 This branch should be loaded, documented, and installed, then the application should be launched: 
 

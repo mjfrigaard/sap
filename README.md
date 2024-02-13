@@ -45,9 +45,9 @@ git checkout <branch_name>
 
 View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## `reactiveValues()`
+## App Data
 
-### `22.1_reactive-values`
+### ` 24_app-data`
 
-[`22.1_reactive-values`](https://github.com/mjfrigaard/moviesApp/tree/22.1_reactive-values) gives examples of using `reactiveValues()` to store persistent reactive values.
+[`24_app-data`](https://github.com/mjfrigaard/moviesApp/tree/24_app-data) gives examples of 1) using `reactiveValues()` to store persistent reactive values and 2) using `session$userData` to store non-reactive values.
 

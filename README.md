@@ -61,21 +61,24 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ### `A.E-mocks-snapshots`
 
-[`A.E-mocks-snapshots`](https://github.com/mjfrigaard/moviesApp/tree/A.E_mocks-snapshots) gives examples snapshot tests with [`vdiffr`](https://vdiffr.r-lib.org/)
+[`A.E-mocks-snapshots`](https://github.com/mjfrigaard/moviesApp/tree/A.E_mocks-snapshots) gives examples snapshot tests with [`vdiffr`](https://vdiffr.r-lib.org/) and using `testthat`'s test mocking functions.
 
 ```
 tests
 ├── testthat
-│   ├── _snaps # these are created after running test-scatter_plot.R!
-│   │   └── scatter_plot
-│   │       ├── initial-x-y-z-axes.svg
-│   │       └── updated-x-y-color.svg
+│   ├── _snaps
+│   │   ├── scatter_plot
+│   │   │   ├── initial-x-y-z-axes.svg
+│   │   │   └── updated-x-y-color.svg
+│   │   └── text_logo.md
 │   ├── fixtures
 │   │   ├── make-tidy_ggp2_movies.R
 │   │   └── tidy_ggp2_movies.rds
 │   ├── helper.R
-│   └── test-scatter_plot.R
+│   ├── test-check_installed.R
+│   ├── test-scatter_plot.R
+│   └── test-text_logo.R
 └── testthat.R
 
-5 directories, 7 files
+5 directories, 10 files
 ```

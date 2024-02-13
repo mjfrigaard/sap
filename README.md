@@ -59,7 +59,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## sesssion$userData
 
-### `24.2.1_step_01`
+### `24.2.2_step_02`
 
-[`24.2.1_step_01`](https://github.com/mjfrigaard/moviesApp/tree/24.2.1_step_01) uses the `renderPrint()` in `devServer()` to display `str(session)`. 
+[`24.2.2_step_02`](https://github.com/mjfrigaard/moviesApp/tree/24.2.2_step_02) changes the .dev argument in `dev_mod_scatter_server()` to `TRUE` to display `data_fun()`:
 

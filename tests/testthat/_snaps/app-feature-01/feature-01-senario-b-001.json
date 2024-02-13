@@ -50,7 +50,8 @@
           "height": 800
         }
       }
-    }
+    },
+    "vars-vals": "List of 6\n $ y         : chr \"audience_score\"\n $ x         : chr \"imdb_rating\"\n $ z         : chr \"mpaa_rating\"\n $ alpha     : num 0.7\n $ size      : int 3\n $ plot_title: chr \"New plot title\""
   },
   "export": {
     "plot-alpha": 0.7,

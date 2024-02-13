@@ -268,7 +268,7 @@ devServer <- function(input, output, session) {
     rVals = rVals,
     data_fun = session$userData$make_dev_ggp2_movies, 
     con = "https://bit.ly/3FQYR8j",
-    .dev = FALSE
+    .dev = TRUE
   )
   
 }

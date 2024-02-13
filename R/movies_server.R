@@ -51,7 +51,6 @@ movies_server <- function(input, output, session) {
       # view output in the UI
       output$vals <- renderPrint({
         str(rVals)
-       
       })
       
       # pass reactive values to display

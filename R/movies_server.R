@@ -27,7 +27,8 @@
 #' @seealso [mod_var_input_ui()]
 #' 
 #' @section `scatter_display` module: 
-#' [mod_scatter_display_server()] displays the `ggplot2` graph with the [scatter_plot()] function.
+#' [mod_scatter_display_server()] displays the `ggplot2` graph with the 
+#' [scatter_plot()] function.
 #' 
 #' @seealso [mod_scatter_display_ui()]
 #' 

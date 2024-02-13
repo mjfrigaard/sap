@@ -36,7 +36,8 @@ In \code{\link[=movies_app]{movies_app()}}:
 
 \section{\code{scatter_display} module}{
 
-\code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}} displays the \code{ggplot2} graph with the \code{\link[=scatter_plot]{scatter_plot()}} function.
+\code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}} displays the \code{ggplot2} graph with the
+\code{\link[=scatter_plot]{scatter_plot()}} function.
 }
 
 \section{Communication}{

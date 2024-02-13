@@ -57,7 +57,7 @@ open moviesApp.Rproj
 
 View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-# `20_rhino`
+# `19_rhino`
 
 The goal of `rap` is to demonstrate the `rhino` framework.
 
@@ -72,10 +72,10 @@ pak::pak("mjfrigaard/shinypak")
 library(shinypak)
 ```
 
-Get and open the `20_rhino` branch:
+Get and open the `19_rhino` branch:
 
 ```r
-shinypak::get("20_rhino", open = TRUE)
+shinypak::get("19_rhino", open = TRUE)
 ```
 
 ## Run

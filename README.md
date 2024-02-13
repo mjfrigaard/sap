@@ -59,7 +59,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## reactiveValues()
 
-### ` 24.1_reactive-values`
+### `24.1.1_step_01`
 
-[`24.1_reactive-values`](https://github.com/mjfrigaard/moviesApp/tree/24.1_reactive-values) gives examples of 1) using `reactiveValues()` to store persistent reactive values.
+[`24.1.1_step_01`](https://github.com/mjfrigaard/moviesApp/tree/24.1.1_step_01) displays changes to `movies_server()` and the `mod_var_input_server()`
 

@@ -59,7 +59,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## Appendix E 
 
-### `A_E-mocks-snapshots`
+### `A.E-mocks-snapshots`
 
 [`A.E-mocks-snapshots`](https://github.com/mjfrigaard/moviesApp/tree/A.E_mocks-snapshots) gives examples snapshot tests with [`vdiffr`](https://vdiffr.r-lib.org/)
 

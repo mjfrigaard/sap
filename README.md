@@ -57,7 +57,7 @@ open moviesApp.Rproj
 
 View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-## `15_docker` 
+## `19_docker` 
 
-[`15_docker`](https://github.com/mjfrigaard/moviesApp/tree/15_docker) gives examples of using [Docker](https://www.docker.com/).
+[`19_docker`](https://github.com/mjfrigaard/moviesApp/tree/19_docker) gives examples of using [Docker](https://www.docker.com/).
 

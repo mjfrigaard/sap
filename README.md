@@ -59,8 +59,8 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## CSS 
 
-### `20_css`
+### `15_css`
 
-[`20_css`](https://github.com/mjfrigaard/moviesApp/tree/20_css) gives examples of including CSS in your app-package.
+[`15_css`](https://github.com/mjfrigaard/moviesApp/tree/15_css) gives examples of including CSS in your app-package.
 
 

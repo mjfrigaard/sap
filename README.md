@@ -59,9 +59,9 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## CI/CD (docker) 
 
-### `16.3_cicd-docker`
+### `20.3_cicd-docker`
 
-[`16.3_cicd-docker](https://github.com/mjfrigaard/moviesApp/tree/16.3_cicd-docker) gives examples of GitHub Actions workflows using Docker.
+[`20.3_cicd-docker`](https://github.com/mjfrigaard/moviesApp/tree/20.3_cicd-docker) gives examples of GitHub Actions workflows using Docker.
 
 ### `.github/workflows/docker.yaml`
 
@@ -70,7 +70,7 @@ name: docker-shiny, moviesapp
 
 on:
   push:
-    branches: [ 16.3_cicd-docker ]
+    branches: [ 20.3_cicd-docker ]
 
 jobs:
   docker:
@@ -93,7 +93,7 @@ jobs:
 
 ### `Dockerfile`
 
-```bash
+``` bash
 FROM rocker/shiny
 RUN R -e 'install.packages(c("rlang", "stringr", "shiny", "ggplot2", "remotes", "rsconnect", "bslib"))'
 RUN mkdir /home/moviesAppDockerCiCd
@@ -106,7 +106,7 @@ CMD Rscript deploy.R
 
 ### `deploy.R`
 
-```r
+``` r
 rsconnect::setAccountInfo(name = Sys.getenv("RSCONNECT_USER"),
                token = Sys.getenv("RSCONNECT_TOKEN"),
                secret = Sys.getenv("RSCONNECT_SECRET"))

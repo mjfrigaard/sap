@@ -59,9 +59,9 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## GitHub Actions 
 
-### `16.2_cicd-shiny`
+### `20.2_cicd-shiny`
 
-[`16.2_cicd-shiny`](https://github.com/mjfrigaard/moviesApp/tree/16.2_cicd-shiny) gives an example of a [Shiny workflow](https://github.com/r-lib/actions/tree/v2/examples#shiny-app-deployment).
+[`20.2_cicd-shiny`](https://github.com/mjfrigaard/moviesApp/tree/20.2_cicd-shiny) gives an example of a [Shiny workflow](https://github.com/r-lib/actions/tree/v2/examples#shiny-app-deployment).
 
 ```yaml
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples

@@ -68,7 +68,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [16.2_cicd-shiny]
+    branches: [20.2_cicd-shiny]
 
 name: shiny
 

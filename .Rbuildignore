@@ -4,3 +4,7 @@
 ^moviesApp.*\.tar\.gz$
 ^moviesApp.*\.tgz$
 _\.new\.png$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$

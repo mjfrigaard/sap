@@ -61,7 +61,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ### `20.3_cicd-docker`
 
-[`20.3_cicd-docker`](https://github.com/mjfrigaard/moviesApp/tree/20.3_cicd-docker) gives examples of GitHub Actions workflows using Docker.
+[`20.3_cicd-docker`](https://github.com/mjfrigaard/moviesApp/tree/20.3_cicd-docker) gives examples of GitHub Actions workflows using Docker. Changes will only affect the CI/CD workflow in this branch. 
 
 ### `.github/workflows/docker.yaml`
 

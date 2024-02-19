@@ -56,29 +56,20 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><div class="page-header"><h1 align="center">
-<code>moviesApp</code>
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="moviesapp-21_pkgdown-branch">moviesApp (<code>21_pkgdown</code> branch)<a class="anchor" aria-label="anchor" href="#moviesapp-21_pkgdown-branch"></a>
 </h1></div>
-<h3 align="center">
-A Shiny App-Package
-</h3>
-<h5 align="center">
-Code examples for <a href="https://mjfrigaard.github.io/shinyap/" class="external-link"> Shiny App-Packages </a>
-</h5>
-<hr>
-<div class="section level1">
-<h1 id="moviesapp">moviesApp<a class="anchor" aria-label="anchor" href="#moviesapp"></a>
-</h1>
+<!-- badges: start -->
+<!-- badges: end -->
 <p><code>moviesApp</code> provides the code examples in for the <a href="https://mjfrigaard.github.io/shinyap/" class="external-link">Shiny App-Packages</a> book and the <a href="https://mjfrigaard.github.io/dev-test-shiny/" class="external-link">Developing &amp; Testing Your Shiny Application</a> workshop provided at R in Pharma (2023).</p>
 <div class="section level2">
 <h2 id="movie-review-data-application">Movie review data application<a class="anchor" aria-label="anchor" href="#movie-review-data-application"></a>
 </h2>
 <p>The original code and data for the Shiny app comes from the <a href="https://rstudio-education.github.io/shiny-course/" class="external-link">Building Web Applications with Shiny</a> course.</p>
 </div>
-</div>
-<div class="section level1">
-<h1 id="using-code-examples">Using code examples<a class="anchor" aria-label="anchor" href="#using-code-examples"></a>
-</h1>
+<div class="section level2">
+<h2 id="using-code-examples">Using code examples<a class="anchor" aria-label="anchor" href="#using-code-examples"></a>
+</h2>
 <p>The branches in this repo contain a Shiny application in the various stages of development. The best way to access each branch/app is with the <a href="https://mjfrigaard.github.io/shinypak/" class="external-link"><code>shinypak</code> package</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
@@ -103,101 +94,92 @@ Code examples for <a href="https://mjfrigaard.github.io/shinyap/" class="externa
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>branch_name<span class="op">&gt;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> moviesApp.Rproj</span></code></pre></div>
 <hr>
-</div>
-<div class="section level1">
-<h1 id="branches">Branches<a class="anchor" aria-label="anchor" href="#branches"></a>
-</h1>
-<p>View all the applications in the <a href="https://github.com/mjfrigaard/moviesApp/branches/all" class="external-link"><code>moviesApp</code> branches</a>.</p>
-<div class="section level2">
-<h2 id="tests">Tests<a class="anchor" aria-label="anchor" href="#tests"></a>
-</h2>
 <div class="section level3">
-<h3 id="id_14_tests-system">
-<code>14_tests-system</code><a class="anchor" aria-label="anchor" href="#id_14_tests-system"></a>
+<h3 id="id_21_pkgdown">
+<code>21_pkgdown</code><a class="anchor" aria-label="anchor" href="#id_21_pkgdown"></a>
 </h3>
-<p><a href="https://github.com/mjfrigaard/moviesApp/tree/21_pkgdown" class="external-link"><code>21_pkgdown</code></a> gives examples of deploying a package website with <a href="https://pkgdown.r-lib.org/" class="external-link"><code>21_pkgdown</code>.</a>.</p>
+<p><a href="https://github.com/mjfrigaard/moviesApp/tree/21_pkgdown" class="external-link"><code>21_pkgdown</code></a> gives examples of deploying a package website with <a href="https://pkgdown.r-lib.org/" class="external-link"><code>21_pkgdown</code></a>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'pak'</span><span class="op">)</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">'pkgdown'</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="fu">usethis</span><span class="fu">::</span><span class="fu">use_pkgdown_github_pages</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>✔ Setting active project to '/Users/mjfrigaard/projects/apps/moviesApp'
-✔ Adding '^_pkgdown\\.yml$', '^docs$', '^pkgdown$' to '.Rbuildignore'
-✔ Adding 'docs' to '.gitignore'
-✔ Writing '_pkgdown.yml'
-• Modify '_pkgdown.yml'
-✔ Initializing empty, orphan 'gh-pages' branch in GitHub repo 'mjfrigaard/moviesApp'
-✔ GitHub Pages is publishing from:
-• URL: 'https://mjfrigaard.github.io/moviesApp/'
-• Branch: 'gh-pages'
-• Path: '/'
-✔ Creating '.github/'
-✔ Adding '^\\.github$' to '.Rbuildignore'
-✔ Adding '*.html' to '.github/.gitignore'
-✔ Creating '.github/workflows/'
-✔ Saving 'r-lib/actions/examples/pkgdown.yaml@v2' to '.github/workflows/pkgdown.yaml'
-• Learn more at &lt;https://github.com/r-lib/actions/blob/v2/examples/README.md&gt;.
-✔ Recording 'https://mjfrigaard.github.io/moviesApp/' as site's url in '_pkgdown.yml'
-✔ Adding 'https://mjfrigaard.github.io/moviesApp/' to URL
-✔ Setting 'https://mjfrigaard.github.io/moviesApp/' as homepage of GitHub repo 'mjfrigaard/moviesApp'</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'/Users/mjfrigaard/projects/apps/moviesApp'</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'^_pkgdown</span><span class="sc">\\</span><span class="st">.yml$'</span>, <span class="st">'^docs$'</span>, <span class="st">'^pkgdown$'</span> to <span class="st">'.Rbuildignore'</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'docs'</span> to <span class="st">'.gitignore'</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'_pkgdown.yml'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>• Modify <span class="st">'_pkgdown.yml'</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>✔ Initializing empty, orphan <span class="st">'gh-pages'</span> branch <span class="cf">in</span> GitHub repo <span class="st">'mjfrigaard/moviesApp'</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>✔ GitHub Pages is publishing from<span class="sc">:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>• URL<span class="sc">:</span> <span class="st">'https://mjfrigaard.github.io/moviesApp/'</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>• Branch<span class="sc">:</span> <span class="st">'gh-pages'</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>• Path<span class="sc">:</span> <span class="st">'/'</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">'.github/'</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'^</span><span class="sc">\\</span><span class="st">.github$'</span> to <span class="st">'.Rbuildignore'</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'*.html'</span> to <span class="st">'.github/.gitignore'</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">'.github/workflows/'</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>✔ Saving <span class="st">'r-lib/actions/examples/pkgdown.yaml@v2'</span> to <span class="st">'.github/workflows/pkgdown.yaml'</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>• Learn more at <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>r<span class="sc">-</span>lib<span class="sc">/</span>actions<span class="sc">/</span>blob<span class="sc">/</span>v2<span class="sc">/</span>examples<span class="sc">/</span>README.md<span class="sc">&gt;</span>.</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>✔ Recording <span class="st">'https://mjfrigaard.github.io/moviesApp/'</span> as site<span class="st">'s url in '</span>_pkgdown.yml<span class="st">'</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="st">✔ Adding '</span>https<span class="sc">:</span><span class="er">//</span>mjfrigaard.github.io<span class="sc">/</span>moviesApp<span class="sc">/</span><span class="st">' to URL</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="st">✔ Setting '</span>https<span class="sc">:</span><span class="er">//</span>mjfrigaard.github.io<span class="sc">/</span>moviesApp<span class="sc">/</span><span class="st">' as homepage of GitHub repo '</span>mjfrigaard<span class="sc">/</span>moviesApp<span class="st">'</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site_github_pages.html" class="external-link">build_site_github_pages</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>11 Cleaning files from old site 11111111111111111111111111111111111111111111111
-== Building pkgdown site ======================================================
-Reading from: '/Users/mjfrigaard/projects/apps/moviesApp'
-Writing to:   '/Users/mjfrigaard/projects/apps/moviesApp/docs'
--- Initialising site ----------------------------------------------------------
-Copying '../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/bootstrap-toc.css' to 'bootstrap-toc.css'
-Copying '../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/bootstrap-toc.js' to 'bootstrap-toc.js'
-Copying '../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/docsearch.css' to 'docsearch.css'
-Copying '../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/docsearch.js' to 'docsearch.js'
-Copying '../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/link.svg' to 'link.svg'
-Copying '../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/pkgdown.css' to 'pkgdown.css'
-Copying '../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/pkgdown.js' to 'pkgdown.js'
--- Building home --------------------------------------------------------------
-Writing 'authors.html'
-Writing '404.html'
--- Building function reference ------------------------------------------------
-Writing 'reference/index.html'
-Reading 'man/display_type.Rd'
-Writing 'reference/display_type.html'
-Reading 'man/ggp2_movies_app.Rd'
-Writing 'reference/ggp2_movies_app.html'
-Reading 'man/mod_scatter_display_server.Rd'
-Writing 'reference/mod_scatter_display_server.html'
-Reading 'man/mod_scatter_display_ui.Rd'
-Writing 'reference/mod_scatter_display_ui.html'
-Reading 'man/mod_var_input_server.Rd'
-Writing 'reference/mod_var_input_server.html'
-Reading 'man/mod_var_input_ui.Rd'
-Writing 'reference/mod_var_input_ui.html'
-Reading 'man/movies.Rd'
-Writing 'reference/movies.html'
-Reading 'man/movies_app.Rd'
-Writing 'reference/movies_app.html'
-Reading 'man/movies_server.Rd'
-Writing 'reference/movies_server.html'
-Reading 'man/movies_ui.Rd'
-Writing 'reference/movies_ui.html'
-Reading 'man/scatter_plot.Rd'
-Writing 'reference/scatter_plot.html'
-Reading 'man/test_logger.Rd'
-Writing 'reference/test_logger.html'
--- Building articles ----------------------------------------------------------
-Writing 'articles/index.html'
-Reading 'vignettes/test-specs.Rmd'
-Registered S3 methods overwritten by 'callr':
-  method                    from
-  format.callr_status_error     
-  print.callr_status_error      
-Writing 'articles/test-specs.html'
-Writing 'sitemap.xml'
-== DONE ======================================================================
--- Extra files for GitHub pages ----------------------------------------------</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">11</span> Cleaning files from old site <span class="dv">11111111111111111111111111111111111111111111111</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="sc">==</span> Building pkgdown site <span class="sc">==</span><span class="er">====================================================</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Reading from<span class="sc">:</span> <span class="st">'/Users/mjfrigaard/projects/apps/moviesApp'</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>Writing to<span class="sc">:</span>   <span class="st">'/Users/mjfrigaard/projects/apps/moviesApp/docs'</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span> Initialising site <span class="sc">----------------------------------------------------------</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>Copying <span class="st">'../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/bootstrap-toc.css'</span> to <span class="st">'bootstrap-toc.css'</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Copying <span class="st">'../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/bootstrap-toc.js'</span> to <span class="st">'bootstrap-toc.js'</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>Copying <span class="st">'../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/docsearch.css'</span> to <span class="st">'docsearch.css'</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>Copying <span class="st">'../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/docsearch.js'</span> to <span class="st">'docsearch.js'</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>Copying <span class="st">'../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/link.svg'</span> to <span class="st">'link.svg'</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>Copying <span class="st">'../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/pkgdown.css'</span> to <span class="st">'pkgdown.css'</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>Copying <span class="st">'../../../Library/Caches/org.R-project.R/R/renv/library/moviesApp-af14169e/R-4.3/x86_64-apple-darwin20/pkgdown/BS3/assets/pkgdown.js'</span> to <span class="st">'pkgdown.js'</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span> Building home <span class="sc">--------------------------------------------------------------</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'authors.html'</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'404.html'</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span> Building <span class="cf">function</span> reference <span class="sc">------------------------------------------------</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/index.html'</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/display_type.Rd'</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/display_type.html'</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/ggp2_movies_app.Rd'</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/ggp2_movies_app.html'</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/mod_scatter_display_server.Rd'</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/mod_scatter_display_server.html'</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/mod_scatter_display_ui.Rd'</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/mod_scatter_display_ui.html'</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/mod_var_input_server.Rd'</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/mod_var_input_server.html'</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/mod_var_input_ui.Rd'</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/mod_var_input_ui.html'</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/movies.Rd'</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/movies.html'</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/movies_app.Rd'</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/movies_app.html'</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/movies_server.Rd'</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/movies_server.html'</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/movies_ui.Rd'</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/movies_ui.html'</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/scatter_plot.Rd'</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/scatter_plot.html'</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'man/test_logger.Rd'</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'reference/test_logger.html'</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span> Building articles <span class="sc">----------------------------------------------------------</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'articles/index.html'</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>Reading <span class="st">'vignettes/test-specs.Rmd'</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>Registered S3 methods overwritten by <span class="st">'callr'</span><span class="sc">:</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>  method                    from</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>  format.callr_status_error     </span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>  print.callr_status_error      </span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'articles/test-specs.html'</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>Writing <span class="st">'sitemap.xml'</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="sc">==</span> DONE <span class="sc">==</span><span class="er">====================================================================</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span> Extra files <span class="cf">for</span> GitHub pages <span class="sc">----------------------------------------------</span></span></code></pre></div>
 </div>
 </div>
 </div>
-
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">

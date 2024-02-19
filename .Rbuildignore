@@ -8,3 +8,4 @@ _\.new\.png$
 ^docs$
 ^pkgdown$
 ^\.github$
+^README\.Rmd$

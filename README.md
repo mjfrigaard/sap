@@ -59,9 +59,9 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## CI/CD (docker) 
 
-### `20.3_cicd-docker`
+### `16.3_cicd-docker`
 
-[`20.3_cicd-docker`](https://github.com/mjfrigaard/moviesApp/tree/20.3_cicd-docker) gives examples of GitHub Actions workflows using Docker. Changes will only affect the CI/CD workflow in this branch. 
+[`16.3_cicd-docker`](https://github.com/mjfrigaard/moviesApp/tree/16.3_cicd-docker) gives examples of GitHub Actions workflows using Docker. Changes will only affect the CI/CD workflow in this branch. 
 
 ### `.github/workflows/docker.yaml`
 
@@ -70,7 +70,7 @@ name: docker-shiny, moviesapp
 
 on:
   push:
-    branches: [ 20.3_cicd-docker ]
+    branches: [ 16.3_cicd-docker ]
 
 jobs:
   docker:

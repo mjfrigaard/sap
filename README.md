@@ -61,9 +61,9 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 This chapter introduces GitHub Actions and CI/CD.
 
-### `20.1_cicd-style`
+### `16.1_cicd-style`
 
-[`20.1_cicd-style`](https://github.com/mjfrigaard/moviesApp/tree/20.1_cicd-style) gives examples [GitHub Actions](https://docs.github.com/en/actions).
+[`16.1_cicd-style`](https://github.com/mjfrigaard/moviesApp/tree/16.1_cicd-style) gives examples [GitHub Actions](https://docs.github.com/en/actions).
 
 The style workflow is stored in the `.github` folder:
 
@@ -82,7 +82,7 @@ The workflow file contains the following:
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [20.1_cicd-style]
+    branches: [16.1_cicd-style]
     paths: ["**.[rR]", "**.[qrR]md", "**.[rR]markdown", "**.[rR]nw", "**.[rR]profile"]
 
 name: Style

@@ -6,8 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-`moviesApp` ([`21_pkgdown`
-branch](https://github.com/mjfrigaard/moviesApp/tree/21_pkgdown))
+`moviesApp` ([`17_pkgdown`
+branch](https://github.com/mjfrigaard/moviesApp/tree/17_pkgdown))
 provides an example of deploying an app-package website with
 [`pkgdown`](https://pkgdown.r-lib.org/).
 
@@ -48,9 +48,9 @@ Change the branches for the triggering event in
 ``` yml
 on:
   push:
-    branches: [21_pkgdown]
+    branches: [17_pkgdown]
   pull_request:
-    branches: [21_pkgdown]
+    branches: [17_pkgdown]
 ```
 
 Build site:

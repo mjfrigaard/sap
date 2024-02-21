@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-`moviesApp` ([`21_pkgdown` branch](https://github.com/mjfrigaard/moviesApp/tree/21_pkgdown)) provides an example of deploying an app-package website with [`pkgdown`](https://pkgdown.r-lib.org/).
+`moviesApp` ([`17_pkgdown` branch](https://github.com/mjfrigaard/moviesApp/tree/17_pkgdown)) provides an example of deploying an app-package website with [`pkgdown`](https://pkgdown.r-lib.org/).
 
 ## Install
 
@@ -55,9 +55,9 @@ Change the branches for the triggering event in `.github/workflows/pkgdown.yml`:
 ``` yml
 on:
   push:
-    branches: [21_pkgdown]
+    branches: [17_pkgdown]
   pull_request:
-    branches: [21_pkgdown]
+    branches: [17_pkgdown]
 ```
 
 Build site:

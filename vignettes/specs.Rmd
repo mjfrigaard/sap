@@ -1,8 +1,8 @@
 ---
-title: "test-specs"
+title: "Specifications"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{test-specs}
+  %\VignetteIndexEntry{Specifications}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,11 +18,13 @@ knitr::opts_chunk$set(
 library(moviesApp)
 ```
 
+This vignette provides example specifications for the `moviesApp` application (written in the [Gherkin](https://cucumber.io/docs/gherkin/) syntax)
+
 ## Movies App Specifications
 
 **Example:** The application should source movie review data from platforms like IMDB or Rotten Tomatoes
 
-### Feature
+### Features
 
 **Feature:** Movie Review Dataset Variables
 
@@ -32,11 +34,11 @@ library(moviesApp)
 
 ***In order to*** provide comprehensive movie reviews
 
-### **Background**:
+### Background
 
 ***Given*** the application has access to data from the IMDB and Rotten Tomatoes APIs
 
-## Functional Requirements (**Scenarios**)
+## Functional Requirements (i.e., Scenarios)
 
 **Scenario**: Movie Review Continuous and Categorical Variables
 

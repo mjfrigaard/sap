@@ -1,4 +1,27 @@
 url: https://mjfrigaard.github.io/moviesApp/
 template:
   bootstrap: 5
+  bootswatch: united
+  theme: atom-one-light
+  bslib:
+    primary: "#007987"
+    secondary: "#f5feff"
+    base_font:
+      google: Ubuntu
+    heading_font:
+      google: Fira Sans Condensed
+    code_font:
+      google: Ubuntu Mono
 
+navbar:
+ components:
+   articles:
+    text: Articles
+    menu:
+    - text: "Specs"
+    - text: App Specifications
+      href: articles/specs.html
+    - text: -------
+    - text: "Features"
+    - text: Application features
+      href: articles/features.html

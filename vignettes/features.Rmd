@@ -1,0 +1,21 @@
+---
+title: "Features"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Features}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(moviesApp)
+```
+
+This is an example vignette for demonstrating `pkgdown` layouts.

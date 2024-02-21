@@ -11,6 +11,7 @@ Imports:
     bslib,
     cli,
     ggplot2,
+    htmltools,
     rlang,
     sass,
     shiny,

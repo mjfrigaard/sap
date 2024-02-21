@@ -57,6 +57,6 @@ open moviesApp.Rproj
 
 View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
 
-### `27_stack-traces`
+### `28_dependency-hell`
 
-[`27_stack-traces`](https://github.com/mjfrigaard/moviesApp/tree/27_stack-traces) covers how to use stack-traces/call stacks to help debug Shiny apps.
+[`28_dependency-hell`](https://github.com/mjfrigaard/moviesApp/tree/28_dependency-hell) covers exploring and capturing dependencies in your app-package.

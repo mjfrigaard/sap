@@ -2,7 +2,7 @@ name: docker-shiny, moviesapp
 
 on:
   push:
-    branches: [ 16.3_cicd-docker ]
+    branches: [ 16.3_gha-docker ]
 
 jobs:
   docker:

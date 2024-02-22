@@ -10,20 +10,27 @@
 #' @export display_type
 #'
 display_type <- function(run = "w") {
+  
   if (run == "p") {
+    
     options(shiny.launch.browser = .rs.invokeShinyPaneViewer)
+    
   } else if (run == "b") {
+    
     options(shiny.launch.browser = .rs.invokeShinyWindowExternal)
+    
   } else if (run == "w") {
+    
     options(shiny.launch.browser = .rs.invokeShinyWindowViewer)
+    
   } else {
+    
     options(shiny.launch.browser = NULL)
+    
   }
 
   shinyViewerType <- getOption("shiny.launch.browser") |>
-    attributes() |>
-    unlist() |>
-    unname()
+    attributes() |> unlist() |> unname()
 
   cli::cli_alert_info("shinyViewerType set to {shinyViewerType}")
 }

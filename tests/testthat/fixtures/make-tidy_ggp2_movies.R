@@ -46,5 +46,7 @@ make_tidy_ggp2_movies <- function(movies_data_url) {
 tidy_movies <- make_tidy_ggp2_movies("https://raw.githubusercontent.com/hadley/ggplot2movies/master/data-raw/movies.csv")
 
 # save to tests/testthat/fixtures/
-saveRDS(object = tidy_ggp2_movies, 
-  file = "tests/testthat/fixtures/tidy_ggp2_movies.rds")
+saveRDS(
+  object = tidy_ggp2_movies,
+  file = "tests/testthat/fixtures/tidy_ggp2_movies.rds"
+)

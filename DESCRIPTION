@@ -10,6 +10,7 @@ Depends:
 Imports: 
     bslib,
     cli,
+    fst,
     ggplot2,
     pkgload,
     logger,
@@ -21,7 +22,6 @@ Imports:
     stringr,
     tools
 Suggests: 
-    fst,
     ggplot2movies,
     glue,
     knitr,

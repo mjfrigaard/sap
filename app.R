@@ -10,11 +10,11 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
         pkgload::load_all()
       }
     )
-    # create shiny object from prod/app ----
+    # create shiny object from dev/ ----
     shinyAppDir(appDir = 
-                system.file("prod/app", package = "moviesApp"))
+                system.file("dev", package = "moviesApp"))
   } else {
     pkgload::load_all()
   }
-  movies_app(bslib = TRUE)
+  moviesApp::ggp2_movies_app()
 })

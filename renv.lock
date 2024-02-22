@@ -116,16 +116,21 @@
     },
     "callr": {
       "Package": "callr",
-      "Version": "3.7.5",
-      "Source": "Repository",
-      "Repository": "CRAN",
+      "Version": "3.7.5.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "r-lib",
+      "RemoteRepo": "callr",
+      "RemoteRef": "main",
+      "RemoteSha": "9a6100834caa8d043a1f8e5abdcfc34fbfb944a0",
       "Requirements": [
         "R",
         "R6",
         "processx",
         "utils"
       ],
-      "Hash": "9f0e4fae4963ba775a5e5c520838c87b"
+      "Hash": "64bde39c9e2ea16819a0effdfbf6712d"
     },
     "cli": {
       "Package": "cli",

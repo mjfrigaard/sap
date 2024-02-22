@@ -59,16 +59,16 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## GitHub Actions 
 
-### `16.2_cicd-shiny`
+### `16.2_gha-shiny`
 
-[`16.2_cicd-shiny`](https://github.com/mjfrigaard/moviesApp/tree/16.2_cicd-shiny) provides an example of a [Shiny workflow](https://github.com/r-lib/actions/tree/v2/examples#shiny-app-deployment) with CI/CD. The changes made to this repo will push a new application [here](https://mjfrigaard.shinyapps.io/moviesAppCICD/)
+[`16.2_gha-shiny`](https://github.com/mjfrigaard/moviesApp/tree/16.2_gha-shiny) provides an example of a [Shiny workflow](https://github.com/r-lib/actions/tree/v2/examples#shiny-app-deployment) with CI/CD. The changes made to this repo will push a new application [here](https://mjfrigaard.shinyapps.io/moviesAppCICD/)
 
 ```yaml
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [16.2_cicd-shiny]
+    branches: [16.2_gha-shiny]
 
 name: shiny
 

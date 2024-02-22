@@ -20,6 +20,7 @@ Imports:
     shiny,
     shinythemes,
     stringr,
+    tidyr,
     tools
 Suggests: 
     ggplot2movies,
@@ -27,7 +28,6 @@ Suggests:
     knitr,
     rmarkdown,
     shinytest2,
-    tidyr,
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr

@@ -23,7 +23,7 @@ navbar:
       href: articles/specs.html
     - text: -------
     - text: "Features"
-    - text: Application features
+    - text: Application Features
       href: articles/features.html
 
 reference:
@@ -33,12 +33,12 @@ reference:
   contents:
   - starts_with("mod")
 - title: "App functions"
-  desc: "UI, server and standalone app functions"
+  desc: "UI, server & app functions"
   contents:
   - contains("movies_")
   - ggp2_movies_app
 - title: "Utility functions"
-  desc: "Visualizations, launching, and testing"
+  desc: "Graphs, launching, & testing"
   contents:
   - scatter_plot
   - display_type

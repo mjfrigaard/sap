@@ -1,6 +1,7 @@
 #' Create scatter plot 
 #'
-#' Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building scatter plots in `moviesApp()`.
+#' Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building 
+#' scatter plots in `moviesApp()`.
 #' 
 #' 
 #' @param df `data.frame` or `tibble`
@@ -26,6 +27,7 @@
 #' @importFrom rlang .data
 #' 
 #' @export
+#' 
 #' 
 scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
     ggplot2::ggplot(data = df,

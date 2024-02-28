@@ -11,31 +11,31 @@ template:
     heading_font:
       google: Fira Sans Condensed
     code_font:
-      google: Ubuntu Mono
+      google: Inconsolata
 
 navbar:
  components:
    articles:
-    text: Articles
+    text: Docs
     menu:
     - text: "Specs"
     - text: App Specifications
       href: articles/specs.html
     - text: -------
     - text: "Features"
-    - text: Application Features
+    - text: App Features
       href: articles/features.html
 
 reference:
 - title: "Modules"
   desc: >
-    Application modules
+    App modules
   contents:
   - starts_with("mod")
 - title: "App functions"
   desc: "UI, server & app functions"
   contents:
-  - contains("movies_")
+  - contains("movies")
   - ggp2_movies_app
 - title: "Utility functions"
   desc: "Graphs, launching, & testing"
@@ -44,7 +44,7 @@ reference:
   - display_type
   - test_logger
 - title: "Data"
-  desc: "Application `movies` data"
+  desc: "App `movies` data"
   contents:
   - movies
 

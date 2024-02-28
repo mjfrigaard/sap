@@ -63,7 +63,7 @@ Add, commit, and push:
 
 ``` bash
 git add .
-git commit -m "updates to site"
+git commit -m "updates to _pkgdown.yml"
 git push
 ```
 

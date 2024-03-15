@@ -63,4 +63,126 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 [`15_css`](https://github.com/mjfrigaard/moviesApp/tree/15_css) gives examples of including CSS in your app-package.
 
+This branch includes all the elements for the application up to and including System Tests. The `tests/testthat/_snaps/` folder has been removed, so when you run `devtools::test()` you should see something like the following: 
 
+<details tests>
+
+``` bash
+ℹ Testing moviesApp
+Loading required package: shiny
+✔ | F W  S  OK | Context
+✔ |   4      2 | app-feature-01 [11.2s]
+──────────────────────────────
+Warning (test-app-feature-01.R:20:17): Scenario A: Change dropdown values for plotting
+             Given the movie review application is loaded
+             When I choose the variable [critics_score] for the x-axis
+             And I choose the variable [imdb_num_votes] for the y-axis
+             And I choose the variable [genre] for the color: Then the scatter plot should show [critics_score] on the x-axis
+             And the scatter plot should show [imdb_num_votes] on the y-axis
+             And the points on the scatter plot should be colored by [genre]
+Adding new file snapshot: 'tests/testthat/_snaps/feature-01-senario-a-001_.png'
+
+Warning (test-app-feature-01.R:20:17): Scenario A: Change dropdown values for plotting
+             Given the movie review application is loaded
+             When I choose the variable [critics_score] for the x-axis
+             And I choose the variable [imdb_num_votes] for the y-axis
+             And I choose the variable [genre] for the color: Then the scatter plot should show [critics_score] on the x-axis
+             And the scatter plot should show [imdb_num_votes] on the y-axis
+             And the points on the scatter plot should be colored by [genre]
+Adding new file snapshot: 'tests/testthat/_snaps/feature-01-senario-a-001.json'
+
+Warning (test-app-feature-01.R:37:17): Scenario B: Change dropdown values for plotting
+              Given the movie review application is loaded
+              When I choose the size of the points to be [3]
+              And I choose the opacity of the points to be [0.7]
+              And I enter '[New plot title]' for the plot title: Then the size of the points on the scatter plot should be [3]
+              And the opacity of the points on the scatter plot should be [0.7]
+              And the title of the plot should be '[New plot title]'
+Adding new file snapshot: 'tests/testthat/_snaps/feature-01-senario-b-001_.png'
+
+Warning (test-app-feature-01.R:37:17): Scenario B: Change dropdown values for plotting
+              Given the movie review application is loaded
+              When I choose the size of the points to be [3]
+              And I choose the opacity of the points to be [0.7]
+              And I enter '[New plot title]' for the plot title: Then the size of the points on the scatter plot should be [3]
+              And the opacity of the points on the scatter plot should be [0.7]
+              And the title of the plot should be '[New plot title]'
+Adding new file snapshot: 'tests/testthat/_snaps/feature-01-senario-b-001.json'
+──────────────────────────────
+⠏ |          0 | ggp2_app-feature-01
+INFO [2024-03-15 11:02:16] [ START ggp2movies-feat-01 = update x, y, z, missing]
+⠋ |   1      0 | ggp2_app-feature-01
+INFO [2024-03-15 11:02:29] [ END ggp2movies-feat-01 = update x, y, z, missing]
+✔ |   2      1 | ggp2_app-feature-01 [13.4s]
+──────────────────────────────
+Warning (test-ggp2_app-feature-01.R:28:7): Scenario: Change dropdown values for plotting
+        Given the movie review application is loaded
+        When I choose the variable ['Length'] for the x-axis
+        And I choose the variable ['Rating'] for the y-axis
+        And I choose the variable ['Genre'] for the color
+        And I click the ['Remove missing'] checkbox: Then the scatter plot should show ['Length'] on the x-axis
+        And the scatter plot should show ['Rating'] on the y-axis
+        And the points on the scatter plot should be colored by ['Genre']
+        And the missing values should be removed from the plot
+Adding new file snapshot: 'tests/testthat/_snaps/ggp2movies_app-feature-01-001_.png'
+
+Warning (test-ggp2_app-feature-01.R:28:7): Scenario: Change dropdown values for plotting
+        Given the movie review application is loaded
+        When I choose the variable ['Length'] for the x-axis
+        And I choose the variable ['Rating'] for the y-axis
+        And I choose the variable ['Genre'] for the color
+        And I click the ['Remove missing'] checkbox: Then the scatter plot should show ['Length'] on the x-axis
+        And the scatter plot should show ['Rating'] on the y-axis
+        And the points on the scatter plot should be colored by ['Genre']
+        And the missing values should be removed from the plot
+Adding new file snapshot: 'tests/testthat/_snaps/ggp2movies_app-feature-01-001.json'
+──────────────────────────────
+⠏ |          0 | mod_scatter_display
+INFO [2024-03-15 11:02:30] [ START display = selected_vars initial values]
+
+INFO [2024-03-15 11:02:30] [ END display = selected_vars initial values]
+
+INFO [2024-03-15 11:02:30] [ START display = scatterplot[['alt']] = 'Plot object']
+⠙ |          2 | mod_scatter_display
+INFO [2024-03-15 11:02:30] [ END display = scatterplot[['alt']] = 'Plot object']
+
+INFO [2024-03-15 11:02:30] [ START display = inputs() creates ggplot2 object]
+
+INFO [2024-03-15 11:02:30] [ END display = inputs() creates ggplot2 object]
+✔ |          3 | mod_scatter_display
+⠏ |          0 | mod_var_input
+INFO [2024-03-15 11:02:30] [ START var_inputs = initial returned()]
+
+INFO [2024-03-15 11:02:30] [ END var_inputs = initial returned()]
+
+INFO [2024-03-15 11:02:30] [ START var_inputs = updated returned()]
+
+INFO [2024-03-15 11:02:30] [ END var_inputs = updated returned()]
+✔ |          2 | mod_var_input
+⠏ |          0 | scatter_plot 
+INFO [2024-03-15 11:02:30] [ START fixture = tidy_ggp2_movies.rds]
+
+INFO [2024-03-15 11:02:30] [ START fixture = tidy_ggp2_movies.rds]
+
+INFO [2024-03-15 11:02:30] [ START data = movies.rda]
+
+INFO [2024-03-15 11:02:30] [ END data = movies.rda]
+✔ |          2 | scatter_plot
+✔ |   2      1 | shinytest2 [6.2s]
+──────────────────────────────
+Warning (test-shinytest2.R:11:3): {shinytest2} recording: feature-01
+Adding new file snapshot: 'tests/testthat/_snaps/feature-01-001_.png'
+
+Warning (test-shinytest2.R:11:3): {shinytest2} recording: feature-01
+Adding new file snapshot: 'tests/testthat/_snaps/feature-01-001.json'
+──────────────────────────────
+
+══ Results ═══════════════════
+Duration: 31.9 s
+
+[ FAIL 0 | WARN 8 | SKIP 0 | PASS 11 ]
+
+You rock!
+```
+
+</details>

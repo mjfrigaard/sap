@@ -62,19 +62,19 @@ movies_ui <- function(bslib = FALSE) {
                 height = 70,
                 width = 65,
                 style = "margin:10px 10px",
-                align = 'center'
+                align = "center"
+              )
             )
-          ),
           )
         ),
         sidebarLayout(
           sidebarPanel(
-              class = "custom-sidebar",
+            class = "custom-sidebar",
             mod_var_input_ui("vars")
           ),
           mainPanel(
-              mod_scatter_display_ui("plot")
-            )
+            mod_scatter_display_ui("plot")
+          )
         )
       )
     )

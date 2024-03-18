@@ -1,0 +1,31 @@
+.custom-header {
+    background-color: #8000ff;
+    color: #f0ff07;
+    padding: 10px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 10px 10px;
+}
+
+.custom-sidebar {
+    background-color: #ff00a9;
+    color: #a5ff0b;
+    padding: 10px;
+}
+
+.custom-main {
+    background-color: #00ddff;
+    color: #ffffff;
+    font-style: italic;
+    padding: 15px;
+}
+
+.custom-text {
+    font-size: 18px;
+    word-spacing: 1.5px;
+    font-weight: bold;
+}
+
+
+

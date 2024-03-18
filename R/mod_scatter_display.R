@@ -10,15 +10,13 @@
 mod_scatter_display_ui <- function(id) {
   ns <- NS(id)
   tagList(
+    plotOutput(outputId = ns("scatterplot")),
     tags$br(),
-    tags$blockquote(
-      tags$em(
-        tags$h6("The data for this application comes from the ",
-        tags$a("Building web applications with Shiny",
-          href = "https://rstudio-education.github.io/shiny-course/"),
-                      "tutorial"))
-      ),
-    plotOutput(outputId = ns("scatterplot"))
+      tags$p("The data for this application comes from the ",
+      tags$a("Building web applications with Shiny",
+        href = "https://rstudio-education.github.io/shiny-course/"),
+                    "tutorial"
+    )
   )
 }
 

@@ -59,9 +59,9 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 ## CSS 
 
-### `15_css`
+### `18.0_css-inline`
 
-[`15_css`](https://github.com/mjfrigaard/moviesApp/tree/15_css) gives examples of including CSS in your app-package.
+[`18.0_css-inline`](https://github.com/mjfrigaard/moviesApp/tree/18.0_css-inline) gives examples of using inline CSS in your app-package.
 
 ### Package state 
 

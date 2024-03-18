@@ -46,22 +46,30 @@ movies_ui <- function(bslib = FALSE) {
   if (isFALSE(bslib)) {
     tagList(
       fluidPage(
+        tags$style("
+            .custom-sidebar {
+                background-color: #ecfafd;
+                color: #696969;
+                padding: 10px;
+            }"),
         titlePanel(
           div(
             tags$h2(
               style = "color: #02577A; text-align: center;",
-              "Welcome to moviesApp!"),
-            img(
-              src = "www/shiny.png",
-              height = 70,
-              width = 65,
-              style = "margin:10px 600px",
-              align = 'center'
+              "Welcome to moviesApp!",
+              img(
+                src = "www/shiny.png",
+                height = 70,
+                width = 65,
+                style = "margin:10px 10px",
+                align = 'center'
             )
+          ),
           )
         ),
         sidebarLayout(
           sidebarPanel(
+              class = "custom-sidebar",
             mod_var_input_ui("vars")
           ),
           mainPanel(

@@ -63,6 +63,8 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 [`15_css`](https://github.com/mjfrigaard/moviesApp/tree/15_css) gives examples of including CSS in your app-package.
 
+### Package state 
+
 This branch includes all the elements for the application up to and including System Tests. The `tests/testthat/_snaps/` folder has been removed, so when you run `devtools::test()` you should see something like the following: 
 
 <details tests>
@@ -186,3 +188,24 @@ You rock!
 ```
 
 </details>
+
+The two applications in `moviesApp` can be run with `moviesApp()`
+
+``` r
+devtools::load_all()
+library(moviesApp)
+movies_app()
+```
+
+or 
+
+``` r
+movies_app(bslib = TRUE)
+```
+
+
+The `ggp2_movies_app()` function will launch the development application with the [`ggplot2movies` data](https://cran.r-project.org/web/packages/ggplot2movies/index.html):
+
+``` r
+moviesApp::ggp2_movies_app()
+```

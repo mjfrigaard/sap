@@ -1,23 +1,23 @@
 #' Movies UI function
-#' 
-#' UI function for standalone app function 
-#' 
+#'
+#' UI function for standalone app function
+#'
 #' @usage NULL
-#' 
+#'
 #' @param bslib use bslib layout?
-#' 
+#'
 #' @details
-#' The [movies_app()] function is as a wrapper for `shinyApp()`: 
-#'  
+#' The [movies_app()] function is as a wrapper for `shinyApp()`:
+#'
 #' ```
 #' shinyApp(ui = movies_ui, server = movies_server)
 #' ```
-#' 
+#'
 #' In [movies_app()]:
-#'  * UI is stored in `movies_ui()`    
+#'  * UI is stored in `movies_ui()`
 #'  * server is stored in [movies_server()]
-#'  
-#' @section `var_input` module: 
+#'
+#' @section `var_input` module:
 #' [mod_var_input_ui()] is used to collect the following inputs:
 #'  * `input$x`
 #'  * `input$y`
@@ -25,48 +25,51 @@
 #'  * `input$alpha`
 #'  * `input$size`
 #'  * `input$plot_title`
-#'  
+#'
 #' @seealso [mod_var_input_server()]
-#' 
-#' 
-#' @section `scatter_display` module: 
+#'
+#'
+#' @section `scatter_display` module:
 #' [mod_scatter_display_ui()] displays the graph output using [scatter_plot()]
-#' 
+#'
 #' @seealso [mod_scatter_display_server()]
 #'
-#' @return `ui` argument in `shinyApp()` 
-#' 
+#' @return `ui` argument in `shinyApp()`
+#'
 #' @export
-#' 
+#'
 movies_ui <- function(bslib = FALSE) {
   addResourcePath(
-    prefix = 'www',
-    directoryPath = system.file('www', package = 'moviesApp'))
+    prefix = "www",
+    directoryPath = system.file("www", package = "moviesApp")
+  )
   if (isFALSE(bslib)) {
-  tagList(
-    fluidPage(
-      theme = shinythemes::shinytheme("spacelab"),
-      titlePanel(
-        div(
-          img(
-            src = "www/shiny.png",
-            height = 60,
-            width = 55,
-            style = "margin:10px 10px"
-            ),
-         "Movie Reviews"
-        )
-      ),
-      sidebarLayout(
-        sidebarPanel(
-          mod_var_input_ui("vars")
+    tagList(
+      fluidPage(
+        titlePanel(
+          div(
+            tags$h2(
+              style = "color: #02577A; text-align: center;",
+              "Welcome to moviesApp!"),
+            img(
+              src = "www/shiny.png",
+              height = 70,
+              width = 65,
+              style = "margin:10px 600px",
+              align = 'center'
+            )
+          )
         ),
-        mainPanel(
-          mod_scatter_display_ui("plot")
+        sidebarLayout(
+          sidebarPanel(
+            mod_var_input_ui("vars")
+          ),
+          mainPanel(
+              mod_scatter_display_ui("plot")
+            )
         )
       )
     )
-  )
   } else {
     tagList(
       bslib::page_fillable(
@@ -86,15 +89,15 @@ movies_ui <- function(bslib = FALSE) {
           ),
           bslib::card(
             full_screen = TRUE,
-                bslib::card_header(
-                  tags$img(
-                  src = "www/bootstrap.png",
-                  height = 80,
-                  width = 100,
-                  style = "margin:10px 10px"
-                )
-              ),
-             bslib::card_body(
+            bslib::card_header(
+              tags$img(
+                src = "www/bootstrap.png",
+                height = 80,
+                width = 100,
+                style = "margin:10px 10px"
+              )
+            ),
+            bslib::card_body(
               mod_scatter_display_ui("plot")
             )
           )
@@ -102,4 +105,4 @@ movies_ui <- function(bslib = FALSE) {
       )
     )
   }
-} 
+}

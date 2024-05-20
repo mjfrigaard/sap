@@ -24,7 +24,6 @@ library(shinypak)
 
 List all the apps with `list_apps()`
 
-
 ```r
 head(list_apps())
 #>                  branch        last_updated

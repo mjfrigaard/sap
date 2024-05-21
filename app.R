@@ -1,6 +1,3 @@
-# reset loadSupport() ----
-# options(shiny.autoload.r = NULL)
-
 # set option to turn off loadSupport() ----
 withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
   if (!interactive()) {

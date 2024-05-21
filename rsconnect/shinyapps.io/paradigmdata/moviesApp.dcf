@@ -1,0 +1,12 @@
+name: moviesApp
+title: moviesApp
+username: paradigmdata
+account: paradigmdata
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12043521
+bundleId: 8642619
+url: https://paradigmdata.shinyapps.io/moviesApp/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

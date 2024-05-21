@@ -10,15 +10,12 @@
 #' @export
 #'
 display_type <- function(run = "w") {
-  if (run == "p") {
-    options(shiny.launch.browser = .rs.invokeShinyPaneViewer)
-  } else if (run == "b") {
-    options(shiny.launch.browser = .rs.invokeShinyWindowExternal) 
-  } else if (run == "w") {
-    options(shiny.launch.browser = .rs.invokeShinyWindowViewer) 
-  } else {
-    options(shiny.launch.browser = NULL)
-  }
+  switch(run,
+    p = options(shiny.launch.browser = .rs.invokeShinyPaneViewer),
+    b = options(shiny.launch.browser = .rs.invokeShinyWindowExternal),
+    w = options(shiny.launch.browser = .rs.invokeShinyWindowViewer),
+    NULL = options(shiny.launch.browser = NULL))
+  
     shinyViewerType <- getOption('shiny.launch.browser') |> 
                         attributes() |> 
                         unlist() |> 

@@ -6,6 +6,7 @@ Maintainer: John Smith <John.Smith@email.io>
 Description: A movie-review shiny application.
 License: GPL-3
 Imports: 
+    bslib,
     ggplot2,
     rlang,
     shiny,
@@ -14,4 +15,4 @@ Imports:
     tools
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

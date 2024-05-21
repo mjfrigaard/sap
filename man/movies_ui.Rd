@@ -2,7 +2,7 @@
 % Please edit documentation in R/movies_ui.R
 \name{movies_ui}
 \alias{movies_ui}
-\title{Movies UI function}
+\title{Movies UI Function}
 \value{
 \code{ui} argument in \code{shinyApp()}
 }
@@ -10,7 +10,7 @@
 UI function for standalone app function
 }
 \details{
-The \code{\link[=movies_app]{movies_app()}} function is as a wrapper for \code{shinyApp()}:
+The \code{\link[=movies_app]{movies_app()}} function is a wrapper for \code{shinyApp()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{shinyApp(ui = movies_ui, server = movies_server)
 }\if{html}{\out{</div>}}
@@ -18,7 +18,7 @@ The \code{\link[=movies_app]{movies_app()}} function is as a wrapper for \code{s
 In \code{\link[=movies_app]{movies_app()}}:
 \itemize{
 \item UI is stored in \code{movies_ui()}
-\item server is stored in \code{\link[=movies_server]{movies_server()}}
+\item Server is stored in \code{\link[=movies_server]{movies_server()}}
 }
 }
 \section{\code{var_input} module}{

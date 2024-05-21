@@ -11,13 +11,6 @@ mod_scatter_display_ui <- function(id) {
   ns <- NS(id)
   tagList(
     tags$br(),
-    tags$blockquote(
-      tags$em(
-        tags$h6("The data for this application comes from the ",
-        tags$a("Building web applications with Shiny",
-          href = "https://rstudio-education.github.io/shiny-course/"),
-                      "tutorial"))
-      ),
     plotOutput(outputId = ns("scatterplot"))
   )
 }
@@ -43,6 +36,7 @@ mod_scatter_display_ui <- function(id) {
 #' @family {"scatter plot module functions"}
 #' 
 mod_scatter_display_server <- function(id, var_inputs) {
+  
   moduleServer(id, function(input, output, session) {
 
     inputs <- reactive({
@@ -56,6 +50,7 @@ mod_scatter_display_server <- function(id, var_inputs) {
           plot_title = plot_title
         )
     })
+    
     output$scatterplot <- renderPlot({
       plot <- scatter_plot(
         # data --------------------
@@ -75,5 +70,6 @@ mod_scatter_display_server <- function(id, var_inputs) {
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "bottom")
     })
+    
   })
 }

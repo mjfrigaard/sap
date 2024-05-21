@@ -1,6 +1,20 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
-<h3 align="center"> A Shiny App-Package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
+<h1 align="center">
+
+<code>moviesApp</code>
+
+</h1>
+
+<h3 align="center">
+
+A Shiny App-Package
+
+</h3>
+
+<h5 align="center">
+
+Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a>
+
+</h5>
 
 <hr>
 
@@ -14,9 +28,9 @@ The original code and data for the Shiny app comes from the [Building Web Applic
 
 # Using code examples
 
-The branches in this repo contain a Shiny application in the various stages of development. The best way to access each branch/app is with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/). 
+The branches in this repo contain a Shiny application in the various stages of development. The best way to access each branch/app is with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/).
 
-```r
+``` r
 # install.packages("pak")
 pak::pak("mjfrigaard/shinypak")
 library(shinypak)
@@ -24,8 +38,7 @@ library(shinypak)
 
 List all the apps with `list_apps()`
 
-
-```r
+``` r
 head(list_apps())
 #>                  branch        last_updated
 #> 2     01_whole-app-game 2024-01-01 14:11:32
@@ -38,7 +51,7 @@ head(list_apps())
 
 Launch an app with `launch()`
 
-```r
+``` r
 launch(app = "02.3_proj-app")
 ```
 
@@ -63,7 +76,7 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 Data for the package (internal, becomes part of the namespace)
 
-```
+```         
 data
 ├── movies.RData
 └── movies.rda
@@ -71,9 +84,9 @@ data
 1 directory, 2 files
 ```
 
-Raw data scripts. 
+Raw data scripts.
 
-```
+```         
 data-raw
 └── movies.R
 
@@ -82,7 +95,7 @@ data-raw
 
 External data files
 
-```
+```         
 inst
 └── extdata
     ├── movies.csv
@@ -90,4 +103,3 @@ inst
 
 2 directories, 2 files
 ```
-

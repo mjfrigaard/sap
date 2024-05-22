@@ -61,3 +61,62 @@ View all the applications in the [`moviesApp` branches](https://github.com/mjfri
 
 [`19_docker`](https://github.com/mjfrigaard/moviesApp/tree/19_docker) gives examples of using [Docker](https://www.docker.com/).
 
+### Tests 
+
+This branch has 10 tests (and the following results). The `tests/testthat/_snaps` folder has been removed.
+
+<details closed>
+
+  <summary>
+    `devtools::test()` results 
+  </summary>
+  
+```
+==> devtools::test()
+
+ℹ Testing moviesApp
+Loading required package: shiny
+✔ | F W  S  OK | Context
+✔ |          2 | app-feature-01 [12.4s]
+⠏ |          0 | mod_scatter_display
+INFO [2024-05-22 14:32:29] [ START display = selected_vars initial values]
+
+INFO [2024-05-22 14:32:29] [ END display = selected_vars initial values]
+
+INFO [2024-05-22 14:32:29] [ START display = scatterplot[['alt']] = 'Plot object']
+⠙ |          2 | mod_scatter_display
+INFO [2024-05-22 14:32:30] [ END display = scatterplot[['alt']] = 'Plot object']
+
+INFO [2024-05-22 14:32:30] [ START display = inputs() creates ggplot2 object]
+
+INFO [2024-05-22 14:32:30] [ END display = inputs() creates ggplot2 object]
+✔ |          3 | mod_scatter_display
+⠏ |          0 | mod_var_input
+INFO [2024-05-22 14:32:30] [ START var_inputs = initial returned()]
+
+INFO [2024-05-22 14:32:30] [ END var_inputs = initial returned()]
+
+INFO [2024-05-22 14:32:30] [ START var_inputs = updated returned()]
+
+INFO [2024-05-22 14:32:30] [ END var_inputs = updated returned()]
+✔ |          2 | mod_var_input
+⠏ |          0 | scatter_plot 
+INFO [2024-05-22 14:32:30] [ START fixture = tidy_ggp2_movies.rds]
+
+INFO [2024-05-22 14:32:30] [ START fixture = tidy_ggp2_movies.rds]
+
+INFO [2024-05-22 14:32:30] [ START data = movies.rda]
+
+INFO [2024-05-22 14:32:30] [ END data = movies.rda]
+✔ |          2 | scatter_plot
+✔ |          1 | shinytest2 [7.2s]
+
+══ Results ═══════════════════
+Duration: 20.3 s
+
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 10 ]
+Warning message:
+In warn_if_app_dir_is_package(appDir) :
+  Loading R/ subdirectory for Shiny application, but this directory appears to contain an R package. Sourcing files in R/ may cause unexpected behavior. See `?loadSupport` for more details.
+```
+</details> 

@@ -15,6 +15,7 @@ Imports:
     rlang,
     sass,
     shiny,
+    shinytest2,
     shinythemes,
     stringr,
     tools
@@ -23,7 +24,6 @@ Suggests:
     glue,
     knitr,
     rmarkdown,
-    shinytest2,
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr

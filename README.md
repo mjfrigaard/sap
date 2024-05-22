@@ -166,3 +166,73 @@ jobs:
             echo "No changes to commit."
           fi
 ```
+
+
+### Tests 
+
+The results for `devtools::test()` should be the following (the `tests/testthat/_snaps` folder has been removed).
+
+
+
+<details open>
+
+<summary>Test results</summary>
+
+``` verbatim
+
+==> devtools::test()
+
+ℹ Testing moviesApp
+Loading required package: shiny
+✔ | F W  S  OK | Context
+⠏ |          0 | mod_scatter_display                                                               
+INFO [2024-05-22 14:13:09] [ START display = selected_vars initial values]
+⠋ |          1 | mod_scatter_display                                                               
+INFO [2024-05-22 14:13:09] [ END display = selected_vars initial values]
+
+INFO [2024-05-22 14:13:09] [ START display = scatterplot[['alt']] = 'Plot object']
+⠙ |          2 | mod_scatter_display                                                               
+INFO [2024-05-22 14:13:10] [ END display = scatterplot[['alt']] = 'Plot object']
+
+INFO [2024-05-22 14:13:10] [ START display = inputs() creates ggplot2 object]
+
+INFO [2024-05-22 14:13:10] [ END display = inputs() creates ggplot2 object]
+✔ |          3 | mod_scatter_display
+⠏ |          0 | mod_var_input                                                                     
+INFO [2024-05-22 14:13:10] [ START var_inputs = initial returned()]
+
+INFO [2024-05-22 14:13:10] [ END var_inputs = initial returned()]
+
+INFO [2024-05-22 14:13:10] [ START var_inputs = updated returned()]
+
+INFO [2024-05-22 14:13:10] [ END var_inputs = updated returned()]
+✔ |          2 | mod_var_input
+⠏ |          0 | scatter_plot                                                                      
+INFO [2024-05-22 14:13:10] [ START fixture = tidy_ggp2_movies.rds]
+
+INFO [2024-05-22 14:13:10] [ START fixture = tidy_ggp2_movies.rds]
+
+INFO [2024-05-22 14:13:10] [ START data = movies.rda]
+
+INFO [2024-05-22 14:13:10] [ END data = movies.rda]
+✔ |          2 | scatter_plot
+✔ |   2      1 | shinytest2 [8.2s]                                                                 
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Warning (test-shinytest2.R:11:3): {shinytest2} recording: feature-01
+Adding new file snapshot: 'tests/testthat/_snaps/feature-01-001_.png'
+
+Warning (test-shinytest2.R:11:3): {shinytest2} recording: feature-01
+Adding new file snapshot: 'tests/testthat/_snaps/feature-01-001.json'
+───────────────────────────────────────────────────────────────────────────────────────────────────
+
+══ Results ════════════════════════════════════════════════════════════════════════════════════════
+Duration: 9.1 s
+
+[ FAIL 0 | WARN 2 | SKIP 0 | PASS 8 ]
+Warning message:
+In warn_if_app_dir_is_package(appDir) :
+  Loading R/ subdirectory for Shiny application, but this directory appears to contain an R package. Sourcing files in R/ may cause unexpected behavior. See `?loadSupport` for more details.
+
+```
+
+</details>

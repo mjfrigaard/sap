@@ -2,5 +2,6 @@ options(scipen = 100000000)
 
 shinyApp(
   ui = devUI(),
-  server = devServer
+  server = devServer, 
+  options = list(test.mode = TRUE)
 )

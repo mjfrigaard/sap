@@ -6,9 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-`moviesApp` ([`17_pkgdown`
-branch](https://github.com/mjfrigaard/moviesApp/tree/17_pkgdown))
-provides an example of deploying an app-package website with
+`moviesApp` provides an example of deploying an app-package website with
 [`pkgdown`](https://pkgdown.r-lib.org/).
 
 ## Install
@@ -43,7 +41,8 @@ Set up GitHub Actions:
 ```
 
 Change the branches for the triggering event in
-`.github/workflows/pkgdown.yml`:
+`.github/workflows/pkgdown.yml` to only trigger on the [`17_pkgdown`
+branch](https://github.com/mjfrigaard/moviesApp/tree/17_pkgdown):
 
 ``` yml
 on:

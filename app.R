@@ -15,6 +15,6 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
                 system.file("prod/app", package = "moviesApp"))
   } else {
     pkgload::load_all()
+    movies_app(options = list(test.mode = TRUE), run = 'p')
   }
-  movies_app(options = list(test.mode = TRUE), run = 'p')
 })

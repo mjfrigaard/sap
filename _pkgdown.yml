@@ -32,11 +32,15 @@ reference:
     App modules
   contents:
   - starts_with("mod")
-- title: "App functions"
-  desc: "UI, server & app functions"
+- title: "UI & Server functions"
+  desc: "UI server functions"
   contents:
-  - contains("movies")
-  - ggp2_movies_app
+  - movies_ui
+  - movies_server
+- title: "App functions"
+  desc: "Standalone app functions"
+  contents:
+  - ends_with("_app")
 - title: "Utility functions"
   desc: "Graphs, launching, & testing"
   contents:

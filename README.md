@@ -66,6 +66,55 @@ git commit -m "updates to _pkgdown.yml"
 git push
 ```
 
+## Deployed site
+
+View the deployed site here: <https://mjfrigaard.github.io/moviesApp/>
+
+More information can be found on the **Actions** tab of the GitHub repo.
+
+## Tests
+
+The `tests/testthat/` folder contains unit, module, and system tests.
+The results from `devtools::test()` should return the following (after
+adding the snapshots):
+
+<details closed>
+<summary>
+devtools::test()
+</summary>
+<pre>
+ℹ Testing moviesApp
+Loading required package: shiny
+✔ | F W  S  OK | Context
+✔ |          2 | app-feature-01 [14.9s]                                                    
+⠏ |          0 | mod_scatter_display                                                       
+INFO [2024-05-30 06:46:02] [ START display = selected_vars initial values]
+&#10;INFO [2024-05-30 06:46:02] [ END display = selected_vars initial values]
+&#10;INFO [2024-05-30 06:46:02] [ START display = scatterplot[['alt']] = 'Plot object']
+⠙ |          2 | mod_scatter_display                                                       
+INFO [2024-05-30 06:46:03] [ END display = scatterplot[['alt']] = 'Plot object']
+&#10;INFO [2024-05-30 06:46:03] [ START display = inputs() creates ggplot2 object]
+&#10;INFO [2024-05-30 06:46:03] [ END display = inputs() creates ggplot2 object]
+✔ |          3 | mod_scatter_display
+⠏ |          0 | mod_var_input                                                             
+INFO [2024-05-30 06:46:03] [ START var_inputs = initial returned()]
+&#10;INFO [2024-05-30 06:46:03] [ END var_inputs = initial returned()]
+&#10;INFO [2024-05-30 06:46:03] [ START var_inputs = updated returned()]
+&#10;INFO [2024-05-30 06:46:03] [ END var_inputs = updated returned()]
+✔ |          2 | mod_var_input
+⠏ |          0 | scatter_plot                                                              
+INFO [2024-05-30 06:46:03] [ START fixture = tidy_ggp2_movies.rds]
+&#10;INFO [2024-05-30 06:46:03] [ START fixture = tidy_ggp2_movies.rds]
+&#10;INFO [2024-05-30 06:46:03] [ START data = movies.rda]
+&#10;INFO [2024-05-30 06:46:03] [ END data = movies.rda]
+✔ |          2 | scatter_plot
+✔ |          1 | shinytest2 [8.4s]                                                         
+&#10;══ Results ══════════════════════════════════════════════════════════════════
+Duration: 24.1 s
+&#10;[ FAIL 0 | WARN 0 | SKIP 0 | PASS 10 ]
+    </pre>
+</details>
+
 ### Movie review data application
 
 `moviesApp` provides the code examples in for the [Shiny

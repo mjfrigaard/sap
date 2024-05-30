@@ -9,9 +9,9 @@
   },
   "output": {
     "plot-scatterplot": {
-      "src": "[image data hash: 0ff43c79fde97c3ebe551478da7442b4]",
-      "width": 752,
-      "height": 400,
+      "src": "[image data hash: c10844abb6cda7bc43722f34c87ab618]",
+      "width": 791,
+      "height": 503,
       "alt": "Plot object",
       "coordmap": {
         "panels": [
@@ -38,16 +38,16 @@
               "colour": ".data[[\"genre\"]]"
             },
             "range": {
-              "left": 105.9888698630137,
-              "right": 1493.041095890411,
-              "bottom": 589.1773298620404,
-              "top": 45.92633397406263
+              "left": 105.9888698630138,
+              "right": 1571.041095890411,
+              "bottom": 773.2595216428624,
+              "top": 45.92633397406257
             }
           }
         ],
         "dims": {
-          "width": 1504,
-          "height": 800
+          "width": 1582,
+          "height": 1006
         }
       }
     }

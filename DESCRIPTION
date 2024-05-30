@@ -10,6 +10,7 @@ Depends:
 Imports: 
     bslib,
     cli,
+    fst,
     ggplot2,
     logger,
     pkgdown,
@@ -18,6 +19,7 @@ Imports:
     shiny,
     shinythemes,
     stringr,
+    tidyr,
     tools
 Suggests: 
     ggplot2movies,

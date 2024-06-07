@@ -14,15 +14,15 @@
 #' 
 buttonUI <- function() {
   tagList(
-    page_fillable(
-      layout_sidebar(
-        sidebar = sidebar(
+    bslib::page_fillable(
+      bslib::layout_sidebar(
+        sidebar = bslib::sidebar(
           mod_cust_button_ui(id = "click")
         ),
-        card(
+        bslib::card(
           mod_greeting_ui(id = "greeting")
         ),
-        card(
+        bslib::card(
           verbatimTextOutput(outputId = "vals")
         )
       )

@@ -18,7 +18,7 @@ devUI <- function() {
       ),
       bslib::layout_sidebar(
         sidebar = bslib::sidebar(
-          dev_mod_vars_ui("vars")
+          dev_mod_point_vars("vars")
         ),
         bslib::card(
           full_screen = TRUE,

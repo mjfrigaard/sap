@@ -11,6 +11,8 @@ Imports:
     bslib,
     cli,
     ggplot2,
+    ggridges,
+    ggwaffle,
     logger,
     rlang,
     sass,

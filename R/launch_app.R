@@ -11,7 +11,7 @@
 #' `launch_app()` checks if the R session is interactive. If so, it sets the 
 #' display type based on the `run` parameter. Then, it initializes and runs the
 #' Shiny application using `shinyApp`, with the UI and server components 
-#' provided by [app_nav_ui()] and [app_nav_server()], respectively.
+#' provided by [navbar_ui()] and [navbar_server()], respectively.
 #'
 #' @section Parameters:
 #' - `options`: A list of options passed to the `shinyApp` function.
@@ -22,7 +22,7 @@
 #' If the function is called in an interactive R session, it will set the 
 #' display type using `display_type(run = run)`.
 #'
-#' @seealso [app_nav_ui()], [app_nav_server()]
+#' @seealso [navbar_ui()], [navbar_server()]
 #' 
 #' @import shiny
 #'
@@ -32,8 +32,8 @@ launch_app <- function(options = list(), run = "p", ...) {
     display_type(run = run)
   }
     shinyApp(
-      ui = app_nav_ui(...),
-      server = app_nav_server,
+      ui = navbar_ui(...),
+      server = navbar_server,
       options = options
     )
 }

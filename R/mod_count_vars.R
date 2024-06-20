@@ -1,19 +1,31 @@
-#' User Interface for Numeric Input
+#' User Interface for Count Tab Input
 #'
 #' @param id Shiny module ID.
 #'
 #' @return A UI for selecting a numeric input.
 #' 
 #' @section Inputs:
-#' - `year`: Theater release year.
+#' - `chr_var`: Selected grouping variable
+#' - `start_year`: Selected 'Theater Release' start year.
+#' - `end_year`: Selected 'Theater Release' end year.
 #'
-#' @seealso [mod_num_input_server()]
+#' @seealso [mod_count_vars_server()]
 #' 
 #' @export
 #' 
-mod_num_input_ui <- function(id) {
+mod_count_vars_ui <- function(id) {
+  # define variables 
+  chr_data <- movies[c("genre", "title_type", "mpaa_rating", 
+                       "critics_rating", "audience_rating")]
+  
   ns <- NS(id)
     tagList(
+        varSelectInput(
+          inputId = ns("chr_var"),
+          label = strong("Group variable"),
+          data = chr_data,
+          selected = "genre"
+        ),
         markdown("**Theater Release Year**"),
         numericInput(
         inputId = ns("start_year"),
@@ -34,21 +46,22 @@ mod_num_input_ui <- function(id) {
     )
 }
 
-#' Server Logic for Numeric Input
+#' Server Logic for Count Tab Input
 #'
 #' @param id Shiny module ID.
 #'
 #' @return A reactive list containing the selected year.
 #' 
 #' @section Reactive Values:
-#' - `start_year`: Selected start theater release year.
-#' - `end_year`: Selected end theater release year.
+#' - `chr_var`: Selected grouping variable
+#' - `start_year`: Selected 'Theater Release' start year.
+#' - `end_year`: Selected 'Theater Release' end year.
 #'
-#' @seealso [mod_num_input_ui()]
+#' @seealso [mod_count_vars_ui()]
 #' 
 #' @export
 #' 
-mod_num_input_server <- function(id) {
+mod_count_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     
     observe({
@@ -73,9 +86,12 @@ mod_num_input_server <- function(id) {
     
     return(
       reactive({
+        req({nchar(input$start_year) == 4 & 
+             nchar(input$end_year) == 4})
         list(
           "start_year" = input$start_year,
-          "end_year" = input$end_year
+          "end_year" = input$end_year,
+          "chr_var" = input$chr_var
         )
       })
     )

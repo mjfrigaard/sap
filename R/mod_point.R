@@ -40,14 +40,14 @@ mod_point_server <- function(id, vals) {
     label_inputs <- reactive({
       req(vals()$x, vals()$y, vals()$c)
       list(
-        cap = lab_formatter(as.character(vals()$c)),
-        x_lbl = lab_formatter(as.character(vals()$x)),
-        y_lbl = lab_formatter(as.character(vals()$y)),
-        t = lab_formatter(as.character(vals()$t)),
-        s = paste(
-            lab_formatter(as.character(vals()$x)), 
-            "vs.", lab_formatter(as.character(vals()$y)),
-            "by", lab_formatter(as.character(vals()$c))
+        x = title_labs(as.character(vals()$x)),
+        y = title_labs(as.character(vals()$y)),
+        color = title_labs(as.character(vals()$color)),
+        subtitle = title_labs(as.character(vals()$subtitle)),
+        title = paste(
+            title_labs(as.character(vals()$x)), 
+            "vs.", title_labs(as.character(vals()$y)),
+            "and", title_labs(as.character(vals()$c))
           )
       )
     })
@@ -59,19 +59,19 @@ mod_point_server <- function(id, vals) {
         ggplot2::aes(
           y = !!vals()$y,
           x = !!vals()$x,
-          color = !!vals()$c
+          color = !!vals()$color
         )
       ) +
         ggplot2::geom_point(
-          alpha = vals()$a,
-          size = vals()$s
+          alpha = vals()$alpha,
+          size = vals()$size
         ) +
         ggplot2::labs(
-          title = label_inputs()$t,
-          subtitle = label_inputs()$s,
+          title = label_inputs()$title,
+          subtitle = label_inputs()$subtitle,
           x = label_inputs()$x,
           y = label_inputs()$y,
-          color = label_inputs()$c
+          color = label_inputs()$color
         ) +
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "right")

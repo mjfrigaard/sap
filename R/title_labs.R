@@ -1,18 +1,18 @@
 #' Convert snake_case to Sentence Case
 #'
-#' `lab_formatter()` converts a given `snake_case` string to a `Sentence Case` string.
+#' `title_labs()` converts a given `snake_case` string to a `Sentence Case` string.
 #'
 #' @param x A character string in `snake_case`.
 #' 
 #' @return A character string converted to `Sentence Case`.
 #' 
 #' @details 
-#' The `lab_formatter` function splits the input string by underscores, capitalizes 
+#' The `title_labs` function splits the input string by underscores, capitalizes 
 #' the first letter of each word, and combines the words with spaces. 
 #' This is particularly useful for converting variable names into more readable
 #' labels for plots.
 #' 
-#' For example, when used with the `ggplot2::labs()` function, `lab_formatter` can
+#' For example, when used with the `ggplot2::labs()` function, `title_labs` can
 #' automatically convert `snake_case` labels into `Sentence Case` labels for 
 #' better readability.
 #' 
@@ -25,19 +25,19 @@
 #' # Example usage in ggplot2
 #' ggplot(df, aes(x = snake_case_var)) +
 #'   geom_histogram() +
-#'   labs(x = lab_formatter("snake_case_var"))
+#'   labs(x = title_labs("snake_case_var"))
 #' ```
 #' 
 #' This will result in an x-axis label "Snake Case Var".
 #' 
 #' @examples
-#' lab_formatter("snake_case_example")
-#' lab_formatter("space example")
+#' title_labs("snake_case_example")
+#' title_labs("space example")
 #' 
 #' @export
 #' 
 #' 
-lab_formatter <- function(x) {
+title_labs <- function(x) {
   # split the string by underscores
   if (grepl("_", x)) {
     sep_words <- strsplit(x, "_")[[1]]

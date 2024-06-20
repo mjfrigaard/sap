@@ -12,10 +12,10 @@
 #' - `size`: Point size.
 #' - `plot_title`: Plot title.
 #'
-#' @seealso [mod_vars_server()]
+#' @seealso [mod_point_vars_server()]
 #' 
 #' @export
-mod_vars_ui <- function(id) {
+mod_point_vars_ui <- function(id) {
   num_data <- movies[c("runtime", "imdb_rating",
                        "imdb_num_votes", "critics_score",
                         "audience_score")]
@@ -25,38 +25,38 @@ mod_vars_ui <- function(id) {
   tagList(
     varSelectInput(
       inputId = ns("var_x"),
-      label = "X variable",
+      label = strong("X variable"),
       data = num_data,
       selected = "imdb_rating"
     ),
     varSelectInput(
       inputId = ns("var_y"),
-      label = "Y variable",
+      label = strong("Y variable"),
       data = num_data,
       selected = "audience_score"
     ),
     varSelectInput(
       inputId = ns("color"),
-      label = "Color by:",
+      label = strong("Color by:"),
       data = chr_data,
       selected = "critics_rating"
     ),
     sliderInput(
       inputId = ns("alpha"),
-      label = "Alpha:",
+      label = strong("Alpha:"),
       min = 0, max = 1, step = 0.1,
       value = 0.5
     ),
     sliderInput(
       inputId = ns("size"),
-      label = "Size:",
+      label = strong("Size:"),
       min = 0, max = 5,
       value = 2
     ),
     textInput(
-      inputId = ns("plot_title"),
-      label = "Plot title",
-      placeholder = "Enter plot title"
+      inputId = ns("plot_subtitle"),
+      label = strong("Plot subtitle"),
+      placeholder = "Enter plot subtitle"
     )
   )
 }
@@ -75,10 +75,10 @@ mod_vars_ui <- function(id) {
 #' - `s`: Point size.
 #' - `t`: Plot title.
 #'
-#' @seealso [mod_vars_ui()]
+#' @seealso [mod_point_vars_ui()]
 #' 
 #' @export
-mod_vars_server <- function(id) {
+mod_point_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     
     observe({
@@ -114,10 +114,10 @@ mod_vars_server <- function(id) {
         list(
           "x" = input$var_x,
           "y" = input$var_y,
-          "c" = input$color,
-          "a" = input$alpha,
-          "s" = input$size,
-          "t" = input$plot_title
+          "color" = input$color,
+          "alpha" = input$alpha,
+          "size" = input$size,
+          "subtitle" = input$plot_subtitle
         )
       })
     )

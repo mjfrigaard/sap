@@ -21,7 +21,7 @@ options and settings.
 \code{launch_app()} checks if the R session is interactive. If so, it sets the
 display type based on the \code{run} parameter. Then, it initializes and runs the
 Shiny application using \code{shinyApp}, with the UI and server components
-provided by \code{\link[=app_nav_ui]{app_nav_ui()}} and \code{\link[=app_nav_server]{app_nav_server()}}, respectively.
+provided by \code{\link[=navbar_ui]{navbar_ui()}} and \code{\link[=navbar_server]{navbar_server()}}, respectively.
 }
 \section{Parameters}{
 
@@ -39,5 +39,5 @@ display type using \code{display_type(run = run)}.
 }
 
 \seealso{
-\code{\link[=app_nav_ui]{app_nav_ui()}}, \code{\link[=app_nav_server]{app_nav_server()}}
+\code{\link[=navbar_ui]{navbar_ui()}}, \code{\link[=navbar_server]{navbar_server()}}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_hbar.R
 \name{mod_hbar_ui}
 \alias{mod_hbar_ui}
-\title{User Interface for Vertical Bar Plot}
+\title{User Interface for Horizontal Bar Plot}
 \usage{
 mod_hbar_ui(id)
 }
@@ -10,15 +10,15 @@ mod_hbar_ui(id)
 \item{id}{Shiny module ID.}
 }
 \value{
-A UI for displaying a vertical bar plot.
+A UI for displaying a horizontal bar plot.
 }
 \description{
-User Interface for Vertical Bar Plot
+User Interface for Horizontal Bar Plot
 }
 \section{Outputs}{
 
 \itemize{
-\item \code{genre}: Vertical bar plot.
+\item \code{ratings}: Horizontal bar plot.
 }
 }
 

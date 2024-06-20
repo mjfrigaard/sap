@@ -35,8 +35,9 @@ mod_tbl_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
     output$vals <- renderPrint({
-      req(vals())
-      str(vals())
+      str(
+        vals()
+        )
     })
       
     

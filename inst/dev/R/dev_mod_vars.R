@@ -1,4 +1,4 @@
-dev_mod_vars_ui <- function(id) {
+dev_mod_point_vars <- function(id) {
   ns <- NS(id)
   tagList(
     textInput(

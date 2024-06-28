@@ -43,15 +43,19 @@ mod_point_vars_ui <- function(id) {
     ),
     sliderInput(
       inputId = ns("alpha"),
-      label = strong("Alpha:"),
-      min = 0, max = 1, step = 0.1,
-      value = 0.5
+      label = strong("Alpha"),
+      min = 0.2, 
+      max = 1.0, 
+      step = 0.2,
+      value = 0.6
     ),
     sliderInput(
       inputId = ns("size"),
-      label = strong("Size:"),
-      min = 0, max = 5,
-      value = 2
+      label = strong("Size"),
+      min = 1, 
+      max = 6,
+      step = 0.5,
+      value = 3
     ),
     textInput(
       inputId = ns("plot_subtitle"),

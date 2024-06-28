@@ -13,8 +13,8 @@
 mod_tbl_ui <- function(id) {
   ns <- NS(id)
     tagList(
-      # tableOutput(outputId = ns("year_table")),
-      verbatimTextOutput(outputId = ns("vals"))
+      # tableOutput(outputId = ns("table")),
+      verbatimTextOutput(outputId = ns("table"))
     )
 }
 
@@ -34,21 +34,22 @@ mod_tbl_ui <- function(id) {
 mod_tbl_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
-    output$vals <- renderPrint({
-      str(
-        vals()
-        )
+    output$table <- renderPrint({
+      req(vals())
+      tspan <- abs(vals()$start_year - vals()$end_year)
+      x_lab <- title_labs(as.character(vals()$chr_var))
+      t <- paste("Time span =", tspan, "years")
+      movies <- moviesApp::movies
+      # convert to character 
+      movies$chr_var <- as.character(movies[[vals()$chr_var]])
+      # subset
+      d <- subset(movies, 
+              thtr_rel_year >= vals()$start_year &
+              thtr_rel_year <= vals()$end_year)
+      drows <- nrow(d)
+      s <- paste("Total movies = ", drows)
+      str(d)
     })
-      
-    
-  # output$year_table <- renderTable({
-  #       req(tvals())
-  #     tbl_data <- subset(movies,
-  #       thtr_rel_year == tvals()$year,
-  #       select = c("title", "studio", "director")) |>
-  #       setNames(c("Title", "Studio", "Director"))
-  #     tbl_data
-  #   })
 
   })
 }

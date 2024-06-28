@@ -55,7 +55,8 @@ mod_raincloud_server <- function(id, vals) {
           ggdist::stat_halfeye(
               ggplot2::aes(fill = !!vals()$chr_var),
                 alpha = a,
-                adjust = 0.5, # shape = adjust * density estimator
+                adjust = s/5, # shape = adjust * density estimator
+                # adjust = 0.5, # shape = adjust * density estimator
                 .width = 0, # can use probabilities or 0
                 point_colour = NA, # removes the point in center
                 orientation = "horizontal", # like the box plot
@@ -74,7 +75,7 @@ mod_raincloud_server <- function(id, vals) {
                   shape = 21,
                   color = "#ffffff",
                   alpha = a,
-                  size = s,
+                  size = 3,
                   show.legend = FALSE)
         gg2_point + 
         ggplot2::labs(

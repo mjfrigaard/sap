@@ -3,6 +3,7 @@
 export(buttonApp)
 export(buttonServer)
 export(buttonUI)
+export(create_movie_awards)
 export(display_type)
 export(ggp2_movies_app)
 export(launch_app)

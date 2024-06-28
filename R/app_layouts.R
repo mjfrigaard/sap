@@ -2,32 +2,72 @@ app_nav_ui <- function() {
   tagList(
     bslib::page_navbar(
       title = "Navbar",
-      fillable = "Compare",
-      bslib::nav_panel(title = "Compare", 
-        "Compare", 
-        bslib::card(
+      fillable = "Nav Panel 1",
+      bslib::nav_panel(
+        title = "Nav Panel 1", 
           bslib::layout_sidebar(
           sidebar = 
-            bslib::sidebar(class = "p-0", 
-              "Scatter sidebar")
+            bslib::sidebar(
+              #class = "p-0", 
+              "Sidebar 1"),
+          bslib::card(
+            bslib::card_header("header"),
+            bslib::card_body("body"),
+            bslib::card_footer("footer")
             )
-          )
+          ),
         ),
       bslib::nav_panel(
-        "More Graphs",
+        title = "Nav Panel 2",
         bslib::navset_card_tab(
           sidebar =
             bslib::sidebar(class = "p-0", 
-              markdown("Shared sidebar contents")
+              markdown("Card tab (shared sidebar)")
               ),
           bslib::nav_panel(
-              markdown("Card 1 contents")
+              markdown("Nav Panel 2a contents"),
+              bslib::card(
+                bslib::card_header("header"),
+                bslib::card_body("body"),
+                bslib::card_footer("footer")
+              )
             ),
             bslib::nav_panel(
-              markdown("Card 2 contents"),
+              markdown("Nav Panel 2b contents"),
+              bslib::card(
+                bslib::card_header("header"),
+                bslib::card_body("body"),
+                bslib::card_footer("footer")
+              )
           )
         )
-      )
+      ),
+      bslib::nav_panel(
+        title = "Nav Panel 3",
+        bslib::navset_card_tab(
+          sidebar =
+            bslib::sidebar(class = "p-0", 
+              markdown("Card tab (shared sidebar)")
+              ),
+          bslib::nav_panel(
+              markdown("Nav Panel 2a contents"),
+              bslib::card(
+                bslib::card_header("header"),
+                bslib::card_body("body"),
+                bslib::card_footer("footer")
+              )
+            ),
+            bslib::nav_panel(
+              markdown("Nav Panel 2b contents"),
+              bslib::card(
+                bslib::card_header("header"),
+                bslib::card_body("body"),
+                bslib::card_footer("footer")
+              )
+          )
+        )
+      ),
+
     )
   )
 }

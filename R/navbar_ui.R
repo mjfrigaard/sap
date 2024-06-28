@@ -13,9 +13,9 @@
 #'
 #' @export
 navbar_ui <- function() {
-  # addResourcePath(
-  #   prefix = 'www',
-  #   directoryPath = system.file('www', package = 'moviesApp'))
+  addResourcePath(
+    prefix = 'www',
+    directoryPath = system.file('www', package = 'moviesApp'))
 
   # bootstrap <- htmltools::htmlDependency(
   #   name = "bootstrap",

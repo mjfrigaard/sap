@@ -35,19 +35,19 @@ mod_dist_vars_ui <- function(id) {
     markdown("**Customize**"),
     sliderInput(
       inputId = ns("alpha"),
-      label = "Alpha:",
-      min = 0, 
-      max = 1, 
-      step = 0.1,
+      label = "Alpha",
+      min = 0.2, 
+      max = 1.0, 
+      step = 0.2,
       value = 0.6
     ),
     sliderInput(
       inputId = ns("size"),
-      label = "Size:",
-      min = 0, 
-      max = 5,
-      step = 0.25,
-      value = 2
+      label = "Size/scale",
+      min = 1, 
+      max = 6,
+      step = 0.5,
+      value = 3
     )
   )
 }

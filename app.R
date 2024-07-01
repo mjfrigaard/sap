@@ -4,5 +4,5 @@
 # packages ------------------------------------
 library(moviesApp)
 
-# movies_app ------------------------------------
-movies_app()
+# launch_app ------------------------------------
+launch_app()

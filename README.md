@@ -68,7 +68,7 @@ man
 ├── mod_scatter_display_ui.Rd
 ├── mod_var_input_server.Rd
 ├── mod_var_input_ui.Rd
-├── movies_app.Rd
+├── launch_app.Rd
 ├── movies_server.Rd
 ├── movies_ui.Rd
 └── scatter_plot.Rd

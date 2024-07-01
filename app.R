@@ -8,5 +8,5 @@ library(stringr)
 library(ggplot2)
 library(rlang)
 
-# movies_app ------------------------------------
-movies_app()
+# launch_app ------------------------------------
+launch_app()

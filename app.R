@@ -20,6 +20,6 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     pkgload::load_all()
   }
   # create shiny object ----
-    moviesApp::ggp2_movies_app(
+    moviesApp::ggp2_launch_app(
       options = list(test.mode = FALSE), run = 'p')
 })

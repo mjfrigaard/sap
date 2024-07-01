@@ -9,6 +9,6 @@
 #'
 #' @export
 #' 
-movies_app <- function() {
+launch_app <- function() {
   shiny::shinyApp(ui = movies_ui, server = movies_server)
 }

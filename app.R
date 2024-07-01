@@ -15,5 +15,5 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
   } else {
     pkgload::load_all()
   }
-  movies_app(options = list(test.mode = FALSE), run = 'p', bslib = TRUE)
+  launch_app(options = list(test.mode = FALSE), run = 'p', bslib = TRUE)
 })

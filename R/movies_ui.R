@@ -7,13 +7,13 @@
 #' @param bslib use bslib layout?
 #' 
 #' @details
-#' The [movies_app()] function is as a wrapper for `shinyApp()`: 
+#' The [launch_app()] function is as a wrapper for `shinyApp()`: 
 #'  
 #' ```
 #' shinyApp(ui = movies_ui, server = movies_server)
 #' ```
 #' 
-#' In [movies_app()]:
+#' In [launch_app()]:
 #'  * UI is stored in `movies_ui()`    
 #'  * server is stored in [movies_server()]
 #'  

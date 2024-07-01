@@ -10,12 +10,12 @@
 Server function for standalone app function
 }
 \details{
-The \code{\link[=movies_app]{movies_app()}} function is as a wrapper for \code{shinyApp()}:
+The \code{\link[=launch_app]{launch_app()}} function is as a wrapper for \code{shinyApp()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{shinyApp(movies_ui, movies_server)
 }\if{html}{\out{</div>}}
 
-In \code{\link[=movies_app]{movies_app()}}:
+In \code{\link[=launch_app]{launch_app()}}:
 \itemize{
 \item UI is stored in \code{\link[=movies_ui]{movies_ui()}}
 \item server is stored in \code{movies_server()}

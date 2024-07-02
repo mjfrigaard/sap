@@ -63,7 +63,7 @@ movies_ui <- function(bslib = FALSE) {
           bslib::card_header(
             tags$h4("Scatter Plot")
           ),
-          bslib::card_body(
+          bslib::card_body(fillable = TRUE,
             mod_scatter_display_ui("plot")
           ),
           bslib::card_footer(
@@ -111,6 +111,7 @@ movies_ui <- function(bslib = FALSE) {
                 )
               ),
              bslib::card_body(
+               fillable = TRUE,
               mod_scatter_display_ui("plot")
             )
           )

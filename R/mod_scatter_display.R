@@ -68,5 +68,6 @@ mod_scatter_display_server <- function(id, var_inputs) {
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "bottom")
     })
+    
   })
 }

@@ -24,7 +24,7 @@ launch_app <- function(options = list(), run = "p", ...) {
     display_type(run = run)
   }
     shinyApp(
-      ui = movies_ui(...),
+      ui = movies_ui(),
       server = movies_server,
       options = options
     )

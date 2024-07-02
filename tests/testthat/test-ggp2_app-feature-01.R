@@ -18,7 +18,7 @@ describe(
             
     test_logger(start = 'ggp2movies-feat-01', msg = "update x, y, z, missing")
     app <- AppDriver$new(app_dir = system.file("dev", package = "moviesApp"), 
-                         name = "ggp2movies_app-feature-01", 
+                         name = "ggp2launch_app-feature-01", 
                          wait = FALSE, timeout = 60000,
                          height = 800, width = 1173)
       app$set_inputs(`vars-y` = "length")

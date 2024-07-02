@@ -82,8 +82,8 @@ tests/testthat/_snaps/
 │   ├── feature-01-senario-b-001.json
 │   └── feature-01-senario-b-001_.png
 ├── ggp2_app-feature-01
-│   ├── ggp2movies_app-feature-01-001.json
-│   └── ggp2movies_app-feature-01-001_.png
+│   ├── ggp2launch_app-feature-01-001.json
+│   └── ggp2launch_app-feature-01-001_.png
 └── shinytest2
     ├── feature-01-001.json
     └── feature-01-001_.png

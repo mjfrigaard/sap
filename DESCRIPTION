@@ -12,15 +12,12 @@ Imports:
     cli,
     ggplot2,
     logger,
-    pkgload,
     rlang,
     sass,
     shiny,
-    shinythemes,
     stringr,
     tools
 Suggests: 
-    ggplot2movies,
     glue,
     knitr,
     rmarkdown,

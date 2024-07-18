@@ -9,3 +9,4 @@ _\.new\.png$
 ^pkgdown$
 ^\.github$
 ^README\.Rmd$
+^dev$

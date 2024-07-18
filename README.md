@@ -23,7 +23,7 @@ pak::pak("mjfrigaard/moviesApp")
 
 ``` r
 library(moviesApp)
-movies_app()
+launch_app()
 ```
 
 ### `pkgdown` setup

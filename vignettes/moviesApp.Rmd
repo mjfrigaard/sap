@@ -32,23 +32,23 @@ You can launch the following apps from `moviesApp`:
 1. *Launches the standard application in the viewer pane*
 
     ``` r
-    moviesApp::movies_app()
+    moviesApp::launch_app()
     ```
 
 2. *Launch the standard application in test mode (in the Window)*
 
     ``` r
-    movies_app(options = list(test.mode = TRUE), run = 'w')
+    launch_app(options = list(test.mode = TRUE), run = 'w')
     ```
 
 3. *Launch the `bslib` version of the applictation in test mode (in the browser)*
 
     ``` r
-    movies_app(options = list(test.mode = TRUE), run = 'b', bslib = TRUE)
+    launch_app(options = list(test.mode = TRUE), run = 'b', bslib = TRUE)
     ```
 
 4. _Launch a 'development' version of the applicationn (with data `ggplot2movies` in the **Viewer** pane)_
 
     ``` r
-    ggp2_movies_app(run = 'p')
+    ggp2_launch_app(run = 'p')
     ```

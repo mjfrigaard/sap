@@ -33,6 +33,7 @@ devUI <- function() {
               )
             ),
           bslib::card_body(
+            fillable = TRUE,
             dev_mod_scatter_ui("plot")
           )
         )

@@ -7,13 +7,13 @@
 #' @param bslib use bslib layout?
 #' 
 #' @details
-#' The [movies_app()] function is as a wrapper for `shinyApp()`: 
+#' The [launch_app()] function is as a wrapper for `shinyApp()`: 
 #'  
 #' ```
 #' shinyApp(ui = movies_ui, server = movies_server)
 #' ```
 #' 
-#' In [movies_app()]:
+#' In [launch_app()]:
 #'  * UI is stored in `movies_ui()`    
 #'  * server is stored in [movies_server()]
 #'  
@@ -63,7 +63,9 @@ movies_ui <- function(bslib = FALSE) {
             bslib::card_header(
               tags$h4("Scatter Plot")
             ),
-            mod_scatter_display_ui("plot"),
+            bslib::card_body(fillable = TRUE,
+              mod_scatter_display_ui("plot")
+              ),
             bslib::card_footer(
               tags$blockquote(
                 tags$em(
@@ -109,6 +111,7 @@ movies_ui <- function(bslib = FALSE) {
                 )
               ),
              bslib::card_body(
+               fillable = TRUE,
               mod_scatter_display_ui("plot")
             )
           )

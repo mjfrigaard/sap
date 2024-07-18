@@ -7,3 +7,4 @@
 ^moviesApp.*\.tgz$
 _\.new\.png$
 ^\.github$
+^dev$

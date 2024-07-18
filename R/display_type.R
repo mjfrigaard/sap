@@ -10,24 +10,23 @@
 #' @export
 #'
 display_type <- function(run = "w") {
-  if (Sys.getenv("RSTUDIO") == "1") {
+  if (Sys.getenv("RSTUDIO") != "1") {
     environment <- "RStudio"
-  } else if (Sys.getenv("TERM_PROGRAM") == "vscode") {
-    environment <- "VS Code"
+    cli::cli_alert_info("App not running in {environment}")
   } else {
-    environment <- "R"
+    switch(run,
+      p = options(shiny.launch.browser = .rs.invokeShinyPaneViewer),
+      b = options(shiny.launch.browser = .rs.invokeShinyWindowExternal),
+      w = options(shiny.launch.browser = .rs.invokeShinyWindowViewer),
+      NULL = options(shiny.launch.browser = NULL))
+    environment <- "RStudio"
+    shinyViewerType <- getOption('shiny.launch.browser') |> 
+                        attributes() |> 
+                        unlist() |> 
+                        unname()
+                      
+    cli::cli_alert_info("App running in {environment}")
+    cli::cli_alert_info("shinyViewerType set to {shinyViewerType}")
   }
   
-  switch(run,
-    p = options(shiny.launch.browser = .rs.invokeShinyPaneViewer),
-    b = options(shiny.launch.browser = .rs.invokeShinyWindowExternal),
-    w = options(shiny.launch.browser = .rs.invokeShinyWindowViewer),
-    NULL = options(shiny.launch.browser = NULL))
-  
-  shinyViewerType <- getOption('shiny.launch.browser') |> 
-                      attributes() |> 
-                      unlist() |> 
-                      unname()
-  cli::cli_alert_info("Running in {environment}")
-  cli::cli_alert_info("shinyViewerType set to {shinyViewerType}")
 }

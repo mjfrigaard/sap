@@ -20,3 +20,10 @@ notification of \code{shinyViewerType} option
 \description{
 Shiny app display mode helper
 }
+\section{IDE detection}{
+
+The function will check if the application is being run in RStudio
+(with \code{Sys.getenv()}) and only apply the \code{shiny.launch.browser}
+option if \code{TRUE}.
+}
+

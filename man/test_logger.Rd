@@ -19,3 +19,4 @@ message to test output
 \description{
 Test logger (test utility)
 }
+\keyword{internal}

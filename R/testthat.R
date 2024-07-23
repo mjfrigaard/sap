@@ -5,6 +5,8 @@
 #' @param msg test message 
 #'
 #' @return message to test output
+#' 
+#' @keywords internal
 #'
 test_logger <- function(start = NULL, end = NULL, msg) {
   if (is.null(start) & is.null(end)) {

@@ -10,10 +10,7 @@
 #' @export
 #'
 display_type <- function(run = "w") {
-  if (Sys.getenv("RSTUDIO") != "1") {
-    environment <- "RStudio"
-    cli::cli_alert_info("App not running in {environment}")
-  } else {
+  if (Sys.getenv("RSTUDIO") == "1") {
     switch(run,
       p = options(shiny.launch.browser = .rs.invokeShinyPaneViewer),
       b = options(shiny.launch.browser = .rs.invokeShinyWindowExternal),
@@ -27,6 +24,9 @@ display_type <- function(run = "w") {
                       
     cli::cli_alert_info("App running in {environment}")
     cli::cli_alert_info("shinyViewerType set to {shinyViewerType}")
+  } else {
+    environment <- "RStudio"
+    cli::cli_alert_info("App not running in {environment}")
   }
   
 }

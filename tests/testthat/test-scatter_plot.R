@@ -1,9 +1,9 @@
-testthat::describe(
+describe(
   "Feature: Scatter plot data visualization
        As a film data analyst
        I want to explore movie review data from IMDB.com
        So that I can analyze relationships between movie reivew metrics", code = {
-    testthat::describe(
+    describe(
       "Background:
           Given I have data with IMDB movie reviews
           And the data contains continuous variables like 'rating'
@@ -11,7 +11,7 @@ testthat::describe(
         # placing this outside of it() because helpers aren't loaded.
         # See issue: https://github.com/r-lib/testthat/issues/1891
         test_logger(start = "fixture", msg = "tidy_ggp2_movies.rds")
-        testthat::it(
+        it(
           "Scenario: Create scatter plot
               Given I have launched the movie review exploration app,
               When the scatter plot renders,
@@ -49,7 +49,7 @@ testthat::describe(
     })
 })
 
-testthat::describe(
+describe(
   "Feature: Scatter plot data visualization
      As a film data analyst
      I want to explore movie review data from IMDB & Rotten Tomatoes
@@ -59,7 +59,7 @@ testthat::describe(
       Given I have data with IMDB & Rotten Tomatoes movie reviews
       And the data contains continuous variables like 'Audience Score'
       And the data contains categorical variables like 'MPAA Rating'", code = {
-        testthat::test_that(
+        test_that(
           "Scenario: Create scatter plot
               Given I have launched the movie review exploration app,
               When the scatter plot renders,

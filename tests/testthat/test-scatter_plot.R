@@ -8,8 +8,6 @@ describe(
           Given I have data with IMDB movie reviews
           And the data contains continuous variables like 'rating'
           And the data contains categorical variables like 'mpaa'", code = {
-        # placing this outside of it() because helpers aren't loaded.
-        # See issue: https://github.com/r-lib/testthat/issues/1891
         test_logger(start = "fixture", msg = "tidy_ggp2_movies.rds")
         it(
           "Scenario: Create scatter plot

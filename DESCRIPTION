@@ -1,9 +1,10 @@
-Package: moviesApp
-Title: movies app
+Package: shinyAppPkgs
 Version: 0.0.0.9000
+Type: Package
+Title: Shiny App-Packages
+Description: An R package with a collection of Shiny applications.
 Author: John Smith [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review shiny application.
 License: GPL-3
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Encoding: UTF-8

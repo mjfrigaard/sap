@@ -1,6 +1,6 @@
 <h1 align="center">
 
-<code>moviesApp</code>
+<code>shinyAppPkgs</code>
 
 </h1>
 
@@ -18,9 +18,9 @@ Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Pac
 
 <hr>
 
-# moviesApp
+# shinyAppPkgs
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -58,17 +58,17 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/moviesApp.git
-cd moviesApp
+git clone https://github.com/mjfrigaard/shinyAppPkgs.git
+cd shinyAppPkgs
 git checkout <branch_name>
-open moviesApp.Rproj
+open shinyAppPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
 
 ## Dependencies
 
@@ -76,17 +76,17 @@ The following branches (`06.1_pkg-exports` and `06.2_pkg-imports`) cover imports
 
 ### `06.2_pkg-imports`
 
-The [`06.2_pkg-imports`](https://github.com/mjfrigaard/moviesApp/tree/06.2_pkg-imports) branch of `moviesApp` covers how to import functions from add-on packages so we can use them in our package.
+The [`06.2_pkg-imports`](https://github.com/mjfrigaard/shinyAppPkgs/tree/06.2_pkg-imports) branch of `shinyAppPkgs` covers how to import functions from add-on packages so we can use them in our package.
 
 Changes in the `DESCRIPTION`
 
 ```         
-Package: moviesApp
-Title: movies app
+Package: shinyAppPkgs
+Title: Shiny App-Packages
 Version: 0.0.0.9000
 Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
-Description: A movie-review shiny application.
+Description: An R package with a collection of Shiny applications.
 License: GPL-3
 Imports: 
     bslib,

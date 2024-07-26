@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(moviesApp)
+library(shinyAppPkgs)
 
-test_check("moviesApp")
+test_check("shinyAppPkgs")

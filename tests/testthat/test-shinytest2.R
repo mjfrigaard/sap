@@ -1,7 +1,7 @@
 library(shinytest2)
 
-test_that("{shinytest2} recording: moviesApp-feature-01", {
-  app <- AppDriver$new(name = "moviesApp-feature-01", height = 887, width = 1241)
+test_that("{shinytest2} recording: shinyAppPkgs-feature-01", {
+  app <- AppDriver$new(name = "shinyAppPkgs-feature-01", height = 887, width = 1241)
   app$set_inputs(`vars-y` = "imdb_num_votes")
   app$set_inputs(`vars-x` = "critics_score")
   app$set_inputs(`vars-z` = "genre")

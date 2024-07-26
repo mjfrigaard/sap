@@ -1,6 +1,6 @@
 #' Create scatter plot 
 #'
-#' Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building scatter plots in `moviesApp()`.
+#' Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building scatter plots in `shinyAppPkgs`.
 #' 
 #' 
 #' @param df `data.frame` or `tibble`
@@ -33,5 +33,4 @@ scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
           y = .data[[y_var]],
           color = .data[[col_var]])) +
       ggplot2::geom_point(alpha = alpha_var, size = size_var)
-
 }

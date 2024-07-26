@@ -19,7 +19,7 @@ ggp2_launch_app <- function(options = list(), run = "w", ...) {
   } 
     shinyAppDir(
     appDir = system.file("dev",
-      package = "moviesApp"
+      package = "shinyAppPkgs"
     ),
     options = options
   )

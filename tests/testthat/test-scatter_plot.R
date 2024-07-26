@@ -63,7 +63,7 @@ describe(
               And the opacity of the points should be set to '0.5'
               And the size of the points should be set to '2'
               And the plot title should be set to 'Enter plot title'", code = {
-            test_logger(start = "data", msg = "moviesApp::movies")
+            test_logger(start = "data", msg = "shinyAppPkgs::movies")
             # inputs
             scatter_inputs <- list(y = 'audience_score',
                                    x = 'imdb_rating',
@@ -81,6 +81,6 @@ describe(
             )
             expect_true(ggplot2::is.ggplot(app_graph))
 
-            test_logger(end = "data", msg = "moviesApp::movies")
+            test_logger(end = "data", msg = "shinyAppPkgs::movies")
         })
 })

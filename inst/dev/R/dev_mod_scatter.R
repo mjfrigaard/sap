@@ -55,7 +55,7 @@ dev_mod_scatter_server <- function(id, var_inputs) {
 
     observe({
         output$scatterplot <- renderPlot({
-          plot <- moviesApp::scatter_plot(
+          plot <- shinyAppPkgs::scatter_plot(
             df = graph_data(),
             x_var = inputs()$x,
             y_var = inputs()$y,

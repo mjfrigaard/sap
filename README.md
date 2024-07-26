@@ -1,12 +1,12 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
+<h1 align="center"> <code>shinyAppPkgs</code> </h1>
 <h3 align="center"> A Shiny App-Package </h3>
 <h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
 
 <hr>
 
-# moviesApp
+# shinyAppPkgs
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,32 +45,36 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/moviesApp.git
-cd moviesApp
+git clone https://github.com/mjfrigaard/shinyAppPkgs.git
+cd shinyAppPkgs
 git checkout <branch_name>
-open moviesApp.Rproj
+open shinyAppPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
 
 ## Tests 
 
-### `12.2_tests-helpers`
+### `12.3_tests-snapshots`
 
-[`12.2_tests-helpers`](https://github.com/mjfrigaard/moviesApp/tree/12.2_tests-helpers) explores using test helpers with unit tests.
+[`12.3_tests-snapshots`](https://github.com/mjfrigaard/shinyAppPkgs/tree/12.3_tests-snapshots) explores using test snapshots with unit tests.
 
 ```
 tests
 ├── testthat
+│   ├── _snaps
+│   │   └── text_logo.md
 │   ├── fixtures
-│   │   ├── make_tidy_ggp2_movies.R
+│   │   ├── make-tidy_ggp2_movies.R
 │   │   └── tidy_ggp2_movies.rds
 │   ├── helper.R
-│   └── test-scatter_plot.R
+│   ├── test-scatter_plot.R
+│   └── test-text_logo.R
 └── testthat.R
-3 directories, 5 files
+
+4 directories, 7 files
 ```

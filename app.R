@@ -8,7 +8,7 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     tryCatch(
       expr = {
         # load package ----
-        library(moviesApp)
+        library(shinyAppPkgs)
       },
       error = function(e) {
         # load R/ folder ----
@@ -20,6 +20,6 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     pkgload::load_all()
   }
   # create shiny object ----
-    moviesApp::ggp2_launch_app(
+    shinyAppPkgs::ggp2_launch_app(
       options = list(test.mode = FALSE), run = 'p')
 })

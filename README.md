@@ -1,12 +1,12 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
+<h1 align="center"> <code>shinyAppPkgs</code> </h1>
 <h3 align="center"> A Shiny App-Package </h3>
 <h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
 
 <hr>
 
-# moviesApp
+# shinyAppPkgs
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,23 +45,23 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/moviesApp.git
-cd moviesApp
+git clone https://github.com/mjfrigaard/shinyAppPkgs.git
+cd shinyAppPkgs
 git checkout <branch_name>
-open moviesApp.Rproj
+open shinyAppPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
 
 ## External resources 
 
 ### `09.2_inst-bslib`
 
-[`09.2_inst-bslib`](https://github.com/mjfrigaard/moviesApp/tree/09.2_inst-bslib) covers how to store external files use the application UI function to display alternative versions of your app.
+[`09.2_inst-bslib`](https://github.com/mjfrigaard/shinyAppPkgs/tree/09.2_inst-bslib) covers how to store external files use the application UI function to display alternative versions of your app.
 
 ```
 inst

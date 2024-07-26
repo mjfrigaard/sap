@@ -4,14 +4,14 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     sink(stderr(), type = "output")
     tryCatch(
       expr = {
-        library(moviesApp)
+        library(shinyAppPkgs)
       },
       error = function(e) {
         pkgload::load_all()
       }
     )
     # create shiny object from prod/app ----
-    shinyAppDir(appDir = system.file("prod/app", package = "moviesApp"))
+    shinyAppDir(appDir = system.file("prod/app", package = "shinyAppPkgs"))
   } else {
     pkgload::load_all()
   }

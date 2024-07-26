@@ -1,6 +1,6 @@
 <h1 align="center">
 
-<code>moviesApp</code>
+<code>shinyAppPkgs</code>
 
 </h1>
 
@@ -18,9 +18,9 @@ Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Pac
 
 <hr>
 
-# moviesApp
+# shinyAppPkgs
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -58,18 +58,18 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/moviesApp.git
-cd moviesApp
+git clone https://github.com/mjfrigaard/shinyAppPkgs.git
+cd shinyAppPkgs
 git checkout <branch_name>
-open moviesApp.Rproj
+open shinyAppPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
 
 ## `08_launch-app`
 
-[`08_launch-app`](https://github.com/mjfrigaard/moviesApp/tree/08_launch-app) gives advice and options for standalone app functions and what to put in the `app.R` file, and which function to use for launching vs. deploying the application.
+[`08_launch-app`](https://github.com/mjfrigaard/shinyAppPkgs/tree/08_launch-app) gives advice and options for standalone app functions and what to put in the `app.R` file, and which function to use for launching vs. deploying the application.

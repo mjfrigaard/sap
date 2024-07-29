@@ -1,6 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^moviesApp\.Rcheck$
-^moviesApp.*\.tar\.gz$
-^moviesApp.*\.tgz$
+^shinyAppPkgs\.Rcheck$
+^shinyAppPkgs.*\.tar\.gz$
+^shinyAppPkgs.*\.tgz$
 ^data-raw$

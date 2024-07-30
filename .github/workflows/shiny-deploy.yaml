@@ -28,7 +28,7 @@ jobs:
 
       - name: Authorize and deploy app
         env: 
-          APPNAME: moviesAppCICD
+          APPNAME: shinyAppPkgsCICD
           ACCOUNT: mjfrigaard
           SERVER: shinyapps.io
         run: |

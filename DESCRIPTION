@@ -1,4 +1,4 @@
-Package: shinyAppPkgs
+Package: shinyrPkgs
 Title: Shiny App-Packages
 Version: 0.0.0.9000
 Author: John Smith [aut, cre]
@@ -7,4 +7,4 @@ Description: An R package with a collection of Shiny applications.
 License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2

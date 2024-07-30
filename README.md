@@ -20,7 +20,7 @@ Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Pac
 
 # moviesApp
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 

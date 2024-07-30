@@ -5,4 +5,4 @@
 shinyAppPkgs.Rcheck/
 shinyAppPkgs*.tar.gz
 shinyAppPkgs*.tgz
-
+rsconnect/*

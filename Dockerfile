@@ -11,4 +11,4 @@ WORKDIR /deploy
 RUN R -e 'remotes::install_local(upgrade="never")'
 RUN rm -rf /deploy
 EXPOSE 8180
-CMD R -e "options('shiny.port'=8180,shiny.host='0.0.0.0');library(moviesApp);moviesApp::launch_app()"
+CMD R -e "options('shiny.port'=8180,shiny.host='0.0.0.0');library(shinyAppPkgs);shinyAppPkgs::launch_app()"

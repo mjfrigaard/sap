@@ -1,12 +1,12 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
+<h1 align="center"> <code>shinyAppPkgs</code> </h1>
 <h3 align="center"> A Shiny App-Package </h3>
 <h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
 
 <hr>
 
-# moviesApp
+# shinyAppPkgs
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,21 +45,21 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/moviesApp.git
-cd moviesApp
+git clone https://github.com/mjfrigaard/shinyAppPkgs.git
+cd shinyAppPkgs
 git checkout <branch_name>
-open moviesApp.Rproj
+open shinyAppPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
 
 ## `19_docker` 
 
-[`19_docker`](https://github.com/mjfrigaard/moviesApp/tree/19_docker) gives examples of using [Docker](https://www.docker.com/).
+[`19_docker`](https://github.com/mjfrigaard/shinyAppPkgs/tree/19_docker) gives examples of using [Docker](https://www.docker.com/).
 
 ### Tests 
 
@@ -74,7 +74,7 @@ This branch has 10 tests (and the following results). The `tests/testthat/_snaps
 ```
 ==> devtools::test()
 
-ℹ Testing moviesApp
+ℹ Testing shinyAppPkgs
 Loading required package: shiny
 ✔ | F W  S  OK | Context
 ✔ |          2 | app-feature-01 [12.4s]

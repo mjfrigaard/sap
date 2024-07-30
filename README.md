@@ -57,9 +57,9 @@ open shinyAppPkgs.Rproj
 
 View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
 
-## `19_docker` 
+## `15_docker` 
 
-[`19_docker`](https://github.com/mjfrigaard/shinyAppPkgs/tree/19_docker) gives examples of using [Docker](https://www.docker.com/).
+[`15_docker`](https://github.com/mjfrigaard/shinyAppPkgs/tree/15_docker) gives examples of using [Docker](https://www.docker.com/).
 
 ### Tests 
 
@@ -68,7 +68,7 @@ This branch has 10 tests (and the following results). The `tests/testthat/_snaps
 <details closed>
 
   <summary>
-    `devtools::test()` results 
+    <code>devtools::test()</code> results 
   </summary>
   
 ```

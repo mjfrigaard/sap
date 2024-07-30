@@ -4,7 +4,7 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     sink(stderr(), type = "output")
     tryCatch(
       expr = {
-        library(moviesApp)
+        library(shinyAppPkgs)
       },
       error = function(e) {
         pkgload::load_all()
@@ -12,9 +12,9 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     )
     # create shiny object from dev/ ----
     shinyAppDir(appDir = 
-                system.file("dev", package = "moviesApp"))
+                system.file("dev", package = "shinyAppPkgs"))
   } else {
     pkgload::load_all()
-    moviesApp::ggp2_launch_app(options = list(test.mode = FALSE))
+    shinyAppPkgs::ggp2_launch_app(options = list(test.mode = FALSE))
   }
 })

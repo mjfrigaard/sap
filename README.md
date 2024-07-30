@@ -1,12 +1,12 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
+<h1 align="center"> <code>shinyAppPkgs</code> </h1>
 <h3 align="center"> A Shiny App-Package </h3>
 <h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
 
 <hr>
 
-# moviesApp
+# shinyAppPkgs
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,28 +45,28 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/moviesApp.git
-cd moviesApp
+git clone https://github.com/mjfrigaard/shinyAppPkgs.git
+cd shinyAppPkgs
 git checkout <branch_name>
-open moviesApp.Rproj
+open shinyAppPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
 
 ## CI/CD (docker) 
 
 ### `16.3_gha-docker`
 
-[`16.3_gha-docker`](https://github.com/mjfrigaard/moviesApp/tree/16.3_gha-docker) gives examples of GitHub Actions workflows using Docker. Changes will only affect the CI/CD workflow in this branch. 
+[`16.3_gha-docker`](https://github.com/mjfrigaard/shinyAppPkgs/tree/16.3_gha-docker) gives examples of GitHub Actions workflows using Docker. Changes will only affect the CI/CD workflow in this branch. 
 
 ### `.github/workflows/docker.yaml`
 
 ```yaml
-name: docker-shiny, moviesapp
+name: docker-shiny, shinyAppPkgs
 
 on:
   push:
@@ -80,14 +80,14 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build image
-        run: docker build -t moviesapp . 
+        run: docker build -t shinyAppPkgs . 
       - name: execute
         run: >
           docker run 
           -e RSCONNECT_USER=${{secrets.RSCONNECT_USER}} 
           -e RSCONNECT_TOKEN=${{secrets.RSCONNECT_TOKEN}} 
           -e RSCONNECT_SECRET=${{secrets.RSCONNECT_SECRET}} 
-          moviesapp  
+          shinyAppPkgs  
 
 ```
 
@@ -96,9 +96,9 @@ jobs:
 ``` bash
 FROM rocker/shiny
 RUN R -e 'install.packages(c("rlang", "stringr", "shiny", "ggplot2", "remotes", "rsconnect", "bslib"))'
-RUN mkdir /home/moviesAppDockerCiCd
-ADD . /home/moviesAppDockerCiCd
-WORKDIR /home/moviesAppDockerCiCd
+RUN mkdir /home/shinyAppPkgsDockerCiCd
+ADD . /home/shinyAppPkgsDockerCiCd
+WORKDIR /home/shinyAppPkgsDockerCiCd
 RUN R -e 'remotes::install_local(upgrade="never")'
 EXPOSE 8180
 CMD Rscript deploy.R
@@ -112,7 +112,7 @@ rsconnect::setAccountInfo(name = Sys.getenv("RSCONNECT_USER"),
                secret = Sys.getenv("RSCONNECT_SECRET"))
 
 rsconnect::deployApp(appDir = ".", 
-  appName = "moviesAppDockerCiCd", 
+  appName = "shinyAppPkgsDockerCiCd", 
   account = "mjfrigaard", 
 	server = "shinyapps.io", 
 	forceUpdate = TRUE)

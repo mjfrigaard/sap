@@ -3,7 +3,7 @@ rsconnect::setAccountInfo(name = Sys.getenv("RSCONNECT_USER"),
                secret = Sys.getenv("RSCONNECT_SECRET"))
 
 rsconnect::deployApp(appDir = ".", 
-  appName = "moviesAppDockerCiCd", 
+  appName = "shinyAppPkgsDockerCiCd", 
   account = "mjfrigaard", 
 	server = "shinyapps.io", 
 	forceUpdate = TRUE)

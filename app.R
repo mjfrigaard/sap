@@ -2,7 +2,7 @@
 # install.packages(pkgs, quiet = TRUE)
 
 # packages ------------------------------------
-library(shinyAppPkgs)
+library(shinyrPkgs)
 
 # launch_app ------------------------------------
 launch_app()

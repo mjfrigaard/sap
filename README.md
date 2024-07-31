@@ -1,26 +1,10 @@
-<h1 align="center">
-
-<code>shinyAppPkgs</code>
-
-</h1>
-
-<h3 align="center">
-
-A Shiny App-Package
-
-</h3>
-
-<h5 align="center">
-
-Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a>
-
-</h5>
-
+<h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
+<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
 <hr>
 
-# shinyAppPkgs
+# shinyrPkgs
 
-`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -58,17 +42,17 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/shinyAppPkgs.git
-cd shinyAppPkgs
+git clone https://github.com/mjfrigaard/shinyrPkgs.git
+cd shinyrPkgs
 git checkout <branch_name>
-open shinyAppPkgs.Rproj
+open shinyrPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
+View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
 
 ## Dependencies
 
@@ -76,12 +60,12 @@ The following branches (`06.1_pkg-exports` and `06.2_pkg-imports`) cover imports
 
 ### `06.2_pkg-imports`
 
-The [`06.2_pkg-imports`](https://github.com/mjfrigaard/shinyAppPkgs/tree/06.2_pkg-imports) branch of `shinyAppPkgs` covers how to import functions from add-on packages so we can use them in our package.
+The [`06.2_pkg-imports`](https://github.com/mjfrigaard/shinyrPkgs/tree/06.2_pkg-imports) branch of `shinyrPkgs` covers how to import functions from add-on packages so we can use them in our package.
 
 Changes in the `DESCRIPTION`
 
 ```         
-Package: shinyAppPkgs
+Package: shinyrPkgs
 Title: Shiny App-Packages
 Version: 0.0.0.9000
 Author: John Smith <John.Smith@email.io> [aut, cre]

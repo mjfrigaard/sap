@@ -5,7 +5,7 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     tryCatch(
       expr = {
         # load package ----
-        library(shinyAppPkgs)
+        library(shinyrPkgs)
       },
       error = function(e) {
         # load R/ folder ----
@@ -17,6 +17,6 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     pkgload::load_all()
   }
   # create shiny object ----
-    shinyAppPkgs::launch_app(
+    shinyrPkgs::launch_app(
       options = list(test.mode = TRUE), run = 'p')
 })

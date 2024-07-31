@@ -1,4 +1,4 @@
-h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
+<h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
 <h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
 <hr>
 

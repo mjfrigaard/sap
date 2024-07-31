@@ -1,6 +1,6 @@
 <h1 align="center"> <code>shinyrPkgs</code> </h1>
-<h3 align="center"> A Shiny App-Package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
+
+<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h3>
 
 <hr>
 

@@ -112,7 +112,7 @@ dev_mod_scatter_server <- function(id, var_inputs) {
 
     observe({
         output$scatterplot <- renderPlot({
-          plot <- shinyAppPkgs::scatter_plot(
+          plot <- shinyrPkgs::scatter_plot(
             df = graph_data(),
             x_var = inputs()$x,
             y_var = inputs()$y,
@@ -141,7 +141,7 @@ devUI <- function() {
     addResourcePath(
       prefix = "dev",
       directoryPath = system.file("dev", 
-                                  package = "shinyAppPkgs")
+                                  package = "shinyrPkgs")
     )
   tagList(
     bslib::page_fillable(
@@ -182,7 +182,7 @@ devUI <- function() {
 
 devServer <- function(input, output, session) {
   
-  selected_vars <- shinyAppPkgs::mod_var_input_server("vars")
+  selected_vars <- shinyrPkgs::mod_var_input_server("vars")
 
   dev_mod_scatter_server("plot", var_inputs = selected_vars)
   

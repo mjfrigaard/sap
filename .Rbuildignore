@@ -2,9 +2,9 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^shinyAppPkgs\.Rcheck$
-^shinyAppPkgs.*\.tar\.gz$
-^shinyAppPkgs.*\.tgz$
+^shinyrPkgs\.Rcheck$
+^shinyrPkgs.*\.tar\.gz$
+^shinyrPkgs.*\.tgz$
 _\.new\.png$
 ^\.github$
 ^dev$

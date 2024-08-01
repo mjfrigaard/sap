@@ -1,12 +1,9 @@
-<h1 align="center"> <code>shinyAppPkgs</code> </h1>
-<h3 align="center"> A Shiny App-Package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
-
+<h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
+<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
 <hr>
+# shinyrPkgs
 
-# shinyAppPkgs
-
-`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,28 +42,28 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/shinyAppPkgs.git
-cd shinyAppPkgs
+git clone https://github.com/mjfrigaard/shinyrPkgs.git
+cd shinyrPkgs
 git checkout <branch_name>
-open shinyAppPkgs.Rproj
+open shinyrPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
+View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
 
 ## CI/CD (docker) 
 
 ### `16.3_gha-docker`
 
-[`16.3_gha-docker`](https://github.com/mjfrigaard/shinyAppPkgs/tree/16.3_gha-docker) gives examples of GitHub Actions workflows using Docker. Changes will only affect the CI/CD workflow in this branch. 
+[`16.3_gha-docker`](https://github.com/mjfrigaard/shinyrPkgs/tree/16.3_gha-docker) gives examples of GitHub Actions workflows using Docker. Changes will only affect the CI/CD workflow in this branch. 
 
 ### `.github/workflows/docker.yaml`
 
 ```yaml
-name: docker-shiny, shinyAppPkgs
+name: docker-shiny, shinyrPkgs
 
 on:
   push:
@@ -80,14 +77,14 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build image
-        run: docker build -t shinyAppPkgs . 
+        run: docker build -t shinyrPkgs . 
       - name: execute
         run: >
           docker run 
           -e RSCONNECT_USER=${{secrets.RSCONNECT_USER}} 
           -e RSCONNECT_TOKEN=${{secrets.RSCONNECT_TOKEN}} 
           -e RSCONNECT_SECRET=${{secrets.RSCONNECT_SECRET}} 
-          shinyAppPkgs  
+          shinyrPkgs  
 
 ```
 

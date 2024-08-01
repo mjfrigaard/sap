@@ -1,6 +1,6 @@
 <h1 align="center">
 
-<code>shinyAppPkgs</code>
+<code>shinyrPkgs</code>
 
 </h1>
 
@@ -18,9 +18,9 @@ Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Pac
 
 <hr>
 
-# shinyAppPkgs
+# shinyrPkgs
 
-`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -58,17 +58,17 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/shinyAppPkgs.git
-cd shinyAppPkgs
+git clone https://github.com/mjfrigaard/shinyrPkgs.git
+cd shinyrPkgs
 git checkout <branch_name>
-open shinyAppPkgs.Rproj
+open shinyrPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
+View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
 
 ## GitHub Actions
 
@@ -76,7 +76,7 @@ This chapter introduces GitHub Actions and CI/CD.
 
 ### `16.1_gha-style`
 
-[`16.1_gha-style`](https://github.com/mjfrigaard/shinyAppPkgs/tree/16.1_gha-style) gives examples [GitHub Actions](https://docs.github.com/en/actions).
+[`16.1_gha-style`](https://github.com/mjfrigaard/shinyrPkgs/tree/16.1_gha-style) gives examples [GitHub Actions](https://docs.github.com/en/actions).
 
 The style workflow is stored in the `.github` folder:
 
@@ -182,7 +182,7 @@ The results for `devtools::test()` should be the following (the `tests/testthat/
 
 ==> devtools::test()
 
-ℹ Testing shinyAppPkgs
+ℹ Testing shinyrPkgs
 Loading required package: shiny
 ✔ | F W  S  OK | Context
 ⠏ |          0 | mod_scatter_display                                                               

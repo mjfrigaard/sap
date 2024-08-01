@@ -41,7 +41,7 @@
 movies_ui <- function(bslib = FALSE) {
   addResourcePath(
     prefix = "www",
-    directoryPath = system.file("www", package = "shinyAppPkgs")
+    directoryPath = system.file("www", package = "shinyrPkgs")
   )
   if (isFALSE(bslib)) {
     tagList(

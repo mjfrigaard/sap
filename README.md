@@ -1,12 +1,10 @@
-<h1 align="center"> <code>shinyAppPkgs</code> </h1>
-<h3 align="center"> A Shiny App-Package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
-
+<h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
+<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
 <hr>
 
-# shinyAppPkgs
+# shinyrPkgs
 
-`shinyAppPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,25 +43,25 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/shinyAppPkgs.git
-cd shinyAppPkgs
+git clone https://github.com/mjfrigaard/shinyrPkgs.git
+cd shinyrPkgs
 git checkout <branch_name>
-open shinyAppPkgs.Rproj
+open shinyrPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`shinyAppPkgs` branches](https://github.com/mjfrigaard/shinyAppPkgs/branches/all).
+View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
 
 ## Tests 
 
 ### `14_tests-system`
 
-[`14_tests-system`](https://github.com/mjfrigaard/shinyAppPkgs/tree/14_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html).
+[`14_tests-system`](https://github.com/mjfrigaard/shinyrPkgs/tree/14_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html).
 
-The following system tests have been written for `shinyAppPkgs`:
+The following system tests have been written for `shinyrPkgs`:
 
 ``` sh
 tests/testthat/
@@ -72,7 +70,7 @@ tests/testthat/
   └── test-shinytest2.R
 ```
 
-After documenting, loading, and installing `shinyAppPkgs`, `devtools::test()` will generate the following `tests/testthat/_snaps` folder: 
+After documenting, loading, and installing `shinyrPkgs`, `devtools::test()` will generate the following `tests/testthat/_snaps` folder: 
 
 ``` sh
 tests/testthat/_snaps/

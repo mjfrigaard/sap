@@ -3,9 +3,9 @@
 .RData
 .Ruserdata
 .DS_Store
-shinyAppPkgs.Rcheck/
-shinyAppPkgs*.tar.gz
-shinyAppPkgs*.tgz
+shinyrPkgs.Rcheck/
+shinyrPkgs*.tar.gz
+shinyrPkgs*.tgz
 _stash*.R
 # {shinytest2}: Ignore new debug snapshots for `$expect_values()`
 *_.new.png

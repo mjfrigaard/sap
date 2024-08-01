@@ -12,6 +12,7 @@ Imports:
     cli,
     ggplot2,
     logger,
+    pkgload,
     rlang,
     sass,
     shiny,

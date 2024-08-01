@@ -77,7 +77,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build image
-        run: docker build -t shinyrPkgs . 
+        run: docker build -t shinyrpkgs . 
       - name: execute
         run: >
           docker run 

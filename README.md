@@ -84,7 +84,7 @@ jobs:
           -e RSCONNECT_USER=${{secrets.RSCONNECT_USER}} 
           -e RSCONNECT_TOKEN=${{secrets.RSCONNECT_TOKEN}} 
           -e RSCONNECT_SECRET=${{secrets.RSCONNECT_SECRET}} 
-          shinyrPkgs  
+          shinyrpkgs  
 
 ```
 

@@ -3,7 +3,7 @@
 .RData
 .Ruserdata
 .DS_Store
-shinyAppPkgs.Rcheck/
-shinyAppPkgs*.tar.gz
-shinyAppPkgs*.tgz
+shinyrPkgs.Rcheck/
+shinyrPkgs*.tar.gz
+shinyrPkgs*.tgz
 

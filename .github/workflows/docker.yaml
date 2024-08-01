@@ -1,4 +1,4 @@
-name: docker-shiny, shinyrPkgs
+name: docker-shiny, shinyrpkgs
 
 on:
   push:

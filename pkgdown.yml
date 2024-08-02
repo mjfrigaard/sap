@@ -3,9 +3,9 @@ pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   features: features.html
-  moviesApp: moviesApp.html
+  shinyrPkgs: shinyrPkgs.html
   specs: specs.html
-last_built: 2024-07-18T15:39Z
+last_built: 2024-08-02T04:57Z
 urls:
-  reference: https://mjfrigaard.github.io/moviesApp/reference
-  article: https://mjfrigaard.github.io/moviesApp/articles
+  reference: https://mjfrigaard.github.io/shinyrPkgs/reference
+  article: https://mjfrigaard.github.io/shinyrPkgs/articles

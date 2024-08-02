@@ -24,7 +24,7 @@ A \code{ggplot2} plot object
 }
 \description{
 Custom \href{https://ggplot2.tidyverse.org/}{\code{ggplot2}} function for building
-scatter plots in \code{moviesApp()}.
+scatter plots in \code{shinyrPkgs()}.
 }
 \examples{
 scatter_plot(mtcars, 

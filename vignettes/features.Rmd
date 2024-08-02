@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(moviesApp)
+library(shinyrPkgs)
 ```
 
 This is an example vignette for demonstrating `pkgdown` layouts.

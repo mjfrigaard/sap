@@ -1,4 +1,4 @@
-url: https://mjfrigaard.github.io/moviesApp/
+url: https://mjfrigaard.github.io/shinyrPkgs/
 template:
   bootstrap: 5
   bootswatch: united
@@ -12,7 +12,7 @@ template:
       google: Fira Sans Condensed
     code_font:
       google: Inconsolata
-
+      
 navbar:
  components:
    articles:
@@ -51,4 +51,5 @@ reference:
   desc: "App `movies` data"
   contents:
   - movies
+
 

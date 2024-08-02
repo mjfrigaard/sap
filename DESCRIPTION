@@ -1,4 +1,4 @@
-Package: moviesApp
+Package: shinyrPkgs
 Title: movies app
 Version: 0.0.0.9000
 Author: John Smith <John.Smith@email.io> [aut, cre]
@@ -36,4 +36,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-URL: https://mjfrigaard.github.io/moviesApp/
+URL: https://mjfrigaard.github.io/shinyrPkgs/

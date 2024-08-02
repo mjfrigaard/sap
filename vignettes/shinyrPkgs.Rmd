@@ -18,21 +18,21 @@ Install:
 
 ``` r
 install.packages('pak')
-pak::pak('mjfrigaard/moviesApp')
+pak::pak('mjfrigaard/shinyrPkgs')
 ```
 
 Load:
 
 ```{r setup}
-library(moviesApp)
+library(shinyrPkgs)
 ```
 
-You can launch the following apps from `moviesApp`:
+You can launch the following apps from `shinyrPkgs`:
 
 1. *Launches the standard application in the viewer pane*
 
     ``` r
-    moviesApp::launch_app()
+    shinyrPkgs::launch_app()
     ```
 
 2. *Launch the standard application in test mode (in the Window)*

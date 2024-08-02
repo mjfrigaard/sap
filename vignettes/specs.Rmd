@@ -15,10 +15,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(moviesApp)
+library(shinyrPkgs)
 ```
 
-This vignette provides example specifications for the `moviesApp` application (written in the [Gherkin](https://cucumber.io/docs/gherkin/) syntax)
+This vignette provides example specifications for the `shinyrPkgs` application (written in the [Gherkin](https://cucumber.io/docs/gherkin/) syntax)
 
 ## Movies App Specifications
 

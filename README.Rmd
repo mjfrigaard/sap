@@ -13,26 +13,26 @@ knitr::opts_chunk$set(
 )
 ```
 
-# moviesApp 
+# shinyrPkgs 
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-`moviesApp` provides an example of deploying an app-package website with [`pkgdown`](https://pkgdown.r-lib.org/).
+`shinyrPkgs` provides an example of deploying an app-package website with [`pkgdown`](https://pkgdown.r-lib.org/).
 
 ## Install
 
-Install the development version of `moviesApp` using [`pak`](https://pak.r-lib.org/):
+Install the development version of `shinyrPkgs` using [`pak`](https://pak.r-lib.org/):
 
 ``` r
 install.packages('pak')
-pak::pak("mjfrigaard/moviesApp")
+pak::pak("mjfrigaard/shinyrPkgs")
 ```
 
 ## Launch
 
 ``` r
-library(moviesApp)
+library(shinyrPkgs)
 launch_app()
 ```
 
@@ -50,7 +50,7 @@ Set up GitHub Actions:
  usethis::use_pkgdown_github_pages()
 ```
 
-Change the branches for the triggering event in `.github/workflows/pkgdown.yml` to only trigger on the [`17_pkgdown` branch](https://github.com/mjfrigaard/moviesApp/tree/17_pkgdown):
+Change the branches for the triggering event in `.github/workflows/pkgdown.yml` to only trigger on the [`17_pkgdown` branch](https://github.com/mjfrigaard/shinyrPkgs/tree/17_pkgdown):
 
 ``` yml
 on:
@@ -77,7 +77,7 @@ git push
 
 ## Deployed site
 
-View the deployed site here: https://mjfrigaard.github.io/moviesApp/
+View the deployed site here: https://mjfrigaard.github.io/shinyrPkgs/
 
 More information can be found on the **Actions** tab of the GitHub repo.
 
@@ -88,7 +88,7 @@ The `tests/testthat/` folder contains unit, module, and system tests. The result
 <details closed>
   <summary>devtools::test()</summary>
     <pre>
-ℹ Testing moviesApp
+ℹ Testing shinyrPkgs
 Loading required package: shiny
 ✔ | F W  S  OK | Context
 ✔ |          2 | app-feature-01 [14.9s]                                                    
@@ -135,4 +135,4 @@ Duration: 24.1 s
 
 ### Movie review data application
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023). The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
+`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023). The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.

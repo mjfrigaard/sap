@@ -1,28 +1,28 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# moviesApp
+# shinyrPkgs
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-`moviesApp` provides an example of deploying an app-package website with
+`shinyrPkgs` provides an example of deploying an app-package website with
 [`pkgdown`](https://pkgdown.r-lib.org/).
 
 ## Install
 
-Install the development version of `moviesApp` using
+Install the development version of `shinyrPkgs` using
 [`pak`](https://pak.r-lib.org/):
 
 ``` r
 install.packages('pak')
-pak::pak("mjfrigaard/moviesApp")
+pak::pak("mjfrigaard/shinyrPkgs")
 ```
 
 ## Launch
 
 ``` r
-library(moviesApp)
+library(shinyrPkgs)
 launch_app()
 ```
 
@@ -42,7 +42,7 @@ Set up GitHub Actions:
 
 Change the branches for the triggering event in
 `.github/workflows/pkgdown.yml` to only trigger on the [`17_pkgdown`
-branch](https://github.com/mjfrigaard/moviesApp/tree/17_pkgdown):
+branch](https://github.com/mjfrigaard/shinyrPkgs/tree/17_pkgdown):
 
 ``` yml
 on:
@@ -68,7 +68,7 @@ git push
 
 ## Deployed site
 
-View the deployed site here: <https://mjfrigaard.github.io/moviesApp/>
+View the deployed site here: <https://mjfrigaard.github.io/shinyrPkgs/>
 
 More information can be found on the **Actions** tab of the GitHub repo.
 
@@ -83,7 +83,7 @@ adding the snapshots):
 devtools::test()
 </summary>
 <pre>
-ℹ Testing moviesApp
+ℹ Testing shinyrPkgs
 Loading required package: shiny
 ✔ | F W  S  OK | Context
 ✔ |          2 | app-feature-01 [14.9s]                                                    
@@ -117,7 +117,7 @@ Duration: 24.1 s
 
 ### Movie review data application
 
-`moviesApp` provides the code examples in for the [Shiny
+`shinyrPkgs` provides the code examples in for the [Shiny
 App-Packages](https://mjfrigaard.github.io/shinyap/) book and the
 [Developing & Testing Your Shiny
 Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop

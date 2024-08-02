@@ -18,4 +18,4 @@ knitr::opts_chunk$set(
 library(shinyrPkgs)
 ```
 
-This is an example vignette for demonstrating `pkgdown` layouts.
+This is an example vignette/article for demonstrating `pkgdown` layouts.

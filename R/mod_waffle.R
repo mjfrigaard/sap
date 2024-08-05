@@ -37,9 +37,9 @@ mod_waffle_server <- function(id, vals) {
     output$genre <- renderPlot({
       req(vals())
       tspan <- abs(vals()$start_year - vals()$end_year)
-      x_lab <- title_labs(as.character(vals()$chr_var))
+      x_lab <- name_case(as.character(vals()$chr_var))
       t <- paste("Time span =", tspan, "years")
-      movies <- moviesApp::movies
+      movies <- shinyrPkgs::movies
       # convert to character 
       movies$chr_var <- as.character(movies[[vals()$chr_var]])
       # subset

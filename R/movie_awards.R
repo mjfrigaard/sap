@@ -3,9 +3,6 @@
 #' This function processes a movie data frame to create a tidy data frame of 
 #' movie awards.
 #'
-#' @param movies A data frame containing movie data, including award columns 
-#' that start with "best".
-#'
 #' @return A data frame with columns `title`, `award`, `win`, and `thtr_rel_date`.
 #'
 #' @details
@@ -24,50 +21,32 @@
 #' @examples
 #' str(create_movie_awards(movies))
 #' 
-create_movie_awards <- function(movies) {
+create_movie_awards <- function() {
   award_columns <- grep("^best", colnames(movies), value = TRUE)
   tidy_awards <- do.call(rbind, lapply(award_columns, function(col) {
     data.frame(
       title = movies$title,
       thtr_rel_date = movies$thtr_rel_date,
       award = col,
-      win = movies[[col]]
+      win = factor(movies[[col]], levels = c("no", "yes"), labels = c("No", "Yes"))
     )
   }))
+  
   # clean up the 'award' column
   tidy_awards$award <- gsub("_", " ", tidy_awards$award)
   tidy_awards$award <- gsub("best", "Best", tidy_awards$award)
   tidy_awards$award <- gsub("pic", "Picture", tidy_awards$award)
   tidy_awards$award <- gsub("nom", "Nomination", tidy_awards$award)
   tidy_awards$award <- gsub("dir", "Director", tidy_awards$award)
-  # clean up the 'win' column
-  tidy_awards$win <- gsub("no", "No", tidy_awards$win)
-  tidy_awards$win <- gsub("yes", "Yes", tidy_awards$win)
+  tidy_awards$award <- gsub("actor", "Actor", tidy_awards$award)
+  tidy_awards$award <- gsub("actress", "Actress", tidy_awards$award)
+  
+  # remove the ' win' suffix
+  tidy_awards$award <- gsub(" win$", "", tidy_awards$award)
+  
   # relevant columns
-  movie_awards <- tidy_awards[ , c("title", "award", "win", "thtr_rel_date")]
+  movie_awards <- tidy_awards[, c("title", "award", "win", "thtr_rel_date")]
   movie_awards <- movie_awards[order(movie_awards$thtr_rel_date),]
+  
   return(movie_awards)
 }
-
-
-# make_movie_awards <- function() {
-#   
-#   tidy_awards <- tidyr::pivot_longer(movies,
-#       cols = starts_with('best'),
-#       names_to = "award",
-#       values_to = "win")
-# 
-#   clean_awards <- dplyr::mutate(tidy_awards,
-#       win = stringr::str_to_title(win),
-#       win = factor(win),
-#       award = stringr::str_replace_all(award, "_", " "),
-#       award = stringr::str_replace_all(award, "pic", "picture"),
-#       award = stringr::str_replace_all(award, "nom", "nomination"),
-#       award = stringr::str_replace_all(award, "dir", "director"),
-#       award = stringr::str_to_title(award))
-# 
-#   movie_awards <- dplyr::select(clean_awards, title, award, win, thtr_rel_date)
-# 
-#   arrange(movie_awards, thtr_rel_date)
-# 
-# }

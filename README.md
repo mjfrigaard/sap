@@ -1,12 +1,12 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
-<h3 align="center"> A Shiny App-Package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
+<h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
+<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
+<hr>
 
 <hr>
 
-# moviesApp
+# shinyrPkgs
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,21 +45,21 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/moviesApp.git
-cd moviesApp
+git clone https://github.com/mjfrigaard/shinyrPkgs.git
+cd shinyrPkgs
 git checkout <branch_name>
-open moviesApp.Rproj
+open shinyrPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
 
 ## HTML 
 
 ### `18_html`
 
-[`18_html`](https://github.com/mjfrigaard/moviesApp/tree/18_html) introduces using and storing HTML in your app-package.
+[`18_html`](https://github.com/mjfrigaard/shinyrPkgs/tree/18_html) introduces using and storing HTML in your app-package.
 

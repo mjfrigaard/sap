@@ -47,5 +47,6 @@ make_tidy_ggp2_movies <- function(movies_data_url) {
 }
 
 tidy_movies <- make_tidy_ggp2_movies("https://raw.githubusercontent.com/hadley/ggplot2movies/master/data-raw/movies.csv")
+usethis::use_data(tidy_movies, overwrite = TRUE)
 # save to inst/dev/
 fst::write_fst(x = tidy_movies, path = "inst/dev/tidy_movies.fst")

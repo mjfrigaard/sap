@@ -13,7 +13,8 @@
 mod_point_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    plotOutput(ns("scatter"))
+    plotOutput(ns("scatter"),
+      width = '100%', height = '100%')
     # dev
     # verbatimTextOutput(
     #   outputId = ns("mod_vals"))
@@ -40,21 +41,21 @@ mod_point_server <- function(id, vals) {
     label_inputs <- reactive({
       req(vals()$x, vals()$y, vals()$c)
       list(
-        x = title_labs(as.character(vals()$x)),
-        y = title_labs(as.character(vals()$y)),
-        color = title_labs(as.character(vals()$color)),
-        subtitle = title_labs(as.character(vals()$subtitle)),
+        x = name_case(as.character(vals()$x)),
+        y = name_case(as.character(vals()$y)),
+        color = name_case(as.character(vals()$color)),
+        subtitle = name_case(as.character(vals()$subtitle)),
         title = paste(
-            title_labs(as.character(vals()$x)), 
-            "vs.", title_labs(as.character(vals()$y)),
-            "and", title_labs(as.character(vals()$c))
+            name_case(as.character(vals()$x)), 
+            "vs.", name_case(as.character(vals()$y)),
+            "and", name_case(as.character(vals()$c))
           )
       )
     })
-    
-    output$scatter <- renderPlot({
+      
+    output$scatter <- renderPlot(expr = {
       req(vals())
-      ggplot2::ggplot(
+      p <- ggplot2::ggplot(
         movies,
         ggplot2::aes(
           y = !!vals()$y,
@@ -75,10 +76,13 @@ mod_point_server <- function(id, vals) {
         ) +
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "right")
-    })
+      print(p)
+    }, width = 'auto', height = 'auto')
+  
     # dev
     # output$mod_vals <- renderPrint({
     #   str(label_inputs())
     # })
+    
   })
 }

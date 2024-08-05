@@ -38,7 +38,7 @@ mod_hbar_server <- function(id, vals) {
       req(vals())
       tspan <- abs(vals()$start_year - vals()$end_year)
       t <- paste("Time span =", tspan, "years")
-      x_lab <- title_labs(as.character(vals()$chr_var))
+      x_lab <- name_case(as.character(vals()$chr_var))
       d <- subset(movies, 
         thtr_rel_year >= vals()$start_year &
         thtr_rel_year <= vals()$end_year)

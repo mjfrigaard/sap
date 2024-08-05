@@ -37,7 +37,7 @@ mod_boxplot_server <- function(id, vals) {
 
       output$box <- renderPlot({
         req(vals())
-        d_bp <- subset(moviesApp::movies,
+        d_bp <- subset(shinyrPkgs::movies,
                        !is.na(as.character(vals()$num_var)) &
                        !is.na(as.character(vals()$chr_var)))
         a <- as.numeric(vals()$alpha)
@@ -52,8 +52,8 @@ mod_boxplot_server <- function(id, vals) {
                 width = s/5,
                 show.legend = FALSE) +
         ggplot2::labs(
-          x = title_labs(as.character(vals()$num_var)),
-          y = title_labs(as.character(vals()$chr_var))
+          x = name_case(as.character(vals()$num_var)),
+          y = name_case(as.character(vals()$chr_var))
         ) +
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "none")

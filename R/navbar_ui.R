@@ -15,7 +15,7 @@
 navbar_ui <- function() {
   addResourcePath(
     prefix = 'www',
-    directoryPath = system.file('www', package = 'moviesApp'))
+    directoryPath = system.file('www', package = 'shinyrPkgs'))
 
   # bootstrap <- htmltools::htmlDependency(
   #   name = "bootstrap",
@@ -48,10 +48,12 @@ navbar_ui <- function() {
           bslib::layout_sidebar(
             sidebar = bslib::sidebar(
               class = "p-0",
+              # scatter inputs (UI) ---- 
               mod_point_vars_ui("scatter_inputs"),
             ),
             bslib::card_body(
               class = "p-0",
+              # scatter plot (UI) ----
               mod_point_ui(id = "scatter"),
               bslib::card_footer(
                 tags$blockquote(
@@ -71,6 +73,7 @@ navbar_ui <- function() {
         )
       ),
       bslib::nav_panel(
+        # Counts (UI) ----
         "Counts",
         bslib::navset_card_tab(
           height = "800px",
@@ -78,46 +81,67 @@ navbar_ui <- function() {
           sidebar =
             bslib::sidebar(
               class = "p-0",
+              ## Count Vars (UI) ----
               mod_count_vars_ui("year")
             ),
           bslib::nav_panel(
-            markdown("Waffle"),
+            markdown("Graphs"),
+            markdown("*Bars*"),
+            ### Bars (UI) ----
+            mod_hbar_ui(id = "hbar"),
+            markdown("*Waffle*"),
+            ### Waffle (UI) ----
             mod_waffle_ui(id = "waffle")
           ),
           bslib::nav_panel(
-            markdown("Bars"),
-            mod_hbar_ui(id = "hbar"),
-          ),
-          bslib::nav_panel(
+            ### Counts Table (UI) ----
             markdown("Table"),
-            mod_tbl_ui(id = "cnt_tbl")
+            mod_counts_tbl_ui(id = "cnt_tbl")
           )
         )
       ),
       bslib::nav_panel(
         "Distributions",
+        # Distributions (UI) ----
+        bslib::navset_card_tab(
+          sidebar =
+            bslib::sidebar(
+              class = "p-0",
+              ## Dist Vars (UI) ----
+              mod_dist_vars_ui("dist")
+            ),
+          bslib::nav_panel(
+            markdown("Box plot"),
+            ### Box plot (UI) ----
+            markdown("*Box plot*"),
+            mod_boxplot_ui(id = "box")
+          ),
+          bslib::nav_panel(
+            markdown("Rain Cloud"),
+            ### Rain Cloud plot (UI) ----
+            markdown("*Rain Cloud*"),
+            mod_raincloud_ui(id = "cloud")
+          )
+        )
+      ),
+      bslib::nav_panel(
+        "Awards",
+        # Awards (UI) ----
         bslib::navset_card_tab(
           full_screen = TRUE,
           sidebar =
             bslib::sidebar(
               class = "p-0",
-              mod_dist_vars_ui("dist")
+              ## Awards Vars ----
+              code("awards variables")
             ),
           bslib::nav_panel(
-            markdown("Box plot"),
-            mod_boxplot_ui(id = "box")
+            markdown("Best Director"),
+            ### Best Director Table (UI) ----
           ),
           bslib::nav_panel(
-            markdown("Ridgeline"),
-            mod_ridgeline_ui(id = "ridges")
-          ),
-          bslib::nav_panel(
-            markdown("Rain Cloud"),
-            mod_raincloud_ui(id = "cloud")
-          ),
-          bslib::nav_panel(
-            markdown("Table"),
-            mod_tbl_ui(id = "dist_tbl")
+            markdown("Best Actor"),
+            ### Best Actor Table (UI) ----
           )
         )
       )

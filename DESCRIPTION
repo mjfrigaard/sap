@@ -1,4 +1,4 @@
-Package: moviesApp
+Package: shinyrPkgs
 Title: movies app
 Version: 0.0.0.9000
 Author: John Smith <John.Smith@email.io> [aut, cre]
@@ -14,6 +14,7 @@ Imports:
     ggridges,
     ggwaffle,
     logger,
+    reactable,
     rlang,
     sass,
     shiny,

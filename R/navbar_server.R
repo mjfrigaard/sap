@@ -19,6 +19,7 @@ navbar_server <- function(input, output) {
   
   # count values 
   count_values <- mod_count_vars_server("year")
+  mod_counts_txt_server("cnt_txt", count_values)
   mod_hbar_server(id = "hbar", vals = count_values)
   mod_waffle_server(id = "waffle", vals = count_values)
   mod_counts_tbl_server(id = "cnt_tbl", vals = count_values)
@@ -27,5 +28,11 @@ navbar_server <- function(input, output) {
   dist_values <- mod_dist_vars_server("dist")
   mod_raincloud_server("cloud", vals = dist_values)
   mod_boxplot_server("box", vals = dist_values)
+  mod_dist_tbl_server("dist_tbl", vals = dist_values)
+  
+  # awards values 
+  award_values <- mod_awards_vars_server("awards_vars")
+  mod_point_text_server("awards_plot", award_values)
+  mod_awards_tbl_server("awards_table", award_values)
   
 }

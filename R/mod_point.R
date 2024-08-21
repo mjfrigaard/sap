@@ -13,11 +13,8 @@
 mod_point_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    plotOutput(ns("scatter"),
+    plotly::plotlyOutput(ns("scatter"),
       width = '100%', height = '100%')
-    # dev
-    # verbatimTextOutput(
-    #   outputId = ns("mod_vals"))
   )
 }
 
@@ -44,45 +41,53 @@ mod_point_server <- function(id, vals) {
         x = name_case(as.character(vals()$x)),
         y = name_case(as.character(vals()$y)),
         color = name_case(as.character(vals()$color)),
-        subtitle = name_case(as.character(vals()$subtitle)),
-        title = paste(
+        title = name_case(as.character(vals()$title)),
+        subtitle = paste(
             name_case(as.character(vals()$x)), 
             "vs.", name_case(as.character(vals()$y)),
             "and", name_case(as.character(vals()$c))
           )
       )
     })
-      
-    output$scatter <- renderPlot(expr = {
+
+    output$scatter <- plotly::renderPlotly({
       req(vals())
-      p <- ggplot2::ggplot(
-        movies,
-        ggplot2::aes(
-          y = !!vals()$y,
-          x = !!vals()$x,
-          color = !!vals()$color
+      
+      plotly::plot_ly(
+        data = movies,
+        x = ~get(vals()$x),
+        y = ~get(vals()$y),
+        color = ~get(vals()$color),
+        type = 'scatter',
+        mode = 'markers',
+        colors = c("#FC5C64FF", "#2F8AC4FF", "#99C945FF"),
+        marker = list(
+          size = vals()$size,
+          opacity = vals()$alpha
         )
-      ) +
-        ggplot2::geom_point(
-          alpha = vals()$alpha,
-          size = vals()$size
-        ) +
-        ggplot2::labs(
-          title = label_inputs()$title,
-          subtitle = label_inputs()$subtitle,
-          x = label_inputs()$x,
-          y = label_inputs()$y,
-          color = label_inputs()$color
-        ) +
-        ggplot2::theme_minimal() +
-        ggplot2::theme(legend.position = "right")
-      print(p)
-    }, width = 'auto', height = 'auto')
-  
-    # dev
-    # output$mod_vals <- renderPrint({
-    #   str(label_inputs())
-    # })
+      ) |>
+        plotly::layout(
+          title = list(
+            text = label_inputs()$title,
+            font = list(color = "#e0e0e0")  
+          ),
+          xaxis = list(
+            title = label_inputs()$x,
+            titlefont = list(color = "#e0e0e0"),  
+            tickfont = list(color = "#e0e0e0")   
+          ),
+          yaxis = list(
+            title = label_inputs()$y,
+            titlefont = list(color = "#e0e0e0"),  
+            tickfont = list(color = "#e0e0e0")   
+          ),
+          legend = list(
+            font = list(color = "#e0e0e0")        
+          ),
+          plot_bgcolor = "#121212",    
+          paper_bgcolor = "#121212"    
+        )
+    })
     
   })
 }

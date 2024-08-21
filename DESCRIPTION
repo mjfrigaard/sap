@@ -10,26 +10,29 @@ Depends:
 Imports: 
     bslib,
     cli,
+    forcats,
+    ggdist,
     ggplot2,
-    ggridges,
+    ggrepel,
     ggwaffle,
+    grid,
     logger,
+    plotly,
     reactable,
-    rlang,
     sass,
+    scales,
     shiny,
-    shinythemes,
-    stringr,
-    tools
+    stats,
+    thematic
 Suggests: 
+    ggplot2movies,
     glue,
     knitr,
     rmarkdown,
     shinytest2,
-    testthat (>= 3.0.0),
     waldo
 VignetteBuilder: 
-    knitr
+    quarto
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true

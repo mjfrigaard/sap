@@ -18,7 +18,7 @@ User Interface for Horizontal Bar Plot
 \section{Outputs}{
 
 \itemize{
-\item \code{ratings}: Horizontal bar plot.
+\item \code{hbar_graph}: Horizontal bar plot.
 }
 }
 

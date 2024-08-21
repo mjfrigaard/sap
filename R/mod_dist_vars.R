@@ -39,15 +39,15 @@ mod_dist_vars_ui <- function(id) {
       min = 0.2, 
       max = 1.0, 
       step = 0.2,
-      value = 0.6
+      value = 0.8
     ),
     sliderInput(
       inputId = ns("size"),
       label = "Size/scale",
       min = 1, 
-      max = 6,
+      max = 5,
       step = 0.5,
-      value = 3
+      value = 3.0
     )
   )
 }

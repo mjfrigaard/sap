@@ -44,23 +44,23 @@ mod_point_vars_ui <- function(id) {
     sliderInput(
       inputId = ns("alpha"),
       label = strong("Alpha"),
-      min = 0.2, 
+      min = 0.5, 
       max = 1.0, 
-      step = 0.2,
-      value = 0.6
+      step = 0.1,
+      value = 0.7
     ),
     sliderInput(
       inputId = ns("size"),
       label = strong("Size"),
-      min = 1, 
-      max = 6,
+      min = 5, 
+      max = 10,
       step = 0.5,
-      value = 3
+      value = 7
     ),
     textInput(
-      inputId = ns("plot_subtitle"),
-      label = strong("Plot subtitle"),
-      placeholder = "Enter plot subtitle"
+      inputId = ns("plot_title"),
+      label = strong("Plot title"),
+      placeholder = "Enter plot title"
     )
   )
 }
@@ -121,7 +121,7 @@ mod_point_vars_server <- function(id) {
           "color" = input$color,
           "alpha" = input$alpha,
           "size" = input$size,
-          "subtitle" = input$plot_subtitle
+          "title" = input$plot_title
         )
       })
     )

@@ -1,0 +1,40 @@
+---
+title: "Tables"
+format: 
+  html:
+    toc: true
+    toc-depth: 4
+    toc-title: 'Contents'
+    toc-expand: false
+vignette: >
+  %\VignetteIndexEntry{Tables}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  dev = "ragg_png",
+  dpi = 320, 
+  out.width = "85%",
+  fig.width = 6,
+  fig.asp = 0.618,
+  fig.retina = 2,
+  fig.align = "center"
+)
+```
+
+This document covers the reactable table styling the Shiny application.[^table-style-ref]
+
+## Counts
+
+## Distributions 
+
+## Awards
+
+[^table-style-ref]: Read more [here](https://glin.github.io/reactable/articles/examples.html#conditional-styling).

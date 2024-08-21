@@ -17,43 +17,53 @@ navbar_ui <- function() {
     prefix = 'www',
     directoryPath = system.file('www', package = 'shinyrPkgs'))
 
-  # bootstrap <- htmltools::htmlDependency(
-  #   name = "bootstrap",
-  #   version = "4.0.0",
-  #   src = c(href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/"),
-  #   stylesheet = "css/bootstrap.min.css"
-  # )
-
-  # custom_js <- htmltools::htmlDependency(
-  #   name = "custom-scripts",
-  #   version = "1.0",
-  #   src = "www",
-  #   script = "scripts.js"
-  # )
-
   tagList(
-    # bootstrap,
-    # custom_js,
-    # div(class = "container",
-    #   div(class = "jumbotron",
-    #     h1("Movies Data Analysis Application")
-    #   ),
+    tags$style(
+      HTML("
+      .reactable {
+        background-color: #121212;
+        color: #ffffff;
+      }
+      .reactable .rt-tbody .rt-tr-group {
+        border-color: #2979ff;
+      }
+      .reactable .rt-thead .rt-th, .reactable .rt-tbody .rt-td {
+        color: #ffffff;
+      }
+      .reactable .rt-thead .rt-th {
+        background-color: #121212;
+      }
+      .reactable .rt-tbody .rt-td {
+        background-color: #121212;
+      }
+    ")
+  ),
     bslib::page_navbar(
+      theme = bslib::bs_theme(
+        version = 5,
+        bg = "#000000",          # pure black background for maximum contrast
+        fg = "#ffffff",          # white text color for sharp contrast
+        primary = "#2979ff",     # bright blue primary color
+        secondary = "#bdbdbd",   # light gray for secondary elements
+        body_bg = "#121212",     # dark gray for the main content background
+        base_font = sass::font_google("Roboto") # base font from Google
+      ),
       title = "Movies",
       fillable = "Compare",
       bslib::nav_panel(
         "Compare",
+        # Compare (ui) ----
         bslib::card(
           full_screen = TRUE,
           bslib::layout_sidebar(
             sidebar = bslib::sidebar(
               class = "p-0",
-              # scatter inputs (UI) ---- 
+              ## Scatter inputs (UI) ---- 
               mod_point_vars_ui("scatter_inputs"),
             ),
             bslib::card_body(
               class = "p-0",
-              # scatter plot (UI) ----
+              ## Scatter plot (UI) ----
               mod_point_ui(id = "scatter"),
               bslib::card_footer(
                 tags$blockquote(
@@ -86,10 +96,10 @@ navbar_ui <- function() {
             ),
           bslib::nav_panel(
             markdown("Graphs"),
-            markdown("*Bars*"),
+            ### Text (UI) ----
+            mod_counts_txt_ui("cnt_txt"),
             ### Bars (UI) ----
             mod_hbar_ui(id = "hbar"),
-            markdown("*Waffle*"),
             ### Waffle (UI) ----
             mod_waffle_ui(id = "waffle")
           ),
@@ -111,16 +121,16 @@ navbar_ui <- function() {
               mod_dist_vars_ui("dist")
             ),
           bslib::nav_panel(
-            markdown("Box plot"),
+            markdown("Graphs"),
             ### Box plot (UI) ----
-            markdown("*Box plot*"),
-            mod_boxplot_ui(id = "box")
+            mod_boxplot_ui(id = "box"),
+            ### Rain Cloud plot (UI) ----
+            mod_raincloud_ui(id = "cloud")
           ),
           bslib::nav_panel(
-            markdown("Rain Cloud"),
-            ### Rain Cloud plot (UI) ----
-            markdown("*Rain Cloud*"),
-            mod_raincloud_ui(id = "cloud")
+            markdown("Table"),
+            ### Distribution table (UI) ----
+            mod_dist_tbl_ui("dist_tbl")
           )
         )
       ),
@@ -132,16 +142,18 @@ navbar_ui <- function() {
           sidebar =
             bslib::sidebar(
               class = "p-0",
-              ## Awards Vars ----
-              code("awards variables")
+              ## Awards Vars (UI) ----
+              mod_awards_vars_ui(id = "awards_vars"),
             ),
           bslib::nav_panel(
-            markdown("Best Director"),
-            ### Best Director Table (UI) ----
+            markdown("Graphs"),
+            ### Awards Graph (UI) ----
+            mod_point_text_ui(id = "awards_plot")
           ),
           bslib::nav_panel(
-            markdown("Best Actor"),
-            ### Best Actor Table (UI) ----
+            markdown("Table"),
+            ### Awards Table (UI) ----
+            mod_awards_tbl_ui(id = "awards_table")
           )
         )
       )

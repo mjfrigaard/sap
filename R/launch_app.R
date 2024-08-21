@@ -31,6 +31,16 @@ launch_app <- function(options = list(), run = "p", ...) {
   if (interactive()) {
     display_type(run = run)
   }
+    # set ragg option
+    options(shiny.useragg = TRUE)
+    # set ggplot2 theme
+    ggplot2::theme_set(ggplot2::theme_minimal())
+    # set thematic theme
+    thematic::thematic_shiny(
+      bg = "#121212",
+      fg = "#ffffff",
+      accent = "#bdbdbd", 
+      font = "Roboto")
     shinyApp(
       ui = navbar_ui(...),
       server = navbar_server,

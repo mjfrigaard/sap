@@ -4,3 +4,4 @@
 ^shinyrPkgs.*\.tar\.gz$
 ^shinyrPkgs.*\.tgz$
 _\.new\.png$
+^dev$

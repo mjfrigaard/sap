@@ -18,7 +18,7 @@ User Interface for Vertical Bar Plot
 \section{Outputs}{
 
 \itemize{
-\item \code{genre}: Vertical bar plot.
+\item \code{waffle_plot}: Vertical bar plot.
 }
 }
 

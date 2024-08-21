@@ -35,58 +35,71 @@ mod_raincloud_ui <- function(id) {
 mod_raincloud_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
 
-      output$cloud <- renderPlot({
-        req(vals())
-        d_rc <- subset(shinyrPkgs::movies,
-                       !is.na(as.character(vals()$num_var)) &
-                       !is.na(as.character(vals()$chr_var)))
-        a <- as.numeric(vals()$alpha)
-        s <- as.numeric(vals()$size)
-        gg2_box <- ggplot2::ggplot(d_rc,
-            ggplot2::aes(x = !!vals()$num_var,
-                         y = !!vals()$chr_var, )) +
-          ggplot2::geom_boxplot(
-            ggplot2::aes(fill = !!vals()$chr_var),
-            width = 0.10,
-            outlier.shape = NA,
-            alpha = a,
-            show.legend = FALSE)
-        gg2_halfeye <- gg2_box +
-          ggdist::stat_halfeye(
-              ggplot2::aes(fill = !!vals()$chr_var),
-                alpha = a,
-                adjust = s/5, # shape = adjust * density estimator
-                # adjust = 0.5, # shape = adjust * density estimator
-                .width = 0, # can use probabilities or 0
-                point_colour = NA, # removes the point in center
-                orientation = "horizontal", # like the box plot
-                height = 0.75, # height of curve
-                justification = -0.20, # shift vertically above box
-                show.legend = FALSE # don't need this
-              )
-        gg2_point <- gg2_halfeye +
-          ggplot2::geom_point(
-            ggplot2::aes(
-              fill = !!vals()$chr_var),
-                position = 
-              ggplot2::position_jitter(
-                  seed = 54321,
-                  height = .05),
-                  shape = 21,
-                  color = "#ffffff",
-                  alpha = a,
-                  size = 3,
-                  show.legend = FALSE)
-        gg2_point + 
-        ggplot2::labs(
-          # title = vals()$title,
-          # subtitle = vals()$subtitle,
-          x = vals()$num_var,
-          y = vals()$chr_var
+    output$cloud <- renderPlot({
+      req(vals())
+      d_rc <- subset(shinyrPkgs::movies,
+                     !is.na(as.character(vals()$num_var)) &
+                     !is.na(as.character(vals()$chr_var)))
+      a <- as.numeric(vals()$alpha)
+      s <- as.numeric(vals()$size)
+      gg2_box <- ggplot2::ggplot(d_rc,
+          ggplot2::aes(x = !!vals()$num_var,
+                       y = !!vals()$chr_var)) +
+        ggplot2::geom_boxplot(
+          ggplot2::aes(fill = !!vals()$chr_var),
+          width = 0.10,
+          outlier.shape = NA,
+          alpha = a,
+          show.legend = FALSE
         ) +
-        ggplot2::theme_minimal() +
-        ggplot2::theme(legend.position = "none")
-      })
+        ggplot2::scale_fill_manual(values = clr_pal12)
+      
+      gg2_halfeye <- gg2_box +
+        ggdist::stat_halfeye(
+          ggplot2::aes(fill = !!vals()$chr_var),
+          alpha = a,
+          adjust = s/5, 
+          .width = 0, 
+          point_colour = NA, 
+          orientation = "horizontal", 
+          height = 0.75, 
+          justification = -0.20, 
+          show.legend = FALSE 
+        )
+      
+      gg2_point <- gg2_halfeye +
+        ggplot2::geom_point(
+          ggplot2::aes(
+            fill = !!vals()$chr_var),
+            position = 
+            ggplot2::position_jitter(
+              seed = 54321,
+              height = .05),
+            shape = 21,
+            color = "#ffffff",
+            alpha = a,
+            size = 3,
+            show.legend = FALSE
+        )
+      
+      gg2_point + 
+        ggplot2::labs(
+          x = name_case(as.character(vals()$num_var)),
+          y = name_case(as.character(vals()$chr_var))
+        ) +
+        # ggplot2::theme_void(base_size = 16) +
+        ggplot2::theme(
+          legend.position = "none",
+          # plot.background = ggplot2::element_rect(fill = "#121212", color = NA),
+          # panel.background = ggplot2::element_rect(fill = "#121212", color = NA),
+          # panel.grid.major = ggplot2::element_line(color = "#ffffff"),
+          # panel.grid.minor = ggplot2::element_line(color = "#ffffff"),
+          # axis.ticks = ggplot2::element_line(color = "#ffffff"),
+          axis.text = ggplot2::element_text(color = "#ffffff", size = 14),
+          axis.title = ggplot2::element_text(color = "#ffffff", size = 16)
+        )
+    })
+
   
   })
 }

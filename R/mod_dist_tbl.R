@@ -1,63 +1,53 @@
-#' User Interface for Counts Data Table
+#' User Interface for Distribution Data Table
 #'
 #' @param id Shiny module ID.
 #'
 #' @return A UI for displaying a data table.
-#'
+#' 
 #' @section Outputs:
-#' - `counts_table`: Data table.
+#' - `dist_table`: Data table.
 #'
-#' @seealso [mod_counts_tbl_server()]
-#'
+#' @seealso [mod_dist_tbl_server()]
+#' 
 #' @export
-mod_counts_tbl_ui <- function(id) {
+mod_dist_tbl_ui <- function(id) {
   ns <- NS(id)
-  tagList(
-    reactable::reactableOutput(outputId = ns("counts_table"))
-  )
+    tagList(
+      reactable::reactableOutput(
+        outputId = ns("dist_table"))
+    )
 }
 
-#' Server Logic for Counts Data Table
+#' Server Logic for Distribution Data Table
 #'
 #' @param id Shiny module ID.
 #' @param vals Reactive list of table parameters.
 #'
 #' @return Renders a data table based on selected parameters.
-#'
+#' 
 #' @section Reactive Inputs:
 #' - `vals`: Reactive list of table parameters.
 #'
-#' @seealso [mod_counts_tbl_ui()]
-#'
+#' @seealso [mod_dist_tbl_ui()]
+#' 
 #' @export
-mod_counts_tbl_server <- function(id, vals) {
+mod_dist_tbl_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
-    output$counts_table <- reactable::renderReactable({
+    output$dist_table <- reactable::renderReactable({
       req(vals())
-      # subset
-      tbl_data <- subset(
-        movies,
-        thtr_rel_year >= vals()$start_year &
-          thtr_rel_year <= vals()$end_year
-      )
       chr_var <- as.character(vals()$chr_var)
-      tbl_data <- tbl_data[c("title", chr_var, "thtr_rel_year")]
+      num_var <- as.character(vals()$num_var)
+      tbl_data <- dist_var_summary(data = movies, chr_var, num_var)
       # normalize names
-      tbl_names <- name_case(names(tbl_data))
-      # str(tbl_data_sorted)
-      tbl <- stats::setNames(object = tbl_data, nm = tbl_names)
-      reactable::reactable(
-        data = tbl,
-        defaultPageSize = 25,
-        style = list(
+      reactable::reactable(data = tbl_data,
+                style = list(
           backgroundColor = "#121212",
           color = "#ffffff"
         ),
         borderless = TRUE,
         highlight = TRUE,
         striped = TRUE,
-        compact = TRUE,
         theme = reactable::reactableTheme(
           headerStyle = list(
             backgroundColor = "#121212",
@@ -72,5 +62,6 @@ mod_counts_tbl_server <- function(id, vals) {
         )
       )
     })
+
   })
 }

@@ -52,7 +52,9 @@ name_case <- function(x, case = "title") {
     
     # Change case of each word
     case_words <- switch(case,
-                   title = paste0(toupper(substring(sep_words, 1, 1)), substring(sep_words, 2)),
+                   title = paste0(
+                              toupper(substring(sep_words, 1, 1)), 
+                                      substring(sep_words, 2)),
                    lower = tolower(sep_words),
                    stop("Unsupported case"))
     

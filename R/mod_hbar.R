@@ -5,7 +5,7 @@
 #' @return A UI for displaying a horizontal bar plot.
 #' 
 #' @section Outputs:
-#' - `ratings`: Horizontal bar plot.
+#' - `hbar_graph`: Horizontal bar plot.
 #'
 #' @seealso [mod_hbar_server()]
 #' 
@@ -13,8 +13,7 @@
 mod_hbar_ui <- function(id) {
   ns <- NS(id)
     tagList(
-      plotOutput(outputId = ns("ratings"))
-      # verbatimTextOutput(outputId = ns("ratings"))
+      plotOutput(outputId = ns("hbar_graph"))
     )
 }
 
@@ -34,39 +33,46 @@ mod_hbar_ui <- function(id) {
 mod_hbar_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
         
-  output$ratings <- renderPlot({
+      output$hbar_graph <- renderPlot({
       req(vals())
-      tspan <- abs(vals()$start_year - vals()$end_year)
-      t <- paste("Time span =", tspan, "years")
       x_lab <- name_case(as.character(vals()$chr_var))
       d <- subset(movies, 
         thtr_rel_year >= vals()$start_year &
         thtr_rel_year <= vals()$end_year)
-      drows <- nrow(d)
-      s <- paste("Total movies = ", drows)
       ggplot2::ggplot(d,
         ggplot2::aes(x = 
             forcats::fct_rev(
               forcats::fct_infreq(
                 !!vals()$chr_var
-                )
               )
+            )
           )
         ) +
         ggplot2::geom_bar(
           ggplot2::aes(
             fill = !!vals()$chr_var
-            ), show.legend = FALSE
+          ), show.legend = FALSE
         ) +
         ggplot2::coord_flip() + 
+        ggplot2::scale_fill_manual(values = clr_pal12) +  
         ggplot2::labs(
-          title = t,
-          subtitle = s,
           x = x_lab,
           y = "# of Movies", 
           fill = x_lab
-          ) +
-        ggplot2::theme_minimal()
+        ) +
+        ggplot2::theme(
+              legend.position = "none",
+              # plot.background = ggplot2::element_rect(fill = "#121212", color = NA),
+              # panel.background = ggplot2::element_rect(fill = "#121212", color = NA),
+              # panel.grid.major = ggplot2::element_line(color = "#ffffff"),
+              # panel.grid.minor = ggplot2::element_line(color = "#ffffff"),
+              # axis.title = ggplot2::element_text(color = "#ffffff"),
+              # axis.ticks = ggplot2::element_line(color = "#ffffff"),
+              # title = ggplot2::element_text(color = "#ffffff"),
+              # text = ggplot2::element_text(color = "#ffffff"),
+              axis.text = ggplot2::element_text(color = "#ffffff", size = 14),
+              axis.title = ggplot2::element_text(color = "#ffffff", size = 16)
+            )
     })
   
   })

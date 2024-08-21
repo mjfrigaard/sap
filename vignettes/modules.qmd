@@ -1,0 +1,20 @@
+---
+title: "Modules"
+format: 
+  html:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Modules}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Application modules 
+
+The application's modules in branch [18_html-css]
+
+```{r}
+#| echo: false
+list.files("../R/", pattern = "mod_")
+```
+

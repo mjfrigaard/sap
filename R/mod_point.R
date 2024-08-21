@@ -58,9 +58,10 @@ mod_point_server <- function(id, vals) {
         x = ~get(vals()$x),
         y = ~get(vals()$y),
         color = ~get(vals()$color),
+        text = ~title,
         type = 'scatter',
         mode = 'markers',
-        colors = c("#FC5C64FF", "#2F8AC4FF", "#99C945FF"),
+        colors = clr_pal3,
         marker = list(
           size = vals()$size,
           opacity = vals()$alpha

@@ -41,7 +41,8 @@ library(shinyrPkgs)
 In previous branches, we've built the scatter plot using the `scatter_plot()` utility function:
 
 ```{r}
-#| eval: false
+#| eval: true
+#| code-fold: false
 scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
     ggplot2::ggplot(data = df,
       ggplot2::aes(x = .data[[x_var]],
@@ -52,9 +53,22 @@ scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
 }
 ```
 
-`scatter_plot()` is flexible because it uses data masking (i.e., `.data[[x_var]]`), so we could potentially use it in any module with a scatter plot output. 
+`scatter_plot()` uses data masking (i.e., `.data[[x_var]]`) and `ggplot2` functions.  
 
-In `18_html`, the `mod_point_vars` module collects user inputs that are rendered with `plotly` functions directly in the `mod_point` module server function: 
+```{r}
+#| eval: true
+#| code-fold: false
+scatter_plot(movies, 
+    x_var = "critics_score", 
+    y_var = "audience_score", 
+    col_var = "mpaa_rating", 
+    alpha_var = 0.5, 
+    size_var = 1)
+```
+
+This approach is extendable for including aesthetic layers. and could potentially be use in any module to build a variety of plot outputs.
+
+In `18_design`, the `mod_point_vars` module collects user inputs that are rendered with `plotly` functions directly in the `mod_point` module server function: 
 
 In `output$scatter`, the scatter plot is rendered using `plotly::renderPlotly()`. The major differences between the `ggplot2` syntax and `plotly` are:
 
@@ -71,6 +85,7 @@ In `output$scatter`, the scatter plot is rendered using `plotly::renderPlotly()`
     x = ~get(vals()$x),
     y = ~get(vals()$y),
     color = ~get(vals()$color),
+    text = ~title,
     type = 'scatter',
     mode = 'markers',
     colors = c("#FC5C64FF", "#2F8AC4FF", "#99C945FF"),
@@ -85,19 +100,20 @@ In `output$scatter`, the scatter plot is rendered using `plotly::renderPlotly()`
 #| eval: true
 #| out.height: "85%"
 #| echo: false
-  plotly::plot_ly(
-    data = movies,
-    x = ~imdb_rating,
-    y = ~audience_score,
-    color = ~critics_rating,
-    type = 'scatter',
-    mode = 'markers',
-    colors = c("#FC5C64FF", "#2F8AC4FF", "#99C945FF"),
-    marker = list(
-      size = 7,
-      opacity = 0.7
-    )
+plotly::plot_ly(
+  data = movies,
+  x = ~imdb_rating,
+  y = ~audience_score,
+  color = ~critics_rating,
+  text = ~title,
+  type = 'scatter',
+  mode = 'markers',
+  colors = c("#FC5C64FF", "#2F8AC4FF", "#99C945FF"),
+  marker = list(
+    size = 7,
+    opacity = 0.7
   )
+)
 ```
 
 3.    `plotly::layout()` customizes the title, axis labels, and legend position:
@@ -137,9 +153,10 @@ In `output$scatter`, the scatter plot is rendered using `plotly::renderPlotly()`
     x = ~imdb_rating,
     y = ~audience_score,
     color = ~critics_rating,
+    text = ~title,
     type = 'scatter',
     mode = 'markers',
-    colors = c("#FC5C64FF", "#2F8AC4FF", "#99C945FF"),
+    colors = clr_pal3,
     marker = list(
       size = 7,
       opacity = 0.7

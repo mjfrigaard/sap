@@ -57,9 +57,9 @@ open shinyrPkgs.Rproj
 
 View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
 
-## HTML 
+## Design 
 
-### `18_html`
+### `18_design`
 
-[`18_html`](https://github.com/mjfrigaard/shinyrPkgs/tree/18_html) introduces using and storing HTML in your app-package.
+[`18_design`](https://github.com/mjfrigaard/shinyrPkgs/tree/18_html) expands the use [`bslib`](https://rstudio.github.io/bslib/index.html)’s layout functions, builds interactive graphs with [`plotly`](https://plotly.com/r/getting-started/), adds colors and themes with [`thematic`](https://rstudio.github.io/thematic/index.html), and conditionally displays the contents in a [`reactable`](https://glin.github.io/reactable/) table. 
 

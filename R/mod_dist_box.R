@@ -7,11 +7,11 @@
 #' @section Outputs:
 #' - `output$box`: grouped box plot.
 #'
-#' @seealso [mod_boxplot_server()]
+#' @seealso [mod_dist_box_server()]
 #' 
 #' @export
 #' 
-mod_boxplot_ui <- function(id) {
+mod_dist_box_ui <- function(id) {
   ns <- NS(id)
     tagList(
       plotOutput(outputId = ns("box"))
@@ -28,10 +28,10 @@ mod_boxplot_ui <- function(id) {
 #' @section Reactive Inputs:
 #' - `vals`: Reactive list of plot parameters.
 #'
-#' @seealso [mod_boxplot_ui()]
+#' @seealso [mod_dist_box_ui()]
 #' 
 #' @export
-mod_boxplot_server <- function(id, vals) {
+mod_dist_box_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
 
     output$box <- renderPlot({

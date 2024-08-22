@@ -7,11 +7,11 @@
 #' @section Outputs:
 #' - `genre`: Vertical bar plot.
 #'
-#' @seealso [mod_raincloud_server()]
+#' @seealso [mod_dist_raincloud_server()]
 #' 
 #' @export
 #' 
-mod_raincloud_ui <- function(id) {
+mod_dist_raincloud_ui <- function(id) {
   ns <- NS(id)
     tagList(
       # verbatimTextOutput(outputId = ns("cloud")),
@@ -29,10 +29,10 @@ mod_raincloud_ui <- function(id) {
 #' @section Reactive Inputs:
 #' - `vals`: Reactive list of plot parameters.
 #'
-#' @seealso [mod_raincloud_ui()]
+#' @seealso [mod_dist_raincloud_ui()]
 #' 
 #' @export
-mod_raincloud_server <- function(id, vals) {
+mod_dist_raincloud_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
 
     output$cloud <- renderPlot({

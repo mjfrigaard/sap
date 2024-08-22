@@ -7,11 +7,11 @@
 #' @section Outputs:
 #' - `waffle_plot`: Vertical bar plot.
 #'
-#' @seealso [mod_waffle_server()]
+#' @seealso [mod_counts_waffle_server()]
 #' 
 #' @export
 #' 
-mod_waffle_ui <- function(id) {
+mod_counts_waffle_ui <- function(id) {
   ns <- NS(id)
     tagList(
       plotOutput(outputId = ns("waffle_plot"))
@@ -28,10 +28,10 @@ mod_waffle_ui <- function(id) {
 #' @section Reactive Inputs:
 #' - `vals`: Reactive list of plot parameters.
 #'
-#' @seealso [mod_waffle_ui()]
+#' @seealso [mod_counts_waffle_ui()]
 #' 
 #' @export
-mod_waffle_server <- function(id, vals) {
+mod_counts_waffle_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
 
   output$waffle_plot <- renderPlot({
@@ -58,15 +58,10 @@ mod_waffle_server <- function(id, vals) {
         x = "", y = "", 
         fill = x_lab
       ) + 
-      ggplot2::theme(
-          legend.position = "top", 
+      ggwaffle::theme_waffle() +
+      ggplot2::theme( 
           legend.text = ggplot2::element_text(color = "#ffffff", size = 14),
-          title = ggplot2::element_text(color = "#ffffff", size = 16),
-          panel.grid.major = ggplot2::element_blank(),
-          panel.grid.minor = ggplot2::element_blank(),
-          axis.ticks = ggplot2::element_blank(),
-          axis.text = ggplot2::element_blank(),
-          axis.title = ggplot2::element_blank()
+          legend.title = ggplot2::element_text(color = "#ffffff", size = 16)
     ) 
   })
 

@@ -7,10 +7,10 @@
 #' @section Outputs:
 #' - `hbar_graph`: Horizontal bar plot.
 #'
-#' @seealso [mod_hbar_server()]
+#' @seealso [mod_counts_bar_server()]
 #' 
 #' @export
-mod_hbar_ui <- function(id) {
+mod_counts_bar_ui <- function(id) {
   ns <- NS(id)
     tagList(
       plotOutput(outputId = ns("hbar_graph"))
@@ -27,10 +27,10 @@ mod_hbar_ui <- function(id) {
 #' @section Reactive Inputs:
 #' - `vals`: Reactive list of plot parameters.
 #'
-#' @seealso [mod_hbar_ui()]
+#' @seealso [mod_counts_bar_ui()]
 #' 
 #' @export
-mod_hbar_server <- function(id, vals) {
+mod_counts_bar_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
         
       output$hbar_graph <- renderPlot({
@@ -62,14 +62,6 @@ mod_hbar_server <- function(id, vals) {
         ) +
         ggplot2::theme(
               legend.position = "none",
-              # plot.background = ggplot2::element_rect(fill = "#121212", color = NA),
-              # panel.background = ggplot2::element_rect(fill = "#121212", color = NA),
-              # panel.grid.major = ggplot2::element_line(color = "#ffffff"),
-              # panel.grid.minor = ggplot2::element_line(color = "#ffffff"),
-              # axis.title = ggplot2::element_text(color = "#ffffff"),
-              # axis.ticks = ggplot2::element_line(color = "#ffffff"),
-              # title = ggplot2::element_text(color = "#ffffff"),
-              # text = ggplot2::element_text(color = "#ffffff"),
               axis.text = ggplot2::element_text(color = "#ffffff", size = 14),
               axis.title = ggplot2::element_text(color = "#ffffff", size = 16)
             )

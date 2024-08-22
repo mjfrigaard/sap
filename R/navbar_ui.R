@@ -59,12 +59,12 @@ navbar_ui <- function() {
             sidebar = bslib::sidebar(
               class = "p-0",
               ## Scatter inputs (UI) ---- 
-              mod_point_vars_ui("scatter_inputs"),
+              mod_compare_vars_ui("scatter_inputs"),
             ),
             bslib::card_body(
               class = "p-0",
               ## Scatter plot (UI) ----
-              mod_point_ui(id = "scatter"),
+              mod_compare_point_ui(id = "scatter"),
               bslib::card_footer(
                 tags$blockquote(
                   tags$em(
@@ -92,16 +92,16 @@ navbar_ui <- function() {
             bslib::sidebar(
               class = "p-0",
               ## Count Vars (UI) ----
-              mod_count_vars_ui("year")
+              mod_counts_vars_ui("year")
             ),
           bslib::nav_panel(
             markdown("Graphs"),
             ### Text (UI) ----
-            mod_counts_txt_ui("cnt_txt"),
+            mod_counts_vbox_ui("cnt_txt"),
             ### Bars (UI) ----
-            mod_hbar_ui(id = "hbar"),
+            mod_counts_bar_ui(id = "hbar"),
             ### Waffle (UI) ----
-            mod_waffle_ui(id = "waffle")
+            mod_counts_waffle_ui(id = "waffle")
           ),
           bslib::nav_panel(
             ### Counts Table (UI) ----
@@ -123,9 +123,9 @@ navbar_ui <- function() {
           bslib::nav_panel(
             markdown("Graphs"),
             ### Box plot (UI) ----
-            mod_boxplot_ui(id = "box"),
+            mod_dist_box_ui(id = "box"),
             ### Rain Cloud plot (UI) ----
-            mod_raincloud_ui(id = "cloud")
+            mod_dist_raincloud_ui(id = "cloud")
           ),
           bslib::nav_panel(
             markdown("Table"),
@@ -148,7 +148,7 @@ navbar_ui <- function() {
           bslib::nav_panel(
             markdown("Graphs"),
             ### Awards Graph (UI) ----
-            mod_point_text_ui(id = "awards_plot")
+            mod_awards_point_ui(id = "awards_plot")
           ),
           bslib::nav_panel(
             markdown("Table"),

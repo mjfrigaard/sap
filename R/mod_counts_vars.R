@@ -9,11 +9,11 @@
 #' - `start_year`: Selected 'Theater Release' start year.
 #' - `end_year`: Selected 'Theater Release' end year.
 #'
-#' @seealso [mod_count_vars_server()]
+#' @seealso [mod_counts_vars_server()]
 #' 
 #' @export
 #' 
-mod_count_vars_ui <- function(id) {
+mod_counts_vars_ui <- function(id) {
   # define variables 
   chr_data <- movies[c("genre", "title_type", "mpaa_rating", 
                        "critics_rating", "audience_rating")]
@@ -57,11 +57,11 @@ mod_count_vars_ui <- function(id) {
 #' - `start_year`: Selected 'Theater Release' start year.
 #' - `end_year`: Selected 'Theater Release' end year.
 #'
-#' @seealso [mod_count_vars_ui()]
+#' @seealso [mod_counts_vars_ui()]
 #' 
 #' @export
 #' 
-mod_count_vars_server <- function(id) {
+mod_counts_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     
     observe({

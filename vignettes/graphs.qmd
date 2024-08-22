@@ -12,16 +12,17 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
 ```{r}
 #| label: setup
 #| include: false
 knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
   collapse = TRUE,
   comment = "#>",
   dev = "ragg_png",
   dpi = 320, 
-  out.width = "85%",
+  out.width = "95%",
   fig.width = 6,
   fig.asp = 0.618,
   fig.retina = 2,
@@ -29,7 +30,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This document contains the updated graphs in `shinyrPkgs` (beginning in the [`18_html branch`](https://github.com/mjfrigaard/shinyrPkgs/tree/18_html)) 
+This document contains the updated graphs in `shinyrPkgs` (beginning in the [`18_html branch`](https://github.com/mjfrigaard/shinyrPkgs/tree/18_html))
 
 ```{r}
 #| label: pkgs
@@ -53,7 +54,7 @@ scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
 }
 ```
 
-`scatter_plot()` uses data masking (i.e., `.data[[x_var]]`) and `ggplot2` functions.  
+`scatter_plot()` uses data masking (i.e., `.data[[x_var]]`) and `ggplot2` functions.
 
 ```{r}
 #| eval: true
@@ -68,13 +69,13 @@ scatter_plot(movies,
 
 This approach is extendable for including aesthetic layers. and could potentially be use in any module to build a variety of plot outputs.
 
-In `18_design`, the `mod_point_vars` module collects user inputs that are rendered with `plotly` functions directly in the `mod_point` module server function: 
+In `18_design`, the `mod_point_vars` module collects user inputs that are rendered with `plotly` functions directly in the `mod_point` module server function:
 
 In `output$scatter`, the scatter plot is rendered using `plotly::renderPlotly()`. The major differences between the `ggplot2` syntax and `plotly` are:
 
-1.    The plot is initialized by `plot_ly()`, and `movies` is linked to the x, y, and color axes. `base::get()` is used to dynamically select the column names stored in `vals()`.
+1.  The plot is initialized by `plot_ly()`, and `movies` is linked to the x, y, and color axes. `base::get()` is used to dynamically select the column names stored in `vals()`.
 
-2.    `plotly::marker` specifies the size (`vals()$size`) and opacity (`vals()$alpha`) of the points. The `type = 'scatter'` and `mode = 'markers'` arguments specify this is a scatter plot with points.
+2.  `plotly::marker` specifies the size (`vals()$size`) and opacity (`vals()$alpha`) of the points. The `type = 'scatter'` and `mode = 'markers'` arguments specify this is a scatter plot with points.
 
 ```{r}
 #| eval: false
@@ -116,7 +117,7 @@ plotly::plot_ly(
 )
 ```
 
-3.    `plotly::layout()` customizes the title, axis labels, and legend position:
+3.  `plotly::layout()` customizes the title, axis labels, and legend position:
 
 ```{r}
 #| eval: false
@@ -185,28 +186,56 @@ plotly::plot_ly(
   )
 ```
 
-
 ## Bar Graph
 
 In the **Counts** panel, the `output$hbar_graph` is rendered with `ggplot2::geom_bar()`, but the reactive inputs are passed via `rlang`'s injection operator (`!!`):
 
 ```{r}
-#| eval: true
+#| eval: false
 #| echo: true
+x_lab <- name_case(as.character(vals()$chr_var))
+d <- subset(movies, 
+  thtr_rel_year >= vals()$start_year &
+  thtr_rel_year <= vals()$end_year)
+ggplot2::ggplot(d,
+  ggplot2::aes(x = 
+      forcats::fct_rev(
+        forcats::fct_infreq(
+          !!vals()$chr_var
+        )
+      )
+    )
+  ) +
+  ggplot2::geom_bar(
+    ggplot2::aes(
+      fill = !!vals()$chr_var
+    ), show.legend = FALSE
+  ) +
+  ggplot2::coord_flip() + 
+  ggplot2::scale_fill_manual(values = clr_pal12) +  
+  ggplot2::labs(
+    x = x_lab,
+    y = "# of Movies", 
+    fill = x_lab
+  ) +
+  ggplot2::theme(
+        legend.position = "none",
+        axis.text = ggplot2::element_text(color = "#ffffff", size = 14),
+        axis.title = ggplot2::element_text(color = "#ffffff", size = 16)
+      )
+```
+
+The `theme_minimal()` gives the graph a cleaner look, which can build on using the same colors as the `bslib` primary and secondary theme colors.
+
+```{r}
+#| eval: true
+#| echo: false
 # build x label
 x_lab <- name_case("critics_rating")
 # subset data
 d <- subset(movies, 
   thtr_rel_year >= 1980 &
   thtr_rel_year <= 1990)
-```
-
-
-The `theme_minimal()` gives the graph a cleaner look, which can build on using the same colors as the `bslib` primary and secondary theme colors. 
-
-```{r}
-#| eval: true
-#| echo: true
 library(thematic)
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
 thematic::thematic_on(
@@ -239,20 +268,55 @@ thematic::thematic_on(
     ) 
 ```
 
-
 ## Waffle Graph
+
+The waffle graph is created using the `ggwaffle` package's `ggwaffle::geom_waffle()` function (recall that `vals()` is our list of reactive values).
 
 ```{r}
 #| eval: false 
-    req(vals())
-    x_lab <- name_case(as.character(vals()$chr_var))
-    movies <- shinyrPkgs::movies
-    # convert to character 
-    movies$chr_var <- as.character(movies[[vals()$chr_var]])
+x_lab <- name_case(as.character(vals()$chr_var))
+movies <- shinyrPkgs::movies
+# convert to character 
+movies$chr_var <- as.character(movies[[vals()$chr_var]])
+# subset
+d <- subset(movies, 
+        thtr_rel_year >= vals()$start_year &
+        thtr_rel_year <= vals()$end_year)
+# waffle iron
+d_iron <- ggwaffle::waffle_iron(d,
+                      ggwaffle::aes_d(group = chr_var))
+# plot
+ggplot2::ggplot(data = d_iron, 
+       ggplot2::aes(x = x, 
+           y = y, 
+           fill = group)) + 
+  ggwaffle::geom_waffle() +
+  ggplot2::scale_fill_manual(values = clr_pal12) +  
+  ggplot2::labs(
+    x = "", y = "", 
+    fill = x_lab
+  ) + 
+  ggwaffle::theme_waffle() +
+  ggplot2::theme( 
+      legend.text = ggplot2::element_text(color = "#ffffff", size = 14),
+      legend.title = ggplot2::element_text(color = "#ffffff", size = 16)
+) 
+```
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false 
+#| warrning: false 
+#| results: markup
+# create x label    
+x_lab <- name_case(as.character("critics_rating"))
+# convert to character 
+movies$chr_var <- as.character(movies[["critics_rating"]])
     # subset
     d <- subset(movies, 
-            thtr_rel_year >= vals()$start_year &
-            thtr_rel_year <= vals()$end_year)
+            thtr_rel_year >= 1980L &
+            thtr_rel_year <= 1990)
     # waffle iron
     d_iron <- ggwaffle::waffle_iron(d,
                           ggwaffle::aes_d(group = chr_var))
@@ -266,45 +330,110 @@ thematic::thematic_on(
       ggplot2::labs(
         x = "", y = "", 
         fill = x_lab
-      ) 
+      ) + 
+      ggwaffle::theme_waffle() +
+      ggplot2::theme( 
+          legend.text = ggplot2::element_text(color = "#ffffff", size = 14),
+          legend.title = ggplot2::element_text(color = "#ffffff", size = 16)
+    ) 
 ```
+
+The previous waffle graph theme elements are below (these have been replaced with `thematic_on()`).
 
 ```{r}
 #| eval: false 
-      ggwaffle::theme_waffle() + 
-      ggplot2::theme_void(base_size = 16) + 
-      ggplot2::theme(legend.position = "top",
-          plot.background = ggplot2::element_rect(fill = "#121212", color = NA),
-          panel.background = ggplot2::element_rect(fill = "#121212", color = NA),
-          panel.grid.major = ggplot2::element_blank(),
-          panel.grid.minor = ggplot2::element_blank(),
-          axis.text = ggplot2::element_blank(),
-          axis.title = ggplot2::element_blank(),
-          axis.ticks = ggplot2::element_blank(),
-          title = ggplot2::element_text(color = "#ffffff"),
-          text = ggplot2::element_text(color = "#ffffff")
-    )
+#| echo: true
+#| code-fold: true 
+#| code-summary: 'show/hide previous waffle graph code'
+  ggwaffle::theme_waffle() + 
+  ggplot2::theme_void(base_size = 16) + 
+  ggplot2::theme(legend.position = "top",
+      plot.background = ggplot2::element_rect(fill = "#121212", color = NA),
+      panel.background = ggplot2::element_rect(fill = "#121212", color = NA),
+      panel.grid.major = ggplot2::element_blank(),
+      panel.grid.minor = ggplot2::element_blank(),
+      axis.text = ggplot2::element_blank(),
+      axis.title = ggplot2::element_blank(),
+      axis.ticks = ggplot2::element_blank(),
+      title = ggplot2::element_text(color = "#ffffff"),
+      text = ggplot2::element_text(color = "#ffffff")
+)
 ```
-
-
 
 ## Box Plot
 
 ```{r}
+#| eval: false 
+#| echo: true
+d_bp <- subset(shinyrPkgs::movies,
+               !is.na(as.character(vals()$num_var)) &
+               !is.na(as.character(vals()$chr_var)))
+a <- as.numeric(vals()$alpha)
+s <- as.numeric(vals()$size)
+ggplot2::ggplot(d_bp,
+    ggplot2::aes(x = !!vals()$num_var,
+                 y = !!vals()$chr_var,
+                 fill = !!vals()$chr_var)) +
+  ggplot2::geom_boxplot(
+    outlier.size = 2.75,
+    alpha = a,
+    width = s/5,
+    show.legend = FALSE
+  ) +
+  ggplot2::scale_fill_manual(values = clr_pal12) +
+  ggplot2::labs(
+    x = name_case(as.character(vals()$num_var)),
+    y = name_case(as.character(vals()$chr_var))
+  ) +
+  ggplot2::theme(
+    legend.position = "none",
+    axis.text = ggplot2::element_text(color = "#ffffff", size = 14),
+    axis.title = ggplot2::element_text(color = "#ffffff", size = 16)
+)
+```
 
+```{r}
+#| eval: true 
+#| echo: false
+d_bp <- subset(movies,
+               !is.na(as.character("critics_rating")) &
+               !is.na(as.character("audience_score")))
+a <- as.numeric(0.8)
+s <- as.numeric(3L)
+ggplot2::ggplot(d_bp,
+    ggplot2::aes(x = audience_score,
+                 y = critics_rating,
+                 fill = critics_rating)) +
+  ggplot2::geom_boxplot(
+    outlier.size = 2.75,
+    alpha = a,
+    width = s/5,
+    show.legend = FALSE
+  ) +
+  ggplot2::scale_fill_manual(values = clr_pal12) +
+  ggplot2::labs(
+    x = name_case(as.character("audience_score")),
+    y = name_case(as.character("critics_rating"))
+  ) +
+  ggplot2::theme(
+    legend.position = "none",
+    axis.text = ggplot2::element_text(color = "#ffffff", size = 14),
+    axis.title = ggplot2::element_text(color = "#ffffff", size = 16)
+)
 ```
 
 
 ## Raincloud Plot
 
+The raincloud plot is a combination of layers from 
+
 ```{r}
 
 ```
 
-
 ## Movie Awards Plot
 
-The movie awards plot uses a subset of the `movies` dataset generated with the `create_movie_awards()` function. 
+The movie awards plot uses a subset of the `movies` dataset generated with the `create_movie_awards()` function.
 
 ```{r}
 #| eval: true
@@ -316,7 +445,6 @@ awards <- create_movie_awards(
   end_year = end_year)
 str(awards)
 ```
-
 
 ```{r}
 #| eval: true
@@ -401,4 +529,3 @@ ggp2_theme <- ggp2_labels +
       )
 ggp2_theme
 ```
-

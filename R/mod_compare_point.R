@@ -7,10 +7,10 @@
 #' @section Outputs:
 #' - `scatter`: Scatter plot.
 #'
-#' @seealso [mod_point_server()]
+#' @seealso [mod_compare_point_server()]
 #' 
 #' @export
-mod_point_ui <- function(id) {
+mod_compare_point_ui <- function(id) {
   ns <- NS(id)
   tagList(
     plotly::plotlyOutput(ns("scatter"),
@@ -28,11 +28,11 @@ mod_point_ui <- function(id) {
 #' @section Reactive Inputs:
 #' - `vals`: Reactive list of plot parameters.
 #'
-#' @seealso [mod_point_ui()]
+#' @seealso [mod_compare_point_ui()]
 #' 
 #' @export
 #' 
-mod_point_server <- function(id, vals) {
+mod_compare_point_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
     label_inputs <- reactive({

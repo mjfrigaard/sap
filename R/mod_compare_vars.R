@@ -12,10 +12,10 @@
 #' - `size`: Point size.
 #' - `plot_title`: Plot title.
 #'
-#' @seealso [mod_point_vars_server()]
+#' @seealso [mod_compare_vars_server()]
 #' 
 #' @export
-mod_point_vars_ui <- function(id) {
+mod_compare_vars_ui <- function(id) {
   num_data <- movies[c("runtime", "imdb_rating",
                        "imdb_num_votes", "critics_score",
                         "audience_score")]
@@ -79,10 +79,10 @@ mod_point_vars_ui <- function(id) {
 #' - `s`: Point size.
 #' - `t`: Plot title.
 #'
-#' @seealso [mod_point_vars_ui()]
+#' @seealso [mod_compare_vars_ui()]
 #' 
 #' @export
-mod_point_vars_server <- function(id) {
+mod_compare_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     
     observe({

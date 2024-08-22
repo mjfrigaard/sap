@@ -7,13 +7,12 @@
 #' @section Outputs:
 #' - `scatter`: Scatter plot.
 #'
-#' @seealso [mod_point_text_server()], [mod_awards_vars_server()], [mod_awards_vars_ui()]
+#' @seealso [mod_awards_point_server()], [mod_awards_vars_server()], [mod_awards_vars_ui()]
 #' 
 #' @export
-mod_point_text_ui <- function(id) {
+mod_awards_point_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    # verbatimTextOutput(ns("text_scatter"))
     plotOutput(ns("text_scatter"),
       width = '100%', height = '100%')
     )
@@ -29,15 +28,14 @@ mod_point_text_ui <- function(id) {
 #' @section Reactive Inputs:
 #' - `vals`: Reactive list of plot parameters.
 #'
-#' @seealso [mod_point_text_ui()], [mod_awards_vars_server()], [mod_awards_vars_ui()]
+#' @seealso [mod_awards_point_ui()], [mod_awards_vars_server()], [mod_awards_vars_ui()]
 #' 
 #' @export
 #' 
-mod_point_text_server <- function(id, vals) {
+mod_awards_point_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
     output$text_scatter <- renderPlot({
-    # output$text_scatter <- renderPrint({
       req(vals())
       awards <- create_movie_awards(award = as.character(vals()$award),
                                     start_year = as.numeric(vals()$start_year),

@@ -57,34 +57,7 @@ View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfr
 
 ## Tests 
 
-### `14_tests-system`
+### `20_charpente`
 
-[`14_tests-system`](https://github.com/mjfrigaard/shinyrPkgs/tree/14_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html).
-
-The following system tests have been written for `shinyrPkgs`:
-
-``` sh
-tests/testthat/
-  ├── test-app-feature-01.R
-  ├── test-ggp2_app-feature-01.R
-  └── test-shinytest2.R
-```
-
-After documenting, loading, and installing `shinyrPkgs`, `devtools::test()` will generate the following `tests/testthat/_snaps` folder: 
-
-``` sh
-tests/testthat/_snaps/
-├── app-feature-01
-│   ├── feature-01-senario-a-001.json
-│   ├── feature-01-senario-a-001_.png
-│   ├── feature-01-senario-b-001.json
-│   └── feature-01-senario-b-001_.png
-├── ggp2_app-feature-01
-│   ├── ggp2launch_app-feature-01-001.json
-│   └── ggp2launch_app-feature-01-001_.png
-└── shinytest2
-    ├── feature-01-001.json
-    └── feature-01-001_.png
-```
-
+[`20_charpente`](https://github.com/mjfrigaard/shinyrPkgs/tree/20_charpente) is an example of the [`charpente` package.](https://rinterface.github.io/charpente/index.html).
 

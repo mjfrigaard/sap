@@ -1,90 +1,43 @@
 <h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
-<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
+  <h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
 <hr>
 
-# shinyrPkgs
+# lap
 
-`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+The goal of `lap` is to demonstrate the `leprechaun` framework.
 
-## Movie review data application
+## Download
 
-The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
+You can download [here](https://github.com/mjfrigaard/sfw/raw/main/_apps/lap.tar.gz).
 
-# Using code examples
+## Run
 
-The branches in this repo contain a Shiny application in the various stages of development. The best way to access each branch/app is with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/). 
+You can run the application with the following:
 
-```r
-# install.packages("pak")
-pak::pak("mjfrigaard/shinypak")
-library(shinypak)
+``` r
+library(lap)
+lap::run()
 ```
-
-List all the apps with `list_apps()`
-
-
-```r
-head(list_apps())
-#>                  branch        last_updated
-#> 2     01_whole-app-game 2024-01-01 14:11:32
-#> 1        02.1_shiny-app 2024-01-04 13:05:58
-#> 4       02.2_movies-app 2024-01-04 13:07:59
-#> 5         02.3_proj-app 2024-01-04 13:08:58
-#> 6      03.1_description 2024-01-04 13:10:00
-#> 7            03.2_rproj 2024-01-04 13:25:06
-```
-
-Launch an app with `launch()`
-
-```r
-launch(app = "02.3_proj-app")
-```
-
-Or use the terminal
-
-``` bash
-git clone https://github.com/mjfrigaard/shinyrPkgs.git
-cd shinyrPkgs
-git checkout <branch_name>
-open shinyrPkgs.Rproj
-```
-
-------------------------------------------------------------------------
-
-# Branches
-
-View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
 
 ## Tests 
 
-### `14_tests-system`
+The tests in this framework should result in the following (on the **2nd call to `devtools::test()`**)
 
-[`14_tests-system`](https://github.com/mjfrigaard/shinyrPkgs/tree/14_tests-system) gives examples of [`shinytest2` tests.](https://rstudio.github.io/shinytest2/articles/shinytest2.html).
 
-The following system tests have been written for `shinyrPkgs`:
-
-``` sh
-tests/testthat/
-  ├── test-app-feature-01.R
-  ├── test-ggp2_app-feature-01.R
-  └── test-shinytest2.R
 ```
+==> devtools::test()
 
-After documenting, loading, and installing `shinyrPkgs`, `devtools::test()` will generate the following `tests/testthat/_snaps` folder: 
+ℹ Testing lap
+Loading required package: shiny
+✔ | F W  S  OK | Context
+✔ |          2 | app-feature-01 [11.8s]                                                                                  
+✔ |          1 | module_plot_display                                                                                     
+✔ |          2 | module_var_input                                                                                        
+✔ |          1 | shinytest2 [6.4s]                                                                                       
+✔ |          1 | utils_scatter_plot                                                                                      
 
-``` sh
-tests/testthat/_snaps/
-├── app-feature-01
-│   ├── feature-01-senario-a-001.json
-│   ├── feature-01-senario-a-001_.png
-│   ├── feature-01-senario-b-001.json
-│   └── feature-01-senario-b-001_.png
-├── ggp2_app-feature-01
-│   ├── ggp2launch_app-feature-01-001.json
-│   └── ggp2launch_app-feature-01-001_.png
-└── shinytest2
-    ├── feature-01-001.json
-    └── feature-01-001_.png
+══ Results ═════════════════════════════════════════════════════════════════════
+Duration: 18.5 s
+
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
 ```
-
-

@@ -1,36 +1,28 @@
-Package: shinyrPkgs
-Title: Shiny App-Packages
+Package: lap
+Title: leprechaun app-package 
 Version: 0.0.0.9000
 Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
-Description: An R package with a collection of Shiny applications.
+Description: A movie-review leprechaun shiny application.
 License: GPL-3
-Depends: 
-    R (>= 2.10)
-Imports: 
-    bslib,
-    cli,
-    ggplot2,
-    logger,
-    pkgload,
-    rlang,
-    sass,
-    shiny,
-    shinythemes,
-    stringr,
-    tools,
-    withr
-Suggests: 
-    glue,
-    knitr,
-    rmarkdown,
-    shinytest2,
-    testthat (>= 3.0.0),
-    waldo
-VignetteBuilder: 
-    knitr
-Config/testthat/edition: 3
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Imports: 
+    bslib,
+    ggplot2,
+    htmltools,
+    jsonlite,
+    rlang,
+    shiny,
+    yaml
+Suggests: 
+    packer,
+    pkgload,
+    sass,
+    shinytest2,
+    testthat (>= 3.0.0)
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Config/testthat/edition: 3

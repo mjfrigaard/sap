@@ -41,25 +41,26 @@ mod_dist_tbl_server <- function(id, vals) {
       tbl_data <- dist_var_summary(data = movies, chr_var, num_var)
       # normalize names
       reactable::reactable(data = tbl_data,
-                style = list(
-          backgroundColor = "#121212",
-          color = "#ffffff"
-        ),
         borderless = TRUE,
+        compact = TRUE,
         highlight = TRUE,
         striped = TRUE,
-        theme = reactable::reactableTheme(
-          headerStyle = list(
-            backgroundColor = "#121212",
-            color = "#ffffff",
-            borderColor = "#2979ff"
-          ),
-          rowStyle = list(
-            backgroundColor = "#121212",
-            color = "#ffffff"
-          ),
-          borderColor = "#2979ff"
+        style = list(
+          backgroundColor = "#121212",
+          color = "#ffffff"
         )
+        # theme = reactable::reactableTheme(
+        #   headerStyle = list(
+        #     backgroundColor = "#121212",
+        #     color = "#ffffff",
+        #     borderColor = "#2979ff"
+        #   ),
+        #   rowStyle = list(
+        #     backgroundColor = "#121212",
+        #     color = "#ffffff"
+        #   ),
+        #   borderColor = "#2979ff"
+        # )
       )
     })
 

@@ -29,9 +29,142 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r}
+#| eval: true
+library(shinyrPkgs)
+```
+
+
 This document covers the reactable table styling the Shiny application.[^table-style-ref]
 
 ## Counts
+
+Create data with inputs similar to the UI:
+
+```{r}
+# inputs
+chr_var <- "critics_rating"
+start_year <- 1980L 
+end_year <- 1990L
+# subset
+tbl_data <- subset(movies,
+  thtr_rel_year >= start_year &
+    thtr_rel_year <= end_year)
+# cols
+tbl_data <- tbl_data[c("title", chr_var, "thtr_rel_year")]
+# normalize names
+tbl_names <- name_case(names(tbl_data))
+tbl <- stats::setNames(object = tbl_data, nm = tbl_names)
+str(tbl)
+```
+
+```{r}
+#| collapse: true
+# c("genre", "title_type", "mpaa_rating", "critics_rating", "audience_rating")
+unique(movies[ , "genre"])
+unique(movies[ , "title_type"])
+unique(movies[ , "mpaa_rating"])
+unique(movies[ , "critics_rating"])
+unique(movies[ , "audience_rating"])
+```
+
+
+Add CSS:
+
+```{css}
+.bold {
+  font-weight: bold;
+}
+```
+
+Create table:
+
+```{r}
+reactable::reactable(tbl, 
+  defaultPageSize = 25,
+  borderless = TRUE,
+  highlight = TRUE,
+  striped = TRUE,
+  compact = TRUE,
+  style = list(
+    backgroundColor = "#121212",
+    color = "#ffffff"
+  ),
+  rowStyle = function(index) {
+    if (tbl[index, "Critics Rating"] == "Certified Fresh") {
+      list(background = "#FC5C64FF")
+    } else if (tbl[index, "Critics Rating"] == "Fresh") {
+      list(background = "#2F8AC4FF")
+    } else {
+      list(background = "#99C945FF")
+    }
+  },
+  rowClass = function(index) {
+    if (tbl[index, "Critics Rating"] == "Certified Fresh") {
+      "bold"
+    }
+  }
+)
+```
+
+```{r}
+# Function to create conditional formatting rules based on the selected variable
+get_row_style <- function(value) {
+  switch(as.character(value),
+         "Certified Fresh" = list(background = "#FC5C64FF"),
+         "Fresh" = list(background = "#2F8AC4FF"),
+         "Rotten" = list(background = "#99C945FF"),
+         "Upright" = list(background = "#FC5C64FF"),
+         "Spilled" = list(background = "#2F8AC4FF"),
+         "Action & Adventure" = list(background = "#FC5C64FF"),
+         "Animation" = list(background = "#2F8AC4FF"),
+         "Art House & International" = list(background = "#99C945FF"),
+         "Comedy" = list(background = "#E58606FF"),
+         "Drama" = list(background = "#5D69B1FF"),
+         "Documentary" = list(background = "#CC61B0FF"),
+         "Horror" = list(background = "#24796CFF"),
+         "Musical & Performing Arts" = list(background = "#DAA51BFF"),
+         "Mystery & Suspense" = list(background = "#2F8AC4FF"),
+         "Science Fiction & Fantasy" = list(background = "#764E9FFF"),
+         "Feature Film" = list(background = "#FC5C64FF"),
+         "Documentary" = list(background = "#2F8AC4FF"),
+         "TV Movie" = list(background = "#99C945FF"),
+         "G" = list(background = "#E58606FF"),
+         "PG" = list(background = "#5D69B1FF"),
+         "PG-13" = list(background = "#CC61B0FF"),
+         "R" = list(background = "#24796CFF"),
+         "NC-17" = list(background = "#DAA51BFF"),
+         "Unrated" = list(background = "#2F8AC4FF"),
+         list(background = "#A5AA99FF")  # Default color
+  )
+}
+
+# Reactable with dynamic row styling
+reactable::reactable(tbl,
+  defaultPageSize = 25,
+  borderless = TRUE,
+  highlight = TRUE,
+  striped = TRUE,
+  compact = TRUE,
+  style = list(
+    backgroundColor = "#121212",
+    color = "#ffffff"
+  ),
+  rowStyle = function(index) {
+    # Convert the selected column to character to use it for conditional formatting
+    selected_var <- as.character(tbl_data[index, vals()$chr_var])
+    get_row_style(selected_var)
+  },
+  rowClass = function(index) {
+    selected_var <- as.character(tbl_data[index, vals()$chr_var])
+    if (selected_var %in% c("Certified Fresh", "Upright", "Action & Adventure")) {
+      "bold"  # Apply a bold class for certain levels
+    }
+  }
+)
+
+```
+
 
 ## Distributions 
 

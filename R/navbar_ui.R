@@ -96,17 +96,23 @@ navbar_ui <- function() {
             ),
           bslib::nav_panel(
             markdown("Graphs"),
-            ### Text (UI) ----
-            mod_counts_vbox_ui("cnt_txt"),
-            ### Bars (UI) ----
-            mod_counts_bar_ui(id = "hbar"),
-            ### Waffle (UI) ----
-            mod_counts_waffle_ui(id = "waffle")
+            bslib::card_header(
+              ### Text (UI) ----
+              mod_counts_vbox_ui("cnt_txt")
+            ),
+            bslib::card_body(
+              ### Bars (UI) ----
+              mod_counts_bar_ui(id = "hbar"),
+              ### Waffle (UI) ----
+              mod_counts_waffle_ui(id = "waffle")
+            )
           ),
           bslib::nav_panel(
-            ### Counts Table (UI) ----
             markdown("Table"),
-            mod_counts_tbl_ui(id = "cnt_tbl")
+            bslib::card_body(
+              ### Counts Table (UI) ----
+              mod_counts_tbl_ui(id = "cnt_tbl")
+            )
           )
         )
       ),
@@ -122,10 +128,12 @@ navbar_ui <- function() {
             ),
           bslib::nav_panel(
             markdown("Graphs"),
-            ### Box plot (UI) ----
-            mod_dist_box_ui(id = "box"),
-            ### Rain Cloud plot (UI) ----
-            mod_dist_raincloud_ui(id = "cloud")
+            bslib::card_body(
+              ### Box plot (UI) ----
+              mod_dist_box_ui(id = "box"),
+              ### Rain Cloud plot (UI) ----
+              mod_dist_raincloud_ui(id = "cloud")
+            )
           ),
           bslib::nav_panel(
             markdown("Table"),
@@ -147,13 +155,17 @@ navbar_ui <- function() {
             ),
           bslib::nav_panel(
             markdown("Graphs"),
-            ### Awards Graph (UI) ----
-            mod_awards_point_ui(id = "awards_plot")
+            bslib::card_body(
+              ### Awards Graph (UI) ----
+              mod_awards_point_ui(id = "awards_plot")
+            )
           ),
           bslib::nav_panel(
             markdown("Table"),
-            ### Awards Table (UI) ----
-            mod_awards_tbl_ui(id = "awards_table")
+            bslib::card_body(
+              ### Awards Table (UI) ----
+              mod_awards_tbl_ui(id = "awards_table")
+            )
           )
         )
       )

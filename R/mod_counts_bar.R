@@ -56,7 +56,7 @@ mod_counts_bar_server <- function(id, vals) {
         ggplot2::coord_flip() + 
         ggplot2::scale_fill_manual(values = clr_pal12) +  
         ggplot2::labs(
-          x = x_lab,
+          x = NULL,
           y = "# of Movies", 
           fill = x_lab
         ) +

@@ -13,7 +13,10 @@
 mod_counts_tbl_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    reactable::reactableOutput(outputId = ns("counts_table"))
+    reactable::reactableOutput(
+      # verbatimTextOutput(
+      outputId = ns("counts_table")
+    )
   )
 }
 
@@ -34,7 +37,9 @@ mod_counts_tbl_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
     output$counts_table <- reactable::renderReactable({
+    # output$counts_table <- renderPrint({
       req(vals())
+      # str(vals())
       # subset
       tbl_data <- subset(
         movies,
@@ -50,26 +55,15 @@ mod_counts_tbl_server <- function(id, vals) {
       reactable::reactable(
         data = tbl,
         defaultPageSize = 25,
-        style = list(
-          backgroundColor = "#121212",
-          color = "#ffffff"
-        ),
         borderless = TRUE,
         highlight = TRUE,
         striped = TRUE,
         compact = TRUE,
-        theme = reactable::reactableTheme(
-          headerStyle = list(
-            backgroundColor = "#121212",
-            color = "#ffffff",
-            borderColor = "#2979ff"
-          ),
-          rowStyle = list(
-            backgroundColor = "#121212",
-            color = "#ffffff"
-          ),
-          borderColor = "#2979ff"
+        style = list(
+          backgroundColor = "#121212",
+          color = "#ffffff"
         )
+
       )
     })
   })

@@ -22,4 +22,6 @@ clean_vignettes <- function(pth = "vignettes/") {
   
 }
 # run 
-clean_vignettes()
+if (interactive()) {
+  clean_vignettes()
+}

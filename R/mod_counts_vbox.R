@@ -13,8 +13,15 @@
 mod_counts_vbox_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    uiOutput(outputId = ns("counts_text"))
-  )
+    bslib::value_box(
+      full_screen = FALSE, 
+      fill = FALSE,
+      title = markdown("#### Totals"), 
+      value = textOutput(ns("counts_text")),
+      showcase = bsicons::bs_icon("film"),
+      h4(textOutput(ns("years_text")))
+      )
+    )
 }
 
 #' Server Logic for Counts Text
@@ -33,11 +40,18 @@ mod_counts_vbox_ui <- function(id) {
 mod_counts_vbox_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
-    output$counts_text <- renderUI({
+    output$counts_text <- renderText({
       req(vals())
-      tspan <- abs(vals()$start_year - vals()$end_year)
-      tsan_text <- paste("Time span =", tspan, "years")
-      h3(tsan_text)
+      d <- subset(movies, 
+                thtr_rel_year >= vals()$start_year &
+                thtr_rel_year <= vals()$end_year)
+        paste(length(unique(d$imdb_url)), "movies")
+    })
+    
+    output$years_text <- renderText({
+      req(vals())
+      ts <- abs(vals()$start_year - vals()$end_year)
+      paste(ts, " years")
     })
     
   })

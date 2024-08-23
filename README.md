@@ -1,12 +1,6 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
-<h3 align="center"> A Shiny App-Package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
-
+<h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
+<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
 <hr>
-
-# moviesApp
-
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,17 +39,17 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/moviesApp.git
-cd moviesApp
+git clone https://github.com/mjfrigaard/shinyrPkgs.git
+cd shinyrPkgs
 git checkout <branch_name>
-open moviesApp.Rproj
+open shinyrPkgs.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
 
 ## `18_golem`
 
@@ -88,3 +82,59 @@ gap::run_app()
 
 Please note that the `gap` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
+
+## Tests 
+
+The results from the **2nd** call of `devtools::test()` should return: 
+
+```
+==> devtools::test()
+
+ℹ Testing gap
+Loading required package: shiny
+✔ | F W  S  OK | Context
+✔ |          2 | app-feature-01 [10.2s]                                                     
+✔ |         13 | golem_utils_server                                                         
+✔ |         51 | golem_utils_ui                                                             
+✔ |      1  10 | golem-recommended                                                          
+⠏ |          0 | mod_scatter_display                                                        
+INFO [2024-08-23 07:45:37] [ START display = selected_vars initial values]
+
+INFO [2024-08-23 07:45:37] [ END display = selected_vars initial values]
+
+INFO [2024-08-23 07:45:37] [ START display = scatterplot[['alt']] = 'Plot object']
+⠙ |          2 | mod_scatter_display                                                        
+INFO [2024-08-23 07:45:38] [ END display = scatterplot[['alt']] = 'Plot object']
+
+INFO [2024-08-23 07:45:38] [ START display = inputs() creates ggplot2 object]
+
+INFO [2024-08-23 07:45:38] [ END display = inputs() creates ggplot2 object]
+✔ |          3 | mod_scatter_display
+⠏ |          0 | mod_var_input                                                              
+INFO [2024-08-23 07:45:38] [ START var_inputs = initial returned()]
+
+INFO [2024-08-23 07:45:38] [ END var_inputs = initial returned()]
+
+INFO [2024-08-23 07:45:38] [ START var_inputs = updated returned()]
+
+INFO [2024-08-23 07:45:38] [ END var_inputs = updated returned()]
+✔ |          2 | mod_var_input
+✔ |          1 | shinytest2 [5.1s]                                                          
+⠏ |          0 | utils_mod_scatter_display                                                  
+INFO [2024-08-23 07:45:43] [ START fixture = tidy_ggp2_movies.rds]
+
+INFO [2024-08-23 07:45:43] [ START fixture = tidy_ggp2_movies.rds]
+
+INFO [2024-08-23 07:45:43] [ START data = movies.rda]
+
+INFO [2024-08-23 07:45:43] [ END data = movies.rda]
+✔ |          2 | utils_mod_scatter_display
+
+══ Results ════════════════════════════════════════════════════════════════════
+Duration: 16.4 s
+
+── Skipped tests (1) ──────────────────────────────────────────────────────────
+• interactive() is not TRUE (1): test-golem-recommended.R:66:5
+
+[ FAIL 0 | WARN 0 | SKIP 1 | PASS 84 ]
+```

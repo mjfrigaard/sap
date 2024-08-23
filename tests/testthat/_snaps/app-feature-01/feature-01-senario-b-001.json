@@ -1,0 +1,63 @@
+{
+  "input": {
+    "vars-alpha": 0.7,
+    "vars-plot_title": "New plot title",
+    "vars-size": 3,
+    "vars-x": "imdb_rating",
+    "vars-y": "audience_score",
+    "vars-z": "mpaa_rating"
+  },
+  "output": {
+    "plot-scatterplot": {
+      "src": "[image data hash: 9f146633c656a87cdbd3d334a54b5004]",
+      "width": 752,
+      "height": 400,
+      "alt": "Plot object",
+      "coordmap": {
+        "panels": [
+          {
+            "panel": 1,
+            "row": 1,
+            "col": 1,
+            "panel_vars": {
+
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "domain": {
+              "left": 1.545,
+              "right": 9.355,
+              "bottom": 6.7,
+              "top": 101.3
+            },
+            "mapping": {
+              "x": ".data[[\"imdb_rating\"]]",
+              "y": ".data[[\"audience_score\"]]",
+              "colour": ".data[[\"mpaa_rating\"]]"
+            },
+            "range": {
+              "left": 76.64511986301363,
+              "right": 1493.041095890411,
+              "bottom": 612.7784257524515,
+              "top": 45.92633397406257
+            }
+          }
+        ],
+        "dims": {
+          "width": 1504,
+          "height": 800
+        }
+      }
+    }
+  },
+  "export": {
+    "plot-alpha": 0.7,
+    "plot-size": 3,
+    "plot-title": "New Plot Title",
+    "plot-x": "imdb_rating",
+    "plot-y": "audience_score",
+    "plot-z": "mpaa_rating"
+  }
+}

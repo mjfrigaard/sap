@@ -2,6 +2,6 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^moviesApp\.Rcheck$
-^moviesApp.*\.tar\.gz$
-^moviesApp.*\.tgz$
+^shinyrPkgs\.Rcheck$
+^shinyrPkgs.*\.tar\.gz$
+^shinyrPkgs.*\.tgz$

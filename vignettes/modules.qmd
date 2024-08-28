@@ -11,7 +11,7 @@ vignette: >
 
 ## Application modules 
 
-The application's modules in branch [18_html-css]
+The application's modules in branch [`22_design`](https://github.com/mjfrigaard/shinyrPkgs/tree/22_design)
 
 ```{r}
 #| echo: false

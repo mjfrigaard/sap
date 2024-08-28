@@ -69,7 +69,7 @@ scatter_plot(movies,
 
 This approach is extendable for including aesthetic layers. and could potentially be use in any module to build a variety of plot outputs.
 
-In `18_design`, the `mod_point_vars` module collects user inputs that are rendered with `plotly` functions directly in the `mod_point` module server function:
+In `22_design`, the `mod_point_vars` module collects user inputs that are rendered with `plotly` functions directly in the `mod_point` module server function:
 
 In `output$scatter`, the scatter plot is rendered using `plotly::renderPlotly()`. The major differences between the `ggplot2` syntax and `plotly` are:
 

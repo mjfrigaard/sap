@@ -13,8 +13,8 @@
 mod_counts_tbl_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    reactable::reactableOutput(
-      # verbatimTextOutput(
+    # reactable::reactableOutput(
+      verbatimTextOutput(
       outputId = ns("counts_table")
     )
   )
@@ -36,35 +36,46 @@ mod_counts_tbl_ui <- function(id) {
 mod_counts_tbl_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
-    output$counts_table <- reactable::renderReactable({
-    # output$counts_table <- renderPrint({
+    # output$counts_table <- reactable::renderReactable({
+    output$counts_table <- renderPrint({
       req(vals())
-      # str(vals())
+      chr_value <- as.character(vals()$chr_var)
+      str(chr_value)
       # subset
-      tbl_data <- subset(
-        movies,
-        thtr_rel_year >= vals()$start_year &
-          thtr_rel_year <= vals()$end_year
-      )
-      chr_var <- as.character(vals()$chr_var)
-      tbl_data <- tbl_data[c("title", chr_var, "thtr_rel_year")]
-      # normalize names
-      tbl_names <- name_case(names(tbl_data))
-      # str(tbl_data_sorted)
-      tbl <- stats::setNames(object = tbl_data, nm = tbl_names)
-      reactable::reactable(
-        data = tbl,
-        defaultPageSize = 25,
-        borderless = TRUE,
-        highlight = TRUE,
-        striped = TRUE,
-        compact = TRUE,
-        style = list(
-          backgroundColor = "#121212",
-          color = "#ffffff"
-        )
-
-      )
+      # tbl_data <- subset(
+      #   movies,
+      #   thtr_rel_year >= vals()$start_year &
+      #     thtr_rel_year <= vals()$end_year
+      # )
+      # chr_var <- as.character(vals()$chr_var)
+      # tbl_data <- tbl_data[c("title", chr_var, "thtr_rel_year")]
+      # # normalize names
+      # tbl_names <- name_case(names(tbl_data))
+      # # str(tbl_data_sorted)
+      # tbl <- stats::setNames(object = tbl_data, nm = tbl_names)
+      # # reactable with dynamic row styling
+      # reactable::reactable(tbl,
+      #   defaultPageSize = 25,
+      #   borderless = TRUE,
+      #   highlight = TRUE,
+      #   striped = TRUE,
+      #   compact = TRUE,
+      #   style = list(
+      #     backgroundColor = "#121212",
+      #     color = "#ffffff"
+      #   ),
+      #   rowStyle = function(index) {
+      #     # cnvert the selected column to character to use it for conditional formatting
+      #     selected_var <- as.character(tbl_data[index, vals()$chr_var])
+      #     react_tbl_row_style(selected_var)
+      #   },
+      #   rowClass = function(index) {
+      #     selected_var <- as.character(tbl_data[index, vals()$chr_var])
+      #     if (selected_var %in% c("Certified Fresh", "Upright", "Action & Adventure")) {
+      #       "bold"  # apply a bold class for certain levels
+      #     }
+      #   }
+      # )
     })
   })
 }

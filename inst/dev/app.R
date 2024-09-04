@@ -117,7 +117,7 @@ dev_mod_scatter_server <- function(id, var_inputs) {
 
     observe({
         output$scatterplot <- renderPlot({
-          plot <- moviesApp::scatter_plot(
+          plot <- sap::scatter_plot(
             df = graph_data(),
             x_var = inputs()$x,
             y_var = inputs()$y,
@@ -148,7 +148,7 @@ devUI <- function() {
     addResourcePath(
       prefix = "dev",
       directoryPath = system.file("dev", 
-                                  package = "moviesApp")
+                                  package = "sap")
     )
   tagList(
     bslib::page_fillable(
@@ -189,7 +189,7 @@ devUI <- function() {
 
 devServer <- function(input, output, session) {
   
-  selected_vars <- moviesApp::mod_var_input_server("vars")
+  selected_vars <- sap::mod_var_input_server("vars")
 
   dev_mod_scatter_server("plot", var_inputs = selected_vars)
   

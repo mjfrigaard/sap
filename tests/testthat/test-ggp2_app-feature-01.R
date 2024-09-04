@@ -17,7 +17,7 @@ describe(
         And the missing values should be removed from the plot", {
             
     test_logger(start = 'ggp2movies-feat-01', msg = "update x, y, z, missing")
-    app <- AppDriver$new(app_dir = system.file("dev", package = "moviesApp"), 
+    app <- AppDriver$new(app_dir = system.file("dev", package = "sap"), 
                          name = "ggp2movies_app-feature-01", 
                          wait = FALSE, timeout = 30000,
                          height = 800, width = 1173)

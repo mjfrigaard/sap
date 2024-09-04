@@ -1,12 +1,12 @@
-<h1 align="center"> <code>moviesApp</code> </h1>
+<h1 align="center"> <code>sap</code> </h1>
 <h3 align="center"> A Shiny App-Package </h3>
 <h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
 
 <hr>
 
-# moviesApp
+# sap
 
-`moviesApp` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`sap` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shinyap/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 **Movie review data application**
 
@@ -52,7 +52,7 @@ git checkout <branch_name>
 
 # Branches
 
-View the various versions of application in the [`moviesApp` branches](https://github.com/mjfrigaard/moviesApp/branches/all).
+View the various versions of application in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
 ## `21.4_debug-scatter_plot`
 
@@ -112,7 +112,7 @@ View the various versions of application in the [`moviesApp` branches](https://g
 │   ├── movies_ui.Rd
 │   ├── scatter_plot.Rd
 │   └── test_logger.Rd
-├── moviesApp.Rproj
+├── sap.Rproj
 └── tests
     ├── testthat
     │   ├── _snaps

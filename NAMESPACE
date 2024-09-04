@@ -2,11 +2,11 @@
 
 export(display_type)
 export(ggp2_movies_app)
+export(launch_app)
 export(mod_scatter_display_server)
 export(mod_scatter_display_ui)
 export(mod_var_input_server)
 export(mod_var_input_ui)
-export(movies_app)
 export(movies_server)
 export(movies_ui)
 export(scatter_plot)

@@ -39,7 +39,7 @@
 movies_ui <- function() {
   addResourcePath(
     prefix = "www",
-    directoryPath = system.file("www", package = "shinyrPkgs")
+    directoryPath = system.file("www", package = "sap")
   )
   tagList(
     bslib::page_fillable(

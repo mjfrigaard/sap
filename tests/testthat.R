@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(shinyrPkgs)
+library(sap)
 
-test_check("shinyrPkgs")
+test_check("sap")

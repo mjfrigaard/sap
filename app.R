@@ -8,7 +8,7 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     tryCatch(
       expr = {
         # load package ----
-        library(shinyrPkgs)
+        library(sap)
       },
       error = function(e) {
         # load R/ folder ----
@@ -20,6 +20,6 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     pkgload::load_all()
   }
   # create shiny object ----
-    shinyrPkgs::launch_app(
+    sap::launch_app(
       options = list(test.mode = TRUE), run = 'p', bslib = TRUE)
 })

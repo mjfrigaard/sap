@@ -3,6 +3,6 @@
 .RData
 .Ruserdata
 .DS_Store
-shinyrPkgs.Rcheck/
-shinyrPkgs*.tar.gz
-shinyrPkgs*.tgz
+sap.Rcheck/
+sap*.tar.gz
+sap*.tgz

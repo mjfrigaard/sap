@@ -1,6 +1,6 @@
 #' Create scatter plot 
 #'
-#' Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building scatter plots in `shinyrPkgs`.
+#' Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building scatter plots in `sap`.
 #' 
 #' 
 #' @param df `data.frame` or `tibble`

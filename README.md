@@ -1,12 +1,12 @@
-<h1 align="center"> <code>shinyrPkgs</code> </h1>
+<h1 align="center"> <code>sap</code> </h1>
 <h3 align="center"> A Shiny App-Package </h3>
 <h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
 
 <hr>
 
-# shinyrPkgs
+# sap
 
-`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`sap` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,21 +45,21 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/shinyrPkgs.git
-cd shinyrPkgs
+git clone https://github.com/mjfrigaard/sap.git
+cd sap
 git checkout <branch_name>
-open shinyrPkgs.Rproj
+open sap.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
+View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
 # Current branch `02.3_proj-app`
 
-The [`02.3_proj-app`](https://github.com/mjfrigaard/shinyrPkgs/tree/02.3_proj-app) branch of `shinyrPkgs` includes and `R/` folder and external resources have been included in `www`. 
+The [`02.3_proj-app`](https://github.com/mjfrigaard/sap/tree/02.3_proj-app) branch of `sap` includes and `R/` folder and external resources have been included in `www`. 
 
 ```
 ├── DESCRIPTION
@@ -70,7 +70,7 @@ The [`02.3_proj-app`](https://github.com/mjfrigaard/shinyrPkgs/tree/02.3_proj-ap
 ├── README.md
 ├── app.R
 ├── movies.RData
-├── shinyrPkgs.Rproj
+├── sap.Rproj
 └── www
     └── shiny.png
 ```

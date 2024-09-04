@@ -1,10 +1,10 @@
-<h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
+<h1 align="center"> <code><strong>sap</strong></code> </h1>
 <h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
 <hr>
 
-# shinyrPkgs
+# sap
 
-`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`sap` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -42,18 +42,18 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/shinyrPkgs.git
-cd shinyrPkgs
+git clone https://github.com/mjfrigaard/sap.git
+cd sap
 git checkout <branch_name>
-open shinyrPkgs.Rproj
+open sap.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
+View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
 ## `08_launch-app`
 
-[`08_launch-app`](https://github.com/mjfrigaard/shinyrPkgs/tree/08_launch-app) gives advice and options for standalone app functions and what to put in the `app.R` file, and which function to use for launching vs. deploying the application.
+[`08_launch-app`](https://github.com/mjfrigaard/sap/tree/08_launch-app) gives advice and options for standalone app functions and what to put in the `app.R` file, and which function to use for launching vs. deploying the application.

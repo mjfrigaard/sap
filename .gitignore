@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-shinyrPkgs.Rcheck/
-shinyrPkgs*.tar.gz
-shinyrPkgs*.tgz
+sap.Rcheck/
+sap*.tar.gz
+sap*.tgz
 rsconnect/*

@@ -1,3 +1,3 @@
 shinyApp(
-  ui = shinyrPkgs::movies_ui(bslib = TRUE), 
-  server = shinyrPkgs::movies_server)
+  ui = sap::movies_ui(bslib = TRUE), 
+  server = sap::movies_server)

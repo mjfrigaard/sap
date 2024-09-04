@@ -1,10 +1,10 @@
-testthat::describe(
+describe(
   "Feature: Scatter Plot Configuration in Movie Review Application
       As a user 
       I want the initial graph pre-configured with variables and aesthetics,
       So that I can immediately see a meaningful visualization.",
   code = {
-    testthat::it(
+    it(
       "Scenario: Scatter plot initial x, y, color values 
          Given the movie review application is loaded
          When I view the initial scatter plot
@@ -30,7 +30,7 @@ testthat::describe(
           ),
           expr = {
             test_logger(start = "display", msg = "selected_vars initial values")
-            testthat::expect_equal(
+            expect_equal(
               object = inputs(),
               expected = list(
                     x = "imdb_rating",
@@ -47,7 +47,7 @@ testthat::describe(
   })
 
 
-testthat::describe(
+describe(
   "Feature: Scatter plot data visualization outputs
      As a user
      I want to explore continuous and categorical variables in the movie review data
@@ -62,7 +62,7 @@ testthat::describe(
      And I choose the opacity of the points to be 0.7
      And I choose the title of the plot to be 'New plot title'", code = {
        
-  testthat::it("Then the scatter plot should show 'IMDB number of votes' on the x-axis
+  it("Then the scatter plot should show 'IMDB number of votes' on the x-axis
                 And the scatter plot should show 'Critics Score' on the y-axis
                 And the points on the scatter plot should be colored by 'Genre'
                 And the size of the points on the scatter plot should be 3
@@ -83,7 +83,7 @@ testthat::describe(
 
         test_logger(start = "display", msg = "scatterplot[['alt']] = 'Plot object'")
               
-        testthat::expect_equal(
+        expect_equal(
           object = output$scatterplot[["alt"]],
           expected = "Plot object")
         
@@ -106,21 +106,21 @@ testthat::describe(
                   tools::toTitleCase(inputs()$y), "_", " ")) +
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "bottom")
-        testthat::expect_true(ggplot2::is.ggplot(plot))
+        expect_true(ggplot2::is.ggplot(plot))
         
         test_logger(end = "display", 
           msg = "inputs() creates ggplot2 object")
         
         # test_logger(start = "mod_scatter_display", 
         #             msg = "output$scatterplot is a list")
-        # testthat::expect_true(
+        # expect_true(
         #   object = is.list(output$scatterplot))
         # test_logger(end = "mod_scatter_display", 
         #             msg = "output$scatterplot is a list")
 
         # test_logger(start = "mod_scatter_display", 
         #             msg = "names in output$scatterplot")
-        # testthat::expect_equal(
+        # expect_equal(
         #   object = names(output$scatterplot),
         #   expected = c("src", "width", "height", "alt", "coordmap"))
         # test_logger(end = "names in output$scatterplot")

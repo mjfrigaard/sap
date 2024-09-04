@@ -36,7 +36,7 @@ describe(
                             alpha = 0.5,
                             size = 2,
                             plot_title = "Enter plot title")
-          testthat::expect_equal(object = session$returned(),
+          expect_equal(object = session$returned(),
             expected = list(y = "imdb_rating",
                             x = "audience_score",
                             z = "mpaa_rating",
@@ -56,7 +56,7 @@ describe(
                             size = 2,
                             plot_title = "Enter plot title")
     
-          testthat::expect_equal(object = session$returned(),
+          expect_equal(object = session$returned(),
             expected = list(y = "critics_score",
                             x = "runtime",
                             z = "title_type",

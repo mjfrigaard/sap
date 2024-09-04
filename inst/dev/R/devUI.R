@@ -2,7 +2,7 @@ devUI <- function() {
     addResourcePath(
       prefix = "dev",
       directoryPath = system.file("dev", 
-                                  package = "shinyrPkgs")
+                                  package = "sap")
     )
   tagList(
     bslib::page_fillable(

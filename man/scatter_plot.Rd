@@ -23,7 +23,7 @@ scatter_plot(df, x_var, y_var, col_var, alpha_var, size_var)
 A \code{ggplot2} plot object
 }
 \description{
-Custom \href{https://ggplot2.tidyverse.org/}{\code{ggplot2}} function for building scatter plots in \code{shinyrPkgs}.
+Custom \href{https://ggplot2.tidyverse.org/}{\code{ggplot2}} function for building scatter plots in \code{sap}.
 }
 \examples{
 scatter_plot(mtcars, 

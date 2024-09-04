@@ -4,17 +4,17 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     sink(stderr(), type = "output")
     tryCatch(
       expr = {
-        library(shinyrPkgs)
+        library(sap)
       },
       error = function(e) {
         pkgload::load_all()
       }
     )
     shinyAppDir(appDir = 
-                system.file("prod/app", package = "shinyrPkgs"))
+                system.file("prod/app", package = "sap"))
   } else {
     pkgload::load_all()
   }
-  shinyrPkgs::launch_app(options = list(test.mode = TRUE), 
+  sap::launch_app(options = list(test.mode = TRUE), 
     run = 'p')
 })

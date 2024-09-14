@@ -2,7 +2,7 @@ describe(
   "Feature: Scatter plot data visualization
      As a film data analyst
      I want to explore IMDB.com movie review data 
-     So that I can examine relationships between movie reivew metrics
+     So that I can examine relationships between movie review metrics
    Background:
      Given I have IMDB movie reviews data  
      And the data contains continuous variables like 'rating'

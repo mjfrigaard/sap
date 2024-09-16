@@ -1,12 +1,12 @@
 describe(
   "Feature: Scatter plot data visualization
        As a film data analyst
-       I want to explore movie review data from IMDB.com
-       So that I can analyze relationships between movie reivew metrics",
+       I want to explore IMDB.com movie review data
+       So that I can view relationships between movie review metrics",
   code = {
     describe(
       "Background:
-       Given I have data with IMDB movie reviews
+       Given I have IMDB movie review data
        And the data contains continuous variables like 'rating'
        And the data contains categorical variables like 'mpaa'",
       code = {

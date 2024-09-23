@@ -59,25 +59,22 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## External resources 
 
-### `09.4_inst-prod`
+### `10_debug-explore`
 
-[`09.4_inst-prod`](https://github.com/mjfrigaard/sap/tree/09.4_inst-prod) gives an example of storing a 'production' version of your application in the `inst/prod/` folder.
+[`10_debug-explore`](https://github.com/mjfrigaard/sap/tree/10_debug-explore) gives an example of exploring application code with RStudio/Positron's debugging tools. 
 
-```
-inst
-├── dev
-│   ├── app.R
-│   ├── imdb.png
-│   └── tidy_movies.fst
-├── extdata
-│   └── movies.fst
-├── prod
-│   └── app
-│       └── app.R
-└── www
-    ├── bootstrap.png
-    └── shiny.png
+```r
+server <- function(input, output, session) {
 
-6 directories, 7 files
+    observe({ # observe() function scope 
+        browser() # Call to browser() at the top of the `observe()` scope 
+    
+
+    returned_values <- mod_something("bla")
+
+    mod_something_else("blabla", input_values = returned_values)
+    
+    }) # observe() function scope 
+}
 ```
 

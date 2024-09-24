@@ -29,6 +29,9 @@ dev_mod_scatter_server <- function(id, var_inputs) {
     # load alternate data
     all_data <- fst::read_fst("tidy_movies.fst")
 
+    observe({
+      # load alternate data
+    browser()
     # build reactive data based on missing checkbox input
     graph_data <- reactive({
       if (input$missing) {
@@ -76,5 +79,6 @@ dev_mod_scatter_server <- function(id, var_inputs) {
     }) |>
       # bind this to variable inputs and missing checkbox output
       bindEvent(graph_data(), inputs())
+    })
   })
 }

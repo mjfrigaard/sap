@@ -41,7 +41,7 @@
 movies_ui <- function(bslib = FALSE) {
   addResourcePath(
     prefix = 'www',
-    directoryPath = system.file('www', package = 'sap'))
+    directoryPath = system.file('www/', package = 'sap'))
   if (isFALSE(bslib)) {
     tagList(
         bslib::page_fillable(
@@ -51,7 +51,7 @@ movies_ui <- function(bslib = FALSE) {
               bslib::sidebar(
                 title = tags$h4("Sidebar inputs"),
                 img(
-                  src = "shiny.png",
+                  src = "www/shiny.png",
                   height = 60,
                   width = 55,
                   style = "margin:10px 10px"

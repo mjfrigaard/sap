@@ -63,18 +63,79 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 [`10_debug-explore`](https://github.com/mjfrigaard/sap/tree/10_debug-explore) gives an example of exploring application code with RStudio/Positron's debugging tools. 
 
+The branch has the following apps: 
+
+### launch_observe()
+
 ```r
-server <- function(input, output, session) {
-
-    observe({ # observe() function scope 
-        browser() # Call to browser() at the top of the `observe()` scope 
-    
-
-    returned_values <- mod_something("bla")
-
-    mod_something_else("blabla", input_values = returned_values)
-    
-    }) # observe() function scope 
+launch_observe <- function() {
+  ui <- bslib::page_fluid(
+    titlePanel(p("Simple", code("observe()"), "Shiny App")),
+    bslib::layout_column_wrap(
+      width = 1/2,
+      bslib::card(
+        bslib::card_header("Press the Button"),
+        actionButton(
+          inputId = "btn", 
+          label = "Click Me!")
+      )
+    )
+  )
+  server <- function(input, output, session) {
+    observe({
+      if (input$btn > 0) {  
+        print("Clicked!")  
+      }
+    })
+  }
+  shinyApp(ui, server)
 }
 ```
 
+### launch_debug()
+
+```r
+launch_debug <- function() {
+  ui <- bslib::page_fluid(
+    titlePanel("Debug App"),
+    bslib::layout_sidebar(
+      sidebar = bslib::sidebar(
+        actionButton("trigger", "Click Me!"),
+        numericInput("input_num", "Enter a number:", value = 1)
+      ),
+      bslib::card(
+        uiOutput("output_value"),
+        uiOutput("reactive_value"),
+        verbatimTextOutput("button")
+      )
+    )
+  )
+
+  server <- function(input, output, session) {
+    reactive_value <- reactive({
+      input$input_num
+    })
+
+    observe({
+      isolated_value <- isolate(input$input_num)
+      output$button <- renderPrint({
+        paste("Button clicked! The isolated value is:", isolated_value)
+      })
+    }) |>
+      bindEvent(input$trigger)
+
+    output$output_value <- renderUI({
+      markdown(
+        paste("Isolated value from ", "`observe()`", ":", isolate(input$input_num))
+      )
+    })
+
+    output$reactive_value <- renderUI({
+      paste("Reactive value:", reactive_value())
+    })
+  }
+
+  shinyApp(ui = ui, server = server)
+}
+
+```

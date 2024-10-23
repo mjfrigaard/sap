@@ -80,7 +80,6 @@ dev_mod_scatter_server <- function(id, var_inputs) {
           ggplot2::theme(legend.position = "bottom")
       })
     }) |>
-      # bind this to variable inputs and missing checkbox output
       bindEvent(graph_data(), inputs())
   })
 }

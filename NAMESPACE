@@ -3,7 +3,6 @@
 export(display_type)
 export(ggp2_launch_app)
 export(launch_app)
-export(launch_debug)
 export(launch_observe)
 export(mod_var_input_server)
 export(movies_server)

@@ -19,7 +19,7 @@
 #' @export
 launch_observe <- function() {
   ui <- bslib::page_fluid(
-    titlePanel(p("Simple", code("observe()"), "Shiny App")),
+    h4("Simple observe() Shiny App"),
     bslib::layout_column_wrap(
       width = 1/2,
       bslib::card(
@@ -32,7 +32,6 @@ launch_observe <- function() {
   )
   server <- function(input, output, session) {
     observe({
-      browser()
       if (input$btn > 0) {  
         print("Clicked!")  
       }

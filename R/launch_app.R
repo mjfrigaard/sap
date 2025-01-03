@@ -20,7 +20,7 @@
 #'
 #' @import shiny
 #'
-#' @export
+#' @export launch_app
 #'
 launch_app <- function(app = "movies", options = list(), run = "p", ...) {
   if (interactive()) {

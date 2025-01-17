@@ -6,7 +6,7 @@ Maintainer: John Smith <John.Smith@email.io>
 Description: An R package with a collection of Shiny applications.
 License: GPL-3
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Imports: 
     bslib,
     cli,

@@ -47,9 +47,11 @@ A data frame with 651 rows and 34 variables:
 movies
 }
 \description{
-Movie review data. Note: these data come from the \href{https://rstudio-education.github.io/shiny-course/}{Building Web Applications with shiny course}.
+Movie review data from the Building Web Applications with Shiny
+\href{https://rstudio-education.github.io/shiny-course/}{course}.
 }
 \details{
-Read more about acquiring these data in the \href{https://datasciencebox.org/02-exploring-data#web-scraping-and-programming}{'Web Scraping and programming' section of Data science in a box}
+Read more about acquiring these data in the 'Web Scraping and programming'
+section of \href{https://datasciencebox.org/02-exploring-data#web-scraping-and-programming}{Data science in a box}
 }
 \keyword{datasets}

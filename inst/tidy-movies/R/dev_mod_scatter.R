@@ -26,8 +26,8 @@ dev_mod_scatter_ui <- function(id) {
 
 dev_mod_scatter_server <- function(id, var_inputs) {
   moduleServer(id, function(input, output, session) {
-    # observe({ # ----- uncomment to activate the interactive debugger!
-    #  browser() # ----- uncomment to activate the interactive debugger!
+    observe({
+      browser()
       
       all_data <- fst::read_fst("tidy_movies.fst")
 
@@ -51,8 +51,7 @@ dev_mod_scatter_server <- function(id, var_inputs) {
           plot_title = plot_title
         )
       })
-    
-   # }) # ----- uncomment to activate the interactive debugger!
+    })
     
     observe({
       output$scatterplot <- renderPlot({

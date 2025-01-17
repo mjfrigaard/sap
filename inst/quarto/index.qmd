@@ -1,5 +1,5 @@
 ---
-title: Movies
+title: Quarto Movies
 format:
   html:
     page-layout: full

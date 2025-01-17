@@ -1,10 +1,11 @@
-#' @title IMDB movies data 
+#' IMDB movies data 
 #'
-#' @description
-#' Movie review data. Note: these data come from the [Building Web Applications with shiny course](https://rstudio-education.github.io/shiny-course/). 
+#' Movie review data from the Building Web Applications with Shiny 
+#' [course](https://rstudio-education.github.io/shiny-course/). 
 #' 
 #' @details
-#' Read more about acquiring these data in the ['Web Scraping and programming' section of Data science in a box](https://datasciencebox.org/02-exploring-data#web-scraping-and-programming) 
+#' Read more about acquiring these data in the 'Web Scraping and programming' 
+#' section of [Data science in a box](https://datasciencebox.org/02-exploring-data#web-scraping-and-programming) 
 #'
 #' @format A data frame with 651 rows and 34 variables:
 #' \describe{

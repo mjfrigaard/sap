@@ -12,6 +12,7 @@
 display_type <- function(run = "w") {
   if (interactive()) {
     if (Sys.getenv("RSTUDIO") == "1") {
+      
       switch(
         run,
         p = options(shiny.launch.browser = .rs.invokeShinyPaneViewer),
@@ -24,6 +25,7 @@ display_type <- function(run = "w") {
         attributes() |>
         unlist() |>
         unname()
+      
       cli::cli_alert_info("App running in {environment}")
       cli::cli_alert_info("shinyViewerType set to {shinyViewerType}")
     } else {

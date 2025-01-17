@@ -43,7 +43,6 @@
 #'   alpha_var = 0.7,
 #'   size_var = 3
 #' )
-#'
 #' 
 #' @importFrom rlang .data
 #' 

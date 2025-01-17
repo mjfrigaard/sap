@@ -1,22 +1,27 @@
 #' User Interface for the Movies Review Application
 #'
-#' Creates the user interface (UI) for the Movies Review application, which 
+#' Creates the user interface (UI) for the Movies Review application, which
 #' allows users to create customizable scatter plots based on movie data.
+#' 
+#' @param bslib View bslib logo?
 #'
 #' @return A Shiny `tagList` object containing the UI elements.
 #'
 #' @section Details:
-#' The interface is built using:
-#' - **Theme**: `shinythemes::shinytheme("spacelab")`.
-#' - **Title Panel**: Displays the app title and a logo.
-#' - **Sidebar Panel**: Includes the variable selection module 
+#' The interface is built using [`bslib`](https://rstudio.github.io/bslib/)
+#' - **Page (fillable)**: [`bslib::page_fillable()`](https://rstudio.github.io/bslib/reference/page_fillable.html)
+#'   displays the app title.
+#' - **Sidebar**: [`bslib::layout_sidebar()`](https://rstudio.github.io/bslib/reference/sidebar.html)
+#'   includes a logo and the variable
+#'   selection module.
 #'   ([`mod_var_input_ui`]).
-#' - **Main Panel**: Displays the scatter plot module 
+#' - **Card**: [`bslib::card()`](https://rstudio.github.io/bslib/reference/card.html)
+#'   displays the scatter plot module
 #'   ([`mod_scatter_display_ui`]).
 #'
 #' @seealso
 #' - [`movies_server()`] for the server logic of the app.
-#' - [`mod_var_input_ui()`] and [`mod_scatter_display_ui()`] for the modules 
+#' - [`mod_var_input_ui()`] and [`mod_scatter_display_ui()`] for the modules
 #'   included in the UI.
 #'
 #' @family **Application Components**
@@ -25,6 +30,7 @@
 #' if (interactive()) {
 #'   shiny::shinyApp(ui = movies_ui(), server = movies_server)
 #' }
+#'
 #' 
 #' @export
 #' 

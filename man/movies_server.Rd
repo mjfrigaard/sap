@@ -2,51 +2,48 @@
 % Please edit documentation in R/movies_server.R
 \name{movies_server}
 \alias{movies_server}
-\title{Movies server function}
+\title{Server Logic for the Movies Review Application}
+\usage{
+movies_server(input, output, session)
+}
+\arguments{
+\item{input}{The Shiny \code{input} object.}
+
+\item{output}{The Shiny \code{output} object.}
+
+\item{session}{The Shiny \code{session} object.}
+}
 \value{
-\code{server} argument in \code{shinyApp()}
+Defines server logic for reactive outputs
+and module integration.
 }
 \description{
-Server function for standalone app function
+Handles the server-side logic for the Movies Review application.
 }
-\details{
-The \code{\link[=launch_app]{launch_app()}} function is as a wrapper for \code{shinyApp()}:
+\section{Details}{
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{shinyApp(movies_ui, movies_server)
-}\if{html}{\out{</div>}}
-
-In \code{\link[=launch_app]{launch_app()}}:
+The server integrates the following modules:
 \itemize{
-\item UI is stored in \code{\link[=movies_ui]{movies_ui()}}
-\item server is stored in \code{movies_server()}
-}
-}
-\section{\code{var_input} module}{
-
-\code{\link[=mod_var_input_server]{mod_var_input_server()}} returns following reactive values:
-\itemize{
-\item \code{x}
-\item \code{y}
-\item \code{z}
-\item \code{alpha}
-\item \code{size}
-\item \code{plot_title}
+\item \strong{Variable Input Module}: Processes user input for scatter plot
+customization using  \code{\link[=mod_var_input_server]{mod_var_input_server()}}.
+\item \strong{Plot Display Module}: Generates and displays a scatter plot
+based on user inputs using \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}.
 }
 }
 
-\section{\code{scatter_display} module}{
-
-\code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}} displays the \code{ggplot2} graph with the \code{\link[=scatter_plot]{scatter_plot()}} function.
+\examples{
+if (interactive()) {
+  shiny::shinyApp(ui = movies_ui(), server = movies_server)
 }
 
-\section{Communication}{
-
-The output from \code{\link[=mod_var_input_server]{mod_var_input_server()}} should be supplied to the
-\code{var_inputs} argument of \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}.
 }
-
 \seealso{
-\code{\link[=mod_var_input_ui]{mod_var_input_ui()}}
-
-\code{\link[=mod_scatter_display_ui]{mod_scatter_display_ui()}}
+\itemize{
+\item \code{\link[=movies_ui]{movies_ui()}} for the corresponding user interface.
+\item \code{\link[=launch_app]{launch_app()}} for the entry point of the application.
 }
+
+Other \strong{Application Components}: 
+\code{\link{movies_ui}()}
+}
+\concept{\strong{Application Components}}

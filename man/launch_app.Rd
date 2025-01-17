@@ -2,17 +2,17 @@
 % Please edit documentation in R/launch_app.R
 \name{launch_app}
 \alias{launch_app}
-\title{Movies app standalone function}
+\title{Launch the Movies Review Application}
 \usage{
 launch_app(app = "movies", options = list(), run = "p", ...)
 }
 \arguments{
 \item{app}{which app to run. Options are:
 \itemize{
-\item \code{"movies"} = the default app
-\item \code{"bslib"} = alternative \code{bslib} layout
-\item \code{"ggp2"} = tidy version of \code{ggplot2movies::movies} data
-\item \code{"quarto"} = quarto version of movies app
+\item \code{"movies"} = Default app
+\item \code{"bslib"} = Alternative \code{bslib} layout
+\item \code{"ggp2"} = \code{ggplot2movies} (tidy) data app.
+\item \code{"quarto"} = Quarto movies app.
 }}
 
 \item{options}{arguments to pass to \code{options()}}
@@ -27,11 +27,34 @@ launch_app(app = "movies", options = list(), run = "p", ...)
 \item{...}{arguments passed to UI}
 }
 \value{
-shiny app
+A \strong{Shiny application} object.
 }
 \description{
-Wrapper function for \code{shinyApp()}
+Starts the Movies Review Shiny application, which provides a customizable
+scatter plot interface for analyzing movie data.
+}
+\details{
+See the \href{https://github.com/hadley/ggplot2movies}{ggplot2movies} package.
+}
+\section{Details}{
+
+The application uses:
+\itemize{
+\item \strong{UI}: Defined in \code{\link[=movies_ui]{movies_ui()}}.
+\item \strong{Server Logic}: Defined in \code{\link[=movies_server]{movies_server()}}.
+}
+}
+
+\examples{
+if (interactive()) {
+  launch_app()
+}
+
 }
 \seealso{
-\code{\link[=mod_var_input_ui]{mod_var_input_ui()}}, \code{\link[=mod_var_input_server]{mod_var_input_server()}}, \code{\link[=mod_scatter_display_ui]{mod_scatter_display_ui()}}, \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}
+\itemize{
+\item \code{\link[=movies_ui]{movies_ui()}} for the user interface.
+\item \code{\link[=movies_server]{movies_server()}} for the server logic.
 }
+}
+\concept{\strong{Standalone Application}}

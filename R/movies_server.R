@@ -1,44 +1,33 @@
-#' Movies server function
-#' 
-#' Server function for standalone app function 
-#' 
-#' @usage NULL
-#' 
-#' @details
-#' The [launch_app()] function is as a wrapper for `shinyApp()`: 
-#' 
-#' ```
-#' shinyApp(movies_ui, movies_server)
-#' ```
-#' 
-#' In [launch_app()]:
-#'  * UI is stored in [movies_ui()]   
-#'  * server is stored in `movies_server()`
-#'  
-#' @section `var_input` module: 
-#' [mod_var_input_server()] returns following reactive values:
-#'  * `x`
-#'  * `y`
-#'  * `z`
-#'  * `alpha`
-#'  * `size`
-#'  * `plot_title`
-#' 
-#' @seealso [mod_var_input_ui()]
-#' 
-#' @section `scatter_display` module: 
-#' [mod_scatter_display_server()] displays the `ggplot2` graph with the [scatter_plot()] function.
-#' 
-#' @seealso [mod_scatter_display_ui()]
-#' 
-#' @section Communication: 
-#' The output from [mod_var_input_server()] should be supplied to the 
-#' `var_inputs` argument of [mod_scatter_display_server()].
-#
-#' @return `server` argument in `shinyApp()`
+#' Server Logic for the Movies Review Application
+#'
+#' Handles the server-side logic for the Movies Review application.
+#'
+#' @param input The Shiny `input` object.
+#' @param output The Shiny `output` object.
+#' @param session The Shiny `session` object.
+#'
+#' @return Defines server logic for reactive outputs 
+#' and module integration.
+#'
+#' @section Details:
+#' The server integrates the following modules:
+#' - **Variable Input Module**: Processes user input for scatter plot 
+#'   customization using  [`mod_var_input_server()`].
+#' - **Plot Display Module**: Generates and displays a scatter plot 
+#'   based on user inputs using [`mod_scatter_display_server()`].
+#'
+#' @seealso
+#' - [`movies_ui()`] for the corresponding user interface.
+#' - [`launch_app()`] for the entry point of the application.
+#'
+#' @family **Application Components**
+#'
+#' @examples
+#' if (interactive()) {
+#'   shiny::shinyApp(ui = movies_ui(), server = movies_server)
+#' }
 #' 
 #' @export
-#' 
 movies_server <- function(input, output, session) {
 
       selected_vars <- mod_var_input_server("vars")

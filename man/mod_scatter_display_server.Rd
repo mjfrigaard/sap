@@ -2,36 +2,68 @@
 % Please edit documentation in R/mod_scatter_display.R
 \name{mod_scatter_display_server}
 \alias{mod_scatter_display_server}
-\title{Scatter plot display module (server)}
+\title{Scatter Plot Display Module - Server}
 \usage{
 mod_scatter_display_server(id, var_inputs)
 }
 \arguments{
-\item{id}{server module id}
+\item{id}{\emph{(character)} Namespace ID for the module.}
 
-\item{var_inputs}{returned reactive list from \code{\link[=mod_var_input_server]{mod_var_input_server()}}.}
+\item{var_inputs}{\emph{(reactive)} A reactive expression containing
+user-selected variables and attributes.}
 }
 \value{
-rendered plot and title output from \code{\link[=scatter_plot]{scatter_plot()}}
+No direct return value. This function generates a plot output.
 }
 \description{
-Scatter plot display module (server)
+Handles the server-side logic for rendering a scatter plot.
 }
-\section{Referring to \code{var_inputs}}{
+\section{Details}{
 
-Refer to the reactive returned values from \code{mod_var_input_server()} as:
+\code{mod_scatter_display_server()}:
 \itemize{
-\item \code{var_inputs()$x}
-\item \code{var_inputs()$y}
-\item \code{var_inputs()$z}
-\item \code{var_inputs()$alpha}
-\item \code{var_inputs()$size}
-\item \code{var_inputs()$plot_title}
+\item Uses \code{var_inputs} to dynamically generate a scatter plot with
+user-selected variables.
+\item Reads from the \code{movies} dataset, which must be loaded in the app
+environment.
+\item Processes plot titles and axis labels to improve readability.
 }
 }
 
+\section{Reactive Inputs}{
+
+\itemize{
+\item \code{var_inputs()$x}: X-axis variable.
+\item \code{var_inputs()$y}: Y-axis variable.
+\item \code{var_inputs()$z}: Color aesthetic variable.
+\item \code{var_inputs()$alpha}: Transparency level.
+\item \code{var_inputs()$size}: Size of points.
+\item \code{var_inputs()$plot_title}: Title of the plot.
+}
+}
+
+\examples{
+if (interactive()) {
+  shiny::shinyApp(
+    ui = shiny::fluidPage(
+      mod_var_input_ui("vars"),
+      mod_scatter_display_ui("plot")
+    ),
+    server = function(input, output, session) {
+      selected_vars <- mod_var_input_server("vars")
+      mod_scatter_display_server("plot", selected_vars)
+    }
+  )
+}
+
+}
 \seealso{
-Other {"scatter plot module functions"}: 
+\itemize{
+\item \code{\link[=mod_var_input_server]{mod_var_input_server()}} for variable selection.
+\item \code{\link[=scatter_plot]{scatter_plot()}} for generating the scatter plot.
+}
+
+Other \strong{Plot Display Module}: 
 \code{\link{mod_scatter_display_ui}()}
 }
-\concept{{"scatter plot module functions"}}
+\concept{\strong{Plot Display Module}}

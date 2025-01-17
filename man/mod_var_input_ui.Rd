@@ -2,27 +2,67 @@
 % Please edit documentation in R/mod_var_input.R
 \name{mod_var_input_ui}
 \alias{mod_var_input_ui}
-\title{Variable input module (UI)}
+\title{Variable Input Module - UI}
 \usage{
 mod_var_input_ui(id)
 }
 \arguments{
-\item{id}{UI module id}
+\item{id}{\emph{(character)} Namespace ID for the module.}
 }
 \value{
-module UI (HTML)
+A \code{shiny::tagList()} containing UI elements for variable
+selection.
 }
 \description{
-\code{var_input} collects the following graph inputs:
-\itemize{
-\item \code{input$x}
-\item \code{input$y}
-\item \code{input$z}
-\item \code{input$alpha}
-\item \code{input$size}
-\item \code{input$plot_title}
+Creates a UI for selecting variables and attributes for a scatter plot.
 }
+\section{Details}{
+
+\code{mod_var_input_ui()} provides UI controls for customizing scatter plots.
+It includes:
+\itemize{
+\item \strong{Dropdowns}:
+\itemize{
+\item X-axis variable
+\item Y-axis variable
+\item Color aesthetic variable
+}
+\item \strong{Sliders}:
+\itemize{
+\item Transparency (\code{alpha}) ranging from 0 to 1.
+\item Point size ranging from 0 to 5.
+}
+\item \strong{Text Input}:
+\itemize{
+\item Plot title.
+}
+}
+
+The function uses \code{shiny::NS()} to namespace all input IDs.
+}
+
+\examples{
+
+if (interactive()) {
+  shiny::shinyApp(
+    ui = shiny::fluidPage(mod_var_input_ui("vars")),
+    server = function(input, output, session) {
+      selected_vars <- mod_var_input_server("vars")
+      shiny::observe(
+          print(selected_vars())
+       )
+    }
+  )
+}
+
 }
 \seealso{
-\code{\link[=mod_var_input_server]{mod_var_input_server()}}
+\itemize{
+\item \code{\link[=mod_var_input_server]{mod_var_input_server()}}  for server-side logic.
+\item \href{https://shiny.rstudio.com/reference/shiny/latest/tagList.html}{\code{shiny::tagList()}}
+for containing UI elements.
+\item \href{https://shiny.rstudio.com/reference/shiny/latest/NS.html}{\code{shiny::NS()}}
+for namespacing.
 }
+}
+\concept{\strong{Variable Input Module}}

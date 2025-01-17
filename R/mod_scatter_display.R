@@ -1,11 +1,32 @@
-#' Scatter plot display module (UI)
+#' Scatter Plot Display Module - UI
 #'
-#' @param id UI module id
-#' 
+#' Creates a UI for displaying a scatter plot with user-selected options.
 #'
-#' @return module UI (HTML)
-#' 
-#' @family {"scatter plot module functions"}
+#' @param id *(character)* Namespace ID for the module.
+#'
+#' @return A `shiny::tagList` containing the plot output and metadata.
+#'
+#' @section Details: 
+#' `mod_scatter_display_ui()` includes:
+#' - A **scatter plot** created dynamically based on user input.
+#' - Metadata about the app, including the data source.
+#'
+#' @seealso
+#' - [`mod_scatter_display_server()`]  for the server-side logic of this 
+#'   module.
+#' - [`scatter_plot()`]  for the utility function generating the plot.
+#'
+#' @family **Plot Display Module**
+#'
+#' @examples
+#' if (interactive()) {
+#'   shiny::shinyApp(
+#'     ui = shiny::fluidPage(mod_scatter_display_ui("plot")),
+#'     server = function(input, output, session) {
+#'       # Example usage - server logic is minimal for standalone testing.
+#'     }
+#'   )
+#' }
 #' 
 #' @export
 mod_scatter_display_ui <- function(id) {
@@ -16,25 +37,51 @@ mod_scatter_display_ui <- function(id) {
   )
 }
 
-#' Scatter plot display module (server)
-#' 
+#' Scatter Plot Display Module - Server
 #'
-#' @param id server module id 
-#' @param var_inputs returned reactive list from [mod_var_input_server()].
-#' 
-#' @section Referring to `var_inputs`: 
-#' Refer to the reactive returned values from `mod_var_input_server()` as:
-#'  * `var_inputs()$x`
-#'  * `var_inputs()$y`
-#'  * `var_inputs()$z`
-#'  * `var_inputs()$alpha`
-#'  * `var_inputs()$size`
-#'  * `var_inputs()$plot_title`
-#' 
+#' Handles the server-side logic for rendering a scatter plot.
 #'
-#' @return rendered plot and title output from [scatter_plot()]
-#' 
-#' @family {"scatter plot module functions"}
+#' @param id *(character)* Namespace ID for the module.
+#' @param var_inputs *(reactive)* A reactive expression containing 
+#'  user-selected variables and attributes.
+#'
+#' @return No direct return value. This function generates a plot output.
+#'
+#' @section Details: 
+#' `mod_scatter_display_server()`:
+#' - Uses `var_inputs` to dynamically generate a scatter plot with 
+#'   user-selected variables.
+#' - Reads from the `movies` dataset, which must be loaded in the app 
+#'   environment.
+#' - Processes plot titles and axis labels to improve readability.
+#'
+#' @section Reactive Inputs:
+#' - `var_inputs()$x`: X-axis variable.
+#' - `var_inputs()$y`: Y-axis variable.
+#' - `var_inputs()$z`: Color aesthetic variable.
+#' - `var_inputs()$alpha`: Transparency level.
+#' - `var_inputs()$size`: Size of points.
+#' - `var_inputs()$plot_title`: Title of the plot.
+#'
+#' @seealso
+#' - [`mod_var_input_server()`] for variable selection.
+#' - [`scatter_plot()`] for generating the scatter plot.
+#'
+#' @family **Plot Display Module**
+#'
+#' @examples
+#' if (interactive()) {
+#'   shiny::shinyApp(
+#'     ui = shiny::fluidPage(
+#'       mod_var_input_ui("vars"),
+#'       mod_scatter_display_ui("plot")
+#'     ),
+#'     server = function(input, output, session) {
+#'       selected_vars <- mod_var_input_server("vars")
+#'       mod_scatter_display_server("plot", selected_vars)
+#'     }
+#'   )
+#' }
 #' 
 #' @export
 mod_scatter_display_server <- function(id, var_inputs) {

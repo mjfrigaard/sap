@@ -32,12 +32,12 @@ thematic::thematic_set_theme(
 ```
 
 ```{r}
-#| panel: var_input
+#| panel: input
 mod_var_input_ui("vars")
 ```
 
 ```{r}
-#| panel: aes_input
+#| panel: input
 mod_aes_input_ui("aes")
 ```
 

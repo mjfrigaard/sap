@@ -45,6 +45,12 @@
 mod_var_input_ui <- function(id) {
   ns <- NS(id)
   tagList(
+    strong(
+      code("var_input"),
+      "module reactive ",
+      code("inputs")
+      ),
+    verbatimTextOutput(ns("vals")),
     selectInput(
       inputId = ns("y"),
       label = "Y-axis:",
@@ -80,13 +86,7 @@ mod_var_input_ui <- function(id) {
         "Audience Rating" = "audience_rating"
       ),
       selected = "mpaa_rating"
-    ),
-    strong(
-      code("var_input"),
-      "module reactive ",
-      code("inputs")
-      ),
-    verbatimTextOutput(ns("vals"))
+    )
   )
 }
 

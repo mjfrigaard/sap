@@ -57,7 +57,7 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `12_debug-apps`
+## `12.2_mod-comms`
 
-[`12_debug-apps`](https://github.com/mjfrigaard/sap/tree/12_debug-apps) gives an example of debugging Shiny code using various 'print' functions and tools. 
+[`12.2_mod-comms`](https://github.com/mjfrigaard/sap/tree/12.2_mod-comms) walks through an example of debugging module communication. 
 

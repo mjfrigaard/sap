@@ -18,7 +18,8 @@ devUI <- function() {
       ),
       bslib::layout_sidebar(
         sidebar = bslib::sidebar(
-          dev_mod_vars_ui("vars")
+          dev_mod_vars_ui("vars"),
+          sap::mod_aes_input_ui("aes")
         ),
         bslib::card(
           full_screen = TRUE,

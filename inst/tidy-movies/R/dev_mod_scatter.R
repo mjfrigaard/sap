@@ -24,7 +24,7 @@ dev_mod_scatter_ui <- function(id) {
   )
 }
 
-dev_mod_scatter_server <- function(id, var_inputs) {
+dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
   moduleServer(id, function(input, output, session) {
     # load alternate data
     all_data <- fst::read_fst("tidy_movies.fst")
@@ -41,13 +41,13 @@ dev_mod_scatter_server <- function(id, var_inputs) {
       bindEvent(input$missing)
 
     inputs <- reactive({
-      plot_title <- tools::toTitleCase(var_inputs()$plot_title)
+      plot_title <- tools::toTitleCase(aes_inputs()$plot_title)
       list(
         x = var_inputs()$x,
         y = var_inputs()$y,
         z = var_inputs()$z,
-        alpha = var_inputs()$alpha,
-        size = var_inputs()$size,
+        alpha = aes_inputs()$alpha,
+        size = aes_inputs()$size,
         plot_title = plot_title
       )
     })

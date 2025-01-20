@@ -38,18 +38,6 @@ dev_mod_vars_ui <- function(id) {
         "Genre" = "genre"
       ),
       selected = "mpaa"
-    ),
-    sliderInput(
-      inputId = ns("alpha"),
-      label = "Alpha:",
-      min = 0, max = 1, step = 0.1,
-      value = 0.4
-    ),
-    sliderInput(
-      inputId = ns("size"),
-      label = "Size:",
-      min = 0, max = 5, step = 0.5,
-      value = 2.5
     )
   )
 }

@@ -32,8 +32,13 @@ thematic::thematic_set_theme(
 ```
 
 ```{r}
-#| panel: input
+#| panel: var_input
 mod_var_input_ui("vars")
+```
+
+```{r}
+#| panel: aes_input
+mod_aes_input_ui("aes")
 ```
 
 ```{r}
@@ -65,9 +70,13 @@ tags$em(
 ```{r}
 #| context: server
 
-selected_vars <- mod_var_input_server("vars")
+      selected_vars <- mod_var_input_server("vars")
+  
+      selected_aes <- mod_aes_input_server("aes")
 
-mod_scatter_display_server("plot", var_inputs = selected_vars)
+      mod_scatter_display_server("plot", 
+                                  var_inputs = selected_vars, 
+                                  aes_inputs = selected_aes)
 
 ```
 

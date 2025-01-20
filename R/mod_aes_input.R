@@ -46,6 +46,12 @@
 mod_aes_input_ui <- function(id) {
   ns <- NS(id)
   tagList(
+    strong(
+      code("aes_input"),
+      "module reactive ",
+      code("inputs")
+      ),
+    verbatimTextOutput(ns("vals")),
     sliderInput(
       inputId = ns("alpha"),
       label = "Alpha:",
@@ -62,13 +68,7 @@ mod_aes_input_ui <- function(id) {
       inputId = ns("x"),
       label = "Plot title",
       placeholder = "Enter plot title"
-    ),
-    strong(
-      code("aes_input"),
-      "module reactive ",
-      code("inputs")
-      ),
-    verbatimTextOutput(ns("vals"))
+    )
   )
 }
 

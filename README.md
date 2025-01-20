@@ -57,7 +57,7 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `12.2_mod-comms`
+## `13_logging`
 
-[`12.2_mod-comms`](https://github.com/mjfrigaard/sap/tree/12.2_mod-comms) walks through an example of debugging module communication. 
+[`13_logging`](https://github.com/mjfrigaard/sap/tree/13_logging) covers how to use logging to record application behavior, trace issues, and ensure performance meets expectations. 
 

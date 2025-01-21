@@ -59,4 +59,4 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `10_debugger`
 
-[`10_debugger`](https://github.com/mjfrigaard/sap/tree/10_debugger) gives an example of exploring application code with Positron's/RStudio's debugging tools. 
+[`10_debugger`](https://github.com/mjfrigaard/sap/tree/10_debugger) gives an example of exploring application code with Positron's and RStudio's debugging tools. 

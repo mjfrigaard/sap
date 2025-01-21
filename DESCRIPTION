@@ -1,6 +1,6 @@
 Package: sap
 Title: Shiny App-Packages
-Version: 0.0.0.9000
+Version: 0.0.0.9100
 Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
 Description: An R package with a collection of Shiny applications.

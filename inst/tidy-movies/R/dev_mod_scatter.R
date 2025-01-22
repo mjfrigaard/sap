@@ -27,13 +27,27 @@ dev_mod_scatter_ui <- function(id) {
 dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
   moduleServer(id, function(input, output, session) {
     # load alternate data
-    all_data <- fst::read_fst("tidy_movies.fst")
+    all_data <- tryCatch({
+      fst::read_fst("tidy_movies.fst")
+    }, error = function(e) {
+      log_message(
+        message = sprintf("Error loading data: %s", e$message), 
+        log_file = "inst/logs/ggp2_log.txt", 
+        save = TRUE)
+      stop("Data loading failed.")
+    })
 
     # build reactive data based on missing checkbox input
     graph_data <- reactive({
       if (input$missing) {
+        log_message("Missing values removed from data.", 
+                    log_file = "inst/logs/ggp2_log.txt", 
+                    save = TRUE)
         graph_data <- tidyr::drop_na(data = all_data)
       } else {
+        log_message("All data (including missing) used for the plot.", 
+                    log_file = "inst/logs/ggp2_log.txt",
+                    save = TRUE)
         graph_data <- all_data
       }
     }) |>

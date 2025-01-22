@@ -52,5 +52,8 @@ scatter plot module.
 \item \href{https://ggplot2.tidyverse.org/}{\code{ggplot2::ggplot()}} for details on
 \code{ggplot2} usage.
 }
+
+Other \strong{Utility Functions}: 
+\code{\link{log_message}()}
 }
 \concept{\strong{Utility Functions}}

@@ -126,27 +126,24 @@ mod_var_input_ui <- function(id) {
 #' 
 #' @export
 mod_var_input_server <- function(id) {
-
   moduleServer(id, function(input, output, session) {
 
     observe({
-      output$vals <- renderPrint({
-        all_vals <- reactiveValuesToList(input,
-                                         all.names = TRUE)
-        lobstr::tree(all_vals)
-      })
+      message <- paste("User selected: X =", input$x, 
+                       "Y =", input$y, 
+                       "Color =", input$z)
+      add_log(message = message, level = "INFO", )
     }) |> 
-      bindEvent(c(input$x, input$y, input$x))
-    
+      bindEvent(c(input$x, input$y, input$z))
+
     return(
       reactive({
         list(
-          "y" = input$y,
           "x" = input$x,
+          "y" = input$y,
           "z" = input$z
         )
       })
     )
-
   })
 }

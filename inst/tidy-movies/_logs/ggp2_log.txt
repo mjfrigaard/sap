@@ -1,0 +1,8 @@
+[2025-01-22 14:44:26] Loading fst data 
+[2025-01-22 14:44:26] Removing missing values. 
+[2025-01-22 14:44:26] Processing plot title: '' 
+[2025-01-22 14:44:26] Inputs constructed: x=year, y=budget, z=mpaa, alpha=0.5, size=2, plot_title= 
+[2025-01-22 14:44:47] Processing plot title: '' 
+[2025-01-22 14:44:47] Inputs constructed: x=year, y=length, z=mpaa, alpha=0.5, size=2, plot_title= 
+[2025-01-22 14:44:50] Processing plot title: '' 
+[2025-01-22 14:44:50] Inputs constructed: x=year, y=length, z=genre, alpha=0.5, size=2, plot_title= 

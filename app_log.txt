@@ -1,0 +1,1 @@
+INFO [2025-01-22 10:46:53] Application started.

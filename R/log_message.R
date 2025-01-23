@@ -17,7 +17,7 @@
 #' }
 #' 
 #' @export
-log_message <- function(message, log_file = "inst/logs/app_log.txt", save = FALSE) {
+log_message <- function(message, log_file = "logs/app_log.txt", save = FALSE) {
   log_dir <- dirname(log_file)
   if (!dir.exists(log_dir)) {
     dir.create(log_dir, recursive = TRUE)

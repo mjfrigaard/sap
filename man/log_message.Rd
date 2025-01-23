@@ -4,7 +4,7 @@
 \alias{log_message}
 \title{Log Application Behaviors}
 \usage{
-log_message(message, log_file = "inst/logs/app_log.txt", save = FALSE)
+log_message(message, log_file = "logs/app_log.txt", save = FALSE)
 }
 \arguments{
 \item{message}{log message}
@@ -27,6 +27,7 @@ if (interactive()) {
 }
 \seealso{
 Other \strong{Utility Functions}: 
+\code{\link{add_log}()},
 \code{\link{scatter_plot}()}
 }
 \concept{\strong{Utility Functions}}

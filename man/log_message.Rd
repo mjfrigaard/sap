@@ -27,7 +27,6 @@ if (interactive()) {
 }
 \seealso{
 Other \strong{Utility Functions}: 
-\code{\link{add_log}()},
 \code{\link{scatter_plot}()}
 }
 \concept{\strong{Utility Functions}}

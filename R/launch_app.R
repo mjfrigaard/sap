@@ -41,33 +41,53 @@
 #' 
 #' @import shiny
 #' 
-launch_app <- function(app = "movies", options = list(), run = "p", ...) {
+launch_app <- function(app = NULL, options = list(), run = "p", ...) {
+  
   if (interactive()) {
     display_type(run = run)
   }
-  if (app == "bslib") {
-    shinyApp(
-      ui = movies_ui(bslib = TRUE),
-      server = movies_server,
-      options = options
-    )
-  } else if (app == "ggp2") {
-      shinyAppDir(
-        appDir = system.file("tidy-movies",
-          package = "sap"
-      ),
-      options = options
-      )
-  } else if (app == "quarto") {
-      quarto::quarto_preview(
-        system.file("quarto", "index.qmd",
-            package = "sap" ), 
-        render = "all")
-  } else {
-    shinyApp(
-      ui = movies_ui(...),
-      server = movies_server,
-      options = options
-    )
+
+  if (is.null(app)) {
+    app <- "movies"
   }
+
+  logr_msg(glue::glue("Launching app: {app}"), 
+           level = "INFO", log_file = "_logs/app_log.txt")
+  
+  tryCatch({
+    
+    if (app == "bslib") {
+      shinyApp(
+        ui = movies_ui(bslib = TRUE),
+        server = movies_server,
+        options = options
+      )
+    } else if (app == "ggp2") {
+      shinyAppDir(
+        appDir = system.file("tidy-movies", package = "sap"),
+        options = options
+      )
+    } else if (app == "quarto") {
+      quarto::quarto_preview(
+        system.file("quarto", "index.qmd", package = "sap"), 
+        render = "all"
+      )
+    } else {
+      shinyApp(
+        ui = movies_ui(...),
+        server = movies_server,
+        options = options
+      )
+    }
+    
+  }, error = function(e) {
+    
+    logr_msg(glue::glue("FATAL: Application failed to launch. Reason: {e$message}"), 
+             level = "FATAL",
+             log_file = "_logs/app_log.txt")
+    
+    stop("Application launch failed. Check logs for details.")
+    
+  })
+  
 }

@@ -94,9 +94,6 @@ mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {
 
   moduleServer(id, function(input, output, session) {
 
-    # observe({
-      # browser()
-
     inputs <- reactive({
       plot_title <- tools::toTitleCase(aes_inputs()$x)
         list(
@@ -111,27 +108,36 @@ mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {
     })
     
     output$scatterplot <- renderPlot({
-      plot <- scatter_plot(
-        # data --------------------
-        df = movies,
-        x_var = inputs()$x,
-        y_var = inputs()$y,
-        col_var = inputs()$z,
-        alpha_var = inputs()$alpha,
-        size_var = inputs()$size
-      )
-      plot +
-        ggplot2::labs(
-          title = inputs()$plot_title,
-            x = stringr::str_replace_all(tools::toTitleCase(inputs()$x), "_", " "),
-            y = stringr::str_replace_all(tools::toTitleCase(inputs()$y), "_", " ")
-        ) +
-        ggplot2::theme_minimal() +
-        ggplot2::theme(legend.position = "bottom")
+      
+      logr_msg("Preparing scatterplot in mod_scatter_display_server", 
+                level = "TRACE", log_file = "_logs/app_log.txt")
+      
+      tryCatch({
+        plot <- scatter_plot(
+          # data --------------------
+          df = movies,
+          x_var = inputs()$x,
+          y_var = inputs()$y,
+          col_var = inputs()$z,
+          alpha_var = inputs()$alpha,
+          size_var = inputs()$size
+        )
+        plot +
+          ggplot2::labs(
+            title = inputs()$plot_title,
+              x = stringr::str_replace_all(tools::toTitleCase(inputs()$x), "_", " "),
+              y = stringr::str_replace_all(tools::toTitleCase(inputs()$y), "_", " ")
+          ) +
+          ggplot2::theme_minimal() +
+          ggplot2::theme(legend.position = "bottom")
+
+    }, error = function(e) {
+
+      logr_msg(glue::glue("Failed to render scatterplot. Reason: {e$message}"), 
+               level = "ERROR", log_file = "_logs/app_log.txt")
+      
     })
       
     })
-
-  # })
-
+  })
 }

@@ -26,7 +26,6 @@ dev_mod_scatter_ui <- function(id) {
 
 dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
   moduleServer(id, function(input, output, session) {
-
     # load alternate data
     all_data <- tryCatch({
       log_message(
@@ -37,7 +36,7 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
     }, error = function(e) {
       log_message(
         message = sprintf("Error loading fst data: %s", e$message), 
-        log_file = "_logs/ggp2_log.txt", 
+        log_file = "_logs/ggp2_log.txt",
         save = TRUE)
       stop("Data loading failed.")
     })
@@ -59,8 +58,7 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
       }, error = function(e) {
         log_message(
           sprintf("Error processing graph data: %s", e$message), 
-          log_file = "_logs/ggp2_log.txt",
-          save = TRUE
+          log_file = "_logs/ggp2_log.txt"
         )
         NULL
       })
@@ -69,19 +67,20 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
     inputs <- reactive({
       tryCatch({
         plot_title <- tools::toTitleCase(aes_inputs()$plot_title)
+        
         log_message(
           sprintf("Processing plot title: '%s'", plot_title), 
-          log_file = "_logs/ggp2_log.txt", 
-          save = TRUE)
-    
-        input_list <- list(
-          x = var_inputs()$x,
-          y = var_inputs()$y,
-          z = var_inputs()$z,
-          alpha = aes_inputs()$alpha,
-          size = aes_inputs()$size,
-          plot_title = plot_title
-        )
+          log_file = "_logs/ggp2_log.txt")
+        
+          input_list <- list(
+            x = var_inputs()$x,
+            y = var_inputs()$y,
+            z = var_inputs()$z,
+            alpha = aes_inputs()$alpha,
+            size = aes_inputs()$size,
+            plot_title = plot_title
+          )
+        
         log_message(
           sprintf("Inputs constructed: %s", 
                   paste(names(input_list), input_list, sep = "=", collapse = ", ")
@@ -95,10 +94,9 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
           sprintf("Error in processing inputs: %s", conditionMessage(e)),
           log_file = "_logs/ggp2_log.txt",
           save = TRUE)
-        NULL  
+        NULL
       })
     })
-    
 
     observe({
         output$scatterplot <- renderPlot({

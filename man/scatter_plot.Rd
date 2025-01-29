@@ -54,7 +54,6 @@ scatter plot module.
 }
 
 Other \strong{Utility Functions}: 
-\code{\link{add_log}()},
 \code{\link{log_message}()}
 }
 \concept{\strong{Utility Functions}}

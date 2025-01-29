@@ -127,17 +127,24 @@ mod_var_input_ui <- function(id) {
 #' @export
 mod_var_input_server <- function(id) {
   moduleServer(id, function(input, output, session) {
-
+    
+    logr_msg("mod_var_input_server started", level = "TRACE",
+      log_file = "_logs/app_log.txt")
+    
     observe({
-      message <- paste("User selected: X =", input$x, 
-                       "Y =", input$y, 
-                       "Color =", input$z)
-      add_log(message = message, level = "INFO", )
+        logr_msg(
+          glue::glue("Reactive inputs collected: 
+                      x = {input$x}, y = {input$y}, z = {input$z}"),
+          level = "DEBUG", log_file = "_logs/app_log.txt")
     }) |> 
       bindEvent(c(input$x, input$y, input$z))
 
     return(
       reactive({
+        logr_msg(
+          glue::glue("Reactive inputs returned: 
+                      x = {input$x}, y = {input$y}, z = {input$z}"),
+          level = "DEBUG", log_file = "_logs/app_log.txt")
         list(
           "x" = input$x,
           "y" = input$y,

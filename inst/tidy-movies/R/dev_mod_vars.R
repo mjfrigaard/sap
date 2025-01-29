@@ -1,11 +1,6 @@
 dev_mod_vars_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    textInput(
-      inputId = ns("plot_title"),
-      label = "Plot title",
-      placeholder = "Enter plot title"
-    ),
     selectInput(
       inputId = ns("y"),
       label = "Y-axis:",

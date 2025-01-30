@@ -108,18 +108,35 @@ mod_aes_input_ui <- function(id) {
 #' 
 #' @export
 mod_aes_input_server <- function(id) {
-
   moduleServer(id, function(input, output, session) {
 
     observe({
       output$vals <- renderPrint({
-        all_vals <- reactiveValuesToList(input,
-                                         all.names = TRUE)
+        all_vals <- reactiveValuesToList(input, all.names = TRUE)
         lobstr::tree(all_vals)
       })
-    }) |> 
-      bindEvent(c(input$alpha, input$size, input$x))
-    
+      
+      # use shiny to validate input and log warnings/errors
+      validate(
+        need(try(input$alpha >= 0 & input$alpha <= 1), 
+              "Alpha must be between 0 and 1")
+      )
+      if (input$alpha < 0 || input$alpha > 1) {
+        logr_msg(message = "Alpha value out of range: {alpha}", 
+        level = "WARN", log_file = "_logs/app_log.txt")
+      }
+
+      validate(
+        need(try(input$size > 0), 
+              "Size must be positive")
+      )
+      if (input$size <= 0) {
+        logr_msg(message = "Invalid size value: {size}", 
+        level = "ERROR", log_file = "_logs/app_log.txt")
+      }
+
+    }) |> bindEvent(c(input$alpha, input$size))
+
     return(
       reactive({
         list(
@@ -129,6 +146,5 @@ mod_aes_input_server <- function(id) {
         )
       })
     )
-
   })
 }

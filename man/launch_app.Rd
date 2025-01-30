@@ -9,8 +9,8 @@ launch_app(app = NULL, options = list(), run = "p", ...)
 \arguments{
 \item{app}{which app to run. Options are:
 \itemize{
-\item \code{"movies"} = Default app
-\item \code{"bslib"} = Alternative \code{bslib} layout
+\item \code{NULL} = the default app (\code{"movies"})
+\item \code{"bslib"} = alternative \code{bslib} layout
 \item \code{"ggp2"} = \code{ggplot2movies} (tidy) data app.
 \item \code{"quarto"} = Quarto movies app.
 }}
@@ -49,6 +49,7 @@ The application uses:
 if (interactive()) {
   launch_app()
 }
+
 
 }
 \seealso{

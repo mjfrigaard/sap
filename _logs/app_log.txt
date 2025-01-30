@@ -1,0 +1,63 @@
+INFO [2025-01-29 09:28:24] Launching app: movies
+INFO [2025-01-29 09:28:24] Launching UI with bslib = FALSE
+ERROR [2025-01-29 09:28:27] Failed to render scatterplot. Reason: 'text' must be a character vector
+INFO [2025-01-29 09:28:45] Launching app: movies
+INFO [2025-01-29 09:28:45] Launching UI with bslib = FALSE
+TRACE [2025-01-29 09:28:45] mod_var_input_server started
+DEBUG [2025-01-29 09:28:45] Reactive inputs collected: 
+x = imdb_rating, y = audience_score, z = mpaa_rating
+TRACE [2025-01-29 09:28:45] Preparing scatterplot in mod_scatter_display_server
+ERROR [2025-01-29 09:28:45] Failed to render scatterplot. Reason: 'text' must be a character vector
+TRACE [2025-01-29 09:29:15] Preparing scatterplot in mod_scatter_display_server
+ERROR [2025-01-29 09:29:15] Failed to render scatterplot. Reason: 'text' must be a character vector
+TRACE [2025-01-29 09:29:18] Preparing scatterplot in mod_scatter_display_server
+ERROR [2025-01-29 09:29:18] Failed to render scatterplot. Reason: 'text' must be a character vector
+TRACE [2025-01-29 09:29:25] Preparing scatterplot in mod_scatter_display_server
+ERROR [2025-01-29 09:29:25] Failed to render scatterplot. Reason: 'text' must be a character vector
+TRACE [2025-01-29 09:29:27] Preparing scatterplot in mod_scatter_display_server
+ERROR [2025-01-29 09:29:27] Failed to render scatterplot. Reason: 'text' must be a character vector
+INFO [2025-01-29 09:35:30] Launching app: movies
+INFO [2025-01-29 09:35:30] Launching UI with bslib = FALSE
+INFO [2025-01-29 09:35:32] New user session started
+ERROR [2025-01-29 09:35:33] Failed to render scatterplot. Reason: 'text' must be a character vector
+INFO [2025-01-29 09:36:02] Launching app: movies
+INFO [2025-01-29 09:36:02] Launching UI with bslib = FALSE
+INFO [2025-01-29 09:36:03] New user session started
+TRACE [2025-01-29 09:36:03] mod_var_input_server started
+DEBUG [2025-01-29 09:36:03] Variable selection module initialized
+DEBUG [2025-01-29 09:36:03] Aesthetic selection module initialized
+TRACE [2025-01-29 09:36:03] Server function execution completed
+DEBUG [2025-01-29 09:36:03] Reactive inputs collected: 
+x = imdb_rating, y = audience_score, z = mpaa_rating
+TRACE [2025-01-29 09:36:03] Preparing scatterplot in mod_scatter_display_server
+ERROR [2025-01-29 09:36:03] Failed to render scatterplot. Reason: 'text' must be a character vector
+INFO [2025-01-29 11:00:56] Launching app: movies
+INFO [2025-01-29 11:00:56] Launching UI with bslib = FALSE
+INFO [2025-01-29 11:00:58] New user session started
+ERROR [2025-01-29 11:00:58] Failed to render scatterplot. Reason: 'text' must be a character vector
+INFO [2025-01-29 11:01:15] Launching app: movies
+INFO [2025-01-29 11:01:15] Launching UI with bslib = FALSE
+INFO [2025-01-29 11:01:16] New user session started
+TRACE [2025-01-29 11:01:16] mod_var_input_server started
+TRACE [2025-01-29 11:01:16] Server function execution completed
+DEBUG [2025-01-29 11:01:16] Reactive inputs collected: 
+x = imdb_rating, y = audience_score, z = mpaa_rating
+TRACE [2025-01-29 11:01:16] Preparing scatterplot in mod_scatter_display_server
+ERROR [2025-01-29 11:01:16] Failed to render scatterplot. Reason: 'text' must be a character vector
+INFO [2025-01-29 11:23:22] Launching app: ggp2
+INFO [2025-01-29 11:27:56] Launching app: ggp2
+INFO [2025-01-29 11:29:03] Launching app: ggp2
+INFO [2025-01-29 13:52:07] Launching UI with bslib = FALSE
+INFO [2025-01-29 13:52:09] New user session started
+ERROR [2025-01-29 13:52:10] Failed to render scatterplot. Reason: 'text' must be a character vector
+INFO [2025-01-29 13:54:00] Launching UI with bslib = FALSE
+INFO [2025-01-29 13:54:02] New user session started
+ERROR [2025-01-29 13:54:02] Failed to render scatterplot. Reason: 'text' must be a character vector
+INFO [2025-01-29 13:55:33] Launching UI with bslib = FALSE
+INFO [2025-01-29 13:55:35] New user session started
+TRACE [2025-01-29 13:55:35] mod_var_input_server started
+TRACE [2025-01-29 13:55:35] Server function execution completed
+DEBUG [2025-01-29 13:55:35] Reactive inputs: 
+x = imdb_rating, y = audience_score, z = mpaa_rating
+TRACE [2025-01-29 13:55:35] Preparing scatterplot in mod_scatter_display_server
+ERROR [2025-01-29 13:55:36] Failed to render scatterplot. Reason: 'text' must be a character vector

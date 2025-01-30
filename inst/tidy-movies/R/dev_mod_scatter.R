@@ -26,22 +26,28 @@ dev_mod_scatter_ui <- function(id) {
 
 dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
   moduleServer(id, function(input, output, session) {
-    # load alternate data
+
     all_data <- tryCatch({
+      
       log_message(
         message = "Loading fst data", 
-        log_file = "_logs/ggp2_log.txt",
-        save = TRUE)
+        log_file = "_logs/ggp2_log.txt", save = TRUE)
       fst::read_fst("tidy_movies.fst")
     }, error = function(e) {
       log_message(
         message = sprintf("Error loading fst data: %s", e$message), 
-        log_file = "_logs/ggp2_log.txt",
-        save = TRUE)
+        log_file = "_logs/ggp2_log.txt", save = TRUE)
       stop("Data loading failed.")
+
     })
 
     graph_data <- reactive({
+
+      validate(
+        need(try(is.logical(input$missing)), 
+              "Missing must be logical")
+      )
+
       tryCatch({
         if (input$missing) {
           log_message("Removing missing values.", 
@@ -62,15 +68,19 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
         )
         NULL
       })
-    }) |> bindEvent(input$missing)
+
+    }) |> 
+      bindEvent(input$missing)
 
     inputs <- reactive({
+
       tryCatch({
         plot_title <- tools::toTitleCase(aes_inputs()$plot_title)
-        
-        log_message(
-          sprintf("Processing plot title: '%s'", plot_title), 
-          log_file = "_logs/ggp2_log.txt")
+        if(nchar(plot_title) > 0) {
+          log_message(
+            sprintf("Processing plot title: '%s'", plot_title), 
+            log_file = "_logs/ggp2_log.txt")
+        }
         
           input_list <- list(
             x = var_inputs()$x,
@@ -82,12 +92,11 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
           )
         
         log_message(
-          sprintf("Inputs constructed: %s", 
-                  paste(names(input_list), input_list, sep = "=", collapse = ", ")
-                ),
-                log_file = "_logs/ggp2_log.txt",
-                save = TRUE)
-    
+          sprintf("Inputs: %s", 
+                  paste(
+                    names(input_list), input_list, sep = " = ", collapse = ", ")
+                  ),
+                log_file = "_logs/ggp2_log.txt", save = TRUE)
         input_list
       }, error = function(e) {
         log_message(
@@ -120,7 +129,6 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
             ggplot2::theme(legend.position = "bottom")
         })
     }) |>
-      # bind this to variable inputs and missing checkbox output
       bindEvent(graph_data(), inputs())
   })
 }

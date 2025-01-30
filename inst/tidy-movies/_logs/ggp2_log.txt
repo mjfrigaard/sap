@@ -1,0 +1,26 @@
+[2025-01-29 11:29:03] Loading fst data 
+[2025-01-29 11:31:36] Loading fst data 
+[2025-01-29 11:32:22] Loading fst data 
+[2025-01-29 11:32:22] Removing missing values. 
+[2025-01-29 11:32:22] Inputs constructed: x=year, y=budget, z=mpaa, alpha=0.5, size=2, plot_title= 
+[2025-01-29 11:33:16] Loading fst data 
+[2025-01-29 11:33:17] Removing missing values. 
+[2025-01-29 11:33:17] Inputs constructed: x=year,
+y=budget,
+z=mpaa,
+alpha=0.5,
+size=2,
+plot_title= 
+[2025-01-29 11:34:04] Loading fst data 
+[2025-01-29 11:34:04] Removing missing values. 
+[2025-01-29 11:34:04] Inputs constructed: x = year, y = budget, z = mpaa, alpha = 0.5, size = 2, plot_title =  
+[2025-01-29 11:34:40] Loading fst data 
+[2025-01-29 11:34:40] Removing missing values. 
+[2025-01-29 11:34:40] Inputs: x = year, y = budget, z = mpaa, alpha = 0.5, size = 2, plot_title =  
+[2025-01-29 11:35:46] Loading fst data 
+[2025-01-29 11:35:46] Removing missing values. 
+[2025-01-29 11:35:46] Inputs: x = year, y = budget, z = mpaa, alpha = 0.5, size = 2, plot_title =  
+[2025-01-29 11:35:52] Loading fst data 
+[2025-01-29 11:35:52] Removing missing values. 
+[2025-01-29 11:35:52] Inputs: x = year, y = budget, z = mpaa, alpha = 0.5, size = 2, plot_title =  
+[2025-01-29 11:35:57] Inputs: x = year, y = budget, z = mpaa, alpha = 0.5, size = 2, plot_title = Title 

@@ -28,22 +28,34 @@
 #' @export
 #' 
 movies_server <- function(input, output, session) {
-
-      output$vals <- renderPrint({
-        app_vals <- reactiveValuesToList(x = input, all.names = TRUE)
-        lobstr::tree(app_vals)
-      })
-  
-      # observe({
-        # browser()
       
-      selected_vars <- mod_var_input_server("vars")
-  
-      selected_aes <- mod_aes_input_server("aes")
+  logr_msg(message = "New user session started", 
+           level = "INFO", log_file = "_logs/app_log.txt")
 
-      mod_scatter_display_server("plot", 
-                                  var_inputs = selected_vars, 
-                                  aes_inputs = selected_aes)
-        
-      # })
-}
+  tryCatch({
+    selected_vars <- mod_var_input_server("vars")
+  }, error = function(e) {
+    logr_msg(glue::glue("Error in variable selection module: {e$message}"), 
+           level = "ERROR", log_file = "_logs/app_log.txt")
+  })
+
+  tryCatch({
+    selected_aes <- mod_aes_input_server("aes")
+  }, error = function(e) {
+    logr_msg(glue::glue("Error in aesthetics selection module: {e$message}"),
+           level = "ERROR", log_file = "_logs/app_log.txt")
+  })
+
+  tryCatch({
+    mod_scatter_display_server("plot", 
+                              var_inputs = selected_vars, 
+                              aes_inputs = selected_aes)
+  }, error = function(e) {
+    logr_msg(glue::glue("Error in scatter display: {e$message}"), 
+    level = "ERROR", log_file = "_logs/app_log.txt")
+  })
+
+  logr_msg(message = "Server function execution completed", 
+           level = "TRACE", log_file = "_logs/app_log.txt")
+  }
+

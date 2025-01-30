@@ -57,7 +57,17 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `13_logging`
+## `14_tests-suite`
 
-[`13_logging`](https://github.com/mjfrigaard/sap/tree/13_logging) covers how to use logging to record application behavior, trace issues, and ensure performance meets expectations. 
+[`14_tests-suite`](https://github.com/mjfrigaard/sap/tree/14_tests-suite) covers setting up a `testthat` test suite in your Shiny app-package.
 
+The `tests/` folder: 
+
+```sh
+tests/
+├── testthat
+│   └── test-scatter_plot.R
+└── testthat.R
+
+2 directories, 2 files
+```

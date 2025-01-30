@@ -57,17 +57,15 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `14_tests-suite`
+## `15_specs`
 
-[`14_tests-suite`](https://github.com/mjfrigaard/sap/tree/14_tests-suite) covers setting up a `testthat` test suite in your Shiny app-package.
+[`15_specs`](https://github.com/mjfrigaard/sap/tree/15_specs) covers specifying application specifications for development and testing in your Shiny app-package.
 
-The `tests/` folder: 
+The `vignettes/` folder: 
 
 ```sh
-tests/
-├── testthat
-│   └── test-scatter_plot.R
-└── testthat.R
+vignettes/
+└── specs.Rmd
 
-2 directories, 2 files
+1 directory, 1 file
 ```

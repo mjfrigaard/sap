@@ -8,3 +8,4 @@ sap*.tar.gz
 sap*.tgz
 
 /.quarto/
+inst/doc

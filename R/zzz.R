@@ -69,19 +69,17 @@
   depends <- parse_dependencies(depends)
 
   
-  cli::cli_h2("Welcome to the {.pkg {pkgname}} package (version {version}) {cli::symbol$smiley}!")
+  cli::cli_inform("{.strong Welcome to the {.pkg {pkgname}} package (version {version}) {cli::symbol$smiley}!}", class = "packageStartupMessage")
   
-  cli::cli_h3("Current branch:")
-  cli::cli_text("{.emph {cli::symbol$pointer} {branch}}")
+  cli::cli_inform("{.strong Current branch:}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} {branch}}", class = "packageStartupMessage")
 
-  cli::cli_h3("Dependencies:")
-  cli::cli_text("{.emph {cli::symbol$pointer} Imports: {imports}}")
-  cli::cli_text("{.emph {cli::symbol$pointer} Suggests: {suggests}}")
-  cli::cli_text("{.emph {cli::symbol$pointer} Depends: {depends}}")
+  cli::cli_inform("{.strong Dependencies:}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} Imports: {imports}}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} Suggests: {suggests}}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} Depends: {depends}}", class = "packageStartupMessage")
 
-  cli::cli_h3("Loaded from:")
-  cli::cli_text("{.emph {cli::symbol$pointer} {libname}}")
-
-  cli::cli_inform(c(), class = "packageStartupMessage")
+  cli::cli_inform("{.strong Loaded from:}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} {libname}}", class = "packageStartupMessage")
 
 }

@@ -57,9 +57,7 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `16.1_test-fixtures`
+## `13_logging`
 
-[`16.1_test-fixtures`](https://github.com/mjfrigaard/sap/tree/16.1_test-fixtures) covers using test fixtures (i.e., scripts, data, etc.) to help improve the quality of the tests.
-
-
+[`13_logging`](https://github.com/mjfrigaard/sap/tree/13_logging) covers using test fixtures (i.e., scripts, data, etc.) to help improve the quality of the tests.
 

@@ -57,15 +57,9 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `15_specs`
+## `16.1_test-fixtures`
 
-[`15_specs`](https://github.com/mjfrigaard/sap/tree/15_specs) covers specifying application specifications for development and testing in your Shiny app-package.
+[`16.1_test-fixtures`](https://github.com/mjfrigaard/sap/tree/16.1_test-fixtures) covers using test fixtures (i.e., scripts, data, etc.) to help improve the quality of the tests.
 
-The `vignettes/` folder: 
 
-```sh
-vignettes/
-└── specs.Rmd
 
-1 directory, 1 file
-```

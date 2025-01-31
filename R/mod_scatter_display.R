@@ -95,7 +95,7 @@ mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {
   moduleServer(id, function(input, output, session) {
 
     inputs <- reactive({
-      plot_title <- tools::toTitleCase(aes_inputs()$x)
+      plot_title <- tools::toTitleCase(aes_inputs()$plot_title)
         list(
           x = var_inputs()$x,
           y = var_inputs()$y,

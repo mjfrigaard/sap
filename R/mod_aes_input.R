@@ -65,7 +65,7 @@ mod_aes_input_ui <- function(id) {
       value = 2
     ),
     textInput(
-      inputId = ns("x"),
+      inputId = ns("plot_title"),
       label = "Plot title",
       placeholder = "Enter plot title"
     )
@@ -111,11 +111,6 @@ mod_aes_input_server <- function(id) {
   moduleServer(id, function(input, output, session) {
 
     observe({
-      output$vals <- renderPrint({
-        all_vals <- reactiveValuesToList(input, all.names = TRUE)
-        lobstr::tree(all_vals)
-      })
-      
       # use shiny to validate input and log warnings/errors
       validate(
         need(try(input$alpha >= 0 & input$alpha <= 1), 
@@ -125,7 +120,6 @@ mod_aes_input_server <- function(id) {
         logr_msg(message = "Alpha value out of range: {alpha}", 
         level = "WARN", log_file = "_logs/app_log.txt")
       }
-
       validate(
         need(try(input$size > 0), 
               "Size must be positive")
@@ -134,7 +128,6 @@ mod_aes_input_server <- function(id) {
         logr_msg(message = "Invalid size value: {size}", 
         level = "ERROR", log_file = "_logs/app_log.txt")
       }
-
     }) |> bindEvent(c(input$alpha, input$size))
 
     return(
@@ -142,7 +135,7 @@ mod_aes_input_server <- function(id) {
         list(
           "alpha" = input$alpha,
           "size" = input$size,
-          "plot_title" = input$x
+          "plot_title" = input$plot_title
         )
       })
     )

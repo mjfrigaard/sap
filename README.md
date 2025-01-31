@@ -57,15 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `15_specs`
+## `16.1_test-help`
 
-[`15_specs`](https://github.com/mjfrigaard/sap/tree/15_specs) covers specifying application specifications for development and testing in your Shiny app-package.
-
-The `vignettes/` folder: 
-
-```sh
-vignettes/
-└── specs.Rmd
-
-1 directory, 1 file
-```
+[`16.1_test-help`](https://github.com/mjfrigaard/sap/tree/16.1_test-help) covers tools to help write efficient unit tests.

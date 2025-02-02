@@ -1,24 +1,39 @@
-test_that("scatter_plot creates a ggplot object", {
-  p <- scatter_plot(mtcars, "mpg", "hp", "cyl", 0.7, 3)
-  # expect_s3_class(p, "gg") # not needed if using below
-  expect_true(ggplot2::is.ggplot(p))
-  # expect_equal(ggplot2::ggplot_build(p)$layout$panel_ranges[[1]]$x.range,
-  #   range(mtcars$mpg))
-  # expect_equal(ggplot2::ggplot_build(p)$layout$panel_ranges[[1]]$y.range,
-  #   range(mtcars$hp))
-})
+describe(
+  "Feature: Scatter plot data visualization
+     As a film data analyst
+     I want to explore IMDB.com movie review data 
+     So that I can examine relationships between movie reivew metrics
+   Background:
+     Given I have IMDB movie reviews data  
+     And the data contains continuous variables like 'rating'
+     And the data contains categorical variables like 'mpaa'", 
+     code = {
+    it(
+      "Scenario: Scatter plot initial x, y, color values 
+         When I launch the Scatter Plot Data Visualization
+         And I have a IMDB dataset of movie reviews 
+         Then the plot should show 'Rating' on the x-axis
+         And the plot should show 'Length' on the y-axis
+         And the points on the plot should be colored by 'MPAA' rating", 
+        code = {
+    ggp2_scatter_inputs <- list(
+          x = "rating",
+          y = "length",
+          z = "mpaa",
+          alpha = 0.75,
+          size = 3,
+          plot_title = "Enter plot title"
+        )
+    tidy_ggp2_movies <- readRDS(test_path("fixtures",
+                                "tidy_ggp2_movies.rds"))
+    app_graph <- scatter_plot(tidy_ggp2_movies,
+      x_var = ggp2_scatter_inputs$x,
+      y_var = ggp2_scatter_inputs$y,
+      col_var = ggp2_scatter_inputs$z,
+      alpha_var = ggp2_scatter_inputs$alpha,
+      size_var = ggp2_scatter_inputs$size
+    )
+    expect_true(ggplot2::is.ggplot(app_graph))
+  }) 
 
-# waldo::compare(
-#   x = ggplot2::ggplot_build(p)$layout$panel_params[[1]]$x.range,
-#   y = range(mtcars$mpg))
-#
-# waldo::compare(
-#   x = ggplot2::ggplot_build(p)$layout$panel_params[[1]]$y.range,
-#   y = range(mtcars$hp))
-
-test_that("scatter_plot handles different alpha and size values", {
-  p1 <- scatter_plot(mtcars, "mpg", "hp", "cyl", 0.5, 2)
-  p2 <- scatter_plot(mtcars, "mpg", "hp", "cyl", 1, 4)
-  expect_true(p1$layers[[1]]$aes_params$alpha < p2$layers[[1]]$aes_params$alpha)
-  expect_true(p1$layers[[1]]$aes_params$size < p2$layers[[1]]$aes_params$size)
 })

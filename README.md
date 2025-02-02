@@ -57,6 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `16.1_test-help`
+## `16.2_test-data`
 
-[`16.1_test-help`](https://github.com/mjfrigaard/sap/tree/16.1_test-help) covers using the [`ensure` package](https://simonpcouch.github.io/ensure/) to help write tests.
+[`16.2_test-data`](https://github.com/mjfrigaard/sap/tree/16.2_test-data) covers using the [`ensure` package](https://simonpcouch.github.io/ensure/) to help write tests.

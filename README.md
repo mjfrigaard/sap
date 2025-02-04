@@ -42,7 +42,7 @@ Launch an app with `launch()`
 launch(app = "02.3_proj-app")
 ```
 
-Or use the terminal
+Or use the terminal:
 
 ``` bash
 git clone https://github.com/mjfrigaard/sap.git
@@ -57,6 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `16.2_test-data`
+## `16.3_test-logger`
 
-[`16.2_test-data`](https://github.com/mjfrigaard/sap/tree/16.2_test-data) covers using the [`ensure` package](https://simonpcouch.github.io/ensure/) to help write tests.
+[`16.3_test-logger`](https://github.com/mjfrigaard/sap/tree/16.3_test-logger) covers using the [`logger` package](https://daroczig.github.io/logger/index.html) and storing test [utility functions](https://r-pkgs.org/testing-design.html#testthat-helper-files).

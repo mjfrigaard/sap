@@ -24,8 +24,11 @@ describe(
           size = 3,
           plot_title = "Enter plot title"
         )
+    test_logger(start = "Step1", msg = "Loading tidy_ggp2_movies.rds data")
     tidy_ggp2_movies <- readRDS(test_path("fixtures",
                                 "tidy_ggp2_movies.rds"))
+    test_logger(end = "Step1", msg = "Data loaded successfully")
+    test_logger(start = "Step2", msg = "Creating graph")
     app_graph <- scatter_plot(tidy_ggp2_movies,
       x_var = ggp2_scatter_inputs$x,
       y_var = ggp2_scatter_inputs$y,
@@ -33,6 +36,7 @@ describe(
       alpha_var = ggp2_scatter_inputs$alpha,
       size_var = ggp2_scatter_inputs$size
     )
+    test_logger(end = "Step2", msg = "Graph created")
     expect_true(ggplot2::is.ggplot(app_graph))
   }) 
 

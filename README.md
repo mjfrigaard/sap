@@ -57,6 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `16.3_test-logger`
+## `16.4_test-snapshots`
 
-[`16.3_test-logger`](https://github.com/mjfrigaard/sap/tree/16.3_test-logger) covers using the [`logger` package](https://daroczig.github.io/logger/index.html) and storing test [utility functions](https://r-pkgs.org/testing-design.html#testthat-helper-files).
+[`16.4_test-snapshots`](https://github.com/mjfrigaard/sap/tree/16.4_test-snapshots) covers creating test snapshots. 

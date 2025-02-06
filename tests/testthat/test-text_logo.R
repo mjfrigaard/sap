@@ -19,9 +19,9 @@ describe(
   code = {
 
   test_that("text_logo('h1')", code = {
-    test_logger(start = "snap", msg = "text_logo('})')")
-    expect_snapshot(text_logo("h1"))
     test_logger(start = "snap", msg = "text_logo('h1')")
+    expect_snapshot(text_logo("h1"))
+    test_logger(end = "snap", msg = "text_logo('h1')")
   })  
 })
 describe(

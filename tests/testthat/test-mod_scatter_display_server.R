@@ -37,7 +37,7 @@ describe(
           ),
           expr = {
             
-            test_logger(start = "DISPLAY", msg = "selected initial values")
+            test_logger(start = "COLLECT", msg = "collected module values")
             
             expect_equal(
               object = inputs(),
@@ -51,7 +51,7 @@ describe(
               )
             )
             
-            test_logger(end = "DISPLAY", msg = "selected initial values")
+            test_logger(end = "COLLECT", msg = "collected module values")
             
         })
       })

@@ -22,29 +22,24 @@ describe(
           code = {
           
             shiny::testServer(app = mod_var_input_server, expr = {
-              
-              test_logger(start = "var_inputs", msg = "initial returned()")
 
               test_vals <- list(
                 x = "audience_score",
                 y = "imdb_rating",
                 z = "mpaa_rating")
 
-              # change inputs
-              test_logger(start = "changing inputs", msg = "changing returned()")
+              test_logger(start = "RETURNED", msg = "test_vals vs. session$returned()")
               
               session$setInputs(
                 x = "audience_score",
                 y = "imdb_rating",
                 z = "mpaa_rating")
-              
-              test_logger(end = "changing inputs", msg = "changing returned()")
 
               expect_equal(
                 object = session$returned(),
                 expected = test_vals)
             
-              test_logger(end = "var_inputs", msg = "initial returned()")
+              test_logger(end = "RETURNED", msg = "test_vals vs. session$returned()")
               
               session$flushReact()
               

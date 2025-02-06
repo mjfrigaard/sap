@@ -57,6 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `16.4_test-snapshots`
+## `17_test-modules`
 
-[`16.4_test-snapshots`](https://github.com/mjfrigaard/sap/tree/16.4_test-snapshots) covers creating test snapshots. 
+[`17_test-modules`](https://github.com/mjfrigaard/sap/tree/17_test-modules) covers testing modules with [`testServer()`](https://shiny.posit.co/r/articles/improve/server-function-testing/). 

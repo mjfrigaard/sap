@@ -45,12 +45,6 @@
 mod_var_input_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    strong(
-      code("var_input"),
-      "module reactive ",
-      code("inputs")
-      ),
-    verbatimTextOutput(ns("vals")),
     selectInput(
       inputId = ns("y"),
       label = "Y-axis:",
@@ -128,23 +122,20 @@ mod_var_input_ui <- function(id) {
 mod_var_input_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     
-    logr_msg("mod_var_input_server started",
-      level = "TRACE", log_file = "_logs/app_log.txt")
+    logr_msg("mod_var_input_server started", level = "TRACE")
     
     observe({
         logr_msg(
-          glue::glue("Reactive inputs: 
-                      x = {input$x}, y = {input$y}, z = {input$z}"),
-          level = "DEBUG", log_file = "_logs/app_log.txt")
+          glue::glue("Reactive inputs: x = {input$x}, y = {input$y}, z = {input$z}"),
+          level = "DEBUG")
     }) |> 
       bindEvent(c(input$x, input$y, input$z))
 
     return(
       reactive({
         logr_msg(
-          glue::glue("Reactive inputs returned: 
-                      x = {input$x}, y = {input$y}, z = {input$z}"),
-          level = "DEBUG", log_file = "_logs/app_log.txt")
+          glue::glue("Reactive inputs returned: x = {input$x}, y = {input$y}, z = {input$z}"),
+          level = "DEBUG")
         list(
           "x" = input$x,
           "y" = input$y,

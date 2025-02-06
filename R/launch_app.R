@@ -52,8 +52,8 @@ launch_app <- function(app = NULL, options = list(), run = "p", ...) {
     app <- "movies"
   }
 
-  # logr_msg(glue::glue("Launching app: {app}"), 
-  #          level = "INFO", log_file = "_logs/app_log.txt")
+  logr_msg(glue::glue("Launching app: {app}"),
+           level = "INFO")
   
   tryCatch({
     
@@ -84,8 +84,7 @@ launch_app <- function(app = NULL, options = list(), run = "p", ...) {
   }, error = function(e) {
     
     logr_msg(glue::glue("FATAL: Application failed to launch. Reason: {e$message}"), 
-             level = "FATAL",
-             log_file = "_logs/app_log.txt")
+             level = "FATAL")
     
     stop("Application launch failed. Check logs for details.")
     

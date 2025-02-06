@@ -39,13 +39,12 @@ movies_ui <- function(bslib = FALSE) {
   
   if (!is.logical(bslib)) {
     logr_msg("Argument 'bslib' must be a logical value", level = "ERROR",
-             log_file = "_logs/app_log.txt")
+             )
       stop("Invalid argument: 'bslib' must be TRUE or FALSE.")
     }
   
     logr_msg(
-      glue::glue("Launching UI with bslib = {bslib}"), level = "INFO",
-      log_file = "_logs/app_log.txt")
+      glue::glue("Launching UI with bslib = {bslib}"), level = "INFO")
   
   if (isFALSE(bslib)) {
     tagList(
@@ -70,11 +69,6 @@ movies_ui <- function(bslib = FALSE) {
                 tags$h4("Scatter Plot")
               ),
               bslib::card_body(fillable = TRUE,
-                strong(
-                  code("movies_server()"),
-                  "reactive values"
-                  ),
-                verbatimTextOutput(outputId = "vals"),
                 mod_scatter_display_ui("plot")
               ),
               bslib::card_footer(
@@ -123,11 +117,6 @@ movies_ui <- function(bslib = FALSE) {
                 )
               ),
              bslib::card_body(
-              strong(
-                code("movies_server()"),
-                "reactive values"
-                ),
-              verbatimTextOutput(outputId = "vals"),
               mod_scatter_display_ui("plot")
             )
           )

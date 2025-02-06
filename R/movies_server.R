@@ -29,21 +29,24 @@
 #' 
 movies_server <- function(input, output, session) {
       
-  logr_msg(message = "New user session started", 
-           level = "INFO", log_file = "_logs/app_log.txt")
+  logr_msg(message = "New user session started", level = "INFO")
+
+  observe({
+    browser()
+  
 
   tryCatch({
     selected_vars <- mod_var_input_server("vars")
   }, error = function(e) {
     logr_msg(glue::glue("Error in variable selection module: {e$message}"), 
-           level = "ERROR", log_file = "_logs/app_log.txt")
+           level = "ERROR")
   })
 
   tryCatch({
     selected_aes <- mod_aes_input_server("aes")
   }, error = function(e) {
     logr_msg(glue::glue("Error in aesthetics selection module: {e$message}"),
-           level = "ERROR", log_file = "_logs/app_log.txt")
+           level = "ERROR")
   })
 
   tryCatch({
@@ -52,10 +55,13 @@ movies_server <- function(input, output, session) {
                               aes_inputs = selected_aes)
   }, error = function(e) {
     logr_msg(glue::glue("Error in scatter display: {e$message}"), 
-    level = "ERROR", log_file = "_logs/app_log.txt")
+    level = "ERROR")
   })
 
-  logr_msg(message = "Server function execution completed", 
-           level = "TRACE", log_file = "_logs/app_log.txt")
-  }
+  logr_msg(message = "Server function execution completed", level = "TRACE")
+
+  })
+
+}
+
 

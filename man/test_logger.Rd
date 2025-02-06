@@ -17,7 +17,7 @@ test_logger(start = NULL, end = NULL, msg)
 Logs messages and returns \code{NULL} (used for side effects).
 }
 \description{
-\code{test_logger()} logs informational messages using the \code{logger} package. It
+\code{test_logger()} logs informational messages using the \code{cli} package. It
 allows optional \code{start} and \code{end} tags to indicate the beginning and end of
 a process.
 }
@@ -25,10 +25,10 @@ a process.
 \itemize{
 \item If both \code{start} and \code{end} are \code{NULL}, logs only the message.
 \item If \code{start} is provided and \code{end} is \code{NULL}, logs a message prefixed with
-\verb{[ START <start> = <msg> ]}.
+\verb{START <start> = <msg>}.
 \item If \code{start} is \code{NULL} and \code{end} is provided, logs a message prefixed with
-\verb{[ END <end> = <msg> ]}.
-\item If both \code{start} and \code{end} are provided, logs both \verb{[ START ]} and \verb{[ END ]}
+\verb{END <end> = <msg>}.
+\item If both \code{start} and \code{end} are provided, logs both \code{START} and \code{END}
 messages.
 }
 }

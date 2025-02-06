@@ -52,7 +52,45 @@ describe(
             )
             
             test_logger(end = "COLLECT", msg = "collected module values")
+
+            test_logger(start = "OUTPUT", msg = "is list")
+            expect_true(
+              object = is.list(output$scatterplot))
+            test_logger(end = "OUTPUT", msg = "is list")
             
-        })
+            test_logger(start = "OUTPUT", msg = "names")
+            expect_equal(
+              object = names(output$scatterplot),
+              expected = c("src", "width", "height", "alt", "coordmap"))
+            test_logger(end = "OUTPUT", msg = "names")
+            
+            test_logger(start = "OUTPUT", msg = "Plot object")
+            expect_equal(
+              object = output$scatterplot[["alt"]],
+              expected = "Plot object")
+            test_logger(end = "OUTPUT", msg = "Plot object")
+            
+            test_logger(start = "OUTPUT", msg = "is ggplot")
+            plot <- scatter_plot(movies,
+              x_var = inputs()$x,
+              y_var = inputs()$y,
+              col_var = inputs()$z,
+              alpha_var = inputs()$alpha,
+              size_var = inputs()$size) +
+            ggplot2::labs(
+              title = inputs()$plot_title,
+              x = stringr::str_replace_all(
+                      tools::toTitleCase(inputs()$x), "_", " "),
+              y = stringr::str_replace_all(
+                      tools::toTitleCase(inputs()$y), "_", " ")) +
+            ggplot2::theme_minimal() +
+            ggplot2::theme(legend.position = "bottom")
+            
+            testthat::expect_true(ggplot2::is.ggplot(plot))
+            test_logger(end = "OUTPUT", msg = "is ggplot")
+            
+            print(plot)
+            
+          })
       })
   })

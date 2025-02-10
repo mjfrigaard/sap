@@ -57,6 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `17_test-modules`
+## `18_test-system`
 
-[`17_test-modules`](https://github.com/mjfrigaard/sap/tree/17_test-modules) covers testing modules with [`testServer()`](https://shiny.posit.co/r/articles/improve/server-function-testing/). 
+[`18_test-system`](https://github.com/mjfrigaard/sap/tree/18_test-system) covers system tests with [`shinytest2`](https://rstudio.github.io/shinytest2/). 

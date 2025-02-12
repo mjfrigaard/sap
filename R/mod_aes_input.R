@@ -123,7 +123,7 @@ mod_aes_input_server <- function(id) {
       )
       if (input$alpha < 0 || input$alpha > 1) {
         logr_msg(message = "Alpha value out of range: {alpha}", 
-        level = "WARN", log_file = "_logs/app_log.txt")
+        level = "WARN")
       }
 
       validate(
@@ -132,7 +132,7 @@ mod_aes_input_server <- function(id) {
       )
       if (input$size <= 0) {
         logr_msg(message = "Invalid size value: {size}", 
-        level = "ERROR", log_file = "_logs/app_log.txt")
+        level = "ERROR")
       }
 
     }) |> bindEvent(c(input$alpha, input$size))

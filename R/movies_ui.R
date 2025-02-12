@@ -38,14 +38,12 @@ movies_ui <- function(bslib = FALSE) {
     directoryPath = system.file('www/', package = 'sap'))
   
   if (!is.logical(bslib)) {
-    logr_msg("Argument 'bslib' must be a logical value", level = "ERROR",
-             log_file = "_logs/app_log.txt")
+    logr_msg("Argument 'bslib' must be a logical value", level = "ERROR")
       stop("Invalid argument: 'bslib' must be TRUE or FALSE.")
     }
   
     logr_msg(
-      glue::glue("Launching UI with bslib = {bslib}"), level = "INFO",
-      log_file = "_logs/app_log.txt")
+      glue::glue("Launching UI with bslib = {bslib}"), level = "INFO")
   
   if (isFALSE(bslib)) {
     tagList(

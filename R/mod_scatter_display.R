@@ -110,7 +110,7 @@ mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {
     output$scatterplot <- renderPlot({
       
       logr_msg("Preparing scatterplot in mod_scatter_display_server", 
-                level = "TRACE", log_file = "_logs/app_log.txt")
+                level = "TRACE")
       
       tryCatch({
         plot <- scatter_plot(
@@ -134,7 +134,7 @@ mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {
     }, error = function(e) {
 
       logr_msg(glue::glue("Failed to render scatterplot. Reason: {e$message}"), 
-               level = "ERROR", log_file = "_logs/app_log.txt")
+               level = "ERROR")
       
     })
       

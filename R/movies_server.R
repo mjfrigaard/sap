@@ -31,8 +31,8 @@ movies_server <- function(input, output, session) {
       
   logr_msg(message = "New user session started", level = "INFO")
 
-  observe({
-    browser()
+  # observe({
+  #   browser()
   
 
   tryCatch({
@@ -60,7 +60,7 @@ movies_server <- function(input, output, session) {
 
   logr_msg(message = "Server function execution completed", level = "TRACE")
 
-  })
+  # })
 
 }
 

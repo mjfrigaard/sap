@@ -1,29 +1,3 @@
-INFO [2025-02-05 22:30:40] New user session started
-INFO [2025-02-05 22:31:42] New user session started
-INFO [2025-02-05 22:32:52] New user session started
-TRACE [2025-02-05 22:32:52] mod_var_input_server started
-TRACE [2025-02-05 22:32:52] Server function execution completed
-DEBUG [2025-02-05 22:32:52] Reactive inputs: 
-x = imdb_rating, y = audience_score, z = mpaa_rating
-TRACE [2025-02-05 22:32:52] Preparing scatterplot in mod_scatter_display_server
-DEBUG [2025-02-05 22:32:52] Reactive inputs returned: 
-x = imdb_rating, y = audience_score, z = mpaa_rating
-INFO [2025-02-05 22:35:59] Launching app: movies
-INFO [2025-02-05 22:35:59] Launching UI with bslib = FALSE
-INFO [2025-02-05 22:36:00] New user session started
-INFO [2025-02-05 22:36:27] Launching app: movies
-INFO [2025-02-05 22:36:27] Launching UI with bslib = FALSE
-INFO [2025-02-05 22:36:28] New user session started
-TRACE [2025-02-05 22:36:28] mod_var_input_server started
-TRACE [2025-02-05 22:36:28] Server function execution completed
-DEBUG [2025-02-05 22:36:28] Reactive inputs: 
-x = imdb_rating, y = audience_score, z = mpaa_rating
-TRACE [2025-02-05 22:36:28] Preparing scatterplot in mod_scatter_display_server
-DEBUG [2025-02-05 22:36:28] Reactive inputs returned: 
-x = imdb_rating, y = audience_score, z = mpaa_rating
-INFO [2025-02-05 22:38:38] Launching app: movies
-INFO [2025-02-05 22:38:38] Launching UI with bslib = FALSE
-INFO [2025-02-05 22:38:39] New user session started
-INFO [2025-02-05 22:52:30] Launching app: movies
-INFO [2025-02-05 22:52:30] Launching UI with bslib = FALSE
-INFO [2025-02-05 22:52:32] New user session started
+INFO [2025-02-12 07:43:09] Launching app: movies
+INFO [2025-02-12 07:43:09] Launching UI with bslib = FALSE
+INFO [2025-02-12 07:43:10] New user session started

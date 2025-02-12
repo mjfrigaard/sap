@@ -65,7 +65,7 @@ mod_aes_input_ui <- function(id) {
       value = 2
     ),
     textInput(
-      inputId = ns("x"),
+      inputId = ns("plot_title"),
       label = "Plot title",
       placeholder = "Enter plot title"
     )
@@ -142,7 +142,7 @@ mod_aes_input_server <- function(id) {
         list(
           "alpha" = input$alpha,
           "size" = input$size,
-          "plot_title" = input$x
+          "plot_title" = input$plot_title
         )
       })
     )

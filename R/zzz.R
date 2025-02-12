@@ -38,48 +38,48 @@
 #' 
 #' @export
 #' 
-.onAttach <- function(libname, pkgname) {
-  
-  branch <- if (isTRUE(system("git rev-parse --is-inside-work-tree", intern = TRUE) == "true")) {
-    tryCatch({
-      system("git rev-parse --abbrev-ref HEAD", intern = TRUE)
-    }, error = function(e) "unknown")
-  } else {
-    "not a Git repository"
-  }
-
-
-  version <- utils::packageVersion(pkgname)
-
-
-  description <- utils::packageDescription(pkgname)
-  imports <- description$Imports
-  suggests <- description$Suggests
-  depends <- description$Depends
-
-
-  parse_dependencies <- function(dep_string) {
-    if (is.null(dep_string)) return("None")
-    deps <- strsplit(dep_string, ",\\s*")[[1]]
-    paste(deps, collapse = ", ")
-  }
-
-  imports <- parse_dependencies(imports)
-  suggests <- parse_dependencies(suggests)
-  depends <- parse_dependencies(depends)
-
-  
-  cli::cli_inform("{.strong Welcome to the {.pkg {pkgname}} package (version {version}) {cli::symbol$smiley}!}", class = "packageStartupMessage")
-  
-  cli::cli_inform("{.strong Current branch:}", class = "packageStartupMessage")
-  cli::cli_inform("{.emph {cli::symbol$pointer} {branch}}", class = "packageStartupMessage")
-
-  cli::cli_inform("{.strong Dependencies:}", class = "packageStartupMessage")
-  cli::cli_inform("{.emph {cli::symbol$pointer} Imports: {imports}}", class = "packageStartupMessage")
-  cli::cli_inform("{.emph {cli::symbol$pointer} Suggests: {suggests}}", class = "packageStartupMessage")
-  cli::cli_inform("{.emph {cli::symbol$pointer} Depends: {depends}}", class = "packageStartupMessage")
-
-  cli::cli_inform("{.strong Loaded from:}", class = "packageStartupMessage")
-  cli::cli_inform("{.emph {cli::symbol$pointer} {libname}}", class = "packageStartupMessage")
-
-}
+# .onAttach <- function(libname, pkgname) {
+#   
+#   branch <- if (isTRUE(system("git rev-parse --is-inside-work-tree", intern = TRUE) == "true")) {
+#     tryCatch({
+#       system("git rev-parse --abbrev-ref HEAD", intern = TRUE)
+#     }, error = function(e) "unknown")
+#   } else {
+#     "not a Git repository"
+#   }
+# 
+# 
+#   version <- utils::packageVersion(pkgname)
+# 
+# 
+#   description <- utils::packageDescription(pkgname)
+#   imports <- description$Imports
+#   suggests <- description$Suggests
+#   depends <- description$Depends
+# 
+# 
+#   parse_dependencies <- function(dep_string) {
+#     if (is.null(dep_string)) return("None")
+#     deps <- strsplit(dep_string, ",\\s*")[[1]]
+#     paste(deps, collapse = ", ")
+#   }
+# 
+#   imports <- parse_dependencies(imports)
+#   suggests <- parse_dependencies(suggests)
+#   depends <- parse_dependencies(depends)
+# 
+#   
+#   cli::cli_inform("{.strong Welcome to the {.pkg {pkgname}} package (version {version}) {cli::symbol$smiley}!}", class = "packageStartupMessage")
+#   
+#   cli::cli_inform("{.strong Current branch:}", class = "packageStartupMessage")
+#   cli::cli_inform("{.emph {cli::symbol$pointer} {branch}}", class = "packageStartupMessage")
+# 
+#   cli::cli_inform("{.strong Dependencies:}", class = "packageStartupMessage")
+#   cli::cli_inform("{.emph {cli::symbol$pointer} Imports: {imports}}", class = "packageStartupMessage")
+#   cli::cli_inform("{.emph {cli::symbol$pointer} Suggests: {suggests}}", class = "packageStartupMessage")
+#   cli::cli_inform("{.emph {cli::symbol$pointer} Depends: {depends}}", class = "packageStartupMessage")
+# 
+#   cli::cli_inform("{.strong Loaded from:}", class = "packageStartupMessage")
+#   cli::cli_inform("{.emph {cli::symbol$pointer} {libname}}", class = "packageStartupMessage")
+# 
+# }

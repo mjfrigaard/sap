@@ -13,5 +13,5 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
   } else {
     pkgload::load_all()
   }
-  launch_app(options = list(test.mode = FALSE))
+  launch_app(options = list(test.mode = TRUE))
 })

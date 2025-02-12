@@ -1,2 +1,2 @@
 library(sap)
-launch_app(app = "bslib", options = list(test.mode = FALSE))
+launch_app(app = "bslib")

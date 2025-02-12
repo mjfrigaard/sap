@@ -1,4 +1,4 @@
-options(scipen = 100000000)
+options(scipen = 100000000, shiny.testmode = TRUE)
 library(tidyr)
 library(fst)
 

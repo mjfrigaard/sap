@@ -139,5 +139,15 @@ mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {
     })
       
     })
+
+    exportTestValues(
+      x = { inputs()$x },
+      y = { inputs()$y },
+      z = { inputs()$z },
+      alpha = { inputs()$alpha },
+      size = { inputs()$size },
+      title = { inputs()$plot_title }
+     )
+    
   })
 }

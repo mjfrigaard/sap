@@ -1,0 +1,1 @@
+options(shiny.testmode = TRUE)

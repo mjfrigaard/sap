@@ -1,8 +1,0 @@
-INFO [2025-01-31 09:52:45] Launching UI with bslib = FALSE
-INFO [2025-01-31 09:52:48] New user session started
-ERROR [2025-01-31 09:52:48] Failed to render scatterplot. Reason: 'text' must be a character vector
-INFO [2025-01-31 09:53:10] Launching UI with bslib = FALSE
-INFO [2025-01-31 09:53:12] New user session started
-ERROR [2025-01-31 09:53:12] Failed to render scatterplot. Reason: 'text' must be a character vector
-INFO [2025-01-31 09:54:06] Launching UI with bslib = FALSE
-INFO [2025-01-31 09:54:08] New user session started

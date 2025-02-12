@@ -1,4 +1,3 @@
-# set option to turn off loadSupport() ----
 withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
   if (!interactive()) {
     sink(stderr(), type = "output")
@@ -10,7 +9,6 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
         pkgload::load_all()
       }
     )
-    # create shiny object from prod/app ----
     shinyAppDir(appDir = system.file("prod/app", package = "sap"))
   } else {
     pkgload::load_all()

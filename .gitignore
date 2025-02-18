@@ -6,6 +6,7 @@
 sap.Rcheck/
 sap*.tar.gz
 sap*.tgz
+rsconnect/
 
 /.quarto/
 inst/doc

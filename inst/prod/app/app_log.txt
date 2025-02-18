@@ -1,0 +1,6 @@
+INFO [2025-02-17 21:28:52] Launching app: bslib
+INFO [2025-02-17 21:28:52] Launching UI with bslib = TRUE
+INFO [2025-02-17 21:28:55] New user session started
+INFO [2025-02-17 21:29:36] Launching app: bslib
+INFO [2025-02-17 21:29:36] Launching UI with bslib = TRUE
+INFO [2025-02-17 21:29:39] New user session started

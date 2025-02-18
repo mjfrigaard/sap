@@ -1,0 +1,18 @@
+INFO [2025-02-17 21:28:48] Launching app: movies
+INFO [2025-02-17 21:28:48] Launching UI with bslib = FALSE
+INFO [2025-02-17 21:28:50] New user session started
+INFO [2025-02-17 21:28:59] Launching app: movies
+INFO [2025-02-17 21:28:59] Launching UI with bslib = FALSE
+INFO [2025-02-17 21:29:00] New user session started
+INFO [2025-02-17 21:29:04] Launching app: movies
+INFO [2025-02-17 21:29:04] Launching UI with bslib = FALSE
+INFO [2025-02-17 21:29:05] New user session started
+INFO [2025-02-17 21:29:32] Launching app: movies
+INFO [2025-02-17 21:29:32] Launching UI with bslib = FALSE
+INFO [2025-02-17 21:29:33] New user session started
+INFO [2025-02-17 21:29:44] Launching app: movies
+INFO [2025-02-17 21:29:44] Launching UI with bslib = FALSE
+INFO [2025-02-17 21:29:45] New user session started
+INFO [2025-02-17 21:29:50] Launching app: movies
+INFO [2025-02-17 21:29:50] Launching UI with bslib = FALSE
+INFO [2025-02-17 21:29:52] New user session started

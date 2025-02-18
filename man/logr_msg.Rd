@@ -9,7 +9,7 @@ logr_msg(
   level = "INFO",
   log_file = "app_log.txt",
   json = FALSE,
-  store_log = FALSE
+  store_log = TRUE
 )
 }
 \arguments{
@@ -33,8 +33,11 @@ Ignored if \code{store_log = FALSE}. Defaults to \code{"app_log.txt"}.}
 Defaults to \code{FALSE}. When \code{TRUE}, logs are written to \code{log_file} as JSON objects.}
 
 \item{store_log}{A logical value indicating whether logs should be saved
-to a file. Defaults to \code{FALSE}. If \code{TRUE}, logs are printed to the console
-and stored in \code{log_file}.}
+to a file. Defaults to \code{TRUE}:
+\itemize{
+\item If \code{TRUE},  logs are printed to the console and stored in \code{log_file}
+\item If \code{FALSE}, logs are printed to the console
+}}
 }
 \value{
 The function is called for its side effects of logging messages and does

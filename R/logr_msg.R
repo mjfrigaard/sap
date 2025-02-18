@@ -18,8 +18,9 @@
 #' @param json A logical value indicating whether to save logs in JSON format.
 #'   Defaults to `FALSE`. When `TRUE`, logs are written to `log_file` as JSON objects.
 #' @param store_log A logical value indicating whether logs should be saved 
-#'   to a file. Defaults to `FALSE`. If `TRUE`, logs are printed to the console
-#'   and stored in `log_file`.
+#'   to a file. Defaults to `TRUE`: 
+#' * If `TRUE`,  logs are printed to the console and stored in `log_file`   
+#' * If `FALSE`, logs are printed to the console  
 #'
 #' @details
 #' - **Console Logging**: All messages are always logged to the console.
@@ -55,7 +56,7 @@
 #'
 #' @export
 #' 
-logr_msg <- function(message, level = "INFO", log_file = "app_log.txt", json = FALSE, store_log = FALSE) {
+logr_msg <- function(message, level = "INFO", log_file = "app_log.txt", json = FALSE, store_log = TRUE) {
   
   # Console logging 
   logger::log_formatter(formatter = logger::formatter_glue)

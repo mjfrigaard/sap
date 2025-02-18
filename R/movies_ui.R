@@ -38,8 +38,7 @@ movies_ui <- function(bslib = FALSE) {
     directoryPath = system.file('www/', package = 'sap'))
   
   if (!is.logical(bslib)) {
-    logr_msg("Argument 'bslib' must be a logical value", level = "ERROR",
-             )
+    logr_msg("Argument 'bslib' must be a logical value", level = "ERROR")
       stop("Invalid argument: 'bslib' must be TRUE or FALSE.")
     }
   

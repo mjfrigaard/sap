@@ -31,12 +31,12 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
       
       log_message(
         message = "Loading fst data", 
-        log_file = "_logs/ggp2_log.txt", save = TRUE)
+        log_file = "_logs/ggp2_log.txt", save = FALSE)
       fst::read_fst("tidy_movies.fst")
     }, error = function(e) {
       log_message(
         message = sprintf("Error loading fst data: %s", e$message), 
-        log_file = "_logs/ggp2_log.txt", save = TRUE)
+        log_file = "_logs/ggp2_log.txt", save = FALSE)
       stop("Data loading failed.")
 
     })
@@ -52,19 +52,19 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
         if (input$missing) {
           log_message("Removing missing values.", 
                       log_file = "_logs/ggp2_log.txt",
-                      save = TRUE)
+                      save = FALSE)
           graph_data <- tidyr::drop_na(data = all_data)
         } else {
           log_message("Using all data.", 
                       log_file = "_logs/ggp2_log.txt",
-                      save = TRUE)
+                      save = FALSE)
           graph_data <- all_data
         }
         graph_data
       }, error = function(e) {
         log_message(
           sprintf("Error processing graph data: %s", e$message), 
-          log_file = "_logs/ggp2_log.txt"
+          log_file = "_logs/ggp2_log.txt", save = FALSE
         )
         NULL
       })
@@ -79,7 +79,7 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
         if(nchar(plot_title) > 0) {
           log_message(
             sprintf("Processing plot title: '%s'", plot_title), 
-            log_file = "_logs/ggp2_log.txt")
+            log_file = "_logs/ggp2_log.txt", save = FALSE)
         }
         
           input_list <- list(
@@ -96,13 +96,13 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
                   paste(
                     names(input_list), input_list, sep = " = ", collapse = ", ")
                   ),
-                log_file = "_logs/ggp2_log.txt", save = TRUE)
+                log_file = "_logs/ggp2_log.txt", save = FALSE)
         input_list
       }, error = function(e) {
         log_message(
           sprintf("Error in processing inputs: %s", conditionMessage(e)),
           log_file = "_logs/ggp2_log.txt",
-          save = TRUE)
+          save = FALSE)
         NULL
       })
     })

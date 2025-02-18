@@ -4,7 +4,13 @@
 \alias{logr_msg}
 \title{Log Messages to Console and File with Optional JSON Format}
 \usage{
-logr_msg(message, level = "INFO", log_file = "app_log.txt", json = FALSE)
+logr_msg(
+  message,
+  level = "INFO",
+  log_file = "app_log.txt",
+  json = FALSE,
+  store_log = FALSE
+)
 }
 \arguments{
 \item{message}{A character string representing the message to be logged.}
@@ -20,13 +26,15 @@ logr_msg(message, level = "INFO", log_file = "app_log.txt", json = FALSE)
 \item \code{"TRACE"}
 }}
 
-\item{log_file}{A character string specifying the path to the log file. If
-\code{NULL}, logs are not saved to a file, and only console logging is performed.
-Defaults to \code{NULL}.}
+\item{log_file}{A character string specifying the path to the log file.
+Ignored if \code{store_log = FALSE}. Defaults to \code{"app_log.txt"}.}
 
 \item{json}{A logical value indicating whether to save logs in JSON format.
-Defaults to \code{FALSE}.
-When \code{TRUE}, logs are written to the specified \code{log_file} as JSON objects.}
+Defaults to \code{FALSE}. When \code{TRUE}, logs are written to \code{log_file} as JSON objects.}
+
+\item{store_log}{A logical value indicating whether logs should be saved
+to a file. Defaults to \code{FALSE}. If \code{TRUE}, logs are printed to the console
+and stored in \code{log_file}.}
 }
 \value{
 The function is called for its side effects of logging messages and does
@@ -34,17 +42,14 @@ not return a value.
 }
 \description{
 A utility function for logging messages to the console and optionally to a
-log file. Messages can be stored as plain text (default) or in JSON
-format, providing flexibility for human-readable or structured log storage.
-This function uses the \code{logger} package for console and plain text logging
-and integrates JSON logging using the \code{jsonlite} package.
+log file. Messages can be stored as plain text (default) or in JSON format.
+Additionally, logging to a file can be disabled altogether.
 }
 \details{
 \itemize{
 \item \strong{Console Logging}: All messages are always logged to the console.
-\item \strong{File Logging}: If \code{log_file} is specified, messages are logged to the
-file in either plain text
-or JSON format, depending on the value of \code{json}.
+\item \strong{File Logging}: If \code{store_log = TRUE} and \code{log_file} is specified,
+messages are logged to the file in either plain text or JSON format.
 \item \strong{JSON Logs}: When \code{json = TRUE}, log messages are stored as structured
 JSON objects with the fields:
 \itemize{
@@ -55,23 +60,17 @@ JSON objects with the fields:
 }
 }
 \examples{
-# log a simple informational message to the console
+# Log a simple informational message to the console
 logr_msg("Application started.")
 
-# log an error message to the console and a file in plain text format
-logr_msg(message = "Failed to connect to the database.", 
-          level = "ERROR", 
-          log_file = "error_log.txt")
+# Log an error message to the console and a file
+logr_msg("Failed to connect to database.", level = "ERROR", log_file = "error_log.txt")
 
-# log a success message in JSON format
-logr_msg(message = "User login successful.", 
-         level = "SUCCESS", 
-         log_file = "app_log.json", 
-         json = TRUE)
+# Log a success message in JSON format
+logr_msg("User login successful.", level = "SUCCESS", log_file = "app_log.json", json = TRUE)
 
-# log a warning message to the console only
-logr_msg(message = "Low memory warning.", 
-         level = "WARN")
+# Log a warning message to the console only (no file storage)
+logr_msg("Low memory warning.", level = "WARN", store_log = FALSE)
 
 }
 \seealso{

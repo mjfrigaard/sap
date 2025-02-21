@@ -38,6 +38,8 @@
 #' 
 #' @export
 #' 
+# The startup message has been commented out to reduce clutter during deployment, 
+# I've left the code here for reference. 
 # .onAttach <- function(libname, pkgname) {
 #   
 #   branch <- if (isTRUE(system("git rev-parse --is-inside-work-tree", intern = TRUE) == "true")) {

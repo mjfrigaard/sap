@@ -57,7 +57,7 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `19_shinyappsio`
+## `20_docker`
 
-[`19_shinyappsio`](https://github.com/mjfrigaard/sap/tree/19_shinyappsio) demonstrates how to deploy your Shiny app package to [shinyapps.io](https://www.shinyapps.io/), a hosting service managed by Posit.
+[`20_docker`](https://github.com/mjfrigaard/sap/tree/20_docker) demonstrates how to deploy your Shiny app package using a Docker container.
 

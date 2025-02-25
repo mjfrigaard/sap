@@ -61,3 +61,16 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 [`20_docker`](https://github.com/mjfrigaard/sap/tree/20_docker) demonstrates how to deploy your Shiny app package using a Docker container.
 
+The Docker file for this branch is below: 
+
+```bash
+FROM rocker/shiny
+RUN R -e "install.packages(c('bslib', 'cli', 'ggplot2', 'logger', 'pkgload', 'remotes', 'rlang', 'sass', 'shiny', 'shinythemes', 'stringr', 'tools', 'withr'))"
+RUN mkdir /deploy
+ADD . /deploy
+WORKDIR /deploy
+RUN R -e "remotes::install_local(upgrade='never')"
+RUN rm -rf /deploy
+EXPOSE 8180
+CMD R -e "options('shiny.port'=8180,shiny.host='0.0.0.0');library(sap);sap::launch_app()"
+```

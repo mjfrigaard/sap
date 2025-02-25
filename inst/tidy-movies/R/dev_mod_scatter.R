@@ -31,12 +31,14 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
       
       log_message(
         message = "Loading fst data", 
-        log_file = "_logs/ggp2_log.txt", save = FALSE)
+        log_file = "_logs/ggp2_log.txt",
+        save = FALSE)
       fst::read_fst("tidy_movies.fst")
     }, error = function(e) {
       log_message(
         message = sprintf("Error loading fst data: %s", e$message), 
-        log_file = "_logs/ggp2_log.txt", save = FALSE)
+        log_file = "_logs/ggp2_log.txt", 
+        save = FALSE)
       stop("Data loading failed.")
 
     })
@@ -64,7 +66,8 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
       }, error = function(e) {
         log_message(
           sprintf("Error processing graph data: %s", e$message), 
-          log_file = "_logs/ggp2_log.txt", save = FALSE
+          log_file = "_logs/ggp2_log.txt", 
+          save = FALSE
         )
         NULL
       })
@@ -76,10 +79,11 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
 
       tryCatch({
         plot_title <- tools::toTitleCase(aes_inputs()$plot_title)
-        if(nchar(plot_title) > 0) {
+        if (nchar(plot_title) > 0) {
           log_message(
             sprintf("Processing plot title: '%s'", plot_title), 
-            log_file = "_logs/ggp2_log.txt", save = FALSE)
+            log_file = "_logs/ggp2_log.txt", 
+            save = FALSE)
         }
         
           input_list <- list(
@@ -92,11 +96,10 @@ dev_mod_scatter_server <- function(id, var_inputs, aes_inputs) {
           )
         
         log_message(
-          sprintf("Inputs: %s", 
-                  paste(
-                    names(input_list), input_list, sep = " = ", collapse = ", ")
-                  ),
-                log_file = "_logs/ggp2_log.txt", save = FALSE)
+          sprintf("Inputs: %s", paste(
+                    names(input_list), input_list, sep = " = ", collapse = ", ")),
+                log_file = "_logs/ggp2_log.txt", 
+          save = FALSE)
         input_list
       }, error = function(e) {
         log_message(

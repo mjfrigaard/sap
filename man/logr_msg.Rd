@@ -9,7 +9,7 @@ logr_msg(
   level = "INFO",
   log_file = "app_log.txt",
   json = FALSE,
-  store_log = TRUE
+  store_log = FALSE
 )
 }
 \arguments{

@@ -57,20 +57,95 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `20_docker`
+## `21.1_gha-style`
 
-[`20_docker`](https://github.com/mjfrigaard/sap/tree/20_docker) demonstrates how to deploy your Shiny app package using a Docker container.
+[`21.1_gha-style`](https://github.com/mjfrigaard/sap/tree/21.1_gha-style) demonstrates how to use GitHub Actions to style your app-package. 
 
-The Docker file for this branch is below: 
+The style workflow is stored in the hidden `.github` folder:
 
-```bash
-FROM rocker/shiny
-RUN R -e "install.packages(c('bslib', 'cli', 'ggplot2', 'logger', 'pkgload', 'remotes', 'rlang', 'sass', 'shiny', 'shinythemes', 'stringr', 'tools', 'withr'))"
-RUN mkdir /deploy
-ADD . /deploy
-WORKDIR /deploy
-RUN R -e "remotes::install_local(upgrade='never')"
-RUN rm -rf /deploy
-EXPOSE 8180
-CMD R -e "options('shiny.port'=8180,shiny.host='0.0.0.0');library(sap);sap::launch_app()"
+``` sh
+.github/
+  └── workflows
+      └── style.yaml
+
+2 directories, 1 file
+```
+
+The `.github/workflows/style.yaml` file contains the following:
+
+```yaml
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [21.1_gha-style]
+    paths: ["**.[rR]", "**.[qrR]md", "**.[rR]markdown", "**.[rR]nw", "**.[rR]profile"]
+
+name: Style
+
+jobs:
+  style:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Install dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::styler, any::roxygen2
+          needs: styler
+
+      - name: Enable styler cache
+        run: styler::cache_activate()
+        shell: Rscript {0}
+
+      - name: Determine cache location
+        id: styler-location
+        run: |
+          cat(
+            "location=",
+            styler::cache_info(format = "tabular")$location,
+            "\n",
+            file = Sys.getenv("GITHUB_OUTPUT"),
+            append = TRUE,
+            sep = ""
+          )
+        shell: Rscript {0}
+
+      - name: Cache styler
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.styler-location.outputs.location }}
+          key: ${{ runner.os }}-styler-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-styler-
+            ${{ runner.os }}-
+
+      - name: Style
+        run: styler::style_pkg()
+        shell: Rscript {0}
+
+      - name: Commit and push changes
+        run: |
+          if FILES_TO_COMMIT=($(git diff-index --name-only ${{ github.sha }} \
+              | egrep --ignore-case '\.(R|[qR]md|Rmarkdown|Rnw|Rprofile)$'))
+          then
+            git config --local user.name "$GITHUB_ACTOR"
+            git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            git commit ${FILES_TO_COMMIT[*]} -m "Style code (GHA)"
+            git pull --ff-only
+            git push origin
+          else
+            echo "No changes to commit."
+          fi
 ```

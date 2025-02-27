@@ -13,18 +13,18 @@
 #'   - `"INFO"` (default)
 #'   - `"DEBUG"`
 #'   - `"TRACE"`
-#' @param log_file A character string specifying the path to the log file. 
+#' @param log_file A character string specifying the path to the log file.
 #'   Ignored if `store_log = FALSE`. Defaults to `"app_log.txt"`.
 #' @param json A logical value indicating whether to save logs in JSON format.
 #'   Defaults to `FALSE`. When `TRUE`, logs are written to `log_file` as JSON objects.
-#' @param store_log A logical value indicating whether logs should be saved 
-#'   to a file. Defaults to `TRUE`: 
-#' * If `TRUE`,  logs are printed to the console and stored in `log_file`   
-#' * If `FALSE`, logs are printed to the console  
+#' @param store_log A logical value indicating whether logs should be saved
+#'   to a file. Defaults to `TRUE`:
+#' * If `TRUE`,  logs are printed to the console and stored in `log_file`
+#' * If `FALSE`, logs are printed to the console
 #'
 #' @details
 #' - **Console Logging**: All messages are always logged to the console.
-#' - **File Logging**: If `store_log = TRUE` and `log_file` is specified, 
+#' - **File Logging**: If `store_log = TRUE` and `log_file` is specified,
 #'   messages are logged to the file in either plain text or JSON format.
 #' - **JSON Logs**: When `json = TRUE`, log messages are stored as structured
 #'   JSON objects with the fields:
@@ -55,14 +55,13 @@
 #' - [jsonlite::toJSON()] for converting R objects to JSON.
 #'
 #' @export
-#' 
+#'
 logr_msg <- function(message, level = "INFO", log_file = "app_log.txt", json = FALSE, store_log = FALSE) {
-  
-  # Console logging 
+  # Console logging
   logger::log_formatter(formatter = logger::formatter_glue)
   logger::log_layout(layout = logger::layout_glue_generator())
-  
-  # configure file logging 
+
+  # configure file logging
   if (store_log) {
     log_dir <- dirname(log_file)
     if (!dir.exists(log_dir)) {
@@ -71,7 +70,7 @@ logr_msg <- function(message, level = "INFO", log_file = "app_log.txt", json = F
     if (!file.exists(log_file)) {
       file.create(log_file)
     }
-    
+
     if (json) {
       logger::log_appender(appender = logger::appender_tee(log_file))
       logger::log_layout(layout = logger::layout_json())
@@ -83,10 +82,9 @@ logr_msg <- function(message, level = "INFO", log_file = "app_log.txt", json = F
     # prevent file logging
     logger::log_appender(appender = logger::appender_console)
   }
-  
+
   # levels
-  switch(
-    level,
+  switch(level,
     "FATAL" = logger::log_fatal("{message}"),
     "ERROR" = logger::log_error("{message}"),
     "WARN" = logger::log_warn("{message}"),

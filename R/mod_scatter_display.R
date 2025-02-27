@@ -6,13 +6,13 @@
 #'
 #' @return A `shiny::tagList` containing the plot output and metadata.
 #'
-#' @section Details: 
+#' @section Details:
 #' `mod_scatter_display_ui()` includes:
 #' - A **scatter plot** created dynamically based on user input.
 #' - Metadata about the app, including the data source.
 #'
 #' @seealso
-#' - [`mod_scatter_display_server()`]  for the server-side logic of this 
+#' - [`mod_scatter_display_server()`]  for the server-side logic of this
 #'   module.
 #' - [`scatter_plot()`]  for the utility function generating the plot.
 #'
@@ -28,7 +28,6 @@
 #'   )
 #' }
 #'
-#' 
 #' @export
 mod_scatter_display_ui <- function(id) {
   ns <- NS(id)
@@ -43,18 +42,18 @@ mod_scatter_display_ui <- function(id) {
 #' Handles the server-side logic for rendering a scatter plot.
 #'
 #' @param id *(character)* Namespace ID for the module.
-#' @param var_inputs *(reactive)* A reactive expression containing 
+#' @param var_inputs *(reactive)* A reactive expression containing
 #'  user-selected variables.
-#' @param aes_inputs *(reactive)* A reactive expression containing 
+#' @param aes_inputs *(reactive)* A reactive expression containing
 #'  user-selected attributes.
 #'
 #' @return No direct return value. This function generates a plot output.
 #'
-#' @section Details: 
+#' @section Details:
 #' `mod_scatter_display_server()`:
-#' - Uses `var_inputs` to dynamically generate a scatter plot with 
+#' - Uses `var_inputs` to dynamically generate a scatter plot with
 #'   user-selected variables.
-#' - Reads from the `movies` dataset, which must be loaded in the app 
+#' - Reads from the `movies` dataset, which must be loaded in the app
 #'   environment.
 #' - Processes plot titles and axis labels to improve readability.
 #'
@@ -88,66 +87,74 @@ mod_scatter_display_ui <- function(id) {
 #'     }
 #'   )
 #' }
-#' 
+#'
 #' @export
 mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {
-
   moduleServer(id, function(input, output, session) {
-
     inputs <- reactive({
       plot_title <- tools::toTitleCase(aes_inputs()$plot_title)
-        list(
-          x = var_inputs()$x,
-          y = var_inputs()$y,
-          z = var_inputs()$z,
-          alpha = aes_inputs()$alpha,
-          size = aes_inputs()$size,
-          plot_title = plot_title
-        
-        )
+      list(
+        x = var_inputs()$x,
+        y = var_inputs()$y,
+        z = var_inputs()$z,
+        alpha = aes_inputs()$alpha,
+        size = aes_inputs()$size,
+        plot_title = plot_title
+      )
     })
-    
+
     output$scatterplot <- renderPlot({
-      
-      logr_msg("Preparing scatterplot in mod_scatter_display_server", 
-                level = "TRACE")
-      
-      tryCatch({
-        plot <- scatter_plot(
-          # data --------------------
-          df = movies,
-          x_var = inputs()$x,
-          y_var = inputs()$y,
-          col_var = inputs()$z,
-          alpha_var = inputs()$alpha,
-          size_var = inputs()$size
-        )
-        plot +
-          ggplot2::labs(
-            title = inputs()$plot_title,
+      logr_msg("Preparing scatterplot in mod_scatter_display_server",
+        level = "TRACE"
+      )
+
+      tryCatch(
+        {
+          plot <- scatter_plot(
+            # data --------------------
+            df = movies,
+            x_var = inputs()$x,
+            y_var = inputs()$y,
+            col_var = inputs()$z,
+            alpha_var = inputs()$alpha,
+            size_var = inputs()$size
+          )
+          plot +
+            ggplot2::labs(
+              title = inputs()$plot_title,
               x = stringr::str_replace_all(tools::toTitleCase(inputs()$x), "_", " "),
               y = stringr::str_replace_all(tools::toTitleCase(inputs()$y), "_", " ")
-          ) +
-          ggplot2::theme_minimal() +
-          ggplot2::theme(legend.position = "bottom")
-
-    }, error = function(e) {
-
-      logr_msg(glue::glue("Failed to render scatterplot. Reason: {e$message}"), 
-               level = "ERROR")
-      
-    })
-      
+            ) +
+            ggplot2::theme_minimal() +
+            ggplot2::theme(legend.position = "bottom")
+        },
+        error = function(e) {
+          logr_msg(glue::glue("Failed to render scatterplot. Reason: {e$message}"),
+            level = "ERROR"
+          )
+        }
+      )
     })
 
     exportTestValues(
-      x = { inputs()$x },
-      y = { inputs()$y },
-      z = { inputs()$z },
-      alpha = { inputs()$alpha },
-      size = { inputs()$size },
-      title = { inputs()$plot_title }
-     )
-    
+      x = {
+        inputs()$x
+      },
+      y = {
+        inputs()$y
+      },
+      z = {
+        inputs()$z
+      },
+      alpha = {
+        inputs()$alpha
+      },
+      size = {
+        inputs()$size
+      },
+      title = {
+        inputs()$plot_title
+      }
+    )
   })
 }

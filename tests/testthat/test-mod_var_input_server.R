@@ -18,33 +18,34 @@ describe(
              And I choose the [Title type] for color
              Then the scatter plot should show [Critics score] on the x-axis
              And the scatter plot should show [Runtime] on the y-axis
-             And the points on the scatter plot should be colored by [Title type]", 
+             And the points on the scatter plot should be colored by [Title type]",
           code = {
-          
             shiny::testServer(app = mod_var_input_server, expr = {
-
               test_vals <- list(
                 x = "audience_score",
                 y = "imdb_rating",
-                z = "mpaa_rating")
+                z = "mpaa_rating"
+              )
 
               test_logger(start = "RETURNED", msg = "test_vals vs. session$returned()")
-              
+
               session$setInputs(
                 x = "audience_score",
                 y = "imdb_rating",
-                z = "mpaa_rating")
+                z = "mpaa_rating"
+              )
 
               expect_equal(
                 object = session$returned(),
-                expected = test_vals)
-            
+                expected = test_vals
+              )
+
               test_logger(end = "RETURNED", msg = "test_vals vs. session$returned()")
-              
+
               session$flushReact()
-              
-          })
-        })
+            })
+          }
+        )
       }
     )
   }

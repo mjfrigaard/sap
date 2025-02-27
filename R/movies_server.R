@@ -4,14 +4,14 @@
 #' @param output The Shiny `output` object.
 #' @param session The Shiny `session` object.
 #'
-#' @return Defines server logic for reactive outputs and module 
+#' @return Defines server logic for reactive outputs and module
 #' integration.
 #'
 #' @section Details:
 #' The server integrates the following modules:
-#' - **Variable Input Module**: Processes user input for scatter plot 
+#' - **Variable Input Module**: Processes user input for scatter plot
 #'   customization using  [`mod_var_input_server()`].
-#' - **Plot Display Module**: Generates and displays a scatter plot 
+#' - **Plot Display Module**: Generates and displays a scatter plot
 #'   based on user inputs using [`mod_scatter_display_server()`].
 #'
 #' @seealso
@@ -24,44 +24,53 @@
 #' if (interactive()) {
 #'   shiny::shinyApp(ui = movies_ui(), server = movies_server)
 #' }
-#' 
+#'
 #' @export
-#' 
+#'
 movies_server <- function(input, output, session) {
-      
   logr_msg(message = "New user session started", level = "INFO")
 
   # observe({
   #   browser()
-  
 
-  tryCatch({
-    selected_vars <- mod_var_input_server("vars")
-  }, error = function(e) {
-    logr_msg(glue::glue("Error in variable selection module: {e$message}"), 
-           level = "ERROR")
-  })
 
-  tryCatch({
-    selected_aes <- mod_aes_input_server("aes")
-  }, error = function(e) {
-    logr_msg(glue::glue("Error in aesthetics selection module: {e$message}"),
-           level = "ERROR")
-  })
+  tryCatch(
+    {
+      selected_vars <- mod_var_input_server("vars")
+    },
+    error = function(e) {
+      logr_msg(glue::glue("Error in variable selection module: {e$message}"),
+        level = "ERROR"
+      )
+    }
+  )
 
-  tryCatch({
-    mod_scatter_display_server("plot", 
-                              var_inputs = selected_vars, 
-                              aes_inputs = selected_aes)
-  }, error = function(e) {
-    logr_msg(glue::glue("Error in scatter display: {e$message}"), 
-    level = "ERROR")
-  })
+  tryCatch(
+    {
+      selected_aes <- mod_aes_input_server("aes")
+    },
+    error = function(e) {
+      logr_msg(glue::glue("Error in aesthetics selection module: {e$message}"),
+        level = "ERROR"
+      )
+    }
+  )
+
+  tryCatch(
+    {
+      mod_scatter_display_server("plot",
+        var_inputs = selected_vars,
+        aes_inputs = selected_aes
+      )
+    },
+    error = function(e) {
+      logr_msg(glue::glue("Error in scatter display: {e$message}"),
+        level = "ERROR"
+      )
+    }
+  )
 
   logr_msg(message = "Server function execution completed", level = "TRACE")
 
   # })
-
 }
-
-

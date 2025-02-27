@@ -1,6 +1,6 @@
 #' Log test messages (helper)
 #'
-#' `test_logger()` logs informational messages using the `cli` package. It 
+#' `test_logger()` logs informational messages using the `cli` package. It
 #' allows optional `start` and `end` tags to indicate the beginning and end of
 #' a process.
 #'
@@ -10,9 +10,9 @@
 #'
 #' @details
 #' - If both `start` and `end` are `NULL`, logs only the message.
-#' - If `start` is provided and `end` is `NULL`, logs a message prefixed with 
+#' - If `start` is provided and `end` is `NULL`, logs a message prefixed with
 #' `START <start> = <msg>`.
-#' - If `start` is `NULL` and `end` is provided, logs a message prefixed with 
+#' - If `start` is `NULL` and `end` is provided, logs a message prefixed with
 #' `END <end> = <msg>`.
 #' - If both `start` and `end` are provided, logs both `START` and `END`
 #'  messages.
@@ -26,16 +26,16 @@
 #' test_logger(start = "Step2", end = "Step2", msg = "Performing computation")
 #'
 #' @keywords internal
-#' 
+#'
 #' @export
 test_logger <- function(start = NULL, end = NULL, msg) {
-  if(is.null(start) & is.null(end)){
+  if (is.null(start) & is.null(end)) {
     cat("\n")
     cli::cli_inform("TEST:[{format(Sys.time(), '%Y-%m-%d %H:%M:%S')}] = {msg}")
-  } else if(!is.null(start) & is.null(end)){
+  } else if (!is.null(start) & is.null(end)) {
     cat("\n")
     cli::cli_inform("\nTEST: START [{format(Sys.time(), '%Y-%m-%d %H:%M:%S')}] {start} = {msg}")
-  } else if(is.null(start) & !is.null(end)){
+  } else if (is.null(start) & !is.null(end)) {
     cat("\n")
     cli::cli_inform("\nTEST: END [{format(Sys.time(), '%Y-%m-%d %H:%M:%S')}] {end} = {msg}")
   } else {

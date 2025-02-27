@@ -2,7 +2,7 @@
 #'
 #' Creates the user interface (UI) for the Movies Review application, which
 #' allows users to create customizable scatter plots based on movie data.
-#' 
+#'
 #' @param bslib View bslib logo?
 #'
 #' @return A Shiny `tagList` object containing the UI elements.
@@ -34,52 +34,55 @@
 #' @export
 movies_ui <- function(bslib = FALSE) {
   addResourcePath(
-    prefix = 'www',
-    directoryPath = system.file('www/', package = 'sap'))
-  
+    prefix = "www",
+    directoryPath = system.file("www/", package = "sap")
+  )
+
   if (!is.logical(bslib)) {
     logr_msg("Argument 'bslib' must be a logical value", level = "ERROR")
-      stop("Invalid argument: 'bslib' must be TRUE or FALSE.")
-    }
-  
-    logr_msg(
-      glue::glue("Launching UI with bslib = {bslib}"), level = "INFO")
-  
+    stop("Invalid argument: 'bslib' must be TRUE or FALSE.")
+  }
+
+  logr_msg(
+    glue::glue("Launching UI with bslib = {bslib}"),
+    level = "INFO"
+  )
+
   if (isFALSE(bslib)) {
     tagList(
-        bslib::page_fillable(
-          h1("Movie Reviews"),
-          bslib::layout_sidebar(
-            sidebar =
-              bslib::sidebar(
-                title = tags$h4("Sidebar inputs"),
-                img(
-                  src = "www/shiny.png",
-                  height = 60,
-                  width = 55,
-                  style = "margin:10px 10px"
-                ),
-                mod_var_input_ui("vars"),
-                mod_aes_input_ui("aes")
+      bslib::page_fillable(
+        h1("Movie Reviews"),
+        bslib::layout_sidebar(
+          sidebar =
+            bslib::sidebar(
+              title = tags$h4("Sidebar inputs"),
+              img(
+                src = "www/shiny.png",
+                height = 60,
+                width = 55,
+                style = "margin:10px 10px"
               ),
-            bslib::card(
-              full_screen = TRUE,
-              bslib::card_header(
-                tags$h4("Scatter Plot")
-              ),
-              bslib::card_body(fillable = TRUE,
-                mod_scatter_display_ui("plot")
-              ),
-              bslib::card_footer(
-                tags$blockquote(
-                  tags$em(
-                    tags$p(
-                      "The data for this application comes from the ",
-                      tags$a("Building web applications with Shiny",
-                        href = "https://rstudio-education.github.io/shiny-course/"
-                      ),
-                      "tutorial"
-                    )
+              mod_var_input_ui("vars"),
+              mod_aes_input_ui("aes")
+            ),
+          bslib::card(
+            full_screen = TRUE,
+            bslib::card_header(
+              tags$h4("Scatter Plot")
+            ),
+            bslib::card_body(
+              fillable = TRUE,
+              mod_scatter_display_ui("plot")
+            ),
+            bslib::card_footer(
+              tags$blockquote(
+                tags$em(
+                  tags$p(
+                    "The data for this application comes from the ",
+                    tags$a("Building web applications with Shiny",
+                      href = "https://rstudio-education.github.io/shiny-course/"
+                    ),
+                    "tutorial"
                   )
                 )
               )
@@ -87,6 +90,7 @@ movies_ui <- function(bslib = FALSE) {
           )
         )
       )
+    )
   } else {
     tagList(
       bslib::page_fillable(
@@ -107,15 +111,15 @@ movies_ui <- function(bslib = FALSE) {
           ),
           bslib::card(
             full_screen = TRUE,
-                bslib::card_header(
-                  tags$img(
-                  src = "www/bootstrap.png",
-                  height = 80,
-                  width = 100,
-                  style = "margin:10px 10px"
-                )
-              ),
-             bslib::card_body(
+            bslib::card_header(
+              tags$img(
+                src = "www/bootstrap.png",
+                height = 80,
+                width = 100,
+                style = "margin:10px 10px"
+              )
+            ),
+            bslib::card_body(
               mod_scatter_display_ui("plot")
             )
           )
@@ -123,4 +127,4 @@ movies_ui <- function(bslib = FALSE) {
       )
     )
   }
-} 
+}

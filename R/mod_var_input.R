@@ -4,13 +4,13 @@
 #'
 #' @param id *(character)* Namespace ID for the module.
 #'
-#' @return A `shiny::tagList()` containing UI elements for variable 
+#' @return A `shiny::tagList()` containing UI elements for variable
 #' selection.
 #'
-#' @section Details: 
-#' `mod_var_input_ui()` provides UI controls for customizing scatter plots. 
-#'  It includes:  
-#' - **Dropdowns**: 
+#' @section Details:
+#' `mod_var_input_ui()` provides UI controls for customizing scatter plots.
+#'  It includes:
+#' - **Dropdowns**:
 #'   - X-axis variable
 #'   - Y-axis variable
 #'   - Color variable
@@ -19,9 +19,9 @@
 #'
 #' @seealso
 #' - [`mod_var_input_server()`]  for server-side logic.
-#' - [`shiny::tagList()`](https://shiny.rstudio.com/reference/shiny/latest/tagList.html) 
+#' - [`shiny::tagList()`](https://shiny.rstudio.com/reference/shiny/latest/tagList.html)
 #'   for containing UI elements.
-#' - [`shiny::NS()`](https://shiny.rstudio.com/reference/shiny/latest/NS.html) 
+#' - [`shiny::NS()`](https://shiny.rstudio.com/reference/shiny/latest/NS.html)
 #'   for namespacing.
 #'
 #' @family **Variable Input Module**
@@ -34,41 +34,47 @@
 #'     server = function(input, output, session) {
 #'       selected_vars <- mod_var_input_server("vars")
 #'       shiny::observe(
-#'           print(selected_vars())
-#'        )
+#'         print(selected_vars())
+#'       )
 #'     }
 #'   )
 #' }
-#' 
-#' 
+#'
 #' @export
 mod_var_input_ui <- function(id) {
   ns <- NS(id)
   tagList(
     selectInput(
       inputId = ns("y"), label = "Y-axis:",
-      choices = c("IMDB rating" = "imdb_rating",
+      choices = c(
+        "IMDB rating" = "imdb_rating",
         "IMDB number of votes" = "imdb_num_votes",
         "Critics Score" = "critics_score",
         "Audience Score" = "audience_score",
-        "Runtime" = "runtime"),
+        "Runtime" = "runtime"
+      ),
       selected = "audience_score"
     ),
     selectInput(
       inputId = ns("x"), label = "X-axis:",
-      choices = c("IMDB rating" = "imdb_rating",
+      choices = c(
+        "IMDB rating" = "imdb_rating",
         "IMDB number of votes" = "imdb_num_votes",
         "Critics Score" = "critics_score",
         "Audience Score" = "audience_score",
-        "Runtime" = "runtime"),
+        "Runtime" = "runtime"
+      ),
       selected = "imdb_rating"
     ),
-    selectInput(inputId = ns("z"), label = "Color by:",
-      choices = c("Title Type" = "title_type",
+    selectInput(
+      inputId = ns("z"), label = "Color by:",
+      choices = c(
+        "Title Type" = "title_type",
         "Genre" = "genre",
         "MPAA Rating" = "mpaa_rating",
         "Critics Rating" = "critics_rating",
-        "Audience Rating" = "audience_rating"),
+        "Audience Rating" = "audience_rating"
+      ),
       selected = "mpaa_rating"
     )
   )
@@ -81,13 +87,13 @@ mod_var_input_ui <- function(id) {
 #' @param id *(character)* Namespace ID for the module.
 #'
 #' @return A **reactive expression** that returns a list of selected input
-#'   values:  
+#'   values:
 #' - `y`: Variable for the y-axis.
 #' - `x`: Variable for the x-axis.
-#' - `z`: Variable for the point colors. 
+#' - `z`: Variable for the point colors.
 #'
-#' @section Details: 
-#' `mod_var_input_server()` reads user input from the corresponding UI 
+#' @section Details:
+#' `mod_var_input_server()` reads user input from the corresponding UI
 #'  function created with `mod_var_input_ui()`. It processes and returns
 #'  a reactive object containing the selected variables.
 #'
@@ -107,25 +113,26 @@ mod_var_input_ui <- function(id) {
 #'   )
 #' }
 #'
-#' 
+#'
 #' @export
 mod_var_input_server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    
     logr_msg("mod_var_input_server started", level = "TRACE")
-    
+
     observe({
-        logr_msg(
-          glue::glue("Reactive inputs: x = {input$x}, y = {input$y}, z = {input$z}"),
-          level = "DEBUG")
-    }) |> 
+      logr_msg(
+        glue::glue("Reactive inputs: x = {input$x}, y = {input$y}, z = {input$z}"),
+        level = "DEBUG"
+      )
+    }) |>
       bindEvent(c(input$x, input$y, input$z))
 
     return(
       reactive({
         logr_msg(
           glue::glue("Reactive inputs returned: x = {input$x}, y = {input$y}, z = {input$z}"),
-          level = "DEBUG")
+          level = "DEBUG"
+        )
         list(
           "x" = input$x,
           "y" = input$y,

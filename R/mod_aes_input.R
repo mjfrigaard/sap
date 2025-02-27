@@ -4,12 +4,12 @@
 #'
 #' @param id *(character)* Namespace ID for the module.
 #'
-#' @return A `shiny::tagList()` containing UI elements for variable 
+#' @return A `shiny::tagList()` containing UI elements for variable
 #' selection.
 #'
-#' @section Details: 
-#' `mod_aes_input_ui()` provides UI controls for customizing scatter plots. 
-#'  It includes:  
+#' @section Details:
+#' `mod_aes_input_ui()` provides UI controls for customizing scatter plots.
+#'  It includes:
 #' - **Sliders**:
 #'   - Transparency (`alpha`) ranging from 0 to 1.
 #'   - Point size ranging from 0 to 5.
@@ -20,9 +20,9 @@
 #'
 #' @seealso
 #' - [`mod_aes_input_server()`]  for server-side logic.
-#' - [`shiny::tagList()`](https://shiny.rstudio.com/reference/shiny/latest/tagList.html) 
+#' - [`shiny::tagList()`](https://shiny.rstudio.com/reference/shiny/latest/tagList.html)
 #'   for containing UI elements.
-#' - [`shiny::NS()`](https://shiny.rstudio.com/reference/shiny/latest/NS.html) 
+#' - [`shiny::NS()`](https://shiny.rstudio.com/reference/shiny/latest/NS.html)
 #'   for namespacing.
 #'
 #' @family **Aesthetics Input Module**
@@ -35,13 +35,12 @@
 #'     server = function(input, output, session) {
 #'       selected_vars <- mod_aes_input_server("aes")
 #'       shiny::observe(
-#'           print(selected_vars())
-#'        )
+#'         print(selected_vars())
+#'       )
 #'     }
 #'   )
 #' }
-#' 
-#' 
+#'
 #' @export
 mod_aes_input_ui <- function(id) {
   ns <- NS(id)
@@ -73,14 +72,14 @@ mod_aes_input_ui <- function(id) {
 #' @param id *(character)* Namespace ID for the module.
 #'
 #' @return A **reactive expression** that returns a list of selected input
-#'   values:  
+#'   values:
 #' - `alpha`: Transparency level of points (0-1).
 #' - `size`: Size of the points.
 #' - `plot_title`: Title for the scatter plot.
 #'
-#' @section Details: 
-#' `mod_aes_input_server()` reads user input from the corresponding UI 
-#'  function created with `mod_aes_input_ui()`. It processes and returns a reactive object 
+#' @section Details:
+#' `mod_aes_input_server()` reads user input from the corresponding UI
+#'  function created with `mod_aes_input_ui()`. It processes and returns a reactive object
 #'  containing the selected plot attributes.
 #'
 #' @seealso
@@ -99,28 +98,35 @@ mod_aes_input_ui <- function(id) {
 #'   )
 #' }
 #'
-#' 
+#'
 #' @export
 mod_aes_input_server <- function(id) {
   moduleServer(id, function(input, output, session) {
-
     observe({
       # use shiny to validate input and log warnings/errors
       validate(
-        need(try(input$alpha >= 0 & input$alpha <= 1), 
-              "Alpha must be between 0 and 1")
+        need(
+          try(input$alpha >= 0 & input$alpha <= 1),
+          "Alpha must be between 0 and 1"
+        )
       )
       if (input$alpha < 0 || input$alpha > 1) {
-        logr_msg(message = "Alpha value out of range: {alpha}", 
-        level = "WARN")
+        logr_msg(
+          message = "Alpha value out of range: {alpha}",
+          level = "WARN"
+        )
       }
       validate(
-        need(try(input$size > 0), 
-              "Size must be positive")
+        need(
+          try(input$size > 0),
+          "Size must be positive"
+        )
       )
       if (input$size <= 0) {
-        logr_msg(message = "Invalid size value: {size}", 
-        level = "ERROR")
+        logr_msg(
+          message = "Invalid size value: {size}",
+          level = "ERROR"
+        )
       }
     }) |> bindEvent(c(input$alpha, input$size))
 

@@ -1,7 +1,7 @@
 #' Log Application Behaviors
 #'
 #' A simple logging function for logging Shiny events and behaviors.
-#' 
+#'
 #' @param message log message
 #' @param log_file name of log file (defaults to "app_log.txt")
 #' @param save print or save log file
@@ -9,13 +9,13 @@
 #' @return A log message to the console and the `log_file`.
 #'
 #' @family **Utility Functions**
-#' 
+#'
 #'
 #' @examples
 #' if (interactive()) {
 #'   log_message("message")
 #' }
-#' 
+#'
 #' @export
 log_message <- function(message, log_file = "logs/app_log.txt", save = FALSE) {
   log_dir <- dirname(log_file)
@@ -25,7 +25,7 @@ log_message <- function(message, log_file = "logs/app_log.txt", save = FALSE) {
   timestamp <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
   # log entry
   log_entry <- sprintf("[%s] %s", timestamp, message)
-  # save 
+  # save
   if (save) {
     tryCatch(
       {

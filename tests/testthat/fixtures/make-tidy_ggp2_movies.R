@@ -44,8 +44,10 @@ make_tidy_ggp2_movies <- function(movies_data_url) {
 
 tidy_ggp2_movies <- make_tidy_ggp2_movies(movies_data_url = "https://raw.githubusercontent.com/hadley/ggplot2movies/refs/heads/master/data-raw/movies.csv")
 # save to tests/testthat/fixtures/
-saveRDS(object = tidy_ggp2_movies, 
-  file = "tests/testthat/fixtures/tidy_ggp2_movies.rds")
+saveRDS(
+  object = tidy_ggp2_movies,
+  file = "tests/testthat/fixtures/tidy_ggp2_movies.rds"
+)
 
 # quick checks
 dist_titles <- unique(ggplot2movies::movies$title)

@@ -18,17 +18,20 @@ library(thematic)
 library(ragg)
 # resources --------------------------------------------------------------------
 addResourcePath(
-    prefix = 'quarto',
-    directoryPath = system.file('www', package = 'sap'))
+  prefix = "quarto",
+  directoryPath = system.file("www", package = "sap")
+)
 # options ----------------------------------------------------------------------
 options(shiny.useragg = TRUE)
 # theme ------------------------------------------------------------------------
 thematic::thematic_set_theme(
   theme = thematic::thematic_theme(
-    bg = "#070d35", 
-    fg = "#FFFFFF", 
-    sequential = NA, 
-    accent = "#2ee3a4"))
+    bg = "#070d35",
+    fg = "#FFFFFF",
+    sequential = NA,
+    accent = "#2ee3a4"
+  )
+)
 ```
 
 ```{r}
@@ -61,8 +64,9 @@ tags$em(
     href = "https://quarto.org/docs/interactive/shiny/"
   ),
   "and data from the ",
-  tags$a("Building web applications with Shiny", 
-    href = "https://rstudio-education.github.io/shiny-course/"),
+  tags$a("Building web applications with Shiny",
+    href = "https://rstudio-education.github.io/shiny-course/"
+  ),
   "tutorial."
 )
 ```
@@ -70,13 +74,13 @@ tags$em(
 ```{r}
 #| context: server
 
-      selected_vars <- mod_var_input_server("vars")
-  
-      selected_aes <- mod_aes_input_server("aes")
+selected_vars <- mod_var_input_server("vars")
 
-      mod_scatter_display_server("plot", 
-                                  var_inputs = selected_vars, 
-                                  aes_inputs = selected_aes)
+selected_aes <- mod_aes_input_server("aes")
 
+mod_scatter_display_server("plot",
+  var_inputs = selected_vars,
+  aes_inputs = selected_aes
+)
 ```
 

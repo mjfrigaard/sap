@@ -4,3 +4,4 @@
 ^sap.*\.tar\.gz$
 ^sap.*\.tgz$
 _\.new\.png$
+^\.github$

@@ -61,7 +61,7 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 [`21.2_gha-shiny-deploy`](https://github.com/mjfrigaard/sap/tree/21.2_gha-shiny-deploy) demonstrates how to use GitHub Actions to deploy a Shiny app. 
 
-The style workflow is stored in the hidden `.github` folder:
+The `shiny-deploy.yaml` workflow is stored in the hidden `.github` folder:
 
 ``` sh
 .github/
@@ -85,7 +85,7 @@ name: shiny
 permissions: read-all
 
 jobs:
-  shiny-deploy:
+  shiny:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -108,12 +108,12 @@ jobs:
       - name: Authorize and deploy app
         env:
           # Provide your app name, account name, and server to be deployed below
-          APPNAME: your-app-name
-          ACCOUNT: your-account-name
+          APPNAME: shinyDeployApp
+          ACCOUNT: mjfrigaard
           SERVER: shinyapps.io # server to deploy
         run: |
           rsconnect::setAccountInfo("${{ secrets.RSCONNECT_USER }}", "${{ secrets.RSCONNECT_TOKEN }}", "${{ secrets.RSCONNECT_SECRET }}")
-          rsconnect::deployApp(appName = "${{ env.APPNAME }}", account = "${{ env.ACCOUNT }}", server = "${{ env.SERVER }}")
+          rsconnect::deployApp(appName = "${{ env.APPNAME }}", account = "${{ env.ACCOUNT }}", server = "${{ env.SERVER }}", forceUpdate = TRUE)
         shell: Rscript {0}
 
 ```

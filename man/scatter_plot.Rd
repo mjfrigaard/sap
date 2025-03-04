@@ -43,7 +43,6 @@ scatter_plot(
   size_var = 3
 )
 
-
 }
 \seealso{
 \itemize{

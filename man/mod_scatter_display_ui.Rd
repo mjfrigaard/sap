@@ -34,7 +34,6 @@ if (interactive()) {
   )
 }
 
-
 }
 \seealso{
 \itemize{

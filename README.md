@@ -57,95 +57,63 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `21.1_gha-style`
+## `21.2_gha-shiny-deploy`
 
-[`21.1_gha-style`](https://github.com/mjfrigaard/sap/tree/21.1_gha-style) demonstrates how to use GitHub Actions to style your app-package. 
+[`21.2_gha-shiny-deploy`](https://github.com/mjfrigaard/sap/tree/21.2_gha-shiny-deploy) demonstrates how to use GitHub Actions to deploy a Shiny app. 
 
 The style workflow is stored in the hidden `.github` folder:
 
 ``` sh
 .github/
   └── workflows
-      └── style.yaml
+      └── shiny-deploy.yaml
 
 2 directories, 1 file
 ```
 
-The `.github/workflows/style.yaml` file contains the following:
+The `.github/workflows/shiny-deploy.yaml` file contains the following:
 
 ```yaml
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [21.1_gha-style]
-    paths: ["**.[rR]", "**.[qrR]md", "**.[rR]markdown", "**.[rR]nw", "**.[rR]profile"]
+    branches: [21.2_gha-shiny-deploy]
 
-name: Style
+name: shiny
+
+permissions: read-all
 
 jobs:
-  style:
+  shiny-deploy:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v2
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
+          r-version: renv
 
-      - name: Install dependencies
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::styler, any::roxygen2
-          needs: styler
+      - uses: r-lib/actions/setup-renv@v2
 
-      - name: Enable styler cache
-        run: styler::cache_activate()
+      - name: Install rsconnect
+        run: install.packages("rsconnect")
         shell: Rscript {0}
 
-      - name: Determine cache location
-        id: styler-location
+      - name: Authorize and deploy app
+        env:
+          # Provide your app name, account name, and server to be deployed below
+          APPNAME: your-app-name
+          ACCOUNT: your-account-name
+          SERVER: shinyapps.io # server to deploy
         run: |
-          cat(
-            "location=",
-            styler::cache_info(format = "tabular")$location,
-            "\n",
-            file = Sys.getenv("GITHUB_OUTPUT"),
-            append = TRUE,
-            sep = ""
-          )
+          rsconnect::setAccountInfo("${{ secrets.RSCONNECT_USER }}", "${{ secrets.RSCONNECT_TOKEN }}", "${{ secrets.RSCONNECT_SECRET }}")
+          rsconnect::deployApp(appName = "${{ env.APPNAME }}", account = "${{ env.ACCOUNT }}", server = "${{ env.SERVER }}")
         shell: Rscript {0}
 
-      - name: Cache styler
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.styler-location.outputs.location }}
-          key: ${{ runner.os }}-styler-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-styler-
-            ${{ runner.os }}-
-
-      - name: Style
-        run: styler::style_pkg()
-        shell: Rscript {0}
-
-      - name: Commit and push changes
-        run: |
-          if FILES_TO_COMMIT=($(git diff-index --name-only ${{ github.sha }} \
-              | egrep --ignore-case '\.(R|[qR]md|Rmarkdown|Rnw|Rprofile)$'))
-          then
-            git config --local user.name "$GITHUB_ACTOR"
-            git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-            git commit ${FILES_TO_COMMIT[*]} -m "Style code (GHA)"
-            git pull --ff-only
-            git push origin
-          else
-            echo "No changes to commit."
-          fi
 ```

@@ -27,5 +27,4 @@ text_logo()
 # Generate a logo with size h1
 text_logo(size = "h1")
 
-
 }

@@ -43,12 +43,11 @@ if (interactive()) {
     server = function(input, output, session) {
       selected_vars <- mod_aes_input_server("aes")
       shiny::observe(
-          print(selected_vars())
-       )
+        print(selected_vars())
+      )
     }
   )
 }
-
 
 }
 \seealso{

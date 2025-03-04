@@ -57,63 +57,22 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `21.2_gha-shiny-deploy`
+## `21.2_gha-shiny-docker`
 
-[`21.2_gha-shiny-deploy`](https://github.com/mjfrigaard/sap/tree/21.2_gha-shiny-deploy) demonstrates how to use GitHub Actions to deploy a Shiny app. 
+[`21.2_gha-shiny-docker`](https://github.com/mjfrigaard/sap/tree/21.2_gha-shiny-docker) demonstrates how to use GitHub Actions to deploy a Shiny app using docker. 
 
-The `shiny-deploy.yaml` workflow is stored in the hidden `.github` folder:
+The `shiny-docker.yaml` workflow is stored in the hidden `.github` folder:
 
 ``` sh
 .github/
   └── workflows
-      └── shiny-deploy.yaml
+      └── shiny-docker.yaml
 
 2 directories, 1 file
 ```
 
-The `.github/workflows/shiny-deploy.yaml` file contains the following:
+The `.github/workflows/shiny-docker.yaml` file contains the following:
 
 ```yaml
-# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
-on:
-  push:
-    branches: [21.2_gha-shiny-deploy]
-
-name: shiny
-
-permissions: read-all
-
-jobs:
-  shiny:
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: r-lib/actions/setup-pandoc@v2
-
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
-          r-version: renv
-
-      - uses: r-lib/actions/setup-renv@v2
-
-      - name: Install rsconnect
-        run: install.packages("rsconnect")
-        shell: Rscript {0}
-
-      - name: Authorize and deploy app
-        env:
-          # Provide your app name, account name, and server to be deployed below
-          APPNAME: shinyDeployApp
-          ACCOUNT: mjfrigaard
-          SERVER: shinyapps.io # server to deploy
-        run: |
-          rsconnect::setAccountInfo("${{ secrets.RSCONNECT_USER }}", "${{ secrets.RSCONNECT_TOKEN }}", "${{ secrets.RSCONNECT_SECRET }}")
-          rsconnect::deployApp(appName = "${{ env.APPNAME }}", account = "${{ env.ACCOUNT }}", server = "${{ env.SERVER }}", forceUpdate = TRUE)
-        shell: Rscript {0}
 
 ```

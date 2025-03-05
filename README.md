@@ -98,10 +98,11 @@ jobs:
 A `deploy.R` is used to launch the app: 
 
 ```r
-setAccountInfo(name = Sys.getenv("RSCONNECT_USER"),
+library(rsconnect)
+rsconnect::setAccountInfo(name = Sys.getenv("RSCONNECT_USER"),
                token = Sys.getenv("RSCONNECT_TOKEN"),
                secret = Sys.getenv("RSCONNECT_SECRET"))
-deployApp(appDir = ".", 
+rsconnect::deployApp(appDir = ".", 
   appName = "shinyAppPkgsDockerCiCd", 
   account = "mjfrigaard", 
     server = "shinyapps.io", 
@@ -115,7 +116,7 @@ FROM rocker/shiny
 RUN mkdir /home/shinyAppPkgsDockerCiCd
 ADD . /home/shinyAppPkgsDockerCiCd
 WORKDIR /home/shinyAppPkgsDockerCiCd
-RUN R -e 'install.packages(c("bslib", "cli", "ggplot2", "logger", "pkgload", "quarto", "remotes", "rlang", "sass", "shiny", "shinythemes", "stringr", "tools", "withr"))'
+RUN R -e 'install.packages(c("bslib", "cli", "ggplot2", "logger", "pkgload", "quarto", "remotes", "rlang", "rsconnect", "sass", "shiny", "shinythemes", "stringr", "tools", "withr"))'
 RUN R -e 'remotes::install_local(upgrade="never")'
 EXPOSE 8180
 CMD Rscript deploy.R

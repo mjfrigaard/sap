@@ -13,6 +13,7 @@ Imports:
     ggplot2,
     logger,
     pkgload,
+    quarto,
     rlang,
     sass,
     shiny,

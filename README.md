@@ -74,5 +74,49 @@ The `shiny-docker.yaml` workflow is stored in the hidden `.github` folder:
 The `.github/workflows/shiny-docker.yaml` file contains the following:
 
 ```yaml
+name: docker-shiny, sap
 
+on:
+  push:
+    branches: [ 21.3_gha-shiny-docker ]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build -t sap .
+
+      - name: execute
+        run: >
+          docker run -e RSCONNECT_USER=${{ secrets.RSCONNECT_USER }} -e RSCONNECT_TOKEN=${{ secrets.RSCONNECT_TOKEN }}  -e RSCONNECT_SECRET=${{ secrets.RSCONNECT_SECRET }} sap  
+```
+
+A `deploy.R` is used to launch the app: 
+
+```r
+setAccountInfo(name = Sys.getenv("RSCONNECT_USER"),
+               token = Sys.getenv("RSCONNECT_TOKEN"),
+               secret = Sys.getenv("RSCONNECT_SECRET"))
+deployApp(appDir = ".", 
+  appName = "shinyAppPkgsDockerCiCd", 
+  account = "mjfrigaard", 
+    server = "shinyapps.io", 
+    forceUpdate = TRUE)
+```
+
+The `Dockerfile` includes the following: 
+
+```
+FROM rocker/shiny
+RUN mkdir /home/shinyAppPkgsDockerCiCd
+ADD . /home/shinyAppPkgsDockerCiCd
+WORKDIR /home/shinyAppPkgsDockerCiCd
+RUN R -e 'install.packages(c("bslib", "cli", "ggplot2", "logger", "pkgload", "quarto", "rlang", "sass", "shiny", "shinythemes", "stringr", "tools", "withr"))'
+RUN R -e 'remotes::install_local(upgrade="never")'
+EXPOSE 8180
+CMD Rscript deploy.R
 ```

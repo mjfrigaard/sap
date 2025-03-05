@@ -1,0 +1,19 @@
+name: docker-shiny, sap
+
+on:
+  push:
+    branches: [ 21.3_gha-shiny-docker ]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build -t sap .
+
+      - name: execute
+        run: >
+          docker run -e RSCONNECT_USER=${{ secrets.RSCONNECT_USER }} -e RSCONNECT_TOKEN=${{ secrets.RSCONNECT_TOKEN }}  -e RSCONNECT_SECRET=${{ secrets.RSCONNECT_SECRET }} sap  

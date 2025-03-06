@@ -14,7 +14,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "",
-  echo = FALSE
+  echo = TRUE
 )
 ```
 
@@ -25,7 +25,7 @@ library(lobstr) # abstract syntax trees
 
 ## Variable inputs 
 
-```{r}
+```{r include=FALSE, comment=""}
 lobstr::ast(
   launch_app(
     display_type(),
@@ -39,10 +39,20 @@ lobstr::ast(
   )
 ```
 
+```{verbatim}
+█─launch_app 
+├─█─display_type 
+├─█─movies_ui 
+│ └─█─mod_var_input_ui 
+└─█─movies_server 
+  └─█─mod_var_input_server 
+```
+
+
 
 ## Aesthetic inputs 
 
-```{r}
+```{r include=FALSE, comment=""}
 lobstr::ast(
   launch_app(
     display_type(),
@@ -58,10 +68,20 @@ lobstr::ast(
   )
 ```
 
+```{verbatim}
+█─launch_app 
+├─█─display_type 
+├─█─movies_ui 
+│ ├─█─mod_var_input_ui 
+│ └─█─mod_aes_input_ui 
+└─█─movies_server 
+  ├─█─mod_var_input_server 
+  └─█─mod_aes_input_server
+```
+
 ## Scatter plot display
 
-```{r}
-```{r}
+```{r include=FALSE, comment=""}
 lobstr::ast(
   launch_app(
     display_type(),
@@ -80,5 +100,17 @@ lobstr::ast(
     )
   )
 ```
-```
 
+```{verbatim}
+█─launch_app 
+├─█─display_type 
+├─█─movies_ui 
+│ ├─█─mod_var_input_ui 
+│ ├─█─mod_aes_input_ui 
+│ └─█─mod_scatter_display_ui 
+└─█─movies_server 
+  ├─█─mod_var_input_server 
+  ├─█─mod_aes_input_server 
+  └─█─mod_scatter_display_server 
+    └─█─scatter_plot 
+```

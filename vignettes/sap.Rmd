@@ -185,8 +185,14 @@ logr_msg(
 
 ### Default (`movies`)
 
-```{r echo=FALSE, comment=""}
+```{r include=FALSE, comment=""}
 fs::dir_tree("../inst/www")
+```
+
+```{verbatim}
+../inst/www
+├── bootstrap.png
+└── shiny.png
 ```
 
 ```{r eval=FALSE}
@@ -195,10 +201,15 @@ launch_app()
 
 ### bslib (`movies`)
 
-```{r echo=FALSE, comment=""}
+```{r include=FALSE, comment=""}
 fs::dir_tree("../inst/www")
 ```
 
+```{verbatim}
+../inst/www
+├── bootstrap.png
+└── shiny.png
+```
 
 ```{r eval=FALSE}
 launch_app(app = 'bslib')
@@ -206,8 +217,20 @@ launch_app(app = 'bslib')
 
 ### ggp2 (tidy `ggplot2movies`)
 
-```{r echo=FALSE, comment=""}
+```{r include=FALSE, comment=""}
 fs::dir_tree("../inst/tidy-movies")
+```
+
+```{verbatim}
+../inst/tidy-movies
+├── R
+│   ├── devServer.R
+│   ├── devUI.R
+│   ├── dev_mod_scatter.R
+│   └── dev_mod_vars.R
+├── app.R
+├── imdb.png
+└── tidy_movies.fst
 ```
 
 
@@ -217,9 +240,20 @@ launch_app(app = 'ggp2')
 
 ### quarto 
 
-```{r echo=FALSE, comment=""}
+```{r include=FALSE, comment=""}
 fs::dir_tree("../inst/quarto")
 ```
+
+```{verbatim}
+../inst/quarto
+├── _quarto.yml
+├── index.html
+├── index.qmd
+└── www
+    ├── quarto.png
+    └── styles.scss
+```
+
 
 ```{r eval=FALSE}
 launch_app(app = 'quarto')

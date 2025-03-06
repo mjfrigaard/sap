@@ -71,43 +71,45 @@
 
     
     
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mjfrigaard.github.io/sap/">sap</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lobstr.r-lib.org/" class="external-link">lobstr</a></span><span class="op">)</span> <span class="co"># abstract syntax trees</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="variable-inputs">Variable inputs<a class="anchor" aria-label="anchor" href="#variable-inputs"></a>
 </h2>
-<pre><code> [38;5;214m█ [39m─ [1m [35mlaunch_app [39m [22m 
-├─ [38;5;214m█ [39m─ [1m [35mdisplay_type [39m [22m 
-├─ [38;5;214m█ [39m─ [1m [35mmovies_ui [39m [22m 
-│ └─ [38;5;214m█ [39m─ [1m [35mmod_var_input_ui [39m [22m 
-└─ [38;5;214m█ [39m─ [1m [35mmovies_server [39m [22m 
-  └─ [38;5;214m█ [39m─ [1m [35mmod_var_input_server [39m [22m </code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>█─launch_app </span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>├─█─display_type </span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>├─█─movies_ui </span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>│ └─█─mod_var_input_ui </span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>└─█─movies_server </span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  └─█─mod_var_input_server </span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="aesthetic-inputs">Aesthetic inputs<a class="anchor" aria-label="anchor" href="#aesthetic-inputs"></a>
 </h2>
-<pre><code> [38;5;214m█ [39m─ [1m [35mlaunch_app [39m [22m 
-├─ [38;5;214m█ [39m─ [1m [35mdisplay_type [39m [22m 
-├─ [38;5;214m█ [39m─ [1m [35mmovies_ui [39m [22m 
-│ ├─ [38;5;214m█ [39m─ [1m [35mmod_var_input_ui [39m [22m 
-│ └─ [38;5;214m█ [39m─ [1m [35mmod_aes_input_ui [39m [22m 
-└─ [38;5;214m█ [39m─ [1m [35mmovies_server [39m [22m 
-  ├─ [38;5;214m█ [39m─ [1m [35mmod_var_input_server [39m [22m 
-  └─ [38;5;214m█ [39m─ [1m [35mmod_aes_input_server [39m [22m </code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>█─launch_app </span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>├─█─display_type </span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>├─█─movies_ui </span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>│ ├─█─mod_var_input_ui </span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>│ └─█─mod_aes_input_ui </span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>└─█─movies_server </span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  ├─█─mod_var_input_server </span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  └─█─mod_aes_input_server</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="scatter-plot-display">Scatter plot display<a class="anchor" aria-label="anchor" href="#scatter-plot-display"></a>
 </h2>
-<pre><code> [38;5;214m█ [39m─ [1m [35mlaunch_app [39m [22m 
-├─ [38;5;214m█ [39m─ [1m [35mdisplay_type [39m [22m 
-├─ [38;5;214m█ [39m─ [1m [35mmovies_ui [39m [22m 
-│ ├─ [38;5;214m█ [39m─ [1m [35mmod_var_input_ui [39m [22m 
-│ ├─ [38;5;214m█ [39m─ [1m [35mmod_aes_input_ui [39m [22m 
-│ └─ [38;5;214m█ [39m─ [1m [35mmod_scatter_display_ui [39m [22m 
-└─ [38;5;214m█ [39m─ [1m [35mmovies_server [39m [22m 
-  ├─ [38;5;214m█ [39m─ [1m [35mmod_var_input_server [39m [22m 
-  ├─ [38;5;214m█ [39m─ [1m [35mmod_aes_input_server [39m [22m 
-  └─ [38;5;214m█ [39m─ [1m [35mmod_scatter_display_server [39m [22m 
-    └─ [38;5;214m█ [39m─ [1m [35mscatter_plot [39m [22m </code></pre>
-<p>```</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>█─launch_app </span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>├─█─display_type </span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>├─█─movies_ui </span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>│ ├─█─mod_var_input_ui </span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>│ ├─█─mod_aes_input_ui </span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>│ └─█─mod_scatter_display_ui </span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>└─█─movies_server </span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  ├─█─mod_var_input_server </span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>  ├─█─mod_aes_input_server </span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>  └─█─mod_scatter_display_server </span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>    └─█─scatter_plot </span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

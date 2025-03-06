@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Specifications • shinyrPkgs</title>
+<title>Specifications • sap</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Ubuntu-0.4.9/font.css" rel="stylesheet">
-<link href="../deps/Inconsolata-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Ubuntu_Mono-0.4.9/font.css" rel="stylesheet">
 <link href="../deps/Fira_Sans_Condensed-0.4.9/font.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Specifications">
 </head>
 <body>
@@ -21,9 +21,9 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="../index.html">shinyrPkgs</a>
+    <a class="navbar-brand me-2" href="../index.html">sap</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9240</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="../articles/shinyrPkgs.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/sap.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-docs" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Docs</button>
@@ -40,8 +40,8 @@
 <li><h6 class="dropdown-header" data-toc-skip>Specs</h6></li>
     <li><a class="dropdown-item" href="../articles/specs.html">App Specifications</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Features</h6></li>
-    <li><a class="dropdown-item" href="../articles/features.html">App Features</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Modules</h6></li>
+    <li><a class="dropdown-item" href="../articles/modules.html">App Modules</a></li>
   </ul>
 </li>
       </ul>
@@ -72,9 +72,9 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mjfrigaard.github.io/shinyrPkgs/">shinyrPkgs</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mjfrigaard.github.io/sap/">sap</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>This vignette provides example specifications for the
-<code>shinyrPkgs</code> application (written in the <a href="https://cucumber.io/docs/gherkin/" class="external-link">Gherkin</a> syntax)</p>
+<code>sap</code> application (written in the <a href="https://cucumber.io/docs/gherkin/" class="external-link">Gherkin</a> syntax)</p>
 <div class="section level2">
 <h2 id="movies-app-specifications">Movies App Specifications<a class="anchor" aria-label="anchor" href="#movies-app-specifications"></a>
 </h2>
@@ -118,10 +118,10 @@ categorical genres variable</p>
 </h2>
 <table style="width:99%;" class="table">
 <colgroup>
-<col width="36%">
-<col width="27%">
-<col width="29%">
-<col width="5%">
+<col width="37%">
+<col width="28%">
+<col width="30%">
+<col width="2%">
 </colgroup>
 <thead><tr class="header">
 <th>Specifications</th>
@@ -174,7 +174,7 @@ categorical genres variable</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>

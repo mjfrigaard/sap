@@ -31,12 +31,6 @@
 #' @details
 #' See the [ggplot2movies](https://github.com/hadley/ggplot2movies) package.
 #'
-#'
-#' @examples
-#' if (interactive()) {
-#'   launch_app()
-#' }
-#'
 #' @export
 #'
 #' @import shiny

@@ -31,12 +31,6 @@ based on user inputs using \code{\link[=mod_scatter_display_server]{mod_scatter_
 }
 }
 
-\examples{
-if (interactive()) {
-  shiny::shinyApp(ui = movies_ui(), server = movies_server)
-}
-
-}
 \seealso{
 \itemize{
 \item \code{\link[=movies_ui]{movies_ui()}} for the corresponding user interface.

@@ -57,7 +57,7 @@
 #' @export
 #'
 logr_msg <- function(message, level = "INFO", log_file = "app_log.txt", json = FALSE, store_log = FALSE) {
-  # Console logging
+  # console logging
   logger::log_formatter(formatter = logger::formatter_glue)
   logger::log_layout(layout = logger::layout_glue_generator())
 

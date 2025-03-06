@@ -45,12 +45,6 @@ The application uses:
 }
 }
 
-\examples{
-if (interactive()) {
-  launch_app()
-}
-
-}
 \seealso{
 \itemize{
 \item \code{\link[=movies_ui]{movies_ui()}} for the user interface.

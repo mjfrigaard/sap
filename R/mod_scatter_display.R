@@ -18,17 +18,8 @@
 #'
 #' @family **Plot Display Module**
 #'
-#' @examples
-#' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(mod_scatter_display_ui("plot")),
-#'     server = function(input, output, session) {
-#'       # Example usage - server logic is minimal for standalone testing.
-#'     }
-#'   )
-#' }
-#'
 #' @export
+#' 
 mod_scatter_display_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -72,21 +63,6 @@ mod_scatter_display_ui <- function(id) {
 #'
 #' @family **Plot Display Module**
 #'
-#' @examples
-#' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(
-#'       mod_var_input_ui("vars"),
-#'       mod_aes_input_ui("aes"),
-#'       mod_scatter_display_ui("plot")
-#'     ),
-#'     server = function(input, output, session) {
-#'       selected_vars <- mod_var_input_server("vars")
-#'       selected_aes <- mod_var_input_server("aes")
-#'       mod_scatter_display_server("plot", selected_vars, selected_aes)
-#'     }
-#'   )
-#' }
 #'
 #' @export
 mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {

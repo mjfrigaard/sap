@@ -1,0 +1,84 @@
+---
+title: "App Modules"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 4
+vignette: >
+  %\VignetteIndexEntry{App Modules}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "",
+  echo = FALSE
+)
+```
+
+```{r pkg}
+library(sap)
+library(lobstr) # abstract syntax trees
+```
+
+## Variable inputs 
+
+```{r}
+lobstr::ast(
+  launch_app(
+    display_type(),
+    movies_ui(
+      mod_var_input_ui()
+    ),
+    movies_server(
+      mod_var_input_server()
+      )
+    )
+  )
+```
+
+
+## Aesthetic inputs 
+
+```{r}
+lobstr::ast(
+  launch_app(
+    display_type(),
+    movies_ui(
+      mod_var_input_ui(),
+      mod_aes_input_ui()
+    ),
+    movies_server(
+      mod_var_input_server(),
+      mod_aes_input_server()
+      )
+    )
+  )
+```
+
+## Scatter plot display
+
+```{r}
+```{r}
+lobstr::ast(
+  launch_app(
+    display_type(),
+    movies_ui(
+      mod_var_input_ui(),
+      mod_aes_input_ui(),
+      mod_scatter_display_ui()
+    ),
+    movies_server(
+      mod_var_input_server(),
+      mod_aes_input_server(),
+      mod_scatter_display_server(
+        scatter_plot()
+        )
+      )
+    )
+  )
+```
+```
+

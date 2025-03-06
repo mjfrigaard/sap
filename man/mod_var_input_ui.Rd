@@ -32,21 +32,6 @@ It includes:
 The function uses \code{shiny::NS()} to namespace all input IDs.
 }
 
-\examples{
-
-if (interactive()) {
-  shiny::shinyApp(
-    ui = shiny::fluidPage(mod_var_input_ui("vars")),
-    server = function(input, output, session) {
-      selected_vars <- mod_var_input_server("vars")
-      shiny::observe(
-        print(selected_vars())
-      )
-    }
-  )
-}
-
-}
 \seealso{
 \itemize{
 \item \code{\link[=mod_var_input_server]{mod_var_input_server()}}  for server-side logic.

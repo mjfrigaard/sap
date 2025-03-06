@@ -1,6 +1,6 @@
 Package: sap
 Title: Shiny App-Packages
-Version: 0.0.0.9200
+Version: 0.0.0.9240
 Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
 Description: An R package with a collection of Shiny applications.
@@ -32,3 +32,4 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+URL: https://mjfrigaard.github.io/sap/

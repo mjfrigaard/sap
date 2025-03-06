@@ -35,21 +35,6 @@ It includes:
 The function uses \code{shiny::NS()} to namespace all input IDs.
 }
 
-\examples{
-
-if (interactive()) {
-  shiny::shinyApp(
-    ui = shiny::fluidPage(mod_aes_input_ui("aes")),
-    server = function(input, output, session) {
-      selected_vars <- mod_aes_input_server("aes")
-      shiny::observe(
-        print(selected_vars())
-      )
-    }
-  )
-}
-
-}
 \seealso{
 \itemize{
 \item \code{\link[=mod_aes_input_server]{mod_aes_input_server()}}  for server-side logic.

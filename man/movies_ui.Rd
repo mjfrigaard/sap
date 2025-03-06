@@ -32,12 +32,6 @@ displays the scatter plot module
 }
 }
 
-\examples{
-if (interactive()) {
-  shiny::shinyApp(ui = movies_ui(), server = movies_server)
-}
-
-}
 \seealso{
 \itemize{
 \item \code{\link[=movies_server]{movies_server()}} for the server logic of the app.

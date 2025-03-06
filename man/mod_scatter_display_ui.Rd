@@ -24,17 +24,6 @@ Creates a UI for displaying a scatter plot with user-selected options.
 }
 }
 
-\examples{
-if (interactive()) {
-  shiny::shinyApp(
-    ui = shiny::fluidPage(mod_scatter_display_ui("plot")),
-    server = function(input, output, session) {
-      # Example usage - server logic is minimal for standalone testing.
-    }
-  )
-}
-
-}
 \seealso{
 \itemize{
 \item \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}  for the server-side logic of this

@@ -26,12 +26,8 @@
 #'
 #' @family **Application Components**
 #'
-#' @examples
-#' if (interactive()) {
-#'   shiny::shinyApp(ui = movies_ui(), server = movies_server)
-#' }
-#'
 #' @export
+#' 
 movies_ui <- function(bslib = FALSE) {
   addResourcePath(
     prefix = "www",

@@ -1,0 +1,55 @@
+url: https://mjfrigaard.github.io/sap/
+template:
+  bootstrap: 5
+  bootswatch: united
+  theme: atom-one-light
+  bslib:
+    primary: "#02577A"
+    code-color: "#007bff"
+    code-bg: "#EAE9EA"
+    base_font:
+      google: Ubuntu
+    heading_font:
+      google: Fira Sans Condensed
+    code_font:
+      google: Ubuntu Mono
+
+navbar:
+ components:
+   articles:
+    text: Docs
+    menu:
+    - text: "Specs"
+    - text: App Specifications
+      href: articles/specs.html
+    - text: -------
+    - text: "Modules"
+    - text: App Modules
+      href: articles/modules.html
+      
+reference:
+- title: "Modules"
+  desc: >
+    Application modules
+  contents:
+  - starts_with("mod")
+- title: "Apps"
+  desc: "Launch apps"
+  contents:
+  - launch_app
+  - movies_ui
+  - movies_server
+- title: "Utilities"
+  desc: "Utility functions"
+  contents:
+  - display_type
+  - scatter_plot
+  - text_logo
+- title: "Logging"
+  desc: "Logging functions"
+  contents:
+  - starts_with("log")
+- title: "Data"
+  desc: "App data"
+  contents:
+  - movies

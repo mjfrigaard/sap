@@ -10,7 +10,6 @@
 #'
 #' @family **Utility Functions**
 #'
-#'
 #' @examples
 #' if (interactive()) {
 #'   log_message("message")
@@ -18,15 +17,15 @@
 #'
 #' @export
 log_message <- function(message, log_file = "logs/app_log.txt", save = FALSE) {
-  log_dir <- dirname(log_file)
-  if (!dir.exists(log_dir)) {
-    dir.create(log_dir, recursive = TRUE)
-  }
   timestamp <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
   # log entry
   log_entry <- sprintf("[%s] %s", timestamp, message)
   # save
   if (save) {
+    log_dir <- dirname(log_file)
+    if (!dir.exists(log_dir)) {
+      dir.create(log_dir, recursive = TRUE)
+    }
     tryCatch(
       {
         cat(log_entry, "\n", file = log_file, append = TRUE)

@@ -45,23 +45,6 @@ environment.
 }
 }
 
-\examples{
-if (interactive()) {
-  shiny::shinyApp(
-    ui = shiny::fluidPage(
-      mod_var_input_ui("vars"),
-      mod_aes_input_ui("aes"),
-      mod_scatter_display_ui("plot")
-    ),
-    server = function(input, output, session) {
-      selected_vars <- mod_var_input_server("vars")
-      selected_aes <- mod_var_input_server("aes")
-      mod_scatter_display_server("plot", selected_vars, selected_aes)
-    }
-  )
-}
-
-}
 \seealso{
 \itemize{
 \item \code{\link[=mod_var_input_server]{mod_var_input_server()}} for variable selection.

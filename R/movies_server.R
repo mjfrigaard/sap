@@ -20,11 +20,6 @@
 #'
 #' @family **Application Components**
 #'
-#' @examples
-#' if (interactive()) {
-#'   shiny::shinyApp(ui = movies_ui(), server = movies_server)
-#' }
-#'
 #' @export
 #'
 movies_server <- function(input, output, session) {

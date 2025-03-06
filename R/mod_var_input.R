@@ -26,20 +26,6 @@
 #'
 #' @family **Variable Input Module**
 #'
-#' @examples
-#'
-#' if (interactive()) {
-#'   shiny::shinyApp(
-#'     ui = shiny::fluidPage(mod_var_input_ui("vars")),
-#'     server = function(input, output, session) {
-#'       selected_vars <- mod_var_input_server("vars")
-#'       shiny::observe(
-#'         print(selected_vars())
-#'       )
-#'     }
-#'   )
-#' }
-#'
 #' @export
 mod_var_input_ui <- function(id) {
   ns <- NS(id)
@@ -115,6 +101,7 @@ mod_var_input_ui <- function(id) {
 #'
 #'
 #' @export
+#' 
 mod_var_input_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     logr_msg("mod_var_input_server started", level = "TRACE")

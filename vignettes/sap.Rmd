@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
   comment = "#>",
 	dev = "ragg_png",
 	dpi = 320,
-	out.width = "80%",
+	out.width = "85%",
 	fig.width = 6,
 	fig.asp = 0.618,
 	fig.retina = 2,
@@ -27,9 +27,6 @@ knitr::opts_chunk$set(
 
 ```{r pkg, message=FALSE, warning=FALSE}
 library(sap)
-library(dplyr) # data manipulation
-library(ggplot2) # data visualization 
-library(tidyr) # missing data 
 ```
 
 The `sap` package is designed to demonstrate how to build a Shiny application inside an R package. 
@@ -94,7 +91,7 @@ ggp2mov_url <- "https://raw.githubusercontent.com/hadley/ggplot2movies/refs/head
 
 ```{r make_tidy_ggp2_movies}
 tidy_movies <- make_tidy_ggp2_movies(movies_data_url = ggp2mov_url)
-glimpse(tidy_movies)
+str(tidy_movies)
 ```
 
 This function is not exported from the package, it lives in `tests/testthat/fixtures/make-tidy_ggp2_movies.R`.
@@ -141,12 +138,12 @@ The `scatter_plot()` function was written to make it easier to use `ggplot2` fun
 Variable inputs are collected from the UI as strings (i.e., `"length"` and `"rating"`, not `length` and `rating`), which makes it difficult for standard `ggplot2` calls: 
 
 ```{r}
-ggplot(data = tidyr::drop_na(tidy_movies), 
-  mapping = aes(
+ggplot2::ggplot(data = na.omit(tidy_movies), 
+  mapping = ggplot2::aes(
     x = length,
     y = rating, 
     color = mpaa)) + 
-  geom_point(
+  ggplot2::geom_point(
     alpha = 0.75,
     size = 2)
 ```
@@ -155,7 +152,7 @@ ggplot(data = tidyr::drop_na(tidy_movies),
 
 ```{r}
 scatter_plot(
-  df = tidyr::drop_na(tidy_movies),
+  df = na.omit(tidy_movies),
   x_var = "length",
   y_var = "rating",
   col_var = "mpaa",
@@ -188,11 +185,20 @@ logr_msg(
 
 ### Default (`movies`)
 
+```{r echo=FALSE, comment=""}
+fs::dir_tree("../inst/www")
+```
+
 ```{r eval=FALSE}
 launch_app()
 ```
 
 ### bslib (`movies`)
+
+```{r echo=FALSE, comment=""}
+fs::dir_tree("../inst/www")
+```
+
 
 ```{r eval=FALSE}
 launch_app(app = 'bslib')
@@ -200,11 +206,20 @@ launch_app(app = 'bslib')
 
 ### ggp2 (tidy `ggplot2movies`)
 
+```{r echo=FALSE, comment=""}
+fs::dir_tree("../inst/tidy-movies")
+```
+
+
 ```{r eval=FALSE}
 launch_app(app = 'ggp2')
 ```
 
 ### quarto 
+
+```{r echo=FALSE, comment=""}
+fs::dir_tree("../inst/quarto")
+```
 
 ```{r eval=FALSE}
 launch_app(app = 'quarto')

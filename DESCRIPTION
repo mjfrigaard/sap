@@ -5,32 +5,35 @@ Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
 Description: An R package with a collection of Shiny applications.
 License: GPL-3
+URL: https://mjfrigaard.github.io/sap/
 Depends: 
     R (>= 2.10)
 Imports: 
     bslib,
     cli,
     ggplot2,
-    lobstr,
+    glue,
+    htmltools,
     logger,
-    pkgload,
     quarto,
     rlang,
     sass,
     shiny,
-    shinythemes,
     stringr,
-    tools,
-    withr
+    tools
+Suggests: 
+    fs,
+    ggplot2movies,
+    knitr,
+    lobstr,
+    rmarkdown,
+    shinytest2,
+    testthat (>= 3.0.0),
+    waldo
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Suggests: 
-    knitr,
-    rmarkdown,
-    shinytest2,
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
-VignetteBuilder: knitr
-URL: https://mjfrigaard.github.io/sap/

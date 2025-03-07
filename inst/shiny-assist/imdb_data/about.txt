@@ -1,9 +1,0 @@
-Courtesy of Northwestern University Libraries
- IMDb data files
- Work 3484zh40n
- Prepared on 2025-03-06 21:58:21 UTC
-
-Downloaded from: https://doi.org/10.21985/n2-t2mw-wg40
-
-Read more: https://relational.fel.cvut.cz/dataset/IMDb
-

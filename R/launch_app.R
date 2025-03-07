@@ -8,6 +8,7 @@
 #'  * `"bslib"` = alternative `bslib` layout
 #'  * `"ggp2"` = `ggplot2movies` (tidy) data app.
 #'  * `"quarto"` = Quarto movies app.
+#'  * `"assist"` = Application built with [Shiny Assistant](https://gallery.shinyapps.io/assistant/#).
 #' @param options arguments to pass to `options()`
 #' @param run where to launch app:
 #'  * `p` = launch in viewer pane
@@ -65,6 +66,11 @@ launch_app <- function(app = NULL, options = list(), run = "p", ...) {
         quarto::quarto_preview(
           system.file("quarto", "index.qmd", package = "sap"),
           render = "all"
+        )
+      } else if (app == "assist") {
+        shinyAppDir(
+          appDir = system.file("shiny-assist/movies", package = "sap"),
+          options = options
         )
       } else {
         shinyApp(

@@ -15,7 +15,8 @@
 server_function <- function(input, output, session) {
   # Load the data
   movies_data <- reactive({
-    read_csv("https://raw.githubusercontent.com/mjfrigaard/sap/refs/heads/23_llm-shiny-assist/inst/shiny-assist/movies/movies_sample.csv")
+    movies_sample <- vroom::vroom(file = "https://raw.githubusercontent.com/mjfrigaard/sap/refs/heads/23_llm-shiny-assist/data-raw/movies_sample.csv")
+    return(movies_sample)
   })
   
   # Get controls from the controls module

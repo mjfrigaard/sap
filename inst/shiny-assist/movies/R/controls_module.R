@@ -6,40 +6,42 @@
 #'
 #' @return A UI definition for the controls module
 #'
-#' @importFrom shiny NS tagList selectInput sliderInput hr textInput checkboxInput
 #'
 #' @export
+#' 
 controlsUI <- function(id) {
   ns <- NS(id)
   tagList(
-    selectInput(ns("x_var"), "X-axis Variable:", 
+    selectInput(inputId = ns("x_var"), label = "X-axis Variable:", 
                 choices = c("runtime", "year", "imdb_rating", 
                             "imdb_num_votes", "critics_score", "audience_score"),
                 selected = "imdb_rating"),
     
-    selectInput(ns("y_var"), "Y-axis Variable:", 
+    selectInput(inputId = ns("y_var"), label = "Y-axis Variable:", 
                 choices = c("runtime", "year", "imdb_rating", 
                             "imdb_num_votes", "critics_score", "audience_score"),
                 selected = "audience_score"),
     
-    selectInput(ns("color_var"), "Color by:", 
+    selectInput(inputId = ns("color_var"), label = "Color by:", 
                 choices = c("None" = "none", 
                             "genre", "mpaa_rating", "critics_rating", 
                             "audience_rating", "best_pic_nom", "best_pic_win", 
                             "best_actor_win", "best_actress_win", "best_dir_win"),
-                selected = "genre"),
+                selected = "mpaa_rating"),
     
-    sliderInput(ns("point_size"), "Point Size:", 
+    sliderInput(inputId = ns("point_size"), label = "Point Size:", 
                 min = 1, max = 10, value = 3, step = 0.5),
     
-    sliderInput(ns("alpha"), "Transparency:", 
+    sliderInput(inputId = ns("alpha"), label = "Transparency:", 
                 min = 0.1, max = 1, value = 0.7, step = 0.1),
     
     hr(),
     
-    textInput(ns("plot_title"), "Plot Title:", value = "IMDB Movie Visualization"),
+    textInput(inputId = ns("plot_title"), label = "Plot Title:",
+     value = "IMDB Movie Visualization"),
     
-    checkboxInput(ns("show_labels"), "Show Movie Titles", FALSE)
+    checkboxInput(inputId = ns("show_labels"), label = "Show Movie Titles", 
+                  value = FALSE)
   )
 }
 
@@ -51,9 +53,8 @@ controlsUI <- function(id) {
 #'
 #' @return A reactive list containing all input values
 #'
-#' @importFrom shiny moduleServer reactive
-#'
 #' @export
+#' 
 controlsServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     # Return all inputs as a reactive list

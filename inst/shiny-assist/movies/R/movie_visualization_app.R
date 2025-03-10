@@ -5,9 +5,10 @@
 #'
 #' @return A Shiny application object
 #'
-#' @importFrom shiny shinyApp
+#' @import shiny
 #'
 #' @export
+#' 
 movie_visualization_app <- function() {
   # Create and return the Shiny app
   shinyApp(ui = ui_function(), server = server_function)

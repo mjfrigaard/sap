@@ -8,10 +8,8 @@
 #'
 #' @return None
 #'
-#' @importFrom readr read_csv
-#' @importFrom shiny reactive
-#'
 #' @export
+#' 
 server_function <- function(input, output, session) {
   # Load the data
   movies_data <- reactive({

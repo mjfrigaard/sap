@@ -4,13 +4,12 @@
 #'
 #' @return A Shiny UI object
 #'
-#' @importFrom bslib page_sidebar sidebar bs_theme
-#' @importFrom shiny tagList
 #'
 #' @export
+#' 
 ui_function <- function() {
   # Create a dark theme using bslib
-  dark_theme <- bs_theme(
+  dark_theme <- bslib::bs_theme(
     bg = "#202123",          # Background
     fg = "#FFFFFF",          # Foreground
     primary = "#3E72C4",     # Primary color
@@ -19,11 +18,11 @@ ui_function <- function() {
     base_font = "Helvetica"  # Font
   )
   
-  page_sidebar(
+  bslib::page_sidebar(
     theme = dark_theme,
     title = "IMDB Movie Data Visualization",
     
-    sidebar = sidebar(
+    sidebar = bslib::sidebar(
       title = "Controls",
       controlsUI("movie_controls")
     ),

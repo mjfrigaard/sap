@@ -1,0 +1,38 @@
+---
+title: "shinydb"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{shinydb}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  eval = FALSE
+)
+```
+
+The data for this application is stored in the SQLite database: `inst/extdata/movies.db`.
+
+```{r setup, eval=TRUE}
+library(shinydb)
+```
+
+Importing the data into the application can be done using the `db_con()` and `join_movies_tbls()` functions.
+
+```{r all_movies, eval=TRUE}
+con <- db_con("shinydb", "movies.db")
+all_movies <- join_movies_tbls(con = con)
+dplyr::glimpse(all_movies)
+```
+
+The joined data in `all_movies` contains both tables in `inst/extdata/movies.db`:
+
+```{r close-con, eval=FALSE}
+DBI::dbDisconnect(con) # close connection
+```
+
+

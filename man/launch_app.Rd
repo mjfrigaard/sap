@@ -14,6 +14,7 @@ launch_app(app = NULL, options = list(), run = "p", ...)
 \item \code{"ggp2"} = \code{ggplot2movies} (tidy) data app.
 \item \code{"quarto"} = Quarto movies app.
 \item \code{"assist"} = Application built with \href{https://gallery.shinyapps.io/assistant/#}{Shiny Assistant}.
+\item \code{"db"} = Launches movies DB application. Adapted from
 }}
 
 \item{options}{arguments to pass to \code{options()}}

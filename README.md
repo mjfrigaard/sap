@@ -9,18 +9,18 @@ Install `sap` using `remotes`:
 
 ``` r
 install.packages('remotes')
-remotes::install_github('mjfrigaard/sap', ref = '23_llm-shiny-assist')
+remotes::install_github('mjfrigaard/sap', ref = '24_llm-ellmer')
 ```
 
-## `23_llm-shiny-assist`
+## `24_llm-ellmer`
 
-[`23_llm-shiny-assist`](https://github.com/mjfrigaard/sap/tree/23_llm-shiny-assist) demonstrates and application created in 5 prompts with [Shiny Assistant](https://gallery.shinyapps.io/assistant/).
+[`24_llm-ellmer`](https://github.com/mjfrigaard/sap/tree/24_llm-ellmer) demonstrates using the `ellmer` package in Shiny App-Package development. 
 
 Launch the application using;
 
 ``` r
 library(sap)
-launch_app(app = "assist")
+launch_app(app = "db")
 ```
 
 ### Movie review data application

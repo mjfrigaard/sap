@@ -9,6 +9,7 @@
 #'  * `"ggp2"` = `ggplot2movies` (tidy) data app.
 #'  * `"quarto"` = Quarto movies app.
 #'  * `"assist"` = Application built with [Shiny Assistant](https://gallery.shinyapps.io/assistant/#).
+#'  * `"db"` = Launches movies DB application. Adapted from 
 #' @param options arguments to pass to `options()`
 #' @param run where to launch app:
 #'  * `p` = launch in viewer pane
@@ -70,6 +71,11 @@ launch_app <- function(app = NULL, options = list(), run = "p", ...) {
       } else if (app == "assist") {
         shinyAppDir(
           appDir = system.file("shiny-assist/movies", package = "sap"),
+          options = options
+        )
+      } else if (app == "db") {
+        shinyAppDir(
+          appDir = system.file("shinydb", package = "sap"),
           options = options
         )
       } else {

@@ -1,6 +1,6 @@
 <h1 align="center"> <code>sap</code> </h1>
 
-<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h3>
+<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
 
 <hr>
 

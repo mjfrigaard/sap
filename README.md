@@ -59,4 +59,24 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `17_test-modules`
 
-[`17_test-modules`](https://github.com/mjfrigaard/sap/tree/17_test-modules) covers testing modules with [`testServer()`](https://shiny.posit.co/r/articles/improve/server-function-testing/). 
+The [`17_test-modules`](https://github.com/mjfrigaard/sap/tree/17_test-modules) branch covers testing modules with [`testServer()`](https://shiny.posit.co/r/articles/improve/server-function-testing/). 
+
+```
+tests
+├── testthat
+│   ├── Rplots.pdf
+│   ├── _snaps
+│   │   └── text_logo.md
+│   ├── app_log.txt
+│   ├── fixtures
+│   │   ├── make-tidy_ggp2_movies.R
+│   │   └── tidy_ggp2_movies.rds
+│   ├── helper.R
+│   ├── test-mod_scatter_display_server.R
+│   ├── test-mod_var_input_server.R
+│   ├── test-scatter_plot.R
+│   └── test-text_logo.R
+└── testthat.R
+
+4 directories, 11 files
+```

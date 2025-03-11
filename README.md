@@ -59,5 +59,7 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `19_shinyappsio`
 
-[`19_shinyappsio`](https://github.com/mjfrigaard/sap/tree/19_shinyappsio) demonstrates how to deploy your Shiny app package to [shinyapps.io](https://www.shinyapps.io/), a hosting service managed by Posit.
+The [`19_shinyappsio`](https://github.com/mjfrigaard/sap/tree/19_shinyappsio) branch demonstrates how to deploy your Shiny app package to [shinyapps.io](https://www.shinyapps.io/), a hosting service managed by Posit.
+
+
 

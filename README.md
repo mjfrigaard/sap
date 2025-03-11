@@ -59,5 +59,5 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `11_debug-print`
 
-[`11_debug-print`](https://github.com/mjfrigaard/sap/tree/11_debug-print) gives an example of debugging Shiny code using various 'print' functions and tools. 
+The [`11_debug-print`](https://github.com/mjfrigaard/sap/tree/11_debug-print) branch gives examples of debugging Shiny code using various 'print' functions and tools. 
 

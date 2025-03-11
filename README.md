@@ -1,6 +1,3 @@
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # Shiny App-Packages (`sap`)
 
 Shiny App-Packages, or `sap`, provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
@@ -14,7 +11,7 @@ remotes::install_github('mjfrigaard/sap', ref = '23_llm-shiny-assist')
 
 ## `23_llm-shiny-assist`
 
-[`23_llm-shiny-assist`](https://github.com/mjfrigaard/sap/tree/23_llm-shiny-assist) demonstrates and application created in 5 prompts with [Shiny Assistant](https://gallery.shinyapps.io/assistant/).
+The [`23_llm-shiny-assist`](https://github.com/mjfrigaard/sap/tree/23_llm-shiny-assist) branch contains an application created in 5 prompts with [Shiny Assistant](https://gallery.shinyapps.io/assistant/).
 
 Launch the application using;
 

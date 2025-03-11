@@ -59,4 +59,17 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `16.3_test-logger`
 
-[`16.3_test-logger`](https://github.com/mjfrigaard/sap/tree/16.3_test-logger) covers using the [`logger` package](https://daroczig.github.io/logger/index.html) and storing test [utility functions](https://r-pkgs.org/testing-design.html#testthat-helper-files).
+The [`16.3_test-logger`](https://github.com/mjfrigaard/sap/tree/16.3_test-logger) branch covers using the [`logger` package](https://daroczig.github.io/logger/index.html) and storing test [utility functions](https://r-pkgs.org/testing-design.html#testthat-helper-files).
+
+```
+tests
+├── testthat
+│   ├── fixtures
+│   │   ├── make-tidy_ggp2_movies.R
+│   │   └── tidy_ggp2_movies.rds
+│   ├── helper.R
+│   └── test-scatter_plot.R
+└── testthat.R
+
+3 directories, 5 files
+```

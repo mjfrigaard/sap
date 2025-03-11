@@ -59,7 +59,7 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `15_specs`
 
-[`15_specs`](https://github.com/mjfrigaard/sap/tree/15_specs) covers specifying application specifications for development and testing in your Shiny app-package.
+The [`15_specs`](https://github.com/mjfrigaard/sap/tree/15_specs) branch covers specifying application specifications for development and testing in your Shiny app-package.
 
 The `vignettes/` folder: 
 

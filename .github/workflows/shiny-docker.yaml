@@ -2,6 +2,7 @@ name: docker-shiny, sap
 
 on:
   push:
+    # push on this branch only!
     branches: [ 21.3_gha-shiny-docker ]
 
 jobs:

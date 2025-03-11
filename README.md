@@ -59,7 +59,27 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `18_test-system`
 
-[`18_test-system`](https://github.com/mjfrigaard/sap/tree/18_test-system) covers system tests with [`shinytest2`](https://rstudio.github.io/shinytest2/). 
+The [`18_test-system`](https://github.com/mjfrigaard/sap/tree/18_test-system) branch covers system tests with [`shinytest2`](https://rstudio.github.io/shinytest2/). 
+
+```
+tests
+├── testthat
+│   ├── fixtures
+│   │   ├── make-tidy_ggp2_movies.R
+│   │   └── tidy_ggp2_movies.rds
+│   ├── helper.R
+│   ├── setup-shinytest2.R
+│   ├── test-mod_scatter_display_server.R
+│   ├── test-mod_var_input_server.R
+│   ├── test-scatter_plot.R
+│   ├── test-shinytest2-export.R
+│   ├── test-shinytest2-prod.R
+│   ├── test-shinytest2.R
+│   └── test-text_logo.R
+└── testthat.R
+
+3 directories, 12 files
+```
 
 The test results in this branch should show something *like* the following after loading, installing, and calling `devtools::test()`:
 
@@ -129,3 +149,4 @@ Duration: 25.2 s
 
 [ FAIL 0 | WARN 0 | SKIP 0 | PASS 19 ]
 ```
+

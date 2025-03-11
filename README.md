@@ -57,7 +57,7 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `13_logging`
+## `14_tests-suite`
 
-[`13_logging`](https://github.com/mjfrigaard/sap/tree/13_logging) covers how to use logging to record application behavior, trace issues, and ensure performance meets expectations. 
+The [`14_tests-suite`](https://github.com/mjfrigaard/sap/tree/14_tests-suite) branch covers how to set up the `tests/` folder:
 

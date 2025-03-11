@@ -40,12 +40,11 @@ if (interactive()) {
     server = function(input, output, session) {
       selected_vars <- mod_var_input_server("vars")
       shiny::observe(
-          print(selected_vars())
-       )
+        print(selected_vars())
+      )
     }
   )
 }
-
 
 }
 \seealso{

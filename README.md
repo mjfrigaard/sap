@@ -59,7 +59,7 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `21.1_gha-style`
 
-[`21.1_gha-style`](https://github.com/mjfrigaard/sap/tree/21.1_gha-style) demonstrates how to use GitHub Actions to style your app-package. 
+The [`21.1_gha-style`](https://github.com/mjfrigaard/sap/tree/21.1_gha-style) branch demonstrates how to use GitHub Actions to style your app-package. 
 
 The style workflow is stored in the hidden `.github` folder:
 
@@ -149,3 +149,4 @@ jobs:
             echo "No changes to commit."
           fi
 ```
+

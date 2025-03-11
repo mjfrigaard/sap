@@ -16,9 +16,9 @@ install.packages('remotes')
 remotes::install_github('mjfrigaard/sap', ref = '22_pkgdown')
 ```
 
-[`22_pkgdown`](https://github.com/mjfrigaard/sap/tree/22_pkgdown)
-demonstrates how to create a package website using `pkgdown` and GitHub
-Actions.
+The [`22_pkgdown`](https://github.com/mjfrigaard/sap/tree/22_pkgdown)
+branch demonstrates how to create a package website using `pkgdown` and
+GitHub Actions.
 
 ## Movie review data application
 

@@ -11,23 +11,26 @@ Imports:
     bslib,
     cli,
     ggplot2,
+    glue,
+    htmltools,
     logger,
-    pkgload,
+    quarto,
     rlang,
     sass,
     shiny,
-    shinythemes,
     stringr,
-    tools,
-    withr
+    tools
+Suggests: 
+    ggplot2movies,
+    knitr,
+    rmarkdown,
+    shinytest2,
+    testthat (>= 3.0.0),
+    waldo
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Suggests: 
-    knitr,
-    rmarkdown,
-    shinytest2,
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
-VignetteBuilder: knitr

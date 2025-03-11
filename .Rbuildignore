@@ -7,3 +7,4 @@
 ^sap.*\.tgz$
 _\.new\.png$
 ^\.github$
+^dev$

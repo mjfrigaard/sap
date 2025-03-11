@@ -59,4 +59,20 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `16.4_test-snapshots`
 
-[`16.4_test-snapshots`](https://github.com/mjfrigaard/sap/tree/16.4_test-snapshots) covers creating test snapshots. 
+The [`16.4_test-snapshots`](https://github.com/mjfrigaard/sap/tree/16.4_test-snapshots) branch covers creating test snapshots. 
+
+```
+tests
+├── testthat
+│   ├── _snaps
+│   │   └── text_logo.md
+│   ├── fixtures
+│   │   ├── make-tidy_ggp2_movies.R
+│   │   └── tidy_ggp2_movies.rds
+│   ├── helper.R
+│   ├── test-scatter_plot.R
+│   └── test-text_logo.R
+└── testthat.R
+
+4 directories, 7 files
+```

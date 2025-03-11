@@ -23,6 +23,23 @@ library(sap)
 launch_app(app = "assist")
 ```
 
+View the contents of this application in `inst/shiny-assist/movies`:
+
+```sh
+inst/shiny-assist/
+└── movies
+    ├── R
+    │   ├── about_module.R
+    │   ├── app_server.R
+    │   ├── app_ui.R
+    │   ├── controls_module.R
+    │   ├── movie_visualization_app.R
+    │   └── plot_module.R
+    └── app.R
+
+3 directories, 7 files
+```
+
 ### Movie review data application
 
 The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.

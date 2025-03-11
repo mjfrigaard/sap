@@ -59,5 +59,124 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `13_logging`
 
-[`13_logging`](https://github.com/mjfrigaard/sap/tree/13_logging) covers using test fixtures (i.e., scripts, data, etc.) to help improve the quality of the tests.
+The [`13_logging`](https://github.com/mjfrigaard/sap/tree/13_logging) branch covers using logging to monitor application performance and behavior. 
 
+## Logging functions
+
+```r
+log_message <- function(message, log_file = "logs/app_log.txt", save = FALSE) {
+  log_dir <- dirname(log_file)
+  if (!dir.exists(log_dir)) {
+    dir.create(log_dir, recursive = TRUE)
+  }
+  timestamp <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+  # log entry
+  log_entry <- sprintf("[%s] %s", timestamp, message)
+  # save 
+  if (save) {
+    tryCatch(
+      {
+        cat(log_entry, "\n", file = log_file, append = TRUE)
+      },
+      error = function(e) {
+        warning(sprintf("Failed to write to log file '%s': %s", log_file, e$message))
+      }
+    )
+  }
+  # print
+  message(log_entry)
+}
+```
+
+```r
+logr_msg <- function(message, level = "INFO", log_file = "app_log.txt", json = FALSE) {
+
+  # check the log file and directory
+  log_dir <- dirname(log_file)
+  if (!dir.exists(log_dir)) {
+    dir.create(log_dir, recursive = TRUE)
+  }
+  if (!file.exists(log_file)) {
+    file.create(log_file)
+  }
+  
+  # default formatter for all logs
+  logger::log_formatter(formatter = logger::formatter_glue)
+
+  # default logging to console and a file
+  if (json) {
+    # JSON format
+    logger::log_appender(appender = logger::appender_tee(log_file))
+    logger::log_layout(layout = logger::layout_json())
+  } else {
+    # plain text format
+    logger::log_appender(appender = logger::appender_tee(log_file))
+    logger::log_layout(layout = logger::layout_glue_generator())
+  }
+  
+  # log levels
+  switch(
+    level,
+    "FATAL" = logger::log_fatal("{message}"),
+    "ERROR" = logger::log_error("{message}"),
+    "WARN" = logger::log_warn("{message}"),
+    "SUCCESS" = logger::log_success("{message}"),
+    "INFO" = logger::log_info("{message}"),
+    "DEBUG" = logger::log_debug("{message}"),
+    "TRACE" = logger::log_trace("{message}"),
+    logger::log_info("{message}") # INFO if level is invalid
+  )
+}
+```
+
+## Start up message 
+
+In the `R/zzz.R` file, we have a start-up message: 
+
+```r
+.onAttach <- function(libname, pkgname) {
+  
+  branch <- if (isTRUE(system("git rev-parse --is-inside-work-tree", intern = TRUE) == "true")) {
+    tryCatch({
+      system("git rev-parse --abbrev-ref HEAD", intern = TRUE)
+    }, error = function(e) "unknown")
+  } else {
+    "not a Git repository"
+  }
+
+
+  version <- utils::packageVersion(pkgname)
+
+
+  description <- utils::packageDescription(pkgname)
+  imports <- description$Imports
+  suggests <- description$Suggests
+  depends <- description$Depends
+
+
+  parse_dependencies <- function(dep_string) {
+    if (is.null(dep_string)) return("None")
+    deps <- strsplit(dep_string, ",\\s*")[[1]]
+    paste(deps, collapse = ", ")
+  }
+
+  imports <- parse_dependencies(imports)
+  suggests <- parse_dependencies(suggests)
+  depends <- parse_dependencies(depends)
+
+  
+  cli::cli_inform("{.strong Welcome to the {.pkg {pkgname}} package (version {version}) {cli::symbol$smiley}!}", class = "packageStartupMessage")
+  
+  cli::cli_inform("{.strong Current branch:}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} {branch}}", class = "packageStartupMessage")
+
+  cli::cli_inform("{.strong Dependencies:}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} Imports: {imports}}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} Suggests: {suggests}}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} Depends: {depends}}", class = "packageStartupMessage")
+
+  cli::cli_inform("{.strong Loaded from:}", class = "packageStartupMessage")
+  cli::cli_inform("{.emph {cli::symbol$pointer} {libname}}", class = "packageStartupMessage")
+
+}
+```

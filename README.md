@@ -59,4 +59,4 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `16.1_test-help`
 
-[`16.1_test-help`](https://github.com/mjfrigaard/sap/tree/16.1_test-help) covers using the [`ensure` package](https://simonpcouch.github.io/ensure/) to help write tests.
+The [`16.1_test-help`](https://github.com/mjfrigaard/sap/tree/16.1_test-help) branch covers using the [`ensure` package](https://simonpcouch.github.io/ensure/) to help write tests.

@@ -14,7 +14,7 @@ remotes::install_github('mjfrigaard/sap', ref = '24_llm-ellmer')
 
 ## `24_llm-ellmer`
 
-[`24_llm-ellmer`](https://github.com/mjfrigaard/sap/tree/24_llm-ellmer) demonstrates using the `ellmer` package in Shiny App-Package development. 
+The [`24_llm-ellmer`](https://github.com/mjfrigaard/sap/tree/24_llm-ellmer) branch covers the `ellmer` package in Shiny App-Package development. 
 
 Launch the application using;
 

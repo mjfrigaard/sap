@@ -59,7 +59,7 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `20_docker`
 
-[`20_docker`](https://github.com/mjfrigaard/sap/tree/20_docker) demonstrates how to deploy your Shiny app package using a Docker container.
+The [`20_docker`](https://github.com/mjfrigaard/sap/tree/20_docker) branch demonstrates how to deploy your Shiny app-package using a Docker container.
 
 The Docker file for this branch is below: 
 
@@ -74,3 +74,4 @@ RUN rm -rf /deploy
 EXPOSE 8180
 CMD R -e "options('shiny.port'=8180,shiny.host='0.0.0.0');library(sap);sap::launch_app()"
 ```
+

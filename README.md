@@ -3,18 +3,18 @@
 
 <h1 align="center">
 
-<code>shinyrPkgs</code>
+<code>sap</code>
 </h1>
 
 <h3 align="center">
 
-Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny
+Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny
 App-Packages </a>
 </h3>
 
 <hr>
 
-# shinyrPkgs
+# sap
 
 `shinyrPkgs` provides the code examples in for the [Shiny
 App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the

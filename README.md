@@ -59,4 +59,16 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `16.2_test-data`
 
-[`16.2_test-data`](https://github.com/mjfrigaard/sap/tree/16.2_test-data) covers using the [`ensure` package](https://simonpcouch.github.io/ensure/) to help write tests.
+The [`16.2_test-data`](https://github.com/mjfrigaard/sap/tree/16.2_test-data) branch covers where to store test data. 
+
+```
+tests
+├── testthat
+│   ├── fixtures
+│   │   ├── make-tidy_ggp2_movies.R
+│   │   └── tidy_ggp2_movies.rds
+│   └── test-scatter_plot.R
+└── testthat.R
+
+3 directories, 4 files
+```

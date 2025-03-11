@@ -59,7 +59,7 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## `21.2_gha-shiny-deploy`
 
-The [`21.2_gha-shiny-deploy`](https://github.com/mjfrigaard/sap/tree/21.2_gha-shiny-deploy) branch demonstrates how to use GitHub Actions to deploy a Shiny app. 
+The [`21.2_gha-shiny-deploy`](https://github.com/mjfrigaard/sap/tree/21.2_gha-shiny-deploy) branch covers how to use GitHub Actions to deploy a Shiny app. 
 
 The `shiny-deploy.yaml` workflow is stored in the hidden `.github` folder:
 
@@ -117,3 +117,4 @@ jobs:
         shell: Rscript {0}
 
 ```
+

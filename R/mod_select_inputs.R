@@ -1,4 +1,4 @@
-#' name shiny module (UI)
+#' select inputs shiny module (UI)
 #'
 #' @param id shiny module id
 #'
@@ -55,7 +55,7 @@ mod_select_input_ui <- function(id) {
           selected = "runtime")
         )
     }
-#' name shiny module (server)
+#' select inputs shiny module (server)
 #'
 #' @param id shiny module id
 #'

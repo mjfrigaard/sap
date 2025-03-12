@@ -119,29 +119,54 @@ launch_db_app <- function() {
 
 
 ```r
-#' Main app UI
+#' Define the User Interface for the Shiny Application
 #'
-#' This function creates the main user interface for the Shiny app.
+#' This function constructs the UI layout of the Shiny application, including
+#' input filters, slider controls, and movie selection elements.
 #'
-#' @return A Shiny UI definition.
+#' @return A `shiny.tag.list` object representing the application UI.
+#'
 #' @export
+#'
 db_app_ui <- function() {
-  shiny::fluidPage(
-    shiny::titlePanel("Movie Database Explorer"),
-    shiny::sidebarLayout(
-      shiny::sidebarPanel(
-        # Select input module
-        mod_select_input_ui("select_input"),
-        # Slider input module
-        mod_slider_input_ui("slider_input"),
-        # Text input module
-        mod_text_input_ui("text_input")
+  tagList(
+    bslib::page_navbar(
+      title = "Movies Explorer",
+      id = "nav",
+      sidebar = bslib::sidebar(
+        conditionalPanel(
+          "input.nav === 'Filters'",
+          h4("Filters"),
+          mod_select_input_ui("selects"),
+          mod_slider_input_ui("sliders")
+        ),
+        conditionalPanel(
+          "input.nav === 'Director and Cast'",
+          h4("Director and Cast"),
+          mod_text_input_ui("text")
+        )
       ),
-      shiny::mainPanel(
-        # Points plotly module
-        mod_points_plotly_ui("points_plot"),
-        # Table module
-        mod_table_ui("movies_table")
+      bslib::nav_panel("Filters",
+        bslib::card(
+          mod_points_plotly_ui('plotly'),
+          bslib::card_footer(
+              em(
+                paste0(
+                  "Note: The Tomato Meter is the proportion of positive reviews",
+                  " (as judged by the Rotten Tomatoes staff), and the Numeric rating is",
+                  " a normalized 1-10 score of those reviews which have star ratings",
+                  " (for example, 3 out of 4 stars)."
+                )
+              )
+          )
+        )
+      ),
+      bslib::nav_panel("Director and Cast",
+        bslib::card(
+          mod_table_display_ui("filters"),
+          bslib::card_header("Movies selected:"),
+          verbatimTextOutput("vals")
+        )
       )
     )
   )
@@ -152,64 +177,55 @@ db_app_ui <- function() {
 
 
 ```r
-#' Main app server
+#' Define the Server Logic for the Shiny Application
 #'
-#' This function defines the main server logic for the Shiny app.
+#' This function sets up server-side logic, including reactive movie data,
+#' input modules, and filtering operations. It initializes reactive expressions
+#' for user input and manages interactions between different UI components.
 #'
-#' @return A Shiny server function.
+#' @param input,output,session Standard Shiny server function arguments.
+#'
+#' @return A `shiny.server` function handling user inputs and outputs.
+#' 
 #' @export
-db_app_server <- function(input, output, session) {
+#'
+db_app_server <- function(input, output, session, .dev = FALSE) {
 
-  # Connect to the database
-  con <- db_con()
-
-  # Reactive dataset: join movies tables
-  movies_data <- shiny::reactive({
-    join_movies_tbls(con)
+  all_movies <- reactive({
+    con <- db_con("sap", "movies.db")
+    all_movies <- join_movies_tbls(con = con)
+    return(all_movies)
+    DBI::dbDisconnect(con) # close connection
   })
 
-  # Call slider input module
-  slider_val <- shiny::callModule(
-    module  = mod_slider_input_server,
-    id      = "slider_input"
-  )
+    nums <- mod_slider_input_server("sliders")
 
-  # Call select input module
-  select_val <- shiny::callModule(
-    module  = mod_select_input_server,
-    id      = "select_input",
-    data    = movies_data
-  )
+    vars <- mod_select_input_server('selects')
 
-  # Call text input module
-  text_val <- shiny::callModule(
-    module  = mod_text_input_server,
-    id      = "text_input"
-  )
+    txts <- mod_text_input_server('text')
 
-  # Call points plotly module
-  shiny::callModule(
-    module  = mod_points_plotly_server,
-    id      = "points_plot",
-    data    = movies_data,
-    x_var   = select_val$x_var,
-    y_var   = select_val$y_var,
-    color   = select_val$color_var,
-    min_reviews = slider_val,
-    pattern     = text_val
-  )
+    filtered_movies <- mod_table_display_server(
+      id = "filters",
+      movies = all_movies,
+      var = vars,
+      num = nums,
+      txt = txts)
 
-  # Call table module
-  shiny::callModule(
-    module  = mod_table_server,
-    id      = "movies_table",
-    data    = movies_data,
-    x_var   = select_val$x_var,
-    y_var   = select_val$y_var,
-    color   = select_val$color_var,
-    min_reviews = slider_val,
-    pattern     = text_val
-  )
+
+    mod_points_plotly_server(
+      id = 'plotly',
+      data = filtered_movies,
+      vars = vars)
+
+
+    if (.dev) {
+      output$vals <- renderPrint({
+        vals <- reactiveValuesToList(x = input, all.names = TRUE)
+        print(str(vals))
+      })
+    }
+
+
 }
 ```
 
@@ -218,79 +234,85 @@ db_app_server <- function(input, output, session) {
 
 
 ```r
-#' Select input UI
+#' select inputs shiny module (UI)
 #'
-#' This UI module creates dropdowns for selecting plot axes and color group.
+#' @param id shiny module id
 #'
-#' @param id Module ID.
-#'
-#' @return A UI element.
 #' @export
+#' 
 mod_select_input_ui <- function(id) {
-  ns <- shiny::NS(id)
-  shiny::tagList(
-    shiny::selectInput(
-      inputId = ns("x_var"),
-      label   = "X-axis:",
-      choices = NULL
-    ),
-    shiny::selectInput(
-      inputId = ns("y_var"),
-      label   = "Y-axis:",
-      choices = NULL
-    ),
-    shiny::selectInput(
-      inputId = ns("color_var"),
-      label   = "Color by:",
-      choices = NULL
-    )
-  )
-}
 
-#' Select input server
+    # Variables that can be put on the x and y axes
+    axis_vars <- c(
+      "Tomato Meter" = "meter",
+      "Numeric Rating (OMDB)" = "omdb_ratings",
+      "Numeric Rating (RT)" = "rt_ratings",
+      "Number of reviews" = "reviews",
+      "Dollars at box office" = "box_office",
+      "Year" = "year",
+      "Length (minutes)" = "runtime"
+    )
+    ns <- shiny::NS(id)
+        shiny::tagList(
+        selectInput(
+          inputId = ns("genre"),
+          label = strong("Genre*"),
+          c("All",
+            "Action",
+            "Adventure",
+            "Animation",
+            "Biography",
+            "Comedy",
+            "Crime",
+            "Documentary",
+            "Drama",
+            "Family",
+            "Fantasy",
+            "History",
+            "Horror",
+            "Music",
+            "Musical",
+            "Mystery",
+            "Romance",
+            "Sci-Fi",
+            "Short",
+            "Sport",
+            "Thriller",
+            "War",
+            "Western")),
+        tags$small(em("*a movie can have multiple genres")),
+        selectInput(inputId = ns("xvar"),
+          label = strong("X-axis variable"),
+          axis_vars,
+          selected = "meter"),
+        selectInput(inputId = ns("yvar"),
+          label = strong("Y-axis variable"),
+          choices = axis_vars,
+          selected = "runtime")
+        )
+    }
+#' select inputs shiny module (server)
 #'
-#' This server module populates and returns reactive values for axes and
-#' color selection.
+#' @param id shiny module id
 #'
-#' @param input Standard Shiny input.
-#' @param output Standard Shiny output.
-#' @param session Standard Shiny session.
-#' @param data A reactive expression returning the movies dataset.
-#'
-#' @return A list of reactive values for x_var, y_var, and color_var.
 #' @export
-mod_select_input_server <- function(input, output, session, data) {
-  shiny::observe({
-    req_data <- data()
-    col_names <- names(req_data)
-    shiny::updateSelectInput(
-      session  = session,
-      inputId  = "x_var",
-      choices  = col_names,
-      selected = col_names[1]
-    )
-    shiny::updateSelectInput(
-      session  = session,
-      inputId  = "y_var",
-      choices  = col_names,
-      selected = col_names[2]
-    )
-    shiny::updateSelectInput(
-      session  = session,
-      inputId  = "color_var",
-      choices  = col_names,
-      selected = col_names[3]
-    )
-  })
+#' 
+mod_select_input_server <- function(id) {
+    shiny::moduleServer(id, function(input, output, session) {
+        ns <- session$ns
+      return(
+        reactive(
+          list(
+          'yvar' = input$yvar,
+          'xvar' = input$xvar,
+          'genre' = input$genre
+          )
+        )
+      )
 
-  return(
-    list(
-      x_var     = shiny::reactive(input$x_var),
-      y_var     = shiny::reactive(input$y_var),
-      color_var = shiny::reactive(input$color_var)
-    )
-  )
+    })
 }
+
 ```
 
 
@@ -298,39 +320,79 @@ mod_select_input_server <- function(input, output, session, data) {
 
 
 ```r
-#' Slider input UI
+#' slider inputs shiny module (UI)
 #'
-#' This UI module creates a slider for filtering movies by minimum reviews.
+#' @param id shiny module id
 #'
-#' @param id Module ID.
-#'
-#' @return A UI element containing a slider input.
 #' @export
+#' 
 mod_slider_input_ui <- function(id) {
-  ns <- shiny::NS(id)
-  shiny::sliderInput(
-    inputId = ns("min_reviews"),
-    label   = "Minimum number of reviews:",
-    min     = 5,
-    max     = 100,
-    value   = 5
-  )
+    ns <- shiny::NS(id)
+        shiny::tagList(
+        sliderInput(
+          inputId = ns("reviews"),
+          label = strong("Number of Rotten Tomatoes reviews"),
+          min = 20,
+          max = 300,
+          value = 100,
+          step = 20
+        ),
+        sliderInput(
+          inputId = ns("year"),
+          label = strong("Release year"),
+          min = 1940,
+          max = 2014,
+          value = c(1970, 2014),
+          sep = ""
+        ),
+        sliderInput(
+          inputId = ns("oscars"),
+          label = strong("Number of Oscar wins"),
+          min = 0,
+          max = 4,
+          value = 0,
+          step = 1
+        ),
+        sliderInput(
+          inputId = ns("boxoffice"),
+          label = strong("Dollars at Box Office*"),
+          min = 0,
+          max = 800,
+          value = c(0, 500),
+          step = 1
+        ),
+        tags$small(
+          em('*In millions')
+          )
+      )
+    }
+#' slider inputs shiny module (server)
+#'
+#' @param id shiny module id
+#'
+#' @export
+#' 
+mod_slider_input_server <- function(id) {
+    shiny::moduleServer(id, function(input, output, session) {
+        ns <- session$ns
+
+      # Due to dplyr issue #318, we need temp variables for input values
+      return(
+        reactive(
+          list(
+          'reviews' = input$reviews,
+          'oscars' = input$oscars,
+          'minyear' = input$year[1],
+          'maxyear' = input$year[2],
+          'minboxoffice' = input$boxoffice[1] * 1e6,
+          'maxboxoffice' = input$boxoffice[2] * 1e6
+          )
+        )
+      )
+
+    })
 }
 
-#' Slider input server
-#'
-#' This server module returns a reactive value for the minimum number
-#' of reviews.
-#'
-#' @param input Standard Shiny input.
-#' @param output Standard Shiny output.
-#' @param session Standard Shiny session.
-#'
-#' @return A reactive numeric value for min_reviews.
-#' @export
-mod_slider_input_server <- function(input, output, session) {
-  shiny::reactive(input$min_reviews)
-}
 ```
 
 
@@ -338,36 +400,44 @@ mod_slider_input_server <- function(input, output, session) {
 
 
 ```r
-#' Text input UI
+#' text input shiny module (UI)
 #'
-#' This UI module creates a text input for pattern filtering (e.g., movie
-#' title).
+#' @param id shiny module id
 #'
-#' @param id Module ID.
-#'
-#' @return A UI element containing a text input.
 #' @export
+#' 
 mod_text_input_ui <- function(id) {
   ns <- shiny::NS(id)
-  shiny::textInput(
-    inputId = ns("title_pattern"),
-    label   = "Filter titles containing:"
-  )
+  shiny::tagList(
+    textInput(
+      inputId = ns("director"),
+      label = "Director name contains (e.g., Miyazaki)"),
+    textInput(
+      inputId = ns("cast"),
+      label = "Cast names contains (e.g. Tom Hanks)")
+    )
+}
+#' text input shiny module (server)
+#'
+#' @param id shiny module id
+#'
+#' @export
+#' 
+mod_text_input_server <- function(id) {
+  shiny::moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+      return(
+        reactive(
+          list(
+          'director' = input$director,
+          'cast' = input$cast
+          )
+        )
+      )
+  })
 }
 
-#' Text input server
-#'
-#' This server module returns a reactive value for the text pattern.
-#'
-#' @param input Standard Shiny input.
-#' @param output Standard Shiny output.
-#' @param session Standard Shiny session.
-#'
-#' @return A reactive character string.
-#' @export
-mod_text_input_server <- function(input, output, session) {
-  shiny::reactive(input$title_pattern)
-}
+
 ```
 
 
@@ -375,51 +445,43 @@ mod_text_input_server <- function(input, output, session) {
 
 
 ```r
-#' Points plotly UI
+#' Scatter-plot (plotly) shiny module (UI)
 #'
-#' This UI module creates a placeholder for the plotly scatter plot.
+#' @param id shiny module id
 #'
-#' @param id Module ID.
-#'
-#' @return A UI element containing a plotly output.
 #' @export
+#' 
 mod_points_plotly_ui <- function(id) {
   ns <- shiny::NS(id)
-  plotly::plotlyOutput(ns("scatter_plot"))
-}
-
-#' Points plotly server
-#'
-#' This server module renders the scatter plot using the provided data and
-#' user inputs for x, y, color, etc.
-#'
-#' @param input Standard Shiny input.
-#' @param output Standard Shiny output.
-#' @param session Standard Shiny session.
-#' @param data Reactive dataset for plotting.
-#' @param x_var Reactive x-axis variable name.
-#' @param y_var Reactive y-axis variable name.
-#' @param color Reactive color variable name.
-#' @param min_reviews Reactive minimum reviews filter.
-#' @param pattern Reactive text pattern filter.
-#'
-#' @return A plotly scatter plot object.
-#' @export
-mod_points_plotly_server <- function(
-  input, output, session,
-  data, x_var, y_var, color, min_reviews, pattern
-) {
-  output$scatter_plot <- plotly::renderPlotly({
-    scatter_plotly(
-      data         = data(),
-      x_var        = x_var(),
-      y_var        = y_var(),
-      color_var    = color(),
-      min_reviews  = min_reviews(),
-      title_filter = pattern()
+    shiny::tagList(
+      plotly::plotlyOutput(ns("graph"))
     )
+  }
+#' Scatter-plot (plotly) shiny module (server)
+#'
+#' @param id shiny module id
+#' 
+#' @export
+#' 
+mod_points_plotly_server <- function(id, data, vars) {
+  shiny::moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+
+      output$graph <- plotly::renderPlotly({
+         xvar <- vars()[['xvar']]
+         yvar <- vars()[['yvar']]
+         df <- data()[[1]]
+        scatter_plotly(
+          data = df,
+          xvar = xvar,
+          yvar = yvar,
+          colvar =  'has_oscar')
+      })
+
   })
 }
+
+
 ```
 
 
@@ -427,56 +489,130 @@ mod_points_plotly_server <- function(
 
 
 ```r
-#' Table UI
+#' Reactable table shiny module (UI)
 #'
-#' This UI module creates a placeholder for the reactable table.
+#' @param id shiny module id
 #'
-#' @param id Module ID.
-#'
-#' @return A UI element containing a reactable output.
 #' @export
-mod_table_ui <- function(id) {
+#' 
+mod_table_display_ui <- function(id) {
   ns <- shiny::NS(id)
-  reactable::reactableOutput(ns("movies_table"))
+  shiny::tagList(
+    reactable::reactableOutput(ns("tbl"))
+  )
 }
-
-#' Table server
+#' Reactable table shiny module (server)
 #'
-#' This server module renders the table of movies using the same reactive
-#' filters as the scatter plot.
+#' @param id shiny module id
+#' @param movies movies connection
+#' @param num slider inputs
+#' @param var variable inputs
+#' @param txt text inputs
 #'
-#' @param input Standard Shiny input.
-#' @param output Standard Shiny output.
-#' @param session Standard Shiny session.
-#' @param data Reactive dataset for the table.
-#' @param x_var Reactive x-axis variable name.
-#' @param y_var Reactive y-axis variable name.
-#' @param color Reactive color variable name.
-#' @param min_reviews Reactive minimum reviews filter.
-#' @param pattern Reactive text pattern filter.
-#'
-#' @return A reactable object.
 #' @export
-mod_table_server <- function(
-  input, output, session,
-  data, x_var, y_var, color, min_reviews, pattern
-) {
-  output$movies_table <- reactable::renderReactable({
-    filtered_data <- data |>
-      dplyr::filter(.data[[x_var()]] != "NA") |>
-      dplyr::filter(.data[[y_var()]] != "NA") |>
-      dplyr::filter(.data[[color()]] != "NA") |>
-      dplyr::filter(reviews >= min_reviews()) |>
-      dplyr::filter(
-        stringr::str_detect(
-          string = title,
-          pattern = stringr::fixed(pattern(), ignore_case = TRUE)
+#' 
+mod_table_display_server <- function(id, movies, num, var, txt) {
+  shiny::moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+
+    # observe({
+    #   browser()
+
+    filtered_nums <- reactive({
+      dplyr::filter(local(movies()),
+        reviews >= !!num()[["reviews"]],
+        oscars >= !!num()[["oscars"]],
+        year >= !!num()[["minyear"]],
+        year <= !!num()[["maxyear"]],
+        box_office >= !!num()[["minboxoffice"]],
+        box_office <= !!num()[["maxboxoffice"]]
+      ) |>
+        dplyr::arrange(oscars) |>
+        dplyr::collect()
+    }) |>
+      # update when slider inputs change
+      bindEvent(movies(), num())
+
+    filtered_vars <- reactive({
+      # Optional: filters
+      if (!!var()[["genre"]] != "All") {
+        filter_regex <- paste0(var()[["genre"]], "|", var()[["genre"]], ",")
+        filtered <- dplyr::filter(filtered_nums(),
+                          stringr::str_detect(string = genre, filter_regex))
+      } else {
+        filtered <- filtered_nums()
+      }
+      return(filtered)
+    }) |>
+      # update when slider or select inputs change
+      bindEvent(movies(), num(), var())
+
+    filtered_txts <- reactive({
+      # first condition on both text inputs being filled
+      if (!is.null(txt()[["cast"]]) && !!txt()[["cast"]] != "" & !is.null(txt()[["director"]]) && !!txt()[["director"]] != "") {
+        dir_regex <- txt()[["director"]]
+        cast_regex <- txt()[["cast"]]
+        filtered <- dplyr::filter(filtered_vars(),
+                  stringr::str_detect(string = cast, cast_regex),
+                  stringr::str_detect(string = director, dir_regex))
+      # now only director
+      } else if (!is.null(txt()[["director"]]) && !!txt()[["director"]] != "") {
+        filter_regex <- txt()[["director"]]
+        filtered <- dplyr::filter(filtered_vars(),
+                          stringr::str_detect(string = director, filter_regex))
+        # only cast
+      } else if (!is.null(txt()[["cast"]]) && !!txt()[["cast"]] != "") {
+        filter_regex <- txt()[["cast"]]
+        filtered <- dplyr::filter(filtered_vars(),
+                          stringr::str_detect(string = cast, filter_regex))
+        # neither
+      } else {
+        filtered <- filtered_vars()
+      }
+        # Add column which says whether the movie won any Oscars
+        # Be a little careful in case we have a zero-row data frame
+        filtered$has_oscar <- character(nrow(filtered))
+        filtered$has_oscar[filtered$oscars == 0] <- "No"
+        filtered$has_oscar[filtered$oscars >= 1] <- "Yes"
+        return(filtered)
+    }) |>
+      # update when slider, select, or text inputs change
+      bindEvent(movies(), num(), var(), txt())
+
+    observe({
+      output$tbl <- reactable::renderReactable({
+
+
+        reactable::reactable(
+          dplyr::select(
+            filtered_txts(),
+            title, genre, reviews, oscars, has_oscar,
+            year, box_office, director, cast,
+            # include text values for x and y
+            dplyr::all_of(c(var()[["yvar"]], var()[["xvar"]]))
+            )
+          )
+      })
+    }) |>
+      bindEvent(movies(), num(), var(), txt())
+
+    return(
+      reactive(
+        list(
+          # return with text values for x and y
+          dplyr::select(
+            filtered_txts(),
+            title, genre, reviews, oscars, has_oscar,
+            year, box_office, director, cast,
+            dplyr::all_of(c(var()[["yvar"]], var()[["xvar"]]))
+          )
         )
       )
+    )
 
-    reactable::reactable(filtered_data)
   })
 }
+
 ```
 
 
@@ -484,16 +620,26 @@ mod_table_server <- function(
 
 
 ```r
-#' Database connection
+#' Establish a Database Connection
 #'
-#' Creates a connection to the "movies.db" using DBI and RSQLite.
+#' This function connects to an SQLite database within an R package's
+#'  `extdata` directory.
 #'
-#' @return A DBI connection.
+#' @param pkg A character string specifying the name of the R package where
+#' the database file is located.
+#' @param db A character string specifying the name of the SQLite database
+#' file (e.g., `"movies.db"`).
+#'
+#' @return A `DBIConnection` object representing the connection to the database.
+#'
 #' @export
-db_con <- function() {
-  db_path <- system.file("extdata", "movies.db", package = "mypackage")
-  DBI::dbConnect(RSQLite::SQLite(), db_path)
+#'
+db_con <- function(pkg, db) {
+  # Set up handles to database tables on app start
+  con <- DBI::dbConnect(RSQLite::SQLite(),
+                      system.file("extdata", db, package = pkg))
 }
+
 ```
 
 
@@ -501,28 +647,72 @@ db_con <- function() {
 
 
 ```r
-#' Join movies tables
+#' Join and Filter Movie Tables
 #'
-#' Joins the "omdb" and "tomatoes" tables from an SQLite database
+#' This function joins the `omdb` and `tomatoes` tables from an SQLite database
 #' connection, filters out movies with fewer than 5 reviews, and selects
 #' relevant columns.
 #'
-#' @param con A DBI connection to the movies database.
+#' @param con A `DBIConnection` object representing the connection to the SQLite
+#' database.
+#' @param collect A logical value indicating whether to retrieve the results
+#' into a local `data.frame`. If `FALSE` (default), returns a lazy `tbl` for
+#' efficient database queries.
 #'
-#' @return A tibble with joined movie data.
+#' @return A `tbl` object if `collect = FALSE`, or a `data.frame`
+#' if `collect = TRUE`.
+#'
 #' @export
-join_movies_tbls <- function(con) {
-  omdb_data <- dplyr::tbl(con, "omdb")
-  tomatoes_data <- dplyr::tbl(con, "tomatoes")
+#' 
+join_movies_tbls <- function(con, collect = FALSE) {
 
-  omdb_data |>
-    dplyr::inner_join(tomatoes_data, by = c("imdb_id" = "imdb_id")) |>
-    dplyr::filter(reviews >= 5) |>
-    dplyr::select(
-      title, year, genre, director, reviews,
-      imdb_rating, imdb_votes, critics_score, audience_score
-    ) |>
-    dplyr::collect()
+  # create connection to both data tables
+  omdb <- dplyr::tbl(con, "omdb")
+  tomatoes <- dplyr::tbl(con, "tomatoes")
+
+  # join tables, filtering out those with <5 reviews, and select specified columns
+  all_movies <- dplyr::inner_join(x = omdb, y = tomatoes,
+                                  by = "ID") |>
+  dplyr::filter(Reviews >= 5) |>
+  dplyr::select(id = ID,
+    imdb_id = imdbID,
+    title = Title,
+    year = Year,
+    omdb_ratings = Rating.x,
+    rt_ratings = Rating.y,
+    omdb_last_updated = lastUpdated.x,
+    rt_last_updated = lastUpdated.y,
+    runtime = Runtime,
+    genre = Genre,
+    released = Released,
+    director = Director,
+    writer = Writer,
+    imdb_rating = imdbRating,
+    imdb_votes = imdbVotes,
+    language = Language,
+    country = Country,
+    oscars = Oscars,
+    meter = Meter,
+    reviews = Reviews,
+    fresh = Fresh,
+    rotten = Rotten,
+    user_meter = userMeter,
+    user_rating = userRating,
+    user_reviews = userReviews,
+    box_office = BoxOffice,
+    production = Production,
+    cast = Cast
+  )
+  if (collect) {
+    return(
+      dplyr::collect(all_movies)
+    )
+  } else {
+    return(
+      all_movies
+    )
+  }
+
 }
 ```
 
@@ -531,49 +721,50 @@ join_movies_tbls <- function(con) {
 
 
 ```r
-#' Scatter plotly
+#' Create a Plotly Scatter Plot
 #'
-#' Generates an interactive Plotly scatter plot using a dataset and user
-#' inputs for x-axis, y-axis, and color. Optionally filters by minimum
-#' number of reviews and text pattern.
+#' The `scatter_plotly()` function generates an interactive Plotly
+#' scatter plot using a reactive dataset.
+#' The user specifies the x-axis, y-axis, and a categorical variable for
+#' coloring the points.
 #'
-#' @param data A tibble or data.frame with movie data.
-#' @param x_var The name of the x-axis variable.
-#' @param y_var The name of the y-axis variable.
-#' @param color_var The name of the variable used for point color.
-#' @param min_reviews Numeric, minimum number of reviews for filtering.
-#' @param title_filter Character, pattern for filtering movie titles.
+#' @param data A reactive expression that returns a `tibble` or `data.frame`
+#' containing the data.
+#' @param xvar A reactive expression specifying the column name for the x-axis
+#' variable.
+#' @param yvar A reactive expression specifying the column name for the y-axis
+#' variable.
+#' @param colvar A character string specifying the column name for the
+#' categorical variable used for coloring points.
 #'
-#' @return A plotly object representing a scatter plot.
+#' @return A `plotly` object representing the scatter plot.
+#'
 #' @export
-scatter_plotly <- function(
-  data, x_var, y_var, color_var,
-  min_reviews = 5, title_filter = ""
-) {
-  filtered_data <- data |>
-    dplyr::filter(.data[[x_var]] != "NA") |>
-    dplyr::filter(.data[[y_var]] != "NA") |>
-    dplyr::filter(.data[[color_var]] != "NA") |>
-    dplyr::filter(reviews >= min_reviews) |>
-    dplyr::filter(
-      stringr::str_detect(
-        string = title,
-        pattern = stringr::fixed(title_filter, ignore_case = TRUE)
-      )
-    )
+#'
+scatter_plotly <- function(data, xvar, yvar, colvar) {
+
+  # check column names exist
+  if (!all(c(xvar, yvar, colvar) %in% names(data))) {
+    stop("One or more specified columns do not exist in the dataset.")
+  }
+
+  # convert to factor (for consistent coloring)
+  data[[colvar]] <- as.factor(data[[colvar]])
 
   plotly::plot_ly(
-    data    = filtered_data,
-    x       = ~.data[[x_var]],
-    y       = ~.data[[y_var]],
-    color   = ~.data[[color_var]],
-    text    = ~title,
-    type    = "scatter",
-    mode    = "markers"
+    data = data,
+    x = ~ .data[[xvar]],
+    y = ~ .data[[yvar]],
+    color = ~ .data[[colvar]],
+    type = 'scatter',
+    mode = 'markers',
+    marker = list(size = 8, opacity = 0.6)
   ) |>
     plotly::layout(
-      xaxis = list(title = x_var),
-      yaxis = list(title = y_var)
+      title = tools::toTitleCase(paste("Scatter Plot of", xvar, "vs", yvar)),
+      xaxis = list(title = tools::toTitleCase(xvar)),
+      yaxis = list(title = tools::toTitleCase(yvar)),
+      legend = list(title = list(text = colvar))
     )
 }
 ```

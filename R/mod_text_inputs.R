@@ -1,4 +1,4 @@
-#' name shiny module (UI)
+#' text input shiny module (UI)
 #'
 #' @param id shiny module id
 #'
@@ -15,7 +15,7 @@ mod_text_input_ui <- function(id) {
       label = "Cast names contains (e.g. Tom Hanks)")
     )
 }
-#' name shiny module (server)
+#' text input shiny module (server)
 #'
 #' @param id shiny module id
 #'

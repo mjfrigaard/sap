@@ -1,4 +1,4 @@
-#' name shiny module (UI)
+#' slider inputs shiny module (UI)
 #'
 #' @param id shiny module id
 #'
@@ -44,7 +44,7 @@ mod_slider_input_ui <- function(id) {
           )
       )
     }
-#' name shiny module (server)
+#' slider inputs shiny module (server)
 #'
 #' @param id shiny module id
 #'

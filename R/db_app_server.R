@@ -25,7 +25,7 @@ db_app_server <- function(input, output, session, .dev = FALSE) {
 
     txts <- mod_text_input_server('text')
 
-    filtered_movies <- mod_filters_server(
+    filtered_movies <- mod_table_display_server(
       id = "filters",
       movies = all_movies,
       var = vars,

@@ -4,7 +4,7 @@
 #'
 #' @export
 #' 
-mod_filters_ui <- function(id) {
+mod_table_display_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
     reactable::reactableOutput(ns("tbl"))
@@ -20,7 +20,7 @@ mod_filters_ui <- function(id) {
 #'
 #' @export
 #' 
-mod_filters_server <- function(id, movies, num, var, txt) {
+mod_table_display_server <- function(id, movies, num, var, txt) {
   shiny::moduleServer(id, function(input, output, session) {
     ns <- session$ns
 

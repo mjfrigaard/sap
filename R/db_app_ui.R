@@ -42,7 +42,7 @@ db_app_ui <- function() {
       ),
       bslib::nav_panel("Director and Cast",
         bslib::card(
-          mod_filters_ui("filters"),
+          mod_table_display_ui("filters"),
           bslib::card_header("Movies selected:"),
           verbatimTextOutput("vals")
         )

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_slider_inputs.R
 \name{mod_slider_input_ui}
 \alias{mod_slider_input_ui}
-\title{name shiny module (UI)}
+\title{slider inputs shiny module (UI)}
 \usage{
 mod_slider_input_ui(id)
 }
@@ -10,5 +10,5 @@ mod_slider_input_ui(id)
 \item{id}{shiny module id}
 }
 \description{
-name shiny module (UI)
+slider inputs shiny module (UI)
 }

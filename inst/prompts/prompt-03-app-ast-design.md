@@ -61,7 +61,7 @@ Restructure the application to use the following modules and functions:
 reactive dataset. The user specifies the x-axis, y-axis, and a categorical 
 variable for coloring the points.
 
-An abstract folder tree for the functions is below for reference:
+An abstract syntax tree for the functions is below for reference:
 
 \`\`\`
 █─launch_db_app 

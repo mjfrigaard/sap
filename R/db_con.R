@@ -15,5 +15,5 @@
 db_con <- function(pkg, db) {
   # Set up handles to database tables on app start
   con <- DBI::dbConnect(RSQLite::SQLite(),
-                      system.file("shinydb", db, package = pkg))
+                      system.file("extdata", db, package = pkg))
 }

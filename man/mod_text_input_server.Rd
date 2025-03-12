@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_text_inputs.R
 \name{mod_text_input_server}
 \alias{mod_text_input_server}
-\title{name shiny module (server)}
+\title{text input shiny module (server)}
 \usage{
 mod_text_input_server(id)
 }
@@ -10,5 +10,5 @@ mod_text_input_server(id)
 \item{id}{shiny module id}
 }
 \description{
-name shiny module (server)
+text input shiny module (server)
 }

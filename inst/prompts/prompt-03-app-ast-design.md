@@ -70,14 +70,14 @@ An abstract syntax tree for the functions is below for reference:
 │ ├─█─mod_slider_input_ui 
 │ ├─█─mod_text_input_ui 
 │ ├─█─mod_points_plotly_ui 
-│ └─█─mod_filters_ui 
+│ └─█─mod_table_ui 
 └─█─db_app_server 
   ├─█─db_con 
   │ └─█─join_movies_tbls 
   ├─█─mod_slider_input_server 
   ├─█─mod_select_input_server 
   ├─█─mod_text_input_server 
-  ├─█─mod_filters_server 
+  ├─█─mod_table_server 
   └─█─mod_points_plotly_server 
     └─█─scatter_plotly 
 \`\`\`

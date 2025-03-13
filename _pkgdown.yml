@@ -2,7 +2,7 @@ url: https://mjfrigaard.github.io/sap/
 template:
   bootstrap: 5
   bootswatch: united
-  theme: atom-one-light
+  theme: github-light
   bslib:
     primary: "#00a2e8"
     secondary: "#e5e5e5"

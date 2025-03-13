@@ -1,15 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Shiny App-Packages (`sap`)
+# Shiny App-Packages
 
-Shiny App-Packages, or `sap`, provides the code examples in for the
-[Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book
-and the [Developing & Testing Your Shiny
-Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop
-provided at R in Pharma (2023).
-
-Install `sap` using `remotes`:
+Shiny App-Packages (or `sap`) provides the code examples in for the
+[Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book.
+You can install the `pkgdown` branch of the `sap` package using
+`remotes`:
 
 ``` r
 install.packages('remotes')
@@ -32,3 +29,9 @@ Launch the application using;
 library(sap)
 launch_app()
 ```
+
+## Learn more
+
+The [Developing & Testing Your Shiny
+Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop was
+provided at R in Pharma (2023).

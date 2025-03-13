@@ -4,9 +4,10 @@ template:
   bootswatch: united
   theme: atom-one-light
   bslib:
-    primary: "#02577A"
-    code-color: "#007bff"
-    code-bg: "#EAE9EA"
+    primary: "#00a2e8"
+    secondary: "#e5e5e5"
+    code-color: "#4d4d4d"
+    code-bg: "#e5e5e5"
     base_font:
       google: Ubuntu
     heading_font:

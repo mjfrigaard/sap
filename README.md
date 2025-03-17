@@ -16,14 +16,12 @@ remotes::install_github('mjfrigaard/sap', ref = '25_llm-chores')
 
 The [`25_llm-chores`](https://github.com/mjfrigaard/sap/tree/25_llm-chores) branch covers the [`chores` package](https://simonpcouch.github.io/chores/) in Shiny App-Package development. 
 
-Launch the application using;
+The example in this branch comes from the [2023 posit::conf() workshop]() on developing Shiny apps in production.
+
+The application is built using the [`golem` framework](https://thinkr-open.github.io/golem/). Launch the application using:
 
 ``` r
 library(sap)
-launch_app(app = "db")
+launch_app(app = "legos")
 ```
-
-### Movie review data application
-
-The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
 

@@ -1,4 +1,4 @@
-<h1 align="center"> <code><strong>shinyrPkgs</strong></code> </h1>
+<h1 align="center"> <code><strong>sap</strong></code> </h1>
 <h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
 <hr>
 
@@ -39,24 +39,24 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/shinyrPkgs.git
-cd shinyrPkgs
+git clone https://github.com/mjfrigaard/sap.git
+cd sap
 git checkout <branch_name>
-open shinyrPkgs.Rproj
+open sap.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
+View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `18_golem`
+## `23_golem`
 
-Checkout the `18_golem` branch:
+Checkout the `23_golem` branch:
 
 ```bash
-git checkout 18_golem
+git checkout 23_golem
 ```
 
 Load, document, and install the package:

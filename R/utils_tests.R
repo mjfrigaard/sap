@@ -1,6 +1,10 @@
 #' tests
 #'
 #' @description A test utility function
+#' 
+#' @param start A character string indicating the start tag. Default is `NULL`.
+#' @param end A character string indicating the end tag. Default is `NULL`.
+#' @param msg A character string containing the log message.
 #'
 #' @return The return value, if any, from executing the utility.
 #'

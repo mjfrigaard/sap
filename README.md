@@ -1,8 +1,8 @@
-20 March, 2025 13:12:24
+20 March, 2025 14:23:42
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `{gap}`
+# `{gap}`: a golem app package
 
 <!-- badges: start -->
 
@@ -38,7 +38,7 @@ This README has been compiled on the
 
 ``` r
 Sys.time()
-#> [1] "2025-03-20 13:12:24 MST"
+#> [1] "2025-03-20 14:23:42 MST"
 ```
 
 Here are the tests results and package coverage:
@@ -47,17 +47,10 @@ Here are the tests results and package coverage:
 devtools::check(quiet = TRUE)
 #> ℹ Loading gap
 #> ── R CMD check results ───────────────────────────────────── gap 0.0.0.9000 ────
-#> Duration: 43.4s
+#> Duration: 42.5s
 #> 
-#> ❯ checking Rd \usage sections ... WARNING
-#>   Undocumented arguments in Rd file 'test_logger.Rd'
-#>     ‘start’ ‘end’ ‘msg’
-#>   
-#>   Functions with \usage entries need to have the appropriate \alias
-#>   entries, and all their arguments documented.
-#>   The \usage entries must correspond to syntactically valid R code.
-#>   See chapter ‘Writing R documentation files’ in the ‘Writing R
-#>   Extensions’ manual.
+#> ❯ checking for future file timestamps ... NOTE
+#>   unable to verify current time
 #> 
 #> ❯ checking top-level files ... NOTE
 #>   Non-standard file/directory found at top level:
@@ -73,8 +66,7 @@ devtools::check(quiet = TRUE)
 #>   Undefined global functions or variables:
 #>     movies
 #> 
-#> 0 errors ✔ | 1 warning ✖ | 3 notes ✖
-#> Error: R CMD check found WARNINGs
+#> 0 errors ✔ | 0 warnings ✔ | 4 notes ✖
 ```
 
 ``` r

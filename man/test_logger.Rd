@@ -6,6 +6,13 @@
 \usage{
 test_logger(start = NULL, end = NULL, msg)
 }
+\arguments{
+\item{start}{A character string indicating the start tag. Default is \code{NULL}.}
+
+\item{end}{A character string indicating the end tag. Default is \code{NULL}.}
+
+\item{msg}{A character string containing the log message.}
+}
 \value{
 The return value, if any, from executing the utility.
 }

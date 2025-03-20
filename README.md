@@ -1,3 +1,4 @@
+20 March, 2025 13:12:24
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -5,6 +6,12 @@
 
 <!-- badges: start -->
 
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codecov test
+coverage](https://codecov.io/gh/mjfrigaard/sap/graph/badge.svg)](https://app.codecov.io/gh/mjfrigaard/sap)
+[![Coveralls test
+coverage](https://coveralls.io/repos/github/mjfrigaard/sap/badge.svg)](https://coveralls.io/r/mjfrigaard/sap?branch=02.1_shiny-app)
 <!-- badges: end -->
 
 ## Installation
@@ -12,7 +19,7 @@
 You can install the development version of `{gap}` like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+remotes::install_github(repo = "mjfrigaard/sap", ref = "23_golem")
 ```
 
 ## Run
@@ -31,7 +38,7 @@ This README has been compiled on the
 
 ``` r
 Sys.time()
-#> [1] "2025-03-18 22:19:40 MST"
+#> [1] "2025-03-20 13:12:24 MST"
 ```
 
 Here are the tests results and package coverage:
@@ -40,27 +47,48 @@ Here are the tests results and package coverage:
 devtools::check(quiet = TRUE)
 #> ℹ Loading gap
 #> ── R CMD check results ───────────────────────────────────── gap 0.0.0.9000 ────
-#> Duration: 4s
+#> Duration: 43.4s
 #> 
-#> ❯ checking package dependencies ... ERROR
-#>   Namespace dependency missing from DESCRIPTION Imports/Depends entries: ‘rlang’
+#> ❯ checking Rd \usage sections ... WARNING
+#>   Undocumented arguments in Rd file 'test_logger.Rd'
+#>     ‘start’ ‘end’ ‘msg’
 #>   
-#>   See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-#>   manual.
+#>   Functions with \usage entries need to have the appropriate \alias
+#>   entries, and all their arguments documented.
+#>   The \usage entries must correspond to syntactically valid R code.
+#>   See chapter ‘Writing R documentation files’ in the ‘Writing R
+#>   Extensions’ manual.
 #> 
-#> 1 error ✖ | 0 warnings ✔ | 0 notes ✔
-#> Error: R CMD check found ERRORs
+#> ❯ checking top-level files ... NOTE
+#>   Non-standard file/directory found at top level:
+#>     ‘app.R’
+#> 
+#> ❯ checking package subdirectories ... NOTE
+#>   Problems with news in ‘NEWS.md’:
+#>   No news entries found.
+#> 
+#> ❯ checking R code for possible problems ... NOTE
+#>   mod_scatter_display_server : <anonymous>: no visible binding for global
+#>     variable ‘movies’
+#>   Undefined global functions or variables:
+#>     movies
+#> 
+#> 0 errors ✔ | 1 warning ✖ | 3 notes ✖
+#> Error: R CMD check found WARNINGs
 ```
 
 ``` r
 covr::package_coverage()
-#> gap Coverage: 0.00%
-#> R/app_config.R: 0.00%
-#> R/app_server.R: 0.00%
-#> R/app_ui.R: 0.00%
-#> R/mod_aes_inputs.R: 0.00%
-#> R/mod_scatter_display.R: 0.00%
-#> R/mod_var_inputs.R: 0.00%
+#> gap Coverage: 85.27%
 #> R/run_app.R: 0.00%
-#> R/utils_scatter.R: 0.00%
+#> R/utils_tests.R: 53.85%
+#> R/mod_scatter_display.R: 56.76%
+#> R/golem_utils_server.R: 77.78%
+#> R/golem_utils_ui.R: 87.94%
+#> R/app_config.R: 100.00%
+#> R/app_server.R: 100.00%
+#> R/app_ui.R: 100.00%
+#> R/mod_aes_inputs.R: 100.00%
+#> R/mod_var_inputs.R: 100.00%
+#> R/utils_scatter_display.R: 100.00%
 ```

@@ -7,3 +7,4 @@ shinyrPkgs.Rcheck/
 shinyrPkgs*.tar.gz
 shinyrPkgs*.tgz
 _stash.R
+inst/doc

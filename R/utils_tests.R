@@ -1,10 +1,11 @@
 #' tests
 #'
-#' @description A utils function
+#' @description A test utility function
 #'
 #' @return The return value, if any, from executing the utility.
 #'
-#' @noRd
+#' @export
+#' 
 test_logger <- function(start = NULL, end = NULL, msg) {
   if (is.null(start) & is.null(end)) {
     cat("\n")

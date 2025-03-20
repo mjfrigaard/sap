@@ -1,3 +1,53 @@
+---
+title: "shinytest2"
+output: rmarkdown::html_vignette
+date: "`r format(Sys.time(), '%d %B, %Y %H:%M:%S')`"
+vignette: >
+  %\VignetteIndexEntry{shinytest2}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+```{r setup}
+library(gap)
+```
+
+This vignette includes the `shinytest2` tests from previous branches:
+
+## test-shinytest2
+
+```{r test-shinytest2}
+library(shinytest2)
+library(chromote)
+
+test_that("{shinytest2} recording: feature-01", {
+  app <- AppDriver$new(
+          name = "feature-01", 
+          height = 800, 
+          width = 800, 
+          timeout = 15000, 
+          load_timeout = 15000)
+  app$set_inputs(`vars-y` = "imdb_num_votes")
+  app$set_inputs(`vars-x` = "critics_score")
+  app$set_inputs(`vars-z` = "genre")
+  app$set_inputs(`vars-alpha` = 0.7)
+  app$set_inputs(`vars-size` = 3)
+  app$set_inputs(`vars-plot_title` = "New plot title")
+  app$expect_values()
+})
+```
+
+## test-app-feature-01
+
+```{r test-app-feature-01}
 library(shinytest2)
 describe("Feature 1: Scatter plot data visualization dropdowns
            As a film data analyst
@@ -38,3 +88,5 @@ describe("Feature 1: Scatter plot data visualization dropdowns
         })
       })
 })
+```
+

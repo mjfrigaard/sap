@@ -1,5 +1,6 @@
 ---
 output: github_document
+date: "`r format(Sys.time(), '%d %B, %Y %H:%M:%S')`"
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -17,6 +18,8 @@ output: github_document
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codecov test coverage](https://codecov.io/gh/mjfrigaard/sap/graph/badge.svg)](https://app.codecov.io/gh/mjfrigaard/sap)
+[![Coveralls test coverage](https://coveralls.io/repos/github/mjfrigaard/sap/badge.svg)](https://coveralls.io/r/mjfrigaard/sap?branch=02.1_shiny-app)
 <!-- badges: end -->
 
 ## Installation

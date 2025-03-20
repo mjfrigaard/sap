@@ -2,37 +2,37 @@
 #'
 #' @param request Internal parameter for `{shiny}`.
 #'     DO NOT REMOVE.
-#'
-#' @keywords internal
+#' @import shiny
+#' @noRd
 app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      sidebarLayout(
-        sidebarPanel(
-          mod_var_input_ui("vars"),
-          h6(
-            img(src = "www/shiny.png", width = "15%"),
-            em(
-              "The data for this application comes from the ",
-              a("Building web applications with Shiny",
-                href = "https://rstudio-education.github.io/shiny-course/"
-              ),
-              "tutorial"
+    thematic::thematic_shiny(),
+    tagList(
+      bslib::page_fillable(
+        title = "Movie Reviews (bslib)",
+        theme = gap_theme,
+        bslib::layout_sidebar(
+          sidebar = bslib::sidebar(
+            mod_var_inputs_ui("vars"),
+            mod_aes_inputs_ui("aes")
+          ),
+          bslib::card(
+            full_screen = TRUE,
+            bslib::card_header(h4(em("Brought to you by ",
+              tags$img(
+                src = "www/golem.png",
+                height = 100,
+                width = 100,
+                style = "margin:10px 10px"
+              )))
+            ),
+            bslib::card_body(
+              mod_scatter_display_ui("plot")
             )
           )
-        ),
-        mainPanel(
-          fluidRow(
-            br(),
-            p(em("Brought to you by: "),
-              # add golem hex (in www/)
-              img(src = "www/golem-hex.png", width = "5%")
-            )
-          ),
-          mod_scatter_display_ui("plot")
         )
       )
     )
@@ -44,20 +44,22 @@ app_ui <- function(request) {
 #' This function is internally used to add external
 #' resources inside the Shiny application.
 #'
-#'
-#' @keywords internal
+#' @import shiny
+#' @importFrom golem add_resource_path activate_js favicon bundle_resources
+#' @noRd
 golem_add_external_resources <- function() {
-  golem::add_resource_path(
+  add_resource_path(
     "www",
     app_sys("app/www")
   )
   tags$head(
-    golem::favicon(),
-    golem::bundle_resources(
+    favicon(),
+    bundle_resources(
       path = app_sys("app/www"),
       app_title = "gap"
-    )
+    ),
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert()
+    bslib::bs_theme_dependencies(theme = gap_theme)
   )
 }

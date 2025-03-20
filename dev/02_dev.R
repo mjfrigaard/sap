@@ -15,7 +15,7 @@
 
 ## Dependencies ----
 ## Amend DESCRIPTION with dependencies read from package code parsing
-## install.package('attachment') # if needed.
+## install.packages('attachment') # if needed.
 attachment::att_amend_desc()
 
 ## Add modules ----
@@ -34,10 +34,11 @@ golem::add_js_file("script")
 golem::add_js_handler("handlers")
 golem::add_css_file("custom")
 golem::add_sass_file("custom")
+golem::add_any_file("file.json")
 
 ## Add internal datasets ----
 ## If you have data in your package
-usethis::use_data_raw(name = "my_dataset", open = FALSE)
+usethis::use_data_raw(name = "movies")
 
 ## Tests ----
 ## Add one line by test you want to create
@@ -72,14 +73,6 @@ usethis::use_github_action_check_standard()
 usethis::use_github_action_check_full()
 # Add action for PR
 usethis::use_github_action_pr_commands()
-
-# Travis CI
-usethis::use_travis()
-usethis::use_travis_badge()
-
-# AppVeyor
-usethis::use_appveyor()
-usethis::use_appveyor_badge()
 
 # Circle CI
 usethis::use_circleci()

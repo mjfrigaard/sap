@@ -1,26 +1,24 @@
-#' Test logger (test utility)
+#' tests
 #'
-#' @param start test start message 
-#' @param end test end message 
-#' @param msg test message 
+#' @description A utils function
 #'
-#' @return message to test output
-#' 
-#' @keywords internal
+#' @return The return value, if any, from executing the utility.
+#'
+#' @noRd
 test_logger <- function(start = NULL, end = NULL, msg) {
   if (is.null(start) & is.null(end)) {
     cat("\n")
-    logger::log_info("{msg}")
+    cli::cli_inform("TEST:[{format(Sys.time(), '%Y-%m-%d %H:%M:%S')}] = {msg}")
   } else if (!is.null(start) & is.null(end)) {
     cat("\n")
-    logger::log_info("\n[ START {start} = {msg}]")
+    cli::cli_inform("\nTEST: START [{format(Sys.time(), '%Y-%m-%d %H:%M:%S')}] {start} = {msg}")
   } else if (is.null(start) & !is.null(end)) {
     cat("\n")
-    logger::log_info("\n[ END {end} = {msg}]")
+    cli::cli_inform("\nTEST: END [{format(Sys.time(), '%Y-%m-%d %H:%M:%S')}] {end} = {msg}")
   } else {
     cat("\n")
-    logger::log_info("\n[ START {start} = {msg}]")
+    cli::cli_inform("\nTEST: START [{format(Sys.time(), '%Y-%m-%d %H:%M:%S')}]{start} = {msg}")
     cat("\n")
-    logger::log_info("\n[ END {end} = {msg}]")
+    cli::cli_inform("\nTEST: END [{format(Sys.time(), '%Y-%m-%d %H:%M:%S')}] {end} = {msg}")
   }
 }

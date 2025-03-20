@@ -2,12 +2,20 @@
 #'
 #' @param input,output,session Internal parameters for {shiny}.
 #'     DO NOT REMOVE.
-#'
-#'
-#' @keywords internal
+#' @import shiny
+#' @noRd
 app_server <- function(input, output, session) {
   # Your application server logic
-   selected_vars <- mod_var_input_server("vars")
-   
-   mod_scatter_display_server("plot", var_inputs = selected_vars)
+  # observe({
+    # browser()
+
+      selected_vars <- mod_var_inputs_server("vars")
+
+      selected_aes <- mod_aes_inputs_server("aes")
+
+      mod_scatter_display_server("plot",
+                                  var_inputs = selected_vars,
+                                  aes_inputs = selected_aes)
+
+  # })
 }

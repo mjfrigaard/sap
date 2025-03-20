@@ -1,140 +1,66 @@
-<h1 align="center"> <code><strong>sap</strong></code> </h1>
-<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
-<hr>
 
-## Movie review data application
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-The original code and data for the Shiny app comes from the [Building Web Applications with Shiny](https://rstudio-education.github.io/shiny-course/) course.
+# `{gap}`
 
-# Using code examples
+<!-- badges: start -->
 
-The branches in this repo contain a Shiny application in the various stages of development. The best way to access each branch/app is with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/). 
+<!-- badges: end -->
 
-```r
-# install.packages("pak")
-pak::pak("mjfrigaard/shinypak")
-library(shinypak)
-```
+## Installation
 
-List all the apps with `list_apps()`
+You can install the development version of `{gap}` like so:
 
-
-```r
-head(list_apps())
-#>                  branch        last_updated
-#> 2     01_whole-app-game 2024-01-01 14:11:32
-#> 1        02.1_shiny-app 2024-01-04 13:05:58
-#> 4       02.2_movies-app 2024-01-04 13:07:59
-#> 5         02.3_proj-app 2024-01-04 13:08:58
-#> 6      03.1_description 2024-01-04 13:10:00
-#> 7            03.2_rproj 2024-01-04 13:25:06
-```
-
-Launch an app with `launch()`
-
-```r
-launch(app = "02.3_proj-app")
-```
-
-Or use the terminal
-
-``` bash
-git clone https://github.com/mjfrigaard/sap.git
-cd sap
-git checkout <branch_name>
-open sap.Rproj
-```
-
-------------------------------------------------------------------------
-
-# Branches
-
-View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
-
-## `23_golem`
-
-Checkout the `23_golem` branch:
-
-```bash
-git checkout 23_golem
-```
-
-Load, document, and install the package:
-
-```r
-devtools::load_all()
-
-devtools::document()
-
-devtools::install()
+``` r
+# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
 ```
 
 ## Run
 
-You can run the application with the following:
+You can launch the application by running:
 
 ``` r
-library(gap)
 gap::run_app()
 ```
 
-## Code of Conduct
+## About
 
-Please note that the `gap` project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
+You are reading the doc about version : 0.0.0.9000
 
-## Tests 
+This README has been compiled on the
 
-The results from the **2nd** call of `devtools::test()` should return: 
-
+``` r
+Sys.time()
+#> [1] "2025-03-18 22:19:40 MST"
 ```
-==> devtools::test()
 
-ℹ Testing gap
-Loading required package: shiny
-✔ | F W  S  OK | Context
-✔ |          2 | app-feature-01 [10.2s]                                                     
-✔ |         13 | golem_utils_server                                                         
-✔ |         51 | golem_utils_ui                                                             
-✔ |      1  10 | golem-recommended                                                          
-⠏ |          0 | mod_scatter_display                                                        
-INFO [2024-08-23 07:45:37] [ START display = selected_vars initial values]
+Here are the tests results and package coverage:
 
-INFO [2024-08-23 07:45:37] [ END display = selected_vars initial values]
+``` r
+devtools::check(quiet = TRUE)
+#> ℹ Loading gap
+#> ── R CMD check results ───────────────────────────────────── gap 0.0.0.9000 ────
+#> Duration: 4s
+#> 
+#> ❯ checking package dependencies ... ERROR
+#>   Namespace dependency missing from DESCRIPTION Imports/Depends entries: ‘rlang’
+#>   
+#>   See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+#>   manual.
+#> 
+#> 1 error ✖ | 0 warnings ✔ | 0 notes ✔
+#> Error: R CMD check found ERRORs
+```
 
-INFO [2024-08-23 07:45:37] [ START display = scatterplot[['alt']] = 'Plot object']
-⠙ |          2 | mod_scatter_display                                                        
-INFO [2024-08-23 07:45:38] [ END display = scatterplot[['alt']] = 'Plot object']
-
-INFO [2024-08-23 07:45:38] [ START display = inputs() creates ggplot2 object]
-
-INFO [2024-08-23 07:45:38] [ END display = inputs() creates ggplot2 object]
-✔ |          3 | mod_scatter_display
-⠏ |          0 | mod_var_input                                                              
-INFO [2024-08-23 07:45:38] [ START var_inputs = initial returned()]
-
-INFO [2024-08-23 07:45:38] [ END var_inputs = initial returned()]
-
-INFO [2024-08-23 07:45:38] [ START var_inputs = updated returned()]
-
-INFO [2024-08-23 07:45:38] [ END var_inputs = updated returned()]
-✔ |          2 | mod_var_input
-✔ |          1 | shinytest2 [5.1s]                                                          
-⠏ |          0 | utils_mod_scatter_display                                                  
-INFO [2024-08-23 07:45:43] [ START fixture = tidy_ggp2_movies.rds]
-
-INFO [2024-08-23 07:45:43] [ START fixture = tidy_ggp2_movies.rds]
-
-INFO [2024-08-23 07:45:43] [ START data = movies.rda]
-
-INFO [2024-08-23 07:45:43] [ END data = movies.rda]
-✔ |          2 | utils_mod_scatter_display
-
-══ Results ════════════════════════════════════════════════════════════════════
-Duration: 16.4 s
-
-── Skipped tests (1) ──────────────────────────────────────────────────────────
-• interactive() is not TRUE (1): test-golem-recommended.R:66:5
-
-[ FAIL 0 | WARN 0 | SKIP 1 | PASS 84 ]
+``` r
+covr::package_coverage()
+#> gap Coverage: 0.00%
+#> R/app_config.R: 0.00%
+#> R/app_server.R: 0.00%
+#> R/app_ui.R: 0.00%
+#> R/mod_aes_inputs.R: 0.00%
+#> R/mod_scatter_display.R: 0.00%
+#> R/mod_var_inputs.R: 0.00%
+#> R/run_app.R: 0.00%
+#> R/utils_scatter.R: 0.00%
 ```

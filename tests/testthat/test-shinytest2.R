@@ -1,7 +1,13 @@
 library(shinytest2)
+library(chromote)
 
 test_that("{shinytest2} recording: feature-01", {
-  app <- AppDriver$new(name = "feature-01", height = 800, width = 1173)
+  app <- AppDriver$new(
+          name = "feature-01", 
+          height = 800, 
+          width = 800, 
+          timeout = 15000, 
+          load_timeout = 15000)
   app$set_inputs(`vars-y` = "imdb_num_votes")
   app$set_inputs(`vars-x` = "critics_score")
   app$set_inputs(`vars-z` = "genre")

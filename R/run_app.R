@@ -4,10 +4,9 @@
 #' See `?golem::get_golem_options` for more details.
 #' @inheritParams shiny::shinyApp
 #'
-#' @import shiny
-#'
-#' @export run_app
-#'
+#' @export
+#' @importFrom shiny shinyApp
+#' @importFrom golem with_golem_options
 run_app <- function(
   onStart = NULL,
   options = list(),
@@ -15,7 +14,7 @@ run_app <- function(
   uiPattern = "/",
   ...
 ) {
-  golem::with_golem_options(
+  with_golem_options(
     app = shinyApp(
       ui = app_ui,
       server = app_server,

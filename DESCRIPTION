@@ -1,6 +1,6 @@
 Package: gap
 Title: An example goelm app
-Version: 0.0.0.9000
+Version: 0.0.0.9230
 Authors@R: 
     person("Martin", "Frigaard", , "mjfrigaard@pm.me", role = c("aut", "cre"))
 Description: A working example of the golem package.

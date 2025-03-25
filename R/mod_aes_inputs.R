@@ -13,13 +13,17 @@ mod_aes_inputs_ui <- function(id) {
     sliderInput(
       inputId = ns("alpha"),
       label = "Alpha:",
-      min = 0, max = 1, step = 0.1,
+      min = 0, 
+      max = 1, 
+      step = 0.1,
       value = 0.7
     ),
     sliderInput(
       inputId = ns("size"),
       label = "Size:",
-      min = 0, max = 5,
+      min = 0, 
+      max = 5,
+      step = 0.5,
       value = 3
     ),
     textInput(

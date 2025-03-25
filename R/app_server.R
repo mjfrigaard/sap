@@ -6,8 +6,6 @@
 #' @noRd
 app_server <- function(input, output, session) {
   # Your application server logic
-  # observe({
-    # browser()
 
       selected_vars <- mod_var_inputs_server("vars")
 
@@ -17,5 +15,4 @@ app_server <- function(input, output, session) {
                                   var_inputs = selected_vars,
                                   aes_inputs = selected_aes)
 
-  # })
 }

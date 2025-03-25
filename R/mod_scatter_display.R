@@ -22,9 +22,6 @@ mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
 
-    # observe({
-    # browser()
-
     inputs <- reactive({
       plot_title <- tools::toTitleCase(aes_inputs()$plot_title)
         list(
@@ -57,8 +54,6 @@ mod_scatter_display_server <- function(id, var_inputs, aes_inputs) {
         ggplot2::theme_minimal() +
         ggplot2::theme(legend.position = "bottom")
     })
-
-    # })
 
   })
 }

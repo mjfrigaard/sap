@@ -12,8 +12,6 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    thematic::thematic_shiny(),
-    tagList(
       bslib::page_fillable(
         title = "Movie Reviews (bslib)",
         theme = gap_theme,
@@ -24,21 +22,20 @@ app_ui <- function(request) {
           ),
           bslib::card(
             full_screen = TRUE,
-            bslib::card_header(h4(em("Brought to you by ",
+            bslib::card_header(tags$h4(tags$em("Brought to you by ",
               tags$img(
                 src = "www/golem.png",
                 height = 100,
                 width = 100,
                 style = "margin:10px 10px"
-              )))
-            ),
+                )))
+              ),
             bslib::card_body(
               mod_scatter_display_ui("plot")
             )
           )
         )
       )
-    )
   )
 }
 

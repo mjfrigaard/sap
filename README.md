@@ -1,4 +1,4 @@
-20 March, 2025 14:23:42
+24 March, 2025 14:58:57
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -32,13 +32,13 @@ gap::run_app()
 
 ## About
 
-You are reading the doc about version : 0.0.0.9000
+You are reading the doc about version : 0.0.0.9230
 
 This README has been compiled on the
 
 ``` r
 Sys.time()
-#> [1] "2025-03-20 14:23:42 MST"
+#> [1] "2025-03-24 14:58:58 MST"
 ```
 
 Here are the tests results and package coverage:
@@ -46,8 +46,21 @@ Here are the tests results and package coverage:
 ``` r
 devtools::check(quiet = TRUE)
 #> ℹ Loading gap
-#> ── R CMD check results ───────────────────────────────────── gap 0.0.0.9000 ────
-#> Duration: 42.5s
+#> ── R CMD check results ───────────────────────────────────── gap 0.0.0.9230 ────
+#> Duration: 44s
+#> 
+#> ❯ checking Rd \usage sections ... WARNING
+#>   Undocumented arguments in Rd file 'scatter_plot.Rd'
+#>     ‘df’ ‘x_var’ ‘y_var’ ‘col_var’ ‘alpha_var’ ‘size_var’
+#>   
+#>   Functions with \usage entries need to have the appropriate \alias
+#>   entries, and all their arguments documented.
+#>   The \usage entries must correspond to syntactically valid R code.
+#>   See chapter ‘Writing R documentation files’ in the ‘Writing R
+#>   Extensions’ manual.
+#> 
+#> ❯ checking package dependencies ... NOTE
+#>   Package suggested but not available for checking: ‘spelling’
 #> 
 #> ❯ checking for future file timestamps ... NOTE
 #>   unable to verify current time
@@ -66,21 +79,11 @@ devtools::check(quiet = TRUE)
 #>   Undefined global functions or variables:
 #>     movies
 #> 
-#> 0 errors ✔ | 0 warnings ✔ | 4 notes ✖
+#> 0 errors ✔ | 1 warning ✖ | 5 notes ✖
+#> Error: R CMD check found WARNINGs
 ```
 
 ``` r
 covr::package_coverage()
-#> gap Coverage: 85.27%
-#> R/run_app.R: 0.00%
-#> R/utils_tests.R: 53.85%
-#> R/mod_scatter_display.R: 56.76%
-#> R/golem_utils_server.R: 77.78%
-#> R/golem_utils_ui.R: 87.94%
-#> R/app_config.R: 100.00%
-#> R/app_server.R: 100.00%
-#> R/app_ui.R: 100.00%
-#> R/mod_aes_inputs.R: 100.00%
-#> R/mod_var_inputs.R: 100.00%
-#> R/utils_scatter_display.R: 100.00%
+#> Error in loadNamespace(x): there is no package called 'covr'
 ```

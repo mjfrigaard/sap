@@ -1,0 +1,4 @@
+docker build -f Dockerfile_base --progress=plain -t gap_base .
+docker build -f Dockerfile --progress=plain -t gap:latest .
+docker run -p 80:80 gap:latest
+# then go to 127.0.0.1:80

@@ -11,3 +11,6 @@ $run_dev.*
 ^README\.Rmd$
 ^CODE_OF_CONDUCT\.md$
 ^codecov\.yml$
+^app\.R$
+^rsconnect$
+^\.rscignore$

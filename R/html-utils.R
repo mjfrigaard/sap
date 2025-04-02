@@ -145,7 +145,7 @@ tag2 <- function(.name, ...){
 
 #' OffCanvas
 #'
-#' @param id
+#' @param id identification
 #' @param ... Passed to div.
 #' @param class Additional class attribute to assign
 #' to parent div.

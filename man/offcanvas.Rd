@@ -20,6 +20,8 @@ offCanvasDismiss()
 offCanvasToggle(target, color = "primary", class = "")
 }
 \arguments{
+\item{id}{identification}
+
 \item{...}{Passed to div.}
 
 \item{class}{Additional class attribute to assign

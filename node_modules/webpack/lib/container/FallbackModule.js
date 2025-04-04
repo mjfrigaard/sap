@@ -7,6 +7,7 @@
 
 const { RawSource } = require("webpack-sources");
 const Module = require("../Module");
+const { JS_TYPES } = require("../ModuleSourceTypesConstants");
 const { WEBPACK_MODULE_TYPE_FALLBACK } = require("../ModuleTypeConstants");
 const RuntimeGlobals = require("../RuntimeGlobals");
 const Template = require("../Template");
@@ -22,6 +23,7 @@ const FallbackItemDependency = require("./FallbackItemDependency");
 /** @typedef {import("../Module").CodeGenerationResult} CodeGenerationResult */
 /** @typedef {import("../Module").LibIdentOptions} LibIdentOptions */
 /** @typedef {import("../Module").NeedBuildContext} NeedBuildContext */
+/** @typedef {import("../Module").SourceTypes} SourceTypes */
 /** @typedef {import("../RequestShortener")} RequestShortener */
 /** @typedef {import("../ResolverFactory").ResolverWithOptions} ResolverWithOptions */
 /** @typedef {import("../WebpackError")} WebpackError */
@@ -30,7 +32,6 @@ const FallbackItemDependency = require("./FallbackItemDependency");
 /** @typedef {import("../util/Hash")} Hash */
 /** @typedef {import("../util/fs").InputFileSystem} InputFileSystem */
 
-const TYPES = new Set(["javascript"]);
 const RUNTIME_REQUIREMENTS = new Set([RuntimeGlobals.module]);
 
 class FallbackModule extends Module {
@@ -116,10 +117,10 @@ class FallbackModule extends Module {
 	}
 
 	/**
-	 * @returns {Set<string>} types available (do not mutate)
+	 * @returns {SourceTypes} types available (do not mutate)
 	 */
 	getSourceTypes() {
-		return TYPES;
+		return JS_TYPES;
 	}
 
 	/**
@@ -128,7 +129,7 @@ class FallbackModule extends Module {
 	 */
 	codeGeneration({ runtimeTemplate, moduleGraph, chunkGraph }) {
 		const ids = this.dependencies.map(dep =>
-			chunkGraph.getModuleId(moduleGraph.getModule(dep))
+			chunkGraph.getModuleId(/** @type {Module} */ (moduleGraph.getModule(dep)))
 		);
 		const code = Template.asString([
 			`var ids = ${JSON.stringify(ids)};`,

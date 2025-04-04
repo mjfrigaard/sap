@@ -8,6 +8,7 @@
 const { OriginalSource, RawSource } = require("webpack-sources");
 const AsyncDependenciesBlock = require("../AsyncDependenciesBlock");
 const Module = require("../Module");
+const { JS_TYPES } = require("../ModuleSourceTypesConstants");
 const { JAVASCRIPT_MODULE_TYPE_DYNAMIC } = require("../ModuleTypeConstants");
 const RuntimeGlobals = require("../RuntimeGlobals");
 const Template = require("../Template");
@@ -23,6 +24,7 @@ const ContainerExposedDependency = require("./ContainerExposedDependency");
 /** @typedef {import("../Module").CodeGenerationResult} CodeGenerationResult */
 /** @typedef {import("../Module").LibIdentOptions} LibIdentOptions */
 /** @typedef {import("../Module").NeedBuildContext} NeedBuildContext */
+/** @typedef {import("../Module").SourceTypes} SourceTypes */
 /** @typedef {import("../RequestShortener")} RequestShortener */
 /** @typedef {import("../ResolverFactory").ResolverWithOptions} ResolverWithOptions */
 /** @typedef {import("../WebpackError")} WebpackError */
@@ -33,17 +35,17 @@ const ContainerExposedDependency = require("./ContainerExposedDependency");
 /** @typedef {import("./ContainerEntryDependency")} ContainerEntryDependency */
 
 /**
- * @typedef {Object} ExposeOptions
+ * @typedef {object} ExposeOptions
  * @property {string[]} import requests to exposed modules (last one is exported)
  * @property {string} name custom chunk name for the exposed module
  */
 
-const SOURCE_TYPES = new Set(["javascript"]);
+/** @typedef {[string, ExposeOptions][]} ExposesList */
 
 class ContainerEntryModule extends Module {
 	/**
 	 * @param {string} name container entry name
-	 * @param {[string, ExposeOptions][]} exposes list of exposed modules
+	 * @param {ExposesList} exposes list of exposed modules
 	 * @param {string} shareScope name of the share scope
 	 */
 	constructor(name, exposes, shareScope) {
@@ -54,10 +56,10 @@ class ContainerEntryModule extends Module {
 	}
 
 	/**
-	 * @returns {Set<string>} types available (do not mutate)
+	 * @returns {SourceTypes} types available (do not mutate)
 	 */
 	getSourceTypes() {
-		return SOURCE_TYPES;
+		return JS_TYPES;
 	}
 
 	/**
@@ -74,7 +76,7 @@ class ContainerEntryModule extends Module {
 	 * @returns {string} a user readable identifier of the module
 	 */
 	readableIdentifier(requestShortener) {
-		return `container entry`;
+		return "container entry";
 	}
 
 	/**
@@ -202,7 +204,7 @@ class ContainerEntryModule extends Module {
 		}
 
 		const source = Template.asString([
-			`var moduleMap = {`,
+			"var moduleMap = {",
 			Template.indent(getters.join(",\n")),
 			"};",
 			`var get = ${runtimeTemplate.basicFunction("module, getScope", [
@@ -227,7 +229,7 @@ class ContainerEntryModule extends Module {
 				`if (!${RuntimeGlobals.shareScopeMap}) return;`,
 				`var name = ${JSON.stringify(this._shareScope)}`,
 				`var oldScope = ${RuntimeGlobals.shareScopeMap}[name];`,
-				`if(oldScope && oldScope !== shareScope) throw new Error("Container initialization failed as it has already been initialized with a different share scope");`,
+				'if(oldScope && oldScope !== shareScope) throw new Error("Container initialization failed as it has already been initialized with a different share scope");',
 				`${RuntimeGlobals.shareScopeMap}[name] = shareScope;`,
 				`return ${RuntimeGlobals.initializeSharing}(name, initScope);`
 			])};`,

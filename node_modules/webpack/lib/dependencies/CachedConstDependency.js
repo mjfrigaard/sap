@@ -39,14 +39,22 @@ class CachedConstDependency extends NullDependency {
 	}
 
 	/**
+	 * @returns {string} hash update
+	 */
+	_createHashUpdate() {
+		return `${this.identifier}${this.range}${this.expression}`;
+	}
+
+	/**
 	 * Update the hash
 	 * @param {Hash} hash hash to be updated
 	 * @param {UpdateHashContext} context context
 	 * @returns {void}
 	 */
 	updateHash(hash, context) {
-		if (this._hashUpdate === undefined)
-			this._hashUpdate = "" + this.identifier + this.range + this.expression;
+		if (this._hashUpdate === undefined) {
+			this._hashUpdate = this._createHashUpdate();
+		}
 		hash.update(this._hashUpdate);
 	}
 

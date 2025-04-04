@@ -33,7 +33,6 @@ class JsonModulesPlugin {
 	 * Apply the plugin
 	 * @param {Compiler} compiler the compiler instance
 	 * @returns {void}
-	 *
 	 */
 	apply(compiler) {
 		compiler.hooks.compilation.tap(
@@ -43,14 +42,11 @@ class JsonModulesPlugin {
 					.for(JSON_MODULE_TYPE)
 					.tap(PLUGIN_NAME, parserOptions => {
 						validate(parserOptions);
-
 						return new JsonParser(parserOptions);
 					});
 				normalModuleFactory.hooks.createGenerator
 					.for(JSON_MODULE_TYPE)
-					.tap(PLUGIN_NAME, () => {
-						return new JsonGenerator();
-					});
+					.tap(PLUGIN_NAME, () => new JsonGenerator());
 			}
 		);
 	}

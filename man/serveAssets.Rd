@@ -4,11 +4,15 @@
 \alias{serveAssets}
 \title{Dependencies}
 \usage{
-serveAssets(modules = NULL)
+serveAssets(modules = NULL, ignore = c())
 }
 \arguments{
 \item{modules}{JavaScript files names that require
 the \code{type = module}.}
+
+\item{ignore}{A vector of files to ignore.
+This can be useful for scripts that should not be
+placed in the \verb{<head>} of the HTML.}
 }
 \description{
 Dependencies

@@ -7,6 +7,7 @@
 
 const { RawSource } = require("webpack-sources");
 const Module = require("../Module");
+const { JS_TYPES } = require("../ModuleSourceTypesConstants");
 const { ASSET_MODULE_TYPE_RAW_DATA_URL } = require("../ModuleTypeConstants");
 const RuntimeGlobals = require("../RuntimeGlobals");
 const makeSerializable = require("../util/makeSerializable");
@@ -17,6 +18,7 @@ const makeSerializable = require("../util/makeSerializable");
 /** @typedef {import("../Module").CodeGenerationContext} CodeGenerationContext */
 /** @typedef {import("../Module").CodeGenerationResult} CodeGenerationResult */
 /** @typedef {import("../Module").NeedBuildContext} NeedBuildContext */
+/** @typedef {import("../Module").SourceTypes} SourceTypes */
 /** @typedef {import("../RequestShortener")} RequestShortener */
 /** @typedef {import("../ResolverFactory").ResolverWithOptions} ResolverWithOptions */
 /** @typedef {import("../WebpackError")} WebpackError */
@@ -24,8 +26,6 @@ const makeSerializable = require("../util/makeSerializable");
 /** @typedef {import("../serialization/ObjectMiddleware").ObjectSerializerContext} ObjectSerializerContext */
 /** @typedef {import("../util/Hash")} Hash */
 /** @typedef {import("../util/fs").InputFileSystem} InputFileSystem */
-
-const TYPES = new Set(["javascript"]);
 
 class RawDataUrlModule extends Module {
 	/**
@@ -42,10 +42,10 @@ class RawDataUrlModule extends Module {
 	}
 
 	/**
-	 * @returns {Set<string>} types available (do not mutate)
+	 * @returns {SourceTypes} types available (do not mutate)
 	 */
 	getSourceTypes() {
-		return TYPES;
+		return JS_TYPES;
 	}
 
 	/**
@@ -70,7 +70,9 @@ class RawDataUrlModule extends Module {
 	 * @returns {string} a user readable identifier of the module
 	 */
 	readableIdentifier(requestShortener) {
-		return requestShortener.shorten(this.readableIdentifierStr);
+		return /** @type {string} */ (
+			requestShortener.shorten(this.readableIdentifierStr)
+		);
 	}
 
 	/**
@@ -111,7 +113,9 @@ class RawDataUrlModule extends Module {
 			new RawSource(`module.exports = ${JSON.stringify(this.url)};`)
 		);
 		const data = new Map();
-		data.set("url", this.urlBuffer);
+		data.set("url", {
+			javascript: this.url
+		});
 		const runtimeRequirements = new Set();
 		runtimeRequirements.add(RuntimeGlobals.module);
 		return { sources, runtimeRequirements, data };

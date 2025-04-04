@@ -7,6 +7,9 @@
 
 const { RawSource } = require("webpack-sources");
 const Module = require("../Module");
+const {
+	REMOTE_AND_SHARE_INIT_TYPES
+} = require("../ModuleSourceTypesConstants");
 const { WEBPACK_MODULE_TYPE_REMOTE } = require("../ModuleTypeConstants");
 const RuntimeGlobals = require("../RuntimeGlobals");
 const makeSerializable = require("../util/makeSerializable");
@@ -21,6 +24,7 @@ const RemoteToExternalDependency = require("./RemoteToExternalDependency");
 /** @typedef {import("../Module").CodeGenerationResult} CodeGenerationResult */
 /** @typedef {import("../Module").LibIdentOptions} LibIdentOptions */
 /** @typedef {import("../Module").NeedBuildContext} NeedBuildContext */
+/** @typedef {import("../Module").SourceTypes} SourceTypes */
 /** @typedef {import("../RequestShortener")} RequestShortener */
 /** @typedef {import("../ResolverFactory").ResolverWithOptions} ResolverWithOptions */
 /** @typedef {import("../WebpackError")} WebpackError */
@@ -29,7 +33,6 @@ const RemoteToExternalDependency = require("./RemoteToExternalDependency");
 /** @typedef {import("../util/Hash")} Hash */
 /** @typedef {import("../util/fs").InputFileSystem} InputFileSystem */
 
-const TYPES = new Set(["remote", "share-init"]);
 const RUNTIME_REQUIREMENTS = new Set([RuntimeGlobals.module]);
 
 class RemoteModule extends Module {
@@ -119,10 +122,10 @@ class RemoteModule extends Module {
 	}
 
 	/**
-	 * @returns {Set<string>} types available (do not mutate)
+	 * @returns {SourceTypes} types available (do not mutate)
 	 */
 	getSourceTypes() {
-		return TYPES;
+		return REMOTE_AND_SHARE_INIT_TYPES;
 	}
 
 	/**

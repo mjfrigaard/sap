@@ -1,11 +1,9 @@
 {
   "name": "lap",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
-    "man": "man",
-    "test": "tests"
+    "man": "man"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,9 +15,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "devDependencies": {
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-merge": "^5.10.0"
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-merge": "^6.0.1"
   }
 }

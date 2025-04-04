@@ -12,14 +12,15 @@ server <- function(input, output, session){
 
 	send_message <- make_send_message(session)
 
-	send_message("show-packer",
-				  text = "this message is from your R/server.R file")
+  send_message("show-packer",
+              text = "a message from R/server.R")
 
-  ## New code -->
-   selected_vars <- var_input_server("vars")
+  selected_vars <- vars_server("vars")
 
-   plot_display_server("plot", var_inputs = selected_vars)
+  selected_aes <- aes_server("aes")
 
-   ## New code <--
+  scatter_display_server("plot",
+                         var_inputs = selected_vars,
+                         aes_inputs = selected_aes)
 
 }

@@ -4,28 +4,40 @@
 #'
 #' @param req The request object.
 #'
+#' @import shiny
+#' @importFrom bslib bs_theme
 #'
 #' @keywords internal
-ui <- function(req) {
-  fluidPage(
-    theme = bslib::bs_theme(version = 5),
-    assets(),
-    h1("lap"),
-    ## New code -->
-        sidebarLayout(
-          sidebarPanel(
-            var_inputUI("vars")
+ui <- function(req){
+  tagList(
+      bslib::page_fillable(
+        list(assets()),
+        title = "Movie Reviews (lap)",
+        theme = lap_theme,
+        bslib::layout_sidebar(
+          sidebar = bslib::sidebar(
+            varsUI("vars"),
+            aesUI("aes")
           ),
-          mainPanel(
-          # new image
-          tags$img(
-            src = "img/leprechaun.jpg",
-            height="25%",
-            width="25%"),
-          plot_displayUI("plot")
+          bslib::card(
+            full_screen = TRUE,
+          bslib::card_header(
+            tags$h4(tags$em("Brought to you by ",
+                tags$img(
+                  src = "img/leprechaun-logo.png",
+                  height = 100,
+                  width = 100,
+                  style = "margin:10px 10px"
+                  )
+                )
+              )
+            ),
+            bslib::card_body(
+              scatter_displayUI("plot")
+            )
           )
         )
-    ## New code <--
+      )
   )
 }
 
@@ -36,13 +48,18 @@ ui <- function(req) {
 #' [serveAssets] and allows easily adding additional
 #' remote dependencies (e.g.: CDN) should there be any.
 #'
+#' @param ignore A vector of files to ignore.
+#' This can be useful for scripts that should not be
+#' placed in the `<head>` of the HTML.
+#'
+#' @importFrom shiny tags
 #'
 #' @keywords internal
-assets <- function(){
+assets <- function(ignore = NULL){
 	list(
-		serveAssets(), # base assets (assets.R)
+		serveAssets(ignore = ignore), # base assets (assets.R)
 		tags$head(
-			# Place any additional dependencies here
+			# Place any additional depdendencies here
 			# e.g.: CDN
 		)
 	)

@@ -28,13 +28,13 @@ leprechaun_handler_list <- function(data){
 }
 
 .onAttach <- function(...) {
-	registerInputHandler(
+	shiny::registerInputHandler(
 		"lap.list", 
 		leprechaun_handler_list, 
 		force = TRUE
 	)
 
-	registerInputHandler(
+	shiny::registerInputHandler(
 		"lap.df", 
 		leprechaun_handler_df, 
 		force = TRUE

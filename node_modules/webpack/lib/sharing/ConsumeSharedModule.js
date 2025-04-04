@@ -8,6 +8,7 @@
 const { RawSource } = require("webpack-sources");
 const AsyncDependenciesBlock = require("../AsyncDependenciesBlock");
 const Module = require("../Module");
+const { CONSUME_SHARED_TYPES } = require("../ModuleSourceTypesConstants");
 const {
 	WEBPACK_MODULE_TYPE_CONSUME_SHARED_MODULE
 } = require("../ModuleTypeConstants");
@@ -25,6 +26,7 @@ const ConsumeSharedFallbackDependency = require("./ConsumeSharedFallbackDependen
 /** @typedef {import("../Module").CodeGenerationResult} CodeGenerationResult */
 /** @typedef {import("../Module").LibIdentOptions} LibIdentOptions */
 /** @typedef {import("../Module").NeedBuildContext} NeedBuildContext */
+/** @typedef {import("../Module").SourceTypes} SourceTypes */
 /** @typedef {import("../RequestShortener")} RequestShortener */
 /** @typedef {import("../ResolverFactory").ResolverWithOptions} ResolverWithOptions */
 /** @typedef {import("../WebpackError")} WebpackError */
@@ -35,19 +37,17 @@ const ConsumeSharedFallbackDependency = require("./ConsumeSharedFallbackDependen
 /** @typedef {import("../util/semver").SemVerRange} SemVerRange */
 
 /**
- * @typedef {Object} ConsumeOptions
+ * @typedef {object} ConsumeOptions
  * @property {string=} import fallback request
  * @property {string=} importResolved resolved fallback request
  * @property {string} shareKey global share key
  * @property {string} shareScope share scope
  * @property {SemVerRange | false | undefined} requiredVersion version requirement
- * @property {string} packageName package name to determine required version automatically
+ * @property {string=} packageName package name to determine required version automatically
  * @property {boolean} strictVersion don't use shared version even if version isn't valid
  * @property {boolean} singleton use single global version
  * @property {boolean} eager include the fallback module in a sync way
  */
-
-const TYPES = new Set(["consume-shared"]);
 
 class ConsumeSharedModule extends Module {
 	/**
@@ -147,10 +147,10 @@ class ConsumeSharedModule extends Module {
 	}
 
 	/**
-	 * @returns {Set<string>} types available (do not mutate)
+	 * @returns {SourceTypes} types available (do not mutate)
 	 */
 	getSourceTypes() {
-		return TYPES;
+		return CONSUME_SHARED_TYPES;
 	}
 
 	/**
@@ -206,26 +206,31 @@ class ConsumeSharedModule extends Module {
 				});
 			}
 		}
-		let fn = "load";
-		const args = [JSON.stringify(shareScope), JSON.stringify(shareKey)];
+
+		const args = [
+			JSON.stringify(shareScope),
+			JSON.stringify(shareKey),
+			JSON.stringify(eager)
+		];
 		if (requiredVersion) {
-			if (strictVersion) {
-				fn += "Strict";
-			}
-			if (singleton) {
-				fn += "Singleton";
-			}
 			args.push(stringifyHoley(requiredVersion));
-			fn += "VersionCheck";
-		} else {
-			if (singleton) {
-				fn += "Singleton";
-			}
 		}
 		if (fallbackCode) {
-			fn += "Fallback";
 			args.push(fallbackCode);
 		}
+
+		let fn;
+
+		if (requiredVersion) {
+			if (strictVersion) {
+				fn = singleton ? "loadStrictSingletonVersion" : "loadStrictVersion";
+			} else {
+				fn = singleton ? "loadSingletonVersion" : "loadVersion";
+			}
+		} else {
+			fn = singleton ? "loadSingleton" : "load";
+		}
+
 		const code = runtimeTemplate.returningFunction(`${fn}(${args.join(", ")})`);
 		const sources = new Map();
 		sources.set("consume-shared", new RawSource(code));

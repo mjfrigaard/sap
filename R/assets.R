@@ -6,10 +6,13 @@
 #'
 #' @param modules JavaScript files names that require
 #' the `type = module`.
+#' @param ignore A vector of files to ignore.
+#' This can be useful for scripts that should not be
+#' placed in the `<head>` of the HTML.
 #' @importFrom htmltools htmlDependency
 #'
 #' @keywords internal
-serveAssets <- function(modules = NULL){
+serveAssets <- function(modules = NULL, ignore = c()){
 	# JavaScript files
 	javascript <- list.files(
 		system.file(package = "lap"),
@@ -27,9 +30,20 @@ serveAssets <- function(modules = NULL){
 		pattern = ".css$"
 	)
 
+  # exclude specifically html/R.css from a built package
+  # solves https://github.com/devOpifex/leprechaun/issues/4
+  css <- css[css != "html/R.css"]
+
 	# so dependency processes correctly
 	names(css) <- rep("file", length(css))
 	names(javascript) <- rep("file", length(javascript))
+
+	# remove ignored files
+	if (length(ignore > 0)) {
+	  ignore_pat <- paste0(ignore, collapse = "|", sep = "$")
+	  css <- css[!grepl(ignore_pat, css)]
+	  javascript <- javascript[!grepl(ignore_pat, javascript)]
+	}
 
 	# serve dependencies
 	dependencies <- list()
@@ -71,7 +85,7 @@ serveAssets <- function(modules = NULL){
 #' @keywords internal
 #' @name js-modules
 remove_modules <- function(files, modules){
-	if(is.null(modules))
+	if (is.null(modules))
 		return(files)
 
 	# make pattern
@@ -84,7 +98,7 @@ remove_modules <- function(files, modules){
 #' @rdname js-modules
 #' @keywords internal
 get_modules <- function(files, modules){
-	if(is.null(modules))
+	if (is.null(modules))
 		return(NULL)
 
 	# make pattern

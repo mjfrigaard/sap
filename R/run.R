@@ -2,12 +2,13 @@
 #'
 #' Run application
 #'
-#' @param ... Additional parameters to pass to [shinyApp].
+#' @param ... Additional parameters to pass to [shiny::shinyApp].
 #'
-#' @import shiny
+#' @importFrom shiny shinyApp
 #'
 #' @export
 run <- function(...){
+  thematic::thematic_shiny()
 	shinyApp(
 		ui = ui,
 		server = server,
@@ -21,8 +22,7 @@ run <- function(...){
 #' the build step.
 #'
 #' @keywords internal
-#' @noRd
-run_dev <- function() {
+run_dev <- function(){
 	file <- system.file("run/app.R", package = "lap")
-	shinyAppFile(file)
+	shiny::shinyAppFile(file)
 }

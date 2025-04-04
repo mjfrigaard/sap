@@ -37,6 +37,7 @@ const memoize = require("./util/memoize");
 /** @typedef {import("./Compilation").EntryOptions} EntryOptions */
 /** @typedef {import("./Compilation").PathData} PathData */
 /** @typedef {import("./Compiler").AssetEmittedInfo} AssetEmittedInfo */
+/** @typedef {import("./MultiCompiler").MultiCompilerOptions} MultiCompilerOptions */
 /** @typedef {import("./MultiStats")} MultiStats */
 /** @typedef {import("./NormalModuleFactory").ResolveData} ResolveData */
 /** @typedef {import("./Parser").ParserState} ParserState */
@@ -59,6 +60,8 @@ const memoize = require("./util/memoize");
 /** @typedef {import("./stats/DefaultStatsFactoryPlugin").StatsModuleTraceDependency} StatsModuleTraceDependency */
 /** @typedef {import("./stats/DefaultStatsFactoryPlugin").StatsModuleTraceItem} StatsModuleTraceItem */
 /** @typedef {import("./stats/DefaultStatsFactoryPlugin").StatsProfile} StatsProfile */
+/** @typedef {import("./util/fs").InputFileSystem} InputFileSystem */
+/** @typedef {import("./util/fs").OutputFileSystem} OutputFileSystem */
 
 /**
  * @template {Function} T
@@ -68,9 +71,11 @@ const memoize = require("./util/memoize");
 const lazyFunction = factory => {
 	const fac = memoize(factory);
 	const f = /** @type {any} */ (
-		(...args) => {
-			return fac()(...args);
-		}
+		/**
+		 * @param {...any} args args
+		 * @returns {T} result
+		 */
+		(...args) => fac()(...args)
 	);
 	return /** @type {T} */ (f);
 };
@@ -114,15 +119,24 @@ module.exports = mergeExports(fn, {
 	get webpack() {
 		return require("./webpack");
 	},
+	/**
+	 * @returns {function(Configuration | Configuration[]): void} validate fn
+	 */
 	get validate() {
 		const webpackOptionsSchemaCheck = require("../schemas/WebpackOptions.check.js");
-		const getRealValidate = memoize(() => {
-			const validateSchema = require("./validateSchema");
-			const webpackOptionsSchema = require("../schemas/WebpackOptions.json");
-			return options => validateSchema(webpackOptionsSchema, options);
-		});
+		const getRealValidate = memoize(
+			/**
+			 * @returns {function(Configuration | Configuration[]): void} validate fn
+			 */
+			() => {
+				const validateSchema = require("./validateSchema");
+				const webpackOptionsSchema = require("../schemas/WebpackOptions.json");
+				return options => validateSchema(webpackOptionsSchema, options);
+			}
+		);
 		return options => {
-			if (!webpackOptionsSchemaCheck(options)) getRealValidate()(options);
+			if (!webpackOptionsSchemaCheck(/** @type {TODO} */ (options)))
+				getRealValidate()(options);
 		};
 	},
 	get validateSchema() {
@@ -220,6 +234,9 @@ module.exports = mergeExports(fn, {
 	get HotModuleReplacementPlugin() {
 		return require("./HotModuleReplacementPlugin");
 	},
+	get InitFragment() {
+		return require("./InitFragment");
+	},
 	get IgnorePlugin() {
 		return require("./IgnorePlugin");
 	},
@@ -270,8 +287,14 @@ module.exports = mergeExports(fn, {
 	get MultiCompiler() {
 		return require("./MultiCompiler");
 	},
+	get OptimizationStages() {
+		return require("./OptimizationStages");
+	},
 	get Parser() {
 		return require("./Parser");
+	},
+	get PlatformPlugin() {
+		return require("./PlatformPlugin");
 	},
 	get PrefetchPlugin() {
 		return require("./PrefetchPlugin");
@@ -420,6 +443,9 @@ module.exports = mergeExports(fn, {
 		get LimitChunkCountPlugin() {
 			return require("./optimize/LimitChunkCountPlugin");
 		},
+		get MergeDuplicateChunksPlugin() {
+			return require("./optimize/MergeDuplicateChunksPlugin.js");
+		},
 		get MinChunkSizePlugin() {
 			return require("./optimize/MinChunkSizePlugin");
 		},
@@ -456,17 +482,26 @@ module.exports = mergeExports(fn, {
 	},
 
 	web: {
-		get FetchCompileAsyncWasmPlugin() {
-			return require("./web/FetchCompileAsyncWasmPlugin");
-		},
 		get FetchCompileWasmPlugin() {
 			return require("./web/FetchCompileWasmPlugin");
+		},
+		get FetchCompileAsyncWasmPlugin() {
+			return require("./web/FetchCompileAsyncWasmPlugin");
 		},
 		get JsonpChunkLoadingRuntimeModule() {
 			return require("./web/JsonpChunkLoadingRuntimeModule");
 		},
 		get JsonpTemplatePlugin() {
 			return require("./web/JsonpTemplatePlugin");
+		},
+		get CssLoadingRuntimeModule() {
+			return require("./css/CssLoadingRuntimeModule");
+		}
+	},
+
+	esm: {
+		get ModuleChunkLoadingRuntimeModule() {
+			return require("./esm/ModuleChunkLoadingRuntimeModule");
 		}
 	},
 
@@ -491,6 +526,9 @@ module.exports = mergeExports(fn, {
 		},
 		get ReadFileCompileWasmPlugin() {
 			return require("./node/ReadFileCompileWasmPlugin");
+		},
+		get ReadFileCompileAsyncWasmPlugin() {
+			return require("./node/ReadFileCompileAsyncWasmPlugin");
 		}
 	},
 
@@ -506,6 +544,12 @@ module.exports = mergeExports(fn, {
 		},
 		get EnableWasmLoadingPlugin() {
 			return require("./wasm/EnableWasmLoadingPlugin");
+		}
+	},
+
+	css: {
+		get CssModulesPlugin() {
+			return require("./css/CssModulesPlugin");
 		}
 	},
 
@@ -572,6 +616,9 @@ module.exports = mergeExports(fn, {
 		},
 		get LazySet() {
 			return require("./util/LazySet");
+		},
+		get compileBooleanMatcher() {
+			return require("./util/compileBooleanMatcher");
 		}
 	},
 

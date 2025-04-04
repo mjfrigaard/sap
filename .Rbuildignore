@@ -5,3 +5,4 @@
 ^shinyrPkgs.*\.tgz$
 _\.new\.png$
 ^dev$
+^README\.Rmd$

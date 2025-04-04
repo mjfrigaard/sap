@@ -7,7 +7,7 @@
 
 const asyncLib = require("neo-async");
 const { SyncBailHook } = require("tapable");
-const Compilation = require("../lib/Compilation");
+const Compilation = require("./Compilation");
 const createSchemaValidation = require("./util/create-schema-validation");
 const { join } = require("./util/fs");
 const processAsyncTree = require("./util/processAsyncTree");
@@ -15,6 +15,7 @@ const processAsyncTree = require("./util/processAsyncTree");
 /** @typedef {import("../declarations/WebpackOptions").CleanOptions} CleanOptions */
 /** @typedef {import("./Compiler")} Compiler */
 /** @typedef {import("./logging/Logger").Logger} Logger */
+/** @typedef {import("./util/fs").IStats} IStats */
 /** @typedef {import("./util/fs").OutputFileSystem} OutputFileSystem */
 /** @typedef {import("./util/fs").StatsCallback} StatsCallback */
 
@@ -23,8 +24,14 @@ const processAsyncTree = require("./util/processAsyncTree");
 /** @typedef {function(IgnoreItem): void} AddToIgnoreCallback */
 
 /**
- * @typedef {Object} CleanPluginCompilationHooks
- * @property {SyncBailHook<[string], boolean>} keep when returning true the file/directory will be kept during cleaning, returning false will clean it and ignore the following plugins and config
+ * @typedef {object} CleanPluginCompilationHooks
+ * @property {SyncBailHook<[string], boolean | void>} keep when returning true the file/directory will be kept during cleaning, returning false will clean it and ignore the following plugins and config
+ */
+
+/**
+ * @callback KeepFn
+ * @param {string} path path
+ * @returns {boolean | void} true, if the path should be kept
  */
 
 const validate = createSchemaValidation(
@@ -88,8 +95,8 @@ const getDiffToFs = (fs, outputPath, currentAssets, callback) => {
 					}
 					return callback(err);
 				}
-				for (const entry of entries) {
-					const file = /** @type {string} */ (entry);
+				for (const entry of /** @type {string[]} */ (entries)) {
+					const file = entry;
 					const filename = directory ? `${directory}/${file}` : file;
 					if (!directories.has(filename) && !currentAssets.has(filename)) {
 						diff.add(filename);
@@ -142,7 +149,7 @@ const doStat = (fs, filename, callback) => {
  * @param {boolean} dry only log instead of fs modification
  * @param {Logger} logger logger
  * @param {Set<string>} diff filenames of the assets that shouldn't be there
- * @param {function(string): boolean} isKept check if the entry is ignored
+ * @param {function(string): boolean | void} isKept check if the entry is ignored
  * @param {function(Error=, Assets=): void} callback callback
  * @returns {void}
  */
@@ -196,7 +203,7 @@ const applyDiff = (fs, outputPath, dry, logger, diff, isKept, callback) => {
 					}
 					doStat(fs, path, (err, stats) => {
 						if (err) return handleError(err);
-						if (!stats.isDirectory()) {
+						if (!(/** @type {IStats} */ (stats).isDirectory())) {
 							push({
 								type: "unlink",
 								filename,
@@ -206,7 +213,7 @@ const applyDiff = (fs, outputPath, dry, logger, diff, isKept, callback) => {
 						}
 
 						/** @type {NonNullable<OutputFileSystem["readdir"]>} */
-						(fs.readdir)(path, (err, entries) => {
+						(fs.readdir)(path, (err, _entries) => {
 							if (err) return handleError(err);
 							/** @type {Job} */
 							const deleteJob = {
@@ -214,6 +221,7 @@ const applyDiff = (fs, outputPath, dry, logger, diff, isKept, callback) => {
 								filename,
 								parent
 							};
+							const entries = /** @type {string[]} */ (_entries);
 							if (entries.length === 0) {
 								push(deleteJob);
 							} else {
@@ -302,7 +310,6 @@ class CleanPlugin {
 		let hooks = compilationHooksMap.get(compilation);
 		if (hooks === undefined) {
 			hooks = {
-				/** @type {SyncBailHook<[string], boolean>} */
 				keep: new SyncBailHook(["ignore"])
 			};
 			compilationHooksMap.set(compilation, hooks);
@@ -324,22 +331,15 @@ class CleanPlugin {
 	apply(compiler) {
 		const { dry, keep } = this.options;
 
+		/** @type {KeepFn} */
 		const keepFn =
 			typeof keep === "function"
 				? keep
 				: typeof keep === "string"
-				? /**
-				   * @param {string} path path
-				   * @returns {boolean} true, if the path should be kept
-				   */
-				  path => path.startsWith(keep)
-				: typeof keep === "object" && keep.test
-				? /**
-				   * @param {string} path path
-				   * @returns {boolean} true, if the path should be kept
-				   */
-				  path => keep.test(path)
-				: () => false;
+					? path => path.startsWith(keep)
+					: typeof keep === "object" && keep.test
+						? path => keep.test(path)
+						: () => false;
 
 		// We assume that no external modification happens while the compiler is active
 		// So we can store the old assets and only diff to them to avoid fs access on
@@ -355,7 +355,7 @@ class CleanPlugin {
 			(compilation, callback) => {
 				const hooks = CleanPlugin.getCompilationHooks(compilation);
 				const logger = compilation.getLogger("webpack.CleanPlugin");
-				const fs = compiler.outputFileSystem;
+				const fs = /** @type {OutputFileSystem} */ (compiler.outputFileSystem);
 
 				if (!fs.readdir) {
 					return callback(
@@ -392,7 +392,7 @@ class CleanPlugin {
 
 				/**
 				 * @param {string} path path
-				 * @returns {boolean} true, if needs to be kept
+				 * @returns {boolean | void} true, if needs to be kept
 				 */
 				const isKept = path => {
 					const result = hooks.keep.call(path);

@@ -1,12 +1,11 @@
-<h1 align="center"> <code>shinyrPkgs</code> </h1>
-<h3 align="center"> A Shiny App-Package </h3>
-<h5 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shinyap/"> Shiny App-Packages </a> </h5>
+<h1 align="center"> A Shiny App-Package </h3>
+<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h5>
 
 <hr>
 
-# shinyrPkgs
+# sap
 
-`shinyrPkgs` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+`sap` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -45,26 +44,25 @@ launch(app = "02.3_proj-app")
 Or use the terminal
 
 ``` bash
-git clone https://github.com/mjfrigaard/shinyrPkgs.git
-cd shinyrPkgs
+git clone https://github.com/mjfrigaard/sap.git
+cd sap
 git checkout <branch_name>
-open shinyrPkgs.Rproj
+open sap.Rproj
 ```
 
 ------------------------------------------------------------------------
 
 # Branches
 
-View all the applications in the [`shinyrPkgs` branches](https://github.com/mjfrigaard/shinyrPkgs/branches/all).
+View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-# `21_rhino`
+# `25_rhino`
 
 The goal of `rap` is to demonstrate the `rhino` framework.
 
 ## Download
 
-You can download the development version of `rap` with the 
-[`shinypak` package](https://mjfrigaard.github.io/shinypak/):
+You can download the development version of `rap` with the [`shinypak` package](https://mjfrigaard.github.io/shinypak/):
 
 ```r
 # install.packages("pak")
@@ -72,10 +70,10 @@ pak::pak("mjfrigaard/shinypak")
 library(shinypak)
 ```
 
-Get and open the `21_rhino` branch:
+Get and open the `25_rhino` branch:
 
 ```r
-shinypak::get("21_rhino", open = TRUE)
+shinypak::get("25_rhino", open = TRUE)
 ```
 
 ## Run

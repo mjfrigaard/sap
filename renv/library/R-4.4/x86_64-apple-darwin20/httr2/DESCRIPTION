@@ -1,0 +1,38 @@
+Package: httr2
+Title: Perform HTTP Requests and Process the Responses
+Version: 1.1.2
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
+    person("Posit Software, PBC", role = c("cph", "fnd")),
+    person("Maximilian", "Girlich", role = "ctb")
+  )
+Description: Tools for creating and modifying HTTP requests, then
+    performing them and processing the results. 'httr2' is a modern
+    re-imagining of 'httr' that uses a pipe-based interface and solves
+    more of the problems that API wrapping packages face.
+License: MIT + file LICENSE
+URL: https://httr2.r-lib.org, https://github.com/r-lib/httr2
+BugReports: https://github.com/r-lib/httr2/issues
+Depends: R (>= 4.0)
+Imports: cli (>= 3.0.0), curl (>= 6.2.1), glue, lifecycle, magrittr,
+        openssl, R6, rappdirs, rlang (>= 1.1.0), vctrs (>= 0.6.3),
+        withr
+Suggests: askpass, bench, clipr, covr, docopt, httpuv, jose, jsonlite,
+        knitr, later (>= 1.4.0), nanonext, paws.common, promises,
+        rmarkdown, testthat (>= 3.1.8), tibble, webfakes, xml2
+VignetteBuilder: knitr
+Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/edition: 3
+Config/testthat/parallel: true
+Config/testthat/start-first: multi-req, resp-stream, req-perform
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+NeedsCompilation: no
+Packaged: 2025-03-25 18:33:11 UTC; hadleywickham
+Author: Hadley Wickham [aut, cre],
+  Posit Software, PBC [cph, fnd],
+  Maximilian Girlich [ctb]
+Maintainer: Hadley Wickham <hadley@posit.co>
+Repository: RSPM
+Date/Publication: 2025-03-26 06:20:02 UTC
+Built: R 4.4.0; ; 2025-03-27 04:38:16 UTC; unix

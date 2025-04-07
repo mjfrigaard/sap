@@ -1,0 +1,10 @@
+as_iterator             Transform an object to an iterator
+async                   Make an async function
+async_collect           Collect elements of an asynchronous iterator
+async_generator         Construct an async generator
+async_sleep             Sleep asynchronously
+collect                 Iterate over iterator functions
+coro_debug              Debug a generator or async function
+generator               Create a generator function
+iterator                Iterator protocol
+yield                   Yield a value from a generator

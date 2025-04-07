@@ -6,3 +6,4 @@
 _\.new\.png$
 ^dev$
 ^README\.Rmd$
+^app\.R$

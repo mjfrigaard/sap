@@ -10,6 +10,6 @@ test_that("main server works", {
   testServer(server, {
     expect_true(
       grepl(x = output$message$html, 
-            pattern = "Learn more about shiny frameworks: https://mjfrigaard.github.io/posts/my-rhino-app/"))
+            pattern = "This is a message"))
   })
 })

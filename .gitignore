@@ -2,11 +2,3 @@
 .Rhistory
 .RData
 .Ruserdata
-.DS_Store
-sap.Rcheck/
-sap*.tar.gz
-sap*.tgz
-.github
-renv
-renv.lock
-

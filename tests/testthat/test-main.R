@@ -1,13 +1,15 @@
 box::use(
   shiny[testServer],
-  testthat[...],
+  testthat[expect_true, test_that],
 )
 box::use(
-  app/main[...],
+  app/main[server],
 )
 
-# test_that("main server works", {
-#   testServer(server, {
-#     expect_equal(output$message, "Hello!")
-#   })
-# })
+test_that("main server works", {
+  testServer(server, {
+    expect_true(
+      grepl(x = output$message$html, 
+            pattern = "Learn more about shiny frameworks: https://mjfrigaard.github.io/posts/my-rhino-app/"))
+  })
+})

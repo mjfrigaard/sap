@@ -1,0 +1,58 @@
+{
+  "input": {
+    "app-aes-alpha": 0.7,
+    "app-aes-plot_title": "new plot title",
+    "app-aes-size": 3,
+    "app-vals-x": "critics_score",
+    "app-vals-y": "imdb_num_votes",
+    "app-vals-z": "genre"
+  },
+  "output": {
+    "app-disp-scatterplot": {
+      "src": "[image data hash: 51c07bba44868be33e42e499bd9fa942]",
+      "width": 885,
+      "height": 594,
+      "alt": "Plot object",
+      "coordmap": {
+        "panels": [
+          {
+            "panel": 1,
+            "row": 1,
+            "col": 1,
+            "panel_vars": {
+
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "domain": {
+              "left": -3.95,
+              "right": 104.95,
+              "bottom": -44461.4,
+              "top": 937649.4
+            },
+            "mapping": {
+              "x": ".data[[\"critics_score\"]]",
+              "y": ".data[[\"imdb_num_votes\"]]",
+              "colour": ".data[[\"genre\"]]"
+            },
+            "range": {
+              "left": 105.4089862875743,
+              "right": 1759.041095890411,
+              "bottom": 955.5849316886084,
+              "top": 46.37132349083419
+            }
+          }
+        ],
+        "dims": {
+          "width": 1770,
+          "height": 1188
+        }
+      }
+    }
+  },
+  "export": {
+
+  }
+}

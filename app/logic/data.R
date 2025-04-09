@@ -1,15 +1,17 @@
-# app/logic/data.R
+# contents of app/logic/data.R
 
 #' @export
 box::use(
-  vroom[vroom]
+  vroom[vroom, cols, col_skip]
 )
 
-
-#' import movies data
+#' import movies data 
 #' @export
 movies_data <- function() {
-  raw_csv_url <- "https://bit.ly/47FPO6t"
-  # from 07_data branch!
-  vroom(raw_csv_url, show_col_types = FALSE)
+  raw_csv_url <- "https://tinyurl.com/5cdmpuzy"
+  vroom(
+    file = raw_csv_url, 
+    delim = ",", 
+    col_names = TRUE,
+    show_col_types = FALSE)
 }

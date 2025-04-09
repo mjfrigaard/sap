@@ -2,7 +2,9 @@
 # from https://appsilon.github.io/rhino/articles/tutorial/write-end-to-end-tests-with-cypress.html
 
 box::use(
-  shiny[actionButton, div, moduleServer, NS, renderText, textOutput],
+  shiny[actionButton, div,
+    moduleServer, NS, 
+    renderText, textOutput]
 )
 
 #' @export

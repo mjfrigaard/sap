@@ -1,14 +1,13 @@
-# app/view/inputs.R
+# app/view/var_inputs.R
 
 # define module functions
 
-#' input values ui
+#' variable input values ui
 #' @export
 ui <- function(id) {
   box::use(
     shiny[
-      NS, tagList, selectInput, h3,
-      sliderInput, textInput
+      NS, tagList, selectInput
     ],
   )
   ns <- NS(id)
@@ -48,28 +47,11 @@ ui <- function(id) {
         "Audience Rating" = "audience_rating"
       ),
       selected = "mpaa_rating"
-    ),
-    sliderInput(
-      inputId = ns("alpha"),
-      label = "Alpha:",
-      min = 0, max = 1, step = 0.1,
-      value = 0.5
-    ),
-    sliderInput(
-      inputId = ns("size"),
-      label = "Size:",
-      min = 0, max = 5,
-      value = 2
-    ),
-    textInput(
-      inputId = ns("plot_title"),
-      label = "Plot title",
-      placeholder = "Enter plot title"
     )
   )
 }
 
-#' input values server
+#' variable input values server
 #' @export
 server <- function(id) {
   box::use(
@@ -82,10 +64,7 @@ server <- function(id) {
         list(
           "x" = input$x,
           "y" = input$y,
-          "z" = input$z,
-          "alpha" = input$alpha,
-          "size" = input$size,
-          "plot_title" = input$plot_title
+          "z" = input$z
         )
       })
     )

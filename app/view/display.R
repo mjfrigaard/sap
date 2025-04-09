@@ -6,6 +6,7 @@ box::use(
   app / logic / plot
 )
 
+
 #' display ui
 #' @export
 ui <- function(id) {
@@ -13,38 +14,24 @@ ui <- function(id) {
     shiny[NS, tagList, tags, plotOutput]
   )
   ns <- NS(id)
-  # use data$movies_data() ----
   tagList(
-    tags$br(),
-    tags$p(
-      "These data were obtained from",
-      tags$a("IMBD", href = "http://www.imbd.com/"), "and",
-      tags$a("Rotten Tomatoes", href = "https://www.rottentomatoes.com/"), 
-      ". The data represent 651 randomly sampled movies released between 
-      1972 to 2014 in the United States."
-    ),
-    tags$hr(),
     plotOutput(outputId = ns("scatterplot")),
     tags$hr(),
     tags$blockquote(
-      tags$em(
-        tags$h6(
-          "The code for this application comes from the ",
-          tags$a("Building web applications with Shiny",
-            href = "https://rstudio-education.github.io/shiny-course/"
-          ),
-          "tutorial"
-        )
+        "The code for this application comes from the ",
+        tags$a("Building web applications with Shiny",
+          href = "https://rstudio-education.github.io/shiny-course/"
+        ),
+        "tutorial"
       )
     )
-  )
 }
 
 #' display server
 #' @export
-server <- function(id, var_inputs) {
+server <- function(id, var_inputs, aes_inputs) {
   
-  # load plotting, shiny, tools, and stringr functions
+  # load 
   box::use(
     ggplot2[labs, theme_minimal, theme],
     shiny[NS, moduleServer, plotOutput, reactive, renderPlot],
@@ -58,13 +45,13 @@ server <- function(id, var_inputs) {
     movies <- data$movies_data()
 
     inputs <- reactive({
-      plot_title <- toTitleCase(var_inputs()$plot_title)
+      plot_title <- toTitleCase(as.character(aes_inputs()$plot_title))
       list(
         x = var_inputs()$x,
         y = var_inputs()$y,
         z = var_inputs()$z,
-        alpha = var_inputs()$alpha,
-        size = var_inputs()$size,
+        alpha = aes_inputs()$alpha,
+        size = aes_inputs()$size,
         plot_title = plot_title
       )
     })

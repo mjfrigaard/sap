@@ -1,13 +1,14 @@
 # app/view/message.R
 
 box::use(
-  shiny[actionButton, div, moduleServer, NS, renderText, req, textOutput],
+  shiny[actionButton, div, 
+    moduleServer, NS, renderText, 
+    req, textOutput],
 )
 
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-
   div(
     class = "message",
     actionButton(

@@ -1,3 +1,4 @@
+# set option to turn off loadSupport() ----
 withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
   if (!interactive()) {
     sink(stderr(), type = "output")
@@ -9,9 +10,11 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
         pkgload::load_all()
       }
     )
-    shinyAppDir(appDir = system.file("prod/app", package = "sap"))
+    # create shiny object from prod/app ----
+    shinyAppDir(appDir = 
+                system.file("prod/app", package = "sap"))
   } else {
     pkgload::load_all()
   }
-  launch_app(app = 'ggp2', options = list(test.mode = FALSE))
+  movies_app(options = list(test.mode = TRUE), run = 'p')
 })

@@ -1,97 +1,35 @@
-#' Launch the Movies Review Application
+#' Launch the Shiny Application
 #'
-#' Starts the Movies Review Shiny application, which provides a customizable
-#' scatter plot interface for analyzing movie data.
+#' This function initializes and launches the Shiny application with specified 
+#' options and settings.
 #'
-#' @param app which app to run. Options are:
-#'  * `NULL` = the default app (`"movies"`)
-#'  * `"bslib"` = alternative `bslib` layout
-#'  * `"ggp2"` = `ggplot2movies` (tidy) data app.
-#'  * `"quarto"` = Quarto movies app.
-#'  * `"assist"` = Application built with [Shiny Assistant](https://gallery.shinyapps.io/assistant/#).
-#'  * `"db"` = Launches movies DB application. Adapted from 
-#' @param options arguments to pass to `options()`
-#' @param run where to launch app:
-#'  * `p` = launch in viewer pane
-#'  * `b` = launch in external browser
-#'  * `w` = launch in window
-#' @param ... arguments passed to UI
-#'
-#' @return A **Shiny application** object.
-#'
-#' @section Details:
-#' The application uses:
-#' - **UI**: Defined in [`movies_ui()`].
-#' - **Server Logic**: Defined in [`movies_server()`].
-#'
-#' @seealso
-#' - [`movies_ui()`] for the user interface.
-#' - [`movies_server()`] for the server logic.
-#'
-#' @family **Standalone Application**
-#'
-#' @details
-#' See the [ggplot2movies](https://github.com/hadley/ggplot2movies) package.
-#'
-#' @export
+#' @param options A list of options for the `shinyApp` function.
+#' @param run A character string specifying the display type, default is `"p"`.
+#' @param ... Additional arguments passed to the UI function.
 #'
 #' @import shiny
 #'
-launch_app <- function(app = NULL, options = list(), run = "p", ...) {
+#' @export
+launch_app <- function(options = list(), run = "p", ...) {
+  
   if (interactive()) {
     display_type(run = run)
   }
-
-  if (is.null(app)) {
-    app <- "movies"
-  }
-
-  logr_msg(glue::glue("Launching app: {app}"),
-    level = "INFO"
-  )
-
-  tryCatch(
-    {
-      if (app == "bslib") {
-        shinyApp(
-          ui = movies_ui(bslib = TRUE),
-          server = movies_server,
-          options = options
-        )
-      } else if (app == "ggp2") {
-        shinyAppDir(
-          appDir = system.file("tidy-movies", package = "sap"),
-          options = options
-        )
-      } else if (app == "quarto") {
-        quarto::quarto_preview(
-          system.file("quarto", "index.qmd", package = "sap"),
-          render = "all"
-        )
-      } else if (app == "assist") {
-        shinyAppDir(
-          appDir = system.file("shiny-assist/movies", package = "sap"),
-          options = options
-        )
-      } else if (app == "db") {
-        shinyAppDir(
-          appDir = system.file("shinydb", package = "sap"),
-          options = options
-        )
-      } else {
-        shinyApp(
-          ui = movies_ui(...),
-          server = movies_server,
-          options = options
-        )
-      }
-    },
-    error = function(e) {
-      logr_msg(glue::glue("FATAL: Application failed to launch. Reason: {e$message}"),
-        level = "FATAL"
-      )
-
-      stop("Application launch failed. Check logs for details.")
-    }
-  )
+    
+    options(shiny.useragg = TRUE)
+    
+    ggplot2::theme_set(ggplot2::theme_minimal())
+    
+    thematic::thematic_shiny(
+      bg = "#121212",
+      fg = "#ffffff",
+      accent = "#bdbdbd", 
+      font = "auto")
+    
+    shinyApp(
+      ui = nav_ui(...),
+      server = nav_server,
+      options = options
+    )
+    
 }

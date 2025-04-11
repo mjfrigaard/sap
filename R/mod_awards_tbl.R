@@ -1,0 +1,52 @@
+#' User Interface for Awards Data Table
+#'
+#' @param id Shiny module ID.
+#'
+#' @return A UI for displaying a data table.
+#' 
+#' @export
+#' 
+mod_awards_tbl_ui <- function(id) {
+  ns <- NS(id)
+    tagList(
+      reactable::reactableOutput(
+      # verbatimTextOutput(
+        outputId = ns("awards_table"))
+    )
+}
+
+#' Server Logic for Awards Data Table
+#'
+#' @param id Shiny module ID.
+#' @param vals Reactive list of table parameters.
+#'
+#' @return Renders a data table based on selected parameters.
+#' 
+#' @export
+#' 
+mod_awards_tbl_server <- function(id, vals) {
+  moduleServer(id, function(input, output, session) {
+    
+    output$awards_table <- reactable::renderReactable({
+    # output$awards_table <- renderPrint({
+      req(vals())
+      tbl_data <- create_movie_awards(award = as.character(vals()$award),
+                                      start_year = as.numeric(vals()$start_year),
+                                      end_year = as.numeric(vals()$end_year))
+      # normalize names
+      tbl_names <- name_case(names(tbl_data))
+      tbl <- stats::setNames(object = tbl_data, nm = tbl_names)
+      reactable::reactable(data = tbl,
+        borderless = TRUE,
+        highlight = TRUE,
+        striped = TRUE,
+        compact = TRUE,
+        style = list(
+          backgroundColor = "#121212",
+          color = "#ffffff"
+        )
+        )
+    })
+
+  })
+}

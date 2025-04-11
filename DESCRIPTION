@@ -1,42 +1,39 @@
 Package: sap
-Title: Shiny App-Packages
-Version: 0.0.0.9240
+Title: movies app
+Version: 0.0.0.9000
 Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
-Description: An R package with a collection of Shiny applications.
+Description: A collection of Shiny App-Packages
 License: GPL-3
-URL: https://mjfrigaard.github.io/sap/
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Imports: 
+    bsicons,
     bslib,
     cli,
-    DBI,
-    dplyr,
+    forcats,
+    ggdist,
     ggplot2,
-    glue,
-    htmltools,
+    ggrepel,
+    ggwaffle,
+    grid,
     logger,
     plotly,
-    quarto,
     reactable,
-    rlang,
-    RSQLite,
     sass,
+    scales,
     shiny,
-    stringr,
-    tools
+    stats,
+    thematic
 Suggests: 
-    fs,
     ggplot2movies,
+    glue,
     knitr,
-    lobstr,
     rmarkdown,
     shinytest2,
-    testthat (>= 3.0.0),
     waldo
 VignetteBuilder: 
-    knitr
+    quarto
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true

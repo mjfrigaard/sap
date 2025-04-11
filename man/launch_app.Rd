@@ -2,55 +2,18 @@
 % Please edit documentation in R/launch_app.R
 \name{launch_app}
 \alias{launch_app}
-\title{Launch the Movies Review Application}
+\title{Launch the Shiny Application}
 \usage{
-launch_app(app = NULL, options = list(), run = "p", ...)
+launch_app(options = list(), run = "p", ...)
 }
 \arguments{
-\item{app}{which app to run. Options are:
-\itemize{
-\item \code{NULL} = the default app (\code{"movies"})
-\item \code{"bslib"} = alternative \code{bslib} layout
-\item \code{"ggp2"} = \code{ggplot2movies} (tidy) data app.
-\item \code{"quarto"} = Quarto movies app.
-\item \code{"assist"} = Application built with \href{https://gallery.shinyapps.io/assistant/#}{Shiny Assistant}.
-\item \code{"db"} = Launches movies DB application. Adapted from
-}}
+\item{options}{A list of options for the \code{shinyApp} function.}
 
-\item{options}{arguments to pass to \code{options()}}
+\item{run}{A character string specifying the display type, default is \code{"p"}.}
 
-\item{run}{where to launch app:
-\itemize{
-\item \code{p} = launch in viewer pane
-\item \code{b} = launch in external browser
-\item \code{w} = launch in window
-}}
-
-\item{...}{arguments passed to UI}
-}
-\value{
-A \strong{Shiny application} object.
+\item{...}{Additional arguments passed to the UI function.}
 }
 \description{
-Starts the Movies Review Shiny application, which provides a customizable
-scatter plot interface for analyzing movie data.
+This function initializes and launches the Shiny application with specified
+options and settings.
 }
-\details{
-See the \href{https://github.com/hadley/ggplot2movies}{ggplot2movies} package.
-}
-\section{Details}{
-
-The application uses:
-\itemize{
-\item \strong{UI}: Defined in \code{\link[=movies_ui]{movies_ui()}}.
-\item \strong{Server Logic}: Defined in \code{\link[=movies_server]{movies_server()}}.
-}
-}
-
-\seealso{
-\itemize{
-\item \code{\link[=movies_ui]{movies_ui()}} for the user interface.
-\item \code{\link[=movies_server]{movies_server()}} for the server logic.
-}
-}
-\concept{\strong{Standalone Application}}

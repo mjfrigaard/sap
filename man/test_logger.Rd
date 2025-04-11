@@ -2,41 +2,20 @@
 % Please edit documentation in R/testthat.R
 \name{test_logger}
 \alias{test_logger}
-\title{Log test messages (helper)}
+\title{Test logger (test utility)}
 \usage{
 test_logger(start = NULL, end = NULL, msg)
 }
 \arguments{
-\item{start}{A character string indicating the start tag. Default is \code{NULL}.}
+\item{start}{test start message}
 
-\item{end}{A character string indicating the end tag. Default is \code{NULL}.}
+\item{end}{test end message}
 
-\item{msg}{A character string containing the log message.}
+\item{msg}{test message}
 }
 \value{
-Logs messages and returns \code{NULL} (used for side effects).
+message to test output
 }
 \description{
-\code{test_logger()} logs informational messages using the \code{cli} package. It
-allows optional \code{start} and \code{end} tags to indicate the beginning and end of
-a process.
+Test logger (test utility)
 }
-\details{
-\itemize{
-\item If both \code{start} and \code{end} are \code{NULL}, logs only the message.
-\item If \code{start} is provided and \code{end} is \code{NULL}, logs a message prefixed with
-\verb{START <start> = <msg>}.
-\item If \code{start} is \code{NULL} and \code{end} is provided, logs a message prefixed with
-\verb{END <end> = <msg>}.
-\item If both \code{start} and \code{end} are provided, logs both \code{START} and \code{END}
-messages.
-}
-}
-\examples{
-test_logger(msg = "Processing started")
-test_logger(start = "Step1", msg = "Loading data")
-test_logger(end = "Step1", msg = "Data loaded successfully")
-test_logger(start = "Step2", end = "Step2", msg = "Performing computation")
-
-}
-\keyword{internal}

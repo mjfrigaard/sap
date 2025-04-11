@@ -25,15 +25,23 @@ library(lobstr)
 
 ## Application modules 
 
-The application's modules in the [`28_chores`](https://github.com/mjfrigaard/sap/tree/28_chores) branch. 
+This vignette explains the movie review application's modules in the [`28_chores`](https://github.com/mjfrigaard/sap/tree/28_chores) branch of the `sap` package.
+
+## Module files 
 
 ```{r}
 #| eval: false
+#| echo: false
 #| collapse: true
-list.files("../R/", pattern = "mod_")
+fs::dir_tree("../R/", regexp = ".R")
 ```
 
 ```{verbatim}
+├── create_movie_awards.R
+├── data.R
+├── display_type.R
+├── dist_var_summary.R
+├── launch_app.R
 ├── mod_awards_point.R
 ├── mod_awards_tbl.R
 ├── mod_awards_vars.R
@@ -47,12 +55,222 @@ list.files("../R/", pattern = "mod_")
 ├── mod_dist_box.R
 ├── mod_dist_raincloud.R
 ├── mod_dist_tbl.R
-└── mod_dist_vars.R
+├── mod_dist_vars.R
+├── name_case.R
+├── nav_server.R
+├── nav_ui.R
+├── react_tbl_row_style.R
+└── testthat.R
 ```
 
 
+## Module structure
+
+The modules are structured into `compare`, `counts`, distribution (`dist`), and `awards`.
+
+### Compare 
+
+```{verbatim}
+█─launch_app 
+├─█─display_type 
+├─█─nav_ui 
+│ ├─█─mod_compare_vars_ui 
+│ └─█─mod_compare_point_ui 
+└─█─nav_server 
+  ├─█─mod_compare_vars_server 
+  └─█─mod_compare_point_server
+```
+
 ```{r}
 #| echo: false
+#| eval: false
+lobstr::ast(
+  launch_app(
+    display_type(),
+    nav_ui(
+      mod_compare_vars_ui(),
+      mod_compare_point_ui()
+    ),
+    nav_server(
+      mod_compare_vars_server(),
+      mod_compare_point_server()
+    )
+  )
+)
+```
+
+### Counts 
+
+```{verbatim}
+█─launch_app 
+├─█─display_type 
+├─█─nav_ui 
+│ ├─█─mod_counts_vars_ui 
+│ ├─█─mod_counts_vbox_ui 
+│ ├─█─mod_counts_bar_ui 
+│ ├─█─mod_counts_waffle_ui 
+│ └─█─mod_counts_tbl_ui 
+└─█─nav_server 
+  ├─█─mod_compare_vars_server 
+  ├─█─mod_compare_point_server 
+  ├─█─mod_counts_vars_sever 
+  ├─█─mod_counts_vbox_server 
+  ├─█─mod_counts_bar_server 
+  ├─█─mod_counts_waffle_server 
+  └─█─mod_counts_tbl_server 
+```
+
+```{r}
+#| echo: false
+#| eval: false
+lobstr::ast(
+  launch_app(
+    display_type(),
+    nav_ui(
+      mod_counts_vars_ui(),
+      mod_counts_vbox_ui(),
+      mod_counts_bar_ui(),
+      mod_counts_waffle_ui(),
+      mod_counts_tbl_ui()
+    ),
+    nav_server(
+      mod_compare_vars_server(),
+      mod_compare_point_server(),
+      mod_counts_vars_sever(),
+      mod_counts_vbox_server(),
+      mod_counts_bar_server(),
+      mod_counts_waffle_server(),
+      mod_counts_tbl_server()
+    )
+  )
+)
+```
+
+
+
+### Distributions
+
+```{verbatim}
+█─launch_app 
+├─█─display_type 
+├─█─nav_ui 
+│ ├─█─mod_dist_vars_ui 
+│ ├─█─mod_dist_box_ui 
+│ ├─█─mod_dist_raincloud_ui 
+│ └─█─mod_dist_tbl_ui 
+└─█─nav_server 
+  ├─█─mod_dist_vars_server 
+  ├─█─mod_dist_box_server 
+  ├─█─mod_dist_raincloud_server 
+  └─█─mod_dist_tbl_server 
+    └─█─dist_var_summary 
+```
+
+```{r}
+#| echo: false
+#| eval: false
+lobstr::ast(
+  launch_app(
+    display_type(),
+    nav_ui(
+      mod_dist_vars_ui(),
+      mod_dist_box_ui(),
+      mod_dist_raincloud_ui(),
+      mod_dist_tbl_ui()
+    ),
+    nav_server(
+      mod_dist_vars_server(),
+      mod_dist_box_server(),
+      mod_dist_raincloud_server(),
+      mod_dist_tbl_server(
+        dist_var_summary()
+      )
+    )
+  )
+)
+```
+
+### Awards 
+
+```{verbatim}
+█─launch_app 
+├─█─display_type 
+├─█─nav_ui 
+│ ├─█─mod_awards_vars_ui 
+│ ├─█─mod_awards_point_ui 
+│ └─█─mod_awards_tbl_ui 
+└─█─nav_server 
+  ├─█─mod_awards_vars_server 
+  ├─█─mod_awards_point_server 
+  │ └─█─create_movie_awards 
+  └─█─mod_awards_tbl_server
+```
+
+```{r}
+#| echo: false
+#| eval: false
+lobstr::ast(
+  launch_app(
+    display_type(),
+    nav_ui(
+      mod_awards_vars_ui(),
+      mod_awards_point_ui(),
+      mod_awards_tbl_ui()
+    ),
+    nav_server(
+      mod_awards_vars_server(),
+      mod_awards_point_server(
+        create_movie_awards()
+      ),
+      mod_awards_tbl_server()
+    )
+  )
+)
+```
+
+## Launch 
+
+
+```{verbatim}
+█─launch_app 
+├─█─display_type 
+├─█─nav_ui 
+│ ├─█─mod_compare_vars_ui 
+│ ├─█─mod_compare_point_ui 
+│ ├─█─mod_counts_vars_ui 
+│ ├─█─mod_counts_vbox_ui 
+│ ├─█─mod_counts_bar_ui 
+│ ├─█─mod_counts_waffle_ui 
+│ ├─█─mod_counts_tbl_ui 
+│ ├─█─mod_dist_vars_ui 
+│ ├─█─mod_dist_box_ui 
+│ ├─█─mod_dist_raincloud_ui 
+│ ├─█─mod_dist_tbl_ui 
+│ ├─█─mod_awards_vars_ui 
+│ ├─█─mod_awards_point_ui 
+│ └─█─mod_awards_tbl_ui 
+└─█─nav_server 
+  ├─█─mod_compare_vars_server 
+  ├─█─mod_compare_point_server 
+  ├─█─mod_counts_vars_sever 
+  ├─█─mod_counts_vbox_server 
+  ├─█─mod_counts_bar_server 
+  ├─█─mod_counts_waffle_server 
+  ├─█─mod_counts_tbl_server 
+  ├─█─mod_dist_vars_server 
+  ├─█─mod_dist_box_server 
+  ├─█─mod_dist_raincloud_server 
+  ├─█─mod_dist_tbl_server 
+  │ └─█─dist_var_summary 
+  ├─█─mod_awards_vars_server 
+  ├─█─mod_awards_point_server 
+  │ └─█─create_movie_awards 
+  └─█─mod_awards_tbl_server 
+```
+
+```{r}
+#| echo: false
+#| eval: false
 lobstr::ast(
   launch_app(
     display_type(),

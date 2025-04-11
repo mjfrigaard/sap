@@ -43,7 +43,7 @@ nav_ui <- function() {
         body_bg = "#121212",     # dark gray for the main content background
         base_font = sass::font_google("Roboto") # base font from Google
       ),
-      title = "Movies",
+      title = "Movie Reviews",
       fillable = "Compare",
       bslib::nav_panel(
         "Compare",

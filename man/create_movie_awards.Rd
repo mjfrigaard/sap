@@ -2,25 +2,24 @@
 % Please edit documentation in R/create_movie_awards.R
 \name{create_movie_awards}
 \alias{create_movie_awards}
-\title{Create a Filtered Movie Awards Data Frame}
+\title{Create a Movie Awards Data Frame}
 \usage{
 create_movie_awards(df, award, start_year, end_year)
 }
 \arguments{
 \item{df}{movies data.frame}
 
-\item{award}{A character string specifying the type of award to filter. Can be "pic" for Best Picture/Director or "act" for Best Actor/Actress.}
+\item{award}{character string}
 
-\item{start_year}{An integer specifying the starting year of the filter range.}
+\item{start_year}{integer}
 
-\item{end_year}{An integer specifying the ending year of the filter range.}
+\item{end_year}{integer}
 }
 \value{
-A data frame containing movies that won the specified award within the given year range.
+A data frame
 }
 \description{
-This function filters movie awards data based on a specified award type and a given year range.
-It checks that \code{start_year} is less than \code{end_year} and that the range is no greater than 5 years.
+Movie awards (Film or Actor).
 }
 \examples{
 create_movie_awards(movies, "Films", 2000, 2005)

@@ -2,10 +2,10 @@
 #'
 #' This function filters movie awards data.
 #'
-#' @param award_data data to filter. 
-#' @param award A character string specifying the type of award to filter. 
-#' @param start_year An integer specifying the starting year of the filter range.
-#' @param end_year An integer specifying the ending year of the filter range.
+#' @param award_data data to filter 
+#' @param award character string 
+#' @param start_year integer 
+#' @param end_year integer 
 #' 
 #' @return A data frame containing movies that won the specified award within 
 #'   the given year range.

@@ -7,13 +7,13 @@
 filter_award_wins(award_data, award, start_yr, end_yr)
 }
 \arguments{
-\item{award_data}{data to filter.}
+\item{award_data}{data to filter}
 
-\item{award}{A character string specifying the type of award to filter.}
+\item{award}{character string}
 
-\item{start_year}{An integer specifying the starting year of the filter range.}
+\item{start_year}{integer}
 
-\item{end_year}{An integer specifying the ending year of the filter range.}
+\item{end_year}{integer}
 }
 \value{
 A data frame containing movies that won the specified award within

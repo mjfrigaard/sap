@@ -1,11 +1,11 @@
-#' Filter Movie Awards (support function)
+#' Filter award wins data (support function)
 #'
-#' This function filters movie awards data.
+#' This function the award wins data into a dataset of **only** wins.
 #'
-#' @param award_data data to filter 
-#' @param award character string 
-#' @param start_year integer 
-#' @param end_year integer 
+#' @param award_data wins data to filter 
+#' @param award character string ("Film" or "Stars")
+#' @param start_year integer (start theater release year)
+#' @param end_year integer (end theater release year)
 #' 
 #' @return A data frame containing movies that won the specified award within 
 #'   the given year range.

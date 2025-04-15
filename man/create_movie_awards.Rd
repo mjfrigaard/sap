@@ -2,24 +2,24 @@
 % Please edit documentation in R/create_movie_awards.R
 \name{create_movie_awards}
 \alias{create_movie_awards}
-\title{Create a Movie Awards Data Frame}
+\title{Create Movie Awards Data Frame}
 \usage{
 create_movie_awards(df, award, start_year, end_year)
 }
 \arguments{
 \item{df}{movies data.frame}
 
-\item{award}{character string}
+\item{award}{character string ("Film" or "Stars")}
 
-\item{start_year}{integer}
+\item{start_year}{integer (start theater release year)}
 
-\item{end_year}{integer}
+\item{end_year}{integer (end theater release year)}
 }
 \value{
 A data frame
 }
 \description{
-Movie awards (Film or Actor).
+Combines \code{create_award_wins()} and \code{filter_award_wins()}.
 }
 \examples{
 create_movie_awards(movies, "Films", 2000, 2005)

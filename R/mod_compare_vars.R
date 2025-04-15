@@ -1,9 +1,11 @@
-#' User Interface for Variable Selection
+#' UI module for comparing movie variables
 #'
-#' @param id Shiny module ID.
+#' @param id A string. The module ID.
 #'
-#' @return A UI for selecting variables and plot attributes.
-#' 
+#' @returns A UI element containing inputs for selecting variables to compare 
+#' in a scatter plot, including X and Y variables, color variable, and
+#' customization controls for alpha, size, and plot title.
+#'
 #' @export
 mod_compare_vars_ui <- function(id) {
 

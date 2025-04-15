@@ -1,11 +1,11 @@
-#' Create a Movie Awards Data Frame
+#' Create Movie Awards Data Frame
 #' 
-#' Movie awards (Film or Actor).
+#' Combines `create_award_wins()` and `filter_award_wins()`.
 #'
 #' @param df movies data.frame
-#' @param award character string 
-#' @param start_year integer 
-#' @param end_year integer 
+#' @param award character string ("Film" or "Stars")
+#' @param start_year integer (start theater release year)
+#' @param end_year integer (end theater release year)
 #' 
 #' @return A data frame 
 #' 

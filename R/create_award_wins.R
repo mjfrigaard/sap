@@ -1,11 +1,12 @@
-#' Create Awards Wins Data Frame
+#' Convert movies data into awards wins (support function)
 #' 
-#' Create data containing whether movies won or lost a specified award within the given year range.
+#' Converts the movies data into the wins data (i.e., whether movies won or 
+#' lost a specified award within the given year range).
 #'
 #' @param df movies data.frame
-#' @param award character string 
-#' @param start_year integer 
-#' @param end_year integer 
+#' @param award character string ("Film" or "Stars")
+#' @param start_year integer (start theater release year)
+#' @param end_year integer (end theater release year)
 #' 
 #' @return A data frame 
 #' 

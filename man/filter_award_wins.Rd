@@ -2,23 +2,23 @@
 % Please edit documentation in R/filter_award_wins.R
 \name{filter_award_wins}
 \alias{filter_award_wins}
-\title{Filter Movie Awards (support function)}
+\title{Filter award wins data (support function)}
 \usage{
 filter_award_wins(award_data, award, start_yr, end_yr)
 }
 \arguments{
-\item{award_data}{data to filter}
+\item{award_data}{wins data to filter}
 
-\item{award}{character string}
+\item{award}{character string ("Film" or "Stars")}
 
-\item{start_year}{integer}
+\item{start_year}{integer (start theater release year)}
 
-\item{end_year}{integer}
+\item{end_year}{integer (end theater release year)}
 }
 \value{
 A data frame containing movies that won the specified award within
 the given year range.
 }
 \description{
-This function filters movie awards data.
+This function the award wins data into a dataset of \strong{only} wins.
 }

@@ -2,46 +2,19 @@
 % Please edit documentation in R/name_case.R
 \name{name_case}
 \alias{name_case}
-\title{Convert snake_case to Sentence Case}
+\title{Change the case of text}
 \usage{
 name_case(x, case = "title")
 }
 \arguments{
-\item{x}{A character string in \code{snake_case}.}
+\item{x}{A character vector.}
+
+\item{case}{One of \code{"title"} or \code{"lower"}. Optional.}
 }
 \value{
-A character string converted to \verb{Sentence Case}.
+A character vector with the case changed according to the specified format.
+Will error if input is not a character vector or if an unsupported case is specified.
 }
 \description{
-\code{name_case()} converts a given \code{snake_case} string to a \verb{Sentence Case} string.
-}
-\details{
-The \code{name_case} function splits the input string by underscores, capitalizes
-the first letter of each word, and combines the words with spaces.
-This is particularly useful for converting variable names into more readable
-labels for plots.
-
-For example, when used with the \code{ggplot2::labs()} function, \code{name_case} can
-automatically convert \code{snake_case} labels into \verb{Sentence Case} labels for
-better readability.
-
-\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(ggplot2)
-
-# Example data
-df <- data.frame(snake_case_var = rnorm(10))
-
-# Example usage in ggplot2
-ggplot(df, aes(x = snake_case_var)) +
-  geom_histogram() +
-  labs(x = name_case("snake_case_var"))
-}\if{html}{\out{</div>}}
-
-This will result in an x-axis label "Snake Case Var".
-}
-\examples{
-name_case("snake_case_example")
-name_case("space example")
-name_case("Title Case Example", "lower")
-name_case("Title Example", "lower")
-
+Change the case of text
 }

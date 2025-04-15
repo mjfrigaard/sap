@@ -2,16 +2,18 @@
 % Please edit documentation in R/mod_compare_vars.R
 \name{mod_compare_vars_ui}
 \alias{mod_compare_vars_ui}
-\title{User Interface for Variable Selection}
+\title{UI module for comparing movie variables}
 \usage{
 mod_compare_vars_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A string. The module ID.}
 }
 \value{
-A UI for selecting variables and plot attributes.
+A UI element containing inputs for selecting variables to compare
+in a scatter plot, including X and Y variables, color variable, and
+customization controls for alpha, size, and plot title.
 }
 \description{
-User Interface for Variable Selection
+UI module for comparing movie variables
 }

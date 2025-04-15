@@ -2,24 +2,25 @@
 % Please edit documentation in R/create_award_wins.R
 \name{create_movie_wins}
 \alias{create_movie_wins}
-\title{Create Awards Wins Data Frame}
+\title{Convert movies data into awards wins (support function)}
 \usage{
 create_movie_wins(df, award, start_year, end_year)
 }
 \arguments{
 \item{df}{movies data.frame}
 
-\item{award}{character string}
+\item{award}{character string ("Film" or "Stars")}
 
-\item{start_year}{integer}
+\item{start_year}{integer (start theater release year)}
 
-\item{end_year}{integer}
+\item{end_year}{integer (end theater release year)}
 }
 \value{
 A data frame
 }
 \description{
-Create data containing whether movies won or lost a specified award within the given year range.
+Converts the movies data into the wins data (i.e., whether movies won or
+lost a specified award within the given year range).
 }
 \examples{
 create_movie_wins(movies, "Films", 2000, 2005)

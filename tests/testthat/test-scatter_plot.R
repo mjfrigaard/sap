@@ -38,7 +38,7 @@ describe(
     )
     test_logger(end = "Step2", msg = "graph created")
     
-    expect_true(ggplot2::is.ggplot(app_graph))
+    expect_true(ggplot2::is_ggplot(app_graph))
   }) 
 
 })

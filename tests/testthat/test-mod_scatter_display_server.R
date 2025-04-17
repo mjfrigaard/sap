@@ -86,7 +86,7 @@ describe(
             ggplot2::theme_minimal() +
             ggplot2::theme(legend.position = "bottom")
             
-            testthat::expect_true(ggplot2::is.ggplot(plot))
+            testthat::expect_true(ggplot2::is_ggplot(plot))
             test_logger(end = "OUTPUT", msg = "is ggplot")
             
             print(plot)

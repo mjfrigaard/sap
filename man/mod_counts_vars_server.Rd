@@ -2,16 +2,55 @@
 % Please edit documentation in R/mod_counts_vars.R
 \name{mod_counts_vars_server}
 \alias{mod_counts_vars_server}
-\title{Server Logic for Count Tab Input}
+\title{Server for counts variables module}
 \usage{
 mod_counts_vars_server(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A reactive list containing the selected year.
+A reactive list containing three elements:
+\itemize{
+\item \code{start_year}: The numeric start year value
+\item \code{end_year}: The numeric end year value
+\item \code{chr_var}: The selected categorical variable
+}
+
+The return value is reactive and updates whenever the inputs change.
 }
 \description{
-Server Logic for Count Tab Input
+Processes user inputs for date ranges and categorical variables, with
+validation to ensure proper date ordering. This function is designed to
+work together with a corresponding UI function.
+}
+\details{
+The function includes two observers that maintain proper date ordering:
+\itemize{
+\item If \code{start_year} becomes greater than or equal to \code{end_year},
+\code{end_year} is automatically updated
+\item If \code{end_year} becomes less than or equal to \code{start_year},
+\code{start_year} is automatically updated
+}
+
+The reactive return value requires both year inputs to be valid 4-digit years.
+}
+\examples{
+# Server implementation
+server <- function(input, output, session) {
+  vars <- mod_counts_vars_server("counts_vars")
+  # Use the reactive variables elsewhere
+  observe({
+    req(vars())
+    print(paste("Date range:", vars()$start_year, "to", vars()$end_year))
+  })
+}
+
+
+
+
+
+}
+\seealso{
+The corresponding UI function that creates the input elements
 }

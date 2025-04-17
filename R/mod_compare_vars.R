@@ -7,6 +7,7 @@
 #' customization controls for alpha, size, and plot title.
 #'
 #' @export
+#' 
 mod_compare_vars_ui <- function(id) {
 
   num_vars <- movies[c("runtime", "imdb_rating",
@@ -64,13 +65,15 @@ mod_compare_vars_ui <- function(id) {
   )
 }
 
-#' Server Logic for Variable Selection
+#' Server function for comparing variables
 #'
-#' @param id Shiny module ID.
+#' @param id A single string identifying the module.
 #'
-#' @return A reactive list of selected variables and plot attributes.
-#' 
+#' @returns A reactive list containing the plot parameters: x variable, y variable,
+#' color, alpha, size, and title.
+#'
 #' @export
+#' 
 mod_compare_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     

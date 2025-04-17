@@ -2,16 +2,17 @@
 % Please edit documentation in R/mod_compare_vars.R
 \name{mod_compare_vars_server}
 \alias{mod_compare_vars_server}
-\title{Server Logic for Variable Selection}
+\title{Server function for comparing variables}
 \usage{
 mod_compare_vars_server(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A single string identifying the module.}
 }
 \value{
-A reactive list of selected variables and plot attributes.
+A reactive list containing the plot parameters: x variable, y variable,
+color, alpha, size, and title.
 }
 \description{
-Server Logic for Variable Selection
+Server function for comparing variables
 }

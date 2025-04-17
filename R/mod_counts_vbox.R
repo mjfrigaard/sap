@@ -14,7 +14,9 @@ mod_counts_vbox_ui <- function(id) {
       title = markdown("#### Totals"), 
       value = textOutput(ns("counts_text")),
       showcase = bsicons::bs_icon("film"),
-      h4(textOutput(ns("years_text")))
+      h4(
+        textOutput(ns("years_text"))
+        )
       )
     )
 }
@@ -33,8 +35,9 @@ mod_counts_vbox_server <- function(id, vals) {
     output$counts_text <- renderText({
       req(vals())
       d <- subset(movies, 
-                thtr_rel_year >= vals()$start_year &
-                thtr_rel_year <= vals()$end_year)
+                  thtr_rel_year >= vals()$start_year &
+                  thtr_rel_year <= vals()$end_year)
+      
         paste(length(unique(d$imdb_url)), "movies")
     })
     

@@ -2,16 +2,46 @@
 % Please edit documentation in R/mod_counts_vars.R
 \name{mod_counts_vars_ui}
 \alias{mod_counts_vars_ui}
-\title{User Interface for Count Tab Input}
+\title{UI for count variables module}
 \usage{
 mod_counts_vars_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI for selecting a numeric input.
+A \code{tagList} containing UI elements:
+\itemize{
+\item A variable select input for choosing a grouping variable from character
+columns in the movies dataset
+\item A heading for the theater release year section
+\item Two numeric inputs to define the start and end years for filtering movies
+by their theater release date
+}
 }
 \description{
-User Interface for Count Tab Input
+Creates inputs for selecting a grouping variable and defining a time range for
+theater release years. This function is designed to work together with
+\code{\link[=mod_counts_vars_server]{mod_counts_vars_server()}}.
+}
+\details{
+The function prepares a subset of character variables from the movies dataset
+(genre, title_type, mpaa_rating, critics_rating, audience_rating) and
+formats their names for display in the selection input. The year range inputs
+are bounded by the minimum and maximum years in the dataset.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_counts_vars_ui("movie_filters")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  filter_values <- mod_counts_vars_server("movie_filters")
+}
+}
+\seealso{
+\code{\link[=mod_counts_vars_server]{mod_counts_vars_server()}} for the server-side logic that handles
+these inputs
 }

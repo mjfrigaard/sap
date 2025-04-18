@@ -4,7 +4,7 @@
 \alias{logr_msg}
 \title{Log Messages to Console and File with Optional JSON Format}
 \usage{
-logr_msg(message, level = "INFO", log_file = "app_log.txt", json = FALSE)
+logr_msg(message, level = "INFO", log_file = NULL, json = FALSE)
 }
 \arguments{
 \item{message}{A character string representing the message to be logged.}

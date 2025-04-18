@@ -38,7 +38,7 @@ mod_awards_tbl_server <- function(id, vals) {
       
       tryCatch({
         # Create awards data table
-        tbl_data <- create_movie_awards(
+        tbl_data <- create_movie_awards(movies,
           award = as.character(vals()$award),
           start_year = as.numeric(vals()$start_year),
           end_year = as.numeric(vals()$end_year)

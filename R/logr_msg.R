@@ -63,31 +63,11 @@
 #'
 #' @export
 #' 
-logr_msg <- function(message, level = "INFO", log_file = "app_log.txt", json = FALSE) {
+logr_msg <- function(message, level = "INFO", log_file = NULL, json = FALSE) {
 
-  # check the log file and directory
-  log_dir <- dirname(log_file)
-  if (!dir.exists(log_dir)) {
-    dir.create(log_dir, recursive = TRUE)
-  }
-  if (!file.exists(log_file)) {
-    file.create(log_file)
-  }
-  
   # default formatter for all logs
   logger::log_formatter(formatter = logger::formatter_glue)
 
-  # default logging to console and a file
-  if (json) {
-    # JSON format
-    logger::log_appender(appender = logger::appender_tee(log_file))
-    logger::log_layout(layout = logger::layout_json())
-  } else {
-    # plain text format
-    logger::log_appender(appender = logger::appender_tee(log_file))
-    logger::log_layout(layout = logger::layout_glue_generator())
-  }
-  
   # log levels
   switch(
     level,
@@ -100,4 +80,27 @@ logr_msg <- function(message, level = "INFO", log_file = "app_log.txt", json = F
     "TRACE" = logger::log_trace("{message}"),
     logger::log_info("{message}") # INFO if level is invalid
   )
+
+  if (!is.null(log_file)) {
+    # check the log file and directory
+    log_dir <- dirname(log_file)
+    if (!dir.exists(log_dir)) {
+      dir.create(log_dir, recursive = TRUE)
+    }
+    if (!file.exists(log_file)) {
+      file.create(log_file)
+    }
+
+    # default logging to console and a file
+    if (json) {
+      # JSON format
+      logger::log_appender(appender = logger::appender_tee(log_file))
+      logger::log_layout(layout = logger::layout_json())
+    } else {
+      # plain text format
+      logger::log_appender(appender = logger::appender_tee(log_file))
+      logger::log_layout(layout = logger::layout_glue_generator())
+    }
+  }
+  
 }

@@ -33,59 +33,46 @@ mod_dist_raincloud_ui <- function(id) {
     )
 }
 
-#' Server Logic for Raincloud Plot
+
+#' @title Distribution Raincloud Plot Server Module
+#' @description Server-side function for creating raincloud plots to visualize
+#'   distributions.
+#' @details This module generates a raincloud plot that combines boxplots, 
+#'   half-eye plots, and jittered points to visualize distributions of a 
+#'   numeric variable across categories.
 #'
-#' @param id Shiny module ID.
-#' @param vals Reactive list of plot parameters.
+#' @section Related UI Function:
+#'   Use with `mod_dist_raincloud_ui()`
 #'
-#' @return Renders a raincloud plot visualizing distribution of numeric data
-#'   grouped by a categorical variable.
-#' 
-#' @details
-#' This server function creates a raincloud plot combining boxplot, half-eye
-#' density, and jittered points to show data distributions. The plot helps
-#' visualize both the raw data points and their statistical properties.
+#' @param id Module ID
+#' @param vals Reactive expression returning a list with plotting variables:
+#'   - num_var: Numeric variable to visualize (x-axis)
+#'   - chr_var: Categorical variable for grouping (y-axis)
+#'   - alpha: Transparency level for plot elements
+#'   - size: Control for density smoothing (higher = smoother)
 #'
-#' @section Logging:
-#' The function implements comprehensive logging at various levels:
-#' - TRACE for tracking rendering process
-#' - INFO for successful plot creation
-#' - DEBUG for parameter diagnostics
-#' - ERROR for handled exceptions
-#'
-#' @seealso [mod_dist_raincloud_ui()]
-#' 
-#' @export
-#' 
 mod_dist_raincloud_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
-    logr_msg("Initializing raincloud plot module", level = "TRACE")
-    
     output$cloud <- renderPlot({
-      
-      logr_msg("Starting raincloud plot rendering", level = "TRACE")
-      
       req(vals())
       
+      logr_msg("Starting raincloud plot generation", level = "TRACE")
+      
       tryCatch({
-        # Log input parameters for debugging
-        logr_msg(
-          paste0("Raincloud plot parameters - num_var: ", vals()$num_var, 
-          ", chr_var: ", vals()$chr_var,
-          ", alpha: ", vals()$alpha,
-          ", size: ", vals()$size),
-          level = "DEBUG"
-        )
-        
         # Pretty names 
+        logr_msg("Formatting movie data column names", level = "DEBUG")
         mv_nms <- names(sap::movies) |> name_case()
         movie_data <- setNames(object = sap::movies, nm = mv_nms)
         
         a <- as.numeric(vals()$alpha)
         s <- as.numeric(vals()$size)
         
+        logr_msg(glue::glue("Using alpha={a}, size={s} for plot elements"), 
+        level = "DEBUG")
+        
         # Create boxplot layer
+        logr_msg("Creating boxplot base layer", level = "DEBUG")
         gg2_box <- ggplot2::ggplot(
           movie_data,
           ggplot2::aes(x = !!vals()$num_var, y = !!vals()$chr_var)
@@ -99,9 +86,8 @@ mod_dist_raincloud_server <- function(id, vals) {
         ) +
         ggplot2::scale_fill_manual(values = clr_pal12)
         
-        logr_msg("Boxplot layer created", level = "TRACE")
-        
         # Add halfeye layer
+        logr_msg("Adding halfeye density layer", level = "DEBUG")
         gg2_halfeye <- gg2_box +
         ggdist::stat_halfeye(
           ggplot2::aes(fill = !!vals()$chr_var),
@@ -115,9 +101,8 @@ mod_dist_raincloud_server <- function(id, vals) {
           show.legend = FALSE 
         )
         
-        logr_msg("Halfeye density layer added", level = "TRACE")
-        
         # Add points layer
+        logr_msg("Adding jittered points layer", level = "DEBUG")
         gg2_point <- gg2_halfeye +
         ggplot2::geom_point(
           ggplot2::aes(fill = !!vals()$chr_var),
@@ -132,9 +117,8 @@ mod_dist_raincloud_server <- function(id, vals) {
           show.legend = FALSE
         )
         
-        logr_msg("Points layer added", level = "TRACE")
-        
         # Final plot with formatting
+        logr_msg("Applying final formatting to raincloud plot", level = "DEBUG")
         final_plot <- gg2_point + 
         ggplot2::labs(
           x = name_case(as.character(vals()$num_var)),
@@ -146,24 +130,17 @@ mod_dist_raincloud_server <- function(id, vals) {
           axis.title = ggplot2::element_text(color = "#ffffff")
         )
         
-        logr_msg("Raincloud plot successfully created", level = "INFO")
-        
+        logr_msg("Raincloud plot generation complete", level = "INFO")
         return(final_plot)
         
       }, error = function(e) {
-        logr_msg(
-          paste0("Failed to create raincloud plot: ", e$message),
-          level = "ERROR"
-        )
+        logr_msg(glue::glue("Failed to generate raincloud plot: {e$message}"), 
+        level = "ERROR")
         
-        # Return minimal error plot
-        ggplot2::ggplot() +
-        ggplot2::annotate(
-          "text",
-          x = 0.5,
-          y = 0.5,
-          label = "Error creating plot. See logs for details."
-        ) +
+        # Return empty plot with error message
+        ggplot2::ggplot() + 
+        ggplot2::annotate("text", x = 0, y = 0, 
+        label = "Error generating plot") +
         ggplot2::theme_void()
       })
     })

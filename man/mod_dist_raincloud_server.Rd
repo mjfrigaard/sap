@@ -2,38 +2,32 @@
 % Please edit documentation in R/mod_dist_raincloud.R
 \name{mod_dist_raincloud_server}
 \alias{mod_dist_raincloud_server}
-\title{Server Logic for Raincloud Plot}
+\title{Distribution Raincloud Plot Server Module}
 \usage{
 mod_dist_raincloud_server(id, vals)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{Module ID}
 
-\item{vals}{Reactive list of plot parameters.}
-}
-\value{
-Renders a raincloud plot visualizing distribution of numeric data
-grouped by a categorical variable.
+\item{vals}{Reactive expression returning a list with plotting variables:
+\itemize{
+\item num_var: Numeric variable to visualize (x-axis)
+\item chr_var: Categorical variable for grouping (y-axis)
+\item alpha: Transparency level for plot elements
+\item size: Control for density smoothing (higher = smoother)
+}}
 }
 \description{
-Server Logic for Raincloud Plot
+Server-side function for creating raincloud plots to visualize
+distributions.
 }
 \details{
-This server function creates a raincloud plot combining boxplot, half-eye
-density, and jittered points to show data distributions. The plot helps
-visualize both the raw data points and their statistical properties.
+This module generates a raincloud plot that combines boxplots,
+half-eye plots, and jittered points to visualize distributions of a
+numeric variable across categories.
 }
-\section{Logging}{
+\section{Related UI Function}{
 
-The function implements comprehensive logging at various levels:
-\itemize{
-\item TRACE for tracking rendering process
-\item INFO for successful plot creation
-\item DEBUG for parameter diagnostics
-\item ERROR for handled exceptions
-}
+Use with \code{mod_dist_raincloud_ui()}
 }
 
-\seealso{
-\code{\link[=mod_dist_raincloud_ui]{mod_dist_raincloud_ui()}}
-}

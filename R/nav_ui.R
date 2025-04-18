@@ -4,6 +4,8 @@
 #' integrating Bootstrap and a custom JavaScript file.
 #'
 #' @return A tagList containing the UI elements.
+#' 
+#' @seealso [nav_server()]
 #'
 #' @export
 #' 

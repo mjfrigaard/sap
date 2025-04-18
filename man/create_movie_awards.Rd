@@ -24,4 +24,8 @@ Combines \code{create_award_wins()} and \code{filter_award_wins()}.
 \examples{
 create_movie_awards(movies, "Films", 2000, 2005)
 create_movie_awards(movies, "Stars", 1990, 1994)
+
+}
+\seealso{
+\code{\link[=filter_award_wins]{filter_award_wins()}} \code{\link[=create_movie_awards]{create_movie_awards()}}
 }

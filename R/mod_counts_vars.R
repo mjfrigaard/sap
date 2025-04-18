@@ -67,53 +67,40 @@ mod_counts_vars_ui <- function(id) {
     )
 }
 
+
+#' Counts variable server module
 #'
-#' Server for counts variables module
+#' Server logic for the year range and categorical variable selection.
 #'
-#' Processes user inputs for date ranges and categorical variables, with 
-#' validation to ensure proper date ordering. This function is designed to
-#' work together with a corresponding UI function.
+#' @param id Module identifier
 #'
-#' @param id A character string used to identify the namespace for the module.
+#' @return A reactive list containing start_year, end_year, and chr_var
 #'
-#' @return A reactive list containing three elements:
-#'   * `start_year`: The numeric start year value
-#'   * `end_year`: The numeric end year value
-#'   * `chr_var`: The selected categorical variable
+#' @details This module manages the user selection of year range and categorical
+#' variables. It includes validation to ensure start_year is always less than
+#' end_year. When one value changes, the other adjusts automatically to maintain
+#' a valid range.
 #'
-#' The return value is reactive and updates whenever the inputs change.
+#' @section Logging:
+#' Includes logging for input validations and changes to help diagnose user
+#' interaction issues.
 #'
-#' @details
-#' The function includes two observers that maintain proper date ordering:
-#'   * If `start_year` becomes greater than or equal to `end_year`, 
-#'     `end_year` is automatically updated
-#'   * If `end_year` becomes less than or equal to `start_year`, 
-#'     `start_year` is automatically updated
-#'
-#' The reactive return value requires both year inputs to be valid 4-digit years.
-#'
-#' @seealso The corresponding UI function that creates the input elements
-#'
-#' @examples
-#' # Server implementation
-#' server <- function(input, output, session) {
-#'   vars <- mod_counts_vars_server("counts_vars")
-#'   # Use the reactive variables elsewhere
-#'   observe({
-#'     req(vars())
-#'     print(paste("Date range:", vars()$start_year, "to", vars()$end_year))
-#'   })
-#' }
-#'
-#'
-#'
-#'
-#'
+#' @seealso [mod_counts_vars_ui()]
+#' 
+#' @export
+#' 
 mod_counts_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     
+    logr_msg(glue::glue("Initializing counts variable module {id}"), 
+             level = "DEBUG")
+    
     observe({
       if (input$start_year >= input$end_year) {
+        logr_msg(glue::glue("Adjusting end_year from {input$end_year} to 
+                            {input$start_year + 1} as it was <= start_year"), 
+                 level = "DEBUG")
+        
         updateNumericInput(
           session = session, 
           inputId = "end_year", 
@@ -124,6 +111,10 @@ mod_counts_vars_server <- function(id) {
     
     observe({
       if (input$end_year <= input$start_year) {
+        logr_msg(glue::glue("Adjusting start_year from {input$start_year} to 
+                            {input$end_year - 1} as it was >= end_year"), 
+                 level = "DEBUG")
+        
         updateNumericInput(
           session = session, 
           inputId = "start_year", 
@@ -134,8 +125,17 @@ mod_counts_vars_server <- function(id) {
     
     return(
       reactive({
-        req({nchar(input$start_year) == 4 & 
-             nchar(input$end_year) == 4})
+        valid_years <- req({nchar(input$start_year) == 4 & 
+                           nchar(input$end_year) == 4})
+        
+        if (valid_years) {
+          logr_msg(glue::glue("Year range set to {input$start_year}-
+                              {input$end_year}, variable: {input$chr_var}"), 
+                   level = "INFO")
+        } else {
+          logr_msg("Invalid year format detected", level = "WARN")
+        }
+        
         list(
           "start_year" = input$start_year,
           "end_year" = input$end_year,

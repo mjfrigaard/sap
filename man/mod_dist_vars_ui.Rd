@@ -2,16 +2,42 @@
 % Please edit documentation in R/mod_dist_vars.R
 \name{mod_dist_vars_ui}
 \alias{mod_dist_vars_ui}
-\title{User Interface for Distribution Variable Selection}
+\title{UI for distribution variables module}
 \usage{
 mod_dist_vars_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI for selecting variables and plot attributes.
+A \code{tagList} containing UI elements:
+\itemize{
+\item A variable select input for the categorical grouping variable
+\item A variable select input for the numeric variable
+\item A section header for customization options
+\item A slider input for controlling transparency (alpha)
+\item A slider input for controlling point/element size
+}
 }
 \description{
-User Interface for Distribution Variable Selection
+Creates inputs for selecting variables and customizing the appearance of
+distribution plots. This function provides controls for choosing a categorical
+variable for grouping/coloring and a numeric variable for the x-axis, along
+with appearance settings. This function is designed to work together with
+\code{\link[=mod_dist_vars_server]{mod_dist_vars_server()}}.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_dist_vars_ui("dist_vars1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  vars <- mod_dist_vars_server("dist_vars1")
+}
+
+}
+\seealso{
+\code{\link[=mod_dist_vars_server]{mod_dist_vars_server()}} for the server-side logic
 }

@@ -17,3 +17,16 @@ Renders a data table based on selected parameters.
 \description{
 Server Logic for Distribution Data Table
 }
+\details{
+This module creates a reactive data table that displays distribution
+summaries based on the character and numeric variables selected from
+the \code{vals()} reactive input.
+}
+\section{UI Function}{
+
+Use with \code{mod_dist_tbl_ui()} to create the UI component for this module.
+}
+
+\seealso{
+\code{\link[=mod_dist_tbl_ui]{mod_dist_tbl_ui()}}
+}

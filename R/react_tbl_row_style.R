@@ -22,6 +22,7 @@
 #' react_tbl_row_style("Unknown Category")
 #'
 #' @export
+#' 
 react_tbl_row_style <- function(value) {
   switch(as.character(value),
          "Certified Fresh" = list(background = "#FC5C64FF"),

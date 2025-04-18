@@ -2,16 +2,39 @@
 % Please edit documentation in R/mod_dist_tbl.R
 \name{mod_dist_tbl_ui}
 \alias{mod_dist_tbl_ui}
-\title{User Interface for Distribution Data Table}
+\title{UI for distribution table module}
 \usage{
 mod_dist_tbl_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI for displaying a data table.
+A \code{tagList} containing a single UI element:
+\itemize{
+\item A reactable output that will display the distribution table
+}
 }
 \description{
-User Interface for Distribution Data Table
+Creates a reactive table to display distribution data. This function is
+designed to work together with \code{\link[=mod_dist_tbl_server]{mod_dist_tbl_server()}}.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_dist_vars_ui("vars"),
+  mod_dist_tbl_ui("dist_tbl1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+
+  vals <- mod_dist_vars_server("vars")
+
+  mod_dist_tbl_server("dist_tbl1", vals = vals)
+}
+
+}
+\seealso{
+\code{\link[=mod_dist_tbl_server]{mod_dist_tbl_server()}} for the server-side logic
 }

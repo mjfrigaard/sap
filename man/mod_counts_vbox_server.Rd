@@ -12,8 +12,25 @@ mod_counts_vbox_server(id, vals)
 \item{vals}{Reactive list of table parameters.}
 }
 \value{
-Renders a data table based on selected parameters.
+Renders count information based on filtered data.
 }
 \description{
 Server Logic for Counts Text
+}
+\details{
+This server module generates two text outputs:
+\enumerate{
+\item The number of unique movies in the filtered dataset
+\item The span of years covered by the current filter
+}
+}
+\section{Logging}{
+
+The module includes appropriate logging for data filtering operations and
+rendering operations, with DEBUG level for data operations and TRACE for
+render events.
+}
+
+\seealso{
+\code{\link[=mod_counts_vbox_ui]{mod_counts_vbox_ui()}}
 }

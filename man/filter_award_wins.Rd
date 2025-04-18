@@ -22,3 +22,6 @@ the given year range.
 \description{
 This function the award wins data into a dataset of \strong{only} wins.
 }
+\seealso{
+\code{\link[=create_award_wins]{create_award_wins()}} \code{\link[=create_movie_awards]{create_movie_awards()}}
+}

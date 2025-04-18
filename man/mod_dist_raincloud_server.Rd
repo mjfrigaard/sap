@@ -12,8 +12,28 @@ mod_dist_raincloud_server(id, vals)
 \item{vals}{Reactive list of plot parameters.}
 }
 \value{
-Renders a horizontal bar plot based on selected parameters.
+Renders a raincloud plot visualizing distribution of numeric data
+grouped by a categorical variable.
 }
 \description{
 Server Logic for Raincloud Plot
+}
+\details{
+This server function creates a raincloud plot combining boxplot, half-eye
+density, and jittered points to show data distributions. The plot helps
+visualize both the raw data points and their statistical properties.
+}
+\section{Logging}{
+
+The function implements comprehensive logging at various levels:
+\itemize{
+\item TRACE for tracking rendering process
+\item INFO for successful plot creation
+\item DEBUG for parameter diagnostics
+\item ERROR for handled exceptions
+}
+}
+
+\seealso{
+\code{\link[=mod_dist_raincloud_ui]{mod_dist_raincloud_ui()}}
 }

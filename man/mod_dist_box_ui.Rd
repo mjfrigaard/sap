@@ -2,16 +2,35 @@
 % Please edit documentation in R/mod_dist_box.R
 \name{mod_dist_box_ui}
 \alias{mod_dist_box_ui}
-\title{User Interface for Box Plots}
+\title{UI for distribution box plot module}
 \usage{
 mod_dist_box_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI for displaying a box plot.
+A \code{tagList} containing UI elements:
+\itemize{
+\item A plot output area for the box plot visualization
+}
 }
 \description{
-User Interface for Box Plots
+Creates the UI component for displaying a box plot visualization. This
+function is designed to work together with \code{\link[=mod_dist_box_server]{mod_dist_box_server()}}.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_dist_box_ui("dist_box1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  mod_dist_box_server("dist_box1", data_reactive())
+}
+
+}
+\seealso{
+\code{\link[=mod_dist_box_server]{mod_dist_box_server()}} for the server-side logic
 }

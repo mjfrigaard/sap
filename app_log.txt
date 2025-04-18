@@ -1,0 +1,121 @@
+DEBUG [2025-04-17 10:34:08] Creating awards plot with received input values
+DEBUG [2025-04-17 10:34:08] Award: Films, Years: 1984-1990
+INFO [2025-04-17 10:34:08] Created awards dataset with 6 rows
+TRACE [2025-04-17 10:34:09] Award scatter plot successfully created
+DEBUG [2025-04-17 12:30:52] Creating awards plot with received input values
+DEBUG [2025-04-17 12:30:52] Award: Films, Years: 1984-1990
+INFO [2025-04-17 12:30:52] Created awards dataset with 6 rows
+TRACE [2025-04-17 12:30:52] Award scatter plot successfully created
+DEBUG [2025-04-17 12:30:58] Preparing awards table with selected parameters
+TRACE [2025-04-17 12:30:58] Award: Films, Years: 1984-
+1990
+INFO [2025-04-17 12:30:58] Generated awards table with 6 rows
+DEBUG [2025-04-17 12:31:24] Creating awards plot with received input values
+DEBUG [2025-04-17 12:31:24] Award: Films, Years: 1984-1990
+INFO [2025-04-17 12:31:24] Created awards dataset with 6 rows
+TRACE [2025-04-17 12:31:24] Award scatter plot successfully created
+INFO [2025-04-17 12:32:43] Created awards dataset with 6 rows
+INFO [2025-04-17 12:32:48] Generated awards table with 6 rows
+INFO [2025-04-17 13:12:42] Initializing awards variables module
+INFO [2025-04-17 13:12:46] Created awards dataset with 6 rows
+INFO [2025-04-17 13:12:50] Generated awards table with 6 rows
+INFO [2025-04-17 13:18:47] Initializing compare vars module with id: scatter_inputs
+INFO [2025-04-17 13:18:47] Initializing awards variables module
+INFO [2025-04-17 21:22:40] Initializing compare vars module with id: scatter_inputs
+INFO [2025-04-17 21:22:40] Initializing scatter plot module server
+INFO [2025-04-17 21:22:40] Scatter plot module server initialized
+INFO [2025-04-17 21:22:40] Initializing awards variables module
+INFO [2025-04-17 21:26:34] Initializing compare vars module with id: scatter_inputs
+INFO [2025-04-17 21:26:34] Initializing scatter plot module server
+INFO [2025-04-17 21:26:34] Scatter plot module server initialized
+INFO [2025-04-17 21:26:34] Initializing horizontal bar plot module
+INFO [2025-04-17 21:26:34] Horizontal bar plot module initialized
+INFO [2025-04-17 21:26:34] Initializing awards variables module
+INFO [2025-04-17 21:26:38] Year range set to 1980-
+1990, variable: Critics Rating
+INFO [2025-04-17 21:27:13] Initializing compare vars module with id: scatter_inputs
+INFO [2025-04-17 21:27:13] Initializing scatter plot module server
+INFO [2025-04-17 21:27:13] Scatter plot module server initialized
+DEBUG [2025-04-17 21:27:13] Initializing counts variable module year
+INFO [2025-04-17 21:27:13] Initializing horizontal bar plot module
+INFO [2025-04-17 21:27:13] Horizontal bar plot module initialized
+INFO [2025-04-17 21:27:13] Initializing awards variables module
+DEBUG [2025-04-17 21:27:13] X variable selected: Imdb Rating
+DEBUG [2025-04-17 21:27:13] Y variable selected: Audience Score
+DEBUG [2025-04-17 21:27:13] Current plot parameters: x=`Imdb Rating`, y=`Audience Score`, color=`Critics Rating`, alpha=0.7, size=7, title=
+DEBUG [2025-04-17 21:27:13] Creating plot with 651 data points
+DEBUG [2025-04-17 21:27:13] Processing inputs: x=Imdb Rating, y=Audience Score, 
+color=Critics Rating
+INFO [2025-04-17 21:27:15] Year range set to 1980-
+1990, variable: Critics Rating
+DEBUG [2025-04-17 21:27:15] Filtering data from 1980 to 
+1990
+DEBUG [2025-04-17 21:27:15] Creating bar plot with Critics Rating variable
+INFO [2025-04-17 21:27:21] Year range set to 1980-
+1990, variable: Title Type
+DEBUG [2025-04-17 21:27:21] Filtering data from 1980 to 
+1990
+DEBUG [2025-04-17 21:27:21] Creating bar plot with Title Type variable
+INFO [2025-04-17 21:29:33] Initializing compare vars module with id: scatter_inputs
+INFO [2025-04-17 21:29:33] Initializing scatter plot module server
+INFO [2025-04-17 21:29:33] Scatter plot module server initialized
+DEBUG [2025-04-17 21:29:33] Initializing counts variable module year
+INFO [2025-04-17 21:29:33] Initializing horizontal bar plot module
+INFO [2025-04-17 21:29:33] Horizontal bar plot module initialized
+INFO [2025-04-17 21:29:33] Initializing awards variables module
+DEBUG [2025-04-17 21:29:33] X variable selected: Imdb Rating
+DEBUG [2025-04-17 21:29:33] Y variable selected: Audience Score
+DEBUG [2025-04-17 21:29:33] Current plot parameters: x=`Imdb Rating`, y=`Audience Score`, color=`Critics Rating`, alpha=0.7, size=7, title=
+DEBUG [2025-04-17 21:29:33] Creating plot with 651 data points
+DEBUG [2025-04-17 21:29:33] Processing inputs: x=Imdb Rating, y=Audience Score, 
+color=Critics Rating
+INFO [2025-04-17 21:29:40] Year range set to 1980-
+1990, variable: Critics Rating
+DEBUG [2025-04-17 21:29:40] Filtering movies between 1980 and 
+1990
+DEBUG [2025-04-17 21:29:40] Found 113 unique movies in selected range
+DEBUG [2025-04-17 21:29:40] Calculated time span: 10 years
+DEBUG [2025-04-17 21:29:40] Filtering data from 1980 to 
+1990
+DEBUG [2025-04-17 21:29:40] Creating bar plot with Critics Rating variable
+INFO [2025-04-17 21:31:29] Initializing compare vars module with id: scatter_inputs
+INFO [2025-04-17 21:31:29] Initializing scatter plot module server
+INFO [2025-04-17 21:31:29] Scatter plot module server initialized
+DEBUG [2025-04-17 21:31:29] Initializing counts variable module year
+INFO [2025-04-17 21:31:29] Initializing horizontal bar plot module
+INFO [2025-04-17 21:31:29] Horizontal bar plot module initialized
+INFO [2025-04-17 21:31:29] Initializing awards variables module
+DEBUG [2025-04-17 21:31:29] X variable selected: Imdb Rating
+DEBUG [2025-04-17 21:31:29] Y variable selected: Audience Score
+DEBUG [2025-04-17 21:31:29] Current plot parameters: x=`Imdb Rating`, y=`Audience Score`, color=`Critics Rating`, alpha=0.7, size=7, title=
+DEBUG [2025-04-17 21:31:29] Creating plot with 651 data points
+DEBUG [2025-04-17 21:31:29] Processing inputs: x=Imdb Rating, y=Audience Score, 
+color=Critics Rating
+INFO [2025-04-17 21:31:34] Year range set to 1980-
+1990, variable: Critics Rating
+DEBUG [2025-04-17 21:31:34] Filtering movies between 1980 and 
+1990
+DEBUG [2025-04-17 21:31:34] Found 113 unique movies in selected range
+DEBUG [2025-04-17 21:31:34] Calculated time span: 10 years
+DEBUG [2025-04-17 21:31:34] Filtering data from 1980 to 
+1990
+DEBUG [2025-04-17 21:31:34] Creating bar plot with Critics Rating variable
+DEBUG [2025-04-17 21:31:35] Filtering data from 1980 to 
+1990
+DEBUG [2025-04-17 21:31:35] Creating waffle plot for Critics Rating
+INFO [2025-04-17 21:33:15] Initializing compare vars module with id: scatter_inputs
+INFO [2025-04-17 21:33:15] Initializing scatter plot module server
+INFO [2025-04-17 21:33:15] Scatter plot module server initialized
+DEBUG [2025-04-17 21:33:15] Initializing counts variable module year
+INFO [2025-04-17 21:33:15] Initializing horizontal bar plot module
+INFO [2025-04-17 21:33:15] Horizontal bar plot module initialized
+INFO [2025-04-17 21:33:15] Initializing awards variables module
+DEBUG [2025-04-17 21:33:15] X variable selected: Imdb Rating
+DEBUG [2025-04-17 21:33:15] Y variable selected: Audience Score
+DEBUG [2025-04-17 21:33:15] Current plot parameters: x=`Imdb Rating`, y=`Audience Score`, color=`Critics Rating`, alpha=0.7, size=7, title=
+DEBUG [2025-04-17 21:33:15] Creating plot with 651 data points
+DEBUG [2025-04-17 21:33:15] Processing inputs: x=Imdb Rating, y=Audience Score, 
+color=Critics Rating
+DEBUG [2025-04-17 21:33:20] Processing data with 651 rows
+DEBUG [2025-04-17 21:33:20] Creating box plot with Audience Score and 
+Critics Rating

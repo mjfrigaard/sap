@@ -13,3 +13,6 @@ A tagList containing the UI elements.
 This function defines the user interface for the Shiny application,
 integrating Bootstrap and a custom JavaScript file.
 }
+\seealso{
+\code{\link[=nav_server]{nav_server()}}
+}

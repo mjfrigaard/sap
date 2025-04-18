@@ -10,6 +10,9 @@
 #' @return A data frame containing movies that won the specified award within 
 #'   the given year range.
 #' 
+#' @seealso [create_award_wins()] [create_movie_awards()] 
+#' 
+#' 
 #' @export
 #' 
 filter_award_wins <- function(award_data, award, start_yr, end_yr) {

@@ -17,3 +17,13 @@ Renders a horizontal bar plot based on selected parameters.
 \description{
 Server Logic for Horizontal Bar Plot
 }
+\details{
+This function creates a horizontal bar plot showing frequency counts
+of a selected categorical variable from the movies dataset, filtered by the
+specified year range. It includes proper error handling and logging.
+}
+\section{UI Function}{
+
+This server function works with \code{mod_counts_bar_ui()}.
+}
+

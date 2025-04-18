@@ -16,3 +16,17 @@ color, alpha, size, and title.
 \description{
 Server function for comparing variables
 }
+\details{
+This server function manages the selection of variables for comparison
+plots. It ensures that x and y variables cannot be the same by updating the
+selection when needed. The function returns a reactive list with all
+plot parameters.
+}
+\section{Logging}{
+
+This module uses log messages to track variable selections and updates.
+}
+
+\seealso{
+\code{mod_compare_vars_ui()} for the UI components of this module.
+}

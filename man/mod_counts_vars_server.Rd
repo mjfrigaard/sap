@@ -2,55 +2,31 @@
 % Please edit documentation in R/mod_counts_vars.R
 \name{mod_counts_vars_server}
 \alias{mod_counts_vars_server}
-\title{Server for counts variables module}
+\title{Counts variable server module}
 \usage{
 mod_counts_vars_server(id)
 }
 \arguments{
-\item{id}{A character string used to identify the namespace for the module.}
+\item{id}{Module identifier}
 }
 \value{
-A reactive list containing three elements:
-\itemize{
-\item \code{start_year}: The numeric start year value
-\item \code{end_year}: The numeric end year value
-\item \code{chr_var}: The selected categorical variable
-}
-
-The return value is reactive and updates whenever the inputs change.
+A reactive list containing start_year, end_year, and chr_var
 }
 \description{
-Processes user inputs for date ranges and categorical variables, with
-validation to ensure proper date ordering. This function is designed to
-work together with a corresponding UI function.
+Server logic for the year range and categorical variable selection.
 }
 \details{
-The function includes two observers that maintain proper date ordering:
-\itemize{
-\item If \code{start_year} becomes greater than or equal to \code{end_year},
-\code{end_year} is automatically updated
-\item If \code{end_year} becomes less than or equal to \code{start_year},
-\code{start_year} is automatically updated
+This module manages the user selection of year range and categorical
+variables. It includes validation to ensure start_year is always less than
+end_year. When one value changes, the other adjusts automatically to maintain
+a valid range.
+}
+\section{Logging}{
+
+Includes logging for input validations and changes to help diagnose user
+interaction issues.
 }
 
-The reactive return value requires both year inputs to be valid 4-digit years.
-}
-\examples{
-# Server implementation
-server <- function(input, output, session) {
-  vars <- mod_counts_vars_server("counts_vars")
-  # Use the reactive variables elsewhere
-  observe({
-    req(vars())
-    print(paste("Date range:", vars()$start_year, "to", vars()$end_year))
-  })
-}
-
-
-
-
-
-}
 \seealso{
-The corresponding UI function that creates the input elements
+\code{\link[=mod_counts_vars_ui]{mod_counts_vars_ui()}}
 }

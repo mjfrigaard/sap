@@ -9,10 +9,14 @@
 #' 
 #' @return A data frame 
 #' 
+#' @seealso [filter_award_wins()] [create_movie_awards()]
+#' 
 #' @examples
 #' create_movie_awards(movies, "Films", 2000, 2005)
 #' create_movie_awards(movies, "Stars", 1990, 1994)
+#' 
 #' @export
+#' 
 create_movie_awards <- function(df, award, start_year, end_year) {
 
   df <- sap::movies

@@ -4,6 +4,8 @@
 #'
 #' @return Server logic for the Shiny application with navigation.
 #' 
+#' @seealso [nav_ui()]
+#' 
 #' @export
 nav_server <- function(input, output) {
   

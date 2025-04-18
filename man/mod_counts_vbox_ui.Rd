@@ -2,16 +2,38 @@
 % Please edit documentation in R/mod_counts_vbox.R
 \name{mod_counts_vbox_ui}
 \alias{mod_counts_vbox_ui}
-\title{User Interface for Counts Text}
+\title{UI for counts value box module}
 \usage{
 mod_counts_vbox_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI for displaying a the time span.
+A \code{tagList} containing a \code{bslib::value_box} with:
+\itemize{
+\item A title displaying "Totals"
+\item A value displaying the total count of movies (populated by server)
+\item A film icon as showcase element
+\item A subtitle displaying the year range of the movies (populated by server)
+}
 }
 \description{
-User Interface for Counts Text
+Creates a value box displaying total counts and year range for movies.
+This function is designed to work together with \code{\link[=mod_counts_vbox_server]{mod_counts_vbox_server()}}.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_counts_vbox_ui("counts1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  mod_counts_vbox_server("counts1", reactive(filtered_data))
+}
+
+}
+\seealso{
+\code{\link[=mod_counts_vbox_server]{mod_counts_vbox_server()}} for the server-side logic
 }

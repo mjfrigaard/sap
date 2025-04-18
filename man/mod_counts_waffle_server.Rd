@@ -17,3 +17,16 @@ Renders a vertical bar plot based on selected parameters.
 \description{
 Server Logic for Vertical Bar Plot
 }
+\details{
+This server function creates a waffle plot visualization using
+the movie dataset. It filters data based on selected years and creates
+a waffle chart representation of the selected categorical variable.
+}
+\section{Log Messages}{
+
+Contains logging for errors and tracking critical rendering steps.
+}
+
+\seealso{
+\code{\link[=mod_counts_waffle_ui]{mod_counts_waffle_ui()}}
+}

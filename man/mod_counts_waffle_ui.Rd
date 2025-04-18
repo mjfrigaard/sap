@@ -2,16 +2,36 @@
 % Please edit documentation in R/mod_counts_waffle.R
 \name{mod_counts_waffle_ui}
 \alias{mod_counts_waffle_ui}
-\title{User Interface for Vertical Bar Plot}
+\title{UI for counts waffle plot module}
 \usage{
 mod_counts_waffle_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI for displaying a vertical bar plot.
+A \code{tagList} containing UI elements:
+\itemize{
+\item A plot output area that will display the waffle chart
+}
 }
 \description{
-User Interface for Vertical Bar Plot
+Creates a container for displaying a waffle chart visualization. This
+function is designed to work together with \code{\link[=mod_counts_waffle_server]{mod_counts_waffle_server()}}.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_counts_waffle_ui("waffle1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  mod_counts_waffle_server("waffle1", counts_data = reactive(data))
+}
+
+}
+\seealso{
+\code{\link[=mod_counts_waffle_server]{mod_counts_waffle_server()}} for the server-side logic that generates
+the waffle chart visualization
 }

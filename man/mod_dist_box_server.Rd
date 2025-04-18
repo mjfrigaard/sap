@@ -17,3 +17,14 @@ Renders a box plot based on selected parameters.
 \description{
 Server Logic for Box Plot
 }
+\details{
+This server function generates a box plot visualization using the
+provided parameters in the reactive 'vals' list. It properly handles missing
+values and applies aesthetic parameters like alpha and size.
+}
+\section{Associated UI Function}{
+
+This server function should be used with the corresponding UI function
+\code{mod_dist_box_ui()}.
+}
+

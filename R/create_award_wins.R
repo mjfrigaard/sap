@@ -14,6 +14,8 @@
 #' create_movie_wins(movies, "Films", 2000, 2005)
 #' create_movie_wins(movies, "Stars", 1990, 1994)
 #' 
+#' @seealso [filter_award_wins()] [create_movie_awards()]
+#' 
 #' @export
 #' 
 create_movie_wins <- function(df, award, start_year, end_year) {

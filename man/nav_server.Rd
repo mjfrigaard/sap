@@ -15,3 +15,6 @@ Server logic for the Shiny application with navigation.
 \description{
 Application Navigation Server Logic
 }
+\seealso{
+\code{\link[=nav_ui]{nav_ui()}}
+}

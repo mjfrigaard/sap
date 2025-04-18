@@ -2,18 +2,23 @@
 % Please edit documentation in R/mod_awards_point.R
 \name{mod_awards_point_server}
 \alias{mod_awards_point_server}
-\title{Server Logic for Scatter Plot Text Repel}
+\title{Server function for displaying movie awards scatter plot}
 \usage{
 mod_awards_point_server(id, vals)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character. The ID namespace for the module}
 
-\item{vals}{Reactive list of plot parameters.}
+\item{vals}{A reactive. Contains award selection, start_year, and end_year}
 }
 \value{
 Renders a scatter plot.
 }
 \description{
-Server Logic for Scatter Plot Text Repel
+Takes award selections and date range inputs to create a scatter plot showing
+movie awards over time. Each point represents a movie that won a specific
+award, with labels for movie titles using ggrepel.
+}
+\seealso{
+\code{\link[=mod_awards_point_ui]{mod_awards_point_ui()}}
 }

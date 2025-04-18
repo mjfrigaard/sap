@@ -2,18 +2,20 @@
 % Please edit documentation in R/mod_awards_tbl.R
 \name{mod_awards_tbl_server}
 \alias{mod_awards_tbl_server}
-\title{Server Logic for Awards Data Table}
+\title{Awards Table Server Module}
 \usage{
 mod_awards_tbl_server(id, vals)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{Module's ID for namespacing}
 
-\item{vals}{Reactive list of table parameters.}
-}
-\value{
-Renders a data table based on selected parameters.
+\item{vals}{Reactive providing values for award type and year range}
 }
 \description{
-Server Logic for Awards Data Table
+Server function for the awards table display. Takes award selection and year
+range values from a reactive source to generate a table showing movie
+awards data.
+}
+\seealso{
+mod_awards_tbl_ui The corresponding UI function
 }

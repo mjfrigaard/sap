@@ -18,6 +18,7 @@ Imports:
     ggwaffle,
     grid,
     logger,
+    mockery,
     plotly,
     reactable,
     sass,

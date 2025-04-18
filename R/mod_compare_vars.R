@@ -72,50 +72,89 @@ mod_compare_vars_ui <- function(id) {
 #' @returns A reactive list containing the plot parameters: x variable, y variable,
 #' color, alpha, size, and title.
 #'
+#' @details This server function manages the selection of variables for comparison
+#' plots. It ensures that x and y variables cannot be the same by updating the 
+#' selection when needed. The function returns a reactive list with all 
+#' plot parameters.
+#'
+#' @section Logging:
+#' This module uses log messages to track variable selections and updates.
+#'
+#' @seealso \code{mod_compare_vars_ui()} for the UI components of this module.
+#'
 #' @export
 #' 
 mod_compare_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     
+    logr_msg(glue::glue("Initializing compare vars module with id: {id}"), 
+    level = "INFO")
+    
     observe({
-      if (input$var_y == input$var_x) {
-      num_cols <- c("audience_score", "critics_score", "imdb_num_votes", 
-                    "imdb_rating", "runtime")
-      y_cols <- num_cols[num_cols != input$var_x]
+      logr_msg(glue::glue("X variable selected: {input$var_x}"), level = "DEBUG")
+      
+      if (input$var_x == input$var_y) {
+        logr_msg("X and Y variables match. Updating Y selection.", level = "WARN")
+        
+        num_cols <- c("audience_score", "critics_score", "imdb_num_votes", 
+        "imdb_rating", "runtime")
+        y_cols <- num_cols[num_cols != input$var_x]
+        
         updateSelectInput(
           session = session, 
           inputId = "var_y", 
           choices = y_cols, 
-          selected = y_cols[1]) 
+          selected = y_cols[1]
+        ) 
+        
+        logr_msg(glue::glue("Y variable auto-updated to: {y_cols[1]}"), 
+        level = "INFO")
       }
     }) |> 
-      bindEvent(input$var_x)
+    bindEvent(input$var_x)
     
-   observe({
-     if (input$var_y == input$var_x) {
-      num_cols <- name_case(c("audience_score", "critics_score", "imdb_num_votes",
-                    "imdb_rating", "runtime"))
-      x_cols <- num_cols[num_cols != input$var_y]
+    observe({
+      logr_msg(glue::glue("Y variable selected: {input$var_y}"), level = "DEBUG")
+      
+      if (input$var_y == input$var_x) {
+        logr_msg("Y and X variables match. Updating X selection.", level = "WARN")
+        
+        num_cols <- c("audience_score", "critics_score", "imdb_num_votes",
+        "imdb_rating", "runtime")
+        x_cols <- num_cols[num_cols != input$var_y]
+        
         updateSelectInput(
           session = session,
           inputId = "var_x",
           choices = x_cols,
-          selected = x_cols[1])
-     }
-    }) |>
-      bindEvent(input$var_y)
-    
-    return(
-      reactive({
-        list(
-          "x" = input$var_x,
-          "y" = input$var_y,
-          "color" = input$color,
-          "alpha" = input$alpha,
-          "size" = input$size,
-          "title" = input$plot_title
+          selected = x_cols[1]
         )
-      })
-    )
+        
+        logr_msg(glue::glue("X variable auto-updated to: {x_cols[1]}"), 
+        level = "INFO")
+      }
+    }) |>
+    bindEvent(input$var_y)
+    
+    # Return reactive list of plot parameters
+    plot_params <- reactive({
+      params <- list(
+        "x" = input$var_x,
+        "y" = input$var_y,
+        "color" = input$color,
+        "alpha" = input$alpha,
+        "size" = input$size,
+        "title" = input$plot_title
+      )
+      
+      logr_msg("Plot parameters updated with new values", level = "TRACE")
+      logr_msg(glue::glue("Current plot parameters: {paste(names(params), 
+      unlist(params), sep='=', collapse=', ')}"), 
+      level = "DEBUG")
+      
+      params
+    })
+    
+    return(plot_params)
   })
 }

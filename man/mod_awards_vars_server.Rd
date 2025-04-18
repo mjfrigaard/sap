@@ -10,8 +10,13 @@ mod_awards_vars_server(id)
 \item{id}{Shiny module ID.}
 }
 \value{
-A reactive list containing the selected years.
+A reactive list containing the selected years and award type.
 }
 \description{
-Server Logic for Count Tab Input
+Processes and validates user inputs for the awards section, ensuring
+start and end years are properly sequenced. Provides the selected
+year range and award type to other components.
+}
+\seealso{
+\code{\link[=mod_awards_vars_ui]{mod_awards_vars_ui()}} The corresponding UI function.
 }

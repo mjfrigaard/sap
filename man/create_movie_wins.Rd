@@ -27,3 +27,6 @@ create_movie_wins(movies, "Films", 2000, 2005)
 create_movie_wins(movies, "Stars", 1990, 1994)
 
 }
+\seealso{
+\code{\link[=filter_award_wins]{filter_award_wins()}} \code{\link[=create_movie_awards]{create_movie_awards()}}
+}

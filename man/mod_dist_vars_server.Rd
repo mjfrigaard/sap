@@ -7,11 +7,20 @@
 mod_dist_vars_server(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{Shiny module ID}
 }
 \value{
-A reactive list of selected variables and plot attributes.
+A reactive list of selected variables and plot attributes
 }
 \description{
 Server Logic for Variable Selection
+}
+\details{
+This server module tracks user-selected variables and plot aesthetic
+parameters. The function returns a reactive list containing numeric variables,
+character variables, and plot attribute settings (alpha and size) which can be
+consumed by downstream visualization modules.
+}
+\seealso{
+\code{\link[=mod_dist_vars_ui]{mod_dist_vars_ui()}} for the corresponding UI components
 }

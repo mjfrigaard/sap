@@ -15,12 +15,12 @@ mod_compare_point_server(id, vals)
 Renders a scatter plot based on selected parameters.
 }
 \description{
-Server Logic for Scatter Plot
+This server function renders a scatter plot using plotly based on
+user-selected variables
 }
 \details{
-This server function renders a scatter plot using plotly based on
-user-selected variables. It includes logging at different levels to track
-execution and potential errors.
+It includes logging at different levels to track execution
+and potential errors.
 }
 \seealso{
 \code{\link[=mod_compare_point_ui]{mod_compare_point_ui()}}

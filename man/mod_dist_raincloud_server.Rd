@@ -31,3 +31,6 @@ numeric variable across categories.
 Use with \code{mod_dist_raincloud_ui()}
 }
 
+\seealso{
+\code{\link[=mod_dist_raincloud_ui]{mod_dist_raincloud_ui()}}
+}

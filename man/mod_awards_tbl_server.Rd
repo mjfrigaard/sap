@@ -17,5 +17,5 @@ range values from a reactive source to generate a table showing movie
 awards data.
 }
 \seealso{
-mod_awards_tbl_ui The corresponding UI function
+\code{\link[=mod_awards_tbl_ui]{mod_awards_tbl_ui()}} The corresponding UI function
 }

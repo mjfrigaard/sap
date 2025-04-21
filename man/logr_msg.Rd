@@ -25,8 +25,8 @@ logr_msg(message, level = "INFO", log_file = NULL, json = FALSE)
 Defaults to \code{NULL}.}
 
 \item{json}{A logical value indicating whether to save logs in JSON format.
-Defaults to \code{FALSE}.
-When \code{TRUE}, logs are written to the specified \code{log_file} as JSON objects.}
+Defaults to \code{FALSE}. When \code{TRUE}, logs are written to the specified
+\code{log_file} as JSON objects.}
 }
 \value{
 The function is called for its side effects of logging messages and does

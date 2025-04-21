@@ -1,10 +1,28 @@
-#' User Interface for Scatter Plot Text Repel
+#' Point-based scatter plot UI for awards data
 #'
-#' @param id Shiny module ID.
+#' Creates a plot output area for displaying the point-based scatter plot
+#' of awards data. This function is designed to work together with 
+#' [mod_awards_point_server()].
 #'
-#' @return A UI for displaying a scatter plot.
-#' 
-#' @export
+#' @param id A character string used to identify the namespace for the module.
+#'
+#' @return A `tagList` containing a single UI element:
+#'   * A plot output that displays the awards scatter plot
+#'
+#' @seealso [mod_awards_point_server()] for the server-side logic that generates
+#'   the plot
+#'
+#' @examples
+#' # UI implementation
+#' ui <- fluidPage(
+#'   mod_awards_point_ui("awards_plot")
+#' )
+#'
+#' # Server implementation
+#' server <- function(input, output, session) {
+#'   mod_awards_point_server("awards_plot", data_reactive())
+#' }
+#'
 mod_awards_point_ui <- function(id) {
   ns <- NS(id)
   tagList(

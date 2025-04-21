@@ -2,16 +2,38 @@
 % Please edit documentation in R/mod_compare_point.R
 \name{mod_compare_point_ui}
 \alias{mod_compare_point_ui}
-\title{User Interface for Scatter Plot}
+\title{UI for comparison point chart module}
 \usage{
 mod_compare_point_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-UI for displaying a scatter plot.
+A \code{tagList} containing a single UI element:
+\itemize{
+\item A responsive plotly scatterplot that fills its container (100\% width
+and height)
+}
 }
 \description{
-User Interface for Scatter Plot
+Creates a plotly scatterplot visualization for comparing two variables.
+This function is designed to work together with \code{\link[=mod_compare_point_server]{mod_compare_point_server()}}.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_compare_point_ui("compare1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  mod_compare_point_server("compare1", data_r, selected_vars_r)
+}
+
+}
+\seealso{
+\code{\link[=mod_compare_point_server]{mod_compare_point_server()}}
+
+\code{\link[=mod_compare_point_server]{mod_compare_point_server()}} for the server-side logic
 }

@@ -1,11 +1,26 @@
-#' User Interface for Awards Data Table
+#' UI for Awards Table module
 #'
-#' @param id Shiny module ID.
+#' Creates a display for a reactive table showing awards data. This function 
+#' is designed to work together with [mod_awards_tbl_server()].
 #'
-#' @return A UI for displaying a data table.
-#' 
-#' @export
-#' 
+#' @param id A character string used to identify the namespace for the module.
+#'
+#' @return A `tagList` containing UI elements:
+#'   * A reactable output for displaying the awards table
+#'
+#' @seealso [mod_awards_tbl_server()] for the server-side logic
+#'
+#' @examples
+#' # UI implementation
+#' ui <- fluidPage(
+#'   mod_awards_tbl_ui("awards1")
+#' )
+#'
+#' # Server implementation
+#' server <- function(input, output, session) {
+#'   mod_awards_tbl_server("awards1", data_reactive())
+#' }
+#'
 mod_awards_tbl_ui <- function(id) {
   ns <- NS(id)
     tagList(
@@ -24,7 +39,10 @@ mod_awards_tbl_ui <- function(id) {
 #' @param id Module's ID for namespacing
 #' @param vals Reactive providing values for award type and year range
 #'
-#' @seealso mod_awards_tbl_ui The corresponding UI function
+#' @seealso [mod_awards_tbl_ui()] The corresponding UI function
+#' 
+#' @export
+#' 
 mod_awards_tbl_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     

@@ -2,16 +2,38 @@
 % Please edit documentation in R/mod_awards_vars.R
 \name{mod_awards_vars_ui}
 \alias{mod_awards_vars_ui}
-\title{User Interface for Awards Tab Input}
+\title{UI for awards variables module}
 \usage{
 mod_awards_vars_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI for selecting a numeric input.
+A \code{tagList} containing UI elements:
+\itemize{
+\item A select input for award type (Films or Stars)
+\item Two numeric inputs for selecting the start and end years for theater
+release filtering
+}
 }
 \description{
-User Interface for Awards Tab Input
+Creates inputs for selecting award types and filtering by theater release
+years. This function is designed to work together with
+\code{\link[=mod_awards_vars_server]{mod_awards_vars_server()}}.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_awards_vars_ui("awards1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  award_vars <- mod_awards_vars_server("awards1")
+}
+
+}
+\seealso{
+\code{\link[=mod_awards_vars_server]{mod_awards_vars_server()}} for the server-side logic
 }

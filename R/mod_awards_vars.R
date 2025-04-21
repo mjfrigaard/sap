@@ -1,11 +1,29 @@
-#' User Interface for Awards Tab Input
+#' UI for awards variables module
 #'
-#' @param id Shiny module ID.
+#' Creates inputs for selecting award types and filtering by theater release
+#' years. This function is designed to work together with 
+#' [mod_awards_vars_server()].
 #'
-#' @return A UI for selecting a numeric input.
-#' 
-#' @export
-#' 
+#' @param id A character string used to identify the namespace for the module.
+#'
+#' @return A `tagList` containing UI elements:
+#'   * A select input for award type (Films or Stars)
+#'   * Two numeric inputs for selecting the start and end years for theater
+#'     release filtering
+#'
+#' @seealso [mod_awards_vars_server()] for the server-side logic
+#'
+#' @examples
+#' # UI implementation
+#' ui <- fluidPage(
+#'   mod_awards_vars_ui("awards1")
+#' )
+#'
+#' # Server implementation
+#' server <- function(input, output, session) {
+#'   award_vars <- mod_awards_vars_server("awards1")
+#' }
+#'
 mod_awards_vars_ui <- function(id) {
   ns <- NS(id)
     tagList(
@@ -48,6 +66,7 @@ mod_awards_vars_ui <- function(id) {
 #' @seealso [mod_awards_vars_ui()] The corresponding UI function.
 #' 
 #' @export
+#' 
 mod_awards_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     

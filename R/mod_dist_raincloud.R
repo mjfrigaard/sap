@@ -43,6 +43,8 @@ mod_dist_raincloud_ui <- function(id) {
 #'
 #' @section Related UI Function:
 #'   Use with `mod_dist_raincloud_ui()`
+#'   
+#' @seealso [mod_dist_raincloud_ui()]
 #'
 #' @param id Module ID
 #' @param vals Reactive expression returning a list with plotting variables:

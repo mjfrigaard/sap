@@ -1,5 +1,4 @@
 # Test for mod_dist_raincloud_server
-
 describe(
   "Feature: Raincloud plot generation for movie data distribution
   As a user

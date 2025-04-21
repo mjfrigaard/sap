@@ -1,20 +1,47 @@
-#' UI module for comparing movie variables
+#' UI for variable comparison module
 #'
-#' @param id A string. The module ID.
+#' Creates inputs for selecting variables to compare in a scatter plot with 
+#' customizable appearance options. This function is designed to work together 
+#' with [mod_compare_vars_server()].
 #'
-#' @returns A UI element containing inputs for selecting variables to compare 
-#' in a scatter plot, including X and Y variables, color variable, and
-#' customization controls for alpha, size, and plot title.
+#' @param id A character string used to identify the namespace for the module.
 #'
-#' @export
-#' 
+#' @return A `tagList` containing UI elements:
+#'   * Variable selection inputs for X and Y axes
+#'   * Variable selection for color grouping
+#'   * Sliders for point alpha (transparency) and size
+#'   * Text input for plot title customization
+#'
+#' @details
+#' The function prepares two sets of variables from the movies dataset:
+#'   * Numeric variables: runtime, IMDB rating, IMDB vote count, critics score,
+#'     and audience score for the X and Y axis selections
+#'   * Categorical variables: MPAA rating, genre, and critics rating for the
+#'     color grouping option
+#'
+#' Variable names are formatted using the `name_case()` helper function to
+#' improve readability in the UI.
+#'
+#' @seealso [mod_compare_vars_server()] for the server-side logic
+#'
+#' @examples
+#' # UI implementation
+#' ui <- fluidPage(
+#'   mod_compare_vars_ui("compare1")
+#' )
+#'
+#' # Server implementation
+#' server <- function(input, output, session) {
+#'   plot_inputs <- mod_compare_vars_server("compare1")
+#' }
+#'
 mod_compare_vars_ui <- function(id) {
 
   num_vars <- movies[c("runtime", "imdb_rating",
                        "imdb_num_votes", "critics_score",
                         "audience_score")]
-  
   num_nms <- names(num_vars) |> name_case()
+  
   num_data <- setNames(object = num_vars, nm = num_nms)
   
   chr_vars <- movies[c("mpaa_rating", "genre", "critics_rating")]
@@ -65,39 +92,38 @@ mod_compare_vars_ui <- function(id) {
   )
 }
 
-#' Server function for comparing variables
+#' Server Logic for Variable Selection
+#' 
+#' This function handles the logic for variable selection, ensuring that
+#' x and y variables are different. 
 #'
-#' @param id A single string identifying the module.
+#' @param id Shiny module ID.
 #'
-#' @returns A reactive list containing the plot parameters: x variable, y variable,
-#' color, alpha, size, and title.
-#'
-#' @details This server function manages the selection of variables for comparison
-#' plots. It ensures that x and y variables cannot be the same by updating the 
-#' selection when needed. The function returns a reactive list with all 
-#' plot parameters.
-#'
+#' @return A reactive list of selected variables and plot attributes.
+#' 
+#' @details When a user selects the same variable for both axes, the other 
+#' input is automatically updated to a different choice.
+#'   
 #' @section Logging:
-#' This module uses log messages to track variable selections and updates.
+#'   Includes logging for variable selection changes and validation.
 #'
-#' @seealso \code{mod_compare_vars_ui()} for the UI components of this module.
-#'
+#' @seealso [mod_compare_vars_ui()]
+#' 
 #' @export
 #' 
 mod_compare_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     
-    logr_msg(glue::glue("Initializing compare vars module with id: {id}"), 
-    level = "INFO")
+    logr_msg("Initializing variable comparison module", level = "INFO")
     
     observe({
-      logr_msg(glue::glue("X variable selected: {input$var_x}"), level = "DEBUG")
+      logr_msg(glue::glue("X variable changed to: {input$var_x}"), 
+        level = "DEBUG")
       
       if (input$var_x == input$var_y) {
-        logr_msg("X and Y variables match. Updating Y selection.", level = "WARN")
-        
-        num_cols <- c("audience_score", "critics_score", "imdb_num_votes", 
-        "imdb_rating", "runtime")
+        logr_msg("X and Y variables match, updating Y selection", level = "WARN")
+        num_cols <- name_case(c("audience_score", "critics_score", "imdb_num_votes", 
+          "imdb_rating", "runtime"), case = "title")
         y_cols <- num_cols[num_cols != input$var_x]
         
         updateSelectInput(
@@ -108,19 +134,19 @@ mod_compare_vars_server <- function(id) {
         ) 
         
         logr_msg(glue::glue("Y variable auto-updated to: {y_cols[1]}"), 
-        level = "INFO")
+          level = "INFO")
       }
     }) |> 
-    bindEvent(input$var_x)
+      bindEvent(input$var_x)
     
     observe({
-      logr_msg(glue::glue("Y variable selected: {input$var_y}"), level = "DEBUG")
+      logr_msg(glue::glue("Y variable changed to: {input$var_y}"), 
+        level = "DEBUG")
       
       if (input$var_y == input$var_x) {
-        logr_msg("Y and X variables match. Updating X selection.", level = "WARN")
-        
-        num_cols <- c("audience_score", "critics_score", "imdb_num_votes",
-        "imdb_rating", "runtime")
+        logr_msg("Y and X variables match, updating X selection", level = "WARN")
+        num_cols <- name_case(c("audience_score", "critics_score", 
+          "imdb_num_votes", "imdb_rating", "runtime"))
         x_cols <- num_cols[num_cols != input$var_y]
         
         updateSelectInput(
@@ -131,30 +157,26 @@ mod_compare_vars_server <- function(id) {
         )
         
         logr_msg(glue::glue("X variable auto-updated to: {x_cols[1]}"), 
-        level = "INFO")
+          level = "INFO")
       }
     }) |>
-    bindEvent(input$var_y)
+      bindEvent(input$var_y)
     
-    # Return reactive list of plot parameters
-    plot_params <- reactive({
-      params <- list(
-        "x" = input$var_x,
-        "y" = input$var_y,
-        "color" = input$color,
-        "alpha" = input$alpha,
-        "size" = input$size,
-        "title" = input$plot_title
-      )
-      
-      logr_msg("Plot parameters updated with new values", level = "TRACE")
-      logr_msg(glue::glue("Current plot parameters: {paste(names(params), 
-      unlist(params), sep='=', collapse=', ')}"), 
-      level = "DEBUG")
-      
-      params
-    })
+    # Return selected variables as reactive list
+    logr_msg("Variable comparison module ready", level = "TRACE")
     
-    return(plot_params)
+    return(
+      reactive({
+        logr_msg("Variable selections updated", level = "DEBUG")
+        list(
+          "x" = input$var_x,
+          "y" = input$var_y,
+          "color" = input$color,
+          "alpha" = input$alpha,
+          "size" = input$size,
+          "title" = input$plot_title
+        )
+      })
+    )
   })
 }

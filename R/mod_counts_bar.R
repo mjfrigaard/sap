@@ -23,6 +23,7 @@
 #' }
 #' 
 #' @export
+#' 
 mod_counts_bar_ui <- function(id) {
   ns <- NS(id)
   tagList(

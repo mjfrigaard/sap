@@ -1,5 +1,4 @@
 # Test for mod_dist_tbl_server module
-
 describe(
   "Feature: Distribution Table Generation in Movie Review Application
       As a user 

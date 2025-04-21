@@ -17,7 +17,7 @@ testthat::describe(
           args = list(
             vals = reactive(
               list(
-                award = "Oscar",
+                award = "Films",
                 start_year = 2000,
                 end_year = 2010
               )
@@ -60,7 +60,7 @@ testthat::describe(
             ggplot2::geom_point()
             
             # Test that we get a ggplot object
-            expect_true(ggplot2::is.ggplot(p))
+            expect_true(ggplot2::is_ggplot(p))
           }
         )
       }

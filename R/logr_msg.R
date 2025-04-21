@@ -1,7 +1,7 @@
 #' Log Messages to Console and File with Optional JSON Format
 #'
 #' A utility function for logging messages to the console and optionally to a
-#'  log file. Messages can be stored as plain text (default) or in JSON 
+#' log file. Messages can be stored as plain text (default) or in JSON 
 #' format, providing flexibility for human-readable or structured log storage.
 #' This function uses the `logger` package for console and plain text logging
 #' and integrates JSON logging using the `jsonlite` package.
@@ -19,8 +19,8 @@
 #' `NULL`, logs are not saved to a file, and only console logging is performed. 
 #' Defaults to `NULL`.
 #' @param json A logical value indicating whether to save logs in JSON format.
-#' Defaults to `FALSE`. 
-#'   When `TRUE`, logs are written to the specified `log_file` as JSON objects.
+#' Defaults to `FALSE`. When `TRUE`, logs are written to the specified 
+#' `log_file` as JSON objects.
 #'
 #' @details
 #' - **Console Logging**: All messages are always logged to the console.
@@ -65,42 +65,39 @@
 #' 
 logr_msg <- function(message, level = "INFO", log_file = NULL, json = FALSE) {
 
-  # default formatter for all logs
+  # Set default formatter
   logger::log_formatter(formatter = logger::formatter_glue)
 
-  # log levels
+  # Log to console by default
   switch(
     level,
-    "FATAL" = logger::log_fatal("{message}"),
-    "ERROR" = logger::log_error("{message}"),
-    "WARN" = logger::log_warn("{message}"),
+    "FATAL"   = logger::log_fatal("{message}"),
+    "ERROR"   = logger::log_error("{message}"),
+    "WARN"    = logger::log_warn("{message}"),
     "SUCCESS" = logger::log_success("{message}"),
-    "INFO" = logger::log_info("{message}"),
-    "DEBUG" = logger::log_debug("{message}"),
-    "TRACE" = logger::log_trace("{message}"),
-    logger::log_info("{message}") # INFO if level is invalid
+    "DEBUG"   = logger::log_debug("{message}"),
+    "TRACE"   = logger::log_trace("{message}"),
+    logger::log_info("{message}")  # Default fallback
   )
 
+  # Log to file only if log_file is specified
   if (!is.null(log_file)) {
-    # check the log file and directory
     log_dir <- dirname(log_file)
+
     if (!dir.exists(log_dir)) {
       dir.create(log_dir, recursive = TRUE)
     }
+
     if (!file.exists(log_file)) {
       file.create(log_file)
     }
 
-    # default logging to console and a file
     if (json) {
-      # JSON format
-      logger::log_appender(appender = logger::appender_tee(log_file))
-      logger::log_layout(layout = logger::layout_json())
+      logger::log_appender(logger::appender_tee(log_file))
+      logger::log_layout(logger::layout_json())
     } else {
-      # plain text format
-      logger::log_appender(appender = logger::appender_tee(log_file))
-      logger::log_layout(layout = logger::layout_glue_generator())
+      logger::log_appender(logger::appender_tee(log_file))
+      logger::log_layout(logger::layout_glue_generator())
     }
   }
-  
 }

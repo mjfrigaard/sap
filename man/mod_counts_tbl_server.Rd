@@ -2,18 +2,60 @@
 % Please edit documentation in R/mod_counts_tbl.R
 \name{mod_counts_tbl_server}
 \alias{mod_counts_tbl_server}
-\title{Server Logic for Counts Data Table}
+\title{Server function for the count table module}
 \usage{
 mod_counts_tbl_server(id, vals)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 
-\item{vals}{Reactive list of table parameters.}
+\item{vals}{A reactive expression that returns a list containing at least:
+\itemize{
+\item \code{start_year}: numeric value for the earliest year to include
+\item \code{end_year}: numeric value for the latest year to include
+\item \code{chr_var}: symbol representing the variable to display alongside title
+}}
 }
 \value{
-Renders a data table based on selected parameters.
+Creates the following reactive elements within the module's namespace:
+\itemize{
+\item \code{counts_table}: A reactive Reactable table with three columns:
+\itemize{
+\item Title: The movie title
+\item The selected character variable from \code{vals()$chr_var}
+\item Thtr Rel Year: The theatrical release year
+}
+}
+
+The table includes styling with a dark background, white text, and features
+such as highlighting, striping, and compact display.
 }
 \description{
-Server Logic for Counts Data Table
+Creates a reactive table showing movies based on selected filters. This
+function is designed to work together with a corresponding UI function.
+}
+\details{
+The function filters the global \code{movies} dataset based on the year range
+provided in \code{vals()}. Column names are normalized using the \code{name_case()}
+function before displaying.
+}
+\examples{
+# Server implementation
+server <- function(input, output, session) {
+  # Create a reactive values list
+  selected_vals <- reactive({
+    list(
+      start_year = 2000,
+      end_year = 2010,
+      chr_var = sym("Critics Rating")
+    )
+  })
+  
+  # Call the module server
+  mod_counts_tbl_server("movie_table", selected_vals)
+}
+
+}
+\seealso{
+\code{\link[=mod_counts_tbl_]{mod_counts_tbl_()}} The corresponding UI function for this module
 }

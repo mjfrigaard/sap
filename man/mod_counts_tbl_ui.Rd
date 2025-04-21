@@ -2,16 +2,35 @@
 % Please edit documentation in R/mod_counts_tbl.R
 \name{mod_counts_tbl_ui}
 \alias{mod_counts_tbl_ui}
-\title{User Interface for Counts Data Table}
+\title{UI for counts table module}
 \usage{
 mod_counts_tbl_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI for displaying a data table.
+A \code{tagList} containing UI elements:
+\itemize{
+\item A reactive table output that displays the count data
+}
 }
 \description{
-User Interface for Counts Data Table
+Creates a reactive table displaying count data. This function is designed
+to work together with \code{\link[=mod_counts_tbl_server]{mod_counts_tbl_server()}}.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_counts_tbl_ui("counts1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  mod_counts_tbl_server("counts1", counts_data = reactive(data))
+}
+
+}
+\seealso{
+\code{\link[=mod_counts_tbl_server]{mod_counts_tbl_server()}} for the server-side logic
 }

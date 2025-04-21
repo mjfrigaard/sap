@@ -2,16 +2,35 @@
 % Please edit documentation in R/mod_awards_tbl.R
 \name{mod_awards_tbl_ui}
 \alias{mod_awards_tbl_ui}
-\title{User Interface for Awards Data Table}
+\title{UI for Awards Table module}
 \usage{
 mod_awards_tbl_ui(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI for displaying a data table.
+A \code{tagList} containing UI elements:
+\itemize{
+\item A reactable output for displaying the awards table
+}
 }
 \description{
-User Interface for Awards Data Table
+Creates a display for a reactive table showing awards data. This function
+is designed to work together with \code{\link[=mod_awards_tbl_server]{mod_awards_tbl_server()}}.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_awards_tbl_ui("awards1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  mod_awards_tbl_server("awards1", data_reactive())
+}
+
+}
+\seealso{
+\code{\link[=mod_awards_tbl_server]{mod_awards_tbl_server()}} for the server-side logic
 }

@@ -2,31 +2,29 @@
 % Please edit documentation in R/mod_compare_vars.R
 \name{mod_compare_vars_server}
 \alias{mod_compare_vars_server}
-\title{Server function for comparing variables}
+\title{Server Logic for Variable Selection}
 \usage{
 mod_compare_vars_server(id)
 }
 \arguments{
-\item{id}{A single string identifying the module.}
+\item{id}{Shiny module ID.}
 }
 \value{
-A reactive list containing the plot parameters: x variable, y variable,
-color, alpha, size, and title.
+A reactive list of selected variables and plot attributes.
 }
 \description{
-Server function for comparing variables
+This function handles the logic for variable selection, ensuring that
+x and y variables are different.
 }
 \details{
-This server function manages the selection of variables for comparison
-plots. It ensures that x and y variables cannot be the same by updating the
-selection when needed. The function returns a reactive list with all
-plot parameters.
+When a user selects the same variable for both axes, the other
+input is automatically updated to a different choice.
 }
 \section{Logging}{
 
-This module uses log messages to track variable selections and updates.
+Includes logging for variable selection changes and validation.
 }
 
 \seealso{
-\code{mod_compare_vars_ui()} for the UI components of this module.
+\code{\link[=mod_compare_vars_ui]{mod_compare_vars_ui()}}
 }

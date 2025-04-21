@@ -2,18 +2,51 @@
 % Please edit documentation in R/mod_compare_vars.R
 \name{mod_compare_vars_ui}
 \alias{mod_compare_vars_ui}
-\title{UI module for comparing movie variables}
+\title{UI for variable comparison module}
 \usage{
 mod_compare_vars_ui(id)
 }
 \arguments{
-\item{id}{A string. The module ID.}
+\item{id}{A character string used to identify the namespace for the module.}
 }
 \value{
-A UI element containing inputs for selecting variables to compare
-in a scatter plot, including X and Y variables, color variable, and
-customization controls for alpha, size, and plot title.
+A \code{tagList} containing UI elements:
+\itemize{
+\item Variable selection inputs for X and Y axes
+\item Variable selection for color grouping
+\item Sliders for point alpha (transparency) and size
+\item Text input for plot title customization
+}
 }
 \description{
-UI module for comparing movie variables
+Creates inputs for selecting variables to compare in a scatter plot with
+customizable appearance options. This function is designed to work together
+with \code{\link[=mod_compare_vars_server]{mod_compare_vars_server()}}.
+}
+\details{
+The function prepares two sets of variables from the movies dataset:
+\itemize{
+\item Numeric variables: runtime, IMDB rating, IMDB vote count, critics score,
+and audience score for the X and Y axis selections
+\item Categorical variables: MPAA rating, genre, and critics rating for the
+color grouping option
+}
+
+Variable names are formatted using the \code{name_case()} helper function to
+improve readability in the UI.
+}
+\examples{
+# UI implementation
+ui <- fluidPage(
+  mod_compare_vars_ui("compare1")
+)
+
+# Server implementation
+server <- function(input, output, session) {
+  plot_inputs <- mod_compare_vars_server("compare1")
+}
+
+}
+\seealso{
+\code{\link[=mod_compare_vars_server]{mod_compare_vars_server()}} for the server-side logic
 }

@@ -19,7 +19,7 @@ mod_counts_tbl_server(id, vals)
 \value{
 Creates the following reactive elements within the module's namespace:
 \itemize{
-\item \code{counts_table}: A reactive Reactable table with three columns:
+\item \code{counts_table}: A reactive gt table with three columns:
 \itemize{
 \item Title: The movie title
 \item The selected character variable from \code{vals()$chr_var}
@@ -31,7 +31,7 @@ The table includes styling with a dark background, white text, and features
 such as highlighting, striping, and compact display.
 }
 \description{
-Creates a reactive table showing movies based on selected filters. This
+Creates a gt table showing movies based on selected filters. This
 function is designed to work together with a corresponding UI function.
 }
 \details{

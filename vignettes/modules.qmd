@@ -29,19 +29,16 @@ This vignette explains the movie review application's modules in the [`28_chores
 
 ## Module files 
 
+The module files in the R folder are listed below.
+
 ```{r}
 #| eval: false
 #| echo: false
 #| collapse: true
-fs::dir_tree("../R/", regexp = ".R")
+fs::dir_tree("R", regexp = "mod")
 ```
 
 ```{verbatim}
-├── create_movie_awards.R
-├── data.R
-├── display_type.R
-├── dist_var_summary.R
-├── launch_app.R
 ├── mod_awards_point.R
 ├── mod_awards_tbl.R
 ├── mod_awards_vars.R
@@ -55,18 +52,24 @@ fs::dir_tree("../R/", regexp = ".R")
 ├── mod_dist_box.R
 ├── mod_dist_raincloud.R
 ├── mod_dist_tbl.R
-├── mod_dist_vars.R
-├── name_case.R
-├── nav_server.R
-├── nav_ui.R
-├── react_tbl_row_style.R
-└── testthat.R
+└── mod_dist_vars.R
 ```
-
 
 ## Module structure
 
-The modules are structured into `compare`, `counts`, distribution (`dist`), and `awards`.
+The modules are structured into `compare`, `counts`, distribution (`dist`), and `awards`. The modules in the application have the following naming convention:
+
+**`mod_` `<tab>` `_` `<type>` `_` `ui/server`**
+
+-   `<tab>` is the name of the tab (**Compare**, **Counts**, **Distributions**, **Awards**)
+-   **`<type>`**
+    -   `vars`: 'variable' collection modules to return inputs    
+    -   `tbl`: table display modules            
+    -   type of display in module (i.e., `point`, `bar`, `vbox`, etc.)     
+
+Each tab's modules are organized into abstract syntax trees[^ast] in the sections below. 
+
+[^ast]: Create abstract syntax trees with the [`lobstr::ast()` function](https://lobstr.r-lib.org/reference/ast.html). 
 
 ### Compare 
 

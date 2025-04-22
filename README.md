@@ -57,17 +57,17 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## Shiny Tools: `chores`
+## Shiny LLM Tools: `gander`
 
-[`28_chores`](https://github.com/mjfrigaard/sap/tree/28_chores) expands the use of LLM models to the [`chores`](https://simonpcouch.github.io/chores/index.html), a package designed to, 
+[`29_gander`](https://github.com/mjfrigaard/sap/tree/29_gander) expands the use of LLM models to the [`gander`](https://simonpcouch.github.io/gander/index.html), a package designed to, 
 
-> "*help you complete repetitive, hard-to-automate tasks quickly*"
+> "*brings `ellmer` chats into your project sessions, automatically incorporating relevant context and streaming their responses directly into your documents*"
 
-Install the `ellmer` and `chores` packages below:
+Install the `ellmer` and `gander` packages below:
 
 ``` r
-install.packages(c('ellmer', 'chores'))
+install.packages(c('ellmer', 'gander'))
 # or the dev versions
 pak::pak('tidyverse/ellmer')
-pak::pak("simonpcouch/chores")
+pak::pak("simonpcouch/gander")
 ```

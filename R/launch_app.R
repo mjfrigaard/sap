@@ -18,7 +18,7 @@ launch_app <- function(options = list(), run = "p", ...) {
     
     options(shiny.useragg = TRUE)
     
-    logger::log_threshold(level = "DEBUG")
+    logger::log_threshold(level = "INFO")
     
     ggplot2::theme_set(ggplot2::theme_minimal())
     

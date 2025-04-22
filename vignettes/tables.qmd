@@ -5,7 +5,7 @@ format:
     toc: true
     toc-depth: 4
     toc-title: 'Contents'
-    toc-expand: false
+    toc-expand: true
 vignette: >
   %\VignetteIndexEntry{Tables}
   %\VignetteEngine{quarto::html}
@@ -64,8 +64,7 @@ str(tbl)
 ```
 
 ```{r}
-#| collapse: true
-# c("genre", "title_type", "mpaa_rating", "critics_rating", "audience_rating")
+#| collapse: false
 unique(movies[ , "genre"])
 unique(movies[ , "title_type"])
 unique(movies[ , "mpaa_rating"])
@@ -113,16 +112,19 @@ reactable::reactable(tbl,
 ```
 
 ```{r}
-#| eval: false
+#| eval: true
 #| echo: true
 # Function to create conditional formatting rules based on the selected variable
 get_row_style <- function(value) {
   switch(as.character(value),
+          # critics_rating
          "Certified Fresh" = list(background = "#FC5C64FF"),
          "Fresh" = list(background = "#2F8AC4FF"),
          "Rotten" = list(background = "#99C945FF"),
+         # audience_rating
          "Upright" = list(background = "#FC5C64FF"),
          "Spilled" = list(background = "#2F8AC4FF"),
+         # genre
          "Action & Adventure" = list(background = "#FC5C64FF"),
          "Animation" = list(background = "#2F8AC4FF"),
          "Art House & International" = list(background = "#99C945FF"),
@@ -133,9 +135,11 @@ get_row_style <- function(value) {
          "Musical & Performing Arts" = list(background = "#DAA51BFF"),
          "Mystery & Suspense" = list(background = "#2F8AC4FF"),
          "Science Fiction & Fantasy" = list(background = "#764E9FFF"),
+         # title_type
          "Feature Film" = list(background = "#FC5C64FF"),
          "Documentary" = list(background = "#2F8AC4FF"),
          "TV Movie" = list(background = "#99C945FF"),
+         # mpaa_rating
          "G" = list(background = "#E58606FF"),
          "PG" = list(background = "#5D69B1FF"),
          "PG-13" = list(background = "#CC61B0FF"),
@@ -145,31 +149,6 @@ get_row_style <- function(value) {
          list(background = "#A5AA99FF")  # Default color
   )
 }
-
-# Reactable with dynamic row styling
-reactable::reactable(tbl,
-  defaultPageSize = 25,
-  borderless = TRUE,
-  highlight = TRUE,
-  striped = TRUE,
-  compact = TRUE,
-  style = list(
-    backgroundColor = "#121212",
-    color = "#ffffff"
-  ),
-  rowStyle = function(index) {
-    # Convert the selected column to character to use it for conditional formatting
-    selected_var <- as.character(tbl_data[index, vals()$chr_var])
-    get_row_style(selected_var)
-  },
-  rowClass = function(index) {
-    selected_var <- as.character(tbl_data[index, vals()$chr_var])
-    if (selected_var %in% c("Certified Fresh", "Upright", "Action & Adventure")) {
-      "bold"  # Apply a bold class for certain levels
-    }
-  }
-)
-
 ```
 
 

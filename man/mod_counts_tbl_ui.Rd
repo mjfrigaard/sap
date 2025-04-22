@@ -12,11 +12,11 @@ mod_counts_tbl_ui(id)
 \value{
 A \code{tagList} containing UI elements:
 \itemize{
-\item A reactive table output that displays the count data
+\item A gt table output that displays the count data
 }
 }
 \description{
-Creates a reactive table displaying count data. This function is designed
+Creates a gt table displaying count data. This function is designed
 to work together with \code{\link[=mod_counts_tbl_server]{mod_counts_tbl_server()}}.
 }
 \examples{

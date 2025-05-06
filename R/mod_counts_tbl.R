@@ -82,28 +82,39 @@ mod_counts_tbl_server <- function(id, vals) {
     output$counts_table <- gt::render_gt({
       req(vals())
       # subset
-      tbl_data <- subset(
+      count_data <- subset(
         movies,
         thtr_rel_year >= vals()$start_year &
         thtr_rel_year <= vals()$end_year
       )
+
+      # Convert selected variable to snake_case
+      group_var <- name_case(as.character(vals()$chr_var), case = "lower")
+
+      # Count per group using tidy evaluation
+      tbl_data <- count_data |>
+        dplyr::group_by(.data[[group_var]]) |>
+        dplyr::summarise(n = dplyr::n(), .groups = "drop") |>
+        dplyr::arrange(dplyr::desc(n))
       
-      # normalize names
-      tbl_names <- name_case(names(tbl_data))
-      tbl_data <- setNames(tbl_data, nm = tbl_names)
-      chr_var <- as.character(vals()$chr_var)
-      tbl_data <- tbl_data[c("Title", chr_var, "Thtr Rel Year")]
+      # Normalize column names in the data
+      names(tbl_data) <- name_case(names(tbl_data))
       
       # gt table with dark theme styling
       gt::gt(tbl_data) |> 
       gt::tab_options(
+        table.width = gt::pct(100),
+        table.font.color = "#ffffff",
+        table.align = "left",
+        heading.align = "left",
         table.background.color = "#121212",
         column_labels.background.color = "#1e1e1e",
-        table.font.color = "#ffffff",
+        table.font.size = gt::px(20),
         table.border.top.style = "hidden",
         table.border.bottom.style = "hidden"
       ) |> 
       gt::opt_row_striping()
     })
+    
   })
 }

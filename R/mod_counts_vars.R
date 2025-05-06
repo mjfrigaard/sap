@@ -45,7 +45,7 @@ mod_counts_vars_ui <- function(id) {
           inputId = ns("chr_var"),
           label = strong("Group variable"),
           data = chr_data,
-          selected = "Critics Rating"
+          selected = "Mpaa Rating"
         ),
         markdown("**Theater Release Year**"),
         numericInput(

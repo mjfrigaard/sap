@@ -425,60 +425,137 @@ ggplot2::ggplot(d_bp,
 
 ## Raincloud Plot
 
-The raincloud plot is a combination of layers from 
+The raincloud plot is a combination of layers from `geom_boxplot()`, `ggdist::stat_halfeye()`,  and `geom_point()`:
 
 ```{r}
+#| eval: false
+# Pretty names 
+mv_nms <- names(sap::movies) |> name_case()
+movie_data <- setNames(object = sap::movies, nm = mv_nms)
+      
+a <- as.numeric(vals()$alpha)
+s <- as.numeric(vals()$size)
+      
+# Create boxplot layer
+gg2_box <- ggplot2::ggplot(
+  movie_data,
+  ggplot2::aes(
+    x = !!vals()$num_var, 
+    y = !!vals()$chr_var
+    )
+) +
+ggplot2::geom_boxplot(
+  ggplot2::aes(
+    fill = !!vals()$chr_var),
+  width = 0.10,
+  outlier.shape = NA,
+  alpha = a,
+  show.legend = FALSE
+) +
+ggplot2::scale_fill_manual(values = clr_pal12)
+```
 
+
+```{r}
+#| eval: false
+# Add halfeye layer
+gg2_halfeye <- gg2_box +
+ggdist::stat_halfeye(
+  ggplot2::aes(
+    fill = !!vals()$chr_var
+    ),
+  alpha = a,
+  adjust = s/5, 
+  .width = 0, 
+  point_colour = NA, 
+  orientation = "horizontal", 
+  height = 0.75, 
+  justification = -0.20, 
+  show.legend = FALSE 
+)
+```
+
+```{r}
+#| eval: false
+# Add points layer
+gg2_point <- gg2_halfeye +
+ggplot2::geom_point(
+  ggplot2::aes(
+    fill = !!vals()$chr_var
+    ),
+  position = ggplot2::position_jitter(
+    seed = 54321,
+    height = .05
+  ),
+  shape = 21,
+  color = "#ffffff",
+  alpha = a,
+  size = 3,
+  show.legend = FALSE
+)
+```
+
+
+```{r}
+#| eval: false
+# Final plot with formatting
+final_plot <- gg2_point + 
+ggplot2::labs(
+  x = name_case(as.character(vals()$num_var)),
+  y = name_case(as.character(vals()$chr_var))
+) +
+ggplot2::theme(
+  legend.position = "none",
+  axis.text = ggplot2::element_text(color = "#ffffff"),
+  axis.title = ggplot2::element_text(color = "#ffffff")
+)
 ```
 
 ## Movie Awards Plot
 
-The movie awards plot uses a subset of the `movies` dataset generated with the `create_movie_awards()` function.
+The movie awards plot uses a subset of the `movies` dataset generated from the `best_`, `director`, and `actor*` columns.
 
 ```{r}
-#| eval: true
-start_year <- 1978
-end_year <- 1980
-awards <- create_movie_awards(
-  award = "Stars", 
-  start_year = start_year, 
-  end_year = end_year)
-str(awards)
+dplyr::glimpse(movies)
+```
+
+The inputs are the type of award: `"picture/director"`, `"actor/actress"`. 
+
+### Awards: picture/director
+
+If the user selects `"picture/director"`, the function returns the `title`, `release_year` and `director` columns:
+
+```{r}
+awards <- get_award_recipients(movies, "picture/director", 1992)
+dplyr::glimpse(awards)
 ```
 
 ```{r}
 #| eval: true
-pos <- ggplot2::position_jitter(width = 1/100, height = 1/100, seed = 2)
-```
-
-```{r}
-#| eval: true
+start_year <- 1990
+end_year <- 1994
+pos <- ggplot2::position_jitter(
+  width = 1/100, 
+  height = 1/100, 
+  seed = 2)
 ggp2_points <- ggplot2::ggplot(data = awards) + 
-  ggplot2::aes(x = year, 
-               y = award, 
-               label = title) + 
+  ggplot2::aes(x = release_year, 
+               y = title, 
+               label = director_genre) + 
   ggplot2::geom_point(ggplot2::aes(color = title), 
-    position = pos, alpha = 1/3, size = 1.5,
-    show.legend = FALSE)
+    position = pos,
+     alpha = 1/3, 
+     size = 1.5,
+    show.legend = FALSE) 
 ggp2_points
 ```
 
 ```{r}
 #| eval: true
-ggp2_scales <- ggp2_points + 
-  ggplot2::scale_x_continuous(
-    breaks = as.integer(start_year:end_year), 
-    labels = scales::label_number(accuracy = 1)) + 
-  ggplot2::coord_cartesian(clip = "off") 
-ggp2_scales
-```
-
-```{r}
-#| eval: true
 library(ggrepel)
-ggp2_repel <- ggp2_scales + 
+ggp2_repel <- ggp2_points + 
   ggrepel::geom_label_repel(
-    mapping = aes(fill = title),
+    mapping = aes(fill = director_genre),
           color = "#FFFFFF",
           max.iter = 1e5,
           max.time = 1,
@@ -487,18 +564,92 @@ ggp2_repel <- ggp2_scales +
                 length = unit(0.02, "npc"), 
                 type = "closed", 
                 ends = "last"),
-          max.overlaps = 100,
-          box.padding = 0.65,
-          min.segment.length = 0,
+          max.overlaps = 35,
+          box.padding = 0.60,
+          min.segment.length = 1,
           size = 3,
           xlim = c(NA, NA),
-          ylim = c(-Inf, Inf),
+          ylim = c(NA, NA),
           show.legend = FALSE,
-    ) 
+    ) + 
+  ggplot2::scale_x_continuous(
+    breaks = as.integer(start_year:end_year), 
+    labels = scales::label_number(accuracy = 1)) + 
+  ggplot2::coord_cartesian(clip = "off") 
 ggp2_repel
 ```
 
 ```{r}
+#| eval: true
+ggp2_labels <- ggp2_repel + 
+  ggplot2::labs(
+    x = name_case("year"), 
+    y = name_case("title")
+    ) 
+ggp2_labels
+```
+
+### Awards: actor/actress
+
+If the user selects `"actor/actress"`, the function returns the `title`,  `release_year`, and `star` columns:
+
+```{r}
+awards <- get_award_recipients(movies, "actor/actress", 1987)
+dplyr::glimpse(awards)
+```
+
+```{r}
+#| eval: true
+start_year <- 1986
+end_year <- 1988
+pos <- ggplot2::position_jitter(
+  width = 1/100, 
+  height = 1/100, 
+  seed = 2)
+ggp2_points <- ggplot2::ggplot(data = awards) + 
+  ggplot2::aes(x = release_year, 
+               y = title, 
+               label = star) + 
+  ggplot2::geom_point(ggplot2::aes(color = title), 
+    position = pos,
+     alpha = 1/3, 
+     size = 1.5,
+    show.legend = FALSE) 
+ggp2_points
+```
+
+
+```{r}
+#| eval: true
+library(ggrepel)
+ggp2_repel <- ggp2_points + 
+  ggrepel::geom_label_repel(
+    mapping = aes(fill = star),
+          color = "#FFFFFF",
+          max.iter = 1e5,
+          max.time = 1,
+          point.padding = 0.5,
+          arrow = arrow(
+                length = unit(0.02, "npc"), 
+                type = "closed", 
+                ends = "last"),
+          max.overlaps = 35,
+          box.padding = 0.60,
+          min.segment.length = 1,
+          size = 3,
+          xlim = c(NA, NA),
+          ylim = c(NA, NA),
+          show.legend = FALSE,
+    ) + 
+  ggplot2::scale_x_continuous(
+    breaks = as.integer(start_year:end_year), 
+    labels = scales::label_number(accuracy = 1)) + 
+  ggplot2::coord_cartesian(clip = "off") 
+ggp2_repel
+```
+
+```{r}
+#| eval: true
 ggp2_labels <- ggp2_repel + 
   ggplot2::labs(
     x = name_case("year"), 
@@ -508,6 +659,9 @@ ggp2_labels
 ```
 
 ```{r}
+#| eval: false 
+#| echo: false
+#| include: true
 ggp2_theme <- ggp2_labels + 
   ggplot2::theme_minimal(base_size = 13) + 
   ggplot2::theme(

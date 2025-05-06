@@ -13,8 +13,14 @@ name_case(x, case = "title")
 }
 \value{
 A character vector with the case changed according to the specified format.
-Will error if input is not a character vector or if an unsupported case is specified.
+Will error if input is not a character vector or if an unsupported case is
+specified.
 }
 \description{
 Change the case of text
+}
+\examples{
+name_case(c("user.name", "full-name", "Some Value"), case = "lower")
+name_case(c("user.name", "full-name", "Some Value"), case = "title")
+
 }

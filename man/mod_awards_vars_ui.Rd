@@ -2,38 +2,32 @@
 % Please edit documentation in R/mod_awards_vars.R
 \name{mod_awards_vars_ui}
 \alias{mod_awards_vars_ui}
-\title{UI for awards variables module}
+\title{UI for Awards Variables Module (5-Year Range)}
 \usage{
 mod_awards_vars_ui(id)
 }
 \arguments{
-\item{id}{A character string used to identify the namespace for the module.}
+\item{id}{A character string used to identify the module namespace.}
 }
 \value{
-A \code{tagList} containing UI elements:
+A \code{tagList} containing:
 \itemize{
 \item A select input for award type (Films or Stars)
-\item Two numeric inputs for selecting the start and end years for theater
-release filtering
+\item A sliderInput for a 5-year release range
+\item A textOutput showing the selected year range
 }
 }
 \description{
-Creates inputs for selecting award types and filtering by theater release
-years. This function is designed to work together with
-\code{\link[=mod_awards_vars_server]{mod_awards_vars_server()}}.
+Creates UI elements for selecting award type and a 5-year release range using
+a slider input. An auto-updating label shows the currently selected year range.
 }
 \examples{
-# UI implementation
-ui <- fluidPage(
-  mod_awards_vars_ui("awards1")
-)
-
-# Server implementation
+ui <- fluidPage(mod_awards_vars_ui("awards1"))
 server <- function(input, output, session) {
-  award_vars <- mod_awards_vars_server("awards1")
+  mod_awards_vars_server("awards1")
 }
 
 }
 \seealso{
-\code{\link[=mod_awards_vars_server]{mod_awards_vars_server()}} for the server-side logic
+\code{\link[=mod_awards_vars_server]{mod_awards_vars_server()}} for the server logic
 }

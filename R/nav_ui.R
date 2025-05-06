@@ -93,10 +93,6 @@ nav_ui <- function() {
             ),
           bslib::nav_panel(
             markdown("Graphs"),
-            bslib::card_header(
-              ### Text (UI) ----
-              mod_counts_vbox_ui("cnt_txt")
-            ),
             bslib::card_body(
               ### Bars (UI) ----
               mod_counts_bar_ui(id = "hbar"),
@@ -106,6 +102,10 @@ nav_ui <- function() {
           ),
           bslib::nav_panel(
             markdown("Table"),
+            bslib::card_header(
+              ### Vbox (UI) ----
+              mod_counts_vbox_ui("cnt_txt")
+            ),
             bslib::card_body(
               ### Counts Table (UI) ----
               mod_counts_tbl_ui(id = "cnt_tbl")

@@ -7,7 +7,7 @@
 mod_awards_tbl_server(id, vals)
 }
 \arguments{
-\item{id}{Module's ID for namespacing}
+\item{id}{Module ID for namespacing}
 
 \item{vals}{Reactive providing values for award type and year range}
 }

@@ -24,19 +24,19 @@
 mod_awards_tbl_ui <- function(id) {
   ns <- NS(id)
     tagList(
-      reactable::reactableOutput(
+      gt::gt_output(
         outputId = ns("awards_table"))
     )
 }
 
-
+#' 
 #' Awards Table Server Module
 #'
 #' Server function for the awards table display. Takes award selection and year
 #' range values from a reactive source to generate a table showing movie
 #' awards data.
 #'
-#' @param id Module's ID for namespacing
+#' @param id Module ID for namespacing
 #' @param vals Reactive providing values for award type and year range
 #'
 #' @seealso [mod_awards_tbl_ui()] The corresponding UI function
@@ -46,46 +46,59 @@ mod_awards_tbl_ui <- function(id) {
 mod_awards_tbl_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
-    output$awards_table <- reactable::renderReactable({
-      # Validate input values
+    output$awards_table <- gt::render_gt({
+      # validate input values
       req(vals())
       
-      logr_msg("Preparing awards table with selected parameters", level = "DEBUG")
-      logr_msg(glue::glue("Award: {vals()$award}, Years: {vals()$start_year}-
-      {vals()$end_year}"), level = "TRACE")
+      logr_msg("Preparing awards table with selected parameters", 
+        level = "DEBUG")
+      logr_msg(glue::glue("Award: {vals()$award}, Year: {vals()$year}"),
+        level = "TRACE")
       
       tryCatch({
-        # Create awards data table
-        tbl_data <- create_movie_awards(movies,
-          award = as.character(vals()$award),
-          start_year = as.numeric(vals()$start_year),
-          end_year = as.numeric(vals()$end_year)
-        )
+        # create awards data 
+        award <- as.character(vals()$award)
+        year <- as.numeric(vals()$year)
+        if (award == "picture/director") {
+          awards <- get_award_recipients(sap::movies, 
+                                         award = "picture/director", 
+                                         year = year)
+        } else {
+          awards <- get_award_recipients(sap::movies, 
+                                         award = "actor/actress", 
+                                         year = year)
+        }
+        # normalize columns
+        tbl_names <- name_case(names(awards))
+        tbl_data <- stats::setNames(object = awards, nm = tbl_names)
         
         logr_msg(glue::glue("Generated awards table with {nrow(tbl_data)} rows"), 
         level = "INFO")
         
-        # Normalize column names
-        tbl_names <- name_case(names(tbl_data))
-        tbl <- stats::setNames(object = tbl_data, nm = tbl_names)
+        # gt table
+        tbl_data |> 
+        gt::gt() |>
+        gt::tab_options(
+          table.width = gt::pct(100),
+          table.background.color = "#121212",
+          table.font.color = "#ffffff",
+          table.border.top.style = "none",
+          table.border.bottom.style = "none",
+          table.font.size = gt::px(20)
+        ) |>
+        gt::opt_row_striping()
         
-        # Return reactable
-        reactable::reactable(
-          data = tbl,
-          borderless = TRUE,
-          highlight = TRUE,
-          striped = TRUE,
-          compact = TRUE,
-          style = list(
-            backgroundColor = "#121212",
-            color = "#ffffff"
-          )
-        )
       }, error = function(e) {
-        logr_msg(glue::glue("Failed to generate awards table: {e$message}"),
-        level = "ERROR")
-        # Return empty data frame to avoid breaking the UI
-        reactable::reactable(data.frame())
+        
+        logr_msg(glue::glue("Failed to generate distribution table. 
+        Error: {e$message}"), level = "ERROR")
+        
+        # return empty data with message if error
+        gt::gt(
+          data.frame(
+            Error = "Failed to generate table. Please try again.")
+          )
+        
       })
     })
   })

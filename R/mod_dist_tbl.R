@@ -6,7 +6,7 @@
 #' @param id A character string used to identify the namespace for the module.
 #'
 #' @return A `tagList` containing a single UI element:
-#'   * A reactable output that will display the distribution table
+#'   * A gt output that will display the distribution table
 #'
 #' @seealso [mod_dist_tbl_server()] for the server-side logic
 #'
@@ -29,10 +29,11 @@
 #' 
 mod_dist_tbl_ui <- function(id) {
   ns <- NS(id)
-    tagList(
-      reactable::reactableOutput(
-        outputId = ns("dist_table"))
+  tagList(
+    gt::gt_output(
+      outputId = ns("dist_table")
     )
+  )
 }
 
 #' Server Logic for Distribution Data Table
@@ -57,7 +58,7 @@ mod_dist_tbl_ui <- function(id) {
 mod_dist_tbl_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
-    output$dist_table <- reactable::renderReactable({
+    output$dist_table <- gt::render_gt({
       logr_msg("Preparing distribution table in mod_dist_tbl_server",
       level = "TRACE")
       
@@ -81,28 +82,29 @@ mod_dist_tbl_server <- function(id, vals) {
         logr_msg(glue::glue("Generated summary table with {nrow(tbl_data)} rows"),
         level = "INFO")
         
-        # Create reactable
-        reactable::reactable(
-          data = tbl_data,
-          borderless = TRUE,
-          compact = TRUE,
-          highlight = TRUE,
-          striped = TRUE,
-          style = list(
-            backgroundColor = "#121212",
-            color = "#ffffff"
-          )
-        )
+        # Create gt table
+        tbl_data |>
+        gt::gt() |>
+        gt::tab_options(
+          table.width = gt::pct(100),
+          table.background.color = "#121212",
+          table.font.color = "#ffffff",
+          table.border.top.style = "none",
+          table.border.bottom.style = "none",
+          table.font.size = gt::px(20)
+        ) |>
+        gt::opt_row_striping()
+        
       }, error = function(e) {
         logr_msg(glue::glue("Failed to generate distribution table. 
         Error: {e$message}"), level = "ERROR")
         
         # Return empty data frame with message if there's an error
-        reactable::reactable(
-          data.frame(Error = "Failed to generate table. Please try again."),
-          striped = TRUE
-        )
+        data.frame(Error = "Failed to generate table. Please try again.") |>
+        gt::gt()
       })
     })
   })
 }
+
+

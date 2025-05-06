@@ -12,7 +12,7 @@ mod_dist_tbl_ui(id)
 \value{
 A \code{tagList} containing a single UI element:
 \itemize{
-\item A reactable output that will display the distribution table
+\item A gt output that will display the distribution table
 }
 }
 \description{

@@ -11,28 +11,32 @@ Imports:
     bsicons,
     bslib,
     cli,
+    dplyr,
     forcats,
     ggdist,
     ggplot2,
     ggrepel,
     ggwaffle,
+    glue,
     grid,
+    gt,
     logger,
-    mockery,
     plotly,
-    reactable,
     sass,
     scales,
     shiny,
     stats,
-    thematic
+    thematic,
+    tidyr
 Suggests: 
-    ggplot2movies,
-    glue,
+    htmltools,
     knitr,
+    lobstr,
+    mockery,
+    reactable,
     rmarkdown,
     shinytest2,
-    waldo
+    testthat
 VignetteBuilder: 
     quarto
 Config/testthat/edition: 3

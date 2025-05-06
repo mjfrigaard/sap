@@ -2,21 +2,23 @@
 % Please edit documentation in R/mod_awards_vars.R
 \name{mod_awards_vars_server}
 \alias{mod_awards_vars_server}
-\title{Server Logic for Count Tab Input}
+\title{Server Logic for Awards Variables Module (5-Year Range)}
 \usage{
 mod_awards_vars_server(id)
 }
 \arguments{
-\item{id}{Shiny module ID.}
+\item{id}{Shiny module ID (character).}
 }
 \value{
-A reactive list containing the selected years and award type.
+A reactive list with:
+\itemize{
+\item \code{award}: Selected award type.
+\item \code{year}: Selected year.
+}
 }
 \description{
-Processes and validates user inputs for the awards section, ensuring
-start and end years are properly sequenced. Provides the selected
-year range and award type to other components.
+Handles award type and a validated year slider input for release years.
 }
 \seealso{
-\code{\link[=mod_awards_vars_ui]{mod_awards_vars_ui()}} The corresponding UI function.
+\code{\link[=mod_awards_vars_ui]{mod_awards_vars_ui()}} for the UI.
 }

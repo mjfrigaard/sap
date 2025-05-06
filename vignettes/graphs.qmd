@@ -425,7 +425,18 @@ ggplot2::ggplot(d_bp,
 
 ## Raincloud Plot
 
-The raincloud plot is a combination of layers from `geom_boxplot()`, `ggdist::stat_halfeye()`,  and `geom_point()`:
+The raincloud plot is a combination of layers from `geom_boxplot()`, `ggdist::stat_halfeye()`,  and `geom_point()`. The reactive values come from the `vals()` reactive object, which contains one numeric (`num_var`) and one character variable (`chr_var`), and the `alpha` and `size` aesthetics:
+
+```{r}
+#| label: raincloud_vars
+#| eval: true
+vals <- list('num_var' = name_case('audience_score'),
+              'chr_var' = name_case('critics_rating'), 
+              'alpha' = 0.75,
+              'size' = 3)
+vals
+```
+
 
 ```{r}
 #| eval: false
@@ -455,6 +466,35 @@ ggplot2::geom_boxplot(
 ggplot2::scale_fill_manual(values = clr_pal12)
 ```
 
+```{r}
+#| echo: false 
+#| eval: true
+mv_nms <- names(sap::movies) |> name_case()
+movie_data <- setNames(object = sap::movies, nm = mv_nms)
+      
+a <- as.numeric(vals$alpha)
+s <- as.numeric(vals$size)
+      
+# Create boxplot layer
+gg2_box <- ggplot2::ggplot(
+  movie_data,
+  ggplot2::aes(
+    x = `Audience Score`,
+    y = `Critics Rating`
+    )
+) +
+ggplot2::geom_boxplot(
+  ggplot2::aes(
+    fill = `Audience Score`),
+  width = 0.10,
+  outlier.shape = NA,
+  alpha = a,
+  show.legend = FALSE
+) +
+ggplot2::scale_fill_manual(values = clr_pal12)
+gg2_box
+```
+
 
 ```{r}
 #| eval: false
@@ -473,6 +513,26 @@ ggdist::stat_halfeye(
   justification = -0.20, 
   show.legend = FALSE 
 )
+```
+
+```{r}
+#| eval: true 
+#| echo: false
+gg2_halfeye <- gg2_box +
+ggdist::stat_halfeye(
+  ggplot2::aes(
+    fill = `Critics Rating`
+    ),
+  alpha = a,
+  adjust = s/5, 
+  .width = 0, 
+  point_colour = NA, 
+  orientation = "horizontal", 
+  height = 0.75, 
+  justification = -0.20, 
+  show.legend = FALSE 
+)
+gg2_halfeye
 ```
 
 ```{r}
@@ -496,6 +556,30 @@ ggplot2::geom_point(
 ```
 
 
+
+```{r}
+#| eval: true 
+#| echo: false
+gg2_point <- gg2_halfeye +
+ggplot2::geom_point(
+  ggplot2::aes(
+    fill = `Critics Rating`
+    ),
+  position = ggplot2::position_jitter(
+    seed = 54321,
+    height = .05
+  ),
+  shape = 21,
+  color = "#ffffff",
+  alpha = a,
+  size = 3,
+  show.legend = FALSE
+)
+gg2_point
+```
+
+
+
 ```{r}
 #| eval: false
 # Final plot with formatting
@@ -509,6 +593,23 @@ ggplot2::theme(
   axis.text = ggplot2::element_text(color = "#ffffff"),
   axis.title = ggplot2::element_text(color = "#ffffff")
 )
+```
+
+```{r}
+#| eval: true 
+#| echo: false
+# Final plot with formatting
+final_plot <- gg2_point + 
+ggplot2::labs(
+  x = name_case(as.character(vals$num_var)),
+  y = name_case(as.character(vals$chr_var))
+) +
+ggplot2::theme(
+  legend.position = "none",
+  axis.text = ggplot2::element_text(color = "#ffffff"),
+  axis.title = ggplot2::element_text(color = "#ffffff")
+)
+final_plot
 ```
 
 ## Movie Awards Plot

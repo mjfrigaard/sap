@@ -104,9 +104,18 @@ mod_dist_box_server <- function(id, vals) {
               ) +
               ggplot2::theme(
                 legend.position = "none",
-                strip.text = ggplot2::element_text(color = "#ffffff", size = ggplot2::rel(0.8)),
-                axis.text = ggplot2::element_text(color = "#ffffff", size = ggplot2::rel(0.95)),
-                axis.title = ggplot2::element_text(color = "#ffffff", size = ggplot2::rel(1.1)),
+                strip.text = ggplot2::element_text(
+                  color = "#ffffff", 
+                  size = ggplot2::rel(1.025)
+                ),
+                axis.text = ggplot2::element_text(
+                  color = "#ffffff", 
+                  size = ggplot2::rel(1.05)
+                ),
+                axis.title = ggplot2::element_text(
+                  color = "#ffffff", 
+                  size = ggplot2::rel(1.10)
+                ),
                 plot.background = ggplot2::element_rect(
                   fill = "transparent",
                   color = NA

@@ -23,6 +23,7 @@ A \code{tibble} with selected columns depending on the award type:
 }
 }
 \description{
-This function filters the \code{movies} dataset based on the selected award type
-("picture/director" or "actor/actress") and a specified year.
+This function filters the \code{movies} dataset based on the selected
+award type ("picture/director" or "actor/actress") and a specified
+year.
 }

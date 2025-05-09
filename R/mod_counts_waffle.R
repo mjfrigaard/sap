@@ -53,7 +53,8 @@ mod_counts_waffle_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     
     output$waffle_plot <- renderPlot({
-      logr_msg("Starting waffle plot rendering", level = "TRACE")
+      logr_msg("Starting waffle plot rendering", 
+        level = "TRACE")
       
       req(vals())
       
@@ -63,7 +64,8 @@ mod_counts_waffle_server <- function(id, vals) {
         movies <- sap::movies
         
         logr_msg(glue::glue("Filtering data from {vals()$start_year} to 
-        {vals()$end_year}"), level = "DEBUG")
+        {vals()$end_year}"),
+          level = "DEBUG")
         
         # Subset data based on year range
         waffle_set <- subset(movies, 
@@ -71,7 +73,8 @@ mod_counts_waffle_server <- function(id, vals) {
           thtr_rel_year <= vals()$end_year)
           
           if (nrow(waffle_set) == 0) {
-            logr_msg("No data available for selected year range", level = "WARN")
+            logr_msg("No data available for selected year range", 
+              level = "WARN")
           }
           
           # Clean names 
@@ -99,8 +102,10 @@ mod_counts_waffle_server <- function(id, vals) {
                 ) + 
                 ggwaffle::theme_waffle() +
                 ggplot2::theme( 
-                  legend.text = ggplot2::element_text(color = "#ffffff", size = 14),
-                  legend.title = ggplot2::element_text(color = "#ffffff", size = 16)
+                  legend.text = ggplot2::element_text(
+                    color = "#ffffff", size = 14),
+                  legend.title = ggplot2::element_text(
+                    color = "#ffffff", size = 16)
                 )
                 
               }, error = function(e) {

@@ -88,16 +88,16 @@ mod_counts_tbl_server <- function(id, vals) {
         thtr_rel_year <= vals()$end_year
       )
 
-      # Convert selected variable to snake_case
+      # convert selected variable to snake_case
       group_var <- name_case(as.character(vals()$chr_var), case = "lower")
 
-      # Count per group using tidy evaluation
+      # count per group using tidy evaluation
       tbl_data <- count_data |>
         dplyr::group_by(.data[[group_var]]) |>
         dplyr::summarise(n = dplyr::n(), .groups = "drop") |>
         dplyr::arrange(dplyr::desc(n))
       
-      # Normalize column names in the data
+      # normalize column names in the data
       names(tbl_data) <- name_case(names(tbl_data))
       
       # gt table with dark theme styling

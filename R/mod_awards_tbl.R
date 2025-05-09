@@ -91,7 +91,8 @@ mod_awards_tbl_server <- function(id, vals) {
       }, error = function(e) {
         
         logr_msg(glue::glue("Failed to generate distribution table. 
-        Error: {e$message}"), level = "ERROR")
+        Error: {e$message}"), 
+          level = "ERROR")
         
         # return empty data with message if error
         gt::gt(

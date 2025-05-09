@@ -62,7 +62,8 @@ mod_awards_vars_server <- function(id) {
     ns <- session$ns
     initialized <- reactiveVal(FALSE)
 
-    logr_msg("Initializing awards variables module", level = "INFO")
+    logr_msg("Initializing awards variables module", 
+      level = "INFO")
 
     # label for selected range
     output$year_label <- renderText({

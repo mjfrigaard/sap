@@ -105,7 +105,8 @@ mod_counts_vbox_server <- function(id, vals) {
       
       # Year span text
       output$years_text <- renderText({
-        logr_msg("Rendering year span text", level = "TRACE")
+        logr_msg("Rendering year span text", 
+          level = "TRACE")
         
         tryCatch({
           time_span <- abs(vals()$start_year - vals()$end_year)

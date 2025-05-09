@@ -35,11 +35,11 @@ library(sap)
 ```
 
 
-This document covers the `reactable` table styling the Shiny application.[^table-style-ref]
+This document covers the `gt` table styling the Shiny application.[^table-style-ref]
 
 ```{r}
-library(reactable)
-library(htmltools)
+library(gt)
+library(dplyr)
 ```
 
 ## Counts
@@ -48,112 +48,128 @@ Create data with inputs similar to the UI:
 
 ```{r}
 # inputs
-chr_var <- "critics_rating"
-start_year <- 1980L 
-end_year <- 1990L
+vals <- list(
+  chr_var = "mpaa_rating",
+  start_year = 1980L,
+  end_year = 1990L)
 # subset
-tbl_data <- subset(movies,
-  thtr_rel_year >= start_year &
-    thtr_rel_year <= end_year)
-# cols
-tbl_data <- tbl_data[c("title", chr_var, "thtr_rel_year")]
-# normalize names
-tbl_names <- name_case(names(tbl_data))
-tbl <- stats::setNames(object = tbl_data, nm = tbl_names)
-str(tbl)
-```
+count_data <- subset(
+  movies,
+  thtr_rel_year >= vals$start_year &
+  thtr_rel_year <= vals$end_year
+)
+# convert selected variable to snake_case
+group_var <- name_case(as.character(vals$chr_var), case = "lower")
 
-```{r}
-#| collapse: false
-unique(movies[ , "genre"])
-unique(movies[ , "title_type"])
-unique(movies[ , "mpaa_rating"])
-unique(movies[ , "critics_rating"])
-unique(movies[ , "audience_rating"])
-```
-
-
-Add CSS:
-
-```{css}
-.bold {
-  font-weight: bold;
-}
+# count per group using tidy evaluation
+tbl_data <- count_data |>
+  dplyr::group_by(.data[[group_var]]) |>
+  dplyr::summarise(n = dplyr::n(), .groups = "drop") |>
+  dplyr::arrange(dplyr::desc(n))
+      
+# normalize column names in the data
+names(tbl_data) <- name_case(names(tbl_data))
+tbl_data
 ```
 
 Create table:
 
 ```{r}
-reactable::reactable(tbl, 
-  defaultPageSize = 25,
-  borderless = TRUE,
-  highlight = TRUE,
-  striped = TRUE,
-  compact = TRUE,
-  style = list(
-    backgroundColor = "#121212",
-    color = "#ffffff"
-  ),
-  rowStyle = function(index) {
-    if (tbl[index, "Critics Rating"] == "Certified Fresh") {
-      list(background = "#FC5C64FF")
-    } else if (tbl[index, "Critics Rating"] == "Fresh") {
-      list(background = "#2F8AC4FF")
-    } else {
-      list(background = "#99C945FF")
-    }
-  },
-  rowClass = function(index) {
-    if (tbl[index, "Critics Rating"] == "Certified Fresh") {
-      "bold"
-    }
-  }
-)
+# gt table with dark theme styling
+gt::gt(tbl_data) |> 
+gt::tab_options(
+  table.width = gt::pct(100),
+  table.font.color = "#ffffff",
+  table.align = "left",
+  heading.align = "left",
+  table.background.color = "#121212",
+  column_labels.background.color = "#1e1e1e",
+  table.font.size = gt::px(20),
+  table.border.top.style = "hidden",
+  table.border.bottom.style = "hidden"
+) |> 
+gt::opt_row_striping()
+```
+
+## Distributions 
+
+```{r}
+vals <- list(
+  chr_var = "Critics Rating",
+  num_var = "Audience Score",
+  alpha = 0.8,
+  size = 3)
+# capture variables from reactive input
+chr_var <- as.character(vals$chr_var)
+num_var <- as.character(vals$num_var)
+        
+# transform movie data names
+mv_nms <- names(sap::movies) |> name_case()
+movie_data <- setNames(object = sap::movies, nm = mv_nms)
+
+# generate summary data
+tbl_data <- dist_var_summary(
+                  data = movie_data, 
+                  grp_var = chr_var, 
+                  num_var = num_var)
+tbl_data
+```
+
+```{r}
+# create gt table
+tbl_data |>
+gt::gt() |>
+gt::tab_options(
+  table.width = gt::pct(100),
+  table.background.color = "#121212",
+  table.font.color = "#ffffff",
+  table.border.top.style = "none",
+  table.border.bottom.style = "none",
+  table.font.size = gt::px(20)
+  ) |>
+  gt::opt_row_striping()
+```
+
+
+## Awards
+
+```{r}
+#| eval: true
+vals <- list(
+  award = "picture/director",
+  year = 1987)
+# create awards data 
+award <- as.character(vals$award)
+year <- as.numeric(vals$year)
+if (award == "picture/director") {
+  awards <- get_award_recipients(sap::movies, 
+                                 award = "picture/director", 
+                                 year = year)
+} else {
+  awards <- get_award_recipients(sap::movies, 
+                                 award = "actor/actress", 
+                                 year = year)
+}
+# normalize columns
+tbl_names <- name_case(names(awards))
+tbl_data <- stats::setNames(object = awards, nm = tbl_names)
+tbl_data
 ```
 
 ```{r}
 #| eval: true
-#| echo: true
-# Function to create conditional formatting rules based on the selected variable
-get_row_style <- function(value) {
-  switch(as.character(value),
-          # critics_rating
-         "Certified Fresh" = list(background = "#FC5C64FF"),
-         "Fresh" = list(background = "#2F8AC4FF"),
-         "Rotten" = list(background = "#99C945FF"),
-         # audience_rating
-         "Upright" = list(background = "#FC5C64FF"),
-         "Spilled" = list(background = "#2F8AC4FF"),
-         # genre
-         "Action & Adventure" = list(background = "#FC5C64FF"),
-         "Animation" = list(background = "#2F8AC4FF"),
-         "Art House & International" = list(background = "#99C945FF"),
-         "Comedy" = list(background = "#E58606FF"),
-         "Drama" = list(background = "#5D69B1FF"),
-         "Documentary" = list(background = "#CC61B0FF"),
-         "Horror" = list(background = "#24796CFF"),
-         "Musical & Performing Arts" = list(background = "#DAA51BFF"),
-         "Mystery & Suspense" = list(background = "#2F8AC4FF"),
-         "Science Fiction & Fantasy" = list(background = "#764E9FFF"),
-         # title_type
-         "Feature Film" = list(background = "#FC5C64FF"),
-         "Documentary" = list(background = "#2F8AC4FF"),
-         "TV Movie" = list(background = "#99C945FF"),
-         # mpaa_rating
-         "G" = list(background = "#E58606FF"),
-         "PG" = list(background = "#5D69B1FF"),
-         "PG-13" = list(background = "#CC61B0FF"),
-         "R" = list(background = "#24796CFF"),
-         "NC-17" = list(background = "#DAA51BFF"),
-         "Unrated" = list(background = "#2F8AC4FF"),
-         list(background = "#A5AA99FF")  # Default color
-  )
-}
+# gt table
+gt::gt(tbl_data) |>
+gt::tab_options(
+  table.width = gt::pct(100),
+  table.background.color = "#121212",
+  table.font.color = "#ffffff",
+  table.border.top.style = "none",
+  table.border.bottom.style = "none",
+  table.font.size = gt::px(20)
+) |>
+  gt::opt_row_striping()
 ```
 
 
-## Distributions 
-
-## Awards
-
-[^table-style-ref]: Read more [here](https://glin.github.io/reactable/articles/examples.html#conditional-styling).
+[^table-style-ref]: Read more [here](https://gt.rstudio.com/).

@@ -59,12 +59,14 @@ mod_dist_raincloud_server <- function(id, vals) {
       {
         req(vals())
 
-        logr_msg("Starting raincloud plot generation", level = "TRACE")
+        logr_msg("Starting raincloud plot generation", 
+          level = "TRACE")
 
         tryCatch(
           {
-            # Pretty names
-            logr_msg("Formatting movie data column names", level = "DEBUG")
+            # pretty names
+            logr_msg("Formatting movie data column names", 
+              level = "DEBUG")
             mv_nms <- names(sap::movies) |> name_case()
             movie_data <- setNames(object = sap::movies, nm = mv_nms)
 
@@ -75,8 +77,9 @@ mod_dist_raincloud_server <- function(id, vals) {
               level = "DEBUG"
             )
 
-            # Create boxplot layer
-            logr_msg("Creating boxplot base layer", level = "DEBUG")
+            # create boxplot layer
+            logr_msg("Creating boxplot base layer", 
+              level = "DEBUG")
             gg2_box <- ggplot2::ggplot(
               movie_data,
               ggplot2::aes(x = !!vals()$num_var, y = !!vals()$chr_var)
@@ -90,8 +93,9 @@ mod_dist_raincloud_server <- function(id, vals) {
               ) +
               ggplot2::scale_fill_manual(values = clr_pal12)
 
-            # Add halfeye layer
-            logr_msg("Adding halfeye density layer", level = "DEBUG")
+            # add halfeye layer
+            logr_msg("Adding halfeye density layer", 
+              level = "DEBUG")
             gg2_halfeye <- gg2_box +
               ggdist::stat_halfeye(
                 ggplot2::aes(fill = !!vals()$chr_var),
@@ -105,8 +109,9 @@ mod_dist_raincloud_server <- function(id, vals) {
                 show.legend = FALSE
               )
 
-            # Add points layer
-            logr_msg("Adding jittered points layer", level = "DEBUG")
+            # add points layer
+            logr_msg("Adding jittered points layer", 
+              level = "DEBUG")
             gg2_point <- gg2_halfeye +
               ggplot2::geom_point(
                 ggplot2::aes(fill = !!vals()$chr_var),
@@ -121,8 +126,9 @@ mod_dist_raincloud_server <- function(id, vals) {
                 show.legend = FALSE
               )
 
-            # Final plot with formatting
-            logr_msg("Applying final formatting to raincloud plot", level = "DEBUG")
+            # final plot with formatting
+            logr_msg("Applying final formatting to raincloud plot", 
+              level = "DEBUG")
             final_plot <- gg2_point +
               ggplot2::labs(
                 x = name_case(as.character(vals()$num_var)),
@@ -132,18 +138,19 @@ mod_dist_raincloud_server <- function(id, vals) {
                 legend.position = "none",
                 strip.text = ggplot2::element_text(
                   color = "#ffffff", 
-                  size = ggplot2::rel(1.025)
+                  size = ggplot2::rel(1.05)
                 ),
                 axis.text = ggplot2::element_text(
                   color = "#ffffff", 
-                  size = ggplot2::rel(1.05)
+                  size = ggplot2::rel(1.075)
                 ),
                 axis.title = ggplot2::element_text(
                   color = "#ffffff", 
-                  size = ggplot2::rel(1.10)
+                  size = ggplot2::rel(1.15)
                 )
               )
-            logr_msg("Raincloud plot generation complete", level = "INFO")
+            logr_msg("Raincloud plot generation complete", 
+              level = "INFO")
             return(final_plot)
           },
           error = function(e) {
@@ -151,7 +158,7 @@ mod_dist_raincloud_server <- function(id, vals) {
               level = "ERROR"
             )
 
-            # Return empty plot with error message
+            # return empty plot with error message
             ggplot2::ggplot() +
               ggplot2::annotate("text",
                 x = 0, y = 0,

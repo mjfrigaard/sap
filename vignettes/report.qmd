@@ -1,0 +1,587 @@
+---
+title: "Report"
+format: 
+  html:
+    toc: true
+    toc-depth: 4
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "" 
+
+execute:
+  echo: true
+  eval: false
+
+vignette: >
+  %\VignetteIndexEntry{Report}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+library(lobstr)
+```
+
+This vignette explains the downloadable PDF report in the `sap` R package/Shiny application. A folder tree of it's contents is below:
+
+```{r}
+#| eval: true
+library(sap)
+```
+
+```{r}
+#| include: false 
+#| eval: false
+fs::dir_tree("../", recurse = 3)
+```
+
+```{r}
+#| code-fold: show 
+#| code-summary: 'collapse'
+# ├── DESCRIPTION
+# ├── NAMESPACE
+# ├── R/
+# │   ├── data.R
+# │   ├── display_type.R
+# │   ├── dist_var_summary.R
+# │   ├── get_award_recipients.R
+# │   ├── launch_app.R
+# │   ├── logr_msg.R
+# │   ├── mod_awards_point.R
+# │   ├── mod_awards_tbl.R
+# │   ├── mod_awards_vars.R
+# │   ├── mod_compare_point.R
+# │   ├── mod_compare_vars.R
+# │   ├── mod_counts_bar.R
+# │   ├── mod_counts_tbl.R
+# │   ├── mod_counts_vars.R
+# │   ├── mod_counts_vbox.R
+# │   ├── mod_counts_waffle.R
+# │   ├── mod_dist_box.R
+# │   ├── mod_dist_raincloud.R
+# │   ├── mod_dist_tbl.R
+# │   ├── mod_dist_vars.R
+# │   ├── name_case.R
+# │   ├── nav_server.R
+# │   ├── nav_ui.R
+# │   └── testthat.R
+# ├── README.md
+# ├── app.R
+# ├── data/
+# │   ├── clr_pal.rda
+# │   ├── clr_pal12.rda
+# │   ├── clr_pal3.rda
+# │   └── movies.rda
+# ├── data-raw/
+# │   ├── clr_pal12.R
+# │   ├── clr_pal3.R
+# │   ├── movies.R
+# │   └── movies.RData
+# ├── inst/
+# │   ├── extdata/
+# │   │   ├── movies.csv
+# │   │   └── movies.fst
+# │   └── www/
+# │       ├── bootstrap.png
+# │       └── shiny.png
+# ├── man/
+# │   ├── display_type.Rd
+# │   ├── dist_var_summary.Rd
+# │   ├── get_award_recipients.Rd
+# │   ├── launch_app.Rd
+# │   ├── logr_msg.Rd
+# │   ├── mod_awards_point_server.Rd
+# │   ├── mod_awards_point_ui.Rd
+# │   ├── mod_awards_tbl_server.Rd
+# │   ├── mod_awards_tbl_ui.Rd
+# │   ├── mod_awards_vars_server.Rd
+# │   ├── mod_awards_vars_ui.Rd
+# │   ├── mod_compare_point_server.Rd
+# │   ├── mod_compare_point_ui.Rd
+# │   ├── mod_compare_vars_server.Rd
+# │   ├── mod_compare_vars_ui.Rd
+# │   ├── mod_counts_bar_server.Rd
+# │   ├── mod_counts_bar_ui.Rd
+# │   ├── mod_counts_tbl_server.Rd
+# │   ├── mod_counts_tbl_ui.Rd
+# │   ├── mod_counts_vars_server.Rd
+# │   ├── mod_counts_vars_ui.Rd
+# │   ├── mod_counts_vbox_server.Rd
+# │   ├── mod_counts_vbox_ui.Rd
+# │   ├── mod_counts_waffle_server.Rd
+# │   ├── mod_counts_waffle_ui.Rd
+# │   ├── mod_dist_box_server.Rd
+# │   ├── mod_dist_box_ui.Rd
+# │   ├── mod_dist_raincloud_server.Rd
+# │   ├── mod_dist_raincloud_ui.Rd
+# │   ├── mod_dist_tbl_server.Rd
+# │   ├── mod_dist_tbl_ui.Rd
+# │   ├── mod_dist_vars_server.Rd
+# │   ├── mod_dist_vars_ui.Rd
+# │   ├── movies.Rd
+# │   ├── name_case.Rd
+# │   ├── nav_server.Rd
+# │   ├── nav_ui.Rd
+# │   └── test_logger.Rd
+# ├── sap.Rproj
+# ├── tests/
+# │   ├── testthat/
+# │   │   ├── fixtures/
+# │   │   │   ├── make-tidy_ggp2_movies.R
+# │   │   │   └── tidy_ggp2_movies.rds
+# │   │   ├── helper.R
+# │   │   ├── test-mod_awards_point_server.R
+# │   │   ├── test-mod_awards_tbl_server.R
+# │   │   ├── test-mod_awards_vars_server.R
+# │   │   ├── test-mod_compare_point_server.R
+# │   │   ├── test-mod_compare_vars_server.R
+# │   │   ├── test-mod_counts_bar_server.R
+# │   │   ├── test-mod_counts_tbl_server.R
+# │   │   ├── test-mod_counts_vars_server.R
+# │   │   ├── test-mod_counts_vbox_server.R
+# │   │   ├── test-mod_counts_waffle_server.R
+# │   │   ├── test-mod_dist_box_server.R
+# │   │   ├── test-mod_dist_raincloud_server.R
+# │   │   ├── test-mod_dist_tbl_server.R
+# │   │   └── test-mod_dist_vars_server.R
+# │   └── testthat.R
+# └── vignettes/
+#     ├── graphs.qmd
+#     ├── report.qmd
+#     ├── specs.qmd
+#     ├── structure.qmd
+#     └── tables.qmd
+```
+
+## Implementation Strategy
+
+1. Create new module files for report functionality
+2. Add the download button to the sidebar in `nav_ui.R`
+3. Connect the report generation in `nav_server.R`
+4. Create an R Markdown template for the report
+
+## 1. Create Report Module Files
+
+Create a new module for the report functionality:
+
+### `R/mod_report_download.R`
+
+```{r}
+#| code-fold: show 
+#| code-summary: 'collapse'
+#| eval: false
+mod_report_download_ui <- function(id) {
+  ns <- NS(id)
+  tagList(
+    downloadButton(
+      ns("download_report"),
+      "Download Report",
+      class = "btn-primary btn-lg w-100",
+      icon = icon("file-pdf")
+    ),
+    tags$div(
+      class = "pt-2",
+      checkboxInput(
+        ns("include_compare"), 
+        "Include Compare", 
+        value = TRUE
+      ),
+      checkboxInput(
+        ns("include_counts"), 
+        "Include Counts", 
+        value = TRUE
+      ),
+      checkboxInput(
+        ns("include_distribution"), 
+        "Include Distribution", 
+        value = TRUE
+      ),
+      checkboxInput(
+        ns("include_awards"), 
+        "Include Awards", 
+        value = TRUE
+      )
+    )
+  )
+}
+```
+
+```{r}
+#| code-fold: show 
+#| code-summary: 'collapse'
+#| eval: false
+mod_report_download_server <- function(id, compare_values, count_values,
+                                      dist_values, award_values) {
+  moduleServer(id, function(input, output, session) {
+    
+    logr_msg("Initializing report download module", 
+    level = "INFO")
+    
+    # create report reactive params
+    report_params <- reactive({
+      list(
+        include_compare = input$include_compare,
+        include_counts = input$include_counts,
+        include_distribution = input$include_distribution,
+        include_awards = input$include_awards,
+        compare_values = if (input$include_compare) compare_values() else NULL,
+        count_values = if (input$include_counts) count_values() else NULL,
+        dist_values = if (input$include_distribution) dist_values() else NULL,
+        award_values = if (input$include_awards) award_values() else NULL
+      )
+    })
+    
+    # download handler
+    output$download_report <- downloadHandler(
+      filename = function() {
+        paste0("movie-analysis-report-", format(Sys.time(), "%Y-%m-%d-%H%M%S"), ".pdf")
+      },
+      content = function(file) {
+        params <- report_params()
+        
+        # show notification while the report is generating
+        id <- showNotification(
+          "Generating report...", 
+          duration = NULL, 
+          closeButton = FALSE,
+          type = "message"
+        )
+        on.exit(removeNotification(id), add = TRUE)
+        
+        logr_msg("Starting report generation", level = "INFO")
+        
+        # create temp directory for report gen
+        report_dir <- tempdir()
+        rmd_path <- file.path(report_dir, "report.Rmd")
+        
+        # copy report template to temp directory
+        file.copy(
+          from = system.file("rmd", "report_template.Rmd", package = "sap"),
+          to = rmd_path,
+          overwrite = TRUE
+        )
+        
+        tryCatch({
+          # render the report
+          rmarkdown::render(
+            input = rmd_path,
+            output_file = file,
+            params = params,
+            envir = new.env(parent = globalenv())
+          )
+          
+          logr_msg("Report generated successfully", 
+          level = "SUCCESS")
+        }, error = function(e) {
+          logr_msg(glue::glue("Error generating report: {e$message}"), level = "ERROR")
+          showNotification(
+            "Error generating report. Please try again.", 
+            type = "error"
+          )
+        })
+      }
+    )
+  })
+}
+```
+
+## 2. Create R Markdown Report Template
+
+Create `inst/rmd/report_template.Rmd`, the R Markdown template file that will be used to generate the report.
+
+```{r}
+#| error: true
+#| eval: true
+try(fs::dir_create("../inst/rmd"))
+try(fs::file_create("../inst/rmd/report_template.Rmd"))
+```
+
+Then create the template `.Rmd` file in `report.Rmd`. 
+
+### YAML
+
+```yaml
+---
+title: "Movie Analysis Report"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    highlight: tango
+params:
+  include_compare: true
+  include_counts: true
+  include_distribution: true
+  include_awards: true
+  compare_values: NULL
+  count_values: NULL
+  dist_values: NULL
+  award_values: NULL
+---
+```
+
+The sections below are the code chunk labels with the parameters.
+
+#### `setup`
+
+```r
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  warning = FALSE, 
+  message = FALSE,
+  fig.width = 10, 
+  fig.height = 6,
+  dpi = 300
+)
+
+library(sap)
+library(ggplot2)
+library(dplyr)
+library(ggwaffle)
+library(ggdist)
+library(ggrepel)
+
+# Set ggplot theme for consistent appearance
+theme_set(theme_minimal() +
+  theme(
+    text = element_text(color = "black"),
+    axis.text = element_text(color = "black", size = 12),
+    axis.title = element_text(color = "black", size = 14),
+    plot.title = element_text(size = 16, face = "bold")
+  )
+)
+```
+
+
+
+### Introduction
+
+> *This report presents a detailed analysis of movie data based on your selected criteria. The report includes visualizations and tables that highlight different aspects of the movie dataset.*
+
+#### `report-info`
+
+```r
+# Get count of sections included
+sections_count <- sum(
+  params$include_compare,
+  params$include_counts,
+  params$include_distribution,
+  params$include_awards
+)
+
+# Get list of sections included
+sections <- c()
+if (params$include_compare) sections <- c(sections, "Compare")
+if (params$include_counts) sections <- c(sections, "Counts")
+if (params$include_distribution) sections <- c(sections, "Distributions")
+if (params$include_awards) sections <- c(sections, "Awards")
+
+# Display report summary
+cat(paste0("This report includes ", sections_count, " section", 
+           if(sections_count > 1) "s" else "", ": ", 
+           paste(sections, collapse = ", "), "."))
+```
+
+#### `movie-data-overview`
+
+```r
+# Basic dataset summary
+cat(paste0("The dataset contains ", nrow(movies), " movies released between ", 
+           min(movies$thtr_rel_year), " and ", max(movies$thtr_rel_year), "."))
+```
+
+#### `compare-section`
+
+Set `eval=params$include_compare`
+
+```r
+if (params$include_compare) {
+  cat("\n\n## Movie Comparison\n\n")
+  
+  # Extract variables from params
+  x_var <- params$compare_values$x
+  y_var <- params$compare_values$y
+  color_var <- params$compare_values$color
+  alpha <- params$compare_values$alpha
+  size <- params$compare_values$size
+  title <- params$compare_values$title
+  
+  # Create scatter plot
+  p <- ggplot(movies, aes(x = .data[[x_var]], y = .data[[y_var]], color = .data[[color_var]])) +
+    geom_point(alpha = alpha, size = size) +
+    labs(
+      title = if(nchar(title) > 0) title else paste(name_case(x_var), "vs", name_case(y_var)),
+      x = name_case(x_var),
+      y = name_case(y_var)
+    ) +
+    scale_color_brewer(palette = "Set2") +
+    theme(legend.title = element_text(size = 12))
+  
+  print(p)
+  
+  cat("\n\nThis scatter plot shows the relationship between ", name_case(x_var), 
+      " and ", name_case(y_var), " with points colored by ", name_case(color_var), ".")
+}
+```
+
+#### `counts-section`
+
+Set `eval=params$include_counts`:
+
+```r
+if (params$include_counts) {
+  cat("\n\n## Movie Counts Analysis\n\n")
+  
+  # Extract variables from params
+  chr_var <- params$count_values$chr_var
+  start_year <- params$count_values$start_year
+  end_year <- params$count_values$end_year
+  
+  # Filter the data by year range
+  filtered_data <- subset(movies, 
+                         thtr_rel_year >= start_year & 
+                         thtr_rel_year <= end_year)
+  
+  # Summary statistics
+  movie_count <- nrow(filtered_data)
+  time_span <- abs(end_year - start_year)
+  
+  cat(paste0("Found ", movie_count, " movies released between ", 
+             start_year, " and ", end_year, " (", time_span, " years)."))
+  
+  # Bar chart
+  p <- ggplot(filtered_data, aes(x = forcats::fct_rev(forcats::fct_infreq(.data[[chr_var]])))) +
+    geom_bar(aes(fill = .data[[chr_var]]), show.legend = FALSE) +
+    coord_flip() +
+    scale_fill_brewer(palette = "Set3") +
+    labs(
+      title = paste("Movie counts by", name_case(chr_var)),
+      x = name_case(chr_var),
+      y = "# of Movies"
+    )
+  
+  print(p)
+  
+  # Counts table
+  cat("\n\n### Count Summary Table\n\n")
+  
+  count_tbl <- filtered_data %>%
+    group_by(.data[[chr_var]]) %>%
+    summarise(Count = n()) %>%
+    arrange(desc(Count))
+  
+  knitr::kable(count_tbl, col.names = c(name_case(chr_var), "Count"))
+}
+```
+
+#### `distribution-section`
+
+Set `eval=params$include_distribution`:
+
+```r
+if (params$include_distribution) {
+  cat("\n\n## Distribution Analysis\n\n")
+  
+  # Extract variables from params
+  chr_var <- params$dist_values$chr_var
+  num_var <- params$dist_values$num_var
+  alpha <- params$dist_values$alpha
+  size <- params$dist_values$size
+  
+  # Box plot
+  p1 <- ggplot(movies, aes(x = .data[[num_var]], y = .data[[chr_var]], fill = .data[[chr_var]])) +
+    geom_boxplot(alpha = alpha, width = size/5, show.legend = FALSE) +
+    scale_fill_brewer(palette = "Set3") +
+    labs(
+      title = paste("Boxplot of", name_case(num_var), "by", name_case(chr_var)),
+      x = name_case(num_var),
+      y = name_case(chr_var)
+    )
+  
+  print(p1)
+  
+  # Create summary statistics table
+  cat("\n\n### Distribution Summary Statistics\n\n")
+  
+  summary_tbl <- dist_var_summary(data = movies, chr_var, num_var)
+  knitr::kable(summary_tbl)
+  
+  cat("\n\nThis analysis shows the distribution of ", name_case(num_var),
+      " across different categories of ", name_case(chr_var), ".")
+}
+```
+
+#### `awards-section`
+
+Set `eval=params$include_awards`:
+
+```r
+if (params$include_awards) {
+  cat("\n\n## Awards Analysis\n\n")
+  
+  # Extract variables from params
+  award_type <- params$award_values$award
+  year <- params$award_values$year
+  
+  # Get award recipients
+  awards_data <- get_award_recipients(movies, award_type, year)
+  
+  # Define year range based on award type
+  if (award_type == "picture/director") {
+    start_year <- year - 2
+    end_year <- year + 2
+    cat(paste0("Award-winning films (Best Picture/Director) around ", year, " (±2 years)"))
+  } else {
+    start_year <- year - 1
+    end_year <- year + 1
+    cat(paste0("Award-winning films (Best Actor/Actress) around ", year, " (±1 year)"))
+  }
+  
+  # Create table of award recipients
+  cat("\n\n### Award Recipients\n\n")
+  
+  knitr::kable(awards_data)
+  
+  cat("\n\nThis analysis shows films that received major awards around ", year, ".")
+}
+```
+
+### Conclusion
+
+> *This report provides a comprehensive analysis of the movie dataset based on your selected parameters. The visualizations and tables offer insights into movie characteristics, distributions, and awards.*
+
+
+`*Report generated on r format(Sys.time(), "%B %d, %Y at %H:%M:%S")*`
+
+## 3. Modify `nav_ui.R` with Download Report Button
+
+```{r}
+#| eval: false
+# add common sidebar with report download button
+sidebar = bslib::sidebar(
+  title = "Report Options",
+  width = 300,
+  collapsed = TRUE,
+  position = "right",
+  ## report download (UI) ----
+  mod_report_download_ui("report")
+)
+```
+
+## 4. Modify `nav_server.R` with Report Module Server
+
+```{r}
+#| eval: false
+# report download module
+mod_report_download_server("report", 
+                          scatter_values, 
+                          count_values,
+                          dist_values,
+                          award_values)
+```
+

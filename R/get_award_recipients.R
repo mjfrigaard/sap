@@ -1,7 +1,8 @@
 #' Get award recipients from the movies dataset
 #'
-#' This function filters the `movies` dataset based on the selected award type 
-#' ("picture/director" or "actor/actress") and a specified year.
+#' This function filters the `movies` dataset based on the selected 
+#' award type ("picture/director" or "actor/actress") and a specified
+#' year.
 #'
 #' @param data A data frame containing the `movies` dataset.
 #' @param award A character string, either `"picture/director"` or 

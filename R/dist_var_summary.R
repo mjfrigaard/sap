@@ -1,10 +1,11 @@
 #' Summarize Numeric Variable by Group
 #'
-#' This function computes summary statistics (mean, standard deviation, min,
-#' max, IQR) for a numeric variable grouped by a character variable.
+#' This function computes summary statistics (mean, standard 
+#' deviation, min, max, IQR) for a numeric variable grouped by
+#' a character variable.
 #'
-#' @param data (data.frame) containing at least one grouping and one numerical 
-#'  variable.
+#' @param data (data.frame) containing at least one grouping 
+#'  and one numerical variable.
 #' @param grp_var (string) character variable to group by.
 #' @param num_var (string) numeric variable to summarize.
 #'

@@ -65,24 +65,25 @@ mod_dist_tbl_server <- function(id, vals) {
       req(vals())
       
       tryCatch({
-        # Capture variables from reactive input
+        # capture variables from reactive input
         chr_var <- as.character(vals()$chr_var)
         num_var <- as.character(vals()$num_var)
         
         logr_msg(glue::glue("Building table with character var: {chr_var} and 
-        numeric var: {num_var}"), level = "DEBUG")
+        numeric var: {num_var}"), 
+          level = "DEBUG")
         
-        # Transform movie data names
+        # transform movie data names
         mv_nms <- names(sap::movies) |> name_case()
         movie_data <- setNames(object = sap::movies, nm = mv_nms)
         
-        # Generate summary data
+        # generate summary data
         tbl_data <- dist_var_summary(data = movie_data, chr_var, num_var)
         
         logr_msg(glue::glue("Generated summary table with {nrow(tbl_data)} rows"),
         level = "INFO")
         
-        # Create gt table
+        # create gt table
         tbl_data |>
         gt::gt() |>
         gt::tab_options(
@@ -97,11 +98,12 @@ mod_dist_tbl_server <- function(id, vals) {
         
       }, error = function(e) {
         logr_msg(glue::glue("Failed to generate distribution table. 
-        Error: {e$message}"), level = "ERROR")
+        Error: {e$message}"), 
+          level = "ERROR")
         
-        # Return empty data frame with message if there's an error
+        # return empty data frame with message if there's an error
         data.frame(Error = "Failed to generate table. Please try again.") |>
-        gt::gt()
+          gt::gt()
       })
     })
   })

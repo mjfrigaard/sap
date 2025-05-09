@@ -12,9 +12,9 @@ name_case(x, case = "title")
 \item{case}{One of \code{"title"} or \code{"lower"}. Optional.}
 }
 \value{
-A character vector with the case changed according to the specified format.
-Will error if input is not a character vector or if an unsupported case is
-specified.
+A character vector with the case changed according to the specified
+format. Will error if input is not a character vector or if an
+unsupported case is specified.
 }
 \description{
 Change the case of text

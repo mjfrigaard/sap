@@ -4,9 +4,9 @@
 #' @param case One of `"title"` or `"lower"`. Optional.
 #'
 #' @returns
-#' A character vector with the case changed according to the specified format.
-#' Will error if input is not a character vector or if an unsupported case is 
-#' specified.
+#' A character vector with the case changed according to the specified 
+#' format. Will error if input is not a character vector or if an 
+#' unsupported case is specified.
 #' 
 #' @examples 
 #' name_case(c("user.name", "full-name", "Some Value"), case = "lower")

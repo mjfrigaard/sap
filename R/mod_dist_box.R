@@ -53,7 +53,8 @@ mod_dist_box_server <- function(id, vals) {
       {
         req(vals())
 
-        logr_msg("Preparing box plot in mod_dist_box_server", level = "TRACE")
+        logr_msg("Preparing box plot in mod_dist_box_server", 
+          level = "TRACE")
 
         tryCatch(
           {
@@ -71,17 +72,19 @@ mod_dist_box_server <- function(id, vals) {
                 !is.na(as.character(vals()$chr_var))
             )
 
-            # Log warning if significant data filtering occurred
+            # log warning if significant data filtering occurred
             if (nrow(d_bp) < nrow(movie_data) * 0.7) {
               logr_msg(glue::glue("Significant data loss: {nrow(movie_data) -
-                          nrow(d_bp)} rows removed due to NA values"), level = "WARN")
+                          nrow(d_bp)} rows removed due to NA values"), 
+                level = "WARN")
             }
 
             a <- as.numeric(vals()$alpha)
             s <- as.numeric(vals()$size)
 
             logr_msg(glue::glue("Creating box plot with {vals()$num_var} and
-                        {vals()$chr_var}"), level = "DEBUG")
+                        {vals()$chr_var}"), 
+                     level = "DEBUG")
 
             ggplot2::ggplot(
               d_bp,
@@ -106,15 +109,15 @@ mod_dist_box_server <- function(id, vals) {
                 legend.position = "none",
                 strip.text = ggplot2::element_text(
                   color = "#ffffff", 
-                  size = ggplot2::rel(1.025)
+                  size = ggplot2::rel(1.05)
                 ),
                 axis.text = ggplot2::element_text(
                   color = "#ffffff", 
-                  size = ggplot2::rel(1.05)
+                  size = ggplot2::rel(1.075)
                 ),
                 axis.title = ggplot2::element_text(
                   color = "#ffffff", 
-                  size = ggplot2::rel(1.10)
+                  size = ggplot2::rel(1.15)
                 ),
                 plot.background = ggplot2::element_rect(
                   fill = "transparent",
@@ -126,7 +129,7 @@ mod_dist_box_server <- function(id, vals) {
             logr_msg(glue::glue("Failed to render box plot: {e$message}"),
               level = "ERROR"
             )
-            # Return a blank plot with error message
+            # return a blank plot with error message
             ggplot2::ggplot() +
               ggplot2::annotate("text",
                 x = 0, y = 0,

@@ -7,8 +7,8 @@
 dist_var_summary(data, grp_var, num_var)
 }
 \arguments{
-\item{data}{(data.frame) containing at least one grouping and one numerical
-variable.}
+\item{data}{(data.frame) containing at least one grouping
+and one numerical variable.}
 
 \item{grp_var}{(string) character variable to group by.}
 
@@ -18,8 +18,9 @@ variable.}
 A data frame with the summary statistics for each group.
 }
 \description{
-This function computes summary statistics (mean, standard deviation, min,
-max, IQR) for a numeric variable grouped by a character variable.
+This function computes summary statistics (mean, standard
+deviation, min, max, IQR) for a numeric variable grouped by
+a character variable.
 }
 \examples{
 # Example usage:

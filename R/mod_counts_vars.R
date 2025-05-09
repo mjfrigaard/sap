@@ -133,7 +133,8 @@ mod_counts_vars_server <- function(id) {
                               {input$end_year}, variable: {input$chr_var}"), 
                    level = "INFO")
         } else {
-          logr_msg("Invalid year format detected", level = "WARN")
+          logr_msg("Invalid year format detected", 
+            level = "WARN")
         }
         
         list(

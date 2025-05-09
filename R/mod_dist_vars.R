@@ -91,15 +91,18 @@ mod_dist_vars_ui <- function(id) {
 mod_dist_vars_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     
-    logr_msg("Initializing distribution variables module", level = "DEBUG")
+    logr_msg("Initializing distribution variables module", 
+      level = "DEBUG")
     
-    # Create reactive to track selected variables
+    # create reactive to track selected variables
     selected_vars <- reactive({
       logr_msg(glue::glue("Variables updated: num={input$num_var}, 
-      chr={input$chr_var}"), level = "TRACE")
+      chr={input$chr_var}"), 
+        level = "TRACE")
       
       if (is.null(input$num_var) || is.null(input$chr_var)) {
-        logr_msg("Missing required variable selections", level = "WARN")
+        logr_msg("Missing required variable selections", 
+          level = "WARN")
       }
       
       list(
@@ -110,7 +113,8 @@ mod_dist_vars_server <- function(id) {
       )
     })
     
-    logr_msg("Distribution variables module initialized", level = "DEBUG")
+    logr_msg("Distribution variables module initialized", 
+      level = "DEBUG")
     
     return(selected_vars)
   })

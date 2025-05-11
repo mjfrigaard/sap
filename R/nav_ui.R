@@ -47,14 +47,6 @@ nav_ui <- function() {
       ),
       title = "Movie Reviews",
       fillable = "Compare",
-      sidebar = bslib::sidebar(
-        title = "Report Options",
-        width = 300,
-        collapsed = TRUE,
-        position = "right",
-        ## report download (UI) ----
-        mod_report_download_ui("report")
-      ),
       bslib::nav_panel(
         "Compare",
         # Compare (nav_ui) ----

@@ -163,7 +163,8 @@ lobstr::ast(
 
 ```{r}
 #| eval: false
-#| code-fold: true
+#| code-fold: true 
+#| code-summary: 'show/hide display_type()'
 display_type <- function(run = "w") {
   if (Sys.getenv("RSTUDIO") == "1") {
     switch(run,
@@ -193,6 +194,7 @@ display_type <- function(run = "w") {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide launch_app()'
 launch_app <- function(options = list(), run = "p", ...) {
   
   if (interactive()) {
@@ -244,6 +246,7 @@ The `nav_ui()` and `nav_server()` functions are below:
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide nav_ui()'
 nav_ui <- function() {
   addResourcePath(
     prefix = 'www',
@@ -412,6 +415,7 @@ nav_ui <- function() {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide nav_server()'
 nav_server <- function(input, output) {
 
   # scatter plot values
@@ -456,6 +460,7 @@ The following utility functions are used in the application modules:
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide name_case()'
 name_case <- function(x, case = "title") {
   if (!is.character(x)) {
     stop("Input must be a character vector.")
@@ -496,6 +501,7 @@ name_case <- function(x, case = "title") {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide logr_msg()'
 logr_msg <- function(message, level = "INFO", log_file = NULL, json = FALSE) {
 
   # Set default formatter
@@ -601,6 +607,7 @@ lobstr::ast(
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_compare_vars'
 mod_compare_vars_ui <- function(id) {
   num_vars <- movies[c(
     "runtime", "imdb_rating",
@@ -748,6 +755,7 @@ mod_compare_vars_server <- function(id) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_compare_point'
 mod_compare_point_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -929,6 +937,7 @@ lobstr::ast(
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_counts_vars'
 mod_counts_vars_ui <- function(id) {
   # define variables 
   chr_vars <- movies[c("genre", "title_type", "mpaa_rating", 
@@ -1029,6 +1038,7 @@ mod_counts_vars_server <- function(id) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_counts_vbox'
 mod_counts_vbox_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -1117,6 +1127,7 @@ mod_counts_vbox_server <- function(id, vals) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_counts_bar'
 mod_counts_bar_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -1224,6 +1235,7 @@ mod_counts_bar_server <- function(id, vals) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_counts_waffle'
 mod_counts_waffle_ui <- function(id) {
   ns <- NS(id)
     tagList(
@@ -1311,6 +1323,7 @@ mod_counts_waffle_server <- function(id, vals) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_counts_tbl'
 mod_counts_tbl_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -1365,6 +1378,8 @@ mod_counts_tbl_server <- function(id, vals) {
 
 ### Distributions
 
+The **Distributions** tab displays two graphs and a table of summary statistics. 
+
 ```{r}
 #| echo: false
 #| eval: true
@@ -1408,6 +1423,7 @@ The `dist_var_summary()` returns the summary statistics from the **Distributions
 ```{r}
 #| eval: false 
 #| code-fold: true
+#| code-summary: 'show/hide dist_var_summary()'
 dist_var_summary <- function(data, grp_var, num_var) {
   
   if (!is.data.frame(data)) {
@@ -1477,6 +1493,7 @@ dist_var_summary(movies, 'mpaa_rating', 'runtime')
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_dist_vars'
 mod_dist_vars_ui <- function(id) {
   num_data <- movies[c("critics_score", "audience_score", "runtime", 
                        "imdb_rating")]
@@ -1560,6 +1577,7 @@ mod_dist_vars_server <- function(id) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_dist_box'
 mod_dist_box_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -1672,6 +1690,7 @@ mod_dist_box_server <- function(id, vals) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_dist_raincloud'
 mod_dist_raincloud_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -1806,6 +1825,7 @@ mod_dist_raincloud_server <- function(id, vals) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_dist_tbl'
 mod_dist_tbl_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -1871,6 +1891,9 @@ mod_dist_tbl_server <- function(id, vals) {
 
 ### Awards 
 
+The **Awards** tab display a graph of award-winning movies (with labels for their actors and director).
+
+
 ```{r}
 #| echo: false
 #| eval: true
@@ -1909,6 +1932,7 @@ The **Awards** tab uses a special `data.frame` created with the `get_award_recip
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide get_award_recipients()'
 get_award_recipients <- function(data, award, year) {
   
   if (!award %in% c("picture/director", "actor/actress")) {
@@ -1983,6 +2007,7 @@ get_award_recipients(
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_awards_vars'
 mod_awards_vars_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -2053,6 +2078,7 @@ mod_awards_vars_server <- function(id) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_awards_point'
 mod_awards_point_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -2170,6 +2196,7 @@ mod_awards_point_server <- function(id, vals) {
 ```{r}
 #| eval: false
 #| code-fold: true
+#| code-summary: 'show/hide mod_awards_tbl'
 mod_awards_tbl_ui <- function(id) {
   ns <- NS(id)
     tagList(

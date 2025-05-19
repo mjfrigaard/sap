@@ -1,0 +1,138 @@
+How would I implement the module in the UI and server? 
+
+
+> *Rewrite this module to use an R Markdown report ()`report_template.rmd`) file that can be loaded with `system.file()` (and stored in `inst/rmd/`)*
+
+### Prompt 2
+
+> *Prompt: How would I implement the download report module in the UI and server?*
+
+**Response:** To implement the download report module in the UI and server:
+
+1. First, add the module to the UI in `nav_ui()` function. A good place would be as a dropdown in the navbar or as an element in each tab's sidebar.
+
+Here's how to add it to the navbar:
+
+```r
+nav_ui <- function() {
+  addResourcePath(
+    prefix = 'www',
+    directoryPath = system.file('www', package = 'sap'))
+
+  tagList(
+    tags$style(
+      HTML("
+      .reactable {
+        background-color: #121212;
+        color: #ffffff;
+      }
+      /* other styles remain the same */
+    ")
+  ),
+    bslib::page_navbar(
+      theme = bslib::bs_theme(
+        version = 5,
+        bg = "#000000",
+        fg = "#ffffff",
+        primary = "#2979ff",
+        secondary = "#bdbdbd",
+        body_bg = "#121212",
+        base_font = sass::font_google("Roboto")
+      ),
+      title = "Movie Reviews",
+      fillable = "Compare",
+      bslib::nav_panel(
+        "Compare",
+        # ... existing compare panel content
+      ),
+      bslib::nav_panel(
+        "Counts",
+        # ... existing counts panel content
+      ),
+      bslib::nav_panel(
+        "Distributions",
+        # ... existing distributions panel content
+      ),
+      bslib::nav_panel(
+        "Awards",
+        # ... existing awards panel content
+      ),
+      # NEW: Add a dropdown for reports in the navbar
+      bslib::nav_menu(
+        title = "Reports",
+        bslib::nav_panel(
+          "Download Reports",
+          bslib::card(
+            bslib::card_header("Generate Reports"),
+            bslib::card_body(
+              mod_download_report_ui("download_reports")
+            )
+          )
+        )
+      )
+    )
+  )
+}
+```
+
+2. Then, add the server logic in `nav_server()`:
+
+```r
+nav_server <- function(input, output) {
+
+  # scatter plot values
+  scatter_values <- mod_compare_vars_server("scatter_inputs")
+  mod_compare_point_server(id = "scatter", vals = scatter_values)
+
+  # count values
+  count_values <- mod_counts_vars_server("year")
+  mod_counts_vbox_server("cnt_txt", count_values)
+  mod_counts_bar_server(id = "hbar", vals = count_values)
+  mod_counts_waffle_server(id = "waffle", vals = count_values)
+  mod_counts_tbl_server(id = "cnt_tbl", vals = count_values)
+
+  # distribution values
+  dist_values <- mod_dist_vars_server("dist")
+  mod_dist_raincloud_server("cloud", vals = dist_values)
+  mod_dist_box_server("box", vals = dist_values)
+  mod_dist_tbl_server("dist_tbl", vals = dist_values)
+
+  # awards values
+  award_values <- mod_awards_vars_server("awards_vars")
+  mod_awards_point_server("awards_plot", award_values)
+  mod_awards_tbl_server("awards_table", award_values)
+
+  # NEW: Download reports module
+  mod_download_report_server("download_reports")
+}
+```
+
+Alternatively, to add the download module to each tab:
+
+```r
+# For the Compare tab, add to the sidebar:
+sidebar = bslib::sidebar(
+  class = "p-0",
+  ## Scatter inputs (UI) ---- 
+  mod_compare_vars_ui("scatter_inputs"),
+  hr(),
+  ## Download report for this tab ----
+  mod_download_report_ui("download_compare")
+),
+
+# Similarly for other tabs
+```
+
+Then in the server:
+
+```r
+# In nav_server function, add:
+mod_download_report_server("download_compare", data_source = reactive({
+  # Provide tab-specific data
+  scatter_values <- mod_compare_vars_server("scatter_inputs")
+  # Return the data needed for this report
+  movies
+}))
+```
+
+Make sure to add the appropriate package dependencies (`writexl`, `rmarkdown`, `knitr`, `kableExtra`) to your `DESCRIPTION` file if they're not already included.

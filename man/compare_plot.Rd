@@ -2,28 +2,38 @@
 % Please edit documentation in R/compare_plot.R
 \name{compare_plot}
 \alias{compare_plot}
-\title{Create comparison chart (report)}
+\title{Create an Interactive Scatter Plot for Comparing Variables}
 \usage{
-compare_plot(data, x, y, color = NULL, alpha = 0.7, size = 3, title = NULL)
+compare_plot(data, x, y, color, size = 5, alpha = 0.7, title = NULL)
 }
 \arguments{
-\item{data}{movies dataset}
+\item{data}{A data frame containing the variables to plot}
 
-\item{x}{x variable from UI}
+\item{x}{Character string with the name of the variable to plot on the x-axis}
 
-\item{y}{y variable from UI}
+\item{y}{Character string with the name of the variable to plot on the y-axis}
 
-\item{color}{color variable from UI}
+\item{color}{Character string with the name of the variable to use for
+coloring points}
 
-\item{alpha}{alpha aesthetic from UI}
+\item{size}{Numeric value for the size of the points (default: 5)}
 
-\item{size}{size aesthetic from UI}
+\item{alpha}{Numeric value for the transparency of the points (default: 0.7)}
 
-\item{title}{title text from UI}
+\item{title}{Character string for the plot title. If NULL, a default title is
+generated}
 }
 \value{
-ggplot2 object
+A plotly interactive scatter plot object
 }
 \description{
-Create comparison chart (report)
+This function creates an interactive scatter plot using plotly to compare two
+variables with points colored by a third variable.
+}
+\examples{
+require(webshot)
+compare_plot(movies, 
+             "imdb_rating", "critics_score", "genre", 
+              size = 7, alpha = 0.75, "Plot Title")
+
 }

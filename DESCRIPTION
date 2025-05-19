@@ -28,7 +28,8 @@ Imports:
     shiny,
     stats,
     thematic,
-    tidyr
+    tidyr,
+    webshot
 Suggests: 
     fs,
     knitr,

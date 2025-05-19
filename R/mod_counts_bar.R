@@ -61,8 +61,7 @@ mod_counts_bar_server <- function(id, vals) {
       # Validate input values
       req(vals())
 
-      tryCatch(
-        {
+      tryCatch({
           # Prepare data for plotting
           logr_msg(glue::glue("Filtering data from {vals()$start_year} to
         {vals()$end_year}"),
@@ -88,7 +87,7 @@ mod_counts_bar_server <- function(id, vals) {
             level = "DEBUG"
           )
 
-          counts_nms <- names(counts_data) |> name_case()
+          counts_nms <- name_case(names(counts_data))
           counts_data <- setNames(
             object = counts_data,
             nm = counts_nms
@@ -130,12 +129,13 @@ mod_counts_bar_server <- function(id, vals) {
             level = "ERROR"
           )
           NULL
-        }
-      )
+        })
     })
 
     logr_msg("Horizontal bar plot module initialized",
-      level = "INFO"
-    )
+      level = "INFO")
+    
+    # return reactive output ----
+    return(reactive(output$hbar_graph))
   })
 }

@@ -171,6 +171,7 @@ Create a new module for the report functionality:
 ### `R/mod_report_download.R`
 
 ```{r}
+#| label: mod_report_download_ui
 #| code-fold: show 
 #| code-summary: 'collapse'
 #| eval: false
@@ -181,7 +182,7 @@ mod_report_download_ui <- function(id) {
       ns("download_report"),
       "Download Report",
       class = "btn-primary btn-lg w-100",
-      icon = icon("file-pdf")
+      icon = icon("file-export")
     ),
     tags$div(
       class = "pt-2",
@@ -211,6 +212,7 @@ mod_report_download_ui <- function(id) {
 ```
 
 ```{r}
+#| label: mod_report_download_server
 #| code-fold: show 
 #| code-summary: 'collapse'
 #| eval: false
@@ -219,31 +221,90 @@ mod_report_download_server <- function(id, compare_values, count_values,
   moduleServer(id, function(input, output, session) {
     
     logr_msg("Initializing report download module", 
-    level = "INFO")
+             level = "INFO")
     
-    # create report reactive params
+    # Create reactive report parameters
     report_params <- reactive({
-      list(
+      # Create report parameters list
+      params_list <- list(
         include_compare = input$include_compare,
         include_counts = input$include_counts,
         include_distribution = input$include_distribution,
-        include_awards = input$include_awards,
-        compare_values = if (input$include_compare) compare_values() else NULL,
-        count_values = if (input$include_counts) count_values() else NULL,
-        dist_values = if (input$include_distribution) dist_values() else NULL,
-        award_values = if (input$include_awards) award_values() else NULL
+        include_awards = input$include_awards
       )
+      
+      # Only include reactive values when their section is enabled
+      if (input$include_compare && !is.null(compare_values())) {
+        # Ensure each value is single-element
+        cv <- compare_values()
+        params_list$compare_values <- list(
+          x = cv$x,
+          y = cv$y,
+          color = cv$color,
+          alpha = cv$alpha,
+          size = cv$size,
+          title = cv$title
+        )
+      }
+      
+      if (input$include_counts && !is.null(count_values())) {
+        cv <- count_values()
+        params_list$count_values <- list(
+          chr_var = cv$chr_var,
+          start_year = cv$start_year,
+          end_year = cv$end_year
+        )
+      }
+      
+      if (input$include_distribution && !is.null(dist_values())) {
+        dv <- dist_values()
+        params_list$dist_values <- list(
+          chr_var = dv$chr_var,
+          num_var = dv$num_var,
+          alpha = dv$alpha,
+          size = dv$size
+        )
+      }
+      
+      if (input$include_awards && !is.null(award_values())) {
+        av <- award_values()
+        params_list$award_values <- list(
+          award = av$award,
+          year = av$year
+        )
+      }
+      
+      return(params_list)
     })
     
-    # download handler
+    # Log parameters for debugging
+    observe({
+      params <- report_params()
+      logr_msg("Report parameters updated", 
+               level = "DEBUG")
+      if (input$include_compare)
+        logr_msg("Compare section enabled with parameters", 
+                 level = "DEBUG")
+      if (input$include_counts)
+        logr_msg("Counts section enabled with parameters", 
+                 level = "DEBUG")
+      if (input$include_distribution)
+        logr_msg("Distribution section enabled with parameters", 
+                 level = "DEBUG")
+      if (input$include_awards)
+        logr_msg("Awards section enabled with parameters", 
+                 level = "DEBUG")
+    })
+    
+    # Download handler
     output$download_report <- downloadHandler(
       filename = function() {
-        paste0("movie-analysis-report-", format(Sys.time(), "%Y-%m-%d-%H%M%S"), ".pdf")
+        paste0("movie-analysis-report-", format(Sys.time(), "%Y-%m-%d-%H%M%S"), ".html")
       },
       content = function(file) {
         params <- report_params()
         
-        # show notification while the report is generating
+        # Show a notification while the report is generating
         id <- showNotification(
           "Generating report...", 
           duration = NULL, 
@@ -252,37 +313,57 @@ mod_report_download_server <- function(id, compare_values, count_values,
         )
         on.exit(removeNotification(id), add = TRUE)
         
-        logr_msg("Starting report generation", level = "INFO")
+        logr_msg("Starting report generation", 
+                 level = "INFO")
         
-        # create temp directory for report gen
+        # Create a temporary directory for report generation
         report_dir <- tempdir()
         rmd_path <- file.path(report_dir, "report.Rmd")
         
-        # copy report template to temp directory
-        file.copy(
-          from = system.file("rmd", "report_template.Rmd", package = "sap"),
-          to = rmd_path,
-          overwrite = TRUE
-        )
+        # Copy the report template to the temporary directory
+        template_path <- system.file("rmd", "report_template.Rmd", package = "sap")
         
-        tryCatch({
-          # render the report
-          rmarkdown::render(
-            input = rmd_path,
-            output_file = file,
-            params = params,
-            envir = new.env(parent = globalenv())
+        if (file.exists(template_path)) {
+          file.copy(
+            from = template_path,
+            to = rmd_path,
+            overwrite = TRUE
           )
           
-          logr_msg("Report generated successfully", 
-          level = "SUCCESS")
-        }, error = function(e) {
-          logr_msg(glue::glue("Error generating report: {e$message}"), level = "ERROR")
+          tryCatch({
+            # Render the report
+            rmarkdown::render(
+              input = rmd_path,
+              output_file = file,
+              params = params,
+              envir = new.env(parent = globalenv()),
+              quiet = TRUE
+            )
+            
+            logr_msg("Report generated successfully", level = "SUCCESS")
+            showNotification(
+              "Report generated successfully!", 
+              type = "message",
+              duration = 5
+            )
+          }, error = function(e) {
+            logr_msg(glue::glue("Error generating report: {e$message}"), 
+                level = "ERROR")
+            showNotification(
+              paste("Error generating report:", e$message), 
+              type = "error",
+              duration = 10
+            )
+          })
+        } else {
+          logr_msg("Report template not found", 
+            level = "ERROR")
           showNotification(
-            "Error generating report. Please try again.", 
-            type = "error"
+            "Report template not found in package. Please check installation.", 
+            type = "error",
+            duration = 10
           )
-        })
+        }
       }
     )
   })

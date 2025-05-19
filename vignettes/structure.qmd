@@ -145,7 +145,7 @@ library(sap)
 
 ## Standalone app function
 
-`launch_app()` is the standalone app function (used to launch the application). 
+`launch_app()` is the standalone app function (used to launch the application).
 
 ```{r}
 #| echo: false
@@ -222,8 +222,6 @@ launch_app <- function(options = list(), run = "p", ...) {
 }
 ```
 
-
-
 ## UI and Server
 
 ```{r}
@@ -238,8 +236,7 @@ lobstr::ast(
 )
 ```
 
-
-The `nav_ui()` and `nav_server()` functions are below: 
+The `nav_ui()` and `nav_server()` functions are below:
 
 ### nav_ui()
 
@@ -409,7 +406,6 @@ nav_ui <- function() {
 }
 ```
 
-
 ### nav_server()
 
 ```{r}
@@ -443,17 +439,11 @@ nav_server <- function(input, output) {
 }
 ```
 
+## Application modules
 
+### Utility functions
 
-## Application modules 
-
-
-
-
-
-### Utility functions 
-
-The following utility functions are used in the application modules: 
+The following utility functions are used in the application modules:
 
 #### name_case()
 
@@ -494,7 +484,6 @@ name_case <- function(x, case = "title") {
   return(unname(named_vector))
 }
 ```
-
 
 #### logr_msg()
 
@@ -542,8 +531,7 @@ logr_msg <- function(message, level = "INFO", log_file = NULL, json = FALSE) {
 }
 ```
 
-
-## Module files 
+## Module files
 
 The module files in the R folder are listed below.
 
@@ -558,21 +546,21 @@ fs::dir_tree("../R", regexp = "mod")
 
 The modules are structured into `compare`, `counts`, distribution (`dist`), and `awards`. The modules in the application have the following naming convention:
 
-**`mod_` `<tab>` `_` `<type>` `_` `ui/server`**
+**`mod_<tab>_<type>_ui/server`**
 
 -   `<tab>` is the name of the tab (**Compare**, **Counts**, **Distributions**, **Awards**)
 -   **`<type>`**
-    -   `vars`: 'variable' collection modules to return inputs    
-    -   `tbl`: table display modules            
-    -   type of display in module (i.e., `point`, `bar`, `vbox`, etc.)     
+    -   `vars`: 'variable' collection modules to return inputs\
+    -   `tbl`: table display modules\
+    -   type of display in module (i.e., `point`, `bar`, `vbox`, etc.)
 
-Each tab's modules are organized into abstract syntax trees[^ast] in the sections below. 
+Each tab's modules are organized into abstract syntax trees[^1] in the sections below.
 
-[^ast]: Create abstract syntax trees with the [`lobstr::ast()` function](https://lobstr.r-lib.org/reference/ast.html). 
+[^1]: Create abstract syntax trees with the [`lobstr::ast()` function](https://lobstr.r-lib.org/reference/ast.html).
 
-### Compare 
+### Compare
 
-The `mod_compare_*` modules collect the variables for the scatter plot. 
+The `mod_compare_*` modules collect the variables for the scatter plot.
 
 ```{r}
 #| echo: false
@@ -602,7 +590,7 @@ lobstr::ast(
 
 #### mod_compare_vars
 
-`mod_compare_vars`: collects the inputs. 
+`mod_compare_vars`: collects the inputs.
 
 ```{r}
 #| eval: false
@@ -886,8 +874,7 @@ mod_compare_point_server <- function(id, vals) {
 }
 ```
 
-
-### Counts 
+### Counts
 
 The `mod_counts_*` modules create and display various counts of categorical variables from the `movies` data.
 
@@ -1033,7 +1020,7 @@ mod_counts_vars_server <- function(id) {
 
 #### mod_counts_vbox
 
-`mod_counts_vbox_ui`: displays the value box. 
+`mod_counts_vbox_ui`: displays the value box.
 
 ```{r}
 #| eval: false
@@ -1230,7 +1217,7 @@ mod_counts_bar_server <- function(id, vals) {
 
 #### mod_counts_waffle
 
-`mod_counts_waffle_ui`: displays the waffle chart. 
+`mod_counts_waffle_ui`: displays the waffle chart.
 
 ```{r}
 #| eval: false
@@ -1378,7 +1365,7 @@ mod_counts_tbl_server <- function(id, vals) {
 
 ### Distributions
 
-The **Distributions** tab displays two graphs and a table of summary statistics. 
+The **Distributions** tab displays two graphs and a table of summary statistics.
 
 ```{r}
 #| echo: false
@@ -1418,7 +1405,7 @@ lobstr::ast(
 
 #### dist_var_summary()
 
-The `dist_var_summary()` returns the summary statistics from the **Distributions** tab. 
+The `dist_var_summary()` returns the summary statistics from the **Distributions** tab.
 
 ```{r}
 #| eval: false 
@@ -1484,7 +1471,6 @@ dist_var_summary(df, "group", "value")
 #| comment: "# "
 dist_var_summary(movies, 'mpaa_rating', 'runtime')
 ```
-
 
 #### mod_dist_vars
 
@@ -1889,10 +1875,9 @@ mod_dist_tbl_server <- function(id, vals) {
 }
 ```
 
-### Awards 
+### Awards
 
 The **Awards** tab display a graph of award-winning movies (with labels for their actors and director).
-
 
 ```{r}
 #| echo: false
@@ -1927,7 +1912,7 @@ The **Awards** tab uses a special `data.frame` created with the `get_award_recip
 
 #### get_award_recipients()
 
-`get_award_recipients()` creates a `data.frame` of only movies that won awards. 
+`get_award_recipients()` creates a `data.frame` of only movies that won awards.
 
 ```{r}
 #| eval: false
@@ -1999,10 +1984,9 @@ get_award_recipients(
   year = 1980)
 ```
 
-
 #### mod_awards_vars
 
-`mod_awards_vars`: collects the inputs. 
+`mod_awards_vars`: collects the inputs.
 
 ```{r}
 #| eval: false
@@ -2073,7 +2057,7 @@ mod_awards_vars_server <- function(id) {
 
 #### mod_awards_point
 
-`mod_awards_point`: displays the scatter plot. 
+`mod_awards_point`: displays the scatter plot.
 
 ```{r}
 #| eval: false
@@ -2267,3 +2251,10 @@ mod_awards_tbl_server <- function(id, vals) {
 }
 ```
 
+## Report 
+
+The sections below outline the prompts submitted to the `gander` addin to include a downloadable report.
+
+### Prompt 1 
+
+> *Prompt: Given the application structure explained in the vignette, add a download report module.*

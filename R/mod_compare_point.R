@@ -53,7 +53,8 @@ mod_compare_point_ui <- function(id) {
 mod_compare_point_server <- function(id, vals) {
   moduleServer(id, function(input, output, session) {
     logr_msg("Initializing point comparison module",
-      level = "DEBUG")
+      level = "DEBUG"
+    )
 
     label_inputs <- reactive({
       req(vals()$x, vals()$y, vals()$c)
@@ -79,6 +80,8 @@ mod_compare_point_server <- function(id, vals) {
       )
     })
 
+    
+      
     output$scatter <- plotly::renderPlotly({
       req(label_inputs())
 
@@ -86,11 +89,17 @@ mod_compare_point_server <- function(id, vals) {
         level = "DEBUG"
       )
 
-      tryCatch(
-        {
-          # clean names
-          nms <- name_case(names(movies))
-          compare_data <- stats::setNames(object = movies, nm = nms)
+      tryCatch({
+          # create data 
+          compare_data <- sap::movies
+          # variables
+          x_var <- name_case(as.character(vals()$x), case = "lower")
+          y_var <- name_case(as.character(vals()$y), case = "lower")
+          color_var <- name_case(as.character(vals()$color), case = "lower")
+          title <- name_case(as.character(vals()$title), case = "lower")
+          # aesthetics 
+          size <- as.numeric(vals()$size)
+          alpha <- as.numeric(vals()$alpha)
 
           logr_msg(glue::glue("Creating plot with {nrow(compare_data)} data points"),
             level = "INFO"
@@ -101,42 +110,11 @@ mod_compare_point_server <- function(id, vals) {
               level = "WARN"
             )
           }
-
-          plot <- plotly::plot_ly(
-            data = compare_data,
-            x = ~ get(vals()$x),
-            y = ~ get(vals()$y),
-            color = ~ get(vals()$color),
-            text = ~title,
-            type = "scatter",
-            mode = "markers",
-            colors = clr_pal3,
-            marker = list(
-              size = vals()$size,
-              opacity = vals()$alpha
-            )
-          ) |>
-            plotly::layout(
-              title = list(
-                text = label_inputs()$title,
-                font = list(color = "#e0e0e0")
-              ),
-              xaxis = list(
-                title = label_inputs()$x,
-                titlefont = list(color = "#e0e0e0"),
-                tickfont = list(color = "#e0e0e0")
-              ),
-              yaxis = list(
-                title = label_inputs()$y,
-                titlefont = list(color = "#e0e0e0"),
-                tickfont = list(color = "#e0e0e0")
-              ),
-              legend = list(
-                font = list(color = "#e0e0e0")
-              ),
-              plot_bgcolor = "#121212",
-              paper_bgcolor = "#121212"
-            )
+          
+          plot <- compare_plot(data = compare_data, 
+                               x = x_var, y = y_var, color = color_var, 
+                               size = size, alpha = alpha, 
+                               title = title)
 
           logr_msg("Scatter plot rendered successfully",
             level = "DEBUG"
@@ -147,7 +125,6 @@ mod_compare_point_server <- function(id, vals) {
           logr_msg(glue::glue("Failed to render scatter plot: {e$message}"),
             level = "ERROR"
           )
-
           # Return minimal error plot
           plotly::plot_ly() |>
             plotly::add_annotations(
@@ -158,9 +135,8 @@ mod_compare_point_server <- function(id, vals) {
             plotly::layout(
               plot_bgcolor = "#121212",
               paper_bgcolor = "#121212"
-            )
-        }
-      )
+              )
+          })
     })
 
     # log when module is disposed (session ends)

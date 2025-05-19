@@ -47,6 +47,15 @@ nav_ui <- function() {
       ),
       title = "Movie Reviews",
       fillable = "Compare",
+      # Add common sidebar with report download button
+      sidebar = bslib::sidebar(
+        title = "Report Options",
+        width = 300,
+        collapsed = TRUE,
+        position = "right",
+        ## Report Download (UI) ----
+        mod_report_download_ui("report")
+      ),
       bslib::nav_panel(
         "Compare",
         # Compare (nav_ui) ----

@@ -31,5 +31,11 @@ nav_server <- function(input, output) {
   award_values <- mod_awards_vars_server("awards_vars")
   mod_awards_point_server("awards_plot", award_values)
   mod_awards_tbl_server("awards_table", award_values)
-
+  
+  # report download module
+  mod_report_download_server("report", 
+                            scatter_values, 
+                            count_values,
+                            dist_values,
+                            award_values)
 }

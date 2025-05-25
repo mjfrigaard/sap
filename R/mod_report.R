@@ -33,17 +33,17 @@ mod_report_server <- function(id, scatter_values, count_values, dist_values, awa
         paste("report-", Sys.Date(), ".html", sep = "")
       },
       content = function(file) {
-        # Create a temporary directory for report generation
+        # create temp dir for report generation
         tempDir <- tempdir()
         tempReport <- file.path(tempDir, "report.Rmd")
 
-        # Copy the report template to the temp directory
+        # copy report template to temp dir
         file.copy(system.file("rmd", "report_template.Rmd", package = "sap"),
           tempReport,
           overwrite = TRUE
         )
 
-        # Set up parameters to pass to Rmd
+        # set up params
         logr_msg("Creating params", level = "INFO")
         params <- list(
           compare_values = scatter_values(),
@@ -56,13 +56,13 @@ mod_report_server <- function(id, scatter_values, count_values, dist_values, awa
         clean_params <- desym(params)
 
         tryCatch({
-            # Render the report
+            # render the report
             rmarkdown::render(
               input = tempReport, 
               output_file = file,
               params = clean_params,
               envir = new.env(parent = globalenv()),
-              quiet = FALSE # Change to TRUE in production
+              quiet = FALSE 
             )
           
             logr_msg("Report generated successfully", level = "SUCCESS")

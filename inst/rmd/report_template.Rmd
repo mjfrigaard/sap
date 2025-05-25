@@ -7,10 +7,10 @@ output:
     toc_depth: 2
     theme: united
 params:
-  compare_values: NULL
-  count_values: NULL
-  dist_values: NULL
-  award_values: NULL
+  compare_values: NA
+  count_values: NA
+  dist_values: NA
+  award_values: NA
 ---
 
 ```{r setup, include=FALSE}
@@ -42,77 +42,42 @@ theme_set(theme_minimal() +
   ))
 ```
 
-```{r params-str, eval=FALSE}
+```{r params-str, eval=FALSE, echo=FALSE}
 # check structure of params
 str(
   params
 )
 ```
 
-## Compare 
+## Compare
+
+Below is the relationship between `r params$compare_values$x` and `r params$compare_values$y` by `r params$compare_values$color`.
 
 ```{r compare_plot-function, eval=TRUE, echo=FALSE}
 tryCatch({
   # extract variable names
-  x_var <- params$compare_values$x
-  y_var <- params$compare_values$y
-  color_var <- params$compare_values$color
-  alpha_val <- params$compare_values$alpha
-  size_val <- params$compare_values$size
-  title_val <- params$compare_values$title
-  
+  x_var <- name_case(params$compare_values$x, case = "lower")
+  y_var <- name_case(params$compare_values$y, case = "lower")
+  color_var <- name_case(params$compare_values$color, case = "lower")
+  # create data 
   compare_data <- sap::movies
+  # create plot
   compare_plot(data = compare_data, 
                x = x_var, 
                y = y_var, 
                color = color_var, 
-               size = size_val, 
-               alpha = alpha_val, 
-               title = title_val)
+               size =  params$compare_values$size, 
+               alpha = params$compare_values$alpha, 
+               title = params$compare_values$title)
   },
     error = function(e) {
-    cat("\n\n**Error creating plot data:**\n\n", e$message)
+    cat("\n\n**Error creating plot:**\n\n", e$message)
     }
 )
 ```
 
-## Counts 
 
-```{r counts_data, eval=TRUE, echo=TRUE}
-tryCatch({
-x_lab <- name_case(as.character(params$count_values$chr_var))
-str(x_lab)
-counts_data <- subset(
-  sap::movies,
-  thtr_rel_year >= as.integer(params$count_values$start_year) &
-    thtr_rel_year <= as.integer(params$count_values$end_year)
-)
-  
-str(counts_data)
 
-plot <- count_bar_plot(data = counts_data,
-  chr_var = "mpaa_rating",
-  x_lab = "mpaa_rating")
 
-ggplot2::is_ggplot(plot)
 
-  },
-    error = function(e) {
-    cat("\n\n**Error creating plot data:**\n\n", e$message)
-    }
-)
-```
-
-```{r count_bar_plot, eval=FALSE, echo=TRUE}
-tryCatch({
-
-# print
-plot
-
-  },
-    error = function(e) {
-    cat("\n\n**Error creating plot data:**\n\n", e$message)
-    }
-)
-```
 

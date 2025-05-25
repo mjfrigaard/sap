@@ -26,7 +26,7 @@ vignette: >
 library(lobstr)
 ```
 
-This vignette explains the downloadable PDF report in the `sap` R package/Shiny application. A folder tree of it's contents is below:
+This vignette explains the downloadable HTML report in the `sap` R package/Shiny application. A folder tree of it's contents is below:
 
 ```{r}
 #| eval: true

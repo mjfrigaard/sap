@@ -54,7 +54,7 @@ nav_ui <- function() {
         collapsed = TRUE,
         position = "right",
         ## Report Download (UI) ----
-        mod_report_download_ui("report")
+        mod_report_ui("report")
       ),
       bslib::nav_panel(
         "Compare",

@@ -5,7 +5,7 @@
 #'
 #' @param data A dataframe containing the filtered movies data
 #' @param chr_var The categorical variable to count (as a symbol)
-#' @param x_lab Label for the x-axis (title of the categorical variable)
+#' @param x_label Label for the x-axis (title of the categorical variable)
 #'
 #' @return A ggplot2 object displaying a horizontal bar plot
 #'
@@ -15,37 +15,28 @@
 #' 
 #' @examples
 #' # create plot
-#' count_bar_plot(data = movies, chr_var = "mpaa_rating", x_lab = "mpaa_rating")
+#' count_bar_plot(data = movies, chr_var = "mpaa_rating", x_label = "mpaa_rating")
 #'
 #' @export
 #' 
-count_bar_plot <- function(data, chr_var, x_lab) {
-  ggplot2::ggplot(
-    data,
-    ggplot2::aes(
-      x = forcats::fct_rev(
-        forcats::fct_infreq(
-          .data[[chr_var]]
-        )
-      )
-    )
+count_bar_plot <- function(data, chr_var, x_label) {
+  plot <- ggplot2::ggplot(data = data, 
+    ggplot2::aes(x = forcats::fct_rev(forcats::fct_infreq(.data[[chr_var]])))
   ) +
     ggplot2::geom_bar(
-      ggplot2::aes(
-        fill = .data[[chr_var]]
-      ),
+      ggplot2::aes(fill = .data[[chr_var]]),
       show.legend = FALSE
     ) +
     ggplot2::coord_flip() +
     ggplot2::scale_fill_manual(values = clr_pal12) +
     ggplot2::labs(
-      x = NULL,
       y = "# of Movies",
-      fill = x_lab
+      fill = unique(x_label)
     ) +
     ggplot2::theme(
       legend.position = "none",
       axis.text = ggplot2::element_text(color = "#ffffff", size = 14),
       axis.title = ggplot2::element_text(color = "#ffffff", size = 16)
     )
+  print(plot)
 }

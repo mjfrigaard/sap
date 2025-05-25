@@ -4,14 +4,14 @@
 \alias{count_bar_plot}
 \title{Create a Horizontal Bar Plot of Movies Count}
 \usage{
-count_bar_plot(data, chr_var, x_lab)
+count_bar_plot(data, chr_var, x_label)
 }
 \arguments{
 \item{data}{A dataframe containing the filtered movies data}
 
 \item{chr_var}{The categorical variable to count (as a symbol)}
 
-\item{x_lab}{Label for the x-axis (title of the categorical variable)}
+\item{x_label}{Label for the x-axis (title of the categorical variable)}
 }
 \value{
 A ggplot2 object displaying a horizontal bar plot
@@ -27,6 +27,6 @@ The function creates a bar chart with the categorical variable on the y-axis
 }
 \examples{
 # create plot
-count_bar_plot(data = movies, chr_var = "mpaa_rating", x_lab = "mpaa_rating")
+count_bar_plot(data = movies, chr_var = "mpaa_rating", x_label = "mpaa_rating")
 
 }

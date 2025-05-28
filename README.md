@@ -59,7 +59,7 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## Shiny LLM Tools: `gander`
 
-[`29_gander`](https://github.com/mjfrigaard/sap/tree/29_gander) expands the use of LLM models to the [`gander`](https://simonpcouch.github.io/gander/index.html), a package designed to, 
+[`29_llm-gander`](https://github.com/mjfrigaard/sap/tree/29_llm-gander) expands the use of LLM models to the [`gander`](https://simonpcouch.github.io/gander/index.html), a package designed to, 
 
 > "*brings `ellmer` chats into your project sessions, automatically incorporating relevant context and streaming their responses directly into your documents*"
 
@@ -71,3 +71,4 @@ install.packages(c('ellmer', 'gander'))
 pak::pak('tidyverse/ellmer')
 pak::pak("simonpcouch/gander")
 ```
+

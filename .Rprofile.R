@@ -10,26 +10,14 @@ if (interactive()) {
 if (interactive()) {
   require(ellmer, quietly = TRUE)
 }
-# btw llm package ----
-if (interactive()) {
-  require(btw, quietly = TRUE)
-}
 options(
-  ## btw config ----
-   btw.chat_client = ellmer::chat_anthropic(),
+  ## gander config ----
+  .gander_chat = ellmer::chat_anthropic(),
   # printing configs ----
   width = 50L,
   pillar.width = 50L,
   width = 80,
   str = utils::strOptions(strict.width = 'cut'),
-# description configs ----
-  usethis.description = list(
-    "Authors@R" = utils::person(
-        "Martin", "Frigaard",
-        email = "mjfrigaard@pm.me",
-        role = c("aut", "cre")
-    )
-  ),
 # repos configs ----
     repos = c(pm = "https://packagemanager.posit.co/cran/latest",
             CRAN = "https://cloud.r-project.org")

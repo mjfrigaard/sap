@@ -57,18 +57,16 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## Shiny LLM Tools: `gander`
+## Shiny LLM Tools: `btw`
 
-[`29_llm-gander`](https://github.com/mjfrigaard/sap/tree/29_llm-gander) expands the use of LLM models to the [`gander`](https://simonpcouch.github.io/gander/index.html), a package designed to, 
+[`30_llm-btw`](https://github.com/mjfrigaard/sap/tree/30_llm-btw) expands the use of LLM models to the [`btw`](https://posit-dev.github.io/btw/index.html), a package designed to, 
 
-> "*brings `ellmer` chats into your project sessions, automatically incorporating relevant context and streaming their responses directly into your documents*"
+> "*help you describe your computational environment to LLMs*"
 
-Install the `ellmer` and `gander` packages below:
+Install the `ellmer` and `btw` packages below:
 
 ``` r
-install.packages(c('ellmer', 'gander'))
-# or the dev versions
 pak::pak('tidyverse/ellmer')
-pak::pak("simonpcouch/gander")
+pak::pak("posit-dev/btw")
 ```
 

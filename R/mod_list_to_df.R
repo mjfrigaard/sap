@@ -12,11 +12,11 @@
 #' *  `ns` - The namespace extracted from the name (e.g., `"selects"`, `"sliders"`, `"text"`).
 #' *  `id` - The identifier extracted from the name (e.g., `"genre"`, `"xvar"`, `"reviews"`).
 #' *  `value` - The associated value(s) as a character string, or the corresponding data type (`"chr"`, `"int"`, `"num"`).
-#'   }
+#' 
 #'
 #' @export
 #'
-mod_list_to_df <- function(lst) {
+mod_list_to_df <- function(lst){
   # Remove any list items where the name contains "__reactable__"
   lst <- lst[!grepl("__reactable__", names(lst))]
 
@@ -26,7 +26,7 @@ mod_list_to_df <- function(lst) {
   id <- sapply(split_names, `[`, 2)
 
   # Extract values
-  values <- sapply(lst, function(x) {
+  values <- sapply(lst, function(x){
     if (length(x) > 1) {
       paste(x, collapse = ", ")
     } else {
@@ -35,7 +35,7 @@ mod_list_to_df <- function(lst) {
   })
 
   # Extract data types as class names
-  class_types <- sapply(lst, function(x) {
+  class_types <- sapply(lst, function(x){
     if (is.character(x)) {
       "chr"
     } else if (is.integer(x)) {

@@ -19,7 +19,6 @@ The first half of the data frame contains actual values, while the second half c
 \item \code{value} - The associated value(s) as a character string, or the corresponding data type (\code{"chr"}, \code{"int"}, \code{"num"}).
 }
 }
-}
 \description{
 This function takes a named list, where names follow the format
 \code{"namespace-id"}, and converts it into a structured data frame with columns

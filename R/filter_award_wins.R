@@ -10,7 +10,7 @@
 #' @return A data frame containing movies that won the specified award within 
 #'   the given year range.
 #' 
-#' @seealso [create_award_wins()] [create_movie_awards()] 
+#' @seealso [create_movie_wins()] [create_movie_awards()] 
 #' 
 #' 
 #' @export

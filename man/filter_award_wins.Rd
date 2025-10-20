@@ -23,5 +23,5 @@ the given year range.
 This function the award wins data into a dataset of \strong{only} wins.
 }
 \seealso{
-\code{\link[=create_award_wins]{create_award_wins()}} \code{\link[=create_movie_awards]{create_movie_awards()}}
+\code{\link[=create_movie_wins]{create_movie_wins()}} \code{\link[=create_movie_awards]{create_movie_awards()}}
 }

@@ -57,5 +57,5 @@ server <- function(input, output, session) {
 
 }
 \seealso{
-\code{\link[=mod_counts_tbl_]{mod_counts_tbl_()}} The corresponding UI function for this module
+\code{\link[=mod_counts_tbl_ui]{mod_counts_tbl_ui()}} The corresponding UI function for this module
 }

@@ -9,12 +9,12 @@ Install `sap` using `remotes`:
 
 ``` r
 install.packages('remotes')
-remotes::install_github('mjfrigaard/sap', ref = '24_llm-ellmer')
+remotes::install_github('mjfrigaard/sap', ref = '27_llm-ellmer')
 ```
 
-## `24_llm-ellmer`
+## `27_llm-ellmer`
 
-The [`24_llm-ellmer`](https://github.com/mjfrigaard/sap/tree/24_llm-ellmer) branch covers the `ellmer` package in Shiny App-Package development. 
+The [`27_llm-ellmer`](https://github.com/mjfrigaard/sap/tree/27_llm-ellmer) branch covers the `ellmer` package in Shiny App-Package development. 
 
 Launch the application using;
 

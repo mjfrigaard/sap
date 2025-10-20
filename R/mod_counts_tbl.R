@@ -56,7 +56,7 @@ mod_counts_tbl_ui <- function(id) {
 #' provided in `vals()`. Column names are normalized using the `name_case()` 
 #' function before displaying.
 #'
-#' @seealso [mod_counts_tbl_()] The corresponding UI function for this module
+#' @seealso [mod_counts_tbl_ui()] The corresponding UI function for this module
 #'
 #' @examples
 #' # Server implementation

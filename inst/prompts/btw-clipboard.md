@@ -18,416 +18,439 @@ DATE: Monday, August 18, 2025 (2025-08-18)
 </system_info>
 ```
 
-# `btw("@attached_packages")`
+# Prompt: `sap` architecture 
 
-## Context
-
-### Attached Packages
+> "*Describe the architecture of the sap package (the current working directory) using mermaid diagrams to illustrate connections between functions, files, etc.*"
 
 ```
- package  * version    date (UTC) lib source
- btw      * 0.0.2.9000 2025-06-12 [1] Github (posit-dev/btw@c5616f6)
- dplyr    * 1.1.4      2023-11-17 [1] CRAN (R 4.5.0)
- ellmer   * 0.3.0      2025-07-24 [1] RSPM (R 4.5.0)
- forcats  * 1.0.0      2023-01-29 [1] CRAN (R 4.5.0)
- ggdist   * 3.3.3      2025-04-23 [1] RSPM (R 4.5.0)
- ggplot2  * 3.5.2      2025-04-09 [1] CRAN (R 4.5.0)
- ggrepel  * 0.9.6      2024-09-07 [1] CRAN (R 4.5.0)
- ggwaffle * 0.2.5      2025-04-21 [1] Github (liamgilbey/ggwaffle@4843011)
- sap      * 0.0.0.9000 2025-08-18 [1] local
- shiny    * 1.11.1     2025-07-03 [1] RSPM (R 4.5.0)
- usethis  * 3.1.0      2024-11-26 [1] CRAN (R 4.5.0)
-
- [1] /Library/Frameworks/R.framework/Versions/4.5-x86_64/Resources/library
- * ── Packages attached to the search path.
+I'll explore the structure of the sap package and create mermaid diagrams to illustrate its architecture.
+◯ [tool call] btw_tool_files_list_files(path = ".", type = "any", `_intent` = "Explore the root directory structure")
+● #> | path | type | size | modification_time |
+  #> |------|------|------|-------------------|
+  #> | DESCRIPTION | file | 736 | 2025-10-20 14:04:24 |
+  #> | NAMESPACE | file | 932 | 2025-10-22 08:01:23 |
+  #> | R | directory | 1K | 2025-10-22 08:01:23 |
+  #> …
+◯ [tool call] btw_tool_files_list_files(path = "R", type = "file", `_intent` = "List R source files")
+● #> | path | type | size | modification_time |
+  #> |------|------|------|-------------------|
+  #> | R/compare_plot.R | file | 2.08K | 2025-10-20 14:04:01 |
+  #> | R/count_bar_plot.R | file | 1.46K | 2025-10-20 14:04:01 |
+  #> | R/data.R | file | 2.56K | 2025-10-20 13:35:52 |
+  #> …
+Now let me read key files to understand the architecture better:
+◯ [tool call] btw_tool_files_read_text_file(path = "DESCRIPTION", `_intent` = "Read DESCRIPTION file to understand package purpose")
+● #> ```
+  #> Package: sap
+  #> Title: movies app
+  #> Version: 0.0.0.9000
+  #> Author: John Smith <John.Smith@email.io> [aut, cre]
+  #> …
+◯ [tool call] btw_tool_files_read_text_file(path = "README.md", `_intent` = "Read README to understand package overview")
+● #> ````md
+  #> <h1 align="center"> <code><strong>sap</strong></code> </h1>
+  #> <h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
+  #> <hr>
+  #>
+  #> …
+◯ [tool call] btw_tool_files_read_text_file(path = "app.R", `_intent` = "Read main app entry point")
+● #> ```R
+  #> # set option to turn off loadSupport() ----
+  #> withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
+  #>  if (!interactive()) {
+  #>  sink(stderr(), type = "output")
+  #> …
+◯ [tool call] btw_tool_files_read_text_file(path = "R/nav_ui.R", `_intent` = "Read nav_ui to understand main UI structure")
+● #> ```R
+  #> #' User Interface for the Shiny Application
+  #> #'
+  #> #' This function defines the user interface for the Shiny application,
+  #> #' integrating Bootstrap and a custom JavaScript file.
+  #> …
+◯ [tool call] btw_tool_files_read_text_file(path = "R/nav_server.R", `_intent` = "Read nav_server to understand main server structure")
+● #> ```R
+  #> #' Application Navigation Server Logic
+  #> #'
+  #> #' @param input,output Shiny server input and output objects.
+  #> #'
+  #> …
+Let me look at a few module files to understand the pattern:
+◯ [tool call] btw_tool_files_read_text_file(path = "R/mod_compare_vars.R", ...)
+● #> ```R
+  #> #' UI for variable comparison module
+  #> #'
+  #> #' Creates inputs for selecting variables to compare in a scatter plot with
+  #> #' customizable appearance options. This function is designed to work together
+  #> …
+◯ [tool call] btw_tool_files_read_text_file(path = "R/mod_compare_point.R", ...)
+● #> ```R
+  #> #' UI for comparison point chart module
+  #> #'
+  #> #' Creates a plotly scatterplot visualization for comparing two variables.
+  #> #' This function is designed to work together with [mod_compare_point_server()].
+  #> …
+◯ [tool call] btw_tool_files_read_text_file(path = "R/launch_app.R", `_intent` = "Read launch_app function")
+● #> ```R
+  #> #' Launch the Shiny Application
+  #> #'
+  #> #' This function initializes and launches the Shiny application with specified
+  #> #' options and settings.
+  #> …
+Now let me examine some utility functions and plotting functions:
+◯ [tool call] btw_tool_files_read_text_file(path = "R/compare_plot.R", `_intent` = "Read compare_plot utility function")
+● #> ```R
+  #> #' Create an Interactive Scatter Plot for Comparing Variables
+  #> #'
+  #> #' This function creates an interactive scatter plot using plotly to compare two
+  #> #' variables with points colored by a third variable.
+  #> …
+◯ [tool call] btw_tool_files_read_text_file(path = "R/count_bar_plot.R", `_intent` = "Read count_bar_plot utility function")
+● #> ```R
+  #> #' Create a Horizontal Bar Plot of Movies Count
+  #> #'
+  #> #' This function generates a horizontal bar plot showing the frequency counts of a
+  #> #' selected categorical variable from the movies dataset, filtered by year range.
+  #> …
+◯ [tool call] btw_tool_files_read_text_file(path = "R/data.R", `_intent` = "Read data documentation")
+● #> ```R
+  #> #' @title IMDB movies data
+  #> #'
+  #> #' @description
+  #> #' Movie review data. Note: these data come from the [Building Web Applications with shiny course](https://rstudio-education.github.io/shiny-course/).
+  #> …
+Now let me check the structure vignette to understand the architecture better:
+◯ [tool call] btw_tool_files_read_text_file(path = "vignettes/structure.qmd", ...)
+● #> ````qmd
+  #> ---
+  #> title: "Structure"
+  #> format:
+  #>  html:
+  #> …
+Perfect! Now I have a comprehensive understanding of the sap package architecture. Let me create detailed mermaid diagrams to illustrate the structure.
 ```
 
-# `btw("@loaded_packages")`
+# SAP Package Architecture
 
-## Context
+The **sap** package is a modular Shiny application built as an R package that displays movie review data with multiple visualization options. Here's a comprehensive breakdown of its architecture:
 
-### Loaded Packages
+## 1. High-Level Application Structure
 
-```
- package        * version    date (UTC) lib source
- bsicons          0.1.2      2023-11-04 [1] CRAN (R 4.5.0)
- bslib            0.9.0      2025-01-30 [1] RSPM (R 4.5.0)
- btw            * 0.0.2.9000 2025-06-12 [1] Github (posit-dev/btw@c5616f6)
- cachem           1.1.0      2024-05-16 [1] CRAN (R 4.5.0)
- cli              3.6.5      2025-04-23 [1] RSPM (R 4.5.0)
- clipr            0.8.0      2022-02-22 [1] CRAN (R 4.5.0)
- commonmark       2.0.0      2025-07-07 [1] CRAN (R 4.5.1)
- coro             1.1.0      2024-11-05 [1] CRAN (R 4.5.0)
- crosstalk        1.2.1      2023-11-23 [1] CRAN (R 4.5.0)
- curl             6.4.0      2025-06-22 [1] RSPM (R 4.5.0)
- data.table       1.17.8     2025-07-10 [1] CRAN (R 4.5.1)
- digest           0.6.37     2024-08-19 [1] CRAN (R 4.5.0)
- distributional   0.5.0      2024-09-17 [1] CRAN (R 4.5.0)
- dplyr          * 1.1.4      2023-11-17 [1] CRAN (R 4.5.0)
- ellmer         * 0.3.0      2025-07-24 [1] RSPM (R 4.5.0)
- evaluate         1.0.4      2025-06-18 [1] RSPM (R 4.5.0)
- farver           2.1.2      2024-05-13 [1] CRAN (R 4.5.0)
- fastmap          1.2.0      2024-05-15 [1] CRAN (R 4.5.0)
- fontawesome      0.5.3      2024-11-16 [1] CRAN (R 4.5.0)
- forcats        * 1.0.0      2023-01-29 [1] CRAN (R 4.5.0)
- fs               1.6.6      2025-04-12 [1] CRAN (R 4.5.0)
- generics         0.1.4      2025-05-09 [1] RSPM (R 4.5.0)
- ggdist         * 3.3.3      2025-04-23 [1] RSPM (R 4.5.0)
- ggplot2        * 3.5.2      2025-04-09 [1] CRAN (R 4.5.0)
- ggrepel        * 0.9.6      2024-09-07 [1] CRAN (R 4.5.0)
- ggwaffle       * 0.2.5      2025-04-21 [1] Github (liamgilbey/ggwaffle@4843011)
- glue             1.8.0      2024-09-30 [1] CRAN (R 4.5.0)
- gt               1.0.0      2025-04-05 [1] RSPM (R 4.5.0)
- gtable           0.3.6      2024-10-25 [1] CRAN (R 4.5.0)
- htmltools        0.5.8.1    2024-04-04 [1] CRAN (R 4.5.0)
- htmlwidgets      1.6.4      2023-12-06 [1] CRAN (R 4.5.0)
- httpuv           1.6.16     2025-04-16 [1] CRAN (R 4.5.0)
- httr             1.4.7      2023-08-15 [1] CRAN (R 4.5.0)
- httr2            1.2.1      2025-07-22 [1] CRAN (R 4.5.1)
- jquerylib        0.1.4      2021-04-26 [1] CRAN (R 4.5.0)
- jsonlite         2.0.0      2025-03-27 [1] CRAN (R 4.5.0)
- knitr            1.50       2025-03-16 [1] RSPM (R 4.5.0)
- labeling         0.4.3      2023-08-29 [1] CRAN (R 4.5.0)
- later            1.4.2      2025-04-08 [1] CRAN (R 4.5.0)
- lattice          0.22-7     2025-04-02 [1] CRAN (R 4.5.1)
- lazyeval         0.2.2      2019-03-15 [1] CRAN (R 4.5.0)
- lifecycle        1.0.4      2023-11-07 [1] CRAN (R 4.5.0)
- logger           0.4.0      2024-10-22 [1] CRAN (R 4.5.0)
- magrittr         2.0.3      2022-03-30 [1] CRAN (R 4.5.0)
- memoise          2.0.1      2021-11-26 [1] CRAN (R 4.5.0)
- mime             0.13       2025-03-17 [1] CRAN (R 4.5.0)
- pillar           1.11.0     2025-07-04 [1] RSPM (R 4.5.0)
- pkgconfig        2.0.3      2019-09-22 [1] CRAN (R 4.5.0)
- plotly           4.11.0     2025-06-19 [1] RSPM (R 4.5.0)
- promises         1.3.3      2025-05-29 [1] RSPM (R 4.5.0)
- purrr            1.1.0      2025-07-10 [1] RSPM (R 4.5.0)
- R6               2.6.1      2025-02-15 [1] CRAN (R 4.5.0)
- ragg             1.4.0      2025-04-10 [1] CRAN (R 4.5.0)
- rappdirs         0.3.3      2021-01-31 [1] CRAN (R 4.5.0)
- RColorBrewer     1.1-3      2022-04-03 [1] CRAN (R 4.5.0)
- Rcpp             1.1.0      2025-07-02 [1] CRAN (R 4.5.1)
- rlang            1.1.6      2025-04-11 [1] CRAN (R 4.5.0)
- rmarkdown        2.29       2024-11-04 [1] RSPM (R 4.5.0)
- rstudioapi       0.17.1     2024-10-22 [1] CRAN (R 4.5.0)
- S7               0.2.0      2024-11-07 [1] CRAN (R 4.5.0)
- sap            * 0.0.0.9000 2025-08-18 [1] local
- sass             0.4.10     2025-04-11 [1] CRAN (R 4.5.0)
- scales           1.4.0      2025-04-24 [1] CRAN (R 4.5.0)
- sessioninfo      1.2.3      2025-02-05 [1] CRAN (R 4.5.0)
- shiny          * 1.11.1     2025-07-03 [1] RSPM (R 4.5.0)
- showtext         0.9-7      2024-03-02 [1] RSPM (R 4.5.0)
- showtextdb       3.0        2020-06-04 [1] RSPM (R 4.5.0)
- sysfonts         0.8.9      2024-03-02 [1] RSPM (R 4.5.0)
- systemfonts      1.2.3      2025-04-30 [1] RSPM (R 4.5.0)
- textshaping      1.0.1      2025-05-01 [1] CRAN (R 4.5.0)
- thematic         0.1.7      2025-06-19 [1] RSPM (R 4.5.0)
- tibble           3.3.0      2025-06-08 [1] RSPM (R 4.5.0)
- tidyr            1.3.1      2024-01-24 [1] CRAN (R 4.5.0)
- tidyselect       1.2.1      2024-03-11 [1] CRAN (R 4.5.0)
- usethis        * 3.1.0      2024-11-26 [1] CRAN (R 4.5.0)
- vctrs            0.6.5      2023-12-01 [1] CRAN (R 4.5.0)
- viridisLite      0.4.2      2023-05-02 [1] CRAN (R 4.5.0)
- withr            3.0.2      2024-10-28 [1] CRAN (R 4.5.0)
- xfun             0.52       2025-04-02 [1] CRAN (R 4.5.0)
- xml2             1.3.8      2025-03-14 [1] CRAN (R 4.5.0)
- xtable           1.8-4      2019-04-21 [1] CRAN (R 4.5.0)
- yaml             2.3.10     2024-07-26 [1] RSPM (R 4.5.0)
-
- [1] /Library/Frameworks/R.framework/Versions/4.5-x86_64/Resources/library
- * ── Packages attached to the search path.
+```mermaid
+graph TB
+    AppR[app.R Entry Point] --> LaunchApp[launch_app Function]
+    LaunchApp --> DisplayType[display_type Helper]
+    LaunchApp --> NavUI[nav_ui Main UI]
+    LaunchApp --> NavServer[nav_server Main Server]
+    LaunchApp --> Config[App Configuration<br/>Themes, Logger, ggplot2]
+    
+    NavUI --> BSLib[bslib Layout Components]
+    NavUI --> Modules[Shiny Modules]
+    NavServer --> ModServers[Module Servers]
+    
+    Data[(movies dataset<br/>clr_pal colors)] -.->|provides data| Modules
+    Data -.->|provides data| ModServers
+    
+    style AppR fill:#2979ff,stroke:#fff,color:#fff
+    style LaunchApp fill:#2979ff,stroke:#fff,color:#fff
+    style NavUI fill:#00897b,stroke:#fff,color:#fff
+    style NavServer fill:#00897b,stroke:#fff,color:#fff
+    style Data fill:#f57c00,stroke:#fff,color:#fff
 ```
 
+## 2. Module Organization by Feature
 
-# `btw("@installed_packages")`
-
-## Context
-
-### Installed Packages
-
+```mermaid
+graph LR
+    subgraph Compare["Compare Section"]
+        CVarsUI[mod_compare_vars_ui<br/>Input Controls]
+        CVarsServer[mod_compare_vars_server<br/>Reactive Values]
+        CPointUI[mod_compare_point_ui<br/>Plotly Output]
+        CPointServer[mod_compare_point_server<br/>Render Plot]
+        
+        CVarsUI -.->|user inputs| CVarsServer
+        CVarsServer -->|reactive values| CPointServer
+        CPointServer -->|renders to| CPointUI
+    end
+    
+    subgraph Counts["Counts Section"]
+        CtVarsUI[mod_counts_vars_ui<br/>Year Range Input]
+        CtVarsServer[mod_counts_vars_server<br/>Filter Data]
+        CtBarUI[mod_counts_bar_ui<br/>Bar Chart]
+        CtWaffleUI[mod_counts_waffle_ui<br/>Waffle Chart]
+        CtVboxUI[mod_counts_vbox_ui<br/>Value Box]
+        CtTblUI[mod_counts_tbl_ui<br/>Table Output]
+        CtBarServer[mod_counts_bar_server]
+        CtWaffleServer[mod_counts_waffle_server]
+        CtVboxServer[mod_counts_vbox_server]
+        CtTblServer[mod_counts_tbl_server]
+        
+        CtVarsUI -.->|user inputs| CtVarsServer
+        CtVarsServer -->|filtered data| CtBarServer
+        CtVarsServer -->|filtered data| CtWaffleServer
+        CtVarsServer -->|filtered data| CtVboxServer
+        CtVarsServer -->|filtered data| CtTblServer
+    end
+    
+    subgraph Dist["Distributions Section"]
+        DstVarsUI[mod_dist_vars_ui<br/>Variable Selection]
+        DstVarsServer[mod_dist_vars_server<br/>Prepare Data]
+        DstBoxUI[mod_dist_box_ui<br/>Box Plot]
+        DstCloudUI[mod_dist_raincloud_ui<br/>Raincloud Plot]
+        DstTblUI[mod_dist_tbl_ui<br/>Summary Table]
+        DstBoxServer[mod_dist_box_server]
+        DstCloudServer[mod_dist_raincloud_server]
+        DstTblServer[mod_dist_tbl_server]
+        
+        DstVarsUI -.->|user inputs| DstVarsServer
+        DstVarsServer -->|reactive values| DstBoxServer
+        DstVarsServer -->|reactive values| DstCloudServer
+        DstVarsServer -->|reactive values| DstTblServer
+    end
+    
+    subgraph Awards["Awards Section"]
+        AwdVarsUI[mod_awards_vars_ui<br/>Awards Selection]
+        AwdVarsServer[mod_awards_vars_server<br/>Filter Winners]
+        AwdPointUI[mod_awards_point_ui<br/>Scatter Plot]
+        AwdTblUI[mod_awards_tbl_ui<br/>Awards Table]
+        AwdPointServer[mod_awards_point_server]
+        AwdTblServer[mod_awards_tbl_server]
+        
+        AwdVarsUI -.->|user inputs| AwdVarsServer
+        AwdVarsServer -->|filtered data| AwdPointServer
+        AwdVarsServer -->|filtered data| AwdTblServer
+    end
+    
+    style CVarsServer fill:#2979ff,stroke:#fff,color:#fff
+    style CtVarsServer fill:#2979ff,stroke:#fff,color:#fff
+    style DstVarsServer fill:#2979ff,stroke:#fff,color:#fff
+    style AwdVarsServer fill:#2979ff,stroke:#fff,color:#fff
 ```
- package        * version    date (UTC) lib source
- AsioHeaders      1.30.2-1   2025-04-15 [1] RSPM (R 4.5.0)
- askpass          1.2.1      2024-10-04 [1] CRAN (R 4.5.0)
- assertthat       0.2.1      2019-03-21 [1] RSPM (R 4.5.0)
- attachment       0.4.5      2025-03-14 [1] RSPM
- attempt          0.3.1      2020-05-03 [1] RSPM (R 4.5.0)
- audio            0.1-11     2023-08-18 [1] RSPM (R 4.5.0)
- backports        1.5.0      2024-05-23 [1] RSPM (R 4.5.0)
- base64enc        0.1-3      2015-07-28 [1] CRAN (R 4.5.0)
- beepr            2.0        2024-07-06 [1] RSPM (R 4.5.0)
- bigD             0.3.1      2025-04-03 [1] RSPM (R 4.5.0)
- bit              4.6.0      2025-03-06 [1] RSPM
- bit64            4.6.0-1    2025-01-16 [1] RSPM
- bitops           1.0-9      2024-10-03 [1] RSPM (R 4.5.0)
- blob             1.2.4      2023-03-17 [1] RSPM (R 4.5.0)
- boot             1.3-31     2024-08-28 [1] CRAN (R 4.5.1)
- box              1.2.0      2024-02-06 [1] RSPM (R 4.5.0)
- box.linters      0.10.6     2025-06-26 [1] RSPM (R 4.5.0)
- box.lsp          0.1.3      2024-09-19 [1] RSPM (R 4.5.0)
- brew             1.0-10     2023-12-16 [1] CRAN (R 4.5.0)
- brio             1.1.5      2024-04-24 [1] CRAN (R 4.5.0)
- broom            1.0.9      2025-07-28 [1] RSPM (R 4.5.0)
- bsicons          0.1.2      2023-11-04 [1] CRAN (R 4.5.0)
- bslib            0.9.0      2025-01-30 [1] RSPM (R 4.5.0)
- btw            * 0.0.2.9000 2025-06-12 [1] Github (posit-dev/btw@c5616f6)
- bundle           0.1.2      2024-11-12 [1] RSPM (R 4.5.0)
- butcher          0.3.5      2025-03-18 [1] RSPM (R 4.5.0)
- cachem           1.1.0      2024-05-16 [1] CRAN (R 4.5.0)
- callr            3.7.6      2024-03-25 [1] CRAN (R 4.5.0)
- cellranger       1.1.0      2016-07-27 [1] RSPM (R 4.5.0)
- cereal           0.1.0      2023-06-09 [1] RSPM (R 4.5.0)
- checkmate        2.3.2      2024-07-29 [1] RSPM (R 4.5.0)
- chromote         0.5.1      2025-04-24 [1] CRAN (R 4.5.0)
- class            7.3-23     2025-01-01 [1] CRAN (R 4.5.1)
- cli              3.6.5      2025-04-23 [1] RSPM (R 4.5.0)
- clipr            0.8.0      2022-02-22 [1] CRAN (R 4.5.0)
- cluster          2.1.8.1    2025-03-12 [1] CRAN (R 4.5.1)
- codetools        0.2-20     2024-03-31 [1] CRAN (R 4.5.1)
- collections      0.3.8      2025-05-08 [1] CRAN (R 4.5.0)
- colorspace       2.1-1      2024-07-26 [1] CRAN (R 4.5.0)
- commonmark       2.0.0      2025-07-07 [1] CRAN (R 4.5.1)
- config           0.3.2      2023-08-30 [1] RSPM (R 4.5.0)
- conflicted       1.2.0      2023-02-01 [1] RSPM (R 4.5.0)
- coro             1.1.0      2024-11-05 [1] CRAN (R 4.5.0)
- covr             3.6.4      2023-11-09 [1] RSPM (R 4.5.0)
- cpp11            0.5.2      2025-03-03 [1] CRAN (R 4.5.0)
- crayon           1.5.3      2024-06-20 [1] CRAN (R 4.5.0)
- credentials      2.0.2      2024-10-04 [1] CRAN (R 4.5.0)
- crosstalk        1.2.1      2023-11-23 [1] CRAN (R 4.5.0)
- curl             6.4.0      2025-06-22 [1] RSPM (R 4.5.0)
- data.table       1.17.8     2025-07-10 [1] CRAN (R 4.5.1)
- DBI              1.2.3      2024-06-02 [1] RSPM (R 4.5.0)
- dbplyr           2.5.0      2024-03-19 [1] RSPM (R 4.5.0)
- desc             1.4.3      2023-12-10 [1] CRAN (R 4.5.0)
- devtools         2.4.5      2022-10-11 [1] CRAN (R 4.5.0)
- diffobj          0.3.6      2025-04-21 [1] CRAN (R 4.5.0)
- digest           0.6.37     2024-08-19 [1] CRAN (R 4.5.0)
- distributional   0.5.0      2024-09-17 [1] CRAN (R 4.5.0)
- dockerfiler      0.2.5      2025-05-07 [1] RSPM (R 4.5.0)
- downlit          0.4.4      2024-06-10 [1] CRAN (R 4.5.0)
- dplyr          * 1.1.4      2023-11-17 [1] CRAN (R 4.5.0)
- DT               0.33       2024-04-04 [1] RSPM (R 4.5.0)
- dtplyr           1.3.1      2023-03-22 [1] RSPM (R 4.5.0)
- duckdb           1.3.2      2025-07-09 [1] RSPM
- ellipsis         0.3.2      2021-04-29 [1] CRAN (R 4.5.0)
- ellmer         * 0.3.0      2025-07-24 [1] RSPM (R 4.5.0)
- evaluate         1.0.4      2025-06-18 [1] RSPM (R 4.5.0)
- fansi            1.0.6      2023-12-08 [1] CRAN (R 4.5.0)
- farver           2.1.2      2024-05-13 [1] CRAN (R 4.5.0)
- fastDummies      1.7.5      2025-01-20 [1] RSPM (R 4.5.0)
- fastmap          1.2.0      2024-05-15 [1] CRAN (R 4.5.0)
- fontawesome      0.5.3      2024-11-16 [1] CRAN (R 4.5.0)
- forcats        * 1.0.0      2023-01-29 [1] CRAN (R 4.5.0)
- foreign          0.8-90     2025-03-31 [1] CRAN (R 4.5.1)
- fs               1.6.6      2025-04-12 [1] CRAN (R 4.5.0)
- gander           0.1.0.9000 2025-04-22 [1] Github (simonpcouch/gander@d12fb58)
- gap              1.6        2024-08-27 [1] CRAN (R 4.5.0)
- gap.datasets     0.0.6      2023-08-25 [1] RSPM (R 4.5.0)
- gargle           1.5.2      2023-07-20 [1] RSPM (R 4.5.0)
- generics         0.1.4      2025-05-09 [1] RSPM (R 4.5.0)
- gert             2.1.5      2025-03-25 [1] CRAN (R 4.5.0)
- ggdist         * 3.3.3      2025-04-23 [1] RSPM (R 4.5.0)
- ggfittext        0.10.2     2024-02-01 [1] CRAN (R 4.5.0)
- ggplot2        * 3.5.2      2025-04-09 [1] CRAN (R 4.5.0)
- ggrepel        * 0.9.6      2024-09-07 [1] CRAN (R 4.5.0)
- ggwaffle       * 0.2.5      2025-04-21 [1] Github (liamgilbey/ggwaffle@4843011)
- gh               1.5.0      2025-05-26 [1] RSPM (R 4.5.0)
- gitcreds         0.1.2      2022-09-08 [1] CRAN (R 4.5.0)
- globals          0.18.0     2025-05-08 [1] CRAN (R 4.5.0)
- glue             1.8.0      2024-09-30 [1] CRAN (R 4.5.0)
- golem            0.5.1      2024-08-27 [1] RSPM (R 4.5.0)
- googledrive      2.1.1      2023-06-11 [1] RSPM (R 4.5.0)
- googlesheets4    1.1.1      2023-06-11 [1] RSPM (R 4.5.0)
- gridtext         0.1.5      2022-09-16 [1] CRAN (R 4.5.0)
- gt               1.0.0      2025-04-05 [1] RSPM (R 4.5.0)
- gtable           0.3.6      2024-10-25 [1] CRAN (R 4.5.0)
- hardhat          1.4.1      2025-01-31 [1] RSPM (R 4.5.0)
- haven            2.5.5      2025-05-30 [1] RSPM (R 4.5.0)
- here             1.0.1      2020-12-13 [1] RSPM (R 4.5.0)
- highr            0.11       2024-05-26 [1] CRAN (R 4.5.0)
- hms              1.1.3      2023-03-21 [1] RSPM
- htmltools        0.5.8.1    2024-04-04 [1] CRAN (R 4.5.0)
- htmlwidgets      1.6.4      2023-12-06 [1] CRAN (R 4.5.0)
- httpuv           1.6.16     2025-04-16 [1] CRAN (R 4.5.0)
- httr             1.4.7      2023-08-15 [1] CRAN (R 4.5.0)
- httr2            1.2.1      2025-07-22 [1] CRAN (R 4.5.1)
- ids              1.0.1      2017-05-31 [1] RSPM (R 4.5.0)
- ini              0.3.1      2018-05-20 [1] CRAN (R 4.5.0)
- inspectdf        0.0.12.1   2024-12-27 [1] CRAN (R 4.5.0)
- isoband          0.2.7      2022-12-20 [1] CRAN (R 4.5.0)
- jose             1.2.1      2024-10-04 [1] RSPM (R 4.5.0)
- jpeg             0.1-11     2025-03-21 [1] CRAN (R 4.5.0)
- jquerylib        0.1.4      2021-04-26 [1] CRAN (R 4.5.0)
- jsonlite         2.0.0      2025-03-27 [1] CRAN (R 4.5.0)
- juicyjuice       0.1.0      2022-11-10 [1] RSPM (R 4.5.0)
- kableExtra       1.4.0      2024-01-24 [1] RSPM (R 4.5.0)
- KernSmooth       2.23-26    2025-01-01 [1] CRAN (R 4.5.1)
- knitr            1.50       2025-03-16 [1] RSPM (R 4.5.0)
- labeling         0.4.3      2023-08-29 [1] CRAN (R 4.5.0)
- languageserver   0.3.16     2023-08-18 [1] CRAN (R 4.5.0)
- later            1.4.2      2025-04-08 [1] CRAN (R 4.5.0)
- lattice          0.22-7     2025-04-02 [1] CRAN (R 4.5.1)
- lazyeval         0.2.2      2019-03-15 [1] CRAN (R 4.5.0)
- leprechaun       1.0.0      2022-01-19 [1] RSPM (R 4.5.0)
- lifecycle        1.0.4      2023-11-07 [1] CRAN (R 4.5.0)
- lintr            3.2.0      2025-02-12 [1] RSPM (R 4.5.0)
- listviewerlite   0.0.0.9000 2025-06-26 [1] Github (long39ng/listviewerlite@bcd737c)
- litedown         0.7        2025-04-08 [1] RSPM (R 4.5.0)
- lobstr           1.1.2      2022-06-22 [1] RSPM
- log4r            0.4.4      2024-10-12 [1] RSPM
- logger           0.4.0      2024-10-22 [1] CRAN (R 4.5.0)
- lubridate        1.9.4      2024-12-08 [1] RSPM (R 4.5.0)
- magick           2.8.7      2025-06-06 [1] RSPM (R 4.5.0)
- magrittr         2.0.3      2022-03-30 [1] CRAN (R 4.5.0)
- markdown         2.0        2025-03-23 [1] RSPM (R 4.5.0)
- MASS             7.3-65     2025-02-28 [1] CRAN (R 4.5.1)
- Matrix           1.7-3      2025-03-11 [1] CRAN (R 4.5.1)
- memoise          2.0.1      2021-11-26 [1] CRAN (R 4.5.0)
- mgcv             1.9-3      2025-04-04 [1] CRAN (R 4.5.1)
- mime             0.13       2025-03-17 [1] CRAN (R 4.5.0)
- miniUI           0.1.2      2025-04-17 [1] CRAN (R 4.5.0)
- mockery          0.4.4      2023-09-26 [1] CRAN (R 4.5.0)
- modelr           0.1.11     2023-03-22 [1] RSPM (R 4.5.0)
- munsell          0.5.1      2024-04-01 [1] CRAN (R 4.5.0)
- nlme             3.1-168    2025-03-31 [1] CRAN (R 4.5.1)
- nnet             7.3-20     2025-01-01 [1] CRAN (R 4.5.1)
- numDeriv         2016.8-1.1 2019-06-06 [1] CRAN (R 4.5.0)
- openssl          2.3.3      2025-05-26 [1] RSPM (R 4.5.0)
- packer           0.1.3      2022-05-28 [1] RSPM (R 4.5.0)
- packrat          0.9.3      2025-06-16 [1] RSPM (R 4.5.0)
- pak              0.9.0      2025-05-27 [1] CRAN (R 4.5.0)
- palmerpenguins   0.1.1      2022-08-15 [1] RSPM
- paws.common      0.8.5      2025-07-25 [1] RSPM (R 4.5.0)
- pillar           1.11.0     2025-07-04 [1] RSPM (R 4.5.0)
- pingr            2.0.5      2024-12-12 [1] RSPM (R 4.5.0)
- pins             1.4.1      2025-04-30 [1] RSPM (R 4.5.0)
- pkgbuild         1.4.8      2025-05-26 [1] RSPM (R 4.5.0)
- pkgconfig        2.0.3      2019-09-22 [1] CRAN (R 4.5.0)
- pkgdown          2.1.3      2025-05-25 [1] RSPM (R 4.5.0)
- pkgload          1.4.0      2024-06-28 [1] CRAN (R 4.5.0)
- pkgsearch        3.1.5      2025-04-12 [1] RSPM
- PKI              0.1-14     2024-06-15 [1] RSPM (R 4.5.0)
- plogr            0.2.0      2018-03-25 [1] RSPM (R 4.5.0)
- plotly           4.11.0     2025-06-19 [1] RSPM (R 4.5.0)
- plumber          1.3.0      2025-02-19 [1] CRAN (R 4.5.0)
- png              0.1-8      2022-11-29 [1] CRAN (R 4.5.0)
- praise           1.0.0      2015-08-11 [1] CRAN (R 4.5.0)
- prettyunits      1.2.0      2023-09-24 [1] CRAN (R 4.5.0)
- processx         3.8.6      2025-02-21 [1] CRAN (R 4.5.0)
- profvis          0.4.0      2024-09-20 [1] CRAN (R 4.5.0)
- progress         1.2.3      2023-12-06 [1] RSPM (R 4.5.0)
- promises         1.3.3      2025-05-29 [1] RSPM (R 4.5.0)
- ps               1.9.1      2025-04-12 [1] CRAN (R 4.5.0)
- purrr            1.1.0      2025-07-10 [1] RSPM (R 4.5.0)
- quadprog         1.5-8      2019-11-20 [1] CRAN (R 4.5.0)
- quarto           1.5.0      2025-07-28 [1] RSPM (R 4.5.0)
- R.cache          0.17.0     2025-05-02 [1] RSPM (R 4.5.0)
- R.methodsS3      1.8.2      2022-06-13 [1] RSPM (R 4.5.0)
- R.oo             1.27.1     2025-05-02 [1] RSPM (R 4.5.0)
- R.utils          2.13.0     2025-02-24 [1] RSPM (R 4.5.0)
- R6               2.6.1      2025-02-15 [1] CRAN (R 4.5.0)
- ragg             1.4.0      2025-04-10 [1] CRAN (R 4.5.0)
- rapidoc          9.3.4      2023-11-17 [1] RSPM (R 4.5.0)
- rappdirs         0.3.3      2021-01-31 [1] CRAN (R 4.5.0)
- rbibutils        2.3        2024-10-04 [1] RSPM (R 4.5.0)
- rcmdcheck        1.4.0      2021-09-27 [1] CRAN (R 4.5.0)
- RColorBrewer     1.1-3      2022-04-03 [1] CRAN (R 4.5.0)
- Rcpp             1.1.0      2025-07-02 [1] CRAN (R 4.5.1)
- RcppTOML         0.2.3      2025-03-08 [1] RSPM (R 4.5.0)
- Rdpack           2.6.4      2025-04-09 [1] RSPM (R 4.5.0)
- reactable        0.4.4      2023-03-12 [1] CRAN (R 4.5.0)
- reactR           0.6.1      2024-09-14 [1] CRAN (R 4.5.0)
- readr            2.1.5      2024-01-10 [1] RSPM
- readxl           1.4.5      2025-03-07 [1] RSPM (R 4.5.0)
- rematch          2.0.0      2023-08-30 [1] RSPM (R 4.5.0)
- rematch2         2.1.2      2020-05-01 [1] RSPM (R 4.5.0)
- remotes          2.5.0      2024-03-17 [1] RSPM (R 4.5.0)
- renv             1.1.5      2025-07-24 [1] RSPM (R 4.5.0)
- repr             1.1.7      2024-03-22 [1] RSPM (R 4.5.0)
- reprex           2.1.1      2024-07-06 [1] RSPM (R 4.5.0)
- reticulate       1.43.0     2025-07-21 [1] CRAN (R 4.5.1)
- rex              1.2.1      2021-11-26 [1] RSPM (R 4.5.0)
- rhino            1.11.0     2025-04-02 [1] CRAN (R 4.5.0)
- rlang            1.1.6      2025-04-11 [1] CRAN (R 4.5.0)
- rmarkdown        2.29       2024-11-04 [1] RSPM (R 4.5.0)
- roxygen2         7.3.2      2024-06-28 [1] CRAN (R 4.5.0)
- rpart            4.1.24     2025-01-07 [1] CRAN (R 4.5.1)
- rprojroot        2.1.0      2025-07-12 [1] CRAN (R 4.5.1)
- rsconnect        1.5.0      2025-06-26 [1] RSPM (R 4.5.0)
- RSQLite          2.4.2      2025-07-18 [1] RSPM (R 4.5.0)
- rstudioapi       0.17.1     2024-10-22 [1] CRAN (R 4.5.0)
- rversions        2.1.2      2022-08-31 [1] CRAN (R 4.5.0)
- rvest            1.0.4      2024-02-12 [1] RSPM (R 4.5.0)
- S7               0.2.0      2024-11-07 [1] CRAN (R 4.5.0)
- sap            * 0.0.0.9000 2025-08-18 [1] local
- sass             0.4.10     2025-04-11 [1] CRAN (R 4.5.0)
- scales           1.4.0      2025-04-24 [1] CRAN (R 4.5.0)
- selectr          0.4-2      2019-11-20 [1] RSPM (R 4.5.0)
- sessioninfo      1.2.3      2025-02-05 [1] CRAN (R 4.5.0)
- shades           1.4.0      2019-08-02 [1] CRAN (R 4.5.0)
- shiny          * 1.11.1     2025-07-03 [1] RSPM (R 4.5.0)
- shinychat        0.2.0      2025-05-16 [1] RSPM (R 4.5.0)
- shinypak         0.1.1      2025-05-31 [1] Github (mjfrigaard/shinypak@a417697)
- shinytest2       0.4.1      2025-04-11 [1] RSPM (R 4.5.0)
- shinythemes      1.2.0      2021-01-25 [1] RSPM (R 4.5.0)
- showtext         0.9-7      2024-03-02 [1] RSPM (R 4.5.0)
- showtextdb       3.0        2020-06-04 [1] RSPM (R 4.5.0)
- shrapports       0.1.0      2025-06-20 [1] Github (mjfrigaard/shrapports@87ef2a1)
- skimr            2.2.1      2025-07-26 [1] RSPM (R 4.5.0)
- snakecase        0.11.1     2023-08-27 [1] CRAN (R 4.5.0)
- snowflakeauth    0.1.2      2025-06-19 [1] RSPM (R 4.5.0)
- sodium           1.4.0      2024-12-16 [1] CRAN (R 4.5.0)
- sourcetools      0.1.7-1    2023-02-01 [1] CRAN (R 4.5.0)
- sparsevctrs      0.3.4      2025-05-25 [1] RSPM (R 4.5.0)
- spatial          7.3-18     2025-01-01 [1] CRAN (R 4.5.1)
- streamy          0.2.0      2025-05-21 [1] RSPM (R 4.5.0)
- stringi          1.8.7      2025-03-27 [1] CRAN (R 4.5.0)
- stringr          1.5.1      2023-11-14 [1] CRAN (R 4.5.0)
- styler           1.10.3     2024-04-07 [1] RSPM (R 4.5.0)
- survival         3.8-3      2024-12-17 [1] CRAN (R 4.5.1)
- svglite          2.2.1      2025-05-12 [1] RSPM (R 4.5.0)
- swagger          5.17.14.1  2024-06-28 [1] CRAN (R 4.5.0)
- sys              3.4.3      2024-10-04 [1] CRAN (R 4.5.0)
- sysfonts         0.8.9      2024-03-02 [1] RSPM (R 4.5.0)
- systemfonts      1.2.3      2025-04-30 [1] RSPM (R 4.5.0)
- testthat         3.2.3      2025-01-13 [1] CRAN (R 4.5.0)
- textshaping      1.0.1      2025-05-01 [1] CRAN (R 4.5.0)
- thematic         0.1.7      2025-06-19 [1] RSPM (R 4.5.0)
- tibble           3.3.0      2025-06-08 [1] RSPM (R 4.5.0)
- tidyr            1.3.1      2024-01-24 [1] CRAN (R 4.5.0)
- tidyselect       1.2.1      2024-03-11 [1] CRAN (R 4.5.0)
- tidytuesdayR     1.2.1      2025-04-29 [1] CRAN (R 4.5.0)
- tidyverse        2.0.0      2023-02-22 [1] RSPM (R 4.5.0)
- timechange       0.3.0      2024-01-18 [1] RSPM (R 4.5.0)
- tinytex          0.57       2025-04-15 [1] CRAN (R 4.5.0)
- treesitter       0.3.0      2025-06-06 [1] RSPM (R 4.5.0)
- treesitter.r     1.2.0      2025-06-05 [1] RSPM (R 4.5.0)
- ttdviewer        0.1.0      2025-08-04 [1] Github (mjfrigaard/ttdviewer@65f8dbf)
- tzdb             0.5.0      2025-03-15 [1] RSPM
- urlchecker       1.0.1      2021-11-30 [1] CRAN (R 4.5.0)
- usethis        * 3.1.0      2024-11-26 [1] CRAN (R 4.5.0)
- utf8             1.2.6      2025-06-08 [1] RSPM (R 4.5.0)
- uuid             1.2-1      2024-07-29 [1] RSPM (R 4.5.0)
- V8               6.0.5      2025-07-31 [1] CRAN (R 4.5.1)
- vctrs            0.6.5      2023-12-01 [1] CRAN (R 4.5.0)
- vetiver          0.2.5      2023-11-16 [1] RSPM (R 4.5.0)
- viridisLite      0.4.2      2023-05-02 [1] CRAN (R 4.5.0)
- vroom            1.6.5      2023-12-05 [1] RSPM
- waldo            0.6.2      2025-07-11 [1] CRAN (R 4.5.1)
- webshot          0.5.5      2023-06-26 [1] RSPM
- websocket        1.4.4      2025-04-10 [1] RSPM (R 4.5.0)
- webutils         1.2.2      2024-10-04 [1] CRAN (R 4.5.0)
- whisker          0.4.1      2022-12-05 [1] CRAN (R 4.5.0)
- withr            3.0.2      2024-10-28 [1] CRAN (R 4.5.0)
- writexl          1.5.4      2025-04-15 [1] RSPM (R 4.5.0)
- xfun             0.52       2025-04-02 [1] CRAN (R 4.5.0)
- xml2             1.3.8      2025-03-14 [1] CRAN (R 4.5.0)
- xmlparsedata     1.0.5      2021-03-06 [1] RSPM (R 4.5.0)
- xopen            1.0.1      2024-04-25 [1] CRAN (R 4.5.0)
- xtable           1.8-4      2019-04-21 [1] CRAN (R 4.5.0)
- yaml             2.3.10     2024-07-26 [1] RSPM (R 4.5.0)
- zip              2.3.3      2025-05-13 [1] RSPM (R 4.5.0)
 
- [1] /Library/Frameworks/R.framework/Versions/4.5-x86_64/Resources/library
- * ── Packages attached to the search path.
+## 3. Navigation & Main Server Flow
+
+```mermaid
+graph TB
+    NavUI[nav_ui Function] --> PageNav[bslib::page_navbar]
+    
+    PageNav --> ComparePanel[Compare Panel]
+    PageNav --> CountsPanel[Counts Panel]
+    PageNav --> DistPanel[Distributions Panel]
+    PageNav --> AwardsPanel[Awards Panel]
+    PageNav --> ReportSidebar[Report Sidebar]
+    
+    ComparePanel --> CModUI[Compare Modules UI]
+    CountsPanel --> CtModUI[Counts Modules UI]
+    DistPanel --> DModUI[Dist Modules UI]
+    AwardsPanel --> AModUI[Awards Modules UI]
+    ReportSidebar --> RptModUI[mod_report_ui]
+    
+    NavServer[nav_server Function] --> ScatterVals[scatter_values<br/>from compare_vars]
+    NavServer --> CountVals[count_values<br/>from counts_vars]
+    NavServer --> DistVals[dist_values<br/>from dist_vars]
+    NavServer --> AwardVals[award_values<br/>from awards_vars]
+    
+    ScatterVals --> CmpPointSrv[mod_compare_point_server]
+    CountVals --> CntBarSrv[mod_counts_bar_server]
+    CountVals --> CntWaffleSrv[mod_counts_waffle_server]
+    CountVals --> CntVboxSrv[mod_counts_vbox_server]
+    CountVals --> CntTblSrv[mod_counts_tbl_server]
+    DistVals --> DistBoxSrv[mod_dist_box_server]
+    DistVals --> DistCloudSrv[mod_dist_raincloud_server]
+    DistVals --> DistTblSrv[mod_dist_tbl_server]
+    AwardVals --> AwdPointSrv[mod_awards_point_server]
+    AwardVals --> AwdTblSrv[mod_awards_tbl_server]
+    
+    ScatterVals --> RptServer[mod_report_server]
+    CountVals --> RptServer
+    DistVals --> RptServer
+    AwardVals --> RptServer
+    
+    style NavUI fill:#00897b,stroke:#fff,color:#fff
+    style NavServer fill:#00897b,stroke:#fff,color:#fff
+    style ScatterVals fill:#2979ff,stroke:#fff,color:#fff
+    style CountVals fill:#2979ff,stroke:#fff,color:#fff
+    style DistVals fill:#2979ff,stroke:#fff,color:#fff
+    style AwardVals fill:#2979ff,stroke:#fff,color:#fff
 ```
+
+## 4. Utility Functions & Data Flow
+
+```mermaid
+graph LR
+    subgraph Data["Data Layer"]
+        Movies[(movies.rda<br/>651 movies)]
+        Colors[(color palettes<br/>clr_pal3, clr_pal12)]
+    end
+    
+    subgraph Utilities["Utility Functions"]
+        NameCase[name_case<br/>Format Variable Names]
+        Desym[desym<br/>Convert Symbols]
+        ExtractVar[extract_var_name<br/>Get Variable Names]
+        GetCol[get_column_name<br/>Extract Columns]
+        GetAwards[get_award_recipients<br/>Filter Award Winners]
+        DistSummary[dist_var_summary<br/>Summary Statistics]
+    end
+    
+    subgraph PlotUtils["Plotting Utilities"]
+        ComparePlot[compare_plot<br/>Plotly Scatter]
+        CountBarPlot[count_bar_plot<br/>ggplot2 Bar Chart]
+    end
+    
+    subgraph Support["Support Functions"]
+        LogrMsg[logr_msg<br/>Logging System]
+        DisplayType[display_type<br/>Launch Configuration]
+    end
+    
+    Movies -->|provides data| Utilities
+    Movies -->|provides data| PlotUtils
+    Colors -->|color schemes| PlotUtils
+    
+    Utilities -->|formatted labels| PlotUtils
+    LogrMsg -.->|tracks execution| Utilities
+    LogrMsg -.->|tracks execution| PlotUtils
+    
+    style Movies fill:#f57c00,stroke:#fff,color:#fff
+    style Colors fill:#f57c00,stroke:#fff,color:#fff
+    style NameCase fill:#7cb342,stroke:#fff,color:#fff
+    style ComparePlot fill:#5e35b1,stroke:#fff,color:#fff
+    style CountBarPlot fill:#5e35b1,stroke:#fff,color:#fff
+```
+
+## 5. Module Communication Pattern
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant VarsUI as Vars Module UI<br/>(Input Controls)
+    participant VarsServer as Vars Module Server<br/>(Data Processing)
+    participant NavServer as nav_server<br/>(Coordinator)
+    participant DisplayServer as Display Module Server<br/>(Visualization)
+    participant DisplayUI as Display Module UI<br/>(Output)
+    
+    User->>VarsUI: Selects variables/filters
+    VarsUI->>VarsServer: Input values
+    VarsServer->>VarsServer: Process & validate inputs
+    VarsServer->>NavServer: Return reactive values
+    NavServer->>DisplayServer: Pass reactive values
+    DisplayServer->>DisplayServer: Generate plot/table
+    DisplayServer->>DisplayUI: Render output
+    DisplayUI->>User: Display visualization
+    
+    Note over VarsServer,DisplayServer: Reactive values flow through nav_server
+```
+
+## 6. File Organization Structure
+
+```mermaid
+graph TB
+    Root[sap Package Root]
+    
+    Root --> RDir[R/<br/>Source Code]
+    Root --> DataDir[data/<br/>Package Data]
+    Root --> DataRaw[data-raw/<br/>Data Processing Scripts]
+    Root --> InstDir[inst/<br/>Installation Files]
+    Root --> TestDir[tests/<br/>Test Suite]
+    Root --> VigDir[vignettes/<br/>Documentation]
+    Root --> ManDir[man/<br/>Help Files]
+    
+    RDir --> Modules[Module Files<br/>mod_*.R]
+    RDir --> NavFiles[Navigation Files<br/>nav_ui.R, nav_server.R]
+    RDir --> UtilFiles[Utility Files<br/>helpers & functions]
+    RDir --> DataDoc[data.R<br/>Data Documentation]
+    RDir --> LaunchFile[launch_app.R<br/>App Entry Point]
+    
+    DataDir --> MoviesData[movies.rda]
+    DataDir --> ColorData[clr_pal*.rda]
+    
+    InstDir --> ExtData[extdata/<br/>movies.csv, movies.fst]
+    InstDir --> WWW[www/<br/>static assets]
+    InstDir --> RmdDir[rmd/<br/>report templates]
+    InstDir --> Prompts[prompts/<br/>LLM prompts]
+    
+    TestDir --> TestThat[testthat/<br/>test files]
+    TestDir --> Fixtures[fixtures/<br/>test data]
+    
+    VigDir --> StructVig[structure.qmd]
+    VigDir --> GraphsVig[graphs.qmd]
+    VigDir --> TablesVig[tables.qmd]
+    VigDir --> SpecsVig[specs.qmd]
+    
+    style Root fill:#2979ff,stroke:#fff,color:#fff
+    style RDir fill:#00897b,stroke:#fff,color:#fff
+    style Modules fill:#7cb342,stroke:#fff,color:#fff
+    style NavFiles fill:#7cb342,stroke:#fff,color:#fff
+```
+
+## 7. Technology Stack
+
+```mermaid
+graph TB
+    subgraph Frontend["Frontend Layer"]
+        BSLib[bslib<br/>Layout & Theming]
+        Shiny[shiny<br/>Reactive Framework]
+        BSIcons[bsicons<br/>Icons]
+    end
+    
+    subgraph Visualization["Visualization Layer"]
+        GGPlot[ggplot2<br/>Static Plots]
+        Plotly[plotly<br/>Interactive Plots]
+        GGDist[ggdist<br/>Distribution Plots]
+        GGWaffle[ggwaffle<br/>Waffle Charts]
+        GGRepel[ggrepel<br/>Label Positioning]
+        GT[gt<br/>Tables]
+        Thematic[thematic<br/>Plot Theming]
+    end
+    
+    subgraph DataProc["Data Processing Layer"]
+        Dplyr[dplyr<br/>Data Manipulation]
+        Tidyr[tidyr<br/>Data Tidying]
+        Forcats[forcats<br/>Factor Handling]
+        Scales[scales<br/>Scale Functions]
+    end
+    
+    subgraph Support["Support Layer"]
+        Logger[logger<br/>Logging]
+        CLI[cli<br/>Console Messages]
+        Glue[glue<br/>String Interpolation]
+        Quarto[quarto<br/>Report Generation]
+    end
+    
+    Frontend --> Visualization
+    Visualization --> DataProc
+    DataProc --> Support
+    
+    style BSLib fill:#2979ff,stroke:#fff,color:#fff
+    style Shiny fill:#2979ff,stroke:#fff,color:#fff
+    style GGPlot fill:#5e35b1,stroke:#fff,color:#fff
+    style Plotly fill:#5e35b1,stroke:#fff,color:#fff
+```
+
+## Key Architectural Patterns
+
+### 1. **Modular Design**
+- Each feature area (Compare, Counts, Distributions, Awards) has its own set of modules
+- Modules follow the pattern: `mod_<feature>_<type>_<ui/server>`
+- Vars modules handle inputs, display modules handle outputs
+
+### 2. **Separation of Concerns**
+- **UI Layer**: `nav_ui()` and module UI functions define the interface
+- **Server Layer**: `nav_server()` coordinates module servers
+- **Data Layer**: Package data objects (`movies`, color palettes)
+- **Utility Layer**: Helper functions for formatting, filtering, and plotting
+
+### 3. **Reactive Value Flow**
+- Vars modules collect user inputs and return reactive values
+- `nav_server()` acts as a coordinator, passing reactive values to display modules
+- Display modules render visualizations based on reactive inputs
+
+### 4. **Theming & Configuration**
+- Centralized theme configuration in `launch_app()`
+- Dark theme with custom colors (#121212 background, #ffffff text, #2979ff primary)
+- `thematic` package ensures ggplot2 plots match Shiny theme
+
+### 5. **Testing Strategy**
+- Each module server has corresponding test file
+- Test fixtures provide consistent test data
+- Uses `shinytest2` for testing module behavior
+
+This architecture provides a clean, maintainable structure that separates concerns, promotes reusability, and follows R package best practices while building a sophisticated Shiny application.

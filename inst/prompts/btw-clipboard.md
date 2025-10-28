@@ -53,7 +53,11 @@ I'll explore the structure of the sap package to understand its architecture and
   #> | tests/testthat/fixtures | directory | 128 | 2025-10-20 14:04:01 |
   #> | tests/testthat/fixtures/make-tidy_ggp2_movies.R | file | 1.49K | 2025-10-20 14:04:01 |
   #> …
+```
+
 Let me examine some key files to understand the application structure better:
+
+```bash
 ◯ [tool call] btw_tool_files_read_text_file(path = "R/nav_ui.R", `_intent` = "Read the main UI file")
 ● #> ```R
   #> #' User Interface for the Shiny Application
@@ -83,7 +87,11 @@ Let me examine some key files to understand the application structure better:
   #> #' Movie review data. Note: these data come from the [Building Web Applications with shiny
 course](https://rstudio-education.github.io/shiny-course/).
   #> …
+```
+
 Now let me examine a few module files to understand the module pattern:
+
+```bash
 ◯ [tool call] btw_tool_files_read_text_file(path = "R/mod_compare_vars.R", ...)
 ● #> ```R
   #> #' UI for variable comparison module
@@ -105,7 +113,11 @@ Now let me examine a few module files to understand the module pattern:
   #> #' @param id Module ID
   #> #'
   #> …
+```
+
 Now let me check some utility functions and test files:
+
+```bash
 ◯ [tool call] btw_tool_files_read_text_file(path = "R/compare_plot.R", `_intent` = "Read compare_plot utility")
 ● #> ```R
   #> #' Create an Interactive Scatter Plot for Comparing Variables

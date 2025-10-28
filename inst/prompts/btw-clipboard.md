@@ -23,6 +23,8 @@ DATE: Monday, August 18, 2025 (2025-08-18)
 > "You are in the root directory of the sap package (sap stands for [S]hiny [A]pp [P]ackage ). Describe the architecture of the package and application, using mermaid diagrams to illustrate connections between the functions (in R/), the files in the inst/ folder, the tests in the tests/ folder."
 
 I'll explore the structure of the sap package to understand its architecture and create diagrams illustrating the connections.
+
+```bash
 ◯ [tool call] btw_tool_files_list_files(path = ".", type = "directory", `_intent` = "List all directories in the package root")
 ● #> | path | type | size | modification_time |
   #> |------|------|------|-------------------|
@@ -125,6 +127,8 @@ Now let me check some utility functions and test files:
   #> date: "`r format(Sys.time(), '%B %d, %Y')`"
   #> output:
   #> …
+```
+
 Perfect! Now I have a comprehensive understanding of the sap package architecture. Let me create detailed mermaid diagrams to illustrate the 
 structure.
 

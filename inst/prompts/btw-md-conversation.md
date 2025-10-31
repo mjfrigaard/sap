@@ -15,6 +15,7 @@ Starting btw_task_create_btw_md() in live console mode.
 >>> "Let's get started."
 ```
 
+## PHASE 1: PROJECT EXPLORATION
 
 I'll help you create a comprehensive project summary. Let me start by exploring your project structure 
 to understand what we're working with.

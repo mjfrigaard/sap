@@ -180,6 +180,8 @@ interactive interface, while serving as a teaching tool for Shiny app developmen
 
 ---
 
+## PHASE 2: NARRATIVE CONSTRUCTION 
+
 Now moving to **Phase 2: Narrative Construction**. I need to gather context that would help developers 
 understand the "why" behind decisions and architectural choices.
 

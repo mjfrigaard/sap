@@ -185,7 +185,7 @@ interactive interface, while serving as a teaching tool for Shiny app developmen
 Now moving to **Phase 2: Narrative Construction**. I need to gather context that would help developers 
 understand the "why" behind decisions and architectural choices.
 
-**Question 1:** What's the main learning objective for developers using this codebase - is it primarily 
+**Question 1:** What's the main learning objective for developers using this codebase--is it primarily 
 about demonstrating Shiny package structure, modular Shiny development patterns, or both equally?
 
 > "The learning objectives for developers using the codebase are to demonstrate Shiny package structure and modular Shiny development patterns, specifically using modules to add a downloadable html report. Be sure to also create `mermaid` diagrams to illustrate concepts. When creating mermaid diagrams, list the nodes using `CamelCase` abbreviations (i.e., not simply `A`, `B`, `C`,  etc.), and keep the diagrams small enough to fit on a single presentation slide"
@@ -207,8 +207,8 @@ principles?
 
 **Question 4:** The modular structure shows three `mod_compare_*` modules (vars, point, and presumably 
 the UI/server pairs). These modules appear to handle variable selection, point plotting, and the overall
-comparison interface. Are there specific patterns in how these three modules communicate with each other
-- like how data flows between variable selection and plotting - that represent key principles developers
+comparison interface. Are there specific patterns in how these three modules communicate with each other--like 
+how data flows between variable selection and plotting - that represent key principles developers
 should understand about module interaction in Shiny app-packages?
 
 > "Developers should understand that using modules enhances the clarity of the application by providing a structured way to organize its components. This approach allows us to write, analyze, and test each element independently, making it easier to understand its unique functionality and how it interacts within the overall app server."

@@ -190,7 +190,6 @@ about demonstrating Shiny package structure, modular Shiny development patterns,
 
 > "The learning objectives for developers using the codebase are to demonstrate Shiny package structure and modular Shiny development patterns, specifically using modules to add a downloadable html report. Be sure to also create `mermaid` diagrams to illustrate concepts. When creating mermaid diagrams, list the nodes using `CamelCase` abbreviations (i.e., not simply `A`, `B`, `C`,  etc.), and keep the diagrams small enough to fit on a single presentation slide"
 
-
 **Question 2:** I noticed the app uses a dark theme with custom CSS and thematic integration. Was this 
 theming choice made primarily for visual appeal, or does it serve as an example of a specific theming 
 pattern that developers should learn from when building their own Shiny app-packages?

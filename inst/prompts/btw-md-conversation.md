@@ -200,7 +200,7 @@ pattern that developers should learn from when building their own Shiny app-pack
 **Question 3:** I see the project has multiple branches representing different development stages, and 
 the main branch appears to be a mature version with full testing and documentation. For developers 
 working with this codebase, which components or modules would you recommend they examine first to 
-understand the core patterns - are there particular modules that best demonstrate the key architectural 
+understand the core patterns--are there particular modules that best demonstrate the key architectural 
 principles?
 
 > "The code files for each chapter are stored in Git repository. Major code changes are stored in branches. The branches are named sequentially with a prefix and a name of the topic covered: 01_whole-app-game, 02.1_shiny-app, 02.2_movies-app, 02.3_proj-app, 03.1_description, 03.2_rproj, 03.3_create-package, 04_devtools, 05_roxygen2, 06.1_exports, 06.2_imports, 07_data, 08_launch, 09_inst, etc. Developers should review the three `mod_compare_`* to understand the core patterns (these best demonstrate the key architectural  principles)"
@@ -208,7 +208,7 @@ principles?
 **Question 4:** The modular structure shows three `mod_compare_*` modules (vars, point, and presumably 
 the UI/server pairs). These modules appear to handle variable selection, point plotting, and the overall
 comparison interface. Are there specific patterns in how these three modules communicate with each other--like 
-how data flows between variable selection and plotting - that represent key principles developers
+how data flows between variable selection and plotting--that represent key principles developers
 should understand about module interaction in Shiny app-packages?
 
 > "Developers should understand that using modules enhances the clarity of the application by providing a structured way to organize its components. This approach allows us to write, analyze, and test each element independently, making it easier to understand its unique functionality and how it interacts within the overall app server."

@@ -1,9 +1,8 @@
-## code to prepare `movies.R` dataset goes here
-# read in .RData file
-load("data-raw/movies.RData")
-# write out to .csv in inst/extdata/
-vroom::vroom_write(movies, 
-  file = "inst/extdata/movies.csv", 
-  delim = ",")
-# export to data/
+movies <- vroom::vroom(file = "inst/extdata/movies.csv")
+movies <- movies |>
+  dplyr::mutate(
+    genre = as.factor(genre),
+    mpaa_rating = as.factor(mpaa_rating),
+    critics_rating = as.factor(critics_rating)
+  )
 usethis::use_data(movies, overwrite = TRUE)

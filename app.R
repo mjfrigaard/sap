@@ -12,7 +12,8 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     )
     # create shiny object from prod/app ----
     shinyAppDir(appDir = 
-                system.file("prod/app", package = "sap"))
+                system.file("prod", package = "sap")
+            )
   } else {
     pkgload::load_all()
   }

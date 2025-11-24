@@ -1,6 +1,6 @@
 Package: sap
-Title: movies app
-Version: 0.0.0.9000
+Title: btw movies app
+Version: 0.0.0.1000
 Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
 Description: A collection of Shiny App-Packages
@@ -8,35 +8,18 @@ License: GPL-3
 Depends: 
     R (>= 3.5)
 Imports: 
-    bsicons,
     bslib,
-    cli,
     dplyr,
     forcats,
-    ggdist,
     ggplot2,
-    ggrepel,
-    ggwaffle,
     glue,
-    grid,
-    gt,
-    logger,
-    plotly,
-    quarto,
+    rlang,
     sass,
-    scales,
     shiny,
     stats,
-    thematic,
-    tidyr,
-    webshot
+    tidyr
 Suggests: 
-    fs,
     knitr,
-    lobstr,
-    mockery,
-    rmarkdown,
-    shinytest2,
     testthat
 VignetteBuilder: 
     quarto

@@ -1,5 +1,5 @@
 ---
-client: claude/claude-4-5-sonnet-latest
+client: claude/claude-sonnet-4-5-20250929
 tools:
   - docs
   - env

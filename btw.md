@@ -62,6 +62,7 @@ graph TB
     CompVarsSvr --> CompPtSvr
     CompPtSvr --> RepSvr
     RepSvr --> Quarto[Quarto Engine]
+    
 ```
 
 ### Core Module Pattern

@@ -13,3 +13,5 @@ _\.new\.png$
 ^pkgdown$
 ^README\.Rmd$
 ^btw\.md$
+^\.positai$
+^\.claude$

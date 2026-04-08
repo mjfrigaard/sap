@@ -2,6 +2,8 @@
 
 editor_options: markdown: wrap: 72 ---
 
+## PHASE 1: PROJECT EXPLORATION
+
 "Let's get started."
 
 I'll begin by exploring the project structure to understand what we're working with.

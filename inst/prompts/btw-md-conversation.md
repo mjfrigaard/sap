@@ -259,6 +259,8 @@ This is an **R Package** that contains a **Shiny web application** for exploring
 
 ------------------------------------------------------------------------
 
+## PHASE 2: QUESTIONS FOR CONTEXT
+
 Now moving to **Phase 2** to gather context from the user.
 
 ### Question 1 of 5

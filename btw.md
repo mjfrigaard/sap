@@ -173,7 +173,7 @@ Each functional group follows the pattern: `vars` (input) → `point/bar/box` (v
 The repository uses **git branches** to show progressive development stages:
 
 ```mermaid
-graph LR
+graph TD
     App01[01_whole-app-game] --> App02[02.1_shiny-app]
     App02 --> Movies[02.2_movies-app] 
     Movies --> Proj[02.3_proj-app]

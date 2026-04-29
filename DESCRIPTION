@@ -3,24 +3,19 @@ Title: btw movies app
 Version: 0.0.0.1000
 Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
-Description: A collection of Shiny App-Packages
+Description: A demo of btw package in a shiny app package. Provides a
+    Shiny application for exploring the bundled movies dataset with
+    interactive visualizations, filtering, and HTML report generation.
 License: GPL-3
-Depends: 
+Depends:
     R (>= 3.5)
-Imports: 
+Imports:
     bslib,
-    dplyr,
-    forcats,
+    DT,
     ggplot2,
-    glue,
-    rlang,
-    sass,
+    rmarkdown,
     shiny,
-    stats,
-    tidyr
-Suggests: 
-    knitr,
-    testthat
+    tools
 VignetteBuilder: 
     quarto
 Config/testthat/edition: 3

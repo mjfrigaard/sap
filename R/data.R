@@ -1,47 +1,30 @@
-#' @title IMDB movies data 
+#' Movies dataset
 #'
-#' @description
-#' Movie review data. Note: these data come from the [Building Web Applications with shiny course](https://rstudio-education.github.io/shiny-course/). 
-#' 
-#' @details
-#' Read more about acquiring these data in the ['Web Scraping and programming' section of Data science in a box](https://datasciencebox.org/02-exploring-data#web-scraping-and-programming) 
+#' Information on 651 randomly sampled movies produced and released
+#' before 2016. Compiled from Rotten Tomatoes and IMDB.
 #'
 #' @format A data frame with 651 rows and 34 variables:
 #' \describe{
-#'  \item{title}{movie title}
-#'  \item{title_type}{type, fct (Documentary, Feature Film, TV Movie)}
-#'  \item{genre}{movie genre, fct (Action & Adventure, Animation, etc.}
-#'  \item{runtime}{movie length in minutes, num, avg = 106, sd = 19.4}
-#'  \item{mpaa_rating}{movie rating, fct (G, NC-17, PG, PG-13, R, Unrated)}
-#'  \item{studio}{name of studio, chr}
-#'  \item{thtr_rel_date}{Theatre release date, POSIXct, min = 1970-05-19 21:00:00, max = 2014-12-24 21:00:00}
-#'  \item{thtr_rel_year}{Theatre release year, num, min = 1970, max = 2014}
-#'  \item{thtr_rel_month}{Theatre release month, num, min = 1, max =12}
-#'  \item{thtr_rel_day}{Theatre release day, num, min = 1, max =31}
-#'  \item{dvd_rel_date}{DVD release date, POSIXct, min = 1991-03-27 21:00:00, max = 2015-03-02 21:00:00}
-#'  \item{dvd_rel_year}{DVD release year, num, min = 1991, max = 2015}
-#'  \item{dvd_rel_month}{DVD release month, num, min = 1, max = 12}
-#'  \item{dvd_rel_day}{DVD release day, num, min = 1, max = 31}
-#'  \item{imdb_rating}{Internet movie database rating, avg = 6.49, sd = 1.08}
-#'  \item{imdb_num_votes}{Internet movie database votes, avg = 57533, sd = 112124}
-#'  \item{critics_rating}{Rotten tomatoes rating, fct (Certified Fresh, Fresh, Rotten)}
-#'  \item{critics_score}{Rotten tomatoes score, avg = 57.7, sd = 28.4}
-#'  \item{audience_rating}{Audience rating, fct (Spilled, Upright)}
-#'  \item{audience_score}{Audience score, avg = 62.4, sd = 20.2}
-#'  \item{best_pic_nom}{Best picture nomination, fct (no, yes)}
-#'  \item{best_pic_win}{Best picture win, fct (no, yes)}
-#'  \item{best_actor_win}{Best actor win, fct (no, yes)}
-#'  \item{best_actress_win}{Best actress win, fct (no, yes)}
-#'  \item{best_dir_win}{Best director win, fct (no, yes)}
-#'  \item{top200_box}{Top 20 box-office, fct (no, yes)}
-#'  \item{director}{Name of director, chr}
-#'  \item{actor1}{Name of leading actor, chr}
-#'  \item{actor2}{Name of supporting actor, chr}
-#'  \item{actor3}{Name of #3 actor, chr}
-#'  \item{actor4}{Name of #4 actor, chr}
-#'  \item{actor5}{Name of #5 actor, chr}
-#'  \item{imdb_url}{IMDB URL}
-#'  \item{rt_url}{Rotten tomatoes URL}
+#'   \item{title}{Title of the movie.}
+#'   \item{title_type}{Type of movie (Documentary, Feature Film, TV Movie).}
+#'   \item{genre}{Genre of the movie.}
+#'   \item{runtime}{Runtime in minutes.}
+#'   \item{mpaa_rating}{MPAA rating (G, PG, PG-13, R, NC-17, Unrated).}
+#'   \item{studio}{Studio that produced the movie.}
+#'   \item{thtr_rel_date, thtr_rel_year, thtr_rel_month, thtr_rel_day}{Theatrical release date components.}
+#'   \item{dvd_rel_date, dvd_rel_year, dvd_rel_month, dvd_rel_day}{DVD release date components.}
+#'   \item{imdb_rating}{IMDB rating.}
+#'   \item{imdb_num_votes}{Number of IMDB votes.}
+#'   \item{critics_rating}{Rotten Tomatoes critics rating (Certified Fresh, Fresh, Rotten).}
+#'   \item{critics_score}{Rotten Tomatoes critics score.}
+#'   \item{audience_rating}{Rotten Tomatoes audience rating (Spilled, Upright).}
+#'   \item{audience_score}{Rotten Tomatoes audience score.}
+#'   \item{best_pic_nom, best_pic_win}{Oscar best picture nomination / win indicators.}
+#'   \item{best_actor_win, best_actress_win, best_dir_win}{Oscar individual win indicators.}
+#'   \item{top200_box}{Whether the movie is in the top 200 box office list on BoxOfficeMojo.}
+#'   \item{director}{Director of the movie.}
+#'   \item{actor1, actor2, actor3, actor4, actor5}{Top-billed actors.}
+#'   \item{imdb_url, rt_url}{IMDB and Rotten Tomatoes URLs.}
 #' }
-#'
+#' @source Rotten Tomatoes and IMDB.
 "movies"

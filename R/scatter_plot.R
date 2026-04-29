@@ -1,28 +1,17 @@
-#' Create a Scatter Plot with Custom Axes and Color
+#' Build a scatter plot
 #'
-#' Generates a `ggplot2` scatter plot from a data frame using variable names
-#' supplied as strings for the x-axis, y-axis, and color aesthetic. This allows
-#' for dynamic plotting in Shiny apps or other interactive environments.
+#' @param df Data frame containing `x_var`, `y_var`, and `col_var`.
+#' @param x_var Name of the column for the x aesthetic.
+#' @param y_var Name of the column for the y aesthetic.
+#' @param col_var Name of the column for the color aesthetic.
+#' @param alpha_var Numeric alpha (transparency), 0-1.
+#' @param size_var Numeric point size.
 #'
-#' @param df A data frame or tibble containing the variables to be plotted.
-#' @param x_var A string. The name of the variable to map to the x-axis.
-#' @param y_var A string. The name of the variable to map to the y-axis.
-#' @param col_var A string. The name of the variable to use for point color.
-#'
-#' @return A `ggplot` object representing the scatter plot.
-#'
-#' @examples
-#' scatter_plot(mtcars, "mpg", "hp", "cyl")
-#'
-#' @importFrom rlang .data
-#' 
-#' @export
-scatter_plot <- function(df, x_var, y_var, col_var) {
-  ggplot2::ggplot(data = df, 
-    ggplot2::aes(x = .data[[x_var]], 
-                 y = .data[[y_var]], 
-                color = .data[[col_var]])) +
-    ggplot2::geom_point(alpha = 0.6) +
-    ggplot2::labs(x = x_var, y = y_var, color = col_var) +
-    ggplot2::theme_minimal()
+#' @return A `ggplot` object.
+scatter_plot <- function(df, x_var, y_var, col_var, alpha_var, size_var) {
+  ggplot2::ggplot(data = df,
+    ggplot2::aes(x = .data[[x_var]],
+      y = .data[[y_var]],
+      color = .data[[col_var]])) +
+    ggplot2::geom_point(alpha = alpha_var, size = size_var)
 }

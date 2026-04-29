@@ -2,18 +2,16 @@
 % Please edit documentation in R/launch_app.R
 \name{launch_app}
 \alias{launch_app}
-\title{Launch the Shiny Application}
+\title{Launch the Movies Explorer Shiny Application}
 \usage{
-launch_app(options = list(), run = "p", ...)
+launch_app(...)
 }
 \arguments{
-\item{options}{A list of options for the \code{shinyApp} function.}
-
-\item{run}{A character string specifying the display type, default is \code{"p"}.}
-
-\item{...}{Additional arguments passed to the UI function.}
+\item{...}{Additional arguments passed to shinyApp()}
+}
+\value{
+Shiny app object
 }
 \description{
-This function initializes and launches the Shiny application with specified
-options and settings.
+Launch the Movies Explorer Shiny Application
 }

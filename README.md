@@ -1,12 +1,22 @@
-<h1 align="center"> <code><strong>sap</strong></code> </h1>
-<h3 align="center"> Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a> </h3>
+<h1 align="center">
+
+<code><strong>sap</strong></code>
+
+</h1>
+
+<h3 align="center">
+
+Code examples for <a href="https://mjfrigaard.github.io/shiny-app-pkgs/"> Shiny App-Packages </a>
+
+</h3>
+
 <hr>
 
 <hr>
 
 # sap
 
-The `sap` app-package is from the [`btw` chapter](https://mjfrigaard.github.io/shiny-app-pkgs/btw.html) of the [Shiny App-Packages book](https://mjfrigaard.github.io/shiny-app-pkgs/). 
+The `sap` app-package is from the [`btw` chapter](https://mjfrigaard.github.io/shiny-app-pkgs/btw.html) of the [Shiny App-Packages book](https://mjfrigaard.github.io/shiny-app-pkgs/).
 
 ## Shiny LLM Tools: `btw`
 
@@ -24,18 +34,18 @@ pak::pak('tidyverse/ellmer')
 pak::pak("posit-dev/btw")
 ```
 
-## Load and Install the Package 
+## Load and Install the Package
 
-Load, document, and install the package: 
+Load, document, and install the package:
 
-```r
+``` r
 devtools::load_all()
 ```
 
-```r
+``` r
 devtools::document()
 ```
 
-```r
+``` r
 devtools::install(upgrade = FALSE)
 ```

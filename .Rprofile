@@ -77,3 +77,9 @@ options(
     model = "claude-sonnet-4-5-20250929"
     )
 )
+options(
+  # default toolset when the orchestrator doesn't specify
+  btw.subagent.tools_default = c("agent", "cran", "docs", "env", "files", 
+                                 "git", "github", "ide", "pkg", "run", 
+                                 "skills")
+)

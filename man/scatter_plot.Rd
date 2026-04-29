@@ -2,28 +2,26 @@
 % Please edit documentation in R/scatter_plot.R
 \name{scatter_plot}
 \alias{scatter_plot}
-\title{Create a Scatter Plot with Custom Axes and Color}
+\title{Build a scatter plot}
 \usage{
-scatter_plot(df, x_var, y_var, col_var)
+scatter_plot(df, x_var, y_var, col_var, alpha_var, size_var)
 }
 \arguments{
-\item{df}{A data frame or tibble containing the variables to be plotted.}
+\item{df}{Data frame containing \code{x_var}, \code{y_var}, and \code{col_var}.}
 
-\item{x_var}{A string. The name of the variable to map to the x-axis.}
+\item{x_var}{Name of the column for the x aesthetic.}
 
-\item{y_var}{A string. The name of the variable to map to the y-axis.}
+\item{y_var}{Name of the column for the y aesthetic.}
 
-\item{col_var}{A string. The name of the variable to use for point color.}
+\item{col_var}{Name of the column for the color aesthetic.}
+
+\item{alpha_var}{Numeric alpha (transparency), 0-1.}
+
+\item{size_var}{Numeric point size.}
 }
 \value{
-A \code{ggplot} object representing the scatter plot.
+A \code{ggplot} object.
 }
 \description{
-Generates a \code{ggplot2} scatter plot from a data frame using variable names
-supplied as strings for the x-axis, y-axis, and color aesthetic. This allows
-for dynamic plotting in Shiny apps or other interactive environments.
-}
-\examples{
-scatter_plot(mtcars, "mpg", "hp", "cyl")
-
+Build a scatter plot
 }

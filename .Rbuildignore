@@ -2,16 +2,6 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^sap\.Rcheck$
-^sap.*\.tar\.gz$
-^sap.*\.tgz$
-_\.new\.png$
-^\.github$
-^dev$
-^_pkgdown\.yml$
-^docs$
-^pkgdown$
-^README\.Rmd$
-^btw\.md$
 ^\.positai$
 ^\.claude$
+^dev$

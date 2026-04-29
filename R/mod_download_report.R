@@ -4,10 +4,9 @@
 #' @return Shiny UI element
 mod_download_report_ui <- function(id) {
   ns <- NS(id)
-  
   card(
-    card_header("Download Report"),
     card_body(
+      strong("Download Report"),
       p("Generate an HTML report containing the current visualization and data table."),
       downloadButton(
         ns("download_report"),

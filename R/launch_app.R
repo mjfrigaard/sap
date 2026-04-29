@@ -8,7 +8,7 @@ launch_app <- function(...) {
   library(shiny)
   library(bslib)
   library(ggplot2)
-  library(DT)
+  library(reactable)
   library(rmarkdown)
 
   # Create and run the app

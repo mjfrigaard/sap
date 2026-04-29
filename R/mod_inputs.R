@@ -37,7 +37,7 @@ mod_inputs_ui <- function(id) {
   )
 
   tagList(
-    h4("Visualization Controls"),
+    strong("Visualization Controls"),
     selectInput(
       ns("x_var"),
       "X Variable:",
@@ -72,8 +72,7 @@ mod_inputs_ui <- function(id) {
       value = 3,
       step = 0.5
     ),
-    hr(),
-    h4("Data Filter"),
+    strong("Data Filter"),
     selectInput(
       ns("genre_filter"),
       "Filter by Genre:",

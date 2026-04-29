@@ -1,265 +1,224 @@
 ---
-# client: claude/claude-4-5-sonnet-latest
-tools: [docs, env, files, ide, search, session, web]
+client: claude/claude-sonnet-4-5-20250929
+tools:
+  - docs
+  - env
+  - files
+  - git
+  - github
+  - ide
+  - search
+  - session
+  - web
 ---
 
-# btwapp
+# sap
 
-> Test subject Shiny app-package for demonstrating btw capabilities
+> Demo Shiny app-package showcasing `btw` integration and app-package best practices
 
 ## Overview
 
-**btwapp** is a test subject application for the `btw` package. It provides a realistic, well-structured Shiny app codebase that demonstrates best practices in modular app-package development. The app itself is a movies data explorer with interactive visualizations, filtering, and HTML report generation - typical features that make it a good representative example for testing `btw`'s subagents, tools, and skills on real-world code.
+`sap` is a demonstration R package from the [Shiny App-Packages book](https://mjfrigaard.github.io/shiny-app-pkgs/), specifically the [`btw` chapter](https://mjfrigaard.github.io/shiny-app-pkgs/btw.html). It provides a working example of how to structure a Shiny application as an R package while integrating with the [`btw` package](https://posit-dev.github.io/btw/index.html) for LLM-assisted development.
 
-The application was generated using [Shiny Assistant](https://gallery.shinyapps.io/assistant/#) with a specific prompt (see README.md), resulting in a modular architecture that follows current Shiny best practices.
+The application itself is a movies explorer: users can create scatter plots comparing different movie metrics (ratings, scores, runtime), filter by genre, and generate HTML reports. However, the primary purpose is educational—to demonstrate app-package architecture and `btw` tooling integration in a realistic, working application.
 
-## Project Context
+## Purpose
 
-This is not a production application - it exists specifically to provide a realistic codebase for testing and demonstrating `btw` package functionality. The entire app is modifiable and serves as a testbed for `btw`'s ability to work with well-structured R package code, Shiny modules, and common app patterns.
+This project teaches developers how to:
+- Structure a Shiny application as an installable R package
+- Use Shiny modules with centralized input patterns for maintainability
+- Integrate `btw` LLM tooling into their development workflow
+- Follow best practices for app-package organization
 
-## Key Design Decisions
+The intentional simplicity of the application lets developers focus on understanding the package structure and `btw` features rather than complex domain logic.
 
-- **Modular architecture** - Uses Shiny modules (`mod_*_ui` / `mod_*_server` pattern) following best practices for maintainable Shiny apps
-- **App-package structure** - Packaged as an R package rather than standalone scripts, enabling proper dependency management, documentation, and installation
-- **Centralized inputs** - The `mod_inputs` module returns reactive values consumed by other modules, creating a clean unidirectional data flow
-- **Single exported function** - Only `launch_app()` is public API; all internal functions (`app_ui`, `app_server`, modules) remain unexported
-- **Bundled dataset** - The `movies` dataset is shipped with the package (`data/movies.rda`) and accessed via `sap::movies`, removing the need for any external data dependency
-- **Parameterized reporting** - R Markdown template uses `params` for dynamic content, with path handling for both development and installed contexts
+## Architecture & Design
 
-## Quick Reference
+### App-Package Structure
 
-| Aspect | Details |
-|--------|---------|
-| **Type** | R Package (Shiny app-package) |
-| **Language** | R (≥ 3.5) |
-| **UI Framework** | Shiny + bslib (Bootstrap 5) |
-| **Data** | `sap::movies` (bundled, 651 obs × 34 vars) |
-| **Key Dependencies** | shiny, bslib, ggplot2, DT, rmarkdown |
-| **Dependency Management** | renv (lockfile present) |
-| **Entry Point** | `launch_app()` function |
-| **Dev Entry** | `app.R` file |
+`sap` follows the standard R package layout with Shiny-specific organization:
 
-## Architecture
+- **`R/`** - All application code, organized by responsibility
+- **`data/`** - Bundled dataset (`movies.rda`) loaded with the package
+- **`inst/`** - Installation files including R Markdown templates and prompts
+- **`man/`** - Generated documentation for functions and data
+- **`renv/`** - Reproducible environment management
 
-The app follows a **modular Shiny app-package pattern** where:
+### Shiny Modules Pattern
 
-1. **User launches app** via `launch_app()` or by running `app.R`
-2. **UI composition** happens in `app_ui()` using `bslib::page_sidebar()` layout
-3. **Server logic** in `app_server()` orchestrates four modules with reactive data flow
-4. **Modules communicate** via returned reactive values (not direct module-to-module calls)
+The application uses **centralized input management** to demonstrate scalable architecture:
 
-### Reactive Data Flow
+1. **`mod_inputs`** - Single source of truth for all user controls (x/y variables, color, alpha, size, genre filter). Returns a list of reactive values.
 
-```
-movies_data (reactive)
-         ↓
-    ┌────────────────────────────────────────────────────────────┐
-    │                   mod_inputs_server                        │
-    │  Returns: x_var, y_var, col_var, alpha_var, size_var,      │
-    │           genre_filter                                     │
-    └────────────────────────────────────────────────────────────┘
-              ↓                ↓
-    ┌──────────────────┐  ┌──────────────────┐
-    │ mod_visualization│  │  mod_data_table  │
-    │ Returns: plot    │  │  Returns: data   │
-    └──────────────────┘  └──────────────────┘
-              ↓                ↓
-         ┌──────────────────────────┐
-         │ mod_download_report      │
-         │ Consumes: plot + data    │
-         └──────────────────────────┘
-```
+2. **`mod_visualization`** - Consumes inputs to generate ggplot2 scatter plots
 
-### Module Responsibilities
+3. **`mod_data_table`** - Consumes inputs to filter and display data with reactable
 
-**`mod_inputs`** - Centralized UI controls
-- Provides selectInputs for x/y numeric variables, the color (categorical) variable, and the genre filter
-- Provides sliderInputs for point alpha and point size
-- Returns list of reactive values for consumption by other modules
+4. **`mod_download_report`** - Generates parameterized R Markdown reports using current inputs and outputs
 
-**`mod_visualization`** - Scatter plot generation
-- Delegates plot construction to the `scatter_plot()` utility, then layers on theme/labels
-- Applies the genre filter so the plot stays in sync with the table
-- Returns reactive plot object
+This pattern avoids prop-drilling and makes it easy to add new modules that respond to the same controls.
 
-**`mod_data_table`** - Filtered data display
-- Shows DT::datatable with genre filtering applied
-- Returns reactive filtered data
+### Entry Points
 
-**`mod_download_report`** - HTML report generation
-- Renders parameterized R Markdown template from `inst/rmd/report.Rmd`
-- Injects current plot, data, and parameters into report
-- Handles path resolution for both development and installed package contexts
+- **`launch_app()`** - Exported function for running the app from an installed package (`sap::launch_app()`)
+- **`app.R`** - Deployment wrapper for Shiny Server, RStudio Connect, or shinyapps.io. Uses `pkgload::load_all()` + `launch_app()` for platforms that expect a standalone script.
 
-## Directory Structure
+### btw Integration
 
-```
-sap/
-├── DESCRIPTION              # Package metadata and dependencies
-├── NAMESPACE                # Exports (only launch_app)
-├── app.R                    # Development entry point (calls launch_app)
-│
-├── R/                       # Package R code
-│   ├── launch_app.R         # Main exported function
-│   ├── app_ui.R             # UI composition function
-│   ├── app_server.R         # Server orchestration function
-│   ├── data.R               # Roxygen documentation for the movies dataset
-│   ├── scatter_plot.R       # Reusable ggplot2 scatter helper
-│   ├── mod_inputs.R         # Input controls module
-│   ├── mod_visualization.R  # Plot generation module
-│   ├── mod_data_table.R     # Table display module
-│   └── mod_download_report.R # Report download module
-│
-├── data/
-│   └── movies.rda           # Bundled movies dataset (lazy-loaded)
-│
-├── inst/
-│   ├── extdata/
-│   │   └── movies.csv       # CSV copy of the movies dataset
-│   └── rmd/
-│       └── report.Rmd       # Parameterized report template
-│
-├── man/                     # roxygen2 generated documentation
-│
-├── renv/                    # Dependency management
-│   ├── activate.R
-│   └── settings.json
-├── renv.lock                # Locked dependency versions
-│
-└── README.md                # Project documentation
+Following [`ellmer` best practices](https://ellmer.tidyverse.org/articles/prompt-design.html#best-practices), LLM conversation history is stored in `inst/prompts/` with descriptive filenames. This makes it easy to reference previous AI-assisted development sessions and share context with collaborators.
+
+## Data
+
+### movies Dataset
+
+The package includes a bundled dataset of 651 randomly sampled movies produced before 2016, sourced from Rotten Tomatoes and IMDB.
+
+**Key variables:**
+- **Identifiers:** title, director, actors (1-5)
+- **Classification:** genre, title_type, mpaa_rating
+- **Metrics:** runtime, imdb_rating, imdb_num_votes, critics_score, audience_score
+- **Ratings:** critics_rating (Certified Fresh/Fresh/Rotten), audience_rating (Spilled/Upright)
+- **Release dates:** Theatrical and DVD release date components
+- **Awards:** Oscar nomination/win indicators (best picture, actor, actress, director)
+- **Other:** studio, top200_box, imdb_url, rt_url
+
+**Access:**
+```r
+# After loading/installing package
+sap::movies
+
+# Or in the app via reactive
+movies_data <- reactive({ sap::movies })
 ```
 
-## Key Components
+**Files:**
+- `data/movies.rda` - Binary R data file loaded with package
+- `inst/extdata/movies.csv` - Source CSV (available after installation via `system.file()`)
 
-### `launch_app()` - Application Entry Point
-**Location:** `R/launch_app.R`
-
-The only exported function. Loads required libraries and creates a `shinyApp()` object by combining `app_ui()` and `app_server`. Accepts `...` arguments passed to `shinyApp()`.
-
-### `app_ui()` - UI Composition
-**Location:** `R/app_ui.R`
-
-Creates the page layout using `bslib::page_sidebar()`. Sidebar contains inputs and download modules; main area displays visualization and data table in a stacked layout.
-
-### `app_server()` - Server Orchestration
-**Location:** `R/app_server.R`
-
-- Creates `movies_data` reactive that returns `sap::movies`
-- Calls each module server function with appropriate arguments
-- Passes reactive values between modules (inputs → viz/table → report)
-
-### `scatter_plot()` - Plot Helper
-**Location:** `R/scatter_plot.R`
-
-Pure (non-reactive) helper that takes a data frame and column names for x, y, and color, plus numeric alpha and size, and returns a `ggplot` object. Uses tidy-evaluation (`.data[[...]]`) rather than the deprecated `aes_string()`. The visualization module wraps this output with theme and labels.
-
-### Module Pattern
-**All modules:** `R/mod_*.R`
-
-Each module file contains paired `mod_*_ui()` and `mod_*_server()` functions:
-- **UI function** - Takes `id` parameter, returns UI elements wrapped in namespace
-- **Server function** - Uses `moduleServer()` for namespace isolation, returns reactive values as list
-
-### Report Template
-**Location:** `inst/rmd/report.Rmd`
-
-R Markdown document with YAML `params` for:
-- `plot_obj` - ggplot2 object
-- `x_var`, `y_var` - selected variables
-- `data` - filtered dataset
-- `generated_on` - timestamp
-
-Renders to HTML with `flatly` theme and floating TOC.
+Full documentation: `?sap::movies`
 
 ## Development Workflow
 
-### Installation
+### Setup
+
+Install dependencies and set up the environment:
 
 ```r
-# From GitHub
-install.packages("remotes")
-remotes::install_github("mjfrigaard/sap")
-```
+# Install btw and ellmer
+install.packages(c('ellmer', 'btw'))
+# Or development versions:
+# pak::pak('tidyverse/ellmer')
+# pak::pak("posit-dev/btw")
 
-### Running the App
-
-```r
-# As installed package
-library(sap)
-launch_app()
-
-# In development (from package root)
-source("app.R")  # or just run app.R in RStudio
-```
-
-### Using renv
-
-The package uses `renv` for dependency management. To restore the locked environment:
-
-```r
+# Restore renv environment
 renv::restore()
 ```
 
-### Documentation
+### Common Tasks
 
+**Load package for development:**
 ```r
-# View package help
-?sap::launch_app
-?sap::movies
+devtools::load_all()
+```
 
-# Generate documentation (during development)
+**Run the application:**
+```r
+# During development (after load_all())
+launch_app()
+
+# Or directly
+shiny::runApp()
+```
+
+**Update documentation:**
+```r
 devtools::document()
 ```
 
+**Install package locally:**
+```r
+devtools::install(upgrade = FALSE)
+```
+
+### Code Conventions
+
+Per the existing project standards:
+
+- Prefer tidyverse solutions
+- Use `<-` for assignment (never `=`)
+- Use native pipe `|>` for piped expressions (not `%>%`)
+
+### Testing the App
+
+After making changes:
+1. `devtools::load_all()` to reload code
+2. `launch_app()` to test interactively
+3. Try different variable combinations and genre filters
+4. Generate a report to verify R Markdown rendering works
+
 ## Technical Details
 
-### Core Dependencies
+### Dependencies
 
-- **shiny** - Web application framework
-- **bslib** - Bootstrap 5 theming and layout components
-- **ggplot2** - Visualization generation
-- **DT** - Interactive data tables
+**Core Application:**
+- **shiny** - Reactive web application framework
+- **bslib** - Modern Bootstrap 5 UI components (page_sidebar, cards)
+- **ggplot2** - Static visualizations
+- **reactable** - Interactive data tables
 - **rmarkdown** - Report generation
 - **tools** - Utility functions
 
-### Data
+**Development:**
+- **renv** - Dependency management and reproducibility
+- **roxygen2** - Documentation generation
+- **devtools** - Package development workflow
 
-The app uses the bundled `sap::movies` dataset (also available as a CSV in `inst/extdata/movies.csv`). The dataset contains 651 randomly sampled movies released before 2016 with 34 variables, including:
+### Directory Structure
 
-- **Identifiers and metadata:** title, title_type, genre, mpaa_rating, studio, runtime
-- **Release dates:** theatrical and DVD release dates and components
-- **Ratings:** IMDB rating and number of votes; Rotten Tomatoes critics_rating, critics_score, audience_rating, audience_score
-- **Awards:** Oscar nomination/win indicators for best picture, actor, actress, director
-- **Cast and crew:** director and top-five billed actors
-- **URLs:** IMDB and Rotten Tomatoes links
+```
+sap/
+├── R/                          # Application code
+│   ├── launch_app.R           # Main entry point (exported)
+│   ├── app_ui.R               # UI definition
+│   ├── app_server.R           # Server logic coordinator
+│   ├── mod_inputs.R           # Centralized input controls
+│   ├── mod_visualization.R    # Scatter plot module
+│   ├── mod_data_table.R       # Filtered table module
+│   ├── mod_download_report.R  # Report generation module
+│   ├── scatter_plot.R         # Plot helper function
+│   └── data.R                 # Data documentation
+├── data/                      # Package data
+│   └── movies.rda            # Bundled dataset
+├── inst/                      # Installed files
+│   ├── extdata/              # External data files
+│   │   └── movies.csv
+│   ├── prompts/              # LLM conversation history
+│   │   └── btw-chat-get-tools.md
+│   └── rmd/                  # R Markdown templates
+│       └── report.Rmd        # Report template
+├── man/                       # Generated documentation
+├── renv/                      # Environment management
+├── app.R                      # Deployment entry point
+├── DESCRIPTION               # Package metadata
+└── NAMESPACE                 # Exported functions
+```
 
-The variables exposed in the app's x/y selectors are the most commonly compared numerics: `runtime`, `imdb_rating`, `imdb_num_votes`, `critics_score`, `audience_score`. The categorical filter and color aesthetic is `genre`.
+### Key Components
 
-### Module Communication Pattern
+**`launch_app()`** - Main exported function that creates and returns a Shiny app object. Loads required libraries and calls `shinyApp(ui = app_ui(), server = app_server)`.
 
-Modules don't call each other directly. Instead:
-1. Server functions return lists of reactive expressions
-2. Parent server (`app_server`) passes these reactives to other modules
-3. Consuming modules call the reactive expressions when needed
+**`app_ui()`** - Builds UI using `bslib::page_sidebar()` with inputs in the sidebar and visualization + table in a two-column layout.
 
-This creates explicit, traceable dependencies and avoids circular module references.
+**`app_server()`** - Coordinates all modules. Gets inputs from `mod_inputs_server()`, passes them to visualization and table modules, then provides results to the report module.
 
-## Developer Orientation
+**Module Pattern** - Each module has a `*_ui()` function for UI elements and a `*_server()` function for reactive logic. All use namespaced IDs via `NS(id)`.
 
-- **Start with `R/launch_app.R`** - Entry point that composes `app_ui()` and `app_server()`
-- **Module pattern** - Each module has paired `_ui()` and `_server()` functions; server functions use `moduleServer()` for namespace isolation
-- **Reactive flow** - `app_server.R` shows how modules connect: inputs → visualization + data table → download report
-- **The whole app is modifiable** - No sacred cows; this is a test subject for `btw` features, so experiment freely
-
-## Code Conventions
-
-- **Module naming** - `mod_<name>_ui()` and `mod_<name>_server()` pattern
-- **Namespace** - All modules use `ns <- NS(id)` for UI element namespacing
-- **Returns** - Server modules return named lists of reactive expressions (not reactive values)
-- **Documentation** - All functions use roxygen2 comments with `@param` and `@return`
+**Report Generation** - Uses `rmarkdown::render()` with parameterized R Markdown. Template is located via `system.file()` with fallback to relative path for development.
 
 ## Resources
 
-- [README.md](README.md) - Full project description and setup instructions
-- [Shiny Modules Documentation](https://shiny.posit.co/r/articles/improve/modules/) - Understanding the module pattern
-- [bslib Documentation](https://rstudio.github.io/bslib/) - UI framework details
+- [Shiny App-Packages book](https://mjfrigaard.github.io/shiny-app-pkgs/) - Complete guide to building Shiny applications as R packages
+- [btw chapter](https://mjfrigaard.github.io/shiny-app-pkgs/btw.html) - Specific chapter this demo accompanies
+- [btw package documentation](https://posit-dev.github.io/btw/index.html) - LLM toolkit for R
+- [ellmer package](https://ellmer.tidyverse.org/) - Foundation for LLM integration in R
+- [ellmer prompt design best practices](https://ellmer.tidyverse.org/articles/prompt-design.html#best-practices) - Guidance on storing prompts in `inst/prompts/`

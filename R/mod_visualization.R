@@ -5,7 +5,7 @@
 mod_visualization_ui <- function(id) {
   ns <- NS(id)
   card(
-    card_header("Movies Visualization"),
+    card_header(h5("Movies Visualization")),
     card_body(
       plotOutput(ns("scatter_plot"))
     )

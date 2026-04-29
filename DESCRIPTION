@@ -11,8 +11,8 @@ Depends:
     R (>= 3.5)
 Imports:
     bslib,
-    DT,
     ggplot2,
+    reactable,
     rmarkdown,
     shiny,
     tools

@@ -6,9 +6,9 @@ mod_data_table_ui <- function(id) {
   ns <- NS(id)
 
   card(
-    card_header("Movies Data Table"),
+    card_header(h5("Movies Data Table")),
     card_body(
-      DT::dataTableOutput(ns("data_table"))
+      reactable::reactableOutput(ns("data_table"))
     )
   )
 }
@@ -21,7 +21,7 @@ mod_data_table_ui <- function(id) {
 #' @return Reactive filtered data
 mod_data_table_server <- function(id, data, inputs) {
   moduleServer(id, function(input, output, session) {
-    
+
     filtered_data <- reactive({
       req(data(), inputs$genre_filter())
       df <- data()
@@ -32,18 +32,17 @@ mod_data_table_server <- function(id, data, inputs) {
 
       df
     })
-    
-    output$data_table <- DT::renderDataTable({
-      DT::datatable(
+
+    output$data_table <- reactable::renderReactable({
+      reactable::reactable(
         filtered_data(),
-        options = list(
-          pageLength = 10,
-          scrollX = TRUE
-        ),
-        rownames = FALSE
+        defaultPageSize = 10,
+        searchable = TRUE,
+        resizable = TRUE,
+        highlight = TRUE
       )
     })
-    
+
     return(filtered_data)
   })
 }

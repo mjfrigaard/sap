@@ -798,7 +798,9 @@ Let me now draft the documentation sections. I'll present them one at a time for
 
 ---
 
-# Project Overview 
+# [PHASE 3: DOCUMENTATION](https://github.com/posit-dev/btw/blob/main/inst/prompts/btw-init.md#phase-3-documentation)
+
+## Project Overview 
 
 Here's the **Project Overview** section I've drafted:
 
@@ -834,7 +836,8 @@ Does this look good to you?
 
 
 ---
-# Architecture & Design
+
+## Architecture & Design
 
 Great! Here's the **Architecture & Design** section:
 
@@ -879,7 +882,8 @@ Does this look good to you?
 ---
 
 Excellent! Here's the **Data** section:
-# Data section
+
+## Data section
 
 ~~~markdown
 ## Data
@@ -914,6 +918,7 @@ movies_data <- reactive({ sap::movies })
 - `inst/extdata/movies.csv` - Source CSV (available after installation via `system.file()`)
 
 Full documentation: `?sap::movies`
+
 ~~~
 
 Does this look good to you?
@@ -924,7 +929,7 @@ Perfect! Here's the **Development Workflow** section:
 
 ---
 
-# Development Workflow
+## Development Workflow
 
 ~~~markdown
 ## Development Workflow
@@ -999,7 +1004,8 @@ Does this look good to you?
 Great! Here's the **Technical Details** section:
 
 ---
-# Technical Details
+
+## Technical Details
 
 ~~~markdown
 ## Technical Details
@@ -1072,7 +1078,7 @@ Excellent! Here's the final **Resources** section:
 
 ---
 
-# Resources
+## Resources
 
 ~~~markdown
 ## Resources
@@ -1090,7 +1096,7 @@ Does this look good to you?
 
 Perfect! I now have all the sections ready. Let me write the complete `btw.md` file for you.
 
-# Write btw.md
+## Write btw.md
 
 Write comprehensive project documentation to` btw.md`
 

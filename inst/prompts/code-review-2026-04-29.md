@@ -6,6 +6,7 @@ Comprehensive code review of the `sap` Shiny app-package conducted using the btw
 ## 🔴 Critical Issues
 
 ### 1. Package Loading in Launch Function (R/launch_app.R)
+
 **Issue:** Loading packages with `library()` inside a function is a major anti-pattern for R packages.
 
 **Current problematic code:**
@@ -21,6 +22,7 @@ launch_app <- function(...) {
 ```
 
 **Fix:** Remove all `library()` calls and use proper namespace imports:
+
 ```r
 launch_app <- function(...) {
     # Create and run the app
@@ -33,6 +35,7 @@ launch_app <- function(...) {
 ```
 
 ### 2. Missing Package Self-Reference (app.R)
+
 **Issue:** The deployment script doesn't load the package itself.
 
 **Current:**
@@ -53,6 +56,7 @@ launch_app()
 ```
 
 ### 3. Hardcoded Package Reference (R/mod_download_report.R)
+
 **Issue:** Line 39 has a hardcoded package reference that will fail:
 
 **Current:**
@@ -162,6 +166,7 @@ numeric_choices <- c(
 ## 🟠 Performance & Reactive Programming Issues
 
 ### 1. Inefficient Data Filtering
+
 **Issue:** Data filtering is duplicated across modules using base R subsetting.
 
 **R/mod_visualization.R, lines 31-33:**
@@ -190,6 +195,7 @@ filtered_data <- reactive({
 ```
 
 ### 2. Unnecessary Reactive Dependencies
+
 **Issue:** The visualization module recreates the plot unnecessarily when unrelated inputs change.
 
 **Fix:** Split the reactive logic:
@@ -216,6 +222,7 @@ plot_reactive <- reactive({
 ## 🔵 Maintainability Issues
 
 ### 1. Missing Error Handling
+
 **Issue:** No error handling for file operations or plot generation.
 
 **Fix for R/mod_download_report.R:**
@@ -239,6 +246,7 @@ content = function(file) {
 ```
 
 ### 2. Hardcoded Choices
+
 **Issue:** Genre and variable choices are hardcoded in the UI module.
 
 **Fix:** Move choices to a separate configuration file or derive from data:
@@ -262,6 +270,7 @@ get_genre_choices <- function(data = NULL) {
 ```
 
 ### 3. Inconsistent Documentation
+
 **Issue:** Some functions have incomplete or missing parameter documentation.
 
 **Fix R/mod_visualization.R line 23:**
@@ -283,6 +292,7 @@ get_genre_choices <- function(data = NULL) {
 ## 🟢 Security Considerations
 
 ### 1. File Path Validation
+
 **Issue:** The download handler uses user-controlled date in filename without validation.
 
 **Fix:**
@@ -294,6 +304,7 @@ filename = function() {
 ```
 
 ### 2. Temporary File Cleanup
+
 **Issue:** Temporary files might not be cleaned up on error.
 
 **Fix:**
@@ -316,18 +327,21 @@ content = function(file) {
 ## 📋 Priority Recommendations
 
 ### High Priority (Fix Immediately)
+
 1. ✅ Remove `library()` calls from `launch_app()`
 2. ✅ Fix hardcoded package reference in download module
 3. ✅ Add package loading to app.R
 4. ✅ Implement centralized data filtering
 
 ### Medium Priority (Next Sprint)
+
 1. ⏳ Fix grkstyle indentation throughout codebase
 2. ⏳ Add comprehensive error handling
 3. ⏳ Optimize reactive dependencies
 4. ⏳ Move hardcoded choices to configuration
 
 ### Low Priority (Technical Debt)
+
 1. ⏳ Improve documentation consistency
 2. ⏳ Add input validation
 3. ⏳ Consider using modules for better namespace management
@@ -348,6 +362,7 @@ content = function(file) {
 - Performance optimization of reactive expressions
 
 ## Next Steps
+
 1. Address critical issues first (package loading, hardcoded references)
 2. Apply style guide fixes systematically
 3. Implement centralized data filtering

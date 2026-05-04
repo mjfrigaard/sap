@@ -1,6 +1,7 @@
 # Code Review Session - April 29, 2026
 
 ## Overview
+
 Comprehensive code review of the `sap` Shiny app-package conducted using the btw code_reviewer agent.
 
 ## 🔴 Critical Issues

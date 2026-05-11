@@ -6,9 +6,6 @@
 \usage{
 desym(params)
 }
-\arguments{
-\item{params}{}
-}
 \value{
 list of params with character values
 }

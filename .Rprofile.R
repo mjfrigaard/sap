@@ -12,22 +12,24 @@ if (interactive()) {
 }
 options(
   ## gander config ----
-  .gander_chat = ellmer::chat_anthropic(),
+  ander.chat = ellmer::chat_claude(model = "claude-sonnet-4-6"),
   # printing configs ----
   width = 50L,
   pillar.width = 50L,
   width = 80,
   str = utils::strOptions(strict.width = 'cut'),
-# repos configs ----
-    repos = c(pm = "https://packagemanager.posit.co/cran/latest",
-            CRAN = "https://cloud.r-project.org")
+  # repos configs ----
+  repos = c(
+    pm = "https://packagemanager.posit.co/cran/latest",
+    CRAN = "https://cloud.r-project.org"
+  )
 )
 ### clean_vignettes ----
 clean_vignettes <- function(pth = "vignettes/") {
   # all HTML files/folders ending with "_files"
   files_to_delete <- list.files(
-    path = pth, 
-    pattern = "\\.html$|_files$", 
+    path = pth,
+    pattern = "\\.html$|_files$",
     full.names = TRUE
   )
   # print the delete message
@@ -36,12 +38,12 @@ clean_vignettes <- function(pth = "vignettes/") {
     directory <- dirname(file)
     message(sprintf("deleting '%s' from '%s'", file_name, directory))
   }
-  # delete 
+  # delete
   unlink(files_to_delete, recursive = TRUE)
   # return
   return(invisible())
 }
-# run 
+# run
 if (interactive()) {
   clean_vignettes()
 }

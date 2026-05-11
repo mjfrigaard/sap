@@ -37,7 +37,7 @@ based on user inputs using \code{\link[=mod_scatter_display_server]{mod_scatter_
 \item \code{\link[=launch_app]{launch_app()}} for the entry point of the application.
 }
 
-Other \strong{Application Components}: 
-\code{\link{movies_ui}()}
+Other \strong{Application Components}:
+\code{\link[=movies_ui]{movies_ui()}}
 }
 \concept{\strong{Application Components}}

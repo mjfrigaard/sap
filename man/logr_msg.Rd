@@ -80,6 +80,6 @@ logr_msg("Low memory warning.", level = "WARN", store_log = FALSE)
 \itemize{
 \item \code{\link[logger:log_appender]{logger::log_appender()}} for configuring log destinations.
 \item \code{\link[logger:log_formatter]{logger::log_formatter()}} for customizing log message formats.
-\item \code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}} for converting R objects to JSON.
+\item \code{\link[jsonlite:toJSON]{jsonlite::toJSON()}} for converting R objects to JSON.
 }
 }

@@ -52,7 +52,7 @@ scatter plot module.
 \code{ggplot2} usage.
 }
 
-Other \strong{Utility Functions}: 
-\code{\link{log_message}()}
+Other \strong{Utility Functions}:
+\code{\link[=log_message]{log_message()}}
 }
 \concept{\strong{Utility Functions}}

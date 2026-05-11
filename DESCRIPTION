@@ -1,6 +1,6 @@
 Package: sap
 Title: Shiny App-Packages
-Version: 0.0.0.9240
+Version: 0.0.0.9270
 Author: John Smith <John.Smith@email.io> [aut, cre]
 Maintainer: John Smith <John.Smith@email.io>
 Description: An R package with a collection of Shiny applications.
@@ -41,4 +41,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.0.0

@@ -12,7 +12,7 @@ if (interactive()) {
 }
 options(
   ## gander config ----
-  ander.chat = ellmer::chat_claude(model = "claude-sonnet-4-6"),
+  gander.chat = ellmer::chat_claude(model = "claude-sonnet-4-6"),
   # printing configs ----
   width = 50L,
   pillar.width = 50L,

@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 .DS_Store
+.vscode/
 sap.Rcheck/
 sap*.tar.gz
 sap*.tgz

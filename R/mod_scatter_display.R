@@ -1,4 +1,4 @@
-#' Plot Display Module - UI
+#' Scatter Plot Display Module - UI
 #'
 #' Creates a UI for displaying a scatter plot with user-selected options.
 #'
@@ -43,7 +43,7 @@ mod_scatter_display_ui <- function(id) {
   )
 }
 
-#' Plot Display Module - Server
+#' Scatter Plot Display Module - Server
 #'
 #' Handles the server-side logic for rendering a scatter plot.
 #'

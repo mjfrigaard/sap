@@ -114,7 +114,6 @@ mod_var_input_ui <- function(id) {
 #'   )
 #' }
 #'
-#'
 #' @export
 mod_var_input_server <- function(id) {
   moduleServer(id, function(input, output, session) {

@@ -19,9 +19,9 @@
 #'
 #' @seealso
 #' - [`mod_var_input_server()`]  for server-side logic.
-#' - [`shiny::tagList()`](https://shiny.rstudio.com/reference/shiny/latest/tagList.html) 
+#' - [`shiny::tagList()`](https://shiny.posit.co/r/reference/shiny/latest/tagList.html) 
 #'   for containing UI elements.
-#' - [`shiny::NS()`](https://shiny.rstudio.com/reference/shiny/latest/NS.html) 
+#' - [`shiny::NS()`](https://shiny.posit.co/r/reference/shiny/latest/NS.html) 
 #'   for namespacing.
 #'
 #' @family **Variable Input Module**
@@ -107,6 +107,7 @@ mod_var_input_ui <- function(id) {
 #'
 #' @family **Variable Input Module**
 #'
+#' @examples
 #' if (interactive()) {
 #'   shiny::shinyApp(
 #'     ui = shiny::fluidPage(mod_var_input_ui("vars")),

@@ -1,12 +1,3 @@
-#' Create scatter plot
-#'
-#' Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building
-#' scatter plots in `sap`.
-#'
-#'
-#' @param df `data.frame` or `tibble`
-#' @param x_var string variable mapped to `x` axis
-#' @param y_var string variable mapped to `y` axis
 #' Generate a Scatter Plot
 #'
 #' Creates a scatter plot using `ggplot2` with the specified data and

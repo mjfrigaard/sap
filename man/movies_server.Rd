@@ -39,7 +39,7 @@ if (interactive()) {
 - [`movies_ui()`] for the corresponding user interface.
 - [`launch_app()`] for the entry point of the application.
 
-Other **Application Components**: 
-\code{\link{movies_ui}()}
+Other **Application Components**:
+\code{\link[=movies_ui]{movies_ui()}}
 }
 \concept{**Application Components**}

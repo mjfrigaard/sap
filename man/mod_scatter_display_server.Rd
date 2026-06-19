@@ -57,7 +57,7 @@ if (interactive()) {
 - [`mod_var_input_server()`] for variable selection.
 - [`scatter_plot()`] for generating the scatter plot.
 
-Other **Plot Display Module**: 
-\code{\link{mod_scatter_display_ui}()}
+Other **Plot Display Module**:
+\code{\link[=mod_scatter_display_ui]{mod_scatter_display_ui()}}
 }
 \concept{**Plot Display Module**}

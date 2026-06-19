@@ -1,8 +1,8 @@
-#' Plot Display Module - UI
+#' Scatter Plot Display Module - UI
 #'
 #' Creates a UI for displaying a scatter plot with user-selected options.
 #'
-#' @param id *(character)* Namespace ID for the module.
+#' @inheritParams mod_var_input_ui
 #'
 #' @return A `shiny::tagList` containing the plot output and metadata.
 #'
@@ -43,12 +43,12 @@ mod_scatter_display_ui <- function(id) {
   )
 }
 
-#' Plot Display Module - Server
+#' Scatter Plot Display Module - Server
 #'
 #' Handles the server-side logic for rendering a scatter plot.
 #'
-#' @param id *(character)* Namespace ID for the module.
-#' @param var_inputs *(reactive)* A reactive expression containing 
+#' @inheritParams mod_var_input_ui id
+#' @param var_inputs *(reactive)* A reactive expression containing
 #'  user-selected variables and attributes.
 #'
 #' @return No direct return value. This function generates a plot output.

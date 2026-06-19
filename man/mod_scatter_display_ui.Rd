@@ -38,7 +38,7 @@ if (interactive()) {
   module.
 - [`scatter_plot()`]  for the utility function generating the plot.
 
-Other **Plot Display Module**: 
-\code{\link{mod_scatter_display_server}()}
+Other **Plot Display Module**:
+\code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}
 }
 \concept{**Plot Display Module**}

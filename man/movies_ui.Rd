@@ -35,7 +35,7 @@ if (interactive()) {
 - [`mod_var_input_ui()`] and [`mod_scatter_display_ui()`] for the modules 
   included in the UI.
 
-Other **Application Components**: 
-\code{\link{movies_server}()}
+Other **Application Components**:
+\code{\link[=movies_server]{movies_server()}}
 }
 \concept{**Application Components**}

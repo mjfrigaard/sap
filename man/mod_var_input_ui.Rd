@@ -35,9 +35,9 @@ The function uses \code{shiny::NS()} to namespace all input IDs.
 \seealso{
 \itemize{
 \item \code{\link[=mod_var_input_server]{mod_var_input_server()}}  for server-side logic.
-\item \href{https://shiny.rstudio.com/reference/shiny/latest/tagList.html}{\code{shiny::tagList()}}
+\item \href{https://shiny.posit.co/r/reference/shiny/latest/tagList.html}{\code{shiny::tagList()}}
 for containing UI elements.
-\item \href{https://shiny.rstudio.com/reference/shiny/latest/NS.html}{\code{shiny::NS()}}
+\item \href{https://shiny.posit.co/r/reference/shiny/latest/NS.html}{\code{shiny::NS()}}
 for namespacing.
 }
 }

@@ -4,7 +4,7 @@
 \alias{launch_app}
 \title{Launch the Movies Review Application}
 \usage{
-launch_app(app = NULL, options = list(), run = "p", ...)
+launch_app(app = NULL, options = list(), mode = "run", run = "p", ...)
 }
 \arguments{
 \item{app}{which app to run. Options are:
@@ -16,6 +16,12 @@ launch_app(app = NULL, options = list(), run = "p", ...)
 }}
 
 \item{options}{arguments to pass to \code{options()}}
+
+\item{mode}{launch mode. Choices are:
+\itemize{
+\item \code{run} = blocking, uses \code{\link[=display_type]{display_type()}} for window placement (default)
+\item \code{start} = non-blocking, launches in a background process
+}}
 
 \item{run}{where to launch app:
 \itemize{

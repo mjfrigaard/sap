@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_scatter_display.R
 \name{mod_scatter_display_ui}
 \alias{mod_scatter_display_ui}
-\title{Plot Display Module - UI}
+\title{Scatter Plot Display Module - UI}
 \usage{
 mod_scatter_display_ui(id)
 }
@@ -42,7 +42,7 @@ module.
 \item \code{\link[=scatter_plot]{scatter_plot()}}  for the utility function generating the plot.
 }
 
-Other \strong{Plot Display Module}: 
-\code{\link{mod_scatter_display_server}()}
+Other \strong{Plot Display Module}:
+\code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}
 }
 \concept{\strong{Plot Display Module}}

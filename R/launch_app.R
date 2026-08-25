@@ -9,6 +9,9 @@
 #'  * `"ggp2"` = `ggplot2movies` (tidy) data app.
 #'  * `"quarto"` = Quarto movies app.
 #' @param options arguments to pass to `options()`
+#' @param mode launch mode. Choices are:
+#'  * `run` = blocking, uses [display_type()] for window placement (default)
+#'  * `start` = non-blocking, launches in a background process
 #' @param run where to launch app:
 #'  * `p` = launch in viewer pane
 #'  * `b` = launch in external browser
@@ -41,11 +44,7 @@
 #'
 #' @import shiny
 #'
-launch_app <- function(app = NULL, options = list(), run = "p", ...) {
-  if (interactive()) {
-    display_type(run = run)
-  }
-
+launch_app <- function(app = NULL, options = list(), mode = "run", run = "p", ...) {
   if (is.null(app)) {
     app <- "movies"
   }
@@ -56,7 +55,16 @@ launch_app <- function(app = NULL, options = list(), run = "p", ...) {
 
   tryCatch(
     {
-      if (app == "bslib") {
+      if (app == "quarto") {
+        return(
+          quarto::quarto_preview(
+            system.file("quarto", "index.qmd", package = "sap"),
+            render = "all"
+          )
+        )
+      }
+
+      app_obj <- if (app == "bslib") {
         shinyApp(
           ui = movies_ui(bslib = TRUE),
           server = movies_server,
@@ -67,17 +75,21 @@ launch_app <- function(app = NULL, options = list(), run = "p", ...) {
           appDir = system.file("tidy-movies", package = "sap"),
           options = options
         )
-      } else if (app == "quarto") {
-        quarto::quarto_preview(
-          system.file("quarto", "index.qmd", package = "sap"),
-          render = "all"
-        )
       } else {
         shinyApp(
           ui = movies_ui(...),
           server = movies_server,
           options = options
         )
+      }
+
+      if (mode == "start") {
+        shiny::startApp(appDir = app_obj, port = 3838)
+      } else {
+        if (interactive()) {
+          display_type(run = run)
+        }
+        shiny::runApp(appDir = app_obj)
       }
     },
     error = function(e) {

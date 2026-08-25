@@ -2,7 +2,7 @@
 % Please edit documentation in R/scatter_plot.R
 \name{scatter_plot}
 \alias{scatter_plot}
-\title{Create scatter plot}
+\title{Generate a Scatter Plot}
 \usage{
 scatter_plot(df, x_var, y_var, col_var, alpha_var, size_var)
 }
@@ -23,8 +23,8 @@ scatter_plot(df, x_var, y_var, col_var, alpha_var, size_var)
 A \code{ggplot} object representing the scatter plot.
 }
 \description{
-Custom \href{https://ggplot2.tidyverse.org/}{\code{ggplot2}} function for building
-scatter plots in \code{sap}.
+Creates a scatter plot using \code{ggplot2} with the specified data and
+aesthetics.
 }
 \section{Details}{
 

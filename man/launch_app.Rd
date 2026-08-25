@@ -4,9 +4,17 @@
 \alias{launch_app}
 \title{Launch the Movies Explorer Shiny Application}
 \usage{
-launch_app(...)
+launch_app(options = list(), mode = "run", ...)
 }
 \arguments{
+\item{options}{Shiny options.}
+
+\item{mode}{launch mode. Choices are:
+\itemize{
+\item run: blocking (default)
+\item start: non-blocking, launches in a background process
+}}
+
 \item{...}{Additional arguments passed to shinyApp()}
 }
 \value{

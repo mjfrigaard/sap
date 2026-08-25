@@ -13,5 +13,5 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     pkgload::load_all()
   }
     sap::launch_app(
-      options = list(test.mode = TRUE), run = 'p')
+      options = list(test.mode = TRUE), mode = "run", run = 'p')
 }) 

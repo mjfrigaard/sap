@@ -4,10 +4,16 @@
 \alias{launch_app}
 \title{Launch the Movies Review Application}
 \usage{
-launch_app(options = list(), run = "p")
+launch_app(options = list(), mode = "run", run = "p")
 }
 \arguments{
 \item{options}{Shiny options.}
+
+\item{mode}{launch mode. Choices are:
+\itemize{
+\item run: blocking, uses \code{\link[=display_type]{display_type()}} for window placement (default)
+\item start: non-blocking, launches in a background process
+}}
 
 \item{run}{where to launch the application. Choices are:
 \itemize{

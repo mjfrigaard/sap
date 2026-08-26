@@ -59,10 +59,13 @@ if (interactive()) {
 \seealso{
 \itemize{
 \item \code{\link[=mod_var_input_server]{mod_var_input_server()}}  for server-side logic.
-\item \href{https://shiny.rstudio.com/reference/shiny/latest/tagList.html}{\code{shiny::tagList()}}
+\item \href{https://shiny.posit.co/r/reference/shiny/latest/tagList.html}{\code{shiny::tagList()}}
 for containing UI elements.
-\item \href{https://shiny.rstudio.com/reference/shiny/latest/NS.html}{\code{shiny::NS()}}
+\item \href{https://shiny.posit.co/r/reference/shiny/latest/NS.html}{\code{shiny::NS()}}
 for namespacing.
 }
+
+Other \strong{Variable Input Module}:
+\code{\link[=mod_var_input_server]{mod_var_input_server()}}
 }
 \concept{\strong{Variable Input Module}}

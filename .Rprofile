@@ -10,3 +10,4 @@ local({
     }
   }
 })
+options(scipen = 9999)

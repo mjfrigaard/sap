@@ -46,7 +46,7 @@ if (interactive()) {
 included in the UI.
 }
 
-Other \strong{Application Components}: 
-\code{\link{movies_server}()}
+Other \strong{Application Components}:
+\code{\link[=movies_server]{movies_server()}}
 }
 \concept{\strong{Application Components}}

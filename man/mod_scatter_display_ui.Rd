@@ -42,7 +42,7 @@ module.
 \item \code{\link[=scatter_plot]{scatter_plot()}}  for the utility function generating the plot.
 }
 
-Other \strong{Plot Display Module}: 
-\code{\link{mod_scatter_display_server}()}
+Other \strong{Plot Display Module}:
+\code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}
 }
 \concept{\strong{Plot Display Module}}

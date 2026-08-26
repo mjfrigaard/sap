@@ -97,13 +97,19 @@ display_type <- function(run = "w") {
 ### Updated launch_app()
 
 ```r
-launch_app <- function(options = list(), run = "p") {
-  display_type(run = run)
-  shinyApp( 
+launch_app <- function(options = list(), mode = "run", run = "p") {
+  app <- shinyApp(
     ui = movies_ui(),
     server = movies_server,
     options = options
   )
+
+  if (mode == "start") {
+    shiny::startApp(appDir = app, port = 3838)
+  } else if (mode == "run") {
+    display_type(run = run)
+    shiny::runApp(appDir = app)
+  }
 }
 ```
 
@@ -126,7 +132,7 @@ withr::with_options(new = list(shiny.autoload.r = FALSE), code = {
     pkgload::load_all()
   }
     sap::launch_app(
-      options = list(test.mode = TRUE), run = 'p')
+      options = list(test.mode = TRUE), mode = "run", run = 'p')
 }) 
 ```
 

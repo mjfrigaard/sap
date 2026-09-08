@@ -7,14 +7,14 @@
 movies_server(input, output, session)
 }
 \arguments{
-\item{input}{The Shiny `input` object.}
+\item{input}{The Shiny \code{input} object.}
 
-\item{output}{The Shiny `output` object.}
+\item{output}{The Shiny \code{output} object.}
 
-\item{session}{The Shiny `session` object.}
+\item{session}{The Shiny \code{session} object.}
 }
 \value{
-No direct return value. Defines server logic for reactive outputs 
+No direct return value. Defines server logic for reactive outputs
 and module integration.
 }
 \description{
@@ -23,10 +23,12 @@ Handles the server-side logic for the Movies Review application.
 \section{Details}{
 
 The server integrates the following modules:
-- **Variable Input Module**: Processes user input for scatter plot 
-  customization using  [`mod_var_input_server()`].
-- **Scatter Plot Display Module**: Generates and displays a scatter plot 
-  based on user inputs using [`mod_scatter_display_server()`].
+\itemize{
+\item \strong{Variable Input Module}: Processes user input for scatter plot
+customization using  \code{\link[=mod_var_input_server]{mod_var_input_server()}}.
+\item \strong{Plot Display Module}: Generates and displays a scatter plot
+based on user inputs using \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}.
+}
 }
 
 \examples{
@@ -36,10 +38,12 @@ if (interactive()) {
 
 }
 \seealso{
-- [`movies_ui()`] for the corresponding user interface.
-- [`launch_app()`] for the entry point of the application.
+\itemize{
+\item \code{\link[=movies_ui]{movies_ui()}} for the corresponding user interface.
+\item \code{\link[=launch_app]{launch_app()}} for the entry point of the application.
+}
 
-Other **Application Components**:
+Other \strong{Application Components}:
 \code{\link[=movies_ui]{movies_ui()}}
 }
-\concept{**Application Components**}
+\concept{\strong{Application Components}}

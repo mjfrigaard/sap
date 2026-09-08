@@ -7,30 +7,38 @@
 mod_var_input_ui(id)
 }
 \arguments{
-\item{id}{*(character)* Namespace ID for the module.}
+\item{id}{\emph{(character)} Namespace ID for the module.}
 }
 \value{
-A `shiny::tagList()` containing UI elements for variable 
+A \code{shiny::tagList()} containing UI elements for variable
 selection.
 }
 \description{
 Creates a UI for selecting variables and attributes for a scatter plot.
 }
 \section{Details}{
- 
-`mod_var_input_ui()` provides UI controls for customizing scatter plots. 
- It includes:  
-- **Dropdowns**: 
-  - X-axis variable
-  - Y-axis variable
-  - Color aesthetic variable
-- **Sliders**:
-  - Transparency (`alpha`) ranging from 0 to 1.
-  - Point size ranging from 0 to 5.
-- **Text Input**:
-  - Plot title.
 
-The function uses `shiny::NS()` to namespace all input IDs.
+\code{mod_var_input_ui()} provides UI controls for customizing scatter plots.
+It includes:
+\itemize{
+\item \strong{Dropdowns}:
+\itemize{
+\item X-axis variable
+\item Y-axis variable
+\item Color aesthetic variable
+}
+\item \strong{Sliders}:
+\itemize{
+\item Transparency (\code{alpha}) ranging from 0 to 1.
+\item Point size ranging from 0 to 5.
+}
+\item \strong{Text Input}:
+\itemize{
+\item Plot title.
+}
+}
+
+The function uses \code{shiny::NS()} to namespace all input IDs.
 }
 
 \examples{
@@ -49,10 +57,15 @@ if (interactive()) {
 
 }
 \seealso{
-- [`mod_var_input_server()`]  for server-side logic.
-- [`shiny::tagList()`](https://shiny.rstudio.com/reference/shiny/latest/tagList.html) 
-  for containing UI elements.
-- [`shiny::NS()`](https://shiny.rstudio.com/reference/shiny/latest/NS.html) 
-  for namespacing.
+\itemize{
+\item \code{\link[=mod_var_input_server]{mod_var_input_server()}}  for server-side logic.
+\item \href{https://shiny.posit.co/r/reference/shiny/latest/tagList.html}{\code{shiny::tagList()}}
+for containing UI elements.
+\item \href{https://shiny.posit.co/r/reference/shiny/latest/NS.html}{\code{shiny::NS()}}
+for namespacing.
 }
-\concept{**Variable Input Module**}
+
+Other \strong{Variable Input Module}:
+\code{\link[=mod_var_input_server]{mod_var_input_server()}}
+}
+\concept{\strong{Variable Input Module}}

@@ -7,21 +7,23 @@
 movies_ui()
 }
 \value{
-A Shiny `tagList` object containing the UI elements.
+A \code{bslib::page_sidebar()} UI object.
 }
 \description{
-Creates the user interface (UI) for the Movies Review application, which 
+Creates the user interface (UI) for the Movies Review application, which
 allows users to create customizable scatter plots based on movie data.
 }
 \section{Details}{
 
 The interface is built using:
-- **Theme**: `shinythemes::shinytheme("spacelab")`.
-- **Title Panel**: Displays the app title and a logo.
-- **Sidebar Panel**: Includes the variable selection module 
-  ([`mod_var_input_ui`]).
-- **Main Panel**: Displays the scatter plot module 
-  ([`mod_scatter_display_ui`]).
+\itemize{
+\item \strong{Theme}: \code{bslib::bs_theme(bootswatch = "spacelab")}.
+\item \strong{Title}: Displays the app title and a logo.
+\item \strong{Sidebar}: Includes the variable selection module
+(\code{\link{mod_var_input_ui}}).
+\item \strong{Main area}: Displays the scatter plot module
+(\code{\link{mod_scatter_display_ui}}).
+}
 }
 
 \examples{
@@ -31,11 +33,13 @@ if (interactive()) {
 
 }
 \seealso{
-- [`movies_server()`] for the server logic of the app.
-- [`mod_var_input_ui()`] and [`mod_scatter_display_ui()`] for the modules 
-  included in the UI.
+\itemize{
+\item \code{\link[=movies_server]{movies_server()}} for the server logic of the app.
+\item \code{\link[=mod_var_input_ui]{mod_var_input_ui()}} and \code{\link[=mod_scatter_display_ui]{mod_scatter_display_ui()}} for the modules
+included in the UI.
+}
 
-Other **Application Components**:
+Other \strong{Application Components}:
 \code{\link[=movies_server]{movies_server()}}
 }
-\concept{**Application Components**}
+\concept{\strong{Application Components}}

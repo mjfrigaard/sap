@@ -2,24 +2,26 @@
 % Please edit documentation in R/mod_scatter_display.R
 \name{mod_scatter_display_ui}
 \alias{mod_scatter_display_ui}
-\title{Plot Display Module - UI}
+\title{Scatter Plot Display Module - UI}
 \usage{
 mod_scatter_display_ui(id)
 }
 \arguments{
-\item{id}{*(character)* Namespace ID for the module.}
+\item{id}{\emph{(character)} Namespace ID for the module.}
 }
 \value{
-A `shiny::tagList` containing the plot output and metadata.
+A \code{shiny::tagList} containing the plot output and metadata.
 }
 \description{
 Creates a UI for displaying a scatter plot with user-selected options.
 }
 \section{Details}{
- 
-`mod_scatter_display_ui()` includes:
-- A **scatter plot** created dynamically based on user input.
-- Metadata about the app, including the data source.
+
+\code{mod_scatter_display_ui()} includes:
+\itemize{
+\item A \strong{scatter plot} created dynamically based on user input.
+\item Metadata about the app, including the data source.
+}
 }
 
 \examples{
@@ -34,11 +36,13 @@ if (interactive()) {
 
 }
 \seealso{
-- [`mod_scatter_display_server()`]  for the server-side logic of this 
-  module.
-- [`scatter_plot()`]  for the utility function generating the plot.
+\itemize{
+\item \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}  for the server-side logic of this
+module.
+\item \code{\link[=scatter_plot]{scatter_plot()}}  for the utility function generating the plot.
+}
 
-Other **Plot Display Module**:
+Other \strong{Plot Display Module}:
 \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}
 }
-\concept{**Plot Display Module**}
+\concept{\strong{Plot Display Module}}

@@ -1,4 +1,4 @@
-options(scipen = 100000000)
+options(scipen = 9999)
 library(tidyr)
 library(fst)
 

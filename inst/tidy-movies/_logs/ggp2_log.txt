@@ -24,3 +24,6 @@ plot_title=
 [2025-01-29 11:35:52] Removing missing values. 
 [2025-01-29 11:35:52] Inputs: x = year, y = budget, z = mpaa, alpha = 0.5, size = 2, plot_title =  
 [2025-01-29 11:35:57] Inputs: x = year, y = budget, z = mpaa, alpha = 0.5, size = 2, plot_title = Title 
+[2026-09-01 11:30:02] Loading fst data 
+[2026-09-01 11:30:02] Removing missing values. 
+[2026-09-01 11:30:02] Inputs: x = year, y = budget, z = mpaa, alpha = 0.5, size = 2, plot_title =  

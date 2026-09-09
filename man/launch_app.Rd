@@ -3,35 +3,45 @@
 \name{launch_app}
 \alias{launch_app}
 \title{Launch the Movies Review Application}
-\usage{
-launch_app()
-}
 \value{
-A \strong{Shiny application} object.
+\code{ui} argument in \code{shiny::shinyApp()}
 }
 \description{
 Starts the Movies Review Shiny application, which provides a customizable
 scatter plot interface for analyzing movie data.
 }
-\section{Details}{
+\details{
+The \code{\link[=launch_app]{launch_app()}} function is as a wrapper for \code{shiny::shinyApp()}:
 
-The application uses:
+\if{html}{\out{<div class="sourceCode">}}\preformatted{shinyApp(ui = movies_ui, server = movies_server)
+}\if{html}{\out{</div>}}
+
+In \code{\link[=launch_app]{launch_app()}}:
 \itemize{
-\item \strong{UI}: Defined in \code{\link[=movies_ui]{movies_ui()}}.
-\item \strong{Server Logic}: Defined in \code{\link[=movies_server]{movies_server()}}.
+\item UI is stored in \code{movies_ui()}
+\item server is stored in \code{\link[=movies_server]{movies_server()}}
+}
+}
+\section{\code{var_input} module}{
+
+\code{\link[=mod_var_input_ui]{mod_var_input_ui()}} is used to collect the following inputs:
+\itemize{
+\item \code{input$x}
+\item \code{input$y}
+\item \code{input$z}
+\item \code{input$alpha}
+\item \code{input$size}
+\item \code{input$plot_title}
 }
 }
 
-\examples{
-if (interactive()) {
-  launch_app()
+\section{\code{scatter_display} module}{
+
+\code{\link[=mod_scatter_display_ui]{mod_scatter_display_ui()}} displays the graph output using \code{\link[=scatter_plot]{scatter_plot()}}
 }
 
-}
 \seealso{
-\itemize{
-\item \code{\link[=movies_ui]{movies_ui()}} for the user interface.
-\item \code{\link[=movies_server]{movies_server()}} for the server logic.
+\code{\link[=mod_var_input_server]{mod_var_input_server()}}
+
+\code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}
 }
-}
-\concept{\strong{Standalone Application}}

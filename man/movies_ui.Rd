@@ -7,7 +7,7 @@
 movies_ui()
 }
 \value{
-A Shiny \code{tagList} object containing the UI elements.
+A \code{bslib::page_sidebar()} UI object.
 }
 \description{
 Creates the user interface (UI) for the Movies Review application, which
@@ -17,11 +17,11 @@ allows users to create customizable scatter plots based on movie data.
 
 The interface is built using:
 \itemize{
-\item \strong{Theme}: \code{shinythemes::shinytheme("spacelab")}.
-\item \strong{Title Panel}: Displays the app title and a logo.
-\item \strong{Sidebar Panel}: Includes the variable selection module
+\item \strong{Theme}: \code{bslib::bs_theme(bootswatch = "spacelab")}.
+\item \strong{Title}: Displays the app title and a logo.
+\item \strong{Sidebar}: Includes the variable selection module
 (\code{\link{mod_var_input_ui}}).
-\item \strong{Main Panel}: Displays the scatter plot module
+\item \strong{Main area}: Displays the scatter plot module
 (\code{\link{mod_scatter_display_ui}}).
 }
 }
@@ -39,7 +39,7 @@ if (interactive()) {
 included in the UI.
 }
 
-Other \strong{Application Components}: 
-\code{\link{movies_server}()}
+Other \strong{Application Components}:
+\code{\link[=movies_server]{movies_server()}}
 }
 \concept{\strong{Application Components}}

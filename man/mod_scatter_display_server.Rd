@@ -2,7 +2,7 @@
 % Please edit documentation in R/mod_scatter_display.R
 \name{mod_scatter_display_server}
 \alias{mod_scatter_display_server}
-\title{Plot Display Module - Server}
+\title{Scatter Plot Display Module - Server}
 \usage{
 mod_scatter_display_server(id, var_inputs)
 }
@@ -63,7 +63,7 @@ if (interactive()) {
 \item \code{\link[=scatter_plot]{scatter_plot()}} for generating the scatter plot.
 }
 
-Other \strong{Plot Display Module}: 
-\code{\link{mod_scatter_display_ui}()}
+Other \strong{Plot Display Module}:
+\code{\link[=mod_scatter_display_ui]{mod_scatter_display_ui()}}
 }
 \concept{\strong{Plot Display Module}}

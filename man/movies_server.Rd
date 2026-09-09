@@ -26,7 +26,7 @@ The server integrates the following modules:
 \itemize{
 \item \strong{Variable Input Module}: Processes user input for scatter plot
 customization using  \code{\link[=mod_var_input_server]{mod_var_input_server()}}.
-\item \strong{Scatter Plot Display Module}: Generates and displays a scatter plot
+\item \strong{Plot Display Module}: Generates and displays a scatter plot
 based on user inputs using \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}}.
 }
 }
@@ -43,7 +43,7 @@ if (interactive()) {
 \item \code{\link[=launch_app]{launch_app()}} for the entry point of the application.
 }
 
-Other \strong{Application Components}: 
-\code{\link{movies_ui}()}
+Other \strong{Application Components}:
+\code{\link[=movies_ui]{movies_ui()}}
 }
 \concept{\strong{Application Components}}

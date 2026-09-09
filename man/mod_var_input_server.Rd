@@ -50,7 +50,7 @@ if (interactive()) {
 \item \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}} for displaying the scatter plot.
 }
 
-Other \strong{Variable Input Module}:
+Other \strong{Input Module}:
 \code{\link[=mod_var_input_ui]{mod_var_input_ui()}}
 }
-\concept{\strong{Variable Input Module}}
+\concept{\strong{Input Module}}

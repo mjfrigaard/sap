@@ -29,7 +29,7 @@
 #' - [`shiny::NS()`](https://shiny.posit.co/r/reference/shiny/latest/NS.html)
 #'   for namespacing.
 #'
-#' @family **Variable Input Module**
+#' @family **Input Module**
 #'
 #' @examples
 #'
@@ -129,7 +129,7 @@ mod_var_input_ui <- function(id) {
 #' - [`mod_var_input_ui()`] for the UI counterpart of this module.
 #' - [`mod_scatter_display_server()`] for displaying the scatter plot.
 #'
-#' @family **Variable Input Module**
+#' @family **Input Module**
 #'
 #' @examples
 #' if (interactive()) {

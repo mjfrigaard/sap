@@ -65,7 +65,7 @@ for containing UI elements.
 for namespacing.
 }
 
-Other \strong{Variable Input Module}:
+Other \strong{Input Module}:
 \code{\link[=mod_var_input_server]{mod_var_input_server()}}
 }
-\concept{\strong{Variable Input Module}}
+\concept{\strong{Input Module}}

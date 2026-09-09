@@ -16,7 +16,7 @@
 #'   module.
 #' - [`scatter_plot()`]  for the utility function generating the plot.
 #'
-#' @family **Plot Display Module**
+#' @family **Display Module**
 #'
 #' @examples
 #' if (interactive()) {
@@ -73,7 +73,7 @@ mod_scatter_display_ui <- function(id) {
 #' - [`mod_var_input_server()`] for variable selection.
 #' - [`scatter_plot()`] for generating the scatter plot.
 #'
-#' @family **Plot Display Module**
+#' @family **Display Module**
 #'
 #' @examples
 #' if (interactive()) {

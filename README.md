@@ -57,9 +57,9 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `19_shinyappsio`
+## `19_connect-cloud`
 
-The [`19_shinyappsio`](https://github.com/mjfrigaard/sap/tree/19_shinyappsio) branch demonstrates how to deploy your Shiny app package to [shinyapps.io](https://www.shinyapps.io/), a hosting service managed by Posit.
+The [`19_connect-cloud`](https://github.com/mjfrigaard/sap/tree/19_connect-cloud) branch demonstrates how to deploy your Shiny app package to [Posit Connect Cloud](https://posit.cloud/), a managed hosting platform for Shiny applications and other content.
 
 
 

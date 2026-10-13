@@ -1,0 +1,2 @@
+INFO [2026-10-13 10:44:03] Launching UI with bslib = FALSE
+INFO [2026-10-13 10:44:05] New user session started

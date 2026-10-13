@@ -26,7 +26,7 @@ if (interactive()) {
 
 }
 \seealso{
-Other \strong{Utility Functions}: 
-\code{\link{scatter_plot}()}
+Other \strong{Utility Functions}:
+\code{\link[=scatter_plot]{scatter_plot()}}
 }
 \concept{\strong{Utility Functions}}

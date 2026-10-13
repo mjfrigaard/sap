@@ -28,20 +28,26 @@ function created with \code{mod_var_input_ui()}. It processes and returns
 a reactive object containing the selected variables.
 }
 
+\examples{
+if (interactive()) {
+  shiny::shinyApp(
+    ui = shiny::fluidPage(mod_var_input_ui("vars")),
+    server = function(input, output, session) {
+      selected_vars <- mod_var_input_server("vars")
+      shiny::observe(print(selected_vars()))
+    }
+  )
+}
+
+
+}
 \seealso{
 \itemize{
 \item \code{\link[=mod_var_input_ui]{mod_var_input_ui()}} for the UI counterpart of this module.
 \item \code{\link[=mod_scatter_display_server]{mod_scatter_display_server()}} for displaying the scatter plot.
 }
-}
-\concept{\strong{Variable Input Module}
 
-if (interactive()) {
-shiny::shinyApp(
-ui = shiny::fluidPage(mod_var_input_ui("vars")),
-server = function(input, output, session) {
-selected_vars <- mod_var_input_server("vars")
-shiny::observe(print(selected_vars()))
+Other \strong{Variable Input Module}:
+\code{\link[=mod_var_input_ui]{mod_var_input_ui()}}
 }
-)
-}}
+\concept{\strong{Variable Input Module}}

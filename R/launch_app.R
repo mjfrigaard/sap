@@ -40,7 +40,6 @@
 #'   launch_app()
 #' }
 #'
-#'
 #' @export
 #'
 #' @import shiny
@@ -56,8 +55,10 @@ launch_app <- function(app = NULL, options = list(), mode = c("start", "run"), r
     return(
       quarto::quarto_preview(
         system.file("quarto", "index.qmd",
-            package = "sap" ),
-        render = "all")
+          package = "sap"
+        ),
+        render = "all"
+      )
     )
   }
 
@@ -68,12 +69,12 @@ launch_app <- function(app = NULL, options = list(), mode = c("start", "run"), r
       options = options
     )
   } else if (app == "ggp2") {
-      shinyAppDir(
-        appDir = system.file("tidy-movies",
-          package = "sap"
+    shinyAppDir(
+      appDir = system.file("tidy-movies",
+        package = "sap"
       ),
       options = options
-      )
+    )
   } else {
     shinyApp(
       ui = movies_ui(...),

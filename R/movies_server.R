@@ -11,9 +11,9 @@
 #'
 #' @section Details:
 #' The server integrates the following modules:
-#' - **Variable Input Module**: Processes user input for scatter plot 
+#' - **Input Module**: Processes user input for scatter plot 
 #'   customization using  [`mod_var_input_server()`].
-#' - **Plot Display Module**: Generates and displays a scatter plot 
+#' - **Display Module**: Generates and displays a scatter plot 
 #'   based on user inputs using [`mod_scatter_display_server()`].
 #'
 #' @seealso

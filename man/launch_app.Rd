@@ -4,7 +4,13 @@
 \alias{launch_app}
 \title{Launch the Movies Review Application}
 \usage{
-launch_app(app = NULL, options = list(), mode = "run", run = "p", ...)
+launch_app(
+  app = NULL,
+  options = list(),
+  mode = c("start", "run"),
+  run = "p",
+  ...
+)
 }
 \arguments{
 \item{app}{which app to run. Options are:

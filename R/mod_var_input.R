@@ -1,4 +1,4 @@
-#' Variable Input Module - UI
+#' Input Module - UI
 #'
 #' Creates a UI for selecting variables and attributes for a scatter plot.
 #'
@@ -29,7 +29,7 @@
 #' - [`shiny::NS()`](https://shiny.posit.co/r/reference/shiny/latest/NS.html) 
 #'   for namespacing.
 #'
-#' @family **Variable Input Module**
+#' @family **Input Module**
 #'
 #' @examples
 #'
@@ -104,7 +104,7 @@ mod_var_input_ui <- function(id) {
   )
 }
 
-#' Variable Input Module - Server
+#' Input Module - Server
 #'
 #' Handles the server-side logic for the variable input module.
 #'
@@ -129,7 +129,7 @@ mod_var_input_ui <- function(id) {
 #' - [`mod_var_input_ui()`] for the UI counterpart of this module.
 #' - [`mod_scatter_display_server()`] for displaying the scatter plot.
 #'
-#' @family **Variable Input Module**
+#' @family **Input Module**
 #'
 #' @examples
 #' if (interactive()) {

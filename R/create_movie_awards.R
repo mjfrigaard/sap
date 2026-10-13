@@ -19,9 +19,7 @@
 #' 
 create_movie_awards <- function(df, award, start_year, end_year) {
 
-  df <- sap::movies
-
-  movie_awards <- create_movie_wins(movies, award, start_year, end_year) |> 
+  movie_awards <- create_movie_wins(df, award, start_year, end_year) |>
 
     filter_award_wins(award, start_year, end_year)
 

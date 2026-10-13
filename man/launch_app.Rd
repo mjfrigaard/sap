@@ -4,23 +4,25 @@
 \alias{launch_app}
 \title{Launch the Movies Review Application}
 \usage{
-launch_app(options = list(), mode = "run", run = "p")
+launch_app(mode = c("start", "run"), options = list(), run = "b", ...)
 }
 \arguments{
-\item{options}{Shiny options.}
-
 \item{mode}{launch mode. Choices are:
 \itemize{
-\item run: blocking, uses \code{\link[=display_type]{display_type()}} for window placement (default)
-\item start: non-blocking, launches in a background process
+\item run: blocking (default), returns app object
+\item start: non-blocking, launches in background process
 }}
+
+\item{options}{Shiny options.}
 
 \item{run}{where to launch the application. Choices are:
 \itemize{
 \item p: RStudio viewer pane
-\item b: New browser window
+\item b: New browser window (default)
 \item w: RStudio window
 }}
+
+\item{...}{arguments passed to \code{\link[shiny:startApp]{shiny::startApp()}}}
 }
 \value{
 A \strong{Shiny application} object.

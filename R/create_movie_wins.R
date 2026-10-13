@@ -20,8 +20,6 @@
 #' 
 create_movie_wins <- function(df, award, start_year, end_year) {
 
-  df <- sap::movies
-
   # input checks
   if (start_year > end_year) {
     start_year <- start_year + 4

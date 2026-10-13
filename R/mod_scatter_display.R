@@ -1,4 +1,4 @@
-#' Scatter Plot Display Module - UI
+#' Scatter Display Module - UI
 #'
 #' Creates a UI for displaying a scatter plot with user-selected options.
 #'
@@ -16,7 +16,7 @@
 #'   module.
 #' - [`scatter_plot()`]  for the utility function generating the plot.
 #'
-#' @family **Plot Display Module**
+#' @family **Display Module**
 #'
 #' @examples
 #' if (interactive()) {
@@ -43,7 +43,7 @@ mod_scatter_display_ui <- function(id) {
   )
 }
 
-#' Scatter Plot Display Module - Server
+#' Scatter Display Module - Server
 #'
 #' Handles the server-side logic for rendering a scatter plot.
 #'
@@ -73,7 +73,7 @@ mod_scatter_display_ui <- function(id) {
 #' - [`mod_var_input_server()`] for variable selection.
 #' - [`scatter_plot()`] for generating the scatter plot.
 #'
-#' @family **Plot Display Module**
+#' @family **Display Module**
 #'
 #' @examples
 #' if (interactive()) {

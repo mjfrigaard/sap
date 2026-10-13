@@ -45,7 +45,8 @@
 #'
 #' @import shiny
 #'
-launch_app <- function(app = NULL, options = list(), mode = "run", run = "p", ...) {
+launch_app <- function(app = NULL, options = list(), mode = c("start", "run"), run = "p", ...) {
+  mode <- match.arg(mode)
 
   if (is.null(app)) {
     app <- "movies"
@@ -82,11 +83,11 @@ launch_app <- function(app = NULL, options = list(), mode = "run", run = "p", ..
   }
 
   if (mode == "start") {
-    shiny::startApp(appDir = app_obj, port = 3838)
-  } else {
-    if (interactive()) {
-      display_type(run = run)
-    }
-    shiny::runApp(appDir = app_obj)
+    return(shiny::startApp(app_obj, ...))
   }
+
+  if (interactive()) {
+    display_type(run = run)
+  }
+  app_obj
 }

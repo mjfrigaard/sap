@@ -45,61 +45,49 @@
 #'
 #' @import shiny
 #'
-launch_app <- function(app = NULL, options = list(), mode = "run", run = "p", ...) {
+launch_app <- function(app = NULL, options = list(), mode = c("start", "run"), run = "p", ...) {
+  mode <- match.arg(mode)
 
   if (is.null(app)) {
     app <- "movies"
   }
 
-  logr_msg(glue::glue("Launching app: {app}"),
-           level = "INFO")
+  if (app == "quarto") {
+    return(
+      quarto::quarto_preview(
+        system.file("quarto", "index.qmd",
+            package = "sap" ),
+        render = "all")
+    )
+  }
 
-  tryCatch({
-
-    if (app == "quarto") {
-      return(
-        quarto::quarto_preview(
-          system.file("quarto", "index.qmd", package = "sap"),
-          render = "all"
-        )
-      )
-    }
-
-    app_obj <- if (app == "bslib") {
-      shinyApp(
-        ui = movies_ui(bslib = TRUE),
-        server = movies_server,
-        options = options
-      )
-    } else if (app == "ggp2") {
+  app_obj <- if (app == "bslib") {
+    shinyApp(
+      ui = movies_ui(bslib = TRUE),
+      server = movies_server,
+      options = options
+    )
+  } else if (app == "ggp2") {
       shinyAppDir(
-        appDir = system.file("tidy-movies", package = "sap"),
-        options = options
+        appDir = system.file("tidy-movies",
+          package = "sap"
+      ),
+      options = options
       )
-    } else {
-      shinyApp(
-        ui = movies_ui(...),
-        server = movies_server,
-        options = options
-      )
-    }
+  } else {
+    shinyApp(
+      ui = movies_ui(...),
+      server = movies_server,
+      options = options
+    )
+  }
 
-    if (mode == "start") {
-      shiny::startApp(appDir = app_obj, port = 3838)
-    } else {
-      if (interactive()) {
-        display_type(run = run)
-      }
-      shiny::runApp(appDir = app_obj)
-    }
+  if (mode == "start") {
+    return(shiny::startApp(app_obj, ...))
+  }
 
-  }, error = function(e) {
-
-    logr_msg(glue::glue("FATAL: Application failed to launch. Reason: {e$message}"),
-             level = "FATAL")
-
-    stop("Application launch failed. Check logs for details.")
-
-  })
-
+  if (interactive()) {
+    display_type(run = run)
+  }
+  app_obj
 }

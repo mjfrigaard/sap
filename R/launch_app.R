@@ -2,15 +2,16 @@
 #'
 #' Starts the Movies Review Shiny application, which provides a customizable
 #' scatter plot interface for analyzing movie data.
-#' 
-#' @param options Shiny options.
+#'
 #' @param mode launch mode. Choices are:
-#' *  run: blocking, uses [display_type()] for window placement (default)
-#' *  start: non-blocking, launches in a background process
+#' *  run: blocking (default), returns app object
+#' *  start: non-blocking, launches in background process
+#' @param options Shiny options.
 #' @param run where to launch the application. Choices are:
 #' *  p: RStudio viewer pane
-#' *  b: New browser window
+#' *  b: New browser window (default)
 #' *  w: RStudio window
+#' @param ... arguments passed to [shiny::startApp()]
 #'
 #' @return A **Shiny application** object.
 #'
@@ -35,7 +36,10 @@
 #' 
 #' @import shiny
 #' 
-launch_app <- function(options = list(), mode = "run", run = "p") {
+launch_app <- function(mode = c("start", "run"), options = list(), run = "b", ...) {
+  mode <- match.arg(mode)
+  display_type(run = run)
+
   app <- shinyApp(
     ui = movies_ui(),
     server = movies_server,
@@ -43,9 +47,7 @@ launch_app <- function(options = list(), mode = "run", run = "p") {
   )
 
   if (mode == "start") {
-    shiny::startApp(appDir = app, port = 3838)
-  } else if (mode == "run") {
-    display_type(run = run)
-    shiny::runApp(appDir = app)
+    return(shiny::startApp(app, ...))
   }
+  app
 }

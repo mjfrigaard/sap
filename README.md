@@ -6,12 +6,12 @@ Install `sap` using `remotes`:
 
 ``` r
 install.packages('remotes')
-remotes::install_github('mjfrigaard/sap', ref = '26_llm-shiny-assist')
+remotes::install_github('mjfrigaard/sap', ref = '28_llm-shiny-assist')
 ```
 
-## `26_llm-shiny-assist`
+## `28_llm-shiny-assist`
 
-The [`26_llm-shiny-assist`](https://github.com/mjfrigaard/sap/tree/26_llm-shiny-assist) branch contains an application created in 5 prompts with [Shiny Assistant](https://gallery.shinyapps.io/assistant/).
+The [`28_llm-shiny-assist`](https://github.com/mjfrigaard/sap/tree/28_llm-shiny-assist) branch contains an application created in 5 prompts with [Shiny Assistant](https://gallery.shinyapps.io/assistant/).
 
 Launch the application using;
 

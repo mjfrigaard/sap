@@ -13,7 +13,7 @@
 server_function <- function(input, output, session) {
   # Load the data
   movies_data <- reactive({
-    movies_sample <- vroom::vroom(file = "https://raw.githubusercontent.com/mjfrigaard/sap/refs/heads/26_llm-shiny-assist/data-raw/movies_sample.csv")
+    movies_sample <- vroom::vroom(file = "https://raw.githubusercontent.com/mjfrigaard/sap/refs/heads/28_llm-shiny-assist/data-raw/movies_sample.csv")
     return(movies_sample)
   })
   

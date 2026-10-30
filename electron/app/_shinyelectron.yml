@@ -1,7 +1,7 @@
 app:
   name: "Movie Reviews"
   slug: "sap"
-  version: "0.0.0.9200"
+  version: "0.0.0-9200"
 build:
   type: "r-shiny"
   runtime_strategy: "bundled"

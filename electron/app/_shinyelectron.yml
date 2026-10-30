@@ -7,7 +7,6 @@ build:
   runtime_strategy: "bundled"
   platforms:
     - mac
-    - win
 dependencies:
   auto_detect: true
   r:

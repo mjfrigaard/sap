@@ -57,6 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `23_shinyelectron`
+## `23.1_shinyelectron-dmg`
 
-The [`23_shinyelectron`](https://github.com/mjfrigaard/sap/tree/23_shinyelectron) branch packages the movie review application as a desktop installer with [`shinyelectron`](https://r-pkg.thecoatlessprofessor.com/shinyelectron/). The launcher app and build settings are in `electron/app/`, and the build script is in `electron/build.R`.
+The [`23.1_shinyelectron-dmg`](https://github.com/mjfrigaard/sap/tree/23.1_shinyelectron-dmg) branch packages the movie review application as a macOS installer (`.dmg`) with [`shinyelectron`](https://r-pkg.thecoatlessprofessor.com/shinyelectron/). The launcher app and build settings are in `electron/app/`, and the build script is in `electron/build.R`.

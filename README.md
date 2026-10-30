@@ -16,7 +16,7 @@ You can install the development version of lap from
 
 ``` r
 # install.packages("remotes")
-remotes::install_github(repo = "mjfrigaard/sap", ref = "24_leprechaun")
+remotes::install_github(repo = "mjfrigaard/sap", ref = "26_leprechaun")
 ```
 
 ## App

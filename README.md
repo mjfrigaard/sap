@@ -6,12 +6,9 @@
 
 # sap
 
-## `22_webr`
+## `23_shinyelectron`
 
-The [`22_webr`](https://github.com/mjfrigaard/sap/tree/22_webr) branch runs the movie review application in the browser with [webR](https://docs.r-wasm.org/webr/latest/) and [shinylive](https://posit-dev.github.io/r-shinylive/). The launcher app is in `inst/webr/app.R` and the export script is in `dev/webr.R`.
-
-
-`sap` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
+The [`23_shinyelectron`](https://github.com/mjfrigaard/sap/tree/23_shinyelectron) branch packages the movie review application as a desktop installer with [`shinyelectron`](https://r-pkg.thecoatlessprofessor.com/shinyelectron/). The launcher app and build settings are in `electron/app/`, and the build script is in `electron/build.R`.
 
 ## Movie review data application
 

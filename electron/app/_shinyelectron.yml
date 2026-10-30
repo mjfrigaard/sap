@@ -1,0 +1,21 @@
+app:
+  name: "Movie Reviews"
+  slug: "sap"
+  version: "0.0.0.9200"
+build:
+  type: "r-shiny"
+  runtime_strategy: "bundled"
+  platforms:
+    - mac
+    - win
+dependencies:
+  auto_detect: true
+  r:
+    version: null
+    local_packages:
+      - "../.."
+    repos:
+      - "https://cloud.r-project.org"
+window:
+  width: 1200
+  height: 800

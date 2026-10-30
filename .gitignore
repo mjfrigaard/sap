@@ -15,3 +15,6 @@ inst/doc
 
 # shinylive export
 _site/
+
+# shinyelectron build output
+electron/dist/

@@ -101,8 +101,8 @@ movies_ui <- function(bslib = FALSE) {
           primary = "#EE6F57",
           secondary = "#32E0C4",
           success = "#FF4B5C",
-          base_font = sass::font_google("Ubuntu"),
-          heading_font = sass::font_google("Ubuntu")
+          base_font = sass::font_google("Ubuntu", local = FALSE),
+          heading_font = sass::font_google("Ubuntu", local = FALSE)
         ),
         bslib::layout_sidebar(
           sidebar = bslib::sidebar(

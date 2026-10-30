@@ -6,9 +6,7 @@
 
 # sap
 
-## `23_shinyelectron`
-
-The [`23_shinyelectron`](https://github.com/mjfrigaard/sap/tree/23_shinyelectron) branch packages the movie review application as a desktop installer with [`shinyelectron`](https://r-pkg.thecoatlessprofessor.com/shinyelectron/). The launcher app and build settings are in `electron/app/`, and the build script is in `electron/build.R`.
+`sap` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
 
@@ -59,42 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `21.3_gha-shiny-docker`
+## `23_shinyelectron`
 
-The [`21.3_gha-shiny-docker`](https://github.com/mjfrigaard/sap/tree/21.3_gha-shiny-docker) branch demonstrates how to use GitHub Actions and Docker to deploy a Shiny app. 
-
-The `shiny-docker.yaml` workflow is stored in the hidden `.github` folder:
-
-``` sh
-.github/
-  └── workflows
-      └── shiny-docker.yaml
-
-2 directories, 1 file
-```
-
-The `.github/workflows/shiny-deploy.yaml` file contains the following:
-
-```yaml
-name: docker-shiny, sap
-
-on:
-  push:
-    # push on this branch only!
-    branches: [ 21.3_gha-shiny-docker ]
-
-jobs:
-  docker:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build image
-        run: docker build -t sap . 
-      - name: execute
-        run: >
-          docker run -e RSCONNECT_USER=${{ secrets.RSCONNECT_USER }} -e RSCONNECT_TOKEN=${{ secrets.RSCONNECT_TOKEN }}  -e RSCONNECT_SECRET=${{ secrets.RSCONNECT_SECRET }} sap  
-
-```
-
+The [`23_shinyelectron`](https://github.com/mjfrigaard/sap/tree/23_shinyelectron) branch packages the movie review application as a desktop installer with [`shinyelectron`](https://r-pkg.thecoatlessprofessor.com/shinyelectron/). The launcher app and build settings are in `electron/app/`, and the build script is in `electron/build.R`.

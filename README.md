@@ -59,7 +59,7 @@ View all the applications in the [`sap` branches](https://github.com/mjfrigaard/
 
 ## Shiny Tools: `chores`
 
-[`28_llm-chores`](https://github.com/mjfrigaard/sap/tree/28_llm-chores) expands the use of LLM models to the [`chores`](https://simonpcouch.github.io/chores/index.html), a package designed to, 
+[`30_llm-chores`](https://github.com/mjfrigaard/sap/tree/30_llm-chores) expands the use of LLM models to the [`chores`](https://simonpcouch.github.io/chores/index.html), a package designed to, 
 
 > "*help you complete repetitive, hard-to-automate tasks quickly*"
 

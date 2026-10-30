@@ -3,7 +3,7 @@ on:
   # Run on pushes to 'main' branch
   push:
     branches:
-      - 25_rhino
+      - 27_rhino
   # Run on any opened pull request
   pull_request:
   # Run manually via GitHub Actions website

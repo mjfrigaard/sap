@@ -57,6 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `23_shinyelectron`
+## `23.2_shinyelectron-deb`
 
-The [`23_shinyelectron`](https://github.com/mjfrigaard/sap/tree/23_shinyelectron) branch packages the movie review application as a desktop installer with [`shinyelectron`](https://r-pkg.thecoatlessprofessor.com/shinyelectron/). The launcher app and build settings are in `electron/app/`, and the build script is in `electron/build.R`.
+The [`23.2_shinyelectron-deb`](https://github.com/mjfrigaard/sap/tree/23.2_shinyelectron-deb) branch packages the movie review application as Linux installers (`.AppImage` and `.deb`) using the `shinylive` runtime with [`shinyelectron`](https://r-pkg.thecoatlessprofessor.com/shinyelectron/). The launcher app and build settings are in `electron/app/`, and the build script is in `electron/build.R`.

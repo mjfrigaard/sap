@@ -4,18 +4,9 @@ app:
   version: "0.0.0-9200"
 build:
   type: "r-shiny"
-  runtime_strategy: "bundled"
+  runtime_strategy: "shinylive"
   platforms:
-    - mac
-    - win
-dependencies:
-  auto_detect: true
-  r:
-    version: null
-    local_packages:
-      - "../.."
-    repos:
-      - "https://cloud.r-project.org"
+    - linux
 window:
   width: 1200
   height: 800

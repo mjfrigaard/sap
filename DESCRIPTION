@@ -5,8 +5,8 @@ Authors@R:
     person("Martin", "Frigaard", , "mjfrigaard@pm.me", role = c("aut", "cre"))
 Description: A working example of the golem package.
 License: MIT + file LICENSE
-URL: https://github.com/mjfrigaard/sap/tree/23_golem
-BugReports: https://github.com/mjfrigaard/sap/tree/23_golem/issues
+URL: https://github.com/mjfrigaard/sap/tree/25_golem
+BugReports: https://github.com/mjfrigaard/sap/tree/25_golem/issues
 Depends: 
     R (>= 3.5)
 Imports: 

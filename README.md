@@ -19,7 +19,7 @@ coverage](https://coveralls.io/repos/github/mjfrigaard/sap/badge.svg)](https://c
 You can install the development version of `{gap}` like so:
 
 ``` r
-remotes::install_github(repo = "mjfrigaard/sap", ref = "23_golem")
+remotes::install_github(repo = "mjfrigaard/sap", ref = "25_golem")
 ```
 
 ## Run

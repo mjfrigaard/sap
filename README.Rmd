@@ -27,7 +27,7 @@ date: "`r format(Sys.time(), '%d %B, %Y %H:%M:%S')`"
 You can install the development version of `{gap}` like so:
 
 ```{r eval=FALSE}
-remotes::install_github(repo = "mjfrigaard/sap", ref = "23_golem")
+remotes::install_github(repo = "mjfrigaard/sap", ref = "25_golem")
 ```
 
 ## Run

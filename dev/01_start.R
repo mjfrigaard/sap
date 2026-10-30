@@ -28,7 +28,7 @@ golem::fill_desc(
     email = "mjfrugaard@pm.me", # Your email
     role = c("aut", "cre") # Your role (here author/creator)
   ),
-  repo_url = "https://github.com/mjfrigaard/sap/tree/23_golem", # The URL of the GitHub repo (optional),
+  repo_url = "https://github.com/mjfrigaard/sap/tree/25_golem", # The URL of the GitHub repo (optional),
   pkg_version = "0.0.0.9000", # The version of the package containing the app
   set_options = TRUE # Set the global golem options
 )

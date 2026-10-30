@@ -6,11 +6,6 @@
 
 # sap
 
-## `22_webr`
-
-The [`22_webr`](https://github.com/mjfrigaard/sap/tree/22_webr) branch runs the movie review application in the browser with [webR](https://docs.r-wasm.org/webr/latest/) and [shinylive](https://posit-dev.github.io/r-shinylive/). The launcher app is in `inst/webr/app.R` and the export script is in `dev/webr.R`.
-
-
 `sap` provides the code examples in for the [Shiny App-Packages](https://mjfrigaard.github.io/shiny-app-pkgs/) book and the [Developing & Testing Your Shiny Application](https://mjfrigaard.github.io/dev-test-shiny/) workshop provided at R in Pharma (2023).
 
 ## Movie review data application
@@ -62,42 +57,6 @@ open sap.Rproj
 
 View all the applications in the [`sap` branches](https://github.com/mjfrigaard/sap/branches/all).
 
-## `21.3_gha-shiny-docker`
+## `22_webr`
 
-The [`21.3_gha-shiny-docker`](https://github.com/mjfrigaard/sap/tree/21.3_gha-shiny-docker) branch demonstrates how to use GitHub Actions and Docker to deploy a Shiny app. 
-
-The `shiny-docker.yaml` workflow is stored in the hidden `.github` folder:
-
-``` sh
-.github/
-  └── workflows
-      └── shiny-docker.yaml
-
-2 directories, 1 file
-```
-
-The `.github/workflows/shiny-deploy.yaml` file contains the following:
-
-```yaml
-name: docker-shiny, sap
-
-on:
-  push:
-    # push on this branch only!
-    branches: [ 21.3_gha-shiny-docker ]
-
-jobs:
-  docker:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build image
-        run: docker build -t sap . 
-      - name: execute
-        run: >
-          docker run -e RSCONNECT_USER=${{ secrets.RSCONNECT_USER }} -e RSCONNECT_TOKEN=${{ secrets.RSCONNECT_TOKEN }}  -e RSCONNECT_SECRET=${{ secrets.RSCONNECT_SECRET }} sap  
-
-```
-
+The [`22_webr`](https://github.com/mjfrigaard/sap/tree/22_webr) branch runs the movie review application in the browser with [webR](https://docs.r-wasm.org/webr/latest/) and [shinylive](https://posit-dev.github.io/r-shinylive/). The launcher app is in `inst/webr/app.R` and the export script is in `dev/webr.R`.

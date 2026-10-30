@@ -41,8 +41,11 @@ to namespace all input IDs.
 - [`mod_var_input_server()`](https://mjfrigaard.github.io/sap/reference/mod_var_input_server.md)
   for server-side logic.
 
-- [[`shiny::tagList()`](https://rstudio.github.io/htmltools/reference/tagList.html)](https://shiny.rstudio.com/reference/shiny/latest/tagList.html)
+- [`shiny::tagList()`](https://shiny.posit.co/r/reference/shiny/latest/tagList.html)
   for containing UI elements.
 
-- [[`shiny::NS()`](https://rdrr.io/pkg/shiny/man/NS.html)](https://shiny.rstudio.com/reference/shiny/latest/NS.html)
+- [`shiny::NS()`](https://shiny.posit.co/r/reference/shiny/latest/NS.html)
   for namespacing.
+
+Other **Variable Input Module**:
+[`mod_var_input_server()`](https://mjfrigaard.github.io/sap/reference/mod_var_input_server.md)

@@ -35,7 +35,7 @@ Utility functions
 - [`display_type()`](https://mjfrigaard.github.io/sap/reference/display_type.md)
   : Shiny app display mode helper
 - [`scatter_plot()`](https://mjfrigaard.github.io/sap/reference/scatter_plot.md)
-  : Create scatter plot
+  : Generate a Scatter Plot
 - [`text_logo()`](https://mjfrigaard.github.io/sap/reference/text_logo.md)
   : Create a Text-based Logo in HTML
 

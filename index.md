@@ -8,10 +8,10 @@ You can install the `pkgdown` branch of the `sap` package using
 ``` r
 
 install.packages('remotes')
-remotes::install_github('mjfrigaard/sap', ref = '22_pkgdown')
+remotes::install_github('mjfrigaard/sap', ref = '24_pkgdown')
 ```
 
-The [`22_pkgdown`](https://github.com/mjfrigaard/sap/tree/22_pkgdown)
+The [`24_pkgdown`](https://github.com/mjfrigaard/sap/tree/24_pkgdown)
 branch demonstrates how to create a package website using `pkgdown` and
 GitHub Actions.
 

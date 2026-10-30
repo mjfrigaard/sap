@@ -43,8 +43,8 @@ to namespace all input IDs.
 - [`mod_aes_input_server()`](https://mjfrigaard.github.io/sap/reference/mod_aes_input_server.md)
   for server-side logic.
 
-- [[`shiny::tagList()`](https://rstudio.github.io/htmltools/reference/tagList.html)](https://shiny.rstudio.com/reference/shiny/latest/tagList.html)
+- [`shiny::tagList()`](https://shiny.rstudio.com/reference/shiny/latest/tagList.html)
   for containing UI elements.
 
-- [[`shiny::NS()`](https://rdrr.io/pkg/shiny/man/NS.html)](https://shiny.rstudio.com/reference/shiny/latest/NS.html)
+- [`shiny::NS()`](https://shiny.rstudio.com/reference/shiny/latest/NS.html)
   for namespacing.

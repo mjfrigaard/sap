@@ -24,16 +24,16 @@ A Shiny `tagList` object containing the UI elements.
 The interface is built using [`bslib`](https://rstudio.github.io/bslib/)
 
 - **Page (fillable)**:
-  [[`bslib::page_fillable()`](https://rstudio.github.io/bslib/reference/page_fillable.html)](https://rstudio.github.io/bslib/reference/page_fillable.html)
+  [`bslib::page_fillable()`](https://rstudio.github.io/bslib/reference/page_fillable.html)
   displays the app title.
 
 - **Sidebar**:
-  [[`bslib::layout_sidebar()`](https://rstudio.github.io/bslib/reference/sidebar.html)](https://rstudio.github.io/bslib/reference/sidebar.html)
+  [`bslib::layout_sidebar()`](https://rstudio.github.io/bslib/reference/sidebar.html)
   includes a logo and the variable selection module.
   ([`mod_var_input_ui`](https://mjfrigaard.github.io/sap/reference/mod_var_input_ui.md)).
 
 - **Card**:
-  [[`bslib::card()`](https://rstudio.github.io/bslib/reference/card.html)](https://rstudio.github.io/bslib/reference/card.html)
+  [`bslib::card()`](https://rstudio.github.io/bslib/reference/card.html)
   displays the scatter plot module
   ([`mod_scatter_display_ui`](https://mjfrigaard.github.io/sap/reference/mod_scatter_display_ui.md)).
 

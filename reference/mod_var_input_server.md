@@ -39,3 +39,21 @@ variables.
 
 - [`mod_scatter_display_server()`](https://mjfrigaard.github.io/sap/reference/mod_scatter_display_server.md)
   for displaying the scatter plot.
+
+Other **Variable Input Module**:
+[`mod_var_input_ui()`](https://mjfrigaard.github.io/sap/reference/mod_var_input_ui.md)
+
+## Examples
+
+``` r
+if (interactive()) {
+  shiny::shinyApp(
+    ui = shiny::fluidPage(mod_var_input_ui("vars")),
+    server = function(input, output, session) {
+      selected_vars <- mod_var_input_server("vars")
+      shiny::observe(print(selected_vars()))
+    }
+  )
+}
+
+```

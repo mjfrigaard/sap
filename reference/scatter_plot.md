@@ -1,7 +1,7 @@
-# Create scatter plot
+# Generate a Scatter Plot
 
-Custom [`ggplot2`](https://ggplot2.tidyverse.org/) function for building
-scatter plots in `sap`.
+Creates a scatter plot using `ggplot2` with the specified data and
+aesthetics.
 
 ## Usage
 
@@ -50,8 +50,8 @@ and color aesthetics.
 - [`mod_scatter_display_server()`](https://mjfrigaard.github.io/sap/reference/mod_scatter_display_server.md)
   for integrating this function into the scatter plot module.
 
-- [[`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/reference/ggplot.html)](https://ggplot2.tidyverse.org/)
-  for details on `ggplot2` usage.
+- [`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/) for details on
+  `ggplot2` usage.
 
 Other **Utility Functions**:
 [`log_message()`](https://mjfrigaard.github.io/sap/reference/log_message.md)

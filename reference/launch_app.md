@@ -6,7 +6,7 @@ customizable scatter plot interface for analyzing movie data.
 ## Usage
 
 ``` r
-launch_app(app = NULL, options = list(), run = "p", ...)
+launch_app(app = NULL, options = list(), mode = "run", run = "p", ...)
 ```
 
 ## Arguments
@@ -27,6 +27,16 @@ launch_app(app = NULL, options = list(), run = "p", ...)
 
   arguments to pass to
   [`options()`](https://rdrr.io/r/base/options.html)
+
+- mode:
+
+  launch mode. Choices are:
+
+  - `run` = blocking, uses
+    [`display_type()`](https://mjfrigaard.github.io/sap/reference/display_type.md)
+    for window placement (default)
+
+  - `start` = non-blocking, launches in a background process
 
 - run:
 

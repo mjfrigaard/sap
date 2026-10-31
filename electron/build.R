@@ -26,7 +26,12 @@ pkg$build$linux$target <- list("AppImage", "deb")
 pkg$build$linux$maintainer <- "Martin Frigaard <mjfrigaard@pm.me>"
 jsonlite::write_json(pkg, pkg_json, auto_unbox = TRUE, pretty = TRUE)
 
-withr::with_dir(
+# use the Node.js from install_nodejs(), not the system Node.js
+node_bin <- utils::tail(Sys.glob(file.path(
+  rappdirs::user_cache_dir("shinyelectron"), "assets/nodejs/*/linux-x64/bin"
+)), 1)
+
+withr::with_path(node_bin, withr::with_dir(
   electron_app,
   system2("npx", c("electron-builder", "--linux", "deb", "--publish", "never"))
-)
+))

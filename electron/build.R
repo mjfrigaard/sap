@@ -10,11 +10,15 @@ platform <- "mac"
 
 app_check("electron/app", platform = platform)
 
-# use absolute paths
-export(
-  appdir = file.path(getwd(), "electron/app"),
-  destdir = file.path(getwd(), "electron/dist"),
-  platform = platform,
-  overwrite = TRUE,
-  run_after = interactive()
+# use absolute paths, and an empty user profile so the bundled R
+# doesn't run ~/.Rprofile while it installs packages
+withr::with_envvar(
+  c(R_PROFILE_USER = tempfile(fileext = ".R")),
+  export(
+    appdir = file.path(getwd(), "electron/app"),
+    destdir = file.path(getwd(), "electron/dist"),
+    platform = platform,
+    overwrite = TRUE,
+    run_after = interactive()
+  )
 )

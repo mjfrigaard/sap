@@ -15,3 +15,5 @@ inst/doc
 
 # shinylive export
 _site/
+
+electron/dist/

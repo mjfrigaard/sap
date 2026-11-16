@@ -17,13 +17,15 @@ export(
 )
 
 # shinyelectron only targets AppImage on Linux, so add the .deb target
-# (electron-builder requires a homepage and maintainer for .deb files)
+# (electron-builder requires a homepage and maintainer for .deb files,
+# and without a description the .deb lists as "sap - Shiny Electron App")
 electron_app <- file.path(getwd(), "electron/dist/electron-app")
 pkg_json <- file.path(electron_app, "package.json")
 pkg <- jsonlite::read_json(pkg_json)
 pkg$homepage <- "https://github.com/mjfrigaard/sap"
 pkg$build$linux$target <- list("AppImage", "deb")
 pkg$build$linux$maintainer <- "Martin Frigaard <mjfrigaard@pm.me>"
+pkg$description <- "Movie Reviews: the Shiny App-Packages example app"
 jsonlite::write_json(pkg, pkg_json, auto_unbox = TRUE, pretty = TRUE)
 
 # use the Node.js from install_nodejs(), not the system Node.js

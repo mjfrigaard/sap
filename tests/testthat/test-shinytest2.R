@@ -12,6 +12,7 @@ describe("Feature 1: Scatter plot data visualization dropdowns
              And the scatter plot should show [ ] on the y-axis
              And the points on the scatter plot should be colored by [ ]", {
       app <- AppDriver$new(
+        launch_app,
         name = "feature-01-scenario-a",
         height = 800, width = 1173
       )
@@ -30,6 +31,7 @@ describe("Feature 1: Scatter plot data visualization dropdowns
               And the opacity of the points on the scatter plot should be [ ]
               And the title of the plot should be '[ ]'", {
       app <- AppDriver$new(
+        launch_app,
         name = "feature-01-senario-b",
         height = 800, width = 1173
       )

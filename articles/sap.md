@@ -130,7 +130,7 @@ uses base R functions and is simple but effective.
 log_message(
   message = "A log message", 
   save = FALSE)
-#> [2026-11-20 19:25:00] A log message
+#> [2026-11-20 19:38:54] A log message
 ```
 
 [`logr_msg()`](https://mjfrigaard.github.io/sap/reference/logr_msg.md)

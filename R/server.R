@@ -12,8 +12,10 @@ server <- function(input, output, session){
 
 	send_message <- make_send_message(session)
 
-  send_message("show-packer",
-              text = "a message from R/server.R")
+  if (!isTRUE(getOption("shiny.testmode"))) {
+    send_message("show-packer",
+                text = "a message from R/server.R")
+  }
 
   selected_vars <- vars_server("vars")
 

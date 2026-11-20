@@ -31,8 +31,10 @@ scatter_display_server <- function(id, var_inputs, aes_inputs){
                 send_message <- make_send_message(session)
 
     send_message <- make_send_message(session)
-    send_message("show-packer",
-      text = "a message from R/module_plot_display.R")
+    if (!isTRUE(getOption("shiny.testmode"))) {
+      send_message("show-packer",
+        text = "a message from R/module_plot_display.R")
+    }
 
     inputs <- reactive({
       plot_title <- tools::toTitleCase(aes_inputs()$plot_title)

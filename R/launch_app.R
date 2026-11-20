@@ -44,7 +44,7 @@
 #'
 #' @import shiny
 #'
-launch_app <- function(app = NULL, options = list(), mode = c("start", "run"), run = "p", ...) {
+launch_app <- function(app = NULL, options = list(), mode = c("run", "start"), run = "p", ...) {
   mode <- match.arg(mode)
 
   if (is.null(app)) {

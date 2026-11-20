@@ -11,7 +11,7 @@ describe("Feature 1: Scatter plot data visualization dropdowns
         it("Then the scatter plot should show [ ] on the x-axis
              And the scatter plot should show [ ] on the y-axis
              And the points on the scatter plot should be colored by [ ]", {
-              app <- AppDriver$new(name = "feature-01-scenario-a",
+              app <- AppDriver$new(launch_app, name = "feature-01-scenario-a",
                                      height = 800, width = 1173)
                 app$set_inputs(`vars-y` = "imdb_num_votes")
                 app$set_inputs(`vars-x` = "critics_score")
@@ -27,7 +27,7 @@ describe("Feature 1: Scatter plot data visualization dropdowns
          it("Then the size of the points on the scatter plot should be [ ]
               And the opacity of the points on the scatter plot should be [ ]
               And the title of the plot should be '[ ]'", {
-              app <- AppDriver$new(name = "feature-01-senario-b",
+              app <- AppDriver$new(launch_app, name = "feature-01-senario-b",
                                      height = 800, width = 1173)
                 app$set_inputs(`aes-alpha` = 0.7)
                 app$set_inputs(`aes-size` = 3)

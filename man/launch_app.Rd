@@ -7,7 +7,7 @@
 launch_app(
   app = NULL,
   options = list(),
-  mode = c("start", "run"),
+  mode = c("run", "start"),
   run = "p",
   ...
 )

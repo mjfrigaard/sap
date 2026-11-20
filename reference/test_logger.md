@@ -46,16 +46,16 @@ Logs messages and returns `NULL` (used for side effects).
 ``` r
 test_logger(msg = "Processing started")
 #> 
-#> TEST:[2026-10-30 15:25:43] = Processing started
+#> TEST:[2026-11-20 19:24:52] = Processing started
 test_logger(start = "Step1", msg = "Loading data")
 #> 
-#> TEST: START [2026-10-30 15:25:43] Step1 = Loading data
+#> TEST: START [2026-11-20 19:24:52] Step1 = Loading data
 test_logger(end = "Step1", msg = "Data loaded successfully")
 #> 
-#> TEST: END [2026-10-30 15:25:43] Step1 = Data loaded successfully
+#> TEST: END [2026-11-20 19:24:52] Step1 = Data loaded successfully
 test_logger(start = "Step2", end = "Step2", msg = "Performing computation")
 #> 
-#> TEST: START [2026-10-30 15:25:43]Step2 = Performing computation
+#> TEST: START [2026-11-20 19:24:52]Step2 = Performing computation
 #> 
-#> TEST: END [2026-10-30 15:25:43] Step2 = Performing computation
+#> TEST: END [2026-11-20 19:24:52] Step2 = Performing computation
 ```

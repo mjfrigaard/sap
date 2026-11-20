@@ -89,7 +89,7 @@ not return a value.
 - [`logger::log_formatter()`](https://daroczig.github.io/logger/reference/log_formatter.html)
   for customizing log message formats.
 
-- [`jsonlite::toJSON()`](https://jeroen.r-universe.dev/jsonlite/reference/fromJSON.html)
+- [`jsonlite::toJSON()`](https://rdrr.io/pkg/jsonlite/man/fromJSON.html)
   for converting R objects to JSON.
 
 ## Examples

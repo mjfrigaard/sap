@@ -9,7 +9,7 @@ describe("Scenario A: Change dropdown values for plotting
         And the scatter plot should show [ ] on the y-axis
         And the points on the scatter plot should be colored by [ ]", {
   
-          app <- AppDriver$new(name = "test-values",
+          app <- AppDriver$new(launch_app, name = "test-values",
                                height = 800, width = 1173,
                                wait = FALSE, timeout = 300000)
 
